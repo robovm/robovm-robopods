@@ -1,0 +1,210 @@
+package: org.robovm.pods.facebook.bolts
+framework: Bolts
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/dispatch.yaml
+clang_args: ['-x', 'objective-c']
+header_root: '/../libs/'
+headers:
+    - Bolts.framework/Headers/Bolts.h
+typedefs:
+    BFContinuationBlock: '@Block Block1<BFTask, NSObject>'
+private_typedefs:
+    'void (^)(void (^)())': '@Block("(@Block)") VoidBlock1<Runnable>'
+    'id (^)()': '@Block Block0<NSObject>'
+    
+enums:
+    BFAppLinkNavigationType: {}
+    BFIncludeStatusBarInSize: {}
+        
+classes:
+    BFTaskError:
+        extends: NSError
+
+    Bolts: # DONE
+        methods:
+            '+version':
+                property: true
+    BFAppLink: # DONE
+        properties:
+            'targets':
+                type: NSArray<BFAppLinkTarget>
+        methods:
+            '+appLinkWithSourceURL:targets:webURL:':
+                name: create
+                parameters:
+                    targets:
+                        type: NSArray<BFAppLinkTarget>
+    BFAppLinkNavigation: # DONE
+        properties:
+            'extras':
+                type: 'NSDictionary<NSString, NSObject>'
+            'appLinkData':
+                type: 'NSDictionary<NSString, NSObject>'
+        methods:
+            '-navigate:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+            '+navigationWithAppLink:extras:appLinkData:':
+                name: create
+                parameters:
+                    extras:
+                        type: 'NSDictionary<NSString, NSObject>'
+                    appLinkData:
+                        type: 'NSDictionary<NSString, NSObject>'
+            '+resolveAppLinkInBackground:.*':
+                trim_after_first_colon: true
+            '+navigateToAppLink:error:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+            '+navigateToURLInBackground:.*':
+                trim_after_first_colon: true
+            '+defaultResolver':
+                property: true
+    BFAppLinkReturnToRefererController: # DONE
+        methods:
+            '-initForDisplayAboveNavController:':
+                name: init
+            '-showView.*':
+                name: showView
+            '-closeViewAnimated:':
+                name: closeView
+    BFAppLinkReturnToRefererView: {} # DONE
+    BFAppLinkTarget: # DONE
+        methods:
+            '+appLinkTargetWithURL:appStoreId:appName:':
+                name: create
+    BFExecutor: # DONE
+        methods:
+            '-execute:':
+                trim_after_first_colon: true
+            '+(defaultExecutor|immediateExecutor|mainThreadExecutor)':
+                property: true
+            '+executorWith.*':
+                name: create
+    BFMeasurementEvent: {}
+    BFTask: # DONE
+        properties:
+            'cancelled':
+                getter: isCancelled
+        methods:
+            '-continueWithBlock:':
+                name: continueBlock
+            '-continueWithExecutor:withBlock:':
+                name: continueBlock
+            '-continueWithSuccessBlock:':
+                name: continueSuccessBlock
+            '-continueWithExecutor:withSuccessBlock:':
+                name: continueSuccessBlock
+            '+taskWith.*':
+                name: create
+            '+cancelledTask':
+                name: createCancelled
+            '+taskForCompletionOfAllTasks:':
+                name: createForCompletionOfAllTasks
+                parameters:
+                    tasks:
+                        type: NSArray<BFTask>
+            '+taskForCompletionOfAllTasksWithResults:':
+                name: createForCompletionOfAllTasksWithResults
+                parameters:
+                    tasks:
+                        type: NSArray<BFTask>
+            '+taskWithDelay:':
+                name: createWithDelay
+            '+taskFromExecutor:withBlock:':
+                name: create
+    BFTaskCompletionSource: # DONE
+        methods:
+            '-trySet.*':
+                trim_after_first_colon: true
+            '+taskCompletionSource':
+                name: create
+    BFURL: # DONE
+        properties:
+            'targetQueryParameters':
+                type: 'NSDictionary<NSString, NSObject>'
+            'appLinkData':
+                type: 'NSDictionary<NSString, NSObject>'
+            'appLinkExtras':
+                type: 'NSDictionary<NSString, NSObject>'
+            'inputQueryParameters':
+                type: 'NSDictionary<NSString, NSObject>'
+        methods:
+            '+URLWith.*':
+                name: create
+    BFWebViewAppLinkResolver: # DONE
+        methods:
+            '+sharedInstance':
+                property: true
+    BFMeasurementEvent: {}
+
+protocols:
+    BFAppLinkResolving: # DONE
+        skip_adapter: true
+        methods:
+            '-appLinkFromURLInBackground:':
+                name: getAppLinkFromURLInBackground
+    BFAppLinkReturnToRefererControllerDelegate: # DONE
+        methods:
+            '-returnToRefererController:willNavigateToAppLink:':
+                name: willNavigateToAppLink
+            '-returnToRefererController:didNavigateToAppLink:type:':
+                name: didNavigateToAppLink
+    BFAppLinkReturnToRefererViewDelegate: # DONE
+        methods:
+            '-returnToRefererViewDidTapInsideCloseButton:':
+                name: didTapInsideCloseButton
+            '-returnToRefererViewDidTapInsideLink:link:':
+                name: didTapInsideLink
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?BF.*):
+        class: FacebookBolts
+        name: 'Function__#{g[0]}'
+
+values:
+    BFTaskErrorDomain:
+        class: BFTaskError
+        name: getClassDomain
+    BFTaskMultipleExceptionsException:
+        exclude: true
+    kBFMultipleErrorsError:
+        exclude: true
+
+    # BFAppLink
+    BFAppLinkVersion:
+        class: BFAppLink
+        name: getVersion
+
+    # BFMeasurementEvent
+    BFAppLink(.*)EventName:
+        enum: BFAppLinkEventName
+        name: '#{g[0]}'
+        type: NSString
+    BFMeasurementEventNotificationName:
+        class: BFMeasurementEvent
+        name: EventNotification
+        type: NSString
+    BFMeasurement(Event.*)Key:
+        dictionary: BFMeasurementEventNotification
+        name: '#{g[0]}'
+        type: NSString
+        methods:
+            EventName:
+                type: BFAppLinkEventName
+            EventArgs:
+                type: 'NSDictionary<NSString, NSObject>'
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?BF.*):
+        class: FacebookBolts
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?BF.*):
+        class: FacebookBolts
+        name: 'Constant__#{g[0]}'

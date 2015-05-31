@@ -1,0 +1,272 @@
+package: org.robovm.pods.facebook.share
+framework: FBSDKShareKit
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
+    - facebook-corekit.yaml
+clang_args: ['-x', 'objective-c']
+header_root: '/../libs/'
+headers:
+    - FBSDKShareKit.framework/Headers/FBSDKShareKit.h
+typedefs:
+    
+enums:
+    FBSDKAppGroupPrivacy: {}
+    FBSDKGameRequestActionType: {}
+    FBSDKGameRequestFilter: {}
+    FBSDKLikeControlAuxiliaryPosition: {}
+    FBSDKLikeControlHorizontalAlignment: {}
+    FBSDKLikeControlStyle: {}
+    FBSDKLikeObjectType: {}
+    FBSDKShareErrorCode: {suffix: ErrorCode}
+    FBSDKShareDialogMode: {}
+
+classes:
+    FBSDKShareError:
+        extends: NSError
+
+    FBSDKAppGroupAddDialog: # DONE
+        methods:
+            '-validateWithError:':
+                name: validate
+                throws: NSErrorException
+            '+showWithContent:delegate:':
+                name: show
+    FBSDKAppGroupContent: # DONE
+        methods:
+            '-isEqualToAppGroupContent:':
+                name: equalsTo
+    FBSDKAppGroupJoinDialog: # DONE
+        methods:
+            '-validateWithError:':
+                name: validate
+                throws: NSErrorException
+            '+showWithGroupID:delegate:':
+                name: show
+    FBSDKAppInviteContent: # DONE
+        methods:
+            '-isEqualToAppInviteContent:':
+                name: equalsTo
+    FBSDKAppInviteDialog: # DONE
+        methods:
+            '-validateWithError:':
+                name: validate
+                throws: NSErrorException
+            '+showWithContent:delegate:':
+                name: show
+    FBSDKGameRequestContent: # DONE
+        properties:
+            'to':
+                type: List<String>
+                marshaler: NSArray.AsStringListMarshaler
+            'suggestions':
+                type: List<String>
+                marshaler: NSArray.AsStringListMarshaler
+        methods:
+            '-isEqualToGameRequestContent:':
+                name: equalsTo
+    FBSDKGameRequestDialog: # DONE
+        methods:
+            '-validateWithError:':
+                name: validate
+                throws: NSErrorException
+            '+showWithContent:delegate:':
+                name: show
+    FBSDKLikeButton: {} # DONE
+    FBSDKLikeControl: {} # DONE
+    FBSDKMessageDialog: # DONE
+        methods:
+            '+showWithContent:delegate:':
+                name: show
+    FBSDKSendButton: {} # DONE
+    FBSDKShareAPI: # DONE
+        properties:
+            'createObjectsWithClientToken':
+                name: createsObjectsWithClientToken
+        methods:
+            '-createOpenGraphObject:':
+                trim_after_first_colon: true
+            '+shareWithContent:delegate:':
+                name: share
+    FBSDKShareButton: {} # DONE
+    FBSDKShareDialog: # DONE
+        methods:
+            '+showFromViewController:withContent:delegate:':
+                name: show
+    FBSDKShareLinkContent: # DONE
+        methods:
+            '-isEqualToShareLinkContent:':
+                name: equalsTo
+    FBSDKShareOpenGraphAction: # DONE
+        methods:
+            '-isEqualToShareOpenGraphAction:':
+                name: equalsTo
+            '+actionWithType:.*':
+                name: create
+    FBSDKShareOpenGraphContent: # DONE
+        methods:
+            '-isEqualToShareOpenGraphContent:':
+                name: equalsTo
+    FBSDKShareOpenGraphObject: # DONE
+        methods:
+            '-isEqualToShareOpenGraphObject:':
+                name: equalsTo
+            '+objectWithProperties:':
+                name: create
+    FBSDKShareOpenGraphValueContainer: {} # DONE
+    FBSDKSharePhoto: # DONE
+        methods:
+            '-isEqualToSharePhoto:':
+                name: equalsTo
+            '+photoWithImage:userGenerated:':
+                name: create
+            '+photoWithImageURL:userGenerated:':
+                name: create
+    FBSDKSharePhotoContent: # DONE
+        properties:
+            'photos':
+                type: NSArray<FBSDKSharePhoto>
+        methods:
+            '-isEqualToSharePhotoContent:':
+                name: equalsTo
+    FBSDKShareVideo: # DONE
+        methods:
+            '-isEqualToShareVideo:':
+                name: equalsTo
+            '+videoWithVideoURL:':
+                name: create
+    FBSDKShareVideoContent: # DONE
+        methods:
+            '-isEqualToShareVideoContent:':
+                name: equalsTo
+
+protocols:
+    FBSDKAppGroupAddDialogDelegate: # DONE
+        methods:
+            '-appGroupAddDialog:didCompleteWithResults:':
+                name: didComplete
+            '-appGroupAddDialog:didFailWithError:':
+                name: didFail
+            '-appGroupAddDialogDidCancel:':
+                name: didCancel
+    FBSDKAppGroupJoinDialogDelegate: # DONE
+        methods:
+            '-appGroupJoinDialog:didCompleteWithResults:':
+                name: didComplete
+            '-appGroupJoinDialog:didFailWithError:':
+                name: didFail
+            '-appGroupJoinDialogDidCancel:':
+                name: didCancel
+    FBSDKAppInviteDialogDelegate: # DONE
+        methods:
+            '-appInviteDialog:didCompleteWithResults:':
+                name: didComplete
+            '-appInviteDialog:didFailWithError:':
+                name: didFail
+    FBSDKGameRequestDialogDelegate: # DONE
+        methods:
+            '-gameRequestDialog:didCompleteWithResults:':
+                name: didComplete
+            '-gameRequestDialog:didFailWithError:':
+                name: didFail
+            '-gameRequestDialogDidCancel:':
+                name: didCancel
+    FBSDKLiking: # DONE
+        skip_adapter: true
+    FBSDKShareOpenGraphValueContaining: # DONE
+        skip_adapter: true
+        methods:
+            '-arrayForKey:':
+                name: getArray
+            '-enumerateKeysAndObjectsUsingBlock:':
+                name: enumerateKeysAndObjects
+                parameters:
+                    block:
+                        type: '@Block VoidBlock3<NSString, NSObject, BooleanPtr>'
+            '-keyEnumerator':
+                property: true
+                return_type: NSEnumerator<NSString>
+            '-numberForKey:':
+                name: getNumber
+            '-objectEnumerator':
+                property: true
+            '-objectForKey:':
+                name: getGraphObject
+            '-objectForKeyedSubscript:':
+                name: getObject
+            '-parseProperties:':
+                trim_after_first_colon: true
+            '-photoForKey:':
+                name: getPhoto
+            '-removeObjectForKey:':
+                name: removeObject
+            '-set.*:forKey:':
+                exclude: true
+            '-stringForKey:':
+                name: getString
+            '-URLForKey:':
+                name: getURL
+    FBSDKSharing: # DONE
+        skip_adapter: true
+        methods:
+            '-validateWithError:':
+                exclude: true # We add it manually
+    FBSDKSharingDialog: # DONE
+        skip_adapter: true
+    FBSDKSharingDelegate: # DONE
+        methods:
+            '-sharer:didCompleteWithResults:':
+                name: didComplete
+            '-sharer:didFailWithError:':
+                name: didFail
+            '-sharerDidCancel:':
+                name: didCancel
+    FBSDKSharingButton: # DONE
+        skip_adapter: true
+    FBSDKSharingContent: # DONE
+        skip_adapter: true
+        properties:
+            'peopleIDs':
+                type: List<String>
+                marshaler: NSArray.AsStringListMarshaler
+
+functions:
+    NSStringFromFBSDKAppGroupPrivacy:
+        class: FBSDKAppGroupPrivacy
+        name: toString
+    NSStringFromFBSDKLikeControlAuxiliaryPosition:
+        class: FBSDKLikeControlAuxiliaryPosition
+        name: toString
+    NSStringFromFBSDKLikeControlHorizontalAlignment:
+        class: FBSDKLikeControlHorizontalAlignment
+        name: toString
+    NSStringFromFBSDKLikeControlStyle:
+        class: FBSDKLikeControlStyle
+        name: toString
+    NSStringFromFBSDKLikeObjectType:
+        class: FBSDKLikeObjectType
+        name: toString
+    NSStringFromFBSDKShareDialogMode:
+        class: FBSDKShareDialogMode
+        name: toString
+
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?FB.*):
+        class: FacebookShare
+        name: 'Function__#{g[0]}'
+
+values:
+    FBSDKShareErrorDomain:
+        class: FBSDKShareError
+        name: getClassDomain
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?FB.*):
+        class: FacebookShare
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?FB.*):
+        class: FacebookShare
+        name: 'Constant__#{g[0]}'

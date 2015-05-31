@@ -1,0 +1,201 @@
+package: org.robovm.pods.facebook.audience
+framework: FBAudienceNetwork
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
+clang_args: ['-x', 'objective-c']
+header_root: '/../libs/'
+headers:
+    - FBAudienceNetwork.framework/Headers/FBAudienceNetwork.h
+typedefs:
+    'void (^)(UIImage *)': '@Block VoidBlock1<UIImage>'
+    'UIView *(^)(FBNativeAd *, NSUInteger)': '@Block("(,@MachineSizedUInt)") Block2<FBNativeAd, Long, UIView>'
+    
+enums:
+    FBAdLogLevel: {}
+    FBNativeAdsCachePolicy: {}
+    FBNativeAdViewType: {}
+    
+classes:
+    FBAudienceNetworkError: # DONE
+        extends: NSError
+
+    FBAdChoicesView: # DONE
+        methods:
+            '-init.*':
+                name: init
+            '-updateFrameFromSuperview:':
+                trim_after_first_colon: true
+    FBAdSettings: # DONE
+        methods:
+            '+addTestDevice:':
+                trim_after_first_colon: true
+            '+addTestDevices:':
+                trim_after_first_colon: true
+                parameters:
+                    devicesHash:
+                        type: List<String>
+                        marshaler: NSArray.AsStringListMarshaler
+    FBAdCustomSize: # DONE
+        methods:
+            '+customSize:':
+                name: create
+    FBAdSize: {} # DONE
+    FBAdView: # DONE
+        methods:
+            '-initWithPlacementID:adSize:rootViewController:':
+                name: init
+    FBInterstitialAd: # DONE
+        methods:
+            '-initWithPlacementID:':
+                name: init
+    FBMediaView: # DONE
+        methods:
+            '-initWithNativeAd:':
+                name: init
+    FBNativeAd: # DONE
+        methods:
+            '-initWithPlacementID:':
+                name: init
+            '-registerViewForInteraction:withViewController:':
+                trim_after_first_colon: true
+            '-registerViewForInteraction:withViewController:withClickableViews:':
+                trim_after_first_colon: true
+                parameters:
+                    clickableViews:
+                        type: NSArray<UIView>
+    FBAdStarRating: {} # DONE
+    FBAdImage: # DONE
+        methods:
+            '-initWithURL:width:height:':
+                name: init
+            '-loadImageAsyncWithBlock:':
+                name: loadImageAsync
+    FBAdStarRatingView: # DONE
+        methods:
+            '-initWithFrame:withStarRating:':
+                name: init
+    FBNativeAdScrollView: # DONE
+        methods:
+            '-init.*':
+                name: init
+    FBNativeAdsManager: # DONE
+        methods:
+            '-initWithPlacementID:forNumAdsRequested:':
+                name: init
+            '-nextNativeAd':
+                property: true
+    FBNativeAdTableViewAdProvider: # DONE
+        methods:
+            '-initWithManager:':
+                name: init
+            '-tableView:nativeAdForRowAtIndexPath:':
+                name: getNativeAdForRow
+            '-isAdCellAtIndexPath:forStride:':
+                trim_after_first_colon: true
+            '-adjustNonAdCellIndexPath:forStride:':
+                trim_after_first_colon: true
+            '-adjustCount:forStride:':
+                trim_after_first_colon: true
+    FBNativeAdTableViewCellProvider: # DONE
+        methods:
+            '-initWithManager:forType:':
+                name: init
+            '-initWithManager:forType:forAttributes:':
+                name: init
+            '-tableView:cellForRowAtIndexPath:':
+                name: getCellForRow
+            '-tableView:heightForRowAtIndexPath:':
+                name: getHeightForRow
+            '-tableView:estimatedHeightForRowAtIndexPath:':
+                name: getEstimatedHeightForRow
+    FBNativeAdView: # DONE
+        methods:
+            '+nativeAdViewWith.*':
+                name: create
+    FBNativeAdViewAttributes: # DONE
+        methods:
+            '+defaultAttributesForType:':
+                name: getDefaultAttributes
+
+protocols:
+    FBAdViewDelegate: # DONE
+        methods:
+            '-adViewDidClick:':
+                name: didClick
+            '-adViewDidFinishHandlingClick:':
+                name: didFinishHandlingClick
+            '-adViewDidLoad:':
+                name: didLoad
+            '-adView:didFailWithError:':
+                name: didFail
+            '-adViewWillLogImpression:':
+                name: willLogImpression
+            '-viewControllerForPresentingModalView':
+                property: true
+    FBInterstitialAdDelegate: # DONE
+        methods:
+            '-interstitialAdDidClick:':
+                name: didClick
+            '-interstitialAdDidClose:':
+                name: didClose
+            '-interstitialAdWillClose:':
+                name: willClose
+            '-interstitialAdDidLoad:':
+                name: didLoad
+            '-interstitialAd:didFailWithError:':
+                name: didFail
+            '-interstitialAdWillLogImpression:':
+                name: willLogImpression
+    FBMediaViewDelegate: # DONE
+        methods:
+            '-mediaViewDidLoad:':
+                name: didLoad
+    FBNativeAdDelegate: # DONE
+        methods:
+            '-nativeAdDidLoad:':
+                name: didLoad
+            '-nativeAdWillLogImpression:':
+                name: willLogImpression
+            '-nativeAd:didFailWithError:':
+                name: didFail
+            '-nativeAdDidClick:':
+                name: didClick
+            '-nativeAdDidFinishHandlingClick:':
+                name: didFinishHandlingClick
+    FBNativeAdsManagerDelegate: # DONE
+        methods:
+            '-nativeAdsFailedToLoadWithError:':
+                name: nativeAdsFailedToLoad
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?FB.*):
+        class: FacebookAudienceNetwork
+        name: 'Function__#{g[0]}'
+
+values:
+    FBAudienceNetworkErrorDomain:
+        class: FBAudienceNetworkError
+        name: getClassDomain
+
+    kFBAdSize(320x50):
+        class: FBAdSize
+        name: '_#{g[0]}'
+    kFBAdSize(.*):
+        class: FBAdSize
+        name: '#{g[0]}'
+    FBAdStarRating:
+        exclude: true
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?FB.*):
+        class: FacebookAudienceNetwork
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?FB.*):
+        class: FacebookAudienceNetwork
+        name: 'Constant__#{g[0]}'

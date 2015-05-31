@@ -1,0 +1,337 @@
+package: org.robovm.pods.facebook.core
+framework: FBSDKCoreKit
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
+    - facebook-bolts.yaml
+clang_args: ['-x', 'objective-c']
+header_root: '/../libs/'
+headers:
+    - FBSDKCoreKit.framework/Headers/FBSDKCoreKit.h
+typedefs:
+    FBSDKGraphRequestHandler: '@Block VoidBlock3<FBSDKGraphRequestConnection, NSObject, NSError>'
+    FBSDKDeferredAppLinkHandler: '@Block VoidBlock2<NSURL, NSError>'
+    FBSDKGraphRequestHandler: '@Block VoidBlock3<FBSDKGraphRequestConnection, NSObject, NSError>'
+    FBSDKTestUsersManagerRetrieveTestAccountTokensHandler: '@Block VoidBlock2<NSArray<FBSDKAccessToken>, NSError>'
+    FBSDKTestUsersManagerRemoveTestAccountHandler: '@Block VoidBlock1<NSError>'
+    
+enums:
+    FBSDKAppEventsFlushBehavior: {}
+    FBSDKErrorCode: {suffix: ErrorCode}
+    FBSDKGraphRequestErrorCategory: {}
+    FBSDKProfilePictureMode: {}
+        
+classes:
+    FBSDKError:
+        extends: NSError
+
+    FBSDKAccessToken: # DONE
+        properties:
+            'declinedPermissions':
+                type: Set<String>
+                marshaler: NSSet.AsStringSetMarshaler
+            'permissions':
+                type: Set<String>
+                marshaler: NSSet.AsStringSetMarshaler
+        methods:
+            '-initWithTokenString:permissions:declinedPermissions:appID:userID:expirationDate:refreshDate:':
+                name: init
+                parameters:
+                    permissions:
+                        type: Set<String>
+                        marshaler: NSSet.AsStringSetMarshaler
+                    declinedPermissions:
+                        type: Set<String>
+                        marshaler: NSSet.AsStringSetMarshaler
+            '-hasGranted:':
+                trim_after_first_colon: true
+            '-isEqualToAccessToken:':
+                name: equalsTo
+            '+currentAccessToken':
+                property: true
+            '+refreshCurrentAccessToken:':
+                trim_after_first_colon: true
+    FBSDKAppEvents: # DONE
+        methods:
+            '+logEvent:.*':
+                name: logEvent
+                parameters:
+                    parameters:
+                        type: 'NSDictionary<NSString, NSObject>'
+            '+logPurchase:.*':
+                name: logPurchase
+                parameters:
+                    parameters:
+                        type: 'NSDictionary<NSString, NSObject>'
+            '+flushBehavior':
+                property: true
+            '+loggingOverrideAppID':
+                property: true
+            '+requestForCustomAudienceThirdPartyIDWithAccessToken:':
+                name: requestForCustomAudienceThirdPartyID
+    FBSDKApplicationDelegate: # DONE
+        methods:
+            '-application:openURL:sourceApplication:annotation:':
+                name: openURL
+                parameters:
+                    annotation:
+                        type: NSPropertyList
+            '-application:didFinishLaunchingWithOptions:':
+                name: didFinishLaunching
+                parameters:
+                    launchOptions:
+                        type: UIApplicationLaunchOptions
+            '+sharedInstance':
+                property: true
+    FBSDKAppLinkResolver: # DONE
+        methods:
+            '-appLinksFromURLsInBackground:':
+                name: getAppLinksFromURLsInBackground
+                parameters:
+                    urls:
+                        type: NSArray<NSURL>
+            '+resolver':
+                name: create
+    FBSDKAppLinkUtility: # DONE
+        methods:
+            '+fetchDeferredAppLink:':
+                trim_after_first_colon: true
+    FBSDKButton: {} # DONE
+    FBSDKGraphErrorRecoveryProcessor: # DONE
+        methods:
+            '-processError:request:delegate:':
+                trim_after_first_colon: true
+            '-didPresentErrorWithRecovery:contextInfo:':
+                name: didPresentError
+                parameters:
+                    contextInfo:
+                        type: '@Pointer long'
+    FBSDKGraphRequest: # DONE
+        methods:
+            '-init.*':
+                name: init
+            '-startWithCompletionHandler:':
+                name: start
+    FBSDKGraphRequestConnection: # DONE
+        methods:
+            '-addRequest:.*':
+                trim_after_first_colon: true
+            '-overrideVersionPartWith:':
+                name: overrideVersionPart
+    FBSDKGraphRequestDataAttachment: # DONE
+        methods:
+            '-initWithData:filename:contentType:':
+                name: init
+    FBSDKProfile: # DONE
+        methods:
+            '-initWithUserID:firstName:middleName:lastName:name:linkURL:refreshDate:':
+                name: init
+            '-imagePathForPictureMode:size:':
+                name: getImagePath
+            '-isEqualToProfile:':
+                name: equalsTo
+            '+currentProfile':
+                property: true
+            '+enableUpdatesOnAccessTokenChange:':
+                trim_after_first_colon: true
+    FBSDKProfilePictureView: {} # DONE
+    FBSDKSettings: # DONE
+        methods:
+            '+appID':
+                property: true
+            '+appURLSchemeSuffix':
+                property: true
+            '+clientToken':
+                property: true
+            '+displayName':
+                property: true
+            '+facebookDomainPart':
+                property: true
+            '+JPEGCompressionQuality':
+                property: true
+            '+limitEventAndDataUsage':
+                name: limitsEventAndDataUsage
+            '+sdkVersion':
+                property: true
+            '+loggingBehavior':
+                property: true
+                return_type: Set<FBSDKLoggingBehavior>
+                return_marshaler: FBSDKLoggingBehavior.AsSetMarshaler
+            '+setLoggingBehavior:':
+                parameters:
+                    loggingBehavior:
+                        type: Set<FBSDKLoggingBehavior>
+                        marshaler: FBSDKLoggingBehavior.AsSetMarshaler
+            '+(enableLoggingBehavior:|disableLoggingBehavior:)':
+                trim_after_first_colon: true
+                parameters:
+                    loggingBehavior:
+                        type: FBSDKLoggingBehavior
+            '+legacyUserDefaultTokenInformationKeyName':
+                property: true 
+    FBSDKTestUsersManager: # DONE
+        methods:
+            '-requestTestAccountTokensWithArraysOfPermissions:createIfNotFound:completionHandler:':
+                name: requestTestAccountTokens
+                parameters:
+                    arraysOfPermissions:
+                        type: NSArray<NSSet<NSString>>
+            '-addTestAccountWithPermissions:completionHandler:':
+                name: addTestAccount
+                parameters:
+                    permissions:
+                        type: Set<String>
+                        marshaler: NSSet.AsStringSetMarshaler
+            '-removeTestAccount:completionHandler:':
+                trim_after_first_colon: true
+            '-makeFriendsWithFirst:second:callback:':
+                name: makeFriends
+            '+sharedInstanceForAppID:appSecret:':
+                name: getSharedInstance
+
+    FBSDKUtility: # DONE
+        methods:
+            '+dictionaryWithQueryString:':
+                name: parseQueryString
+            '+queryStringWithDictionary:error:':
+                name: createQueryString
+                throws: NSErrorException
+            '+URLDecode:':
+                name: urlDecode
+            '+URLEncode:':
+                name: urlEncode
+
+protocols:
+    FBSDKErrorRecoveryAttempting: # DONE
+        methods:
+            '-attemptRecoveryFromError:optionIndex:delegate:didRecoverSelector:contextInfo:':
+                trim_after_first_colon: true
+                parameters:
+                    contextInfo:
+                        type: '@Pointer long'
+    FBSDKCopying: # DONE
+        skip_adapter: true
+    FBSDKGraphErrorRecoveryProcessorDelegate: # DONE
+        methods:
+            '-processorDidAttemptRecovery:didRecover:error:':
+                name: didAttemptRecovery
+            '-processorWillProcessError:error:':
+                name: willProcessError
+    FBSDKGraphRequestConnectionDelegate: # DONE
+        methods:
+            '-requestConnectionWillBeginLoading:':
+                name: willBeginLoading
+            '-requestConnectionDidFinishLoading:':
+                name: didFinishLoading
+            '-requestConnection:didFailWithError:':
+                name: didFail
+            '-requestConnection:didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:':
+                name: didSendBodyData
+    FBSDKMutableCopying: # DONE
+        skip_adapter: true
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?FB.*):
+        class: FacebookCore
+        name: 'Function__#{g[0]}'
+
+values:
+    FBSDKErrorDomain:
+        class: FBSDKError
+        name: getClassDomain
+    FBSDKError(.*)Key:
+        enum: FBSDKErrorUserInfoKey
+        name: '#{g[0]}'
+        type: NSString
+        extends: NSErrorUserInfoKey
+    FBSDKGraphRequestError(.*)Key:
+        enum: FBSDKGraphRequestErrorUserInfoKey
+        name: '#{g[0]}'
+        type: NSString
+        extends: NSErrorUserInfoKey
+    FBSDKGraphRequestError(GraphErrorCode|GraphErrorSubcode):
+        enum: FBSDKGraphRequestErrorUserInfoKey
+        name: '#{g[0]}'
+        type: NSString
+        extends: NSErrorUserInfoKey
+
+    # FBSDKAccessToken
+    FBSDKAccessToken(DidChangeNotification):
+        class: FBSDKAccessToken
+        name: '#{g[0]}'
+        type: NSString
+    FBSDKAccessToken(DidChangeUserID|ChangeOld|ChangeNew).*:
+        dictionary: FBSDKAccessTokenChangeNotificitation
+        name: '#{g[0]}'
+        type: NSString
+        mutable: false
+        methods:
+            DidChangeUserID:
+                type: boolean
+            ChangeOld:
+                name: oldToken
+                type: FBSDKAccessToken
+            ChangeNew:
+                name: newToken
+                type: FBSDKAccessToken
+
+    # FBSDKAppEvents
+    FBSDKAppEvents(LoggingResultNotification):
+        class: FBSDKAppEvents
+        name: '#{g[0]}'
+        type: NSString
+    FBSDKAppEvents(OverrideAppIDBundleKey):
+        class: FBSDKAppEvents
+        name: '#{g[0]}'
+        type: NSString
+    FBSDKAppEventName(.*):
+        enum: FBSDKAppEventName
+        name: '#{g[0]}'
+        type: NSString
+    FBSDKAppEventParameterName(.*):
+        enum: FBSDKAppEventParameterName
+        name: '#{g[0]}'
+        type: NSString
+    FBSDKAppEventParameterValue(.*):
+        enum: FBSDKAppEventParameterValue
+        name: '#{g[0]}'
+        type: NSString
+    FBSDKLoggingBehavior(.*):
+        enum: FBSDKLoggingBehavior
+        name: '#{g[0]}'
+        type: NSString
+
+    # FBSDKGraphConnection
+    FBSDKNonJSONResponseProperty:
+        exclude: true
+    
+    # FBSDKProfile
+    FBSDKProfile(DidChangeNotification):
+        class: FBSDKProfile
+        name: '#{g[0]}'
+        type: NSString
+    FBSDKProfile(ChangeOld|ChangeNew)Key:
+        dictionary: FBSDKProfileChangeNotification
+        name: '#{g[0]}'
+        type: NSString
+        mutable: false
+        methods:
+            ChangeOld:
+                name: oldProfile
+                type: FBSDKProfile
+            ChangeNew:
+                name: newProfile
+                type: FBSDKProfile
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?FB.*):
+        class: FacebookCore
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?FB.*):
+        class: FacebookCore
+        name: 'Constant__#{g[0]}'

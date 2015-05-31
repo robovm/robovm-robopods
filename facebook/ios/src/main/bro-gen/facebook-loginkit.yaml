@@ -1,0 +1,120 @@
+package: org.robovm.pods.facebook.login
+framework: FBSDKLoginKit
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/accounts.yaml
+    - facebook-corekit.yaml
+clang_args: ['-x', 'objective-c']
+header_root: '/../libs/'
+headers:
+    - FBSDKLoginKit.framework/Headers/FBSDKLoginKit.h
+typedefs:
+    FBSDKLoginManagerRequestTokenHandler: '@Block VoidBlock2<FBSDKLoginManagerLoginResult, NSError>'
+    'void (^)(ACAccountCredentialRenewResult, NSError *)': '@Block VoidBlock2<ACAccountCredentialRenewResult, NSError>'
+    
+enums:
+    FBSDKLoginButtonTooltipBehavior: {}
+    FBSDKLoginErrorCode: {suffix: ErrorCode}
+    FBSDKDefaultAudience: {}
+    FBSDKLoginBehavior: {}
+    FBSDKTooltipViewArrowDirection: {}
+    FBSDKTooltipColorStyle: {}
+        
+classes:
+    FBSDKLoginError:
+        extends: NSError
+
+    FBSDKLoginButton: # DONE
+        properties:
+            'publishPermissions':
+                type: Set<String>
+                marshaler: NSSet.AsStringSetMarshaler
+            'readPermissions':
+                type: Set<String>
+                marshaler: NSSet.AsStringSetMarshaler
+    FBSDKLoginManager: # DONE
+        methods:
+            '-logInWithReadPermissions:handler:':
+                trim_after_first_colon: true
+                parameters:
+                    permissions:
+                        type: Set<String>
+                        marshaler: NSSet.AsStringSetMarshaler
+            '-logInWithPublishPermissions:handler:':
+                trim_after_first_colon: true
+                parameters:
+                    permissions:
+                        type: Set<String>
+                        marshaler: NSSet.AsStringSetMarshaler
+            '+renewSystemCredentials:':
+                trim_after_first_colon: true
+    FBSDKLoginManagerLoginResult: # DONE
+        properties:
+            'grantedPermissions':
+                type: Set<String>
+                marshaler: NSSet.AsStringSetMarshaler
+            'declinedPermissions':
+                type: Set<String>
+                marshaler: NSSet.AsStringSetMarshaler
+        methods:
+            '-initWithToken:isCancelled:grantedPermissions:declinedPermissions:':
+                name: init
+                parameters:
+                    grantedPermissions:
+                        type: Set<String>
+                        marshaler: NSSet.AsStringSetMarshaler
+                    declinedPermissions:
+                        type: Set<String>
+                        marshaler: NSSet.AsStringSetMarshaler
+    FBSDKLoginTooltipView: # DONE
+        properties:
+            'forceDisplay':
+                getter: forcesDisplay
+    FBSDKTooltipView: # DONE
+        methods:
+            '-initWithTagline:message:colorStyle:':
+                name: init
+            '-presentFromView:':
+                trim_after_first_colon: true
+            '-presentInView:withArrowPosition:direction:':
+                trim_after_first_colon: true
+
+protocols:
+    FBSDKLoginButtonDelegate: # DONE
+        methods:
+            '-loginButton:didCompleteWithResult:error:':
+                name: didComplete
+            '-loginButtonDidLogOut:':
+                name: didLogOut
+    FBSDKLoginTooltipViewDelegate: # DONE
+        methods:
+            '-loginTooltipView:shouldAppear:':
+                name: shouldAppear
+            '-loginTooltipViewWillAppear:':
+                name: willAppear
+            '-loginTooltipViewWillNotAppear:':
+                name: willNotAppear
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?FB.*):
+        class: FacebookLogin
+        name: 'Function__#{g[0]}'
+
+values:
+    FBSDKLoginErrorDomain:
+        class: FBSDKLoginError
+        name: getClassDomain
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?FB.*):
+        class: FacebookLogin
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?FB.*):
+        class: FacebookLogin
+        name: 'Constant__#{g[0]}'

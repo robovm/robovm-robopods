@@ -1,0 +1,80 @@
+package: org.robovm.pods.facebook.messenger
+framework: FBSDKMessengerShareKit
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
+clang_args: ['-x', 'objective-c']
+header_root: '/../libs/'
+headers:
+    - FBSDKMessengerShareKit.framework/Headers/FBSDKMessengerShareKit.h
+typedefs:
+    
+enums:
+    FBSDKMessengerShareButtonStyle: {} # DONE
+    FBSDKMessengerPlatformCapability: {} # DONE
+        
+classes:
+    FBSDKMessengerBroadcastContext: {} # DONE
+    FBSDKMessengerShareButton: # DONE
+        methods:
+            '+rectangularButtonWithStyle:':
+                name: createRectangularButton
+            '+circularButtonWithStyle:width:':
+                name: createCircularButton
+            '+circularButtonWithStyle:':
+                name: createCircularButton
+    FBSDKMessengerContext: {} # DONE
+    FBSDKMessengerShareOptions: {} # DONE
+    FBSDKMessengerSharer: # DONE
+        methods:
+            '+messengerPlatformCapabilities':
+                property: true
+            '+share.*:withMetadata:.*':
+                exclude: true
+            '+share.*':
+                trim_after_first_colon: true
+    FBSDKMessengerURLHandler: # DONE
+        methods:
+            '-canOpenURL:sourceApplication:':
+                trim_after_first_colon: true
+            '-openURL:sourceApplication:':
+                trim_after_first_colon: true
+    FBSDKMessengerURLHandlerCancelContext: {} # DONE
+    FBSDKMessengerURLHandlerOpenFromComposerContext: # DONE
+        properties:
+            'userIDs':
+                type: Set<String>
+                marshaler: NSSet.AsStringSetMarshaler
+    FBSDKMessengerURLHandlerReplyContext: # DONE
+        properties:
+            'userIDs':
+                type: Set<String>
+                marshaler: NSSet.AsStringSetMarshaler
+
+protocols:
+    FBSDKMessengerURLHandlerDelegate: # DONE
+        methods:
+            '-messengerURLHandler:didHandleReplyWithContext:':
+                name: didHandleReply
+            '-messengerURLHandler:didHandleOpenFromComposerWithContext:':
+                name: didHandleOpenFromComposer
+            '-messengerURLHandler:didHandleCancelWithContext:':
+                name: didHandleCancel
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?FB.*):
+        class: FacebookMessengerShare
+        name: 'Function__#{g[0]}'
+
+values:
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?FB.*):
+        class: FacebookMessengerShare
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?FB.*):
+        class: FacebookMessengerShare
+        name: 'Constant__#{g[0]}'
