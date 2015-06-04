@@ -7,7 +7,7 @@ include:
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/accounts.yaml
     - facebook-corekit.yaml
 clang_args: ['-x', 'objective-c']
-header_root: '/../libs/'
+header_root: '/../../../libs/'
 headers:
     - FBSDKLoginKit.framework/Headers/FBSDKLoginKit.h
 typedefs:
@@ -40,14 +40,14 @@ classes:
                 trim_after_first_colon: true
                 parameters:
                     permissions:
-                        type: Set<String>
-                        marshaler: NSSet.AsStringSetMarshaler
+                        type: List<String>
+                        marshaler: NSArray.AsStringListMarshaler
             '-logInWithPublishPermissions:handler:':
                 trim_after_first_colon: true
                 parameters:
                     permissions:
-                        type: Set<String>
-                        marshaler: NSSet.AsStringSetMarshaler
+                        type: List<String>
+                        marshaler: NSArray.AsStringListMarshaler
             '+renewSystemCredentials:':
                 trim_after_first_colon: true
     FBSDKLoginManagerLoginResult: # DONE

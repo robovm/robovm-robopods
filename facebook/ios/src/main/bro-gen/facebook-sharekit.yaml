@@ -5,7 +5,7 @@ include:
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
     - facebook-corekit.yaml
 clang_args: ['-x', 'objective-c']
-header_root: '/../libs/'
+header_root: '/../../../libs/'
 headers:
     - FBSDKShareKit.framework/Headers/FBSDKShareKit.h
 typedefs:

@@ -61,9 +61,9 @@ import org.robovm.pods.facebook.core.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "logInWithReadPermissions:handler:")
-    public native void logInWithReadPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSSet.AsStringSetMarshaler.class) Set<String> permissions, @Block VoidBlock2<FBSDKLoginManagerLoginResult, NSError> handler);
+    public native void logInWithReadPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> permissions, @Block VoidBlock2<FBSDKLoginManagerLoginResult, NSError> handler);
     @Method(selector = "logInWithPublishPermissions:handler:")
-    public native void logInWithPublishPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSSet.AsStringSetMarshaler.class) Set<String> permissions, @Block VoidBlock2<FBSDKLoginManagerLoginResult, NSError> handler);
+    public native void logInWithPublishPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> permissions, @Block VoidBlock2<FBSDKLoginManagerLoginResult, NSError> handler);
     @Method(selector = "logOut")
     public native void logOut();
     @Method(selector = "renewSystemCredentials:")
