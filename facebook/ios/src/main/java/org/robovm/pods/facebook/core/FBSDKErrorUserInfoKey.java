@@ -23,6 +23,7 @@ import org.robovm.objc.*;
 import org.robovm.objc.annotation.*;
 import org.robovm.objc.block.*;
 import org.robovm.rt.*;
+import org.robovm.rt.annotation.*;
 import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
@@ -34,7 +35,7 @@ import org.robovm.pods.facebook.bolts.*;
 
 /*<javadoc>*/
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL)/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @StronglyLinked/*</annotations>*/
 @Marshaler(/*<name>*/FBSDKErrorUserInfoKey/*</name>*/.Marshaler.class)
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FBSDKErrorUserInfoKey/*</name>*/ 
     extends /*<extends>*/NSErrorUserInfoKey/*</extends>*/
@@ -115,7 +116,7 @@ import org.robovm.pods.facebook.bolts.*;
     
     /*<methods>*//*</methods>*/
     
-    /*<annotations>*/@Library(Library.INTERNAL)/*</annotations>*/
+    /*<annotations>*/@Library(Library.INTERNAL) @StronglyLinked/*</annotations>*/
     public static class Values {
     	static { Bro.bind(Values.class); }
 
