@@ -35,7 +35,7 @@ import org.robovm.pods.facebook.bolts.*;
 
 /*<javadoc>*/
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL)/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL) @StronglyLinked/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FBSDKError/*</name>*/ 
     extends /*<extends>*/NSError/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
@@ -51,9 +51,90 @@ import org.robovm.pods.facebook.bolts.*;
     /*<constructors>*//*</constructors>*/
     /*<properties>*//*</properties>*/
     /*<members>*//*</members>*/
+    private NSErrorUserInfo userInfo;
+    
+    /* Convenience methods */
+    private NSErrorUserInfo getCachedUserInfo() {
+        if (userInfo == null) {
+            userInfo = getUserInfo();
+        }
+        return userInfo;
+    }
+    
     @Override
     public FBSDKErrorCode getErrorCode() {
-        return FBSDKErrorCode.valueOf(getCode());
+        FBSDKErrorCode code = null;
+        try {
+            code = FBSDKErrorCode.valueOf(getCode());
+        } catch (IllegalArgumentException e) {
+            // ignore
+        }
+        return code;
+    }
+    
+    public String getDeveloperMessage() {
+        if (getCachedUserInfo().has(FBSDKErrorUserInfoKey.DeveloperMessage)) {
+            NSString val = (NSString) getCachedUserInfo().get(FBSDKErrorUserInfoKey.DeveloperMessage);
+            return val.toString();
+        }
+        return null;
+    }
+    
+    @Override
+    public String getLocalizedDescription() {
+        if (getCachedUserInfo().has(FBSDKErrorUserInfoKey.LocalizedDescription)) {
+            NSString val = (NSString) getCachedUserInfo().get(FBSDKErrorUserInfoKey.LocalizedDescription);
+            return val.toString();
+        }
+        return super.getLocalizedDescription();
+    }
+    
+    public String getLocalizedTitle() {
+        if (getCachedUserInfo().has(FBSDKErrorUserInfoKey.LocalizedTitle)) {
+            NSString val = (NSString) getCachedUserInfo().get(FBSDKErrorUserInfoKey.LocalizedTitle);
+            return val.toString();
+        }
+        return null;
+    }
+    
+    public FBSDKGraphRequestErrorCategory getGraphErrorCategory() {
+        if (getCachedUserInfo().has(FBSDKGraphRequestErrorUserInfoKey.Category)) {
+            NSNumber val = (NSNumber) getCachedUserInfo().get(FBSDKGraphRequestErrorUserInfoKey.Category);
+            return FBSDKGraphRequestErrorCategory.valueOf(val.intValue());
+        }
+        return null;
+    }
+    
+    public int getGraphErrorCode() {
+        if (getCachedUserInfo().has(FBSDKGraphRequestErrorUserInfoKey.GraphErrorCode)) {
+            NSNumber val = (NSNumber) getCachedUserInfo().get(FBSDKGraphRequestErrorUserInfoKey.GraphErrorCode);
+            return val.intValue();
+        }
+        return 0;
+    }
+    
+    public int getGraphErrorSubcode() {
+        if (getCachedUserInfo().has(FBSDKGraphRequestErrorUserInfoKey.GraphErrorSubcode)) {
+            NSNumber val = (NSNumber) getCachedUserInfo().get(FBSDKGraphRequestErrorUserInfoKey.GraphErrorSubcode);
+            return val.intValue();
+        }
+        return 0;
+    }
+    
+    public int getGraphRequestHTTPStatusCode() {
+        if (getCachedUserInfo().has(FBSDKGraphRequestErrorUserInfoKey.HTTPStatusCode)) {
+            NSNumber val = (NSNumber) getCachedUserInfo().get(FBSDKGraphRequestErrorUserInfoKey.HTTPStatusCode);
+            return val.intValue();
+        }
+        return 0;
+    }
+
+    public NSDictionary<?, ?> getGraphRequestParsedJSONResponse() {
+        if (getCachedUserInfo().has(FBSDKGraphRequestErrorUserInfoKey.ParsedJSONResponse)) {
+            NSDictionary<?, ?> val = (NSDictionary<?, ?>) getCachedUserInfo().get(FBSDKGraphRequestErrorUserInfoKey.ParsedJSONResponse);
+            return val;
+        }
+        return null;
     }
     /*<methods>*/
     @GlobalValue(symbol="FBSDKErrorDomain", optional=true)

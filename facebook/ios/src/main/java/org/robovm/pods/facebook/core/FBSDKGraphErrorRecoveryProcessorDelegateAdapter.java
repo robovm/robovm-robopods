@@ -54,6 +54,6 @@ import org.robovm.pods.facebook.bolts.*;
     @NotImplemented("processorDidAttemptRecovery:didRecover:error:")
     public void didAttemptRecovery(FBSDKGraphErrorRecoveryProcessor processor, boolean didRecover, NSError error) {}
     @NotImplemented("processorWillProcessError:error:")
-    public boolean willProcessError(FBSDKGraphErrorRecoveryProcessor processor, NSError error) { return false; }
+    public boolean willProcessError(FBSDKGraphErrorRecoveryProcessor processor, NSError error) { return true; }
     /*</methods>*/
 }

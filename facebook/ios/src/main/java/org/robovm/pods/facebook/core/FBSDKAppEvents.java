@@ -96,6 +96,16 @@ import org.robovm.pods.facebook.bolts.*;
         logPurchase(purchaseAmount, currency, getDictionaryForParameters(parameters), accessToken);
     }
     
+    public static void logEvent(String eventName, Object...parameters) {
+        logEvent(eventName,  getDictionaryForParameters(parameters));
+    }
+    public static void logEvent(String eventName, double valueToSum, Object...parameters) {
+        logEvent(eventName, valueToSum, getDictionaryForParameters(parameters));
+    }
+    public static void logEvent(String eventName, NSNumber valueToSum, FBSDKAccessToken accessToken, Object...parameters) {
+        logEvent(eventName, valueToSum, accessToken, getDictionaryForParameters(parameters));
+    }
+    
     private static NSDictionary<NSString, NSObject> getDictionaryForParameters(Object...parameters) {
         NSDictionary<NSString, NSObject> dict = new NSMutableDictionary<>();
         for (int i = 0; i < parameters.length; i += 2) {
@@ -106,7 +116,7 @@ import org.robovm.pods.facebook.bolts.*;
             } else if (keyObj instanceof NSString) {
                 key = (NSString)keyObj;
             } else {
-                throw new IllegalArgumentException(String.format("Key of param %d is not a valid String or NSString!", i / 2));
+               key = new NSString(String.valueOf(keyObj));
             }
             NSObject value = null;
             Object valueObj = parameters[i + 1];
@@ -117,7 +127,7 @@ import org.robovm.pods.facebook.bolts.*;
             } else if (valueObj instanceof NSObject) {
                 value = (NSObject)valueObj;
             } else {
-                throw new IllegalArgumentException(String.format("Value of param %d is not a valid String, Number or NSObject!", i / 2));
+                value = new NSString(String.valueOf(valueObj));
             }
             dict.put(key, value);
         }

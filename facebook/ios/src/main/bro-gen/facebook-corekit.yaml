@@ -25,6 +25,7 @@ enums:
 classes:
     FBSDKError:
         extends: NSError
+        annotations: ['@StronglyLinked']
 
     FBSDKAccessToken: # DONE
         properties:
@@ -218,6 +219,7 @@ protocols:
                 name: didAttemptRecovery
             '-processorWillProcessError:error:':
                 name: willProcessError
+                default: true
     FBSDKGraphRequestConnectionDelegate: # DONE
         methods:
             '-requestConnectionWillBeginLoading:':

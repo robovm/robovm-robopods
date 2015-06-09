@@ -69,5 +69,18 @@
                 </array>
             </dict>
         </dict>
+        <key>FacebookAppID</key>
+        <string>${fb.id}</string>
+        <key>FacebookDisplayName</key>
+        <string>${fb.name}</string>
+        <key>CFBundleURLTypes</key>
+        <array>
+            <dict>
+                <key>CFBundleURLSchemes</key>
+                <array>
+                    <string>fb${fb.id}</string>
+                </array>
+            </dict>
+        </array>
     </dict>
 </plist>
