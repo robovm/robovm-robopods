@@ -6,5 +6,5 @@
 a.out
 *.class
 .idea/
-/target/
-/bin/
+target/
+bin/
