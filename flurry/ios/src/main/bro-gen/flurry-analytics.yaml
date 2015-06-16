@@ -1,0 +1,70 @@
+package: org.robovm.pods.flurry.analytics
+framework: FlurryAnalytics
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
+clang_args: ['-x', 'objective-c']
+header_root: '/'
+headers:
+    - FlurryAnalytics.lib/Headers/Flurry.h
+    - FlurryAnalytics.lib/Headers/FlurryWatch.h
+typedefs:
+    
+enums:
+    FlurryLogLevel: {first: FlurryLogLevelNone}
+    FlurryEventRecordStatus: {first: FlurryEventFailed}
+        
+classes:
+    Flurry: # DONE
+        methods:
+            '+startSession.*':
+                trim_after_first_colon: true
+                parameters:
+                    options:
+                        type: UIApplicationLaunchOptions
+            '+addOrigin.*':
+                trim_after_first_colon: true
+            '+logEvent.*':
+                trim_after_first_colon: true
+            '+logError.*':
+                trim_after_first_colon: true
+            '+endTimedEvent:withParameters:':
+                trim_after_first_colon: true
+            '+logAllPageViews:':
+                exclude: true # deprecated
+            '+logAllPageViewsForTarget:':
+                name: logAllPageViews
+            '+stopLogPageViewsForTarget:':
+                name: stopLogPageViews
+            '+setLatitude:longitude:horizontalAccuracy:verticalAccuracy:':
+                name: setLocation
+    FlurryWatch: # DONE
+        methods:
+            '+logWatchEvent.*':
+                trim_after_first_colon: true
+                return_type: FlurryEventRecordStatus
+
+protocols:
+    FlurryDelegate: # DONE
+        methods:
+            '-flurrySessionDidCreateWithInfo:':
+                name: didCreate
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?Flurry.*):
+        class: FlurryAnalytics
+        name: 'Function__#{g[0]}'
+
+values:
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?Flurry.*):
+        class: FlurryAnalytics
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?Flurry.*):
+        class: FlurryAnalytics
+        name: 'Constant__#{g[0]}'

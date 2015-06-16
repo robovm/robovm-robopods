@@ -1,0 +1,23 @@
+<config>
+    <libs>
+        <lib>libs/libFlurry_6.4.0.a</lib>
+        <lib>libs/libFlurryAds_6.4.0.a</lib>
+    </libs>
+    <frameworks>
+        <framework>AdSupport</framework>
+        <framework>CoreGraphics</framework>
+        <framework>CoreMotion</framework>
+        <framework>MediaPlayer</framework>
+        <framework>Security</framework>
+        <framework>StoreKit</framework>
+        <framework>SystemConfiguration</framework>
+    </frameworks>
+    <exportedSymbols>
+        <symbol>STYLE1_SMALL</symbol>
+        <symbol>STYLE1_MEDIUM</symbol>
+        <symbol>STYLE1_LARGE</symbol>
+        <symbol>STYLE1_XLARGE</symbol>
+        <symbol>STYLE2_SMALL</symbol>
+        <symbol>STYLE2_MEDIUM</symbol>
+    </exportedSymbols>
+</config>

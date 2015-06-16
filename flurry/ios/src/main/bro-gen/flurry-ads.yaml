@@ -1,0 +1,177 @@
+package: org.robovm.pods.flurry.ads
+framework: FlurryAds
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/corelocation.yaml
+clang_args: ['-x', 'objective-c']
+header_root: '/'
+headers:
+    - FlurryAds.lib/Headers/FlurryAds.h
+typedefs:
+    
+enums:
+    FlurryAdSize: {first: BANNER_TOP}
+    FlurryAdType: {first: WEB_BANNER}
+    FlurryAdError: {first: FLURRY_AD_ERROR_DID_FAIL_TO_RENDER}
+    FlurryAdNativeAssetType: {first: ASSET_TYPE_STRING}
+    FlurryAdGender: {first: FL_MALE}
+        
+classes:
+    FlurryAds: # DONE
+        methods:
+            '+fetchAdForSpace:frame:size:':
+                name: fetchAd
+            '+adReadyForSpace:':
+                name: isAdReady
+            '+displayAdForSpace:onView:viewControllerForPresentation:':
+                name: displayAd
+            '+displayAdForSpace:modallyForViewController:':
+                exclude: true # deprecated
+            '+fetchAndDisplayAdForSpace:view:viewController:size:':
+                name: fetchAndDisplayAd
+            '+removeAdFromSpace:':
+                name: removeAd
+            '+initialize:':
+                trim_after_first_colon: true
+            '+enableTestAds:':
+                trim_after_first_colon: true
+            '+addCustomAdNetwork:withProperties:':
+                exclude: true
+    FlurryAdBanner: # DONE
+        methods:
+            '-initWithSpace:':
+                name: init
+            '-fetchAdForFrame:':
+                name: fetchAd
+            '-displayAdInView:viewControllerForPresentation:':
+                name: displayAd
+            '-fetchAndDisplayAdInView:viewControllerForPresentation:':
+                name: fetchAndDisplayAd
+    FlurryAdInterstitial: # DONE
+        methods:
+            '-initWithSpace:':
+                name: init
+            '-presentWithViewController:':
+                name: present
+    FlurryAdNative: # DONE
+        properties:
+            'assetList':
+                type: NSArray<FlurryAdNativeAsset>
+        methods:
+            '-initWithSpace:':
+                name: init
+            '-assetListForType:':
+                name: getAssetListForType
+                return_type: NSArray<FlurryAdNativeAsset>
+                parameters:
+                    type:
+                        type: FlurryAdNativeAssetType
+    FlurryAdNativeAsset: # DONE
+        properties:
+            'type':
+                type: FlurryAdNativeAssetType
+    FlurryAdNativeStyle: # DONE
+        methods:
+            '-initWithStyle:':
+                name: init
+    FlurryAdTargeting: # DONE
+        properties:
+            'testAdsEnabled':
+                getter: areTestAdsEnabled
+            'location':
+                annotations: ['@WeaklyLinked']
+        methods:
+            '+targeting':
+                name: create
+    
+protocols:
+    FlurryAdBannerDelegate: # DONE
+        methods:
+            '-adBannerDidFetchAd:':
+                name: didFetchAd
+            '-adBannerDidRender:':
+                name: didRender
+            '-adBannerWillPresentFullscreen:':
+                name: willPresentFullscreen
+            '-adBannerWillLeaveApplication:':
+                name: willLeaveApplication
+            '-adBannerWillDismissFullscreen:':
+                name: willDismissFullscreen
+            '-adBannerDidDismissFullscreen:':
+                name: didDismissFullscreen
+            '-adBannerDidReceiveClick:':
+                name: didReceiveClick
+            '-adBannerVideoDidFinish:':
+                name: videoDidFinish
+            '-adBanner:adError:errorDescription:':
+                name: didFail
+    FlurryAdDelegate: # DONE
+        methods:
+            '-spaceShouldDisplay:forType:':
+                exclude: true # deprecated
+            '-space.*':
+                trim_after_first_colon: true
+            '-video.*':
+                trim_after_first_colon: true
+            '-appSpot.*':
+                property: true
+    FlurryAdInterstitialDelegate: # DONE
+        methods:
+            '-adInterstitialDidFetchAd:':
+                name: didFetchAd
+            '-adInterstitialDidRender:':
+                name: didRender
+            '-adInterstitialWillPresent:':
+                name: willPresent
+            '-adInterstitialWillLeaveApplication:':
+                name: willLeaveApplication
+            '-adInterstitialWillDismiss:':
+                name: willDismiss
+            '-adInterstitialDidDismiss:':
+                name: didDismiss
+            '-adInterstitialDidReceiveClick:':
+                name: didReceiveClick
+            '-adInterstitialVideoDidFinish:':
+                name: videoDidFinish
+            '-adInterstitial:adError:errorDescription:':
+                name: didFail
+    FlurryAdNativeDelegate: # DONE
+        methods:
+            '-adNativeDidFetchAd:':
+                name: didFetchAd
+            '-adNativeWillPresent:':
+                name: willPresent
+            '-adNativeWillLeaveApplication:':
+                name: willLeaveApplication
+            '-adNativeWillDismiss:':
+                name: willDismiss
+            '-adNativeDidDismiss:':
+                name: didDismiss
+            '-adNativeDidReceiveClick:':
+                name: didReceiveClick
+            '-adNative:adError:errorDescription:':
+                name: didFail
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?Flurry.*):
+        class: FlurryAds
+        name: 'Function__#{g[0]}'
+
+values:
+    (STYLE.*):
+        class: FlurryAdNativeStyle
+        name: '#{g[0]}'
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?Flurry.*):
+        class: FlurryAds
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?Flurry.*):
+        class: FlurryAds
+        name: 'Constant__#{g[0]}'

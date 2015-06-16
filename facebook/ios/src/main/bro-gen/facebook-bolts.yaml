@@ -5,7 +5,7 @@ include:
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/dispatch.yaml
 clang_args: ['-x', 'objective-c']
-header_root: '/../../../libs/'
+header_root: '/../robopods/META-INF/robovm/ios/libs/'
 headers:
     - Bolts.framework/Headers/Bolts.h
 typedefs:

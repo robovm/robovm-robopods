@@ -4,7 +4,7 @@ include:
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
 clang_args: ['-x', 'objective-c']
-header_root: '/../../../libs/'
+header_root: '/../robopods/META-INF/robovm/ios/libs/'
 headers:
     - FBSDKMessengerShareKit.framework/Headers/FBSDKMessengerShareKit.h
 typedefs:

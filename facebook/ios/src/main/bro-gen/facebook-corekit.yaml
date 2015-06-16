@@ -6,7 +6,7 @@ include:
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
     - facebook-bolts.yaml
 clang_args: ['-x', 'objective-c']
-header_root: '/../../../libs/'
+header_root: '/../robopods/META-INF/robovm/ios/libs/'
 headers:
     - FBSDKCoreKit.framework/Headers/FBSDKCoreKit.h
 typedefs:
