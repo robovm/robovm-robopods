@@ -51,6 +51,10 @@ import org.robovm.apple.coregraphics.*;
     
     /*</properties>*/
     /*<members>*//*</members>*/
+    /**
+     * Use this method in {@link UIApplicationDelegate#didFinishLaunching(UIApplication, UIApplicationLaunchOptions)} to install 
+     * the crash reporting signal handler of Flurry.
+     */
     public static void enableCrashReporting() {
         Signals.installSignals(new org.robovm.rt.Signals.InstallSignalsCallback() {
             @Override
