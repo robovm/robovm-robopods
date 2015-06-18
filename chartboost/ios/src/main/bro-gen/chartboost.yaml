@@ -1,0 +1,158 @@
+package: org.robovm.pods.chartboost
+framework: Chartboost
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/storekit.yaml
+clang_args: ['-x', 'objective-c']
+header_root: '/../robopods/META-INF/robovm/ios/libs/'
+headers:
+    - Chartboost.framework/Headers/Chartboost.h
+typedefs:
+    'void (^)(CBStory *)': '@Block VoidBlock1<CBStory>'
+    'void (^)(NSError *, NSDictionary *)': '@Block VoidBlock2<NSError, NSDictionary<?, ?>>'
+    
+enums:
+    CBLevelType: {first: HIGHEST_LEVEL_REACHED}
+    CBNewsfeedAnimationType: {}
+    CBNewsfeedUIPosition: {}
+    CBNotificationUIClickAction: {}
+    CBFramework: {}
+    CBLoadError: {}
+    CBClickError: {}
+    CBStatusBarBehavior: {}
+
+categories:
+    CBInPlay: # DONE
+        owner: Chartboost
+
+classes:
+    CBAnalytics: # DONE
+        methods:
+            '+trackInAppPurchaseEvent:productTitle:productDescription:productPrice:productCurrency:productIdentifier:':
+                trim_after_first_colon: true
+            '+trackInAppPurchaseEventWithString:productTitle:productDescription:productPrice:productCurrency:productIdentifier:':
+                name: trackInAppPurchaseEvent
+            '+trackInAppPurchaseEvent:product:':
+                trim_after_first_colon: true
+                annotations: ['@WeaklyLinked']
+            '+trackLevelInfo:.*':
+                trim_after_first_colon: true
+    CBInPlay: {} # DONE
+    CBMoreAppsBadge: # DONE
+        methods:
+            '+moreAppsBadge':
+                name: create
+    CBMoreAppsButton: # DONE
+        methods:
+            '+moreAppsButtonWithImage:fromViewController:location:':
+                name: create
+    CBNewsfeed: # DONE
+        methods:
+            '+startWithDelegate:':
+                name: start
+            '+getMessages':
+                return_type: NSArray<CBStory>
+            '+getMessage:':
+                trim_after_first_colon: true
+            '+(messageCount|unreadMessageCount)':
+                property: true
+            '+showNotificationUIForStory:':
+                name: showNotificationUI
+            '+setUIClass:':
+                parameters:
+                    uiClass:
+                        type: 'Class<? extends CBNewsfeedUIProtocol>'
+            '+didPassAgeGate:':
+                trim_after_first_colon: true
+    CBNewsfeedUI: {} # DONE
+    CBStory: # DONE
+        properties:
+            'storySent':
+                name: sentTime
+            'storyShowNotification':
+                name: showsNotification
+            'storyShowExpiration':
+                name: showsExpiration
+            'storyViewed':
+                name: viewedTime
+            'storyExpires':
+                name: expireTime
+            'storyExpiresHours':
+                name: hoursUntilExpiration
+            'story(.*)':
+                name: '#{g[0]}'
+        methods:
+            '-markViewedWithSuccessBlock:withFailureBlock:':
+                name: markViewed 
+            '-markClickedWithSuccessBlock:withFailureBlock:':
+                name: markClicked
+            '-markNotificationClickedWithSuccessBlock:withFailureBlock:':
+                name: markNotificationClicked
+            '-markNotificationViewedWithSuccessBlock:withFailureBlock:':
+                name: markNotificationViewed
+    Chartboost: # DONE
+        methods:
+            '+startWithAppId:appSignature:delegate:':
+                name: start
+            '+handleOpenURL:sourceApplication:annotation:':
+                trim_after_first_colon: true
+                parameters:
+                    annotation:
+                        type: NSPropertyList
+            '+.*InPlay:':
+                trim_after_first_colon: true
+                parameters:
+                    location:
+                        type: String
+            '+.*':
+                trim_after_first_colon: true
+
+protocols:
+    CBNewsfeedDelegate: # DONE
+        methods:
+            '-didGetNewMessages:':
+                trim_after_first_colon: true
+                parameters:
+                    messages:
+                        type: NSArray<CBStory>
+            '-.*':
+                trim_after_first_colon: true
+    CBNewsfeedUIProtocol: # DONE
+        class: true
+        methods:
+            '+displayNotification:':
+                trim_after_first_colon: true
+    ChartboostDelegate: # DONE
+        methods:
+            '-(shouldDisplayMoreApps|didDisplayMoreApps|didCacheMoreApps|didDismissMoreApps|didCloseMoreApps|didClickMoreApps|didFailToLoadMoreApps|didLoadInPlay)':
+                exclude: true # deprecated
+            '-should.*':
+                trim_after_first_colon: true
+                default: true
+            '-.*':
+                trim_after_first_colon: true
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?CB.*):
+        class: ChartboostGlobal
+        name: 'Function__#{g[0]}'
+
+values:
+    CBLocation(.*):
+        enum: CBLocation
+        name: '#{g[0]}'
+        type: NSString
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?CB.*):
+        class: ChartboostGlobal
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?CB.*):
+        class: ChartboostGlobal
+        name: 'Constant__#{g[0]}'
