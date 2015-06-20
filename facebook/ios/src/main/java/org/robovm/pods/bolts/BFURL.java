@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.facebook.bolts;
+package org.robovm.pods.bolts;
 
 /*<imports>*/
 import java.io.*;
@@ -36,31 +36,38 @@ import org.robovm.apple.dispatch.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/BFAppLink/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/BFURL/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class BFAppLinkPtr extends Ptr<BFAppLink, BFAppLinkPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(BFAppLink.class); }/*</bind>*/
+    /*<ptr>*/public static class BFURLPtr extends Ptr<BFURL, BFURLPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(BFURL.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public BFAppLink() {}
-    protected BFAppLink(SkipInit skipInit) { super(skipInit); }
+    public BFURL() {}
+    protected BFURL(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "sourceURL")
-    public native NSURL getSourceURL();
-    @Property(selector = "targets")
-    public native NSArray<BFAppLinkTarget> getTargets();
-    @Property(selector = "webURL")
-    public native NSURL getWebURL();
+    @Property(selector = "targetURL")
+    public native NSURL getTargetURL();
+    @Property(selector = "targetQueryParameters")
+    public native NSDictionary<NSString, NSObject> getTargetQueryParameters();
+    @Property(selector = "appLinkData")
+    public native NSDictionary<NSString, NSObject> getAppLinkData();
+    @Property(selector = "appLinkExtras")
+    public native NSDictionary<NSString, NSObject> getAppLinkExtras();
+    @Property(selector = "appLinkReferer")
+    public native BFAppLink getAppLinkReferer();
+    @Property(selector = "inputURL")
+    public native NSURL getInputURL();
+    @Property(selector = "inputQueryParameters")
+    public native NSDictionary<NSString, NSObject> getInputQueryParameters();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @GlobalValue(symbol="BFAppLinkVersion", optional=true)
-    public static native String getVersion();
-    
-    @Method(selector = "appLinkWithSourceURL:targets:webURL:")
-    public static native BFAppLink create(NSURL sourceURL, NSArray<BFAppLinkTarget> targets, NSURL webURL);
+    @Method(selector = "URLWithURL:")
+    public static native BFURL create(NSURL url);
+    @Method(selector = "URLWithInboundURL:sourceApplication:")
+    public static native BFURL create(NSURL url, String sourceApplication);
     /*</methods>*/
 }

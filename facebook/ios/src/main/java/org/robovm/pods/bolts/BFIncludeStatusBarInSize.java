@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.facebook.bolts;
+package org.robovm.pods.bolts;
 
 /*<imports>*/
 import java.io.*;
@@ -33,25 +33,32 @@ import org.robovm.apple.dispatch.*;
 /*</imports>*/
 
 /*<javadoc>*/
+
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL)/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/BFTaskError/*</name>*/ 
-    extends /*<extends>*/NSError/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedUIntMarshaler.class)/*</annotations>*/
+public enum /*<name>*/BFIncludeStatusBarInSize/*</name>*/ implements ValuedEnum {
+    /*<values>*/
+    Never(0L),
+    IOS7AndLater(1L),
+    Always(2L);
+    /*</values>*/
 
-    protected BFTaskError(SkipInit skipInit) {
-        super(skipInit);
-    }
-
-    /*<ptr>*/
-    /*</ptr>*/
-    /*<bind>*/static { Bro.bind(BFTaskError.class); }/*</bind>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*//*</constructors>*/
-    /*<properties>*//*</properties>*/
-    /*<members>*//*</members>*/
-    /*<methods>*/
-    @GlobalValue(symbol="BFTaskErrorDomain", optional=true)
-    public static native String getClassDomain();
-    /*</methods>*/
+    /*<methods>*//*</methods>*/
+
+    private final long n;
+
+    private /*<name>*/BFIncludeStatusBarInSize/*</name>*/(long n) { this.n = n; }
+    public long value() { return n; }
+    public static /*<name>*/BFIncludeStatusBarInSize/*</name>*/ valueOf(long n) {
+        for (/*<name>*/BFIncludeStatusBarInSize/*</name>*/ v : values()) {
+            if (v.n == n) {
+                return v;
+            }
+        }
+        throw new IllegalArgumentException("No constant with value " + n + " found in " 
+            + /*<name>*/BFIncludeStatusBarInSize/*</name>*/.class.getName());
+    }
 }

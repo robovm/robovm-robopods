@@ -30,7 +30,7 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
-import org.robovm.pods.facebook.bolts.*;
+import org.robovm.pods.bolts.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -81,8 +81,8 @@ import org.robovm.pods.facebook.bolts.*;
                 return 0L;
             }
             NSArray<NSString> array = new NSMutableArray<>();
-            for (FBSDKAppEventParameterValue i : l) {
-                array.add(i.value());
+            for (FBSDKAppEventParameterValue o : l) {
+                array.add(o.value());
             }
             return NSObject.Marshaler.toNative(array, flags);
         }

@@ -30,7 +30,7 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
-import org.robovm.pods.facebook.bolts.*;
+import org.robovm.pods.bolts.*;
 /*</imports>*/
 
 /*<javadoc>*/

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.facebook.bolts;
+package org.robovm.pods.bolts;
 
 /*<imports>*/
 import java.io.*;
@@ -36,40 +36,23 @@ import org.robovm.apple.dispatch.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/BFTaskCompletionSource/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/Bolts/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class BFTaskCompletionSourcePtr extends Ptr<BFTaskCompletionSource, BFTaskCompletionSourcePtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(BFTaskCompletionSource.class); }/*</bind>*/
+    /*<ptr>*/public static class BoltsPtr extends Ptr<Bolts, BoltsPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(Bolts.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public BFTaskCompletionSource() {}
-    protected BFTaskCompletionSource(SkipInit skipInit) { super(skipInit); }
+    public Bolts() {}
+    protected Bolts(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "task")
-    public native BFTask getTask();
+    
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "setResult:")
-    public native void setResult(NSObject result);
-    @Method(selector = "setError:")
-    public native void setError(NSError error);
-    @Method(selector = "setException:")
-    public native void setException(NSException exception);
-    @Method(selector = "cancel")
-    public native void cancel();
-    @Method(selector = "trySetResult:")
-    public native boolean trySetResult(NSObject result);
-    @Method(selector = "trySetError:")
-    public native boolean trySetError(NSError error);
-    @Method(selector = "trySetException:")
-    public native boolean trySetException(NSException exception);
-    @Method(selector = "trySetCancelled")
-    public native boolean trySetCancelled();
-    @Method(selector = "taskCompletionSource")
-    public static native BFTaskCompletionSource create();
+    @Method(selector = "version")
+    public static native String getVersion();
     /*</methods>*/
 }

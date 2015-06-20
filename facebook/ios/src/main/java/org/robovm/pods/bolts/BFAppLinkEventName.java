@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.facebook.bolts;
+package org.robovm.pods.bolts;
 
 /*<imports>*/
 import java.io.*;
@@ -80,8 +80,8 @@ import org.robovm.apple.dispatch.*;
                 return 0L;
             }
             NSArray<NSString> array = new NSMutableArray<>();
-            for (BFAppLinkEventName i : l) {
-                array.add(i.value());
+            for (BFAppLinkEventName o : l) {
+                array.add(o.value());
             }
             return NSObject.Marshaler.toNative(array, flags);
         }

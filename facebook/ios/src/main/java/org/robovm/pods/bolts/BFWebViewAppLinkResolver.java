@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.facebook.bolts;
+package org.robovm.pods.bolts;
 
 /*<imports>*/
 import java.io.*;
@@ -35,24 +35,26 @@ import org.robovm.apple.dispatch.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ interface /*<name>*/BFAppLinkReturnToRefererControllerDelegate/*</name>*/ 
-    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/BFWebViewAppLinkResolver/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*/implements BFAppLinkResolving/*</implements>*/ {
 
-    /*<ptr>*/
-    /*</ptr>*/
-    /*<bind>*/
-    /*</bind>*/
+    /*<ptr>*/public static class BFWebViewAppLinkResolverPtr extends Ptr<BFWebViewAppLinkResolver, BFWebViewAppLinkResolverPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(BFWebViewAppLinkResolver.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
+    /*<constructors>*/
+    public BFWebViewAppLinkResolver() {}
+    protected BFWebViewAppLinkResolver(SkipInit skipInit) { super(skipInit); }
+    /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
+    /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "returnToRefererController:willNavigateToAppLink:")
-    void willNavigateToAppLink(BFAppLinkReturnToRefererController controller, BFAppLink appLink);
-    @Method(selector = "returnToRefererController:didNavigateToAppLink:type:")
-    void didNavigateToAppLink(BFAppLinkReturnToRefererController controller, BFAppLink url, BFAppLinkNavigationType type);
+    @Method(selector = "sharedInstance")
+    public static native BFWebViewAppLinkResolver getSharedInstance();
+    @Method(selector = "appLinkFromURLInBackground:")
+    public native BFTask getAppLinkFromURLInBackground(NSURL url);
     /*</methods>*/
-    /*<adapter>*/
-    /*</adapter>*/
 }

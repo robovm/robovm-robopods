@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.facebook.bolts;
+package org.robovm.pods.bolts;
 
 /*<imports>*/
 import java.io.*;
@@ -36,35 +36,40 @@ import org.robovm.apple.dispatch.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/BFExecutor/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/BFTaskCompletionSource/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class BFExecutorPtr extends Ptr<BFExecutor, BFExecutorPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(BFExecutor.class); }/*</bind>*/
+    /*<ptr>*/public static class BFTaskCompletionSourcePtr extends Ptr<BFTaskCompletionSource, BFTaskCompletionSourcePtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(BFTaskCompletionSource.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public BFExecutor() {}
-    protected BFExecutor(SkipInit skipInit) { super(skipInit); }
+    public BFTaskCompletionSource() {}
+    protected BFTaskCompletionSource(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "task")
+    public native BFTask getTask();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "execute:")
-    public native void execute(@Block Runnable block);
-    @Method(selector = "defaultExecutor")
-    public static native BFExecutor getDefaultExecutor();
-    @Method(selector = "immediateExecutor")
-    public static native BFExecutor getImmediateExecutor();
-    @Method(selector = "mainThreadExecutor")
-    public static native BFExecutor getMainThreadExecutor();
-    @Method(selector = "executorWithBlock:")
-    public static native BFExecutor create(@Block("(@Block)") VoidBlock1<Runnable> block);
-    @Method(selector = "executorWithDispatchQueue:")
-    public static native BFExecutor create(DispatchQueue queue);
-    @Method(selector = "executorWithOperationQueue:")
-    public static native BFExecutor create(NSOperationQueue queue);
+    @Method(selector = "setResult:")
+    public native void setResult(NSObject result);
+    @Method(selector = "setError:")
+    public native void setError(NSError error);
+    @Method(selector = "setException:")
+    public native void setException(NSException exception);
+    @Method(selector = "cancel")
+    public native void cancel();
+    @Method(selector = "trySetResult:")
+    public native boolean trySetResult(NSObject result);
+    @Method(selector = "trySetError:")
+    public native boolean trySetError(NSError error);
+    @Method(selector = "trySetException:")
+    public native boolean trySetException(NSException exception);
+    @Method(selector = "trySetCancelled")
+    public native boolean trySetCancelled();
+    @Method(selector = "taskCompletionSource")
+    public static native BFTaskCompletionSource create();
     /*</methods>*/
 }

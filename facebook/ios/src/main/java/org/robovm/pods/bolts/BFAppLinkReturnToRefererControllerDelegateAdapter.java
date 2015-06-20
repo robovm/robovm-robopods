@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.facebook.bolts;
+package org.robovm.pods.bolts;
 
 /*<imports>*/
 import java.io.*;
@@ -33,32 +33,26 @@ import org.robovm.apple.dispatch.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
-/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedUIntMarshaler.class)/*</annotations>*/
-public enum /*<name>*/BFIncludeStatusBarInSize/*</name>*/ implements ValuedEnum {
-    /*<values>*/
-    Never(0L),
-    IOS7AndLater(1L),
-    Always(2L);
-    /*</values>*/
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/BFAppLinkReturnToRefererControllerDelegateAdapter/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*/implements BFAppLinkReturnToRefererControllerDelegate/*</implements>*/ {
 
+    /*<ptr>*/
+    /*</ptr>*/
     /*<bind>*/
     /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<methods>*//*</methods>*/
-
-    private final long n;
-
-    private /*<name>*/BFIncludeStatusBarInSize/*</name>*/(long n) { this.n = n; }
-    public long value() { return n; }
-    public static /*<name>*/BFIncludeStatusBarInSize/*</name>*/ valueOf(long n) {
-        for (/*<name>*/BFIncludeStatusBarInSize/*</name>*/ v : values()) {
-            if (v.n == n) {
-                return v;
-            }
-        }
-        throw new IllegalArgumentException("No constant with value " + n + " found in " 
-            + /*<name>*/BFIncludeStatusBarInSize/*</name>*/.class.getName());
-    }
+    /*<constructors>*//*</constructors>*/
+    /*<properties>*/
+    
+    /*</properties>*/
+    /*<members>*//*</members>*/
+    /*<methods>*/
+    @NotImplemented("returnToRefererController:willNavigateToAppLink:")
+    public void willNavigateToAppLink(BFAppLinkReturnToRefererController controller, BFAppLink appLink) {}
+    @NotImplemented("returnToRefererController:didNavigateToAppLink:type:")
+    public void didNavigateToAppLink(BFAppLinkReturnToRefererController controller, BFAppLink url, BFAppLinkNavigationType type) {}
+    /*</methods>*/
 }

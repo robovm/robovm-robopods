@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.facebook.bolts;
+package org.robovm.pods.bolts;
 
 /*<imports>*/
 import java.io.*;
@@ -33,31 +33,25 @@ import org.robovm.apple.dispatch.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/BFAppLinkTarget/*</name>*/ 
-    extends /*<extends>*/NSObject/*</extends>*/ 
+/*<annotations>*/@Library(Library.INTERNAL)/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/BFTaskError/*</name>*/ 
+    extends /*<extends>*/NSError/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class BFAppLinkTargetPtr extends Ptr<BFAppLinkTarget, BFAppLinkTargetPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(BFAppLinkTarget.class); }/*</bind>*/
+    protected BFTaskError(SkipInit skipInit) {
+        super(skipInit);
+    }
+    
+    /*<ptr>*/
+    /*</ptr>*/
+    /*<bind>*/static { Bro.bind(BFTaskError.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*/
-    public BFAppLinkTarget() {}
-    protected BFAppLinkTarget(SkipInit skipInit) { super(skipInit); }
-    /*</constructors>*/
-    /*<properties>*/
-    @Property(selector = "URL")
-    public native NSURL getURL();
-    @Property(selector = "appStoreId")
-    public native String getAppStoreId();
-    @Property(selector = "appName")
-    public native String getAppName();
-    /*</properties>*/
+    /*<constructors>*//*</constructors>*/
+    /*<properties>*//*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "appLinkTargetWithURL:appStoreId:appName:")
-    public static native BFAppLinkTarget create(NSURL url, String appStoreId, String appName);
+    @GlobalValue(symbol="BFTaskErrorDomain", optional=true)
+    public static native String getClassDomain();
     /*</methods>*/
 }

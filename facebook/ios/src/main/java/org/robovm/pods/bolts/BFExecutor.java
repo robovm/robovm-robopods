@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.facebook.bolts;
+package org.robovm.pods.bolts;
 
 /*<imports>*/
 import java.io.*;
@@ -36,38 +36,35 @@ import org.robovm.apple.dispatch.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/BFURL/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/BFExecutor/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class BFURLPtr extends Ptr<BFURL, BFURLPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(BFURL.class); }/*</bind>*/
+    /*<ptr>*/public static class BFExecutorPtr extends Ptr<BFExecutor, BFExecutorPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(BFExecutor.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public BFURL() {}
-    protected BFURL(SkipInit skipInit) { super(skipInit); }
+    public BFExecutor() {}
+    protected BFExecutor(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "targetURL")
-    public native NSURL getTargetURL();
-    @Property(selector = "targetQueryParameters")
-    public native NSDictionary<NSString, NSObject> getTargetQueryParameters();
-    @Property(selector = "appLinkData")
-    public native NSDictionary<NSString, NSObject> getAppLinkData();
-    @Property(selector = "appLinkExtras")
-    public native NSDictionary<NSString, NSObject> getAppLinkExtras();
-    @Property(selector = "appLinkReferer")
-    public native BFAppLink getAppLinkReferer();
-    @Property(selector = "inputURL")
-    public native NSURL getInputURL();
-    @Property(selector = "inputQueryParameters")
-    public native NSDictionary<NSString, NSObject> getInputQueryParameters();
+    
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "URLWithURL:")
-    public static native BFURL create(NSURL url);
-    @Method(selector = "URLWithInboundURL:sourceApplication:")
-    public static native BFURL create(NSURL url, String sourceApplication);
+    @Method(selector = "execute:")
+    public native void execute(@Block Runnable block);
+    @Method(selector = "defaultExecutor")
+    public static native BFExecutor getDefaultExecutor();
+    @Method(selector = "immediateExecutor")
+    public static native BFExecutor getImmediateExecutor();
+    @Method(selector = "mainThreadExecutor")
+    public static native BFExecutor getMainThreadExecutor();
+    @Method(selector = "executorWithBlock:")
+    public static native BFExecutor create(@Block("(@Block)") VoidBlock1<Runnable> block);
+    @Method(selector = "executorWithDispatchQueue:")
+    public static native BFExecutor create(DispatchQueue queue);
+    @Method(selector = "executorWithOperationQueue:")
+    public static native BFExecutor create(NSOperationQueue queue);
     /*</methods>*/
 }

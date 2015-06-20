@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.facebook.bolts;
+package org.robovm.pods.bolts;
 
 /*<imports>*/
 import java.io.*;
@@ -33,26 +33,31 @@ import org.robovm.apple.dispatch.*;
 /*</imports>*/
 
 /*<javadoc>*/
-/*</javadoc>*/
-/*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/BFAppLinkReturnToRefererControllerDelegateAdapter/*</name>*/ 
-    extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements BFAppLinkReturnToRefererControllerDelegate/*</implements>*/ {
 
-    /*<ptr>*/
-    /*</ptr>*/
-    /*<bind>*/
-    /*</bind>*/
+/*</javadoc>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/BFAppLinkTarget/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*//*</implements>*/ {
+
+    /*<ptr>*/public static class BFAppLinkTargetPtr extends Ptr<BFAppLinkTarget, BFAppLinkTargetPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(BFAppLinkTarget.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*//*</constructors>*/
+    /*<constructors>*/
+    public BFAppLinkTarget() {}
+    protected BFAppLinkTarget(SkipInit skipInit) { super(skipInit); }
+    /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "URL")
+    public native NSURL getURL();
+    @Property(selector = "appStoreId")
+    public native String getAppStoreId();
+    @Property(selector = "appName")
+    public native String getAppName();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @NotImplemented("returnToRefererController:willNavigateToAppLink:")
-    public void willNavigateToAppLink(BFAppLinkReturnToRefererController controller, BFAppLink appLink) {}
-    @NotImplemented("returnToRefererController:didNavigateToAppLink:type:")
-    public void didNavigateToAppLink(BFAppLinkReturnToRefererController controller, BFAppLink url, BFAppLinkNavigationType type) {}
+    @Method(selector = "appLinkTargetWithURL:appStoreId:appName:")
+    public static native BFAppLinkTarget create(NSURL url, String appStoreId, String appName);
     /*</methods>*/
 }

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.facebook.bolts;
+package org.robovm.pods.bolts;
 
 /*<imports>*/
 import java.io.*;
@@ -33,28 +33,26 @@ import org.robovm.apple.dispatch.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/BFWebViewAppLinkResolver/*</name>*/ 
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/BFAppLinkReturnToRefererViewDelegateAdapter/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements BFAppLinkResolving/*</implements>*/ {
+    /*<implements>*/implements BFAppLinkReturnToRefererViewDelegate/*</implements>*/ {
 
-    /*<ptr>*/public static class BFWebViewAppLinkResolverPtr extends Ptr<BFWebViewAppLinkResolver, BFWebViewAppLinkResolverPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(BFWebViewAppLinkResolver.class); }/*</bind>*/
+    /*<ptr>*/
+    /*</ptr>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*/
-    public BFWebViewAppLinkResolver() {}
-    protected BFWebViewAppLinkResolver(SkipInit skipInit) { super(skipInit); }
-    /*</constructors>*/
+    /*<constructors>*//*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "sharedInstance")
-    public static native BFWebViewAppLinkResolver getSharedInstance();
-    @Method(selector = "appLinkFromURLInBackground:")
-    public native BFTask getAppLinkFromURLInBackground(NSURL url);
+    @NotImplemented("returnToRefererViewDidTapInsideCloseButton:")
+    public void didTapInsideCloseButton(BFAppLinkReturnToRefererView view) {}
+    @NotImplemented("returnToRefererViewDidTapInsideLink:link:")
+    public void didTapInsideLink(BFAppLinkReturnToRefererView view, BFAppLink link) {}
     /*</methods>*/
 }

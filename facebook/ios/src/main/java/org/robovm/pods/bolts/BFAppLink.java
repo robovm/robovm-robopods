@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.facebook.bolts;
+package org.robovm.pods.bolts;
 
 /*<imports>*/
 import java.io.*;
@@ -35,24 +35,32 @@ import org.robovm.apple.dispatch.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ interface /*<name>*/BFAppLinkReturnToRefererViewDelegate/*</name>*/ 
-    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/BFAppLink/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/
-    /*</ptr>*/
-    /*<bind>*/
-    /*</bind>*/
+    /*<ptr>*/public static class BFAppLinkPtr extends Ptr<BFAppLink, BFAppLinkPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(BFAppLink.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
+    /*<constructors>*/
+    public BFAppLink() {}
+    protected BFAppLink(SkipInit skipInit) { super(skipInit); }
+    /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "sourceURL")
+    public native NSURL getSourceURL();
+    @Property(selector = "targets")
+    public native NSArray<BFAppLinkTarget> getTargets();
+    @Property(selector = "webURL")
+    public native NSURL getWebURL();
     /*</properties>*/
+    /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "returnToRefererViewDidTapInsideCloseButton:")
-    void didTapInsideCloseButton(BFAppLinkReturnToRefererView view);
-    @Method(selector = "returnToRefererViewDidTapInsideLink:link:")
-    void didTapInsideLink(BFAppLinkReturnToRefererView view, BFAppLink link);
+    @GlobalValue(symbol="BFAppLinkVersion", optional=true)
+    public static native String getVersion();
+    
+    @Method(selector = "appLinkWithSourceURL:targets:webURL:")
+    public static native BFAppLink create(NSURL sourceURL, NSArray<BFAppLinkTarget> targets, NSURL webURL);
     /*</methods>*/
-    /*<adapter>*/
-    /*</adapter>*/
 }

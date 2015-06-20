@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.facebook.bolts;
+package org.robovm.pods.bolts;
 
 /*<imports>*/
 import java.io.*;
@@ -121,7 +121,7 @@ import org.robovm.apple.dispatch.*;
     }
     public NSDictionary<NSString, NSObject> getEventArgs() {
         if (has(Keys.EventArgs())) {
-            NSDictionary<NSString, NSObject> val = (NSDictionary) get(Keys.EventArgs());
+            NSDictionary<NSString, NSObject> val = (NSDictionary<NSString, NSObject>) get(Keys.EventArgs());
             return val;
         }
         return null;
@@ -133,7 +133,7 @@ import org.robovm.apple.dispatch.*;
     /*</methods>*/
     
     /*<keys>*/
-    @Library(Library.INTERNAL) @StronglyLinked
+    @Library(Library.INTERNAL)
     public static class Keys {
         static { Bro.bind(Keys.class); }
         @GlobalValue(symbol="BFMeasurementEventNameKey", optional=true)

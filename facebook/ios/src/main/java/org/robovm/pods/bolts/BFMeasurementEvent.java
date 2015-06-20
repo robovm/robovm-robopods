@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.facebook.bolts;
+package org.robovm.pods.bolts;
 
 /*<imports>*/
 import java.io.*;
@@ -40,22 +40,6 @@ import org.robovm.apple.dispatch.*;
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    public static class Notifications {
-        public static NSObject observeEvents(final VoidBlock1<BFMeasurementEventNotification> block) {
-            return NSNotificationCenter.getDefaultCenter().addObserver(EventNotification(), null, NSOperationQueue.getMainQueue(), new VoidBlock1<NSNotification>() {
-                @Override
-                public void invoke(NSNotification a) {
-                    BFMeasurementEventNotification data = null;
-                    NSDictionary<NSString, NSObject> userInfo = a.getUserInfo();
-                    if (userInfo != null) {
-                        data = new BFMeasurementEventNotification(userInfo);
-                    }
-                    block.invoke(data);
-                }
-            });
-        }
-    }
-    
     /*<ptr>*/public static class BFMeasurementEventPtr extends Ptr<BFMeasurementEvent, BFMeasurementEventPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(BFMeasurementEvent.class); }/*</bind>*/
     /*<constants>*//*</constants>*/

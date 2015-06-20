@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.facebook.bolts;
+package org.robovm.pods.bolts;
 
 /*<imports>*/
 import java.io.*;
@@ -35,24 +35,24 @@ import org.robovm.apple.dispatch.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/Bolts/*</name>*/ 
-    extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ interface /*<name>*/BFAppLinkReturnToRefererViewDelegate/*</name>*/ 
+    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
-    /*<ptr>*/public static class BoltsPtr extends Ptr<Bolts, BoltsPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(Bolts.class); }/*</bind>*/
+    /*<ptr>*/
+    /*</ptr>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*/
-    public Bolts() {}
-    protected Bolts(SkipInit skipInit) { super(skipInit); }
-    /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
-    /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "version")
-    public static native String getVersion();
+    @Method(selector = "returnToRefererViewDidTapInsideCloseButton:")
+    void didTapInsideCloseButton(BFAppLinkReturnToRefererView view);
+    @Method(selector = "returnToRefererViewDidTapInsideLink:link:")
+    void didTapInsideLink(BFAppLinkReturnToRefererView view, BFAppLink link);
     /*</methods>*/
+    /*<adapter>*/
+    /*</adapter>*/
 }

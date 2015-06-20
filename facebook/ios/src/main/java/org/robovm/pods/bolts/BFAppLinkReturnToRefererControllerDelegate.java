@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.facebook.bolts;
+package org.robovm.pods.bolts;
 
 /*<imports>*/
 import java.io.*;
@@ -33,26 +33,26 @@ import org.robovm.apple.dispatch.*;
 /*</imports>*/
 
 /*<javadoc>*/
+
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/BFAppLinkReturnToRefererViewDelegateAdapter/*</name>*/ 
-    extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements BFAppLinkReturnToRefererViewDelegate/*</implements>*/ {
+/*<visibility>*/public/*</visibility>*/ interface /*<name>*/BFAppLinkReturnToRefererControllerDelegate/*</name>*/ 
+    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/
     /*<bind>*/
     /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*//*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
-    /*<members>*//*</members>*/
     /*<methods>*/
-    @NotImplemented("returnToRefererViewDidTapInsideCloseButton:")
-    public void didTapInsideCloseButton(BFAppLinkReturnToRefererView view) {}
-    @NotImplemented("returnToRefererViewDidTapInsideLink:link:")
-    public void didTapInsideLink(BFAppLinkReturnToRefererView view, BFAppLink link) {}
+    @Method(selector = "returnToRefererController:willNavigateToAppLink:")
+    void willNavigateToAppLink(BFAppLinkReturnToRefererController controller, BFAppLink appLink);
+    @Method(selector = "returnToRefererController:didNavigateToAppLink:type:")
+    void didNavigateToAppLink(BFAppLinkReturnToRefererController controller, BFAppLink url, BFAppLinkNavigationType type);
     /*</methods>*/
+    /*<adapter>*/
+    /*</adapter>*/
 }
