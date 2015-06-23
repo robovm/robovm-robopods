@@ -51,8 +51,11 @@ public enum /*<name>*/FBSDKShareDialogMode/*</name>*/ implements ValuedEnum {
     /*<constants>*//*</constants>*/
     /*<methods>*/
     @Bridge(symbol="NSStringFromFBSDKShareDialogMode", optional=true)
-    public native String toString();
+    public static native String toString(FBSDKShareDialogMode dialogMode);
     /*</methods>*/
+    public String toString() {
+        return toString(this);
+    }
 
     private final long n;
 

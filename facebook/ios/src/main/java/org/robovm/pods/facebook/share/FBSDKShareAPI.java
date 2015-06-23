@@ -49,7 +49,7 @@ import org.robovm.pods.facebook.core.*;
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "createObjectsWithClientToken")
-    public native boolean isCreatesObjectsWithClientToken();
+    public native boolean createsObjectsWithClientToken();
     @Property(selector = "setCreateObjectsWithClientToken:")
     public native void setCreatesObjectsWithClientToken(boolean v);
     @Property(selector = "message")

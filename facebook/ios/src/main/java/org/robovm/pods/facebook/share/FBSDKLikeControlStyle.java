@@ -46,8 +46,11 @@ public enum /*<name>*/FBSDKLikeControlStyle/*</name>*/ implements ValuedEnum {
     /*<constants>*//*</constants>*/
     /*<methods>*/
     @Bridge(symbol="NSStringFromFBSDKLikeControlStyle", optional=true)
-    public native String toString();
+    public static native String toString(FBSDKLikeControlStyle style);
     /*</methods>*/
+    public String toString() {
+        return toString(this);
+    }
 
     private final long n;
 

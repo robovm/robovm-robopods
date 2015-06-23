@@ -47,8 +47,11 @@ public enum /*<name>*/FBSDKLikeObjectType/*</name>*/ implements ValuedEnum {
     /*<constants>*//*</constants>*/
     /*<methods>*/
     @Bridge(symbol="NSStringFromFBSDKLikeObjectType", optional=true)
-    public native String toString();
+    public static native String toString(FBSDKLikeObjectType objectType);
     /*</methods>*/
+    public String toString() {
+        return toString(this);
+    }
 
     private final long n;
 

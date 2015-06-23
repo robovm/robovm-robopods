@@ -234,21 +234,27 @@ functions:
     NSStringFromFBSDKAppGroupPrivacy:
         class: FBSDKAppGroupPrivacy
         name: toString
+        static: true
     NSStringFromFBSDKLikeControlAuxiliaryPosition:
         class: FBSDKLikeControlAuxiliaryPosition
         name: toString
+        static: true
     NSStringFromFBSDKLikeControlHorizontalAlignment:
         class: FBSDKLikeControlHorizontalAlignment
         name: toString
+        static: true
     NSStringFromFBSDKLikeControlStyle:
         class: FBSDKLikeControlStyle
         name: toString
+        static: true
     NSStringFromFBSDKLikeObjectType:
         class: FBSDKLikeObjectType
         name: toString
+        static: true
     NSStringFromFBSDKShareDialogMode:
         class: FBSDKShareDialogMode
         name: toString
+        static: true
 
     # Make sure we don't miss any functions if new ones are introduced in a later version
     (k?FB.*):

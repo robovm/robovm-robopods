@@ -47,8 +47,11 @@ public enum /*<name>*/FBSDKLikeControlHorizontalAlignment/*</name>*/ implements 
     /*<constants>*//*</constants>*/
     /*<methods>*/
     @Bridge(symbol="NSStringFromFBSDKLikeControlHorizontalAlignment", optional=true)
-    public native String toString();
+    public static native String toString(FBSDKLikeControlHorizontalAlignment horizontalAlignment);
     /*</methods>*/
+    public String toString() {
+        return toString(this);
+    }
 
     private final long n;
 

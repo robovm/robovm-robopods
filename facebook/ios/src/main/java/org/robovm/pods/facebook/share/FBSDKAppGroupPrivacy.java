@@ -46,8 +46,11 @@ public enum /*<name>*/FBSDKAppGroupPrivacy/*</name>*/ implements ValuedEnum {
     /*<constants>*//*</constants>*/
     /*<methods>*/
     @Bridge(symbol="NSStringFromFBSDKAppGroupPrivacy", optional=true)
-    public native String toString();
+    public static native String toString(FBSDKAppGroupPrivacy privacy);
     /*</methods>*/
+    public String toString() {
+        return toString(this);
+    }
 
     private final long n;
 

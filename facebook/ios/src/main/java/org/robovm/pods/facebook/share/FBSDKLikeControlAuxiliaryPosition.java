@@ -47,8 +47,11 @@ public enum /*<name>*/FBSDKLikeControlAuxiliaryPosition/*</name>*/ implements Va
     /*<constants>*//*</constants>*/
     /*<methods>*/
     @Bridge(symbol="NSStringFromFBSDKLikeControlAuxiliaryPosition", optional=true)
-    public native String toString();
+    public static native String toString(FBSDKLikeControlAuxiliaryPosition auxiliaryPosition);
     /*</methods>*/
+    public String toString() {
+        return toString(this);
+    }
 
     private final long n;
 
