@@ -1,0 +1,161 @@
+package: org.robovm.pods.google.analytics
+framework: GoogleAnalytics
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
+clang_args: ['-x', 'objective-c']
+header_root: '/'
+headers:
+    - GoogleAnalytics.lib/Headers/GoogleAnalytics.h
+typedefs:
+    'void (^)(GAIDispatchResult)': '@Block VoidBlock1<GAIDispatchResult>'
+    
+enums:
+    GAIDispatchResult: {}
+    GAIErrorCode: {first: kGAINoError, suffix: Error}
+    GAILogLevel: {}
+        
+classes:
+    GAIError:
+        extends: NSError
+
+    GAI: # DONE
+        properties:
+            'trackUncaughtExceptions':
+                name: tracksUncaughtExceptions
+        methods:
+            '-trackerWithName:trackingId:':
+                name: getTracker
+            '-trackerWithTrackingId:':
+                name: getTracker
+            '-removeTrackerByName:':
+                name: removeTracker
+            '-dispatchWithCompletionHandler:':
+                name: dispatch
+            '+sharedInstance':
+                property: true
+    GAIDictionaryBuilder: # DONE
+        methods:
+            '-set:forKey:':
+                name: put0
+                visibility: private # reversed argument order
+            '-setAll:':
+                name: putAll
+            '-get:':
+                trim_after_first_colon: true
+            '-setCampaignParametersFromUrl:':
+                trim_after_first_colon: true
+            '-setProductAction:':
+                trim_after_first_colon: true
+            '-addProduct.*:':
+                trim_after_first_colon: true
+            '-addPromotion:':
+                trim_after_first_colon: true
+            '+createAppView':
+                exclude: true # deprecated
+            '+createEventWithCategory:action:label:value:':
+                name: createEvent
+            '+createExceptionWithDescription:withFatal:':
+                name: createException
+            '+createItemWithTransactionId:name:sku:category:price:quantity:currencyCode:':
+                name: createItem
+            '+createSocialWithNetwork:action:target:':
+                name: createSocial
+            '+createTimingWithCategory:interval:name:label:':
+                name: createTiming
+            '+createTransactionWithId:affiliation:revenue:tax:shipping:currencyCode:':
+                name: createTransaction
+    GAIEcommerceFields: # DONE
+        methods:
+            '+productFieldForIndex:suffix:':
+                name: createProductField
+            '+impressionListForIndex:':
+                name: createImpressionListField
+            '+productImpressionForList:index:suffix:':
+                name: createProductImpressionField
+            '+promotionForIndex:suffix:':
+                name: createPromotionField
+    GAIEcommerceProduct: # DONE
+        methods:
+            '-set.*':
+                trim_after_first_colon: true
+            '-build.*':
+                name: build
+    GAIEcommerceProductAction: # DONE
+        methods:
+            '-set.*':
+                trim_after_first_colon: true
+    GAIEcommercePromotion: # DONE
+        methods:
+            '-set.*':
+                trim_after_first_colon: true
+            '-buildWithIndex:':
+                name: build
+    GAIFields: # DONE
+        methods:
+            '+contentGroupForIndex:':
+                name: createContentGroupField
+            '+customDimensionForIndex:':
+                name: createCustomDimensionField
+            '+customMetricForIndex:':
+                name: createCustomMetricField
+    GAITrackedViewController: {} # DONE
+
+protocols:
+    GAILogger: # DONE
+        skip_adapter: true
+        methods:
+            '-.*':
+                trim_after_first_colon: true
+    GAITracker: # DONE
+        skip_adapter: true
+        properties:
+            'allowIDFACollection':
+                name: allowsIDFACollection
+        methods:
+            '-set:value:':
+                name: put
+            '-get:':
+                trim_after_first_colon: true
+            '-send:':
+                trim_after_first_colon: true
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?GAI.*):
+        class: GoogleAnalytics
+        name: 'Function__#{g[0]}'
+
+values:
+    kGAIErrorDomain:
+        class: GAIError
+        name: getClassDomain
+
+    # GAI
+    kGAI(Product|Version):
+        class: GAI
+        name: 'get#{g[0]}String'
+
+    # GAIEcommerceFields
+    kGAI((Product|PA|Checkout|Impression|Promotion).*):
+        class: GAIEcommerceFields
+        name: '#{g[0]}'
+
+    # GAIFields
+    kGAIAppView:
+        exclude: true
+    kGAI(.*):
+        class: GAIFields
+        name: '#{g[0]}'
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?GAI.*):
+        class: GoogleAnalytics
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?GAI.*):
+        class: GoogleAnalytics
+        name: 'Constant__#{g[0]}'

@@ -1,0 +1,124 @@
+package: org.robovm.pods.google.tagmanager
+framework: GoogleTagManager
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
+clang_args: ['-x', 'objective-c']
+header_root: '/'
+headers:
+    - GoogleTagManager.lib/Headers/GoogleTagManager.h
+typedefs:
+    'void (^)(TAGDispatchResult)': '@Block VoidBlock1<TAGDispatchResult>'
+    
+enums:
+    TAGContainerCallbackRefreshType: {first: kTAGContainerCallbackRefreshTypeSaved}
+    TAGContainerCallbackRefreshFailure: {first: kTAGContainerCallbackRefreshFailureNoSavedContainer}
+    TAGOpenType: {first: kTAGOpenTypePreferNonDefault}
+    TAGLoggerLogLevelType: {first: kTAGLoggerLogLevelVerbose}
+    TAGRefreshMode: {first: kTAGRefreshModeStandard}
+    TAGDispatchResult: {}
+        
+classes:
+    TAGContainer: # DONE
+        methods:
+            '-booleanForKey:':
+                name: getBoolean
+            '-doubleForKey:':
+                name: getDouble
+            '-int64ForKey:':
+                name: getLong
+            '-stringForKey:':
+                name: getString
+            '-registerFunctionCallMacroHandler:forMacro:':
+                trim_after_first_colon: true
+            '-functionCallMacroHandlerForMacro:':
+                name: getFunctionCallMacroHandler
+            '-registerFunctionCallTagHandler:forTag:':
+                trim_after_first_colon: true
+            '-functionCallTagHandlerForTag:':
+                name: getFunctionCallTagHandler
+    TAGContainerOpener: # DONE
+        methods:
+            '+openContainerWithId:tagManager:openType:timeout:':
+                exclude: true # deprecated
+            '+openContainerWithId:tagManager:openType:timeout:notifier:':
+                name: openContainer
+                visibility: private
+            '+defaultTimeout':
+                property: true
+    TAGDataLayer: # DONE
+        methods:
+            '-pushValue:forKey:':
+                name: push0
+                visibility: private # reversed order
+            '-push:':
+                trim_after_first_colon: true
+            '-get:':
+                trim_after_first_colon: true
+    TAGManager: # DONE
+        methods:
+            '-openContainerById:callback:':
+                name: openContainer
+            '-getContainerById:':
+                name: getContainer
+            '-previewWithUrl:':
+                name: preview
+            '-dispatchWithCompletionHandler:':
+                name: dispatch
+            '+instance':
+                property: true 
+
+protocols:
+    TAGFunctionCallTagHandler: # DONE
+        methods:
+            '-execute:parameters:':
+                trim_after_first_colon: true
+    TAGFunctionCallMacroHandler: # DONE
+        methods:
+            '-valueForMacro:parameters:':
+                name: get
+    TAGContainerCallback: # DONE
+        methods:
+            '-containerRefreshBegin:refreshType:':
+                name: refreshBegin
+            '-containerRefreshSuccess:refreshType:':
+                name: refreshSuccess
+            '-containerRefreshFailure:failure:refreshType:':
+                name: refreshFailure
+    TAGContainerFuture: # DONE
+        skip_adapter: true
+    TAGContainerOpenerNotifier: # DONE
+        methods:
+            '-containerAvailable:':
+                name: didBecomeAvailable
+    TAGLogger: # DONE
+        skip_adapter: true
+        methods:
+            '-logLevel':
+                property: true
+            '-.*':
+                trim_after_first_colon: true
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?TAG.*):
+        class: GoogleTagManager
+        name: 'Function__#{g[0]}'
+
+values:
+    kTAGDataLayerObjectNotPresent:
+        class: TAGDataLayer
+        name: getNotPresentObject
+        readonly: true
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?TAG.*):
+        class: GoogleTagManager
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?TAG.*):
+        class: GoogleTagManager
+        name: 'Constant__#{g[0]}'

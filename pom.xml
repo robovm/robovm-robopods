@@ -163,5 +163,6 @@
         <module>chartboost</module>
         <module>facebook</module>
         <module>flurry</module>
+        <module>google-analytics</module>
     </modules>
 </project>
