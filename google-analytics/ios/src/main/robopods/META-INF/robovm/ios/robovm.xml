@@ -11,10 +11,6 @@
         <lib>z</lib>
         <lib>sqlite3</lib>
     </libs>
-    <exportedSymbols>
-        <symbol>kTAGDataLayerObjectNotPresent</symbol>
-        <symbol>kGAI*</symbol>
-    </exportedSymbols>
     <unhideSymbols>
         <symbol>kTAGDataLayerObjectNotPresent</symbol>
         <symbol>kGAIErrorDomain</symbol>
