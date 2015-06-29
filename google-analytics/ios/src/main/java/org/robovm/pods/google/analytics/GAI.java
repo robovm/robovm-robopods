@@ -47,6 +47,15 @@ import org.robovm.apple.coregraphics.*;
     public GAI() {}
     protected GAI(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
+    
+    public void trackUncaughtExceptions() {
+        Signals.installSignals(new Signals.InstallSignalsCallback() {
+            @Override
+            public void install() {
+                setTracksUncaughtExceptions(true);
+            }
+        });
+    }
     /*<properties>*/
     @Property(selector = "defaultTracker")
     public native GAITracker getDefaultTracker();

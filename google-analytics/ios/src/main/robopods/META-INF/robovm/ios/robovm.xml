@@ -7,6 +7,7 @@
     <libs>
         <lib>libs/libGoogleAnalyticsServices.a</lib>
         <lib>libs/libAdIdAccess.a</lib>
+        <lib>libs/libGGLAnalytics.a</lib>
         
         <lib>z</lib>
         <lib>sqlite3</lib>
