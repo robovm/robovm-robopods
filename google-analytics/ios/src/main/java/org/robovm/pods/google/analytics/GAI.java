@@ -47,8 +47,11 @@ import org.robovm.apple.coregraphics.*;
     public GAI() {}
     protected GAI(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
-    
-    public void trackUncaughtExceptions() {
+    /**
+     * Use this method in {@link UIApplicationDelegate#didFinishLaunching(UIApplication, UIApplicationLaunchOptions)} to install 
+     * the crash reporting signal handler of Google Analytics.
+     */
+    public void enableCrashReporting() {
         Signals.installSignals(new Signals.InstallSignalsCallback() {
             @Override
             public void install() {
