@@ -19,6 +19,7 @@ package org.robovm.pods.flurry.analytics;
 import java.io.*;
 import java.nio.*;
 import java.util.*;
+
 import org.robovm.objc.*;
 import org.robovm.objc.annotation.*;
 import org.robovm.objc.block.*;
@@ -74,6 +75,26 @@ import org.robovm.apple.coregraphics.*;
     }
     public static void endTimedEvent(String eventName, Map<String, String> parameters) {
         endTimedEvent(eventName, stringMapToDictionary(parameters));
+    }
+    public static void endTimedEvent(String eventName) {
+        endTimedEvent(eventName, (NSDictionary<?, ?>) null);
+    }
+    
+    public static void logError(String errorID, String message, Throwable e) {
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        e.printStackTrace(pw);
+        pw.flush();
+        NSException exception = new NSException(e.getClass().getName(), sw.toString(), new NSDictionary<>());
+        logError(errorID, message, exception);
+    }
+    public static void logError(Throwable e) {
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        e.printStackTrace(pw);
+        pw.flush();
+        NSException exception = new NSException(e.getClass().getName(), sw.toString(), new NSDictionary<>());
+        logError(e.getClass().getName(), sw.toString(), exception);
     }
     
     protected static NSDictionary<?, ?> stringMapToDictionary(Map<String, String> map) {
@@ -154,7 +175,7 @@ import org.robovm.apple.coregraphics.*;
     @Method(selector = "setGender:")
     public static native void setGender(String gender);
     @Method(selector = "setLatitude:longitude:horizontalAccuracy:verticalAccuracy:")
-    public static native void setLocation(double latitude, double longitude, float horizontalAccuracy, float verticalAccuracy);
+    public static native void setLocation(double latitude, double longitude, double horizontalAccuracy, double verticalAccuracy);
     @Method(selector = "setSessionReportsOnCloseEnabled:")
     public static native void setSessionReportsOnCloseEnabled(boolean sendSessionReportsOnClose);
     @Method(selector = "setSessionReportsOnPauseEnabled:")

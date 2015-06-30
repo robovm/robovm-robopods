@@ -39,6 +39,11 @@ classes:
                 name: stopLogPageViews
             '+setLatitude:longitude:horizontalAccuracy:verticalAccuracy:':
                 name: setLocation
+                parameters:
+                    horizontalAccuracy:
+                        type: double
+                    verticalAccuracy:
+                        type: double
     FlurryWatch: # DONE
         methods:
             '+logWatchEvent.*':

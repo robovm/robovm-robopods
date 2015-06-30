@@ -2,6 +2,8 @@
     <libs>
         <lib>libs/libFlurry_6.4.0.a</lib>
         <lib>libs/libFlurryAds_6.4.0.a</lib>
+        
+        <lib>z</lib>
     </libs>
     <frameworks>
         <framework>AdSupport</framework>
