@@ -126,6 +126,8 @@ import org.robovm.apple.storekit.*;
     public static native void setFramework(CBFramework framework);
     @Method(selector = "setFramework:withVersion:")
     public static native void setFramework(CBFramework framework, String version);
+    @Method(selector = "setMediation:withVersion:")
+    public static native void setMediation(String libraryName, String libraryVersion);
     @Method(selector = "setShouldRequestInterstitialsInFirstSession:")
     public static native void setShouldRequestInterstitialsInFirstSession(boolean shouldRequest);
     @Method(selector = "setShouldPauseClickForConfirmation:")
