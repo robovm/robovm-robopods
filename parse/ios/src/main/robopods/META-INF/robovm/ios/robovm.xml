@@ -1,0 +1,28 @@
+<config>    
+    <frameworks>
+        <framework>Bolts</framework>
+        <framework>Parse</framework>
+        <framework>ParseCrashReporting</framework>
+        <framework>ParseFacebookUtilsV4</framework>
+        <framework>ParseUI</framework>
+        
+        <framework>AudioToolbox</framework>
+        <framework>CFNetwork</framework>
+        <framework>CoreGraphics</framework>
+        <framework>CoreLocation</framework>
+        <framework>MobileCoreServices</framework>
+        <framework>QuartzCore</framework>
+        <framework>Security</framework>
+        <framework>StoreKit</framework>
+        <framework>SystemConfiguration</framework>
+        <framework>Accounts</framework>
+        <framework>Social</framework>
+    </frameworks>
+    <frameworkPaths>
+        <path>libs</path>
+    </frameworkPaths>
+    <libs>
+        <lib>z</lib>
+        <lib>sqlite3</lib>
+    </libs>
+</config>

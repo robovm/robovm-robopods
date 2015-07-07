@@ -1,0 +1,1106 @@
+package: org.robovm.pods.parse
+framework: Parse
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/corelocation.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/storekit.yaml
+    - ../../../../../bolts/ios/src/main/bro-gen/bolts.yaml
+clang_args: ['-x', 'objective-c']
+header_root: '/../robopods/META-INF/robovm/ios/libs/'
+headers:
+    - Parse.framework/Headers/Parse.h
+typedefs:
+    PFBooleanResultBlock: '@Block PFSaveCallback'
+    PFIntegerResultBlock: '@Block PFCountCallback'
+    PFUserResultBlock: '@Block PFLogInCallback'
+    PFDataResultBlock: '@Block PFGetDataCallback'
+    PFDataStreamResultBlock: '@Block PFGetDataStreamCallback'
+    PFProgressBlock: '@Block PFProgressCallback'
+    PFConfigResultBlock: '@Block PFConfigCallback'
+    PFGeoPointResultBlock: '@Block PFLocationCallback'
+    PFArrayResultBlock: '@Block VoidBlock2<NSArray<?>, NSError>'
+    PFObjectResultBlock: '@Block VoidBlock2<PFObject, NSError>'
+    PFSetResultBlock: '@Block VoidBlock2<NSSet<?>, NSError>'
+    PFStringResultBlock: '@Block VoidBlock2<String, NSError>'
+    PFIdResultBlock: '@Block VoidBlock2<NSObject, NSError>'
+    PFUserSessionUpgradeResultBlock: '@Block PFUserSessionUpgradeCallback'
+    PFUserLogoutResultBlock: '@Block PFLogOutCallback'
+    PFSessionResultBlock: '@Block PFGetCallback<PFSession>'
+    'void (^)(SKPaymentTransaction *)': '@Block PFProductObserver'
+
+private_typedefs:
+    'void (^)(NSString *, NSError *)': '@Block VoidBlock2<String, NSError>'
+    
+enums:
+    PFCachePolicy: {}
+    PFLogLevel: {}
+    PFErrorCode: {prefix: kPFError, suffix: Error, kPFScriptError: Script, kPFValidationError: Validation}
+        
+classes:
+    PFError:
+        extends: NSError
+
+    Parse: # DONE
+        methods:
+            '+setApplicationId:clientKey:':
+                name: initialize
+            '+enableDataSharing.*':
+                name: enableDataSharing
+            '+applicationGroupIdentifierForDataSharing':
+                property: true
+            '+containingApplicationBundleIdentifierForDataSharing':
+                property: true
+            '+logLevel':
+                property: true
+    PF_Twitter: # DONE
+        name: PFTwitter
+        methods:
+            '-authorizeInBackground':
+                return_type: BFTask<Void>
+            '-authorizeWithSuccess:failure:cancel:':
+                name: authorize
+            '-signRequest:':
+                name: sign
+    PFACL: # DONE
+        methods:
+            '-getReadAccessForRole.*':
+                name: getRoleReadAccess
+            '-setReadAccess:forRole.*':
+                name: setRoleReadAccess0
+                visibility: private
+            '-getWriteAccessForRole.*':
+                name: getRoleWriteAccess
+            '-setWriteAccess:forRole.*':
+                name: setRoleWriteAccess0
+                visibility: private
+            '-setReadAccess.*':
+                name: setReadAccess0
+                visibility: private
+            '-setWriteAccess.*':
+                name: setWriteAccess0
+                visibility: private
+            '-getReadAccessFor.*':
+                name: getReadAccess
+            '-getWriteAccessFor.*':
+                name: getWriteAccess
+            '+ACL':
+                exclude: true
+            '+ACLWithUser:':
+                name: create
+                visibility: protected
+                return_type: '@Pointer long'
+            '+setDefaultACL:withAccessForCurrentUser:':
+                trim_after_first_colon: true
+    PFAnalytics: # DONE
+        methods:
+            '+trackAppOpenedWithLaunchOptions:':
+                name: trackAppOpened
+                return_type: BFTask<Void>
+                parameters:
+                    launchOptions:
+                        type: UIApplicationLaunchOptions
+            '+trackAppOpenedWithLaunchOptionsInBackground:block:':
+                name: trackAppOpenedInBackground
+                parameters:
+                    launchOptions:
+                        type: UIApplicationLaunchOptions
+            '+trackAppOpenedWithRemoteNotificationPayload:':
+                name: trackAppOpened
+                return_type: BFTask<Void>
+                parameters:
+                    userInfo:
+                        type: UIRemoteNotification
+            '+trackAppOpenedWithRemoteNotificationPayloadInBackground:block:':
+                name: trackAppOpenedInBackground
+                parameters:
+                    userInfo:
+                        type: UIRemoteNotification
+            '+trackEventInBackground.*':
+                trim_after_first_colon: true
+            '+trackEvent.*':
+                trim_after_first_colon: true
+                return_type: BFTask<Void>
+    PFAnonymousUtils: # DONE
+        methods:
+            '+logInInBackground':
+                return_type: BFTask<PFUser>
+            '+logInWith.*':
+                name: logIn
+            '+isLinkedWithUser:':
+                name: isLinked
+    PFCloud: # DONE
+        methods:
+            '+callFunction:withParameters:':
+                exclude: true
+                return_type: '<T extends NSObject> T'
+            '+callFunction:withParameters:error:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+                return_type: '<T extends NSObject> T'
+            '+callFunctionInBackground:withParameters:':
+                trim_after_first_colon: true
+                return_type: '<T extends NSObject> BFTask<T>'
+            '+callFunctionInBackground:withParameters:block:':
+                name: callFunctionInBackground0
+                visibility: protected # generic block
+                parameters:
+                    block:
+                        type: '@Block PFFunctionCallback<NSObject>'
+            '+callFunctionInBackground.*':
+                trim_after_first_colon: true
+    PFConfig: # DONE
+        methods:
+            '-objectForKey:':
+                name: get
+            '-objectForKeyedSubscript:':
+                exclude: true
+            '+currentConfig':
+                property: true
+            '+getConfig':
+                exclude: true
+            '+getConfig:':
+                name: get
+                throws: NSErrorException
+            '+getConfigInBackground':
+                name: getInBackground
+                return_type: BFTask<PFConfig>
+            '+getConfigInBackgroundWithBlock:':
+                name: getInBackground
+    PFFile: # DONE
+        methods:
+            '-save':
+                exclude: true
+            '-save:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+            '-saveInBackground':
+                return_type: BFTask<Void>
+            '-saveInBackgroundWithProgressBlock:':
+                name: saveInBackground
+                return_type: BFTask<Void>
+            '-saveInBackground.*':
+                name: saveInBackground
+            '-getData':
+                exclude: true
+            '-getDataStream':
+                exclude: true
+            '-getData:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+            '-getDataStream:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+            '-getDataInBackground':
+                return_type: BFTask<NSData>
+            '-getDataInBackgroundWithProgressBlock:':
+                name: getDataInBackground
+                return_type: BFTask<NSData>
+            '-getDataStreamInBackground':
+                return_type: BFTask<NSInputStream>
+            '-getDataStreamInBackgroundWithProgressBlock:':
+                name: getDataStreamInBackground
+                return_type: BFTask<NSInputStream>
+            '-getDataInBackground.*':
+                name: getDataInBackground
+            '-getDataStreamInBackground.*':
+                name: getDataStreamInBackground
+            '+fileWith.*':
+                name: create
+                visibility: protected
+                return_type: '@Pointer long'
+    PFGeoPoint: # DONE
+        methods:
+            '-distanceIn.*':
+                trim_after_first_colon: true
+            '+geoPoint':
+                exclude: true
+            '+geoPointForCurrentLocationInBackground:':
+                name: getCurrentLocationInBackground
+            '+geoPointWith.*':
+                name: create
+                return_type: '@Pointer long'
+                visibility: protected
+    PFInstallation: # DONE
+        properties:
+            'channels':
+                type: List<String>
+                marshaler: NSArray.AsStringListMarshaler
+        methods:
+            '-setDeviceTokenFromData:':
+                name: setDeviceToken
+            '+currentInstallation':
+                property: true
+            '+query':
+                property: true
+                return_type: PFQuery<PFInstallation>
+    PFNetworkActivityIndicatorManager: # DONE
+        methods:
+            '+sharedManager':
+                property: true
+    PFObject: # DONE
+        methods:
+            '-initWithClassName:':
+                name: init
+            '-allKeys':
+                name: keys
+                return_type: List<String>
+                return_marshaler: NSArray.AsStringListMarshaler
+            '-objectForKey:':
+                name: get
+            '-setObject:forKey:':
+                name: put0
+                visibility: private
+            '-removeObjectForKey:':
+                name: remove
+            '-objectForKeyedSubscript:':
+                exclude: true
+            '-setObject:forKeyedSubscript:':
+                exclude: true
+            '-relationForKey:':
+                name: getRelation
+                return_type: '<T extends PFObject> PFRelation<T>'
+            '-addObject:forKey:':
+                name: add0
+                visibility: private
+            '-addObjectsFromArray:forKey:':
+                name: addAll0
+                visibility: private
+            '-addUniqueObject:forKey:':
+                name: addUnique0
+                visibility: private
+            '-addUniqueObjectsFromArray:forKey:':
+                name: addAllUnique0
+                visibility: private
+            '-removeObject:forKey:':
+                name: remove0
+                visibility: private
+            '-removeObjectsInArray:forKey:':
+                name: removeAll0
+                visibility: private
+            '-incrementKey:.*':
+                name: increment
+            '-save':
+                exclude: true
+            '-save:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+            '-saveInBackground':
+                return_type: BFTask<Void>
+            '-saveInBackgroundWith.*':
+                name: saveInBackground
+            '-saveEventually':
+                return_type: BFTask<Void>
+            '-saveEventually:':
+                trim_after_first_colon: true
+            '-fetch':
+                exclude: true 
+            '-fetch:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+            '-fetchIfNeeded':
+                exclude: true
+            '-fetchIfNeeded:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+                return_type: '<T extends PFObject> T'
+            '-fetchInBackground':
+                return_type: '<T extends PFObject> BFTask<T>'
+            '-fetchInBackgroundWithBlock:':
+                name: fetchInBackground0
+                visibility: protected # generic block
+                parameters:
+                    block:
+                        type: '@Block PFGetCallback<PFObject>'
+            '-fetchInBackground.*':
+                name: fetchInBackground
+            '-fetchIfNeededInBackground':
+                return_type: '<T extends PFObject> BFTask<T>'
+            '-fetchIfNeededInBackgroundWithBlock:':
+                name: fetchIfNeededInBackground0
+                visibility: protected # generic block
+                parameters:
+                    block:
+                        type: '@Block PFGetCallback<PFObject>'
+            '-fetchIfNeededInBackground.*':
+                name: fetchIfNeededInBackground
+            '-fetchFromLocalDatastore':
+                exclude: true
+            '-fetchFromLocalDatastore:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+            '-fetchFromLocalDatastoreInBackground':
+                return_type: '<T extends PFObject> BFTask<T>'
+            '-fetchFromLocalDatastoreInBackgroundWithBlock:':
+                name: fetchFromLocalDatastoreInBackground0
+                visibility: protected # generic block
+                parameters:
+                    block:
+                        type: '@Block PFGetCallback<PFObject>'
+            '-delete':
+                exclude: true
+            '-delete:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+            '-deleteInBackground':
+                return_type: BFTask<Void>
+            '-deleteInBackgroundWithBlock:':
+                name: deleteInBackground
+                parameters:
+                    block:
+                        type: '@Block PFDeleteCallback'
+            '-deleteInBackground.*':
+                name: deleteInBackground
+            '-deleteEventually':
+                return_type: BFTask<Void>
+            '-isDirtyForKey:':
+                name: isDirty
+            '-pin':
+                exclude: true
+            '-pin:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+            '-pinWithName:':
+                exclude: true
+            '-pinWithName:error:':
+                name: pin
+                throws: NSErrorException
+            '-pinInBackground':
+                return_type: BFTask<Void>
+            '-pinInBackgroundWithName:':
+                name: pinInBackground
+                return_type: BFTask<Void>
+            '-pinInBackground.*':
+                name: pinInBackground
+            '-unpin':
+                exclude: true
+            '-unpin:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+            '-unpinWithName:':
+                exclude: true
+            '-unpinWithName:error:':
+                name: unpin
+                throws: NSErrorException
+            '-unpinInBackground':
+                return_type: BFTask<Void>
+            '-unpinInBackgroundWithName:':
+                name: unpinInBackground
+                return_type: BFTask<Void>
+            '-unpinInBackground.*':
+                name: unpinInBackground
+            '+objectWithClassName:':
+                name: create
+            '+objectWithoutDataWithClassName:objectId:':
+                name: createWithoutData
+            '+objectWithClassName:dictionary:':
+                name: create
+            '+saveAll:':
+                exclude: true
+            '+saveAll:error:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+                return_type: '<T extends PFObject> boolean'
+                parameters:
+                    objects:
+                        type: NSArray<T>
+            '+saveAllInBackground:':
+                trim_after_first_colon: true
+                return_type: '<T extends PFObject> BFTask<Void>'
+                parameters:
+                    objects:
+                        type: NSArray<T>
+            '+saveAllInBackground.*':
+                trim_after_first_colon: true
+                return_type: '<T extends PFObject> void'
+                parameters:
+                    objects:
+                        type: NSArray<T>
+            '+deleteAll:':
+                exclude: true
+            '+deleteAll:error:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+                return_type: '<T extends PFObject> boolean'
+                parameters:
+                    objects:
+                        type: NSArray<T>
+            '+deleteAllInBackground:':
+                trim_after_first_colon: true
+                return_type: '<T extends PFObject> BFTask<Void>'
+                parameters:
+                    objects:
+                        type: NSArray<T>
+            '+deleteAllInBackground:block:':
+                trim_after_first_colon: true
+                return_type: '<T extends PFObject> void'
+                parameters:
+                    block:
+                        type: '@Block PFDeleteCallback'
+            '+deleteAllInBackground.*':
+                trim_after_first_colon: true
+                return_type: '<T extends PFObject> void'
+                parameters:
+                    objects:
+                        type: NSArray<T>
+            '+fetchAll:':
+                exclude: true
+            '+fetchAll:error:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+                return_type: '<T extends PFObject> void'
+                parameters:
+                    objects:
+                        type: NSArray<T>
+            '+fetchAllIfNeeded:':
+                exclude: true
+            '+fetchAllIfNeeded:error:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+                return_type: '<T extends PFObject> void'
+                parameters:
+                    objects:
+                        type: NSArray<T>
+            '+fetchAllInBackground:':
+                trim_after_first_colon: true
+                return_type: '<T extends PFObject> BFTask<NSArray<T>>'
+                parameters:
+                    objects:
+                        type: NSArray<T>
+            '+fetchAllInBackground:block:':
+                name: fetchAllInBackground0
+                return_type: '<T extends PFObject> void'
+                visibility: protected # generic block
+                parameters:
+                    objects:
+                        type: NSArray<T>
+                    block:
+                        type: '@Block PFFindCallback<PFObject>'
+            '+fetchAllInBackground.*':
+                trim_after_first_colon: true
+                return_type: '<T extends PFObject> void'
+                parameters:
+                    objects:
+                        type: NSArray<T>
+            '+fetchAllIfNeededInBackground:':
+                trim_after_first_colon: true
+                return_type: '<T extends PFObject> BFTask<NSArray<T>>'
+                parameters:
+                    objects:
+                        type: NSArray<T> 
+            '+fetchAllIfNeededInBackground:block:':
+                name: fetchAllIfNeededInBackground0
+                return_type: '<T extends PFObject> void'
+                visibility: protected # generic block
+                parameters:
+                    objects:
+                        type: NSArray<T>
+                    block:
+                        type: '@Block PFFindCallback<PFObject>'
+            '+fetchAllIfNeededInBackground.*':
+                trim_after_first_colon: true
+                return_type: '<T extends PFObject> void'
+                parameters:
+                    objects:
+                        type: NSArray<T>
+            '+pinAll:':
+                exclude: true
+            '+pinAll:error:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+                return_type: '<T extends PFObject> boolean'
+                parameters:
+                    objects:
+                        type: NSArray<T>
+            '+pinAll:withName:':
+                exclude: true
+            '+pinAll:withName:error:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+                return_type: '<T extends PFObject> boolean'
+                parameters:
+                    objects:
+                        type: NSArray<T>
+            '+pinAllInBackground:':
+                trim_after_first_colon: true
+                return_type: '<T extends PFObject> BFTask<Void>'
+                parameters:
+                    objects:
+                        type: NSArray<T>
+            '+inAllInBackground:withName:':
+                trim_after_first_colon: true
+                return_type: '<T extends PFObject> BFTask<Void>'
+                parameters:
+                    objects:
+                        type: NSArray<T>
+            '+pinAllInBackground.*':
+                trim_after_first_colon: true
+                return_type: '<T extends PFObject> void'
+                parameters:
+                    objects:
+                        type: NSArray<T>
+            '+unpinAllObjects':
+                exclude: true
+            '+unpinAllObjects:':
+                name: unpinAll
+                throws: NSErrorException
+            '+unpinAllObjectsWithName:':
+                exclude: true
+            '+unpinAllObjectsWithName:error:':
+                name: unpinAll
+                throws: NSErrorException
+            '+unpinAllObjectsInBackground':
+                name: unpinAllInBackground
+                return_type: BFTask<Void>
+            '+unpinAllObjectsInBackgroundWithName:':
+                name: unpinAllInBackground
+                return_type: BFTask<Void>
+            '+unpinAllObjectsInBackground.*':
+                name: unpinAllInBackground
+            '+unpinAll:':
+                exclude: true
+            '+unpinAll:error:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+                return_type: '<T extends PFObject> boolean'
+                parameters:
+                    objects:
+                        type: NSArray<T>
+            '+unpinAll:withName:':
+                exclude: true
+            '+unpinAll:withName:error:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+                return_type: '<T extends PFObject> boolean'
+                parameters:
+                    objects:
+                        type: NSArray<T>
+            '+unpinAllInBackground:':
+                trim_after_first_colon: true
+                return_type: '<T extends PFObject> BFTask<Void>'
+                parameters:
+                    objects:
+                        type: NSArray<T>
+            '+unpinAllInBackground:withName:':
+                trim_after_first_colon: true
+                return_type: '<T extends PFObject> BFTask<Void>'
+                parameters:
+                    objects:
+                        type: NSArray<T>
+            '+unpinAllInBackground.*':
+                trim_after_first_colon: true
+                return_type: '<T extends PFObject> void'
+                parameters:
+                    objects:
+                        type: NSArray<T>
+            '+object':
+                exclude: true
+            '+objectWithoutDataWithObjectId:':
+                exclude: true
+            '+registerSubclass':
+                exclude: true
+            '+query':
+                exclude: true
+            '+queryWithPredicate:':
+                exclude: true
+    PFProduct: {} # DONE
+    PFPurchase: # DONE
+        methods:
+            '+addObserverForProduct:block:':
+                name: addProductObserver
+            '+buyProduct:block:':
+                trim_after_first_colon: true
+                parameters:
+                    block:
+                        type: '@Block PFProductPurchaseCallback'
+            '+downloadAssetForTransaction:completion.*':
+                name: downloadAsset
+                parameters:
+                    completion:
+                        type: '@Block PFAssetDownloadCallback'
+            '+assetContentPathForProduct:':
+                name: getAssetContentPath
+    PFPush: # DONE
+        methods:
+            '-setChannels:':
+                parameters:
+                    channels:
+                        type: List<String>
+                        marshaler: NSArray.AsStringListMarshaler
+            '-setQuery:':
+                parameters:
+                    query:
+                        type: PFQuery<PFInstallation>
+            '-expireAtDate:':
+                name: setExpirationTime
+            '-expireAfterTimeInterval:':
+                name: setExpirationTimeInterval
+            '-sendPush:':
+                name: send
+                throws: NSErrorException
+            '-sendPushInBackground':
+                name: sendInBackground
+                return_type: BFTask<Void>
+            '-sendPushInBackgroundWithBlock:':
+                name: sendInBackground
+                parameters:
+                    block:
+                        type: '@Block PFSendCallback'
+            '-sendPushInBackgroundWithTarget:selector:':
+                name: sendInBackground
+            '+push':
+                exclude: true
+            '+sendPushMessageToChannel:withMessage:error:':
+                name: sendMessage
+                throws: NSErrorException
+            '+sendPushMessageToChannelInBackground:withMessage:':
+                name: sendMessageInBackground
+                return_type: BFTask<Void>
+            '+sendPushMessageToChannelInBackground:.*':
+                name: sendMessageInBackground
+                parameters:
+                    block:
+                        type: '@Block PFSendCallback'
+            '+sendPushMessageToQuery:withMessage:error:':
+                name: sendMessage
+                throws: NSErrorException
+                parameters:
+                    query:
+                        type: PFQuery<PFInstallation>
+            '+sendPushMessageToQueryInBackground:withMessage:':
+                name: sendMessageInBackground
+                return_type: BFTask<Void>
+            '+sendPushMessageToQueryInBackground.*':
+                name: sendMessageInBackground
+                parameters:
+                    query:
+                        type: PFQuery<PFInstallation>
+                    block:
+                        type: '@Block PFSendCallback'
+            '+sendPushDataToChannel:withData:error:':
+                name: sendData
+                throws: NSErrorException
+            '+sendPushDataToChannelInBackground:withData:':
+                name: sendDataInBackground
+                return_type: BFTask<Void>
+            '+sendPushDataToChannelInBackground.*':
+                name: sendDataInBackground
+                parameters:
+                    block:
+                        type: '@Block PFSendCallback'
+            '+sendPushDataToQuery:withData:error:':
+                name: sendData
+                throws: NSErrorException
+                parameters:
+                    query:
+                        type: PFQuery<PFInstallation>
+            '+sendPushDataToQueryInBackground:withData:':
+                name: sendDataInBackground
+                return_type: BFTask<Void>
+            '+sendPushDataToQueryInBackground.*':
+                name: sendDataInBackground
+                parameters:
+                    query:
+                        type: PFQuery<PFInstallation>
+                    block:
+                        type: '@Block PFSendCallback'
+            '+handlePush:':
+                name: handle
+                parameters:
+                    userInfo:
+                        type: UIRemoteNotification
+            '+storeDeviceToken:':
+                trim_after_first_colon: true
+            '+getSubscribedChannels:':
+                trim_after_first_colon: true
+                return_type: Set<String>
+                return_marshaler: NSSet.AsStringSetMarshaler
+                throws: NSErrorException
+            '+getSubscribedChannelsInBackgroundWithBlock:':
+                name: getSubscribedChannelsInBackground0
+                visibility: protected
+            '+getSubscribedChannelsInBackground':
+                return_type: BFTask<NSSet<NSString>>
+            '+getSubscribedChannelsInBackground.*':
+                name: getSubscribedChannelsInBackground
+            '+subscribeToChannel:error:':
+                name: subscribe
+                throws: NSErrorException
+            '+subscribeToChannelInBackground:':
+                name: subscribeInBackground
+                return_type: BFTask<Void>
+            '+subscribeToChannelInBackground:.*':
+                name: subscribeInBackground
+            '+unsubscribeFromChannel:error:':
+                name: unsubscribe
+                throws: NSErrorException
+            '+unsubscribeFromChannelInBackground:':
+                name: unsubscribeInBackground
+                return_type: BFTask<Void>
+            '+unsubscribeFromChannelInBackground:.*':
+                name: unsubscribeInBackground
+    PFQuery: # DONE
+        methods:
+            '-initWithClassName:':
+                name: init
+            '-includeKey:':
+                name: include
+                return_type: PFQuery<T>
+            '-selectKeys:':
+                name: selectKeys
+                return_type: PFQuery<T>
+                parameters:
+                    keys:
+                        type: List<String>
+                        marshaler: NSArray.AsStringListMarshaler
+            '-whereKeyExists:':
+                name: whereExists
+                return_type: PFQuery<T>
+            '-whereKeyDoesNotExist:':
+                name: whereDoesNotExist
+                return_type: PFQuery<T>
+            '-whereKey:equalTo:':
+                name: whereEqualTo
+                return_type: PFQuery<T>
+            '-whereKey:lessThan:':
+                name: whereLessThan
+                return_type: PFQuery<T>
+            '-whereKey:lessThanOrEqualTo:':
+                name: whereLessThanOrEqualTo
+                return_type: PFQuery<T>
+            '-whereKey:greaterThan:':
+                name: whereGreaterThan
+                return_type: PFQuery<T>
+            '-whereKey:greaterThanOrEqualTo:':
+                name: whereGreaterThanOrEqualTo
+                return_type: PFQuery<T>
+            '-whereKey:notEqualTo:':
+                name: whereNotEqualTo
+                return_type: PFQuery<T>
+            '-whereKey:containedIn:':
+                name: whereContainedIn
+                return_type: PFQuery<T>
+            '-whereKey:notContainedIn:':
+                name: whereNotContainedIn
+                return_type: PFQuery<T>
+            '-whereKey:containsAllObjectsInArray:':
+                name: whereContainsAll
+                return_type: PFQuery<T>
+            '-whereKey:nearGeoPoint:':
+                name: whereNear
+                return_type: PFQuery<T>
+            '-whereKey:nearGeoPoint:withinMiles:':
+                name: whereWithinMiles
+                return_type: PFQuery<T>
+            '-whereKey:nearGeoPoint:withinKilometers:':
+                name: whereWithinKilometers
+                return_type: PFQuery<T>
+            '-whereKey:nearGeoPoint:withinRadians:':
+                name: whereWithinRadians
+                return_type: PFQuery<T>
+            '-whereKey:withinGeoBoxFromSouthwest:toNortheast:':
+                name: whereWithinGeoBox
+                return_type: PFQuery<T>
+            '-whereKey:matchesRegex.*':
+                name: whereMatches
+                return_type: PFQuery<T>
+            '-whereKey:containsString:':
+                name: whereContains
+                return_type: PFQuery<T>
+            '-whereKey:hasPrefix:':
+                name: whereStartsWith
+                return_type: PFQuery<T>
+            '-whereKey:hasSuffix:':
+                name: whereEndsWith
+                return_type: PFQuery<T>
+            '-whereKey:matchesKey:inQuery:':
+                name: whereMatchesKeyInQuery
+                return_type: PFQuery<T>
+                parameters:
+                    query:
+                        type: PFQuery<T>
+            '-whereKey:doesNotMatchKey:inQuery:':
+                name: whereDoesNotMatchKeyInQuery
+                return_type: PFQuery<T>
+                parameters:
+                    query:
+                        type: PFQuery<T>
+            '-whereKey:matchesQuery:':
+                name: whereMatchesQuery
+                return_type: PFQuery<T>
+                parameters:
+                    query:
+                        type: PFQuery<T>
+            '-whereKey:doesNotMatchQuery:':
+                name: whereDoesNotMatchQuery
+                return_type: PFQuery<T>
+                parameters:
+                    query:
+                        type: PFQuery<T>
+            '-(orderByAscending|addAscendingOrder|orderByDescending|addDescendingOrder):':
+                trim_after_first_colon: true
+                return_type: PFQuery<T>
+            '-orderBySortDescriptor:':
+                trim_after_first_colon: true
+                return_type: PFQuery<T>
+            '-orderBySortDescriptors:':
+                trim_after_first_colon: true
+                return_type: PFQuery<T>
+                parameters:
+                    sortDescriptors:
+                        type: NSArray<NSSortDescriptor>
+            '-getObjectWithId:':
+                exclude: true
+            '-getObjectWithId:error:':
+                name: get
+                return_type: T
+                throws: NSErrorException
+            '-getObjectInBackgroundWithId:':
+                name: getInBackground
+                return_type: BFTask<T>
+            '-getObjectInBackgroundWithId:block:':
+                name: getInBackground0
+                visibility: protected # generic block
+                parameters:
+                    block:
+                        type: '@Block PFGetCallback<PFObject>'
+            '-getObjectInBackgroundWithId.*':
+                name: getInBackground
+            '-findObjects':
+                exclude: true
+            '-findObjects:':
+                name: find
+                return_type: NSArray<T>
+                throws: NSErrorException
+            '-findObjectsInBackground':
+                name: findInBackground
+                return_type: BFTask<NSArray<T>>
+            '-findObjectsInBackgroundWithBlock:':
+                name: findInBackground0
+                visibility: protected # generic block
+                parameters:
+                    block:
+                        type: '@Block PFFindCallback<PFObject>'
+            '-findObjectsInBackground.*':
+                name: findInBackground
+            '-getFirstObject':
+                exclude: true
+            '-getFirstObject:':
+                name: getFirst
+                return_type: T
+                throws: NSErrorException
+            '-getFirstObjectInBackground':
+                name: getFirstInBackground
+                return_type: BFTask<T>
+            '-getFirstObjectInBackgroundWithBlock:':
+                name: getFirstInBackground0
+                visibility: protected # generic block
+                parameters:
+                    block:
+                        type: '@Block PFGetCallback<PFObject>'
+            '-getFirstObjectInBackgroundWith.*':
+                name: getFirstInBackground
+            '-countObjects':
+                exclude: true
+            '-countObjects:':
+                name: count
+                throws: NSErrorException
+            '-countObjectsInBackground':
+                name: countInBackground
+                return_type: BFTask<NSNumber>
+            '-countObjectsInBackground.*':
+                name: countInBackground
+            '-fromPinWithName:':
+                name: fromPin
+                return_type: PFQuery<T>
+            '-from.*':
+                return_type: PFQuery<T>
+            '-ignoreACLs':
+                return_type: PFQuery<T>
+            '+queryWithClassName.*':
+                name: getQuery
+                return_type: '<T extends PFObject> PFQuery<T>'
+            '+orQueryWithSubqueries:':
+                name: or
+                return_type: '<T extends PFObject> PFQuery<T>'
+                parameters:
+                    queries:
+                        type: NSArray<PFQuery<T>>
+            '+getObjectOfClass:objectId:':
+                exclude: true
+            '+getObjectOfClass:objectId:error:':
+                name: get
+                return_type: '<T extends PFObject> T'
+                throws: NSErrorException
+            '+getUserObjectWithId:':
+                exclude: true
+            '+getUserObjectWithId:error:':
+                name: getUser
+                throws: NSErrorException
+    PFRelation: # DONE
+        methods:
+            '-query':
+                property: true
+                return_type: PFQuery<T>
+            '-addObject:':
+                name: add
+                parameters:
+                    object:
+                        type: T
+            '-removeObject:':
+                name: remove
+                parameters:
+                    object:
+                        type: T
+    PFRole: # DONE
+        properties:
+            'users':
+                type: PFRelation<PFUser>
+            'roles':
+                type: PFRelation<PFRole>
+        methods:
+            '-init.*':
+                name: init
+            '+roleWithName.*':
+                exclude: true
+    PFSession: # DONE
+        methods:
+            '+getCurrentSessionInBackground':
+                return_type: BFTask<PFSession>
+            '+getCurrentSessionInBackgroundWithBlock:':
+                name: getCurrentSessionInBackground
+    PFTwitterUtils: # DONE
+        methods:
+            '+twitter':
+                property: true
+            '+initializeWithConsumerKey:consumerSecret:':
+                name: initialize
+            '+logInInBackground':
+                return_type: BFTask<PFUser>
+            '+isLinkedWithUser:':
+                name: isLinked
+            '+logInWithTwitterIdInBackground:screenName:authToken:authTokenSecret:':
+                name: logIn
+                return_type: BFTask<PFUser>
+            '+logInWith.*':
+                name: logIn
+            '+linkUserInBackground:':
+                name: linkInBackground
+                return_type: BFTask<Void>
+            '+linkUserInBackground:twitterId:screenName:authToken:authTokenSecret:':
+                name: linkInBackground
+                return_type: BFTask<Void>
+            '+linkUserInBackground.*':
+                name: linkInBackground
+            '+linkUser:':
+                exclude: true # deprecated
+            '+linkUser.+':
+                name: link
+            '+unlinkUser:':
+                exclude: true
+            '+unlinkUser:error:':
+                name: unlink
+                throws: NSErrorException
+            '+unlinkUserInBackground:':
+                name: unlinkInBackground
+                return_type: BFTask<Void>
+            '+unlinkUserInBackground.*':
+                name: unlinkInBackground
+    PFUser: # DONE
+        methods:
+            '-signUp':
+                exclude: true
+            '-signUp:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+            '-signUpInBackground':
+                return_type: BFTask<Void>
+            '-signUpInBackgroundWithBlock:':
+                name: signUpInBackground
+                parameters:
+                    block:
+                        type: '@Block PFSignUpCallback'
+            '-signUpInBackgroundWith.*':
+                name: signUpInBackground
+            '+currentUser':
+                property: true
+            '+user':
+                exclude: true
+            '+logInWithUsername:password:':
+                exclude: true
+            '+logInWithUsername:password:error:':
+                name: logIn
+                throws: NSErrorException
+            '+logInWithUsernameInBackground:password:':
+                name: logInInBackground
+                return_type: BFTask<PFUser>
+            '+logInWithUsernameInBackground.*':
+                name: logInInBackground
+            '+become:':
+                exclude: true
+            '+become:error:':
+                trim_after_first_colon: true
+                throws: NSErrorException
+            '+becomeInBackground:':
+                trim_after_first_colon: true
+                return_type: BFTask<PFUser>
+            '+becomeInBackground.*':
+                trim_after_first_colon: true
+            '+enableRevocableSessionInBackground':
+                return_type: BFTask<Void>
+            '+enableRevocableSessionInBackgroundWithBlock:':
+                name: enableRevocableSessionInBackground
+            '+logOutInBackground':
+                return_type: BFTask<Void>
+            '+logOutInBackgroundWithBlock:':
+                name: logOutInBackground
+            '+requestPasswordResetForEmail:':
+                exclude: true
+            '+requestPasswordResetForEmail:error:':
+                name: requestPasswordReset
+                throws: NSErrorException
+            '+requestPasswordResetForEmailInBackground:':
+                name: requestPasswordResetInBackground
+                return_type: BFTask<Void>
+            '+requestPasswordResetForEmailInBackground:block:':
+                name: requestPasswordResetInBackground
+                parameters:
+                    block:
+                        type: '@Block PFRequestPasswordResetCallback'
+            '+requestPasswordResetForEmailInBackground.*':
+                name: requestPasswordResetInBackground
+  
+protocols:
+    # PFSubclassing  # ignore
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?PF.*):
+        class: ParseGlobals
+        name: 'Function__#{g[0]}'
+
+values:
+    PFParseErrorDomain:
+        class: PFError
+        name: getClassDomain
+
+    PFObject(DefaultPin):
+        class: PFObject
+        name: 'get#{g[0]}'
+
+    kPFDeviceType:
+        exclude: true
+    kPFParseServer:
+        exclude: true
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?PF.*):
+        class: ParseGlobals
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?PF.*):
+        class: ParseGlobals
+        name: 'Constant__#{g[0]}'
