@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.robovm</groupId>
-        <artifactId>robopods-facebook-parent</artifactId>
+        <artifactId>robopods-bolts-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>robopods-facebook-ios</artifactId>
-    <name>RoboPods Facebook iOS</name>
+    <artifactId>robopods-bolts-ios</artifactId>
+    <name>RoboPods Bolts iOS</name>
     <packaging>jar</packaging>
 
     <licenses>
@@ -38,11 +38,6 @@
             <groupId>org.robovm</groupId>
             <artifactId>robovm-cocoatouch</artifactId>
             <version>${robovm.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.robovm</groupId>
-            <artifactId>robopods-bolts-ios</artifactId>
-            <version>${robopods.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

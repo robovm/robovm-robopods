@@ -7,13 +7,14 @@
  *  of patent rights can be found in the PATENTS file in the same directory.
  *
  */
+ 
+#import <Foundation/Foundation.h>
 
 #import "BoltsVersion.h"
 #import "BFExecutor.h"
 #import "BFTask.h"
 #import "BFTaskCompletionSource.h"
 
-#if TARGET_OS_IPHONE
 #import "BFAppLinkResolving.h"
 #import "BFWebViewAppLinkResolver.h"
 #import "BFAppLinkNavigation.h"
@@ -23,7 +24,6 @@
 #import "BFMeasurementEvent.h"
 #import "BFAppLinkReturnToRefererController.h"
 #import "BFAppLinkReturnToRefererView.h"
-#endif
 
 /*! @abstract 80175001: There were multiple errors. */
 extern NSInteger const kBFMultipleErrorsError;

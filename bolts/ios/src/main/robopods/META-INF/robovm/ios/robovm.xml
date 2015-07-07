@@ -1,0 +1,8 @@
+<config>    
+    <frameworks>
+        <framework>Bolts</framework>
+    </frameworks>
+    <frameworkPaths>
+        <path>libs</path>
+    </frameworkPaths>
+</config>

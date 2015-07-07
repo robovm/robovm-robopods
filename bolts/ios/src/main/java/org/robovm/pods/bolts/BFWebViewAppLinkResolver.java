@@ -35,22 +35,26 @@ import org.robovm.apple.dispatch.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ interface /*<name>*/BFAppLinkResolving/*</name>*/ 
-    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/BFWebViewAppLinkResolver/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*/implements BFAppLinkResolving/*</implements>*/ {
 
-    /*<ptr>*/
-    /*</ptr>*/
-    /*<bind>*/
-    /*</bind>*/
+    /*<ptr>*/public static class BFWebViewAppLinkResolverPtr extends Ptr<BFWebViewAppLinkResolver, BFWebViewAppLinkResolverPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(BFWebViewAppLinkResolver.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
+    /*<constructors>*/
+    public BFWebViewAppLinkResolver() {}
+    protected BFWebViewAppLinkResolver(SkipInit skipInit) { super(skipInit); }
+    /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
+    /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "sharedInstance")
+    public static native BFWebViewAppLinkResolver getSharedInstance();
     @Method(selector = "appLinkFromURLInBackground:")
-    BFTask getAppLinkFromURLInBackground(NSURL url);
+    public native BFTask<BFAppLink> getAppLinkFromURLInBackground(NSURL url);
     /*</methods>*/
-    /*<adapter>*/
-    /*</adapter>*/
 }

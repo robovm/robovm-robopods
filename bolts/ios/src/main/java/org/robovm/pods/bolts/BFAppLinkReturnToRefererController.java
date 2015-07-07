@@ -38,7 +38,7 @@ import org.robovm.apple.dispatch.*;
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/BFAppLinkReturnToRefererController/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements BFAppLinkReturnToRefererViewDelegate/*</implements>*/ {
+    /*<implements>*//*</implements>*/ {
 
     /*<ptr>*/public static class BFAppLinkReturnToRefererControllerPtr extends Ptr<BFAppLinkReturnToRefererController, BFAppLinkReturnToRefererControllerPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(BFAppLinkReturnToRefererController.class); }/*</bind>*/
@@ -54,9 +54,9 @@ import org.robovm.apple.dispatch.*;
     @Property(selector = "setDelegate:", strongRef = true)
     public native void setDelegate(BFAppLinkReturnToRefererControllerDelegate v);
     @Property(selector = "view")
-    public native BFAppLinkReturnToRefererView getView();
+    public native IntPtr getView();
     @Property(selector = "setView:")
-    public native void setView(BFAppLinkReturnToRefererView v);
+    public native void setView(IntPtr v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -70,9 +70,5 @@ import org.robovm.apple.dispatch.*;
     public native void showView(NSURL url);
     @Method(selector = "closeViewAnimated:")
     public native void closeView(boolean animated);
-    @Method(selector = "returnToRefererViewDidTapInsideCloseButton:")
-    public native void didTapInsideCloseButton(BFAppLinkReturnToRefererView view);
-    @Method(selector = "returnToRefererViewDidTapInsideLink:link:")
-    public native void didTapInsideLink(BFAppLinkReturnToRefererView view, BFAppLink link);
     /*</methods>*/
 }

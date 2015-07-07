@@ -4,7 +4,7 @@ include:
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
-    - bolts.yaml
+    - ../../../../../bolts/ios/src/main/bro-gen/bolts.yaml
 clang_args: ['-x', 'objective-c']
 header_root: '/../robopods/META-INF/robovm/ios/libs/'
 headers:
@@ -89,6 +89,7 @@ classes:
         methods:
             '-appLinksFromURLsInBackground:':
                 name: getAppLinksFromURLsInBackground
+                return_type: BFTask<NSArray<BFAppLink>>
                 parameters:
                     urls:
                         type: NSArray<NSURL>

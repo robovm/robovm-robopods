@@ -54,10 +54,10 @@ import org.robovm.pods.bolts.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "appLinksFromURLsInBackground:")
-    public native BFTask getAppLinksFromURLsInBackground(NSArray<NSURL> urls);
+    public native BFTask<NSArray<BFAppLink>> getAppLinksFromURLsInBackground(NSArray<NSURL> urls);
     @Method(selector = "resolver")
     public static native FBSDKAppLinkResolver create();
     @Method(selector = "appLinkFromURLInBackground:")
-    public native BFTask getAppLinkFromURLInBackground(NSURL url);
+    public native BFTask<BFAppLink> getAppLinkFromURLInBackground(NSURL url);
     /*</methods>*/
 }

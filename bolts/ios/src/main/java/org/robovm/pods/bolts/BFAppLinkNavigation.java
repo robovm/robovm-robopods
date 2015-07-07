@@ -53,7 +53,7 @@ import org.robovm.apple.dispatch.*;
     @Property(selector = "appLinkData")
     public native NSDictionary<NSString, NSObject> getAppLinkData();
     @Property(selector = "appLink")
-    public native BFAppLink getAppLink();
+    public native IntPtr getAppLink();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -66,19 +66,19 @@ import org.robovm.apple.dispatch.*;
     @Method(selector = "navigate:")
     private native BFAppLinkNavigationType navigate(NSError.NSErrorPtr error);
     @Method(selector = "navigationWithAppLink:extras:appLinkData:")
-    public static native BFAppLinkNavigation create(BFAppLink appLink, NSDictionary<NSString, NSObject> extras, NSDictionary<NSString, NSObject> appLinkData);
+    public static native BFAppLinkNavigation create(NSObject appLink, NSDictionary<NSString, NSObject> extras, NSDictionary<NSString, NSObject> appLinkData);
     @Method(selector = "resolveAppLinkInBackground:")
     public static native BFTask resolveAppLinkInBackground(NSURL destination);
     @Method(selector = "resolveAppLinkInBackground:resolver:")
     public static native BFTask resolveAppLinkInBackground(NSURL destination, BFAppLinkResolving resolver);
-    public static BFAppLinkNavigationType navigateToAppLink(BFAppLink link) throws NSErrorException {
+    public static BFAppLinkNavigationType navigateToAppLink(NSObject link) throws NSErrorException {
        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
        BFAppLinkNavigationType result = navigateToAppLink(link, ptr);
        if (ptr.get() != null) { throw new NSErrorException(ptr.get()); }
        return result;
     }
     @Method(selector = "navigateToAppLink:error:")
-    private static native BFAppLinkNavigationType navigateToAppLink(BFAppLink link, NSError.NSErrorPtr error);
+    private static native BFAppLinkNavigationType navigateToAppLink(NSObject link, NSError.NSErrorPtr error);
     @Method(selector = "navigateToURLInBackground:")
     public static native BFTask navigateToURLInBackground(NSURL destination);
     @Method(selector = "navigateToURLInBackground:resolver:")
