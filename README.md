@@ -20,7 +20,7 @@ to your `build.gradle`:
 ```
 dependencies {
    ... other dependencies ...
-   compile "org.robovm:robopods-facebook-ios:1.0.0-SNAPSHOT"
+   compile "org.robovm:robopods-facebook-ios:1.5.0"
 }
 ```
 
@@ -32,18 +32,18 @@ to your `pom.xml`:
 <dependency>
    <groupId>org.robovm</groupId>
    <artifactId>robopods-facebook-ios</artifactId>
-   <version>1.0.0-SNAPSHOT</version>
+   <version>1.5.0</version>
 </dependency>
 ```
 
 ## List of available RoboPods for iOS
 
-|                  Name                 | Version | Dependency                                              |
-|---------------------------------------|:-------:|---------------------------------------------------------|
-| [Bolts](bolts/)                       | 1.1.5   | org.robovm:robopods-bolts-ios:1.0.0-SNAPSHOT            |
-| [Chartboost](chartboost/)             | 5.5.0   | org.robovm:robopods-chartboost-ios:1.0.0-SNAPSHOT       |
-| [Facebook](facebook/)                 | 4.3.0   | org.robovm:robopods-facebook-ios:1.0.0-SNAPSHOT         |
-| [Flurry](flurry/)                     | 6.6.0   | org.robovm:robopods-flurry-ios:1.0.0-SNAPSHOT           |
-| [Google Analytics](google-analytics/) | 3.12    | org.robovm:robopods-google-analytics-ios:1.0.0-SNAPSHOT |
-| [Google APIs](google-apis/)           |         | org.robovm:robopods-google-apis-ios:1.0.0-SNAPSHOT      |
-| [Parse](parse/)                       | 1.7.4   | org.robovm:robopods-parse-ios:1.0.0-SNAPSHOT            |
+|                  Name                 | Version | Dependency                                     |
+|---------------------------------------|:-------:|------------------------------------------------|
+| [Bolts](bolts/)                       | 1.1.5   | org.robovm:robopods-bolts-ios:1.5.0            |
+| [Chartboost](chartboost/)             | 5.5.0   | org.robovm:robopods-chartboost-ios:1.5.0       |
+| [Facebook](facebook/)                 | 4.3.0   | org.robovm:robopods-facebook-ios:1.5.0         |
+| [Flurry](flurry/)                     | 6.6.0   | org.robovm:robopods-flurry-ios:1.5.0           |
+| [Google Analytics](google-analytics/) | 3.12    | org.robovm:robopods-google-analytics-ios:1.5.0 |
+| [Google APIs](google-apis/)           |         | org.robovm:robopods-google-apis-ios:1.5.0      |
+| [Parse](parse/)                       | 1.7.4   | org.robovm:robopods-parse-ios:1.5.0            |
