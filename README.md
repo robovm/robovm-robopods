@@ -39,7 +39,7 @@ to your `pom.xml`:
 ## List of available RoboPods for iOS
 
 |                  Name                 | Version | Dependency                                              |
-|:-------------------------------------:|---------|---------------------------------------------------------|
+|---------------------------------------|:-------:|---------------------------------------------------------|
 | [Bolts](bolts/)                       | 1.1.5   | org.robovm:robopods-bolts-ios:1.0.0-SNAPSHOT            |
 | [Chartboost](chartboost/)             | 5.5.0   | org.robovm:robopods-chartboost-ios:1.0.0-SNAPSHOT       |
 | [Facebook](facebook/)                 | 4.3.0   | org.robovm:robopods-facebook-ios:1.0.0-SNAPSHOT         |
