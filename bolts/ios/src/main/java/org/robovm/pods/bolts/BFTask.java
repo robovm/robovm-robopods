@@ -67,36 +67,16 @@ import org.robovm.apple.dispatch.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     public <TContinuationResult> BFTask<TContinuationResult> continueWith(final BFContinuation<T, TContinuationResult> continuation) {
-        return continueWith(new Block1<BFTask, NSObject>() {
-            @Override
-            public NSObject invoke(BFTask task) {
-                return (NSObject) continuation.then(task);
-            }
-        });
+        return continueWith0((BFContinuation<NSObject, NSObject>) continuation);
     }
     public <TContinuationResult> BFTask<TContinuationResult> continueWith(BFExecutor executor, final BFContinuation<T, TContinuationResult> continuation) {
-        return continueWith(executor, new Block1<BFTask, NSObject>() {
-            @Override
-            public NSObject invoke(BFTask task) {
-                return (NSObject) continuation.then(task);
-            }
-        });
+        return continueWith0(executor, (BFContinuation<NSObject, NSObject>) continuation);
     }
     public <TContinuationResult> BFTask<TContinuationResult> continueOnSuccess(final BFContinuation<T, TContinuationResult> continuation) {
-        return continueOnSuccess(new Block1<BFTask, NSObject>() {
-            @Override
-            public NSObject invoke(BFTask task) {
-                return (NSObject) continuation.then(task);
-            }
-        });
+        return continueOnSuccess0((BFContinuation<NSObject, NSObject>) continuation);
     }
     public <TContinuationResult> BFTask<TContinuationResult> continueOnSuccess(BFExecutor executor, final BFContinuation<T, TContinuationResult> continuation) {
-        return continueOnSuccess(executor, new Block1<BFTask, NSObject>() {
-            @Override
-            public NSObject invoke(BFTask task) {
-                return (NSObject) continuation.then(task);
-            }
-        });
+        return continueOnSuccess0(executor, (BFContinuation<NSObject, NSObject>) continuation);
     }
     
     public static <T> BFTask<T> createForResult(T result) {
@@ -107,13 +87,13 @@ import org.robovm.apple.dispatch.*;
     }
     /*<methods>*/
     @Method(selector = "continueWithBlock:")
-    protected native <TContinuationResult> BFTask<TContinuationResult> continueWith(@Block Block1<BFTask, NSObject> block);
+    protected native <TContinuationResult> BFTask<TContinuationResult> continueWith0(@Block BFContinuation<NSObject, NSObject> block);
     @Method(selector = "continueWithExecutor:withBlock:")
-    protected native <TContinuationResult> BFTask<TContinuationResult> continueWith(BFExecutor executor, @Block Block1<BFTask, NSObject> block);
+    protected native <TContinuationResult> BFTask<TContinuationResult> continueWith0(BFExecutor executor, @Block BFContinuation<NSObject, NSObject> block);
     @Method(selector = "continueWithSuccessBlock:")
-    protected native <TContinuationResult> BFTask<TContinuationResult> continueOnSuccess(@Block Block1<BFTask, NSObject> block);
+    protected native <TContinuationResult> BFTask<TContinuationResult> continueOnSuccess0(@Block BFContinuation<NSObject, NSObject> block);
     @Method(selector = "continueWithExecutor:withSuccessBlock:")
-    protected native <TContinuationResult> BFTask<TContinuationResult> continueOnSuccess(BFExecutor executor, @Block Block1<BFTask, NSObject> block);
+    protected native <TContinuationResult> BFTask<TContinuationResult> continueOnSuccess0(BFExecutor executor, @Block BFContinuation<NSObject, NSObject> block);
     @Method(selector = "waitUntilFinished")
     public native void waitUntilFinished();
     @Method(selector = "taskWithResult:")

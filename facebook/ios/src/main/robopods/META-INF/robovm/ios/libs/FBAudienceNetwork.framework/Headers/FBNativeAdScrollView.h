@@ -18,17 +18,19 @@
 
 #import <UIKit/UIKit.h>
 
+#import "FBAdDefines.h"
 #import "FBNativeAdView.h"
 #import "FBNativeAdsManager.h"
 
 @protocol FBNativeAdView;
 
 /*!
- @typedef FBNativeAdScrollView
+ @class FBNativeAdScrollView
  @abstract Contains multiple ads in a scroll view.
  @discussion
  If adding this view to a XIB or Storyboard, you may recieve the error "Unknown class FBNativeAdScrollView in Interface Builder file" in some cases. This error is caused by the linker failing to include FBNativeAdScrollView in your build. To resolve this, call [FBNativeAdScrollView class] in your project, or add "-all_load -ObjC" to "Other Linker Flags" in your project settings.
  */
+FB_CLASS_EXPORT
 @interface FBNativeAdScrollView : UIView
 
 /*!
@@ -111,6 +113,6 @@
  @param childViewProvider Block that creates new views for each loaded native ad. Must not reuse the same instance, but return a new view for each call. Views may be arbitrarily resized and should support resizing their content through Auto Layout constraints, autoresizing masks, or manual resizing.
  @param maximumNativeAdCount Maximum native ads to show at once.
  */
-- (instancetype)initWithNativeAdsManager:(FBNativeAdsManager *)manager withViewProvider:(UIView *(^)(FBNativeAd *nativeAd, NSUInteger position))childViewProvider withMaximum:(NSUInteger)maximumNativeAdCount;
+- (instancetype)initWithNativeAdsManager:(FBNativeAdsManager *)manager withViewProvider:(UIView *(^)(FBNativeAd *nativeAd, NSUInteger position))childViewProvider withMaximum:(NSUInteger)maximumNativeAdCount NS_DESIGNATED_INITIALIZER;
 
 @end

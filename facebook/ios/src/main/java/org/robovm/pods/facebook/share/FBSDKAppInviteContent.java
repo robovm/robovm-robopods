@@ -48,14 +48,14 @@ import org.robovm.pods.facebook.core.*;
     protected FBSDKAppInviteContent(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
+    @Property(selector = "appInvitePreviewImageURL")
+    public native NSURL getAppInvitePreviewImageURL();
+    @Property(selector = "setAppInvitePreviewImageURL:")
+    public native void setAppInvitePreviewImageURL(NSURL v);
     @Property(selector = "appLinkURL")
     public native NSURL getAppLinkURL();
     @Property(selector = "setAppLinkURL:")
     public native void setAppLinkURL(NSURL v);
-    @Property(selector = "previewImageURL")
-    public native NSURL getPreviewImageURL();
-    @Property(selector = "setPreviewImageURL:")
-    public native void setPreviewImageURL(NSURL v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

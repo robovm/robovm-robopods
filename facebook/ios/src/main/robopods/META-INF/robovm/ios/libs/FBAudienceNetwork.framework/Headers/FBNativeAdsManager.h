@@ -16,8 +16,8 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+#import "FBAdDefines.h"
 #import "FBNativeAd.h"
-
 
 /*!
  @protocol FBNativeAdsManagerDelegate
@@ -49,6 +49,7 @@
 
  @abstract This class provides a mechanism to fetch a set of ads and then use them within your application. The recommended usage is to call nextNativeAd: at the moment when you are about to render an ad. The native ads manager supports giving out as many ads as needed by cloning over the set of ads it got back from the server which can be useful for feed scenarios.
  */
+FB_CLASS_EXPORT
 @interface FBNativeAdsManager : NSObject
 
 /*!
@@ -88,7 +89,7 @@
  @param numAdsRequested The number of ads you would like the native ads manager to retrieve.
  */
 - (instancetype)initWithPlacementID:(NSString *)placementID
-                 forNumAdsRequested:(NSUInteger)numAdsRequested;
+                 forNumAdsRequested:(NSUInteger)numAdsRequested NS_DESIGNATED_INITIALIZER;
 
 /*!
  @method
@@ -106,11 +107,11 @@
 
 
 /*!
- @method
+ @property
 
  @abstract Retrieve the next native ad to be used from the batch. It is highly recommended that the caller wait until immediately before rendering the ad content to call this method to ensure the best ad for the given context is used. If more than uniqueNativeAdCount ads are requested cloned ads will be returned. Periodically the native ads manager will refresh and new ads will be returned.
 
- @return A FBNativeAd which is loaded and ready to be used.
+  @return A FBNativeAd which is loaded and ready to be used.
  */
 - (FBNativeAd *)nextNativeAd;
 

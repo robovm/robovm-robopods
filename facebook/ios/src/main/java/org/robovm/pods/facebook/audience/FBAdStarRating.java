@@ -46,17 +46,17 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBAdStarRating() {}
-    public FBAdStarRating(float value, int scale) {
+    public FBAdStarRating(@MachineSizedFloat double value, @MachineSizedSInt long scale) {
         this.setValue(value);
         this.setScale(scale);
     }
     /*</constructors>*/
     /*<properties>*//*</properties>*/
     /*<members>*/
-    @StructMember(0) public native float getValue();
-    @StructMember(0) public native FBAdStarRating setValue(float value);
-    @StructMember(1) public native int getScale();
-    @StructMember(1) public native FBAdStarRating setScale(int scale);
+    @StructMember(0) public native @MachineSizedFloat double getValue();
+    @StructMember(0) public native FBAdStarRating setValue(@MachineSizedFloat double value);
+    @StructMember(1) public native @MachineSizedSInt long getScale();
+    @StructMember(1) public native FBAdStarRating setScale(@MachineSizedSInt long scale);
     /*</members>*/
     /*<methods>*//*</methods>*/
 }

@@ -18,6 +18,7 @@
 
 #import <UIKit/UIKit.h>
 
+#import "FBAdDefines.h"
 #import "FBNativeAd.h"
 
 @class FBNativeAdViewAttributes;
@@ -28,10 +29,10 @@
  for different values of FBNativeAdViewType
  */
 typedef NS_ENUM(NSInteger, FBNativeAdViewType) {
-    FBNativeAdViewTypeGenericHeight400,
-    FBNativeAdViewTypeGenericHeight300,
+    FBNativeAdViewTypeGenericHeight100 = 1,
     FBNativeAdViewTypeGenericHeight120,
-    FBNativeAdViewTypeGenericHeight100,
+    FBNativeAdViewTypeGenericHeight300,
+    FBNativeAdViewTypeGenericHeight400,
 };
 
 /*!
@@ -40,6 +41,7 @@ typedef NS_ENUM(NSInteger, FBNativeAdViewType) {
  @abstract
  The FBNativeAdView creates prebuilt native ad template views and manages native ads.
  */
+FB_CLASS_EXPORT
 @interface FBNativeAdView : UIView
 
 /*!

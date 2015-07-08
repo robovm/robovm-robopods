@@ -48,14 +48,14 @@ import org.robovm.pods.facebook.core.*;
     protected FBSDKShareAPI(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "createObjectsWithClientToken")
-    public native boolean createsObjectsWithClientToken();
-    @Property(selector = "setCreateObjectsWithClientToken:")
-    public native void setCreatesObjectsWithClientToken(boolean v);
     @Property(selector = "message")
     public native String getMessage();
     @Property(selector = "setMessage:")
     public native void setMessage(String v);
+    @Property(selector = "graphNode")
+    public native String getGraphNode();
+    @Property(selector = "setGraphNode:")
+    public native void setGraphNode(String v);
     @Property(selector = "delegate")
     public native FBSDKSharingDelegate getDelegate();
     @Property(selector = "setDelegate:", strongRef = true)

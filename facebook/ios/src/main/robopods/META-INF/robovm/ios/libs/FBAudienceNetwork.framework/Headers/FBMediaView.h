@@ -18,6 +18,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "FBAdDefines.h"
+
 @protocol FBMediaViewDelegate;
 @class FBNativeAd;
 
@@ -27,6 +29,7 @@
  @abstract
  The FBMediaView loads media content from a given FBNativeAd. This view takes the place of manually loading a cover image.
  */
+FB_CLASS_EXPORT
 @interface FBMediaView : UIView
 
 /*!

@@ -9,7 +9,7 @@ header_root: '/../robopods/META-INF/robovm/ios/libs/'
 headers:
     - Bolts.framework/Headers/Bolts.h
 typedefs:
-    BFContinuationBlock: '@Block Block1<BFTask, NSObject>'
+    BFContinuationBlock: '@Block BFContinuation<NSObject, NSObject>'
 private_typedefs:
     'void (^)(void (^)())': '@Block("(@Block)") VoidBlock1<Runnable>'
     'id (^)()': '@Block Block0<NSObject>'
@@ -93,11 +93,11 @@ classes:
                 getter: isCancelled
         methods:
             '-continue.*SuccessBlock:':
-                name: continueOnSuccess
+                name: continueOnSuccess0
                 return_type: '<TContinuationResult> BFTask<TContinuationResult>'
                 visibility: protected # generic block
             '-continue.*Block:':
-                name: continueWith
+                name: continueWith0
                 return_type: '<TContinuationResult> BFTask<TContinuationResult>'
                 visibility: protected # generic block
             '+taskWith(.*):':

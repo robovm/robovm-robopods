@@ -18,6 +18,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "FBAdDefines.h"
+
 @class FBAdImage;
 @class FBNativeAd;
 @class FBNativeAdViewAttributes;
@@ -28,6 +30,7 @@
  @abstract
  FBAdChoicesView offers a simple way to display a sponsored or AdChoices icon.
  */
+FB_CLASS_EXPORT
 @interface FBAdChoicesView : UIView
 
 /*!

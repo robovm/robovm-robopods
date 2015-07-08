@@ -18,7 +18,9 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString *const FBAudienceNetworkErrorDomain;
+#import "FBAdDefines.h"
+
+FB_EXPORT NSString *const FBAudienceNetworkErrorDomain;
 
 typedef NS_ENUM(NSInteger, FBAdLogLevel) {
     FBAdLogLevelNone,
@@ -35,6 +37,7 @@ typedef NS_ENUM(NSInteger, FBAdLogLevel) {
 
  @abstract AdSettings contains global settings for all ad controls.
  */
+FB_CLASS_EXPORT
 @interface FBAdSettings : NSObject
 
 /*!

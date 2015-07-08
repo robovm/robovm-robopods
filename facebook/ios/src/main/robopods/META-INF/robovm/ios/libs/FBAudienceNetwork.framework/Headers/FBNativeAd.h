@@ -18,6 +18,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "FBAdDefines.h"
+
 @protocol FBNativeAdDelegate;
 @class FBAdImage;
 
@@ -35,6 +37,7 @@ typedef NS_ENUM(NSInteger, FBNativeAdsCachePolicy) {
  The FBNativeAd represents ad metadata to allow you to construct custom ad views.
  See the NativeAdSample in the sample apps section of the Audience Network framework.
  */
+FB_CLASS_EXPORT
 @interface FBNativeAd : NSObject
 
 /*!
@@ -238,9 +241,9 @@ typedef NS_ENUM(NSInteger, FBNativeAdsCachePolicy) {
  @abstract
  Represents the Facebook ad star rating, which contains the rating value and rating scale.
  */
-extern const struct FBAdStarRating {
-  float value;
-  int scale;
+FB_EXPORT struct FBAdStarRating {
+  CGFloat value;
+  NSInteger scale;
 } FBAdStarRating;
 
 /*!
@@ -248,6 +251,7 @@ extern const struct FBAdStarRating {
 
  @abstract Represents an image creative.
  */
+FB_CLASS_EXPORT
 @interface FBAdImage : NSObject
 
 /*!
@@ -296,6 +300,7 @@ extern const struct FBAdStarRating {
  @abstract
  Helper view that draws a star rating based off a native ad.
  */
+FB_CLASS_EXPORT
 @interface FBAdStarRatingView : UIView
 
 /*!

@@ -48,7 +48,8 @@ public enum /*<name>*/FBSDKLoginErrorCode/*</name>*/ implements NSErrorCode {
     UserMismatch(304L),
     UnconfirmedUser(305L),
     SystemAccountAppDisabled(306L),
-    SystemAccountUnavailable(307L);
+    SystemAccountUnavailable(307L),
+    BadChallengeString(308L);
     /*</values>*/
 
     /*<bind>*/

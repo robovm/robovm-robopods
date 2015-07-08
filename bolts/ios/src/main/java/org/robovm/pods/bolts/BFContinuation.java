@@ -15,8 +15,6 @@
  */
 package org.robovm.pods.bolts;
 
-import org.robovm.apple.foundation.NSObject;
-
 public interface BFContinuation<TTaskResult, TContinuationResult> {
 
     TContinuationResult then(BFTask<TTaskResult> task);

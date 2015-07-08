@@ -38,10 +38,10 @@ import org.robovm.apple.coregraphics.*;
 /*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
 public enum /*<name>*/FBNativeAdViewType/*</name>*/ implements ValuedEnum {
     /*<values>*/
-    _400(0L),
-    _300(1L),
+    _100(1L),
     _120(2L),
-    _100(3L);
+    _300(3L),
+    _400(4L);
     /*</values>*/
 
     /*<bind>*/

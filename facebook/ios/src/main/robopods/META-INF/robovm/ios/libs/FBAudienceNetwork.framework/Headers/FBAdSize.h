@@ -19,6 +19,8 @@
 #import <StoreKit/StoreKit.h>
 #import <UIKit/UIKit.h>
 
+#import "FBAdDefines.h"
+
 /*!
  @typedef FBAdSize
 
@@ -32,32 +34,32 @@ typedef struct FBAdSize {
 /*!
  @abstract DEPRECATED - Represents the fixed banner ad size - 320pt by 50pt.
  */
-extern FBAdSize const kFBAdSize320x50;
+FB_EXPORT FBAdSize const kFBAdSize320x50;
 
 /*!
  @abstract Represents the flexible banner ad size, where banner width depends on
  its container width, and banner height is fixed as 50pt.
  */
-extern FBAdSize const kFBAdSizeHeight50Banner;
+FB_EXPORT FBAdSize const kFBAdSizeHeight50Banner;
 
 /*!
  @abstract Represents the flexible banner ad size, where banner width depends on
  its container width, and banner height is fixed as 90pt.
  */
-extern FBAdSize const kFBAdSizeHeight90Banner;
+FB_EXPORT FBAdSize const kFBAdSizeHeight90Banner;
 
 /*!
  @abstract Represents the interstitial ad size.
  */
-extern FBAdSize const kFBAdSizeInterstital;
+FB_EXPORT FBAdSize const kFBAdSizeInterstital;
 
 /*!
  @abstract Represents the flexible rectangle ad size, where width depends on
  its container width, and height is fixed as 250pt.
  */
-extern FBAdSize const kFBAdSizeHeight250Rectangle;
+FB_EXPORT FBAdSize const kFBAdSizeHeight250Rectangle;
 
-
+FB_CLASS_EXPORT
 @interface FBAdCustomSize : NSObject
 
 + (FBAdSize)customSize:(CGSize)size;

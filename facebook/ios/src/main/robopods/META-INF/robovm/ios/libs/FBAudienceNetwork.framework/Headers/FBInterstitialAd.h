@@ -19,6 +19,7 @@
 #import <Foundation/Foundation.h>
 #import <StoreKit/StoreKit.h>
 
+#import "FBAdDefines.h"
 #import "FBAdView.h"
 
 @protocol FBInterstitialAdDelegate;
@@ -29,6 +30,7 @@
  @abstract A modal view controller to represent a Facebook interstitial ad. This
  is a full-screen ad shown in your application.
  */
+FB_CLASS_EXPORT
 @interface FBInterstitialAd : UIViewController <FBAdViewDelegate>
 
 /*!

@@ -1,4 +1,9 @@
-<config>    
+<config>
+    <resources>
+        <resource>
+            <directory>res</directory>
+        </resource>
+    </resources>
     <frameworks>
         <framework>FBSDKCoreKit</framework>
         <framework>FBSDKLoginKit</framework>

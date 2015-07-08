@@ -49,7 +49,10 @@ import org.robovm.apple.coregraphics.*;
     public FBNativeAdTableViewAdProvider(FBNativeAdsManager manager) { super((SkipInit) null); initObject(init(manager)); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "delegate")
+    public native FBNativeAdDelegate getDelegate();
+    @Property(selector = "setDelegate:", strongRef = true)
+    public native void setDelegate(FBNativeAdDelegate v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

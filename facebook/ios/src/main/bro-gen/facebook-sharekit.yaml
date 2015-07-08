@@ -44,6 +44,9 @@ classes:
             '+showWithGroupID:delegate:':
                 name: show
     FBSDKAppInviteContent: # DONE
+        properties:
+            'previewImageURL':
+                exclude: true # deprecated
         methods:
             '-isEqualToAppInviteContent:':
                 name: equalsTo
@@ -56,10 +59,12 @@ classes:
                 name: show
     FBSDKGameRequestContent: # DONE
         properties:
-            'to':
+            '(to|suggestions)':
+                exclude: true # deprecated
+            'recipients':
                 type: List<String>
                 marshaler: NSArray.AsStringListMarshaler
-            'suggestions':
+            'recipientSuggestions':
                 type: List<String>
                 marshaler: NSArray.AsStringListMarshaler
         methods:

@@ -19,6 +19,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "FBAdDefines.h"
 #import "FBNativeAd.h"
 #import "FBNativeAdsManager.h"
 
@@ -27,7 +28,14 @@
 
  @abstract Additional functionality on top of FBNativeAdsManager to assist in using native ads within a UITableView. This class contains a mechanism to map indexPaths to native ads in a stable manner as well as helpers which assist in doing the math to include ads at a regular interval within a table view.
  */
+FB_CLASS_EXPORT
 @interface FBNativeAdTableViewAdProvider : NSObject
+
+/*!
+ @property
+ @abstract Passes delegate methods from FBNativeAd. Separate delegate calls will be made for each native ad contained.
+ */
+@property (nonatomic, weak) id<FBNativeAdDelegate> delegate;
 
 /*!
  @method
@@ -36,7 +44,7 @@
 
  @param manager The FBNativeAdsManager which is consumed by this class.
  */
-- (instancetype)initWithManager:(FBNativeAdsManager *)manager;
+- (instancetype)initWithManager:(FBNativeAdsManager *)manager NS_DESIGNATED_INITIALIZER;
 
 /*!
  @method
