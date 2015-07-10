@@ -43,7 +43,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <robovm.version>${project.version}</robovm.version>
-        <robopods.version>1.0.0-SNAPSHOT</robopods.version>
+        <robopods.version>${project.version}</robopods.version>
     </properties>
 
     <dependencyManagement>
