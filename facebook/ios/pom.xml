@@ -35,11 +35,6 @@
         </dependency>
         <dependency>
             <groupId>org.robovm</groupId>
-            <artifactId>robovm-cocoatouch</artifactId>
-            <version>${robovm.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.robovm</groupId>
             <artifactId>robopods-bolts-ios</artifactId>
             <version>${robopods.version}</version>
         </dependency>
