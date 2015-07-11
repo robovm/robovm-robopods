@@ -46,5 +46,5 @@ to your `pom.xml`:
 | [Flurry](flurry/)                       | 6.6.0   | org.robovm:robopods-flurry-ios:1.5.0            |
 | [Google Analytics](google-analytics/)   | 3.12    | org.robovm:robopods-google-analytics-ios:1.5.0  |
 | [Google APIs](google-apis/)             |         | org.robovm:robopods-google-apis-ios:1.5.0       |
-| [Google Mobile Ads](google-mobile-ads/) | 7.3.1   | org.robovm:robopods-google-mobile-ads-ios:1.5.0 |
+| [Google Mobile Ads](google-mobile-ads/) | 7.3.1   | org.robovm:robopods-google-mobile-ads-ios:1.5.0-SNAPSHOT |
 | [Parse](parse/)                         | 1.7.4   | org.robovm:robopods-parse-ios:1.5.0             |
