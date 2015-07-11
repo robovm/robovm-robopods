@@ -1,0 +1,51 @@
+<config>    
+    <frameworks>
+        <framework>GoogleMobileAds</framework>
+    
+        <framework>AdSupport</framework>
+        <framework>AudioToolbox</framework>
+        <framework>AVFoundation</framework>
+        <framework>CoreGraphics</framework>
+        <framework>CoreMedia</framework>
+        <framework>CoreTelephony</framework>
+        <framework>EventKit</framework>
+        <framework>EventKitUI</framework>
+        <framework>MessageUI</framework>
+        <framework>StoreKit</framework>
+        <framework>SystemConfiguration</framework>
+    </frameworks>
+    <frameworkPaths>
+        <path>libs</path>
+    </frameworkPaths>
+    <libs>
+        <lib>libs/libGGLAdMob.a</lib>
+    
+        <lib>z</lib>
+    </libs>
+    <unhideSymbols>
+        <symbol>kGADErrorDomain</symbol>
+        <symbol>kDFPSimulatorID</symbol>
+        <symbol>kGADAdLoaderAdTypeNativeAppInstall</symbol>
+        <symbol>kGADAdLoaderAdTypeNativeContent</symbol>
+        <symbol>kGADAdLoaderAdTypeNativeCustomTemplate</symbol>
+        <symbol>kGADAdSizeBanner</symbol>
+        <symbol>kGADAdSizeLargeBanner</symbol>
+        <symbol>kGADAdSizeMediumRectangle</symbol>
+        <symbol>kGADAdSizeFullBanner</symbol>
+        <symbol>kGADAdSizeLeaderboard</symbol>
+        <symbol>kGADAdSizeSkyscraper</symbol>
+        <symbol>kGADAdSizeSmartBannerPortrait</symbol>
+        <symbol>kGADAdSizeSmartBannerLandscape</symbol>
+        <symbol>kGADAdSizeInvalid</symbol>
+        <symbol>GADAdSizeFromCGSize</symbol>
+        <symbol>GADAdSizeFullWidthPortraitWithHeight</symbol>
+        <symbol>GADAdSizeFullWidthLandscapeWithHeight</symbol>
+        <symbol>GADAdSizeEqualToSize</symbol>
+        <symbol>CGSizeFromGADAdSize</symbol>
+        <symbol>IsGADAdSizeValid</symbol>
+        <symbol>NSStringFromGADAdSize</symbol>
+        <symbol>NSValueFromGADAdSize</symbol>
+        <symbol>GADAdSizeFromNSValue</symbol>
+        <symbol>kGADSimulatorID</symbol>
+    </unhideSymbols>
+</config>

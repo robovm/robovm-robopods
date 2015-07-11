@@ -18,6 +18,18 @@ package org.robovm.pods.google;
 import org.robovm.pods.google.analytics.GAITracker;
 
 public class GGLContextAnalytics extends GGLContext {
+    private static GGLContextAnalytics instance;
+
+    private GGLContextAnalytics(GGLContext context) {
+        setHandle(context.getHandle());
+    }
+
+    public static GGLContextAnalytics getSharedInstance() {
+        if (instance == null) {
+            instance = new GGLContextAnalytics(GGLContext.getSharedInstance());
+        }
+        return instance;
+    }
 
     public GAITracker getTracker() {
         return GGLContextAnalyticsExtensions.getTracker(this);
