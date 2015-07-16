@@ -47,4 +47,5 @@ to your `pom.xml`:
 | [Google Analytics](google-analytics/)   | 3.12    | org.robovm:robopods-google-analytics-ios:1.5.0  |
 | [Google APIs](google-apis/)             |         | org.robovm:robopods-google-apis-ios:1.5.0       |
 | [Google Mobile Ads](google-mobile-ads/) | 7.3.1   | org.robovm:robopods-google-mobile-ads-ios:1.5.1-SNAPSHOT |
+| [Google Play Games](google-play-games/) | 1.4.1   | org.robovm:robopods-google-play-games-ios:1.5.1-SNAPSHOT |
 | [Parse](parse/)                         | 1.7.4   | org.robovm:robopods-parse-ios:1.5.0             |

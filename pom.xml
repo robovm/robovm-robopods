@@ -167,6 +167,7 @@
         <module>google-apis</module>
         <module>google-analytics</module>
         <module>google-mobile-ads</module>
+        <module>google-play-games</module>
         <module>parse</module>
     </modules>
 </project>
