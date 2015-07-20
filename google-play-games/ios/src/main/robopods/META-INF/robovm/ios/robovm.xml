@@ -28,5 +28,6 @@
     </frameworkPaths>
     <exportedSymbols>
         <symbol>GPG*</symbol>
+        <symbol>kGPG*</symbol>
     </exportedSymbols>
 </config>

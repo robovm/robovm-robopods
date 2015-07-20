@@ -168,6 +168,7 @@
         <module>google-analytics</module>
         <module>google-mobile-ads</module>
         <module>google-play-games</module>
+        <module>google-plus</module>
         <module>parse</module>
     </modules>
 </project>
