@@ -1,0 +1,69 @@
+package: org.robovm.pods.gameanalytics
+framework: GameAnalytics
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/corelocation.yaml
+clang_args: ['-x', 'objective-c']
+header_root: '/'
+headers:
+    - GameAnalytics.lib/Headers/GameAnalytics.h
+typedefs:
+    
+enums:
+    GAResourceFlowType: {first: GAResourceFlowTypeSource}
+    GAProgressionStatus: {first: GAProgressionStatusStart}
+    GAErrorSeverity: {first: GAErrorSeverityDebug}
+        
+classes:
+    GameAnalytics: # DONE
+        methods:
+            '+configureAvailableCustomDimensions01:':
+                name: configureAvailableCustomDimensions01
+            '+configureAvailableCustomDimensions02:':
+                name: configureAvailableCustomDimensions02
+            '+configureAvailableCustomDimensions03:':
+                name: configureAvailableCustomDimensions03
+            '+configureAvailableResourceCurrencies:':
+                name: configureAvailableResourceCurrencies
+            '+configureAvailableResourceItemTypes:':
+                name: configureAvailableResourceItemTypes
+            '+configureBuild:':
+                name: configureBuild
+            '+configureSdkVersion:':
+                name: configureSdkVersion
+            '+configureEngineVersion:':
+                name: configureEngineVersion
+            '+initializeWithGameKey:gameSecret:':
+                name: init
+            '+addBusinessEventWithCurrency:amount:itemType:itemId:cartType:receipt:':
+                name: addBusinessEvent
+            '+addBusinessEventWithCurrency:amount:itemType:itemId:cartType:autoFetchReceipt:':
+                name: addBusinessEvent
+            '+addResourceEventWithFlowType:currency:amount:itemType:itemId:':
+                name: addResourceEvent
+            '+addProgressionEventWithProgressionStatus:progression01:progression02:progression03:':
+                name: addProgressionEvent
+            '+addProgressionEventWithProgressionStatus:progression01:progression02:progression03:score:':
+                name: addProgressionEvent
+            '+addDesignEventWithEventId:':
+                name: addDesignEvent
+            '+addDesignEventWithEventId:value:':
+                name: addDesignEvent
+            '+addErrorEventWithSeverity:message:':
+                name: addErrorEvent
+            '+setEnabledInfoLog:':
+                name: setEnabledInfoLog
+            '+setEnabledVerboseLog:':
+                name: setEnabledVerboseLog
+            '+setCustomDimension01:':
+                name: setCustomDimension01
+            '+setCustomDimension02:':
+                name: setCustomDimension02
+            '+setCustomDimension03:':
+                name: setCustomDimension03
+            '+setFacebookId:':
+                name: setFacebookId
+            '+setGender:':
+                name: setGender
+            '+setBirthYear:':
+                name: setBirthYear
