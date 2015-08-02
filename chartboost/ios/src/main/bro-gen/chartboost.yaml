@@ -117,6 +117,9 @@ protocols:
                 parameters:
                     messages:
                         type: NSArray<CBStory>
+            '-shouldAutomaticallyDisplayNotificationUI:':
+                trim_after_first_colon: true
+                default: true
             '-.*':
                 trim_after_first_colon: true
     CBNewsfeedUIProtocol: # DONE

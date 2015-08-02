@@ -68,7 +68,7 @@ import org.robovm.apple.storekit.*;
     @NotImplemented("didFailToRetrieveMessages:")
     public void didFailToRetrieveMessages(NSError error) {}
     @NotImplemented("shouldAutomaticallyDisplayNotificationUI:")
-    public boolean shouldAutomaticallyDisplayNotificationUI(CBStory message) { return false; }
+    public boolean shouldAutomaticallyDisplayNotificationUI(CBStory message) { return true; }
     @NotImplemented("didPauseStoryClickForConfirmation:")
     public void didPauseStoryClickForConfirmation(CBStory message) {}
     /*</methods>*/
