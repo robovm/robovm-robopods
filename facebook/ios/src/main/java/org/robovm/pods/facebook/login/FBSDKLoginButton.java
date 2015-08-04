@@ -63,13 +63,13 @@ import org.robovm.pods.facebook.core.*;
     @Property(selector = "setLoginBehavior:")
     public native void setLoginBehavior(FBSDKLoginBehavior v);
     @Property(selector = "publishPermissions")
-    public native @org.robovm.rt.bro.annotation.Marshaler(NSSet.AsStringSetMarshaler.class) Set<String> getPublishPermissions();
+    public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getPublishPermissions();
     @Property(selector = "setPublishPermissions:")
-    public native void setPublishPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSSet.AsStringSetMarshaler.class)Set<String> v);
+    public native void setPublishPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class)List<String> v);
     @Property(selector = "readPermissions")
-    public native @org.robovm.rt.bro.annotation.Marshaler(NSSet.AsStringSetMarshaler.class) Set<String> getReadPermissions();
+    public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getReadPermissions();
     @Property(selector = "setReadPermissions:")
-    public native void setReadPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSSet.AsStringSetMarshaler.class)Set<String> v);
+    public native void setReadPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class)List<String> v);
     @Property(selector = "tooltipBehavior")
     public native FBSDKLoginButtonTooltipBehavior getTooltipBehavior();
     @Property(selector = "setTooltipBehavior:")

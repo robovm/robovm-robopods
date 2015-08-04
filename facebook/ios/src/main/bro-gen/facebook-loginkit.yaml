@@ -29,11 +29,11 @@ classes:
     FBSDKLoginButton: # DONE
         properties:
             'publishPermissions':
-                type: Set<String>
-                marshaler: NSSet.AsStringSetMarshaler
+                type: List<String>
+                marshaler: NSArray.AsStringListMarshaler
             'readPermissions':
-                type: Set<String>
-                marshaler: NSSet.AsStringSetMarshaler
+                type: List<String>
+                marshaler: NSArray.AsStringListMarshaler
     FBSDKLoginManager: # DONE
         methods:
             '-logInWithReadPermissions:handler:':
