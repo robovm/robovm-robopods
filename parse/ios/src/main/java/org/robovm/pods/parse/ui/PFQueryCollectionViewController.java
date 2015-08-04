@@ -19,6 +19,7 @@ package org.robovm.pods.parse.ui;
 import java.io.*;
 import java.nio.*;
 import java.util.*;
+
 import org.robovm.objc.*;
 import org.robovm.objc.annotation.*;
 import org.robovm.objc.block.*;
@@ -38,7 +39,7 @@ import org.robovm.pods.parse.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/PFQueryCollectionViewController/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/PFQueryCollectionViewController/*</name>*/ <T extends PFObject>
     extends /*<extends>*/UICollectionViewController/*</extends>*/ 
     /*<implements>*/implements UICollectionViewDelegateFlowLayout/*</implements>*/ {
 
@@ -46,16 +47,35 @@ import org.robovm.pods.parse.*;
     /*<bind>*/static { ObjCRuntime.bind(PFQueryCollectionViewController.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public PFQueryCollectionViewController() {}
     protected PFQueryCollectionViewController(SkipInit skipInit) { super(skipInit); }
     public PFQueryCollectionViewController(String className) { super((SkipInit) null); initObject(init(className)); }
     public PFQueryCollectionViewController(UICollectionViewLayout layout, String className) { super((SkipInit) null); initObject(init(layout, className)); }
     /*</constructors>*/
+    public PFQueryCollectionViewController(UICollectionViewLayout layout, Class<T> subclass) {
+        super((SkipInit) null);
+        if (subclass == null) {
+            throw new NullPointerException("subclass");
+        }
+        if (!subclass.isAnnotationPresent(ParseClassName.class)) {
+            throw new UnsupportedOperationException("Class is missing required @ParseClassName annotation: " + subclass.getSimpleName());
+        }
+        ParseClassName annotation = subclass.getAnnotation(ParseClassName.class);
+        initObject(init(layout, annotation.value()));
+    }
+    public PFQueryCollectionViewController(Class<T> subclass) {
+        super((SkipInit) null);
+        if (subclass == null) {
+            throw new NullPointerException("subclass");
+        }
+        if (!subclass.isAnnotationPresent(ParseClassName.class)) {
+            throw new UnsupportedOperationException("Class is missing required @ParseClassName annotation: " + subclass.getSimpleName());
+        }
+        ParseClassName annotation = subclass.getAnnotation(ParseClassName.class);
+        initObject(init(annotation.value()));
+    }
     /*<properties>*/
     @Property(selector = "parseClassName")
     public native String getParseClassName();
-    @Property(selector = "setParseClassName:")
-    public native void setParseClassName(String v);
     @Property(selector = "loadingViewEnabled")
     public native boolean isLoadingViewEnabled();
     @Property(selector = "setLoadingViewEnabled:")
@@ -77,7 +97,7 @@ import org.robovm.pods.parse.*;
     @Property(selector = "setLoading:")
     public native void setLoading(boolean v);
     @Property(selector = "objects")
-    public native <T extends PFObject> NSArray<T> getObjects();
+    public native NSArray<T> getObjects();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -90,7 +110,7 @@ import org.robovm.pods.parse.*;
     @Method(selector = "objectsDidLoad:")
     public native void didLoadObjects(NSError error);
     @Method(selector = "objectAtIndexPath:")
-    public native <T extends PFObject> T getObject(NSIndexPath indexPath);
+    public native T getObject(NSIndexPath indexPath);
     @Method(selector = "removeObjectAtIndexPath:")
     public native void removeObject(NSIndexPath indexPath);
     @Method(selector = "removeObjectsAtIndexPaths:")
@@ -104,9 +124,9 @@ import org.robovm.pods.parse.*;
     @Method(selector = "clear")
     public native void clear();
     @Method(selector = "queryForCollection")
-    public native <T extends PFObject> PFQuery<T> getQuery();
+    public native PFQuery<T> getQuery();
     @Method(selector = "collectionView:cellForItemAtIndexPath:object:")
-    public native PFCollectionViewCell getCellForItem(UICollectionView collectionView, NSIndexPath indexPath, PFObject object);
+    public native PFCollectionViewCell<T> getCellForItem(UICollectionView collectionView, NSIndexPath indexPath, T object);
     @Method(selector = "collectionViewReusableViewForNextPageAction:")
     public native UICollectionReusableView getReusableViewForNextPageAction(UICollectionView collectionView);
     @Method(selector = "collectionView:layout:sizeForItemAtIndexPath:")

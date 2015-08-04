@@ -819,25 +819,25 @@ classes:
                 return_type: PFQuery<T>
                 parameters:
                     query:
-                        type: PFQuery<T>
+                        type: PFQuery<?>
             '-whereKey:doesNotMatchKey:inQuery:':
                 name: whereDoesNotMatchKeyInQuery
                 return_type: PFQuery<T>
                 parameters:
                     query:
-                        type: PFQuery<T>
+                        type: PFQuery<?>
             '-whereKey:matchesQuery:':
                 name: whereMatchesQuery
                 return_type: PFQuery<T>
                 parameters:
                     query:
-                        type: PFQuery<T>
+                        type: PFQuery<?>
             '-whereKey:doesNotMatchQuery:':
                 name: whereDoesNotMatchQuery
                 return_type: PFQuery<T>
                 parameters:
                     query:
-                        type: PFQuery<T>
+                        type: PFQuery<?>
             '-(orderByAscending|addAscendingOrder|orderByDescending|addDescendingOrder):':
                 trim_after_first_colon: true
                 return_type: PFQuery<T>
@@ -926,7 +926,7 @@ classes:
                 return_type: '<T extends PFObject> PFQuery<T>'
                 parameters:
                     queries:
-                        type: NSArray<PFQuery<T>>
+                        type: NSArray<PFQuery<?>>
             '+getObjectOfClass:objectId:':
                 exclude: true
             '+getObjectOfClass:objectId:error:':

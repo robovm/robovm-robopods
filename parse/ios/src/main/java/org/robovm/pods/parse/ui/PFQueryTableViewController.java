@@ -38,7 +38,7 @@ import org.robovm.pods.parse.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/PFQueryTableViewController/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/PFQueryTableViewController/*</name>*/ <T extends PFObject>
     extends /*<extends>*/UITableViewController/*</extends>*/ 
     /*<implements>*/implements UITableViewDataSource, UITableViewDelegate/*</implements>*/ {
 
@@ -46,16 +46,35 @@ import org.robovm.pods.parse.*;
     /*<bind>*/static { ObjCRuntime.bind(PFQueryTableViewController.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public PFQueryTableViewController() {}
     protected PFQueryTableViewController(SkipInit skipInit) { super(skipInit); }
     public PFQueryTableViewController(UITableViewStyle style, String className) { super((SkipInit) null); initObject(init(style, className)); }
     public PFQueryTableViewController(String className) { super((SkipInit) null); initObject(init(className)); }
     /*</constructors>*/
+    public PFQueryTableViewController(UITableViewStyle style, Class<T> subclass) {
+        super((SkipInit) null);
+        if (subclass == null) {
+            throw new NullPointerException("subclass");
+        }
+        if (!subclass.isAnnotationPresent(ParseClassName.class)) {
+            throw new UnsupportedOperationException("Class is missing required @ParseClassName annotation: " + subclass.getSimpleName());
+        }
+        ParseClassName annotation = subclass.getAnnotation(ParseClassName.class);
+        initObject(init(style, annotation.value()));
+    }
+    public PFQueryTableViewController(Class<T> subclass) {
+        super((SkipInit) null);
+        if (subclass == null) {
+            throw new NullPointerException("subclass");
+        }
+        if (!subclass.isAnnotationPresent(ParseClassName.class)) {
+            throw new UnsupportedOperationException("Class is missing required @ParseClassName annotation: " + subclass.getSimpleName());
+        }
+        ParseClassName annotation = subclass.getAnnotation(ParseClassName.class);
+        initObject(init(annotation.value()));
+    }
     /*<properties>*/
     @Property(selector = "parseClassName")
     public native String getParseClassName();
-    @Property(selector = "setParseClassName:")
-    public native void setParseClassName(String v);
     @Property(selector = "textKey")
     public native String getTextKey();
     @Property(selector = "setTextKey:")
@@ -89,7 +108,7 @@ import org.robovm.pods.parse.*;
     @Property(selector = "setLoading:")
     public native void setLoading(boolean v);
     @Property(selector = "objects")
-    public native <T extends PFObject> NSArray<T> getObjects();
+    public native NSArray<T> getObjects();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -102,7 +121,7 @@ import org.robovm.pods.parse.*;
     @Method(selector = "objectsDidLoad:")
     public native void didLoadObjects(NSError error);
     @Method(selector = "objectAtIndexPath:")
-    public native <T extends PFObject> T getObject(NSIndexPath indexPath);
+    public native T getObject(NSIndexPath indexPath);
     @Method(selector = "removeObjectAtIndexPath:")
     public native void removeObject(NSIndexPath indexPath);
     @Method(selector = "removeObjectAtIndexPath:animated:")
@@ -120,9 +139,9 @@ import org.robovm.pods.parse.*;
     @Method(selector = "loadNextPage")
     public native void loadNextPage();
     @Method(selector = "queryForTable")
-    public native <T extends PFObject> PFQuery<T> getQuery();
+    public native PFQuery<T> getQuery();
     @Method(selector = "tableView:cellForRowAtIndexPath:object:")
-    public native PFTableViewCell getCellForRow(UITableView tableView, NSIndexPath indexPath, PFObject object);
+    public native PFTableViewCell getCellForRow(UITableView tableView, NSIndexPath indexPath, T object);
     @Method(selector = "tableView:cellForNextPageAtIndexPath:")
     public native PFTableViewCell getCellForNextPage(UITableView tableView, NSIndexPath indexPath);
     /*</methods>*/

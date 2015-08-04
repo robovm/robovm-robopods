@@ -1,0 +1,164 @@
+package: org.robovm.pods.parse
+framework: ParseFacebookUtilsV4
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
+    - ../../../../../facebook/ios/src/main/bro-gen/facebook-corekit.yaml
+    - ../../../../../facebook/ios/src/main/bro-gen/facebook-loginkit.yaml
+    - ../../../../../bolts/ios/src/main/bro-gen/bolts.yaml
+    - parse.yaml
+clang_args: ['-x', 'objective-c']
+header_root: '/../robopods/META-INF/robovm/ios/libs/'
+headers:
+    - ParseFacebookUtilsV4.framework/Headers/PFFacebookUtils.h
+typedefs:
+    
+enums:
+        
+classes:
+    PFFacebookUtils: # DONE
+        methods:
+            '+initializeFacebookWithApplicationLaunchOptions:':
+                name: initializeFacebook
+                parameters:
+                    launchOptions:
+                        type: UIApplicationLaunchOptions
+            '+facebookLoginManager':
+                property: true
+                return_type: FBSDKLoginManager
+            '+logInInBackgroundWithReadPermissions:':
+                trim_after_first_colon: true
+                return_type: BFTask<PFUser>
+                parameters:
+                    permissions:
+                        type: List<String>
+                        marshaler: NSArray.AsStringListMarshaler
+            '+logInInBackgroundWithReadPermissions:block:':
+                trim_after_first_colon: true
+                parameters:
+                    permissions:
+                        type: List<String>
+                        marshaler: NSArray.AsStringListMarshaler
+                    block:
+                        type: '@Block PFLogInCallback'
+            '+logInInBackgroundWithPublishPermissions:':
+                trim_after_first_colon: true
+                return_type: BFTask<PFUser>
+                parameters:
+                    permissions:
+                        type: List<String>
+                        marshaler: NSArray.AsStringListMarshaler
+            '+logInInBackgroundWithPublishPermissions:block:':
+                trim_after_first_colon: true
+                parameters:
+                    permissions:
+                        type: List<String>
+                        marshaler: NSArray.AsStringListMarshaler
+                    block:
+                        type: '@Block PFLogInCallback'
+            '+logInInBackgroundWithAccessToken:':
+                name: logInInBackground
+                return_type: BFTask<PFUser>
+                parameters:
+                    accessToken:
+                        type: FBSDKAccessToken
+            '+logInInBackgroundWithAccessToken:block:':
+                name: logInInBackground
+                parameters:
+                    accessToken:
+                        type: FBSDKAccessToken
+                    block:
+                        type: '@Block PFLogInCallback'
+            '+linkUserInBackground:withReadPermissions:':
+                name: linkUserInBackgroundWithReadPermissions
+                return_type: BFTask<NSNumber>
+                parameters:
+                    user:
+                        type: PFUser
+                    permissions:
+                        type: List<String>
+                        marshaler: NSArray.AsListMarshaler
+            '+linkUserInBackground:withReadPermissions:block:':
+                name: linkUserInBackgroundWithReadPermissions
+                parameters:
+                    user:
+                        type: PFUser
+                    permissions:
+                        type: List<String>
+                        marshaler: NSArray.AsListMarshaler
+                    block:
+                        type: '@Block PFSaveCallback'
+            '+linkUserInBackground:withPublishPermissions:':
+                name: linkUserInBackgroundWithPublishPermissions
+                return_type: BFTask<NSNumber>
+                parameters:
+                    user:
+                        type: PFUser
+                    permissions:
+                        type: List<String>
+                        marshaler: NSArray.AsListMarshaler
+            '+linkUserInBackground:withPublishPermissions:block:':
+                name: linkUserInBackgroundWithPublishPermissions
+                parameters:
+                    user:
+                        type: PFUser
+                    permissions:
+                        type: List<String>
+                        marshaler: NSArray.AsListMarshaler
+                    block:
+                        type: '@Block PFSaveCallback'
+            '+linkUserInBackground:withAccessToken:':
+                trim_after_first_colon: true
+                return_type: BFTask<NSNumber>
+                parameters:
+                    user:
+                        type: PFUser
+                    accessToken:
+                        type: FBSDKAccessToken
+            '+linkUserInBackground:withAccessToken:block:':
+                trim_after_first_colon: true
+                parameters:
+                    user:
+                        type: PFUser
+                    accessToken:
+                        type: FBSDKAccessToken
+                    block:
+                        type: '@Block PFSaveCallback'
+            '+unlinkUserInBackground:':
+                trim_after_first_colon: true
+                return_type: BFTask<NSNumber>
+                parameters:
+                    user:
+                        type: PFUser
+            '+unlinkUserInBackground:block:':
+                trim_after_first_colon: true
+                parameters:
+                    user:
+                        type: PFUser
+                    block:
+                        type: '@Block PFSaveCallback'
+            '+isLinkedWithUser:':
+                trim_after_first_colon: true
+                parameters:
+                    user:
+                        type: PFUser
+  
+protocols:
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?PF.*):
+        class: ParseFacebook
+        name: 'Function__#{g[0]}'
+
+values:
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?PF.*):
+        class: ParseFacebook
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?PF.*):
+        class: ParseFacebook
+        name: 'Constant__#{g[0]}'

@@ -23,7 +23,6 @@ classes:
         methods:
             '-updateFromObject:':
                 name: update
-                return_type: '<T extends PFObject> void'
                 parameters:
                     object:
                         type: T
@@ -48,14 +47,19 @@ classes:
                 type: List<String>
                 marshaler: NSArray.AsStringListMarshaler
     PFProductTableViewController: # DONE
+        skip_def_constructor: true
+        extends: PFQueryTableViewController<PFProduct>
         methods:
             '-initWithStyle:':
                 name: init
     PFPurchaseTableViewCell: {} # DONE
     PFQueryCollectionViewController: # DONE
+        skip_def_constructor: true
         properties:
             'objects':
-                type: '<T extends PFObject> NSArray<T>'
+                type: NSArray<T>
+            'parseClassName':
+                readonly: true
         methods:
             '-init.*':
                 name: init
@@ -65,7 +69,7 @@ classes:
                 name: didLoadObjects
             '-objectAtIndexPath:':
                 name: getObject
-                return_type: '<T extends PFObject> T'
+                return_type: T
             '-removeObjectAtIndexPath:':
                 name: removeObject
             '-removeObjectsAtIndexPaths:':
@@ -78,9 +82,13 @@ classes:
                 return_type: BFTask<Void>
             '-queryForCollection':
                 name: getQuery
-                return_type: '<T extends PFObject> PFQuery<T>'
+                return_type: PFQuery<T>
             '-collectionView:cellForItemAtIndexPath:object:':
                 name: getCellForItem
+                return_type: PFCollectionViewCell<T>
+                parameters:
+                    object:
+                        type: T
             '-collectionViewReusableViewForNextPageAction:':
                 name: getReusableViewForNextPageAction
             '-collectionView:layout:sizeForItemAtIndexPath:':
@@ -96,9 +104,12 @@ classes:
             '-collectionView:layout:referenceSizeForFooterInSection:':
                 name: getReferenceSizeForFooter
     PFQueryTableViewController: # DONE
+        skip_def_constructor: true
         properties:
             'objects':
-                type: '<T extends PFObject> NSArray<T>'
+                type: NSArray<T>
+            'parseClassName':
+                readonly: true
         methods:
             '-init.*':
                 name: init
@@ -108,7 +119,7 @@ classes:
                 name: didLoadObjects
             '-objectAtIndexPath:':
                 name: getObject
-                return_type: '<T extends PFObject> T'
+                return_type: T
             '-removeObjectAtIndexPath:.*':
                 name: removeObject
             '-removeObjectsAtIndexPaths:.*':
@@ -121,9 +132,12 @@ classes:
                 return_type: BFTask<Void>
             '-queryForTable':
                 name: getQuery
-                return_type: '<T extends PFObject> PFQuery<T>'
+                return_type: PFQuery<T>
             '-tableView:cellForRowAtIndexPath:object:':
                 name: getCellForRow
+                parameters:
+                    object:
+                        type: T
             '-tableView:cellForNextPageAtIndexPath:':
                 name: getCellForNextPage
     PFSignUpView: # DONE

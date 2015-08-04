@@ -50,6 +50,9 @@ import org.robovm.pods.parse.*;
     protected PFSignUpView(SkipInit skipInit) { super(skipInit); }
     public PFSignUpView(PFSignUpFields fields) { super((SkipInit) null); initObject(init(fields)); }
     /*</constructors>*/
+    public PFSignUpView(CGRect frame) {
+        super(frame);
+    }
     /*<properties>*/
     @Property(selector = "presentingViewController")
     public native UIViewController getPresentingViewController();

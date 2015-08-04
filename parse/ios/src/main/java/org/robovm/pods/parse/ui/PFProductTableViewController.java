@@ -39,17 +39,19 @@ import org.robovm.pods.parse.*;
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/PFProductTableViewController/*</name>*/ 
-    extends /*<extends>*/PFQueryTableViewController/*</extends>*/ 
+    extends /*<extends>*/PFQueryTableViewController<PFProduct>/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
     /*<ptr>*/public static class PFProductTableViewControllerPtr extends Ptr<PFProductTableViewController, PFProductTableViewControllerPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(PFProductTableViewController.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public PFProductTableViewController() {}
     protected PFProductTableViewController(SkipInit skipInit) { super(skipInit); }
     public PFProductTableViewController(UITableViewStyle style) { super((SkipInit) null); initObject(init(style)); }
     /*</constructors>*/
+    public PFProductTableViewController() {
+        this(UITableViewStyle.Plain);
+    }
     /*<properties>*/
     
     /*</properties>*/

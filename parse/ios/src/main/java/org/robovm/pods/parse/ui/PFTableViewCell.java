@@ -49,6 +49,12 @@ import org.robovm.pods.parse.*;
     public PFTableViewCell() {}
     protected PFTableViewCell(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
+    public PFTableViewCell(UITableViewCellStyle style, String reuseIdentifier) {
+        super(style, reuseIdentifier);
+    }
+    public PFTableViewCell(CGRect frame) {
+        super(frame);
+    }
     /*<properties>*/
     @Property(selector = "imageView")
     public native PFImageView getImageView();

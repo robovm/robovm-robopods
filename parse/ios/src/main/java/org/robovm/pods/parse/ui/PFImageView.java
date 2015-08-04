@@ -49,6 +49,9 @@ import org.robovm.pods.parse.*;
     public PFImageView() {}
     protected PFImageView(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
+    public PFImageView(CGRect frame) {
+        super(frame);
+    }
     /*<properties>*/
     @Property(selector = "file")
     public native PFFile getFile();

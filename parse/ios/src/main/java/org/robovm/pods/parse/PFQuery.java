@@ -119,6 +119,9 @@ import org.robovm.pods.bolts.*;
     public PFQuery<T> whereEqualTo(String key, Number object) {
         return whereEqualTo(key, NSNumber.valueOf(object));
     }
+    public PFQuery<T> whereEqualTo(String key, boolean object) {
+        return whereEqualTo(key, NSNumber.valueOf(object));
+    }
     public PFQuery<T> whereEqualTo(String key, T object) {
         return whereEqualTo(key, object);
     }
@@ -164,8 +167,14 @@ import org.robovm.pods.bolts.*;
     public PFQuery<T> whereNotEqualTo(String key, Number object) {
         return whereNotEqualTo(key, NSNumber.valueOf(object));
     }
+    public PFQuery<T> whereNotEqualTo(String key, boolean object) {
+        return whereNotEqualTo(key, NSNumber.valueOf(object));
+    }
     public PFQuery<T> whereNotEqualTo(String key, T object) {
         return whereNotEqualTo(key, object);
+    }
+    public PFQuery<T> whereContainedIn(String key, List<String> array) {
+        return whereContainedIn(key, NSArray.fromStrings(array));
     }
     public PFQuery<T> whereContainedIn(String key, String...array) {
         return whereContainedIn(key, NSArray.fromStrings(array));
@@ -173,11 +182,17 @@ import org.robovm.pods.bolts.*;
     public PFQuery<T> whereContainedIn(String key, Number...array) {
         return whereContainedIn(key, NSArray.fromNumbers(array));
     }
+    public PFQuery<T> whereNotContainedIn(String key, List<String> array) {
+        return whereNotContainedIn(key, NSArray.fromStrings(array));
+    }
     public PFQuery<T> whereNotContainedIn(String key, String...array) {
         return whereNotContainedIn(key, NSArray.fromStrings(array));
     }
     public PFQuery<T> whereNotContainedIn(String key, Number...array) {
         return whereNotContainedIn(key, NSArray.fromNumbers(array));
+    }
+    public PFQuery<T> whereContainsAll(String key, List<String> array) {
+        return whereContainsAll(key, NSArray.fromStrings(array));
     }
     public PFQuery<T> whereContainsAll(String key, String...array) {
         return whereContainsAll(key, NSArray.fromStrings(array));
@@ -245,13 +260,13 @@ import org.robovm.pods.bolts.*;
     @Method(selector = "whereKey:hasSuffix:")
     public native PFQuery<T> whereEndsWith(String key, String suffix);
     @Method(selector = "whereKey:matchesKey:inQuery:")
-    public native PFQuery<T> whereMatchesKeyInQuery(String key, String otherKey, PFQuery<T> query);
+    public native PFQuery<T> whereMatchesKeyInQuery(String key, String otherKey, PFQuery<?> query);
     @Method(selector = "whereKey:doesNotMatchKey:inQuery:")
-    public native PFQuery<T> whereDoesNotMatchKeyInQuery(String key, String otherKey, PFQuery<T> query);
+    public native PFQuery<T> whereDoesNotMatchKeyInQuery(String key, String otherKey, PFQuery<?> query);
     @Method(selector = "whereKey:matchesQuery:")
-    public native PFQuery<T> whereMatchesQuery(String key, PFQuery<T> query);
+    public native PFQuery<T> whereMatchesQuery(String key, PFQuery<?> query);
     @Method(selector = "whereKey:doesNotMatchQuery:")
-    public native PFQuery<T> whereDoesNotMatchQuery(String key, PFQuery<T> query);
+    public native PFQuery<T> whereDoesNotMatchQuery(String key, PFQuery<?> query);
     @Method(selector = "orderByAscending:")
     public native PFQuery<T> orderByAscending(String key);
     @Method(selector = "addAscendingOrder:")
@@ -339,7 +354,7 @@ import org.robovm.pods.bolts.*;
     @Method(selector = "queryWithClassName:predicate:")
     public static native <T extends PFObject> PFQuery<T> getQuery(String className, NSPredicate predicate);
     @Method(selector = "orQueryWithSubqueries:")
-    public static native <T extends PFObject> PFQuery<T> or(NSArray<PFQuery<T>> queries);
+    public static native <T extends PFObject> PFQuery<T> or(NSArray<PFQuery<?>> queries);
     public static <T extends PFObject> T get(String objectClass, String objectId) throws NSErrorException {
        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
        T result = get(objectClass, objectId, ptr);
