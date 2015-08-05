@@ -15,13 +15,16 @@
  */
 package org.robovm.pods.google;
 
+import org.robovm.apple.foundation.NSErrorException;
 import org.robovm.pods.google.analytics.GAITracker;
 
-public class GGLContextAnalytics extends GGLContext {
+public class GGLContextAnalytics {
     private static GGLContextAnalytics instance;
 
+    private final GGLContext context;
+
     private GGLContextAnalytics(GGLContext context) {
-        setHandle(context.getHandle());
+        this.context = context;
     }
 
     public static GGLContextAnalytics getSharedInstance() {
@@ -31,7 +34,15 @@ public class GGLContextAnalytics extends GGLContext {
         return instance;
     }
 
+    public GGLConfiguration getConfiguration() {
+        return context.getConfiguration();
+    }
+
+    public void configure() throws NSErrorException {
+        context.configure();
+    }
+
     public GAITracker getTracker() {
-        return GGLContextAnalyticsExtensions.getTracker(this);
+        return GGLContextAnalyticsExtensions.getTracker(context);
     }
 }

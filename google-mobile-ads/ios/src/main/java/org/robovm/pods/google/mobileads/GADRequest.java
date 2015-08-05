@@ -48,8 +48,8 @@ import org.robovm.apple.storekit.*;
     protected GADRequest(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     public GADRequest() {
-        super((SkipInit) null);
-        setHandle(create());
+        super(create());
+        retain(getHandle());
     }
     /*<properties>*/
     @Property(selector = "testDevices")

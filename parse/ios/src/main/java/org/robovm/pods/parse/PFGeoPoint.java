@@ -52,12 +52,12 @@ import org.robovm.pods.bolts.*;
     public PFGeoPoint(NSCoder aDecoder) { super((SkipInit) null); initObject(init(aDecoder)); }
     /*</constructors>*/
     public PFGeoPoint(CLLocation location) {
-        super((SkipInit) null);
-        setHandle(create(location));
+        super(create(location));
+        retain(getHandle());
     }
     public PFGeoPoint(double latitude, double longitude) {
-        super((SkipInit) null);
-        setHandle(create(latitude, longitude));
+        super(create(latitude, longitude));
+        retain(getHandle());
     }
     /*<properties>*/
     @Property(selector = "latitude")

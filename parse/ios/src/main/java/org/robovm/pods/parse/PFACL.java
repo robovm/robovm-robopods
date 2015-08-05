@@ -52,8 +52,8 @@ import org.robovm.pods.bolts.*;
     public PFACL(NSCoder aDecoder) { super((SkipInit) null); initObject(init(aDecoder)); }
     /*</constructors>*/
     public PFACL(PFUser user) {
-        super((SkipInit) null);
-        setHandle(create(user));
+        super(create(user));
+        retain(getHandle());
     }
     /*<properties>*/
     
