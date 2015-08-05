@@ -149,7 +149,7 @@ import org.robovm.pods.bolts.*;
         put(key, NSNumber.valueOf(object));
     }
     public <T extends PFObject> void put(String key, T object) {
-        put(key, object);
+        put0(object, key);
     }
     public void add(String key, NSObject object) {
         if (object == null) {
@@ -164,7 +164,7 @@ import org.robovm.pods.bolts.*;
         add(key, NSNumber.valueOf(object));
     }
     public <T extends PFObject> void add(String key, T object) {
-        add(key, object);
+        add0(object, key);
     }
     public void addAll(String key, NSArray<?> objects) {
         addAll0(objects, key);
@@ -188,7 +188,7 @@ import org.robovm.pods.bolts.*;
         addUnique(key, NSNumber.valueOf(object));
     }
     public <T extends PFObject >void addUnique(String key, T object) {
-        addUnique(key, object);
+        addUnique0(object, key);
     }
     public void addAllUnique(String key, NSArray<?> objects) {
         addAllUnique0(objects, key);
@@ -212,7 +212,7 @@ import org.robovm.pods.bolts.*;
         remove(key, NSNumber.valueOf(object));
     }
     public <T extends PFObject> void remove(String key, T object) {
-        remove(key, object);
+        remove0(object, key);
     }
     public void removeAll(String key, NSArray<?> objects) {
         removeAll0(objects, key);
