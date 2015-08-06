@@ -1,14 +1,14 @@
-# RoboPods for AdMob
+# RoboPods for Google Play Game Services
 
-AdMob is a mobile ads network. Gain insights about your users, drive more in-app purchases, and maximize your ad revenue.
+Start integrating popular gaming features in your mobile games and web games by using the Google Play games services APIs.
 
 ## Available RoboPods
 
 | Platform    | Version |
 |-------------|---------|
-| [iOS](ios/) | 7.3.1   |
+| [iOS](ios/) | 1.4.1   |
 |             |         |
 
 ## Official website
 
-https://developers.google.com/admob
+https://developers.google.com/games/services/
