@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>org.robovm</groupId>
-    <version>1.6.0</version>
+    <version>1.6.1-SNAPSHOT</version>
     <artifactId>robopods-parent</artifactId>
     <name>RoboPods Parent</name>
     <packaging>pom</packaging>
@@ -32,7 +32,7 @@
         <url>https://github.com/robovm/robovm-robopods</url>
         <connection>scm:git:git://github.com/robovm/robovm-robopods.git</connection>
         <developerConnection>scm:git:git@github.com:robovm/robovm-robopods.git</developerConnection>
-        <tag>robovm-templates-1.6.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
