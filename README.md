@@ -32,7 +32,7 @@ to your `pom.xml`:
 <dependency>
    <groupId>org.robovm</groupId>
    <artifactId>robopods-facebook-ios</artifactId>
-   <version>1.5.0</version>
+   <version>1.6.0</version>
 </dependency>
 ```
 
