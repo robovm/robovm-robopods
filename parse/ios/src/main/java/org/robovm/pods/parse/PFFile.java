@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013-2015 RoboVM AB
+x * Copyright (C) 2013-2015 RoboVM AB
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,24 +51,24 @@ import org.robovm.pods.bolts.*;
     protected PFFile(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     public PFFile(NSData data) {
-        super((SkipInit)null);
-        setHandle(create(data));
+        super(create(data));
+        retain(getHandle());
     }
     public PFFile(String name, NSData data) {
-        super((SkipInit)null);
-        setHandle(create(name, data));
+        super(create(name, data));
+        retain(getHandle());
     }
     public PFFile(String name, String path) {
-        super((SkipInit)null);
-        setHandle(create(name, path));
+        super(create(name, path));
+        retain(getHandle());
     }
     public PFFile(String name, NSData data, String contentType) {
-        super((SkipInit)null);
-        setHandle(create(name, data, contentType));
+        super(create(name, data, contentType));
+        retain(getHandle());
     }
     public PFFile(NSData data, String contentType) {
-        super((SkipInit)null);
-        setHandle(create(data, contentType));
+        super(create(data, contentType));
+        retain(getHandle());
     }
     /*<properties>*/
     @Property(selector = "name")

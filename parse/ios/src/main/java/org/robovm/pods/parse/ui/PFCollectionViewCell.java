@@ -19,6 +19,7 @@ package org.robovm.pods.parse.ui;
 import java.io.*;
 import java.nio.*;
 import java.util.*;
+
 import org.robovm.objc.*;
 import org.robovm.objc.annotation.*;
 import org.robovm.objc.block.*;
@@ -38,8 +39,8 @@ import org.robovm.pods.parse.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/PFCollectionViewCell/*</name>*/ 
-    extends /*<extends>*/UICollectionViewCell/*</extends>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/PFCollectionViewCell/*</name>*/ <T extends PFObject>
+    extends /*<extends>*/UICollectionViewCell/*</extends>*/
     /*<implements>*//*</implements>*/ {
 
     /*<ptr>*/public static class PFCollectionViewCellPtr extends Ptr<PFCollectionViewCell, PFCollectionViewCellPtr> {}/*</ptr>*/
@@ -49,6 +50,9 @@ import org.robovm.pods.parse.*;
     public PFCollectionViewCell() {}
     protected PFCollectionViewCell(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
+    public PFCollectionViewCell(CGRect frame) {
+        super(frame);
+    }
     /*<properties>*/
     @Property(selector = "textLabel")
     public native UILabel getTextLabel();
@@ -58,6 +62,6 @@ import org.robovm.pods.parse.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "updateFromObject:")
-    public native <T extends PFObject> void update(T object);
+    public native void update(T object);
     /*</methods>*/
 }

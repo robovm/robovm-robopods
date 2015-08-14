@@ -137,25 +137,31 @@ import org.robovm.pods.bolts.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     public void put(String key, NSObject object) {
+        if (object == null) {
+            object = NSNull.getNull();
+        }
         put0(object, key);
     }
     public void put(String key, String object) {
-        put0(new NSString(object), key);
+        put(key, new NSString(object));
     }
     public void put(String key, Number object) {
-        put0(NSNumber.valueOf(object), key);
+        put(key, NSNumber.valueOf(object));
     }
     public <T extends PFObject> void put(String key, T object) {
         put0(object, key);
     }
     public void add(String key, NSObject object) {
+        if (object == null) {
+            object = NSNull.getNull();
+        }
         add0(object, key);
     }
     public void add(String key, String object) {
-        add0(new NSString(object), key);
+        add(key, new NSString(object));
     }
     public void add(String key, Number object) {
-        add0(NSNumber.valueOf(object), key);
+        add(key, NSNumber.valueOf(object));
     }
     public <T extends PFObject> void add(String key, T object) {
         add0(object, key);
@@ -164,19 +170,22 @@ import org.robovm.pods.bolts.*;
         addAll0(objects, key);
     }
     public void addAll(String key, String...objects) {
-        addAll0(NSArray.fromStrings(objects), key);
+        addAll(key, NSArray.fromStrings(objects));
     }
     public void addAll(String key, Number...objects) {
-        addAll0(NSArray.fromNumbers(objects), key);
+        addAll(key, NSArray.fromNumbers(objects));
     }
     public void addUnique(String key, NSObject object) {
+        if (object == null) {
+            object = NSNull.getNull();
+        }
         addUnique0(object, key);
     }
     public void addUnique(String key, String object) {
-        addUnique0(new NSString(object), key);
+        addUnique(key, new NSString(object));
     }
     public void addUnique(String key, Number object) {
-        addUnique0(NSNumber.valueOf(object), key);
+        addUnique(key, NSNumber.valueOf(object));
     }
     public <T extends PFObject >void addUnique(String key, T object) {
         addUnique0(object, key);
@@ -185,19 +194,22 @@ import org.robovm.pods.bolts.*;
         addAllUnique0(objects, key);
     }
     public void addAllUnique(String key, String...objects) {
-        addAllUnique0(NSArray.fromStrings(objects), key);
+        addAllUnique(key, NSArray.fromStrings(objects));
     }
     public void addAllUnique(String key, Number...objects) {
-        addAllUnique0(NSArray.fromNumbers(objects), key);
+        addAllUnique(key, NSArray.fromNumbers(objects));
     }
     public void remove(String key, NSObject object) {
+        if (object == null) {
+            object = NSNull.getNull();
+        }
         remove0(object, key);
     }
     public void remove(String key, String object) {
-        remove0(new NSString(object), key);
+        remove(key, new NSString(object));
     }
     public void remove(String key, Number object) {
-        remove0(NSNumber.valueOf(object), key);
+        remove(key, NSNumber.valueOf(object));
     }
     public <T extends PFObject> void remove(String key, T object) {
         remove0(object, key);
@@ -206,10 +218,10 @@ import org.robovm.pods.bolts.*;
         removeAll0(objects, key);
     }
     public void removeAll(String key, String...objects) {
-        removeAll0(NSArray.fromStrings(objects), key);
+        removeAll(key, NSArray.fromStrings(objects));
     }
     public void removeAll(String key, Number...objects) {
-        removeAll0(NSArray.fromNumbers(objects), key);
+        removeAll(key, NSArray.fromNumbers(objects));
     }
     public void increment(String key, Number amount) {
         increment(key, NSNumber.valueOf(amount));

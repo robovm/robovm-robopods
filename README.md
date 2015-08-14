@@ -20,7 +20,7 @@ to your `build.gradle`:
 ```
 dependencies {
    ... other dependencies ...
-   compile "org.robovm:robopods-facebook-ios:1.5.0"
+   compile "org.robovm:robopods-facebook-ios:1.6.0"
 }
 ```
 
@@ -32,7 +32,7 @@ to your `pom.xml`:
 <dependency>
    <groupId>org.robovm</groupId>
    <artifactId>robopods-facebook-ios</artifactId>
-   <version>1.5.0</version>
+   <version>1.6.0</version>
 </dependency>
 ```
 
@@ -40,12 +40,12 @@ to your `pom.xml`:
 
 |                  Name                   | Version | Dependency                                      |
 |-----------------------------------------|:-------:|-------------------------------------------------|
-| [Bolts](bolts/)                         | 1.1.5   | org.robovm:robopods-bolts-ios:1.5.0             |
-| [Chartboost](chartboost/)               | 5.5.0   | org.robovm:robopods-chartboost-ios:1.5.0        |
-| [Facebook](facebook/)                   | 4.3.0   | org.robovm:robopods-facebook-ios:1.5.0          |
-| [Flurry](flurry/)                       | 6.6.0   | org.robovm:robopods-flurry-ios:1.5.0            |
-| [Google Analytics](google-analytics/)   | 3.12    | org.robovm:robopods-google-analytics-ios:1.5.0  |
-| [Google APIs](google-apis/)             |         | org.robovm:robopods-google-apis-ios:1.5.0       |
-| [Google Mobile Ads](google-mobile-ads/) | 7.3.1   | org.robovm:robopods-google-mobile-ads-ios:1.5.1-SNAPSHOT |
-| [Google Play Games](google-play-games/) | 1.4.1   | org.robovm:robopods-google-play-games-ios:1.5.1-SNAPSHOT |
-| [Parse](parse/)                         | 1.7.4   | org.robovm:robopods-parse-ios:1.5.0             |
+| [Bolts](bolts/)                         | 1.1.5   | org.robovm:robopods-bolts-ios:1.6.0             |
+| [Chartboost](chartboost/)               | 5.5.0   | org.robovm:robopods-chartboost-ios:1.6.0        |
+| [Facebook](facebook/)                   | 4.3.0   | org.robovm:robopods-facebook-ios:1.6.0          |
+| [Flurry](flurry/)                       | 6.6.0   | org.robovm:robopods-flurry-ios:1.6.0            |
+| [Google Analytics](google-analytics/)   | 3.12    | org.robovm:robopods-google-analytics-ios:1.6.0  |
+| [Google APIs](google-apis/)             |         | org.robovm:robopods-google-apis-ios:1.6.0       |
+| [Google Mobile Ads](google-mobile-ads/) | 7.3.1   | org.robovm:robopods-google-mobile-ads-ios:1.6.0 |
+| [Google Play Games](google-play-games/) | 1.4.1   | org.robovm:robopods-google-play-games-ios:1.6.0 |
+| [Parse](parse/)                         | 1.7.4   | org.robovm:robopods-parse-ios:1.6.0             |

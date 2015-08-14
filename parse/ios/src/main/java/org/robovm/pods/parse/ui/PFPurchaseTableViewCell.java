@@ -19,6 +19,7 @@ package org.robovm.pods.parse.ui;
 import java.io.*;
 import java.nio.*;
 import java.util.*;
+
 import org.robovm.objc.*;
 import org.robovm.objc.annotation.*;
 import org.robovm.objc.block.*;
@@ -49,6 +50,9 @@ import org.robovm.pods.parse.*;
     public PFPurchaseTableViewCell() {}
     protected PFPurchaseTableViewCell(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
+    public PFPurchaseTableViewCell(UITableViewCellStyle style, String reuseIdentifier) {
+        super(style, reuseIdentifier);
+    }
     /*<properties>*/
     @Property(selector = "state")
     public native PFPurchaseTableViewCellState getState();

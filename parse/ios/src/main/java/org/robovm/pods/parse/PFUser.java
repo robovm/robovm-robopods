@@ -69,6 +69,8 @@ import org.robovm.pods.bolts.*;
     public native void setEmail(String v);
     /*</properties>*/
     /*<members>*//*</members>*/
+    @Method(selector = "query")
+    public static native PFQuery<PFUser> getQuery();
     /*<methods>*/
     @Method(selector = "isAuthenticated")
     public native boolean isAuthenticated();

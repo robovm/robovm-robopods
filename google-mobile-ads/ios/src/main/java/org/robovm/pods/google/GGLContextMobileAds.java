@@ -15,14 +15,17 @@
  */
 package org.robovm.pods.google;
 
+import org.robovm.apple.foundation.NSErrorException;
 import org.robovm.pods.google.mobileads.GADBannerView;
 import org.robovm.pods.google.mobileads.GADInterstitial;
 
-public class GGLContextMobileAds extends GGLContext {
+public class GGLContextMobileAds {
     private static GGLContextMobileAds instance;
 
+    private final GGLContext context;
+
     private GGLContextMobileAds(GGLContext context) {
-        setHandle(context.getHandle());
+        this.context = context;
     }
 
     public static GGLContextMobileAds getSharedInstance() {
@@ -32,27 +35,35 @@ public class GGLContextMobileAds extends GGLContext {
         return instance;
     }
 
+    public GGLConfiguration getConfiguration() {
+        return context.getConfiguration();
+    }
+
+    public void configure() throws NSErrorException {
+        context.configure();
+    }
+
     public String getAdUnitIDForBannerTest() {
-        return GGLContextAdMobExtensions.getAdUnitIDForBannerTest(this);
+        return GGLContextAdMobExtensions.getAdUnitIDForBannerTest(context);
     }
 
     public String getAdUnitIDForInterstitialTest() {
-        return GGLContextAdMobExtensions.getAdUnitIDForInterstitialTest(this);
+        return GGLContextAdMobExtensions.getAdUnitIDForInterstitialTest(context);
     }
 
     public GADBannerView getBannerView() {
-        return GGLContextAdMobExtensions.getBannerView(this);
+        return GGLContextAdMobExtensions.getBannerView(context);
     }
 
     public void setBannerView(GADBannerView v) {
-        GGLContextAdMobExtensions.setBannerView(this, v);
+        GGLContextAdMobExtensions.setBannerView(context, v);
     }
 
     public GADInterstitial getInterstitialView() {
-        return GGLContextAdMobExtensions.getInterstitialView(this);
+        return GGLContextAdMobExtensions.getInterstitialView(context);
     }
 
     public void setInterstitialView(GADInterstitial v) {
-        GGLContextAdMobExtensions.setInterstitialView(this, v);
+        GGLContextAdMobExtensions.setInterstitialView(context, v);
     }
 }

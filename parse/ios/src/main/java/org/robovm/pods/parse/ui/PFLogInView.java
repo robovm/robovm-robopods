@@ -50,6 +50,9 @@ import org.robovm.pods.parse.*;
     protected PFLogInView(SkipInit skipInit) { super(skipInit); }
     public PFLogInView(PFLogInFields fields) { super((SkipInit) null); initObject(init(fields)); }
     /*</constructors>*/
+    public PFLogInView(CGRect frame) {
+        super(frame);
+    }
     /*<properties>*/
     @Property(selector = "presentingViewController")
     public native UIViewController getPresentingViewController();
