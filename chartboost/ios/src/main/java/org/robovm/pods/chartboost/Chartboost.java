@@ -52,6 +52,13 @@ import org.robovm.apple.storekit.*;
     
     /*</properties>*/
     /*<members>*//*</members>*/
+    private static ChartboostDelegate delegate;
+    
+    public static void start(String appId, String appSignature, ChartboostDelegate delegate) {
+        Chartboost.delegate = delegate;
+        start0(appId, appSignature, delegate);
+    }
+    
     public static boolean hasInterstitial(CBLocation location) {
         return hasInterstitial(location.value().toString());
     }
@@ -93,7 +100,7 @@ import org.robovm.apple.storekit.*;
     }
     /*<methods>*/
     @Method(selector = "startWithAppId:appSignature:delegate:")
-    public static native void start(String appId, String appSignature, ChartboostDelegate delegate);
+    private static native void start0(String appId, String appSignature, ChartboostDelegate delegate);
     @Method(selector = "isAnyViewVisible")
     public static native boolean isAnyViewVisible();
     @Method(selector = "hasInterstitial:")

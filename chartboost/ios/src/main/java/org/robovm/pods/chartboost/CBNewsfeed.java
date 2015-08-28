@@ -52,9 +52,15 @@ import org.robovm.apple.storekit.*;
     
     /*</properties>*/
     /*<members>*//*</members>*/
+    private static CBNewsfeedDelegate delegate;
+    
+    public static void start(CBNewsfeedDelegate delegate) {
+        CBNewsfeed.delegate = delegate;
+        start0(delegate);
+    }
     /*<methods>*/
     @Method(selector = "startWithDelegate:")
-    public static native void start(CBNewsfeedDelegate delegate);
+    private static native void start0(CBNewsfeedDelegate delegate);
     @Method(selector = "getMessages")
     public static native NSArray<CBStory> getMessages();
     @Method(selector = "getMessage:")

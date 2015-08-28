@@ -41,17 +41,21 @@ classes:
                 trim_after_first_colon: true
     CBInPlay: {} # DONE
     CBMoreAppsBadge: # DONE
+        skip_def_constructor: true
         methods:
             '+moreAppsBadge':
                 name: create
+                constructor: true
     CBMoreAppsButton: # DONE
         methods:
             '+moreAppsButtonWithImage:fromViewController:location:':
                 name: create
+                constructor: true
     CBNewsfeed: # DONE
         methods:
             '+startWithDelegate:':
-                name: start
+                name: start0
+                visibility: private
             '+getMessages':
                 return_type: NSArray<CBStory>
             '+getMessage:':
@@ -95,7 +99,8 @@ classes:
     Chartboost: # DONE
         methods:
             '+startWithAppId:appSignature:delegate:':
-                name: start
+                name: start0
+                visibility: private
             '+handleOpenURL:sourceApplication:annotation:':
                 trim_after_first_colon: true
                 parameters:
