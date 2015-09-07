@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.robovm</groupId>
         <artifactId>robopods-google-play-games-parent</artifactId>
-        <version>1.6.1-SNAPSHOT</version>
+        <version>1.7.1-SNAPSHOT</version>
     </parent>
     <artifactId>robopods-google-play-games-ios</artifactId>
     <name>RoboPods Google Play Game Services iOS</name>
