@@ -70,9 +70,16 @@ import org.robovm.pods.facebook.core.*;
      }
     @Method(selector = "validateWithError:")
     private native boolean validate(NSError.NSErrorPtr errorRef);
+    
+    private static FBSDKSharingDelegate delegate;
+    
+    public static FBSDKMessageDialog show(FBSDKSharingContent content, FBSDKSharingDelegate delegate) {
+        FBSDKMessageDialog.delegate = delegate;
+        return show0(content, delegate);
+    }
     /*<methods>*/
     @Method(selector = "showWithContent:delegate:")
-    public static native FBSDKMessageDialog show(FBSDKSharingContent content, FBSDKSharingDelegate delegate);
+    private static native FBSDKMessageDialog show0(FBSDKSharingContent content, FBSDKSharingDelegate delegate);
     @Method(selector = "canShow")
     public native boolean canShow();
     @Method(selector = "show")

@@ -46,6 +46,9 @@ import org.robovm.pods.facebook.core.*;
     /*<constructors>*/
     public FBSDKShareOpenGraphAction() {}
     protected FBSDKShareOpenGraphAction(SkipInit skipInit) { super(skipInit); }
+    public FBSDKShareOpenGraphAction(String actionType, FBSDKShareOpenGraphObject object, String key) { super(create(actionType, object, key)); retain(getHandle()); }
+    public FBSDKShareOpenGraphAction(String actionType, String objectID, String key) { super(create(actionType, objectID, key)); retain(getHandle()); }
+    public FBSDKShareOpenGraphAction(String actionType, NSURL objectURL, String key) { super(create(actionType, objectURL, key)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "actionType")
@@ -58,11 +61,11 @@ import org.robovm.pods.facebook.core.*;
     @Method(selector = "isEqualToShareOpenGraphAction:")
     public native boolean equalsTo(FBSDKShareOpenGraphAction action);
     @Method(selector = "actionWithType:object:key:")
-    public static native FBSDKShareOpenGraphAction create(String actionType, FBSDKShareOpenGraphObject object, String key);
+    protected static native @Pointer long create(String actionType, FBSDKShareOpenGraphObject object, String key);
     @Method(selector = "actionWithType:objectID:key:")
-    public static native FBSDKShareOpenGraphAction create(String actionType, String objectID, String key);
+    protected static native @Pointer long create(String actionType, String objectID, String key);
     @Method(selector = "actionWithType:objectURL:key:")
-    public static native FBSDKShareOpenGraphAction create(String actionType, NSURL objectURL, String key);
+    protected static native @Pointer long create(String actionType, NSURL objectURL, String key);
     @Method(selector = "copy")
     public native NSObject copy();
     /*</methods>*/

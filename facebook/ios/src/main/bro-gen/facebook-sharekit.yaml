@@ -31,7 +31,8 @@ classes:
                 name: validate
                 throws: NSErrorException
             '+showWithContent:delegate:':
-                name: show
+                name: show0
+                visibility: private
     FBSDKAppGroupContent: # DONE
         methods:
             '-isEqualToAppGroupContent:':
@@ -42,7 +43,8 @@ classes:
                 name: validate
                 throws: NSErrorException
             '+showWithGroupID:delegate:':
-                name: show
+                name: show0
+                visibility: private
     FBSDKAppInviteContent: # DONE
         properties:
             'previewImageURL':
@@ -56,7 +58,8 @@ classes:
                 name: validate
                 throws: NSErrorException
             '+showWithContent:delegate:':
-                name: show
+                name: show0
+                visibility: private
     FBSDKGameRequestContent: # DONE
         properties:
             '(to|suggestions)':
@@ -76,13 +79,15 @@ classes:
                 name: validate
                 throws: NSErrorException
             '+showWithContent:delegate:':
-                name: show
+                name: show0
+                visibility: private
     FBSDKLikeButton: {} # DONE
     FBSDKLikeControl: {} # DONE
     FBSDKMessageDialog: # DONE
         methods:
             '+showWithContent:delegate:':
-                name: show
+                name: show0
+                visibility: private
     FBSDKSendButton: {} # DONE
     FBSDKShareAPI: # DONE
         properties:
@@ -92,12 +97,14 @@ classes:
             '-createOpenGraphObject:':
                 trim_after_first_colon: true
             '+shareWithContent:delegate:':
-                name: share
+                name: share0
+                visibility: private
     FBSDKShareButton: {} # DONE
     FBSDKShareDialog: # DONE
         methods:
             '+showFromViewController:withContent:delegate:':
-                name: show
+                name: show0
+                visibility: private
     FBSDKShareLinkContent: # DONE
         methods:
             '-isEqualToShareLinkContent:':
@@ -108,6 +115,7 @@ classes:
                 name: equalsTo
             '+actionWithType:.*':
                 name: create
+                constructor: true
     FBSDKShareOpenGraphContent: # DONE
         methods:
             '-isEqualToShareOpenGraphContent:':
@@ -118,15 +126,19 @@ classes:
                 name: equalsTo
             '+objectWithProperties:':
                 name: create
-    FBSDKShareOpenGraphValueContainer: {} # DONE
+                constructor: true
+    FBSDKShareOpenGraphValueContainer: # DONE
+        skip_handle_constructor: false
     FBSDKSharePhoto: # DONE
         methods:
             '-isEqualToSharePhoto:':
                 name: equalsTo
             '+photoWithImage:userGenerated:':
                 name: create
+                constructor: true
             '+photoWithImageURL:userGenerated:':
                 name: create
+                constructor: true
     FBSDKSharePhotoContent: # DONE
         properties:
             'photos':
@@ -140,6 +152,7 @@ classes:
                 name: equalsTo
             '+videoWithVideoURL:':
                 name: create
+                constructor: true
     FBSDKShareVideoContent: # DONE
         methods:
             '-isEqualToShareVideoContent:':

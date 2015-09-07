@@ -52,7 +52,7 @@ import org.robovm.pods.facebook.core.*;
     @Property(selector = "peopleIDs")
     @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getPeopleIDs();
     @Property(selector = "setPeopleIDs:")
-    void setPeopleIDs(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class)List<String> v);
+    void setPeopleIDs(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> v);
     @Property(selector = "placeID")
     String getPlaceID();
     @Property(selector = "setPlaceID:")

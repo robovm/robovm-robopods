@@ -58,6 +58,13 @@ import org.robovm.pods.facebook.core.*;
     public native void setContent(FBSDKAppInviteContent v);
     /*</properties>*/
     /*<members>*//*</members>*/
+    private static FBSDKAppInviteDialogDelegate delegate;
+    
+    public static FBSDKAppInviteDialog show(FBSDKAppInviteContent content, FBSDKAppInviteDialogDelegate delegate) {
+        FBSDKAppInviteDialog.delegate = delegate;
+        return show0(content, delegate);
+    }
+    
     /*<methods>*/
     @Method(selector = "canShow")
     public native boolean canShow();
@@ -72,6 +79,6 @@ import org.robovm.pods.facebook.core.*;
     @Method(selector = "validateWithError:")
     private native boolean validate(NSError.NSErrorPtr errorRef);
     @Method(selector = "showWithContent:delegate:")
-    public static native FBSDKAppInviteDialog show(FBSDKAppInviteContent content, FBSDKAppInviteDialogDelegate delegate);
+    private static native FBSDKAppInviteDialog show0(FBSDKAppInviteContent content, FBSDKAppInviteDialogDelegate delegate);
     /*</methods>*/
 }

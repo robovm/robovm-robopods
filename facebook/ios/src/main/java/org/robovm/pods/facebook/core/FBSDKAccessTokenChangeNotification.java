@@ -36,23 +36,23 @@ import org.robovm.pods.bolts.*;
 /*<javadoc>*/
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL)/*</annotations>*/
-@Marshaler(/*<name>*/FBSDKAccessTokenChangeNotificitation/*</name>*/.Marshaler.class)
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/FBSDKAccessTokenChangeNotificitation/*</name>*/ 
+@Marshaler(/*<name>*/FBSDKAccessTokenChangeNotification/*</name>*/.Marshaler.class)
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/FBSDKAccessTokenChangeNotification/*</name>*/ 
     extends /*<extends>*/NSDictionaryWrapper/*</extends>*/
     /*<implements>*//*</implements>*/ {
 
     /*<marshalers>*/
     public static class Marshaler {
         @MarshalsPointer
-        public static FBSDKAccessTokenChangeNotificitation toObject(Class<FBSDKAccessTokenChangeNotificitation> cls, long handle, long flags) {
-            NSDictionary<NSString, NSObject> o = (NSDictionary<NSString, NSObject>) NSObject.Marshaler.toObject(NSDictionary.class, handle, flags);
+        public static FBSDKAccessTokenChangeNotification toObject(Class<FBSDKAccessTokenChangeNotification> cls, long handle, long flags) {
+            NSDictionary o = (NSDictionary) NSObject.Marshaler.toObject(NSDictionary.class, handle, flags);
             if (o == null) {
                 return null;
             }
-            return new FBSDKAccessTokenChangeNotificitation(o);
+            return new FBSDKAccessTokenChangeNotification(o);
         }
         @MarshalsPointer
-        public static long toNative(FBSDKAccessTokenChangeNotificitation o, long flags) {
+        public static long toNative(FBSDKAccessTokenChangeNotification o, long flags) {
             if (o == null) {
                 return 0L;
             }
@@ -61,24 +61,24 @@ import org.robovm.pods.bolts.*;
     }
     public static class AsListMarshaler {
         @MarshalsPointer
-        public static List<FBSDKAccessTokenChangeNotificitation> toObject(Class<? extends NSObject> cls, long handle, long flags) {
-            NSArray<NSDictionary<NSString, NSObject>> o = (NSArray<NSDictionary<NSString, NSObject>>) NSObject.Marshaler.toObject(NSArray.class, handle, flags);
+        public static List<FBSDKAccessTokenChangeNotification> toObject(Class<? extends NSObject> cls, long handle, long flags) {
+            NSArray<NSDictionary> o = (NSArray<NSDictionary>) NSObject.Marshaler.toObject(NSArray.class, handle, flags);
             if (o == null) {
                 return null;
             }
-            List<FBSDKAccessTokenChangeNotificitation> list = new ArrayList<>();
+            List<FBSDKAccessTokenChangeNotification> list = new ArrayList<>();
             for (int i = 0; i < o.size(); i++) {
-                list.add(new FBSDKAccessTokenChangeNotificitation(o.get(i)));
+                list.add(new FBSDKAccessTokenChangeNotification(o.get(i)));
             }
             return list;
         }
         @MarshalsPointer
-        public static long toNative(List<FBSDKAccessTokenChangeNotificitation> l, long flags) {
+        public static long toNative(List<FBSDKAccessTokenChangeNotification> l, long flags) {
             if (l == null) {
                 return 0L;
             }
-            NSArray<NSDictionary<NSString, NSObject>> array = new NSMutableArray<>();
-            for (FBSDKAccessTokenChangeNotificitation i : l) {
+            NSArray<NSDictionary> array = new NSMutableArray<>();
+            for (FBSDKAccessTokenChangeNotification i : l) {
                 array.add(i.getDictionary());
             }
             return NSObject.Marshaler.toNative(array, flags);
@@ -87,7 +87,7 @@ import org.robovm.pods.bolts.*;
     /*</marshalers>*/
 
     /*<constructors>*/
-    FBSDKAccessTokenChangeNotificitation(NSDictionary<NSString, NSObject> data) {
+    FBSDKAccessTokenChangeNotification(NSDictionary data) {
         super(data);
     }
     /*</constructors>*/

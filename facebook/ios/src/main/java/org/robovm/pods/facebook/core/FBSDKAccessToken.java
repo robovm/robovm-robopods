@@ -42,14 +42,14 @@ import org.robovm.pods.bolts.*;
     /*<implements>*/implements FBSDKCopying/*</implements>*/ {
     
     public static class Notifications {
-        public static NSObject observeCurrentAccessTokenDidChange(final VoidBlock1<FBSDKAccessTokenChangeNotificitation> block) {
+        public static NSObject observeCurrentAccessTokenDidChange(final VoidBlock1<FBSDKAccessTokenChangeNotification> block) {
             return NSNotificationCenter.getDefaultCenter().addObserver(DidChangeNotification(), null, NSOperationQueue.getMainQueue(), new VoidBlock1<NSNotification>() {
                 @Override
                 public void invoke(NSNotification a) {
-                    NSDictionary<NSString, NSObject> userInfo = a.getUserInfo();
-                    FBSDKAccessTokenChangeNotificitation notif = null;
+                    NSDictionary<?, ?> userInfo = a.getUserInfo();
+                    FBSDKAccessTokenChangeNotification notif = null;
                     if (userInfo != null) {
-                        notif = new FBSDKAccessTokenChangeNotificitation(userInfo);
+                        notif = new FBSDKAccessTokenChangeNotification(userInfo);
                     }
                     block.invoke(notif);
                 }

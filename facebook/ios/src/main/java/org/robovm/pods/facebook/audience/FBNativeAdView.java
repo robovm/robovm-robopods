@@ -46,6 +46,8 @@ import org.robovm.apple.coregraphics.*;
     /*<constructors>*/
     public FBNativeAdView() {}
     protected FBNativeAdView(SkipInit skipInit) { super(skipInit); }
+    public FBNativeAdView(FBNativeAd nativeAd, FBNativeAdViewType type) { super(create(nativeAd, type)); retain(getHandle()); }
+    public FBNativeAdView(FBNativeAd nativeAd, FBNativeAdViewType type, FBNativeAdViewAttributes attributes) { super(create(nativeAd, type, attributes)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "type")
@@ -58,8 +60,8 @@ import org.robovm.apple.coregraphics.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "nativeAdViewWithNativeAd:withType:")
-    public static native FBNativeAdView create(FBNativeAd nativeAd, FBNativeAdViewType type);
+    protected static native @Pointer long create(FBNativeAd nativeAd, FBNativeAdViewType type);
     @Method(selector = "nativeAdViewWithNativeAd:withType:withAttributes:")
-    public static native FBNativeAdView create(FBNativeAd nativeAd, FBNativeAdViewType type, FBNativeAdViewAttributes attributes);
+    protected static native @Pointer long create(FBNativeAd nativeAd, FBNativeAdViewType type, FBNativeAdViewAttributes attributes);
     /*</methods>*/
 }

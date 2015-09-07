@@ -58,6 +58,13 @@ import org.robovm.pods.facebook.core.*;
     public native void setContent(FBSDKAppGroupContent v);
     /*</properties>*/
     /*<members>*//*</members>*/
+    private static FBSDKAppGroupAddDialogDelegate delegate;
+    
+    public static FBSDKAppGroupAddDialog show(FBSDKAppGroupContent content, FBSDKAppGroupAddDialogDelegate delegate) {
+        FBSDKAppGroupAddDialog.delegate = delegate;
+        return show0(content, delegate);
+    }
+    
     /*<methods>*/
     @Method(selector = "canShow")
     public native boolean canShow();
@@ -72,6 +79,6 @@ import org.robovm.pods.facebook.core.*;
     @Method(selector = "validateWithError:")
     private native boolean validate(NSError.NSErrorPtr errorRef);
     @Method(selector = "showWithContent:delegate:")
-    public static native FBSDKAppGroupAddDialog show(FBSDKAppGroupContent content, FBSDKAppGroupAddDialogDelegate delegate);
+    private static native FBSDKAppGroupAddDialog show0(FBSDKAppGroupContent content, FBSDKAppGroupAddDialogDelegate delegate);
     /*</methods>*/
 }

@@ -71,11 +71,11 @@ import org.robovm.pods.facebook.core.*;
     @Property(selector = "recipients")
     public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getRecipients();
     @Property(selector = "setRecipients:")
-    public native void setRecipients(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class)List<String> v);
+    public native void setRecipients(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> v);
     @Property(selector = "recipientSuggestions")
     public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getRecipientSuggestions();
     @Property(selector = "setRecipientSuggestions:")
-    public native void setRecipientSuggestions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class)List<String> v);
+    public native void setRecipientSuggestions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> v);
     @Property(selector = "title")
     public native String getTitle();
     @Property(selector = "setTitle:")

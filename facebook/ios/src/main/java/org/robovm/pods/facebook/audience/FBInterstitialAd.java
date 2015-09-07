@@ -65,7 +65,7 @@ import org.robovm.apple.coregraphics.*;
     @Method(selector = "loadAd")
     public native void loadAd();
     @Method(selector = "showAdFromRootViewController:")
-    public native boolean showAdFromRootViewController$(UIViewController rootViewController);
+    public native boolean showAd(UIViewController rootViewController);
     @Method(selector = "adViewDidClick:")
     public native void didClick(FBAdView adView);
     @Method(selector = "adViewDidFinishHandlingClick:")

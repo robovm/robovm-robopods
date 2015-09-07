@@ -46,6 +46,7 @@ import org.robovm.pods.facebook.core.*;
     /*<constructors>*/
     public FBSDKShareVideo() {}
     protected FBSDKShareVideo(SkipInit skipInit) { super(skipInit); }
+    public FBSDKShareVideo(NSURL videoURL) { super(create(videoURL)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "videoURL")
@@ -58,7 +59,7 @@ import org.robovm.pods.facebook.core.*;
     @Method(selector = "isEqualToShareVideo:")
     public native boolean equalsTo(FBSDKShareVideo video);
     @Method(selector = "videoWithVideoURL:")
-    public static native FBSDKShareVideo create(NSURL videoURL);
+    protected static native @Pointer long create(NSURL videoURL);
     @Method(selector = "copy")
     public native NSObject copy();
     /*</methods>*/

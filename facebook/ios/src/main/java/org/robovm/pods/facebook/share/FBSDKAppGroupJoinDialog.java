@@ -58,6 +58,13 @@ import org.robovm.pods.facebook.core.*;
     public native void setGroupID(String v);
     /*</properties>*/
     /*<members>*//*</members>*/
+    private static FBSDKAppGroupJoinDialogDelegate delegate;
+    
+    public static FBSDKAppGroupJoinDialog show(String groupID, FBSDKAppGroupJoinDialogDelegate delegate) {
+        FBSDKAppGroupJoinDialog.delegate = delegate;
+        return show0(groupID, delegate);
+    }
+    
     /*<methods>*/
     @Method(selector = "canShow")
     public native boolean canShow();
@@ -72,6 +79,6 @@ import org.robovm.pods.facebook.core.*;
     @Method(selector = "validateWithError:")
     private native boolean validate(NSError.NSErrorPtr errorRef);
     @Method(selector = "showWithGroupID:delegate:")
-    public static native FBSDKAppGroupJoinDialog show(String groupID, FBSDKAppGroupJoinDialogDelegate delegate);
+    private static native FBSDKAppGroupJoinDialog show0(String groupID, FBSDKAppGroupJoinDialogDelegate delegate);
     /*</methods>*/
 }

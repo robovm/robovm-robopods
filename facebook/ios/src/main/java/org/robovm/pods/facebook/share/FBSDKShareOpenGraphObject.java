@@ -46,6 +46,7 @@ import org.robovm.pods.facebook.core.*;
     /*<constructors>*/
     public FBSDKShareOpenGraphObject() {}
     protected FBSDKShareOpenGraphObject(SkipInit skipInit) { super(skipInit); }
+    public FBSDKShareOpenGraphObject(NSDictionary<?, ?> properties) { super(create(properties)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     
@@ -55,7 +56,7 @@ import org.robovm.pods.facebook.core.*;
     @Method(selector = "isEqualToShareOpenGraphObject:")
     public native boolean equalsTo(FBSDKShareOpenGraphObject object);
     @Method(selector = "objectWithProperties:")
-    public static native FBSDKShareOpenGraphObject create(NSDictionary<?, ?> properties);
+    protected static native @Pointer long create(NSDictionary<?, ?> properties);
     @Method(selector = "copy")
     public native NSObject copy();
     /*</methods>*/

@@ -94,7 +94,7 @@ classes:
                     urls:
                         type: NSArray<NSURL>
             '+resolver':
-                name: create
+                exclude: true
     FBSDKAppLinkUtility: # DONE
         methods:
             '+fetchDeferredAppLink:':
@@ -266,7 +266,7 @@ values:
         name: '#{g[0]}'
         type: NSString
     FBSDKAccessToken(DidChangeUserID|ChangeOld|ChangeNew).*:
-        dictionary: FBSDKAccessTokenChangeNotificitation
+        dictionary: FBSDKAccessTokenChangeNotification
         name: '#{g[0]}'
         type: NSString
         mutable: false

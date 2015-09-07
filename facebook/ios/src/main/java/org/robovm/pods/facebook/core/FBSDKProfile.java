@@ -46,7 +46,7 @@ import org.robovm.pods.bolts.*;
             return NSNotificationCenter.getDefaultCenter().addObserver(DidChangeNotification(), null, NSOperationQueue.getMainQueue(), new VoidBlock1<NSNotification>() {
                 @Override
                 public void invoke(NSNotification a) {
-                    NSDictionary<NSString, NSObject> userInfo = a.getUserInfo();
+                    NSDictionary<?, ?> userInfo = a.getUserInfo();
                     FBSDKProfileChangeNotification notif = null;
                     if (userInfo != null) {
                         notif = new FBSDKProfileChangeNotification(userInfo);

@@ -46,6 +46,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constructors>*/
     public FBAdCustomSize() {}
     protected FBAdCustomSize(SkipInit skipInit) { super(skipInit); }
+    public FBAdCustomSize(@ByVal CGSize size) { super(create(size)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     
@@ -53,6 +54,6 @@ import org.robovm.apple.coregraphics.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "customSize:")
-    public static native @ByVal FBAdSize create(@ByVal CGSize size);
+    protected static native @Pointer long create(@ByVal CGSize size);
     /*</methods>*/
 }

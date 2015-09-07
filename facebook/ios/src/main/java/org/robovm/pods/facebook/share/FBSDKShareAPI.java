@@ -78,6 +78,13 @@ import org.robovm.pods.facebook.core.*;
      }
     @Method(selector = "validateWithError:")
     private native boolean validate(NSError.NSErrorPtr errorRef);
+    
+    private static FBSDKSharingDelegate delegate;
+    
+    public static FBSDKShareAPI share(FBSDKSharingContent content, FBSDKSharingDelegate delegate) {
+        FBSDKShareAPI.delegate = delegate;
+        return share0(content, delegate);
+    }
     /*<methods>*/
     @Method(selector = "canShare")
     public native boolean canShare();
@@ -86,6 +93,6 @@ import org.robovm.pods.facebook.core.*;
     @Method(selector = "share")
     public native boolean share();
     @Method(selector = "shareWithContent:delegate:")
-    public static native FBSDKShareAPI share(FBSDKSharingContent content, FBSDKSharingDelegate delegate);
+    private static native FBSDKShareAPI share0(FBSDKSharingContent content, FBSDKSharingDelegate delegate);
     /*</methods>*/
 }

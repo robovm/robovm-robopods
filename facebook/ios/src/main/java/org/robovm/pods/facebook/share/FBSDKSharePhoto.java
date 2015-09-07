@@ -46,6 +46,8 @@ import org.robovm.pods.facebook.core.*;
     /*<constructors>*/
     public FBSDKSharePhoto() {}
     protected FBSDKSharePhoto(SkipInit skipInit) { super(skipInit); }
+    public FBSDKSharePhoto(UIImage image, boolean userGenerated) { super(create(image, userGenerated)); retain(getHandle()); }
+    public FBSDKSharePhoto(NSURL imageURL, boolean userGenerated) { super(create(imageURL, userGenerated)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "image")
@@ -70,9 +72,9 @@ import org.robovm.pods.facebook.core.*;
     @Method(selector = "isEqualToSharePhoto:")
     public native boolean equalsTo(FBSDKSharePhoto photo);
     @Method(selector = "photoWithImage:userGenerated:")
-    public static native FBSDKSharePhoto create(UIImage image, boolean userGenerated);
+    protected static native @Pointer long create(UIImage image, boolean userGenerated);
     @Method(selector = "photoWithImageURL:userGenerated:")
-    public static native FBSDKSharePhoto create(NSURL imageURL, boolean userGenerated);
+    protected static native @Pointer long create(NSURL imageURL, boolean userGenerated);
     @Method(selector = "copy")
     public native NSObject copy();
     /*</methods>*/
