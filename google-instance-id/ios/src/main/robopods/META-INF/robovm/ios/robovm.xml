@@ -1,0 +1,8 @@
+<config>    
+    <libs>
+        <lib>libs/libGGLInstanceIDLib.a</lib>
+    </libs>
+    <exportedSymbols>
+        <symbol>kGGLInstanceID*</symbol>
+    </exportedSymbols>
+</config>

@@ -1,0 +1,35 @@
+<config>    
+    <libs>
+    	<!--
+    	FIXME: libGTM_AddressBook.a commented out because of link errors:
+    	
+		[ERROR] Undefined symbols for architecture armv7:
+		[ERROR]   "_kABPersonLastNameProperty", referenced from:
+		[ERROR]       +[GSDK_GTMABPerson personWithFirstName:lastName:] in libGTM_AddressBook.a(GTMABAddressBook.o)
+		[ERROR]       -[GSDK_GTMABPerson description] in libGTM_AddressBook.a(GTMABAddressBook.o)
+		...
+		[ERROR]   "_ABAddressBookGetGroupWithRecordID", referenced from:
+		[ERROR]       -[GSDK_GTMABAddressBook groupForId:] in libGTM_AddressBook.a(GTMABAddressBook.o)
+		[ERROR] ld: symbol(s) not found for architecture armv7
+		[ERROR] clang: error: linker command failed with exit code 1 (use -v to see invocation)
+		
+		<lib>libs/libGTM_AddressBook.a</lib>
+		-->
+
+		<lib>libs/libGTM_DebugUtils.a</lib>
+		<lib>libs/libGTM_GTMURLBuilder.a</lib>
+		<lib>libs/libGTM_KVO.a</lib>
+		<lib>libs/libGTM_NSDictionary+URLArguments.a</lib>
+		<lib>libs/libGTM_NSScannerJSON.a</lib>
+		<lib>libs/libGTM_NSStringHTML.a</lib>
+		<lib>libs/libGTM_NSStringXML.a</lib>
+		<lib>libs/libGTM_Regex.a</lib>
+		<lib>libs/libGTM_RoundedRectPath.a</lib>
+		<lib>libs/libGTM_StringEncoding.a</lib>
+		<lib>libs/libGTM_SystemVersion.a</lib>
+		<lib>libs/libGTM_UIFont+LineHeight.a</lib>
+		<lib>libs/libGTM_core.a</lib>
+		<lib>libs/libGTM_iPhone.a</lib>
+		<lib>libs/libGTMStackTrace.a</lib>
+    </libs>
+</config>

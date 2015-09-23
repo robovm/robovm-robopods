@@ -1,0 +1,5 @@
+<config>    
+    <libs>
+        <lib>libs/libGcmLib.a</lib>
+    </libs>
+</config>
