@@ -42,7 +42,7 @@ import org.robovm.apple.storekit.*;
     /*<implements>*//*</implements>*/ {
 
     static {
-        // Make sure the class is loaded when needed.
+        // Make sure the class is loaded, before objc calls into it.
         ObjCClass.getByType(HZAdMobBannerSupport.class);
     }
     
