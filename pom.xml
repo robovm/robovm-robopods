@@ -169,6 +169,7 @@
         <module>google-mobile-ads</module>
         <module>google-play-games</module>
         <module>google-plus</module>
+        <module>heyzap</module>
         <module>parse</module>
     </modules>
 </project>
