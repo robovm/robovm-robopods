@@ -190,7 +190,8 @@ classes:
             '-tagForChildDirectedTreatment:':
                 trim_after_first_colon: true
             '+request':
-                exclude: true
+                name: create
+                constructor: true
             '+sdkVersion':
                 property: true
     GADRequestError: # DONE

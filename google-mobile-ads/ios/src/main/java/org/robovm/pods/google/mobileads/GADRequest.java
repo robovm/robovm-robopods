@@ -47,6 +47,7 @@ import org.robovm.apple.storekit.*;
     /*<constructors>*/
     protected GADRequest(Handle h, long handle) { super(h, handle); }
     protected GADRequest(SkipInit skipInit) { super(skipInit); }
+    public GADRequest() { super((Handle) null, create()); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "testDevices")
@@ -89,6 +90,8 @@ import org.robovm.apple.storekit.*;
     public native void setLocation(@MachineSizedFloat double latitude, @MachineSizedFloat double longitude, @MachineSizedFloat double accuracyInMeters);
     @Method(selector = "tagForChildDirectedTreatment:")
     public native void tagForChildDirectedTreatment(boolean childDirectedTreatment);
+    @Method(selector = "request")
+    protected static native @Pointer long create();
     @Method(selector = "sdkVersion")
     public static native String getSdkVersion();
     /*</methods>*/
