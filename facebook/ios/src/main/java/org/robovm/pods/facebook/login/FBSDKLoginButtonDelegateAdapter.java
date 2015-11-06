@@ -56,5 +56,7 @@ import org.robovm.pods.facebook.core.*;
     public void didComplete(FBSDKLoginButton loginButton, FBSDKLoginManagerLoginResult result, NSError error) {}
     @NotImplemented("loginButtonDidLogOut:")
     public void didLogOut(FBSDKLoginButton loginButton) {}
+    @NotImplemented("loginButtonWillLogin:")
+    public boolean willLogin(FBSDKLoginButton loginButton) { return false; }
     /*</methods>*/
 }

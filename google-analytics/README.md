@@ -6,7 +6,7 @@ Collect, configure, and analyze your data to reach the right audience.
 
 | Platform    | Version |
 |-------------|---------|
-| [iOS](ios/) | 3.12    |
+| [iOS](ios/) | 3.14    |
 |             |         |
 
 ## Official website

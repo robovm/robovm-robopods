@@ -45,7 +45,10 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBNativeAdViewAttributes() {}
+    protected FBNativeAdViewAttributes(Handle h, long handle) { super(h, handle); }
     protected FBNativeAdViewAttributes(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithDictionary:")
+    public FBNativeAdViewAttributes(NSDictionary<?, ?> dict) { super((SkipInit) null); initObject(init(dict)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "backgroundColor")
@@ -84,9 +87,15 @@ import org.robovm.apple.coregraphics.*;
     public native UIColor getButtonBorderColor();
     @Property(selector = "setButtonBorderColor:")
     public native void setButtonBorderColor(UIColor v);
+    @Property(selector = "isAutoplayEnabled")
+    public native boolean isAutoplayEnabled();
+    @Property(selector = "setAutoplayEnabled:")
+    public native void setAutoplayEnabled(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "initWithDictionary:")
+    protected native @Pointer long init(NSDictionary<?, ?> dict);
     @Method(selector = "defaultAttributesForType:")
     public static native FBNativeAdViewAttributes getDefaultAttributes(FBNativeAdViewType type);
     /*</methods>*/

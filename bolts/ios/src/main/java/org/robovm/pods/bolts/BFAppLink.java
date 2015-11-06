@@ -45,7 +45,9 @@ import org.robovm.apple.dispatch.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public BFAppLink() {}
+    protected BFAppLink(Handle h, long handle) { super(h, handle); }
     protected BFAppLink(SkipInit skipInit) { super(skipInit); }
+    public BFAppLink(NSURL sourceURL, NSArray<BFAppLinkTarget> targets, NSURL webURL) { super((Handle) null, create(sourceURL, targets, webURL)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "sourceURL")
@@ -61,6 +63,6 @@ import org.robovm.apple.dispatch.*;
     public static native String getVersion();
     
     @Method(selector = "appLinkWithSourceURL:targets:webURL:")
-    public static native BFAppLink create(NSURL sourceURL, NSArray<BFAppLinkTarget> targets, NSURL webURL);
+    protected static native @Pointer long create(NSURL sourceURL, NSArray<BFAppLinkTarget> targets, NSURL webURL);
     /*</methods>*/
 }

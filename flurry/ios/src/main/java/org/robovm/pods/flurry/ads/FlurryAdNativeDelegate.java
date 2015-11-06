@@ -63,6 +63,10 @@ import org.robovm.apple.corelocation.*;
     void didReceiveClick(FlurryAdNative nativeAd);
     @Method(selector = "adNative:adError:errorDescription:")
     void didFail(FlurryAdNative nativeAd, FlurryAdError adError, NSError errorDescription);
+    @Method(selector = "adNativeDidLogImpression:")
+    void didLogImpression(FlurryAdNative nativeAd);
+    @Method(selector = "adNativeExpandToggled:")
+    void expandToggled(FlurryAdNative nativeAd);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

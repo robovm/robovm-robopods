@@ -44,6 +44,7 @@ public final class /*<name>*/FBSDKMessengerPlatformCapability/*</name>*/ extends
     public static final FBSDKMessengerPlatformCapability AnimatedWebP = new FBSDKMessengerPlatformCapability(8L);
     public static final FBSDKMessengerPlatformCapability Video = new FBSDKMessengerPlatformCapability(16L);
     public static final FBSDKMessengerPlatformCapability Audio = new FBSDKMessengerPlatformCapability(32L);
+    public static final FBSDKMessengerPlatformCapability RenderAsSticker = new FBSDKMessengerPlatformCapability(64L);
     /*</values>*/
 
     /*<bind>*/

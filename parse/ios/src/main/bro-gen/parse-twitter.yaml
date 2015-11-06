@@ -1,0 +1,84 @@
+package: org.robovm.pods.parse
+framework: ParseFacebookUtilsV4
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
+    - ../../../../../facebook/ios/src/main/bro-gen/facebook-corekit.yaml
+    - ../../../../../facebook/ios/src/main/bro-gen/facebook-loginkit.yaml
+    - ../../../../../bolts/ios/src/main/bro-gen/bolts.yaml
+    - parse.yaml
+clang_args: ['-x', 'objective-c']
+header_root: /../robopods/META-INF/robovm/ios/libs
+headers:
+    - ParseTwitterUtils.framework/Headers/ParseTwitterUtils.h
+typedefs:
+    
+enums:
+        
+classes:
+    PF_Twitter:
+        name: PFTwitter
+        methods:
+            '-authorizeInBackground':
+                return_type: BFTask<Void>
+            '-authorizeWithSuccess:failure:cancel:':
+                name: authorize
+            '-signRequest:':
+                name: sign
+    PFTwitterUtils: # DONE
+        methods:
+            '+twitter':
+                property: true
+            '+initializeWithConsumerKey:consumerSecret:':
+                name: initialize
+            '+logInInBackground':
+                return_type: BFTask<PFUser>
+            '+isLinkedWithUser:':
+                name: isLinked
+            '+logInWithTwitterIdInBackground:screenName:authToken:authTokenSecret:':
+                name: logIn
+                return_type: BFTask<PFUser>
+            '+logInWith.*':
+                name: logIn
+            '+linkUserInBackground:':
+                name: linkInBackground
+                return_type: BFTask<Void>
+            '+linkUserInBackground:twitterId:screenName:authToken:authTokenSecret:':
+                name: linkInBackground
+                return_type: BFTask<Void>
+            '+linkUserInBackground.*':
+                name: linkInBackground
+            '+linkUser:':
+                exclude: true # deprecated
+            '+linkUser.+':
+                name: link
+            '+unlinkUser:':
+                exclude: true
+            '+unlinkUser:error:':
+                name: unlink
+                throws: NSErrorException
+            '+unlinkUserInBackground:':
+                name: unlinkInBackground
+                return_type: BFTask<Void>
+            '+unlinkUserInBackground.*':
+                name: unlinkInBackground
+  
+protocols:
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?PF.*):
+        class: ParseTwitter
+        name: 'Function__#{g[0]}'
+
+values:
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?PF.*):
+        class: ParseTwitter
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?PF.*):
+        class: ParseTwitter
+        name: 'Constant__#{g[0]}'

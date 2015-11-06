@@ -5,7 +5,7 @@ include:
     - ../../../../../google-apis/ios/src/main/bro-gen/google-apis.yaml
     - google-analytics.yaml
 clang_args: ['-x', 'objective-c']
-header_root: '/'
+header_root: /
 headers:
     - GGLAnalytics.lib/Headers/GGLContext+Analytics.h
 typedefs:

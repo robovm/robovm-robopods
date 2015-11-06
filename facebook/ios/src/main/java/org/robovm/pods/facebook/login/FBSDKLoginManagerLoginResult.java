@@ -47,7 +47,9 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKLoginManagerLoginResult() {}
+    protected FBSDKLoginManagerLoginResult(Handle h, long handle) { super(h, handle); }
     protected FBSDKLoginManagerLoginResult(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithToken:isCancelled:grantedPermissions:declinedPermissions:")
     public FBSDKLoginManagerLoginResult(FBSDKAccessToken token, boolean isCancelled, @org.robovm.rt.bro.annotation.Marshaler(NSSet.AsStringSetMarshaler.class) Set<String> grantedPermissions, @org.robovm.rt.bro.annotation.Marshaler(NSSet.AsStringSetMarshaler.class) Set<String> declinedPermissions) { super((SkipInit) null); initObject(init(token, isCancelled, grantedPermissions, declinedPermissions)); }
     /*</constructors>*/
     /*<properties>*/
@@ -60,11 +62,11 @@ import org.robovm.pods.facebook.core.*;
     @Property(selector = "grantedPermissions")
     public native @org.robovm.rt.bro.annotation.Marshaler(NSSet.AsStringSetMarshaler.class) Set<String> getGrantedPermissions();
     @Property(selector = "setGrantedPermissions:")
-    public native void setGrantedPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSSet.AsStringSetMarshaler.class)Set<String> v);
+    public native void setGrantedPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSSet.AsStringSetMarshaler.class) Set<String> v);
     @Property(selector = "declinedPermissions")
     public native @org.robovm.rt.bro.annotation.Marshaler(NSSet.AsStringSetMarshaler.class) Set<String> getDeclinedPermissions();
     @Property(selector = "setDeclinedPermissions:")
-    public native void setDeclinedPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSSet.AsStringSetMarshaler.class)Set<String> v);
+    public native void setDeclinedPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSSet.AsStringSetMarshaler.class) Set<String> v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

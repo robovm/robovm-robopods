@@ -1,25 +1,32 @@
 /*
  * CBAnalytics.h
  * Chartboost
- * 5.5.0
+ * 6.0.1
  *
  * Copyright 2011 Chartboost. All rights reserved.
  */
 
 #import <StoreKit/StoreKit.h>
 
-typedef enum {
-    // Highest level reached
+/*!
+ @typedef NS_ENUM (NSUInteger, CBLevelType)
+ 
+ @abstract
+ Used with trackLevelInfo calls to describe meta information about the level value as it 
+ pertains to the game's context.
+ */
+typedef NS_ENUM(NSUInteger, CBLevelType) {
+    /*! Highest level reached */
     HIGHEST_LEVEL_REACHED = 1,
-    // Current area level reached
+    /*! Current area level reached */
     CURRENT_AREA = 2,
-    // Current character level reached
+    /*! Current character level reached */
     CHARACTER_LEVEL = 3,
-    // Other sequential level reached
+    /*! Other sequential level reached */
     OTHER_SEQUENTIAL = 4,
-    // Current non sequential level reached
+    /*! Current non sequential level reached */
     OTHER_NONSEQUENTIAL = 5
-} CBLevelType;
+};
 
 /*!
  @class ChartboostAnalytics

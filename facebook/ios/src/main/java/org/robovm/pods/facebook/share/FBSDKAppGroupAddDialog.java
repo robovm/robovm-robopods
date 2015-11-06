@@ -45,6 +45,7 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKAppGroupAddDialog() {}
+    protected FBSDKAppGroupAddDialog(Handle h, long handle) { super(h, handle); }
     protected FBSDKAppGroupAddDialog(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

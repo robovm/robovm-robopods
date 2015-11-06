@@ -45,7 +45,11 @@ import org.robovm.apple.dispatch.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public BFExecutor() {}
+    protected BFExecutor(Handle h, long handle) { super(h, handle); }
     protected BFExecutor(SkipInit skipInit) { super(skipInit); }
+    public BFExecutor(@Block("(@Block)") VoidBlock1<Runnable> block) { super((Handle) null, create(block)); retain(getHandle()); }
+    public BFExecutor(DispatchQueue queue) { super((Handle) null, create(queue)); retain(getHandle()); }
+    public BFExecutor(NSOperationQueue queue) { super((Handle) null, create(queue)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     
@@ -61,10 +65,10 @@ import org.robovm.apple.dispatch.*;
     @Method(selector = "mainThreadExecutor")
     public static native BFExecutor getMainThreadExecutor();
     @Method(selector = "executorWithBlock:")
-    public static native BFExecutor create(@Block("(@Block)") VoidBlock1<Runnable> block);
+    protected static native @Pointer long create(@Block("(@Block)") VoidBlock1<Runnable> block);
     @Method(selector = "executorWithDispatchQueue:")
-    public static native BFExecutor create(DispatchQueue queue);
+    protected static native @Pointer long create(DispatchQueue queue);
     @Method(selector = "executorWithOperationQueue:")
-    public static native BFExecutor create(NSOperationQueue queue);
+    protected static native @Pointer long create(NSOperationQueue queue);
     /*</methods>*/
 }

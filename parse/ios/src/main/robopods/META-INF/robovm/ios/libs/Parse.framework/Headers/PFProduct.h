@@ -1,13 +1,20 @@
-//
-//  PFProduct.h
-//
-//  Copyright 2011-present Parse Inc. All rights reserved.
-//
+/**
+ * Copyright (c) 2015-present, Parse, LLC.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+#import <Foundation/Foundation.h>
 
 #import <Parse/PFFile.h>
 #import <Parse/PFNullability.h>
 #import <Parse/PFObject.h>
 #import <Parse/PFSubclassing.h>
+
+PF_WATCH_UNAVAILABLE_WARNING
 
 PF_ASSUME_NONNULL_BEGIN
 
@@ -18,7 +25,7 @@ PF_ASSUME_NONNULL_BEGIN
 
  This class is currently for iOS only.
  */
-@interface PFProduct : PFObject<PFSubclassing>
+PF_WATCH_UNAVAILABLE @interface PFProduct : PFObject<PFSubclassing>
 
 ///--------------------------------------
 /// @name Product-specific Properties
@@ -38,7 +45,7 @@ PF_ASSUME_NONNULL_BEGIN
 
 /*!
  @abstract The title of the product.
- */ 
+ */
 @property (PF_NULLABLE_PROPERTY nonatomic, strong) NSString *title;
 
 /*!

@@ -18,7 +18,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "../../FBSDKCoreKit.framework/Headers/FBSDKCopying.h"
+#import <FBSDKCoreKit/FBSDKCopying.h>
 
 /*!
  @typedef NS_ENUM(NSUInteger, FBSDKGameRequestActionType)

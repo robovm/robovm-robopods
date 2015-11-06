@@ -45,6 +45,7 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKLikeButton() {}
+    protected FBSDKLikeButton(Handle h, long handle) { super(h, handle); }
     protected FBSDKLikeButton(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

@@ -18,7 +18,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "FBSDKMacros.h"
+#import <FBSDKCoreKit/FBSDKMacros.h>
 
 @class FBSDKGraphRequest;
 @class FBSDKGraphRequestConnection;
@@ -170,6 +170,20 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;
  then this property will be non-nil during the FBSDKGraphRequestHandler callback.
  */
 @property (nonatomic, retain, readonly) NSHTTPURLResponse *URLResponse;
+
+/*!
+ @methodgroup Class methods
+ */
+
+/*!
+ @method
+
+ @abstract
+ This method sets the default timeout on all FBSDKGraphRequestConnection instances. Defaults to 60 seconds.
+
+ @param defaultConnectionTimeout     The timeout interval.
+ */
++ (void)setDefaultConnectionTimeout:(NSTimeInterval)defaultConnectionTimeout;
 
 /*!
  @methodgroup Adding requests

@@ -48,6 +48,7 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFAnonymousUtils() {}
+    protected PFAnonymousUtils(Handle h, long handle) { super(h, handle); }
     protected PFAnonymousUtils(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

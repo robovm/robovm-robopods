@@ -5,12 +5,12 @@ include:
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
 clang_args: ['-x', 'objective-c']
-header_root: '/../robopods/META-INF/robovm/ios/libs/'
+header_root: /../robopods/META-INF/robovm/ios/libs
 headers:
     - FBAudienceNetwork.framework/Headers/FBAudienceNetwork.h
 typedefs:
     'void (^)(UIImage *)': '@Block VoidBlock1<UIImage>'
-    'UIView *(^)(FBNativeAd *, NSUInteger)': '@Block("(,@MachineSizedUInt)") Block2<FBNativeAd, Long, UIView>'
+    'UIView * (^)(FBNativeAd *, NSUInteger)': '@Block("(,@MachineSizedUInt)") Block2<FBNativeAd, Long, UIView>'
     
 enums:
     FBAdLogLevel: {}
@@ -120,6 +120,8 @@ classes:
                 constructor: true
     FBNativeAdViewAttributes: # DONE
         methods:
+            '-initWithDictionary:':
+                name: init
             '+defaultAttributesForType:':
                 name: getDefaultAttributes
 

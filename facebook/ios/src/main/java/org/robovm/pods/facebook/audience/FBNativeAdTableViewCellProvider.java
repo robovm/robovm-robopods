@@ -45,8 +45,11 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBNativeAdTableViewCellProvider() {}
+    protected FBNativeAdTableViewCellProvider(Handle h, long handle) { super(h, handle); }
     protected FBNativeAdTableViewCellProvider(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithManager:forType:")
     public FBNativeAdTableViewCellProvider(FBNativeAdsManager manager, FBNativeAdViewType type) { super((SkipInit) null); initObject(init(manager, type)); }
+    @Method(selector = "initWithManager:forType:forAttributes:")
     public FBNativeAdTableViewCellProvider(FBNativeAdsManager manager, FBNativeAdViewType type, FBNativeAdViewAttributes attributes) { super((SkipInit) null); initObject(init(manager, type, attributes)); }
     /*</constructors>*/
     /*<properties>*/

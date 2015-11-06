@@ -47,6 +47,7 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKLoginManager() {}
+    protected FBSDKLoginManager(Handle h, long handle) { super(h, handle); }
     protected FBSDKLoginManager(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -60,11 +61,17 @@ import org.robovm.pods.facebook.core.*;
     public native void setLoginBehavior(FBSDKLoginBehavior v);
     /*</properties>*/
     /*<members>*//*</members>*/
+    public void logInWithReadPermissions(List<String> permissions, VoidBlock2<FBSDKLoginManagerLoginResult, NSError> handler) {
+        logInWithReadPermissions(permissions, null, handler);
+    }
+    public void logInWithPublishPermissions(List<String> permissions, VoidBlock2<FBSDKLoginManagerLoginResult, NSError> handler) {
+        logInWithPublishPermissions(permissions, null, handler);
+    }
     /*<methods>*/
-    @Method(selector = "logInWithReadPermissions:handler:")
-    public native void logInWithReadPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> permissions, @Block VoidBlock2<FBSDKLoginManagerLoginResult, NSError> handler);
-    @Method(selector = "logInWithPublishPermissions:handler:")
-    public native void logInWithPublishPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> permissions, @Block VoidBlock2<FBSDKLoginManagerLoginResult, NSError> handler);
+    @Method(selector = "logInWithReadPermissions:fromViewController:handler:")
+    public native void logInWithReadPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> permissions, UIViewController fromViewController, @Block VoidBlock2<FBSDKLoginManagerLoginResult, NSError> handler);
+    @Method(selector = "logInWithPublishPermissions:fromViewController:handler:")
+    public native void logInWithPublishPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> permissions, UIViewController fromViewController, @Block VoidBlock2<FBSDKLoginManagerLoginResult, NSError> handler);
     @Method(selector = "logOut")
     public native void logOut();
     @Method(selector = "renewSystemCredentials:")

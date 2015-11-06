@@ -45,7 +45,9 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBAdView() {}
+    protected FBAdView(Handle h, long handle) { super(h, handle); }
     protected FBAdView(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithPlacementID:adSize:rootViewController:")
     public FBAdView(String placementID, @ByVal FBAdSize adSize, UIViewController viewController) { super((SkipInit) null); initObject(init(placementID, adSize, viewController)); }
     /*</constructors>*/
     /*<properties>*/

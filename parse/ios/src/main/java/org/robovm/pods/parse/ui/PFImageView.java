@@ -47,6 +47,7 @@ import org.robovm.pods.parse.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFImageView() {}
+    protected PFImageView(Handle h, long handle) { super(h, handle); }
     protected PFImageView(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     public PFImageView(CGRect frame) {

@@ -74,6 +74,7 @@ import org.robovm.pods.parse.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFSignUpViewController() {}
+    protected PFSignUpViewController(Handle h, long handle) { super(h, handle); }
     protected PFSignUpViewController(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

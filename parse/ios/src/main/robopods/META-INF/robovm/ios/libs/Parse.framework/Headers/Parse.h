@@ -1,37 +1,13 @@
-//
-//  Parse.h
-//
-//  Copyright 2011-present Parse Inc. All rights reserved.
-//
+/**
+ * Copyright (c) 2015-present, Parse, LLC.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
 
 #import <Foundation/Foundation.h>
-
-#if TARGET_OS_IPHONE
-
-#import "PFNullability.h"
-#import "PFSubclassing.h"
-#import "PFConstants.h"
-#import "PF_Twitter.h"
-#import "PFObject.h"
-#import "PFObject+Subclass.h"
-#import "PFUser.h"
-#import "PFRole.h"
-#import "PFACL.h"
-#import "PFAnalytics.h"
-#import "PFAnonymousUtils.h"
-#import "PFCloud.h"
-#import "PFConfig.h"
-#import "PFFile.h"
-#import "PFGeoPoint.h"
-#import "PFInstallation.h"
-#import "PFNetworkActivityIndicatorManager.h"
-#import "PFProduct.h"
-#import "PFPurchase.h"
-#import "PFQuery.h"
-#import "PFPush.h"
-#import "PFRelation.h"
-#import "PFSession.h"
-#import "PFTwitterUtils.h"
 
 #import <Parse/PFACL.h>
 #import <Parse/PFAnalytics.h>
@@ -49,33 +25,26 @@
 #import <Parse/PFSession.h>
 #import <Parse/PFSubclassing.h>
 #import <Parse/PFUser.h>
+#import <Parse/PFUserAuthenticationDelegate.h>
+#import <Parse/PFNullability.h>
+
+#if TARGET_OS_IOS
+
 #import <Parse/PFInstallation.h>
 #import <Parse/PFNetworkActivityIndicatorManager.h>
-#import <Parse/PFNullability.h>
+#import <Parse/PFPush.h>
 #import <Parse/PFProduct.h>
 #import <Parse/PFPurchase.h>
+
+#elif PF_TARGET_OS_OSX
+
+#import <Parse/PFInstallation.h>
 #import <Parse/PFPush.h>
-#import <Parse/PFTwitterUtils.h>
 
-#else
+#elif TARGET_OS_TV
 
-#import <ParseOSX/PFACL.h>
-#import <ParseOSX/PFAnalytics.h>
-#import <ParseOSX/PFAnonymousUtils.h>
-#import <ParseOSX/PFCloud.h>
-#import <ParseOSX/PFConfig.h>
-#import <ParseOSX/PFConstants.h>
-#import <ParseOSX/PFFile.h>
-#import <ParseOSX/PFGeoPoint.h>
-#import <ParseOSX/PFNullability.h>
-#import <ParseOSX/PFObject+Subclass.h>
-#import <ParseOSX/PFObject.h>
-#import <ParseOSX/PFQuery.h>
-#import <ParseOSX/PFRelation.h>
-#import <ParseOSX/PFRole.h>
-#import <ParseOSX/PFSession.h>
-#import <ParseOSX/PFSubclassing.h>
-#import <ParseOSX/PFUser.h>
+#import <Parse/PFProduct.h>
+#import <Parse/PFPurchase.h>
 
 #endif
 
@@ -139,7 +108,7 @@ PF_ASSUME_NONNULL_BEGIN
 
  @param groupIdentifier Application Group Identifier to share data with.
  */
-+ (void)enableDataSharingWithApplicationGroupIdentifier:(NSString *)groupIdentifier PF_EXTENSION_UNAVAILABLE("Use `enableDataSharingWithApplicationGroupIdentifier:containingApplication:`.");
++ (void)enableDataSharingWithApplicationGroupIdentifier:(NSString *)groupIdentifier PF_EXTENSION_UNAVAILABLE("Use `enableDataSharingWithApplicationGroupIdentifier:containingApplication:`.") PF_WATCH_UNAVAILABLE PF_TV_UNAVAILABLE;
 
 /*!
  @abstract Enables data sharing with an application group identifier.
@@ -154,21 +123,21 @@ PF_ASSUME_NONNULL_BEGIN
  @param bundleIdentifier Bundle identifier of the containing application.
  */
 + (void)enableDataSharingWithApplicationGroupIdentifier:(NSString *)groupIdentifier
-                                  containingApplication:(NSString *)bundleIdentifier;
+                                  containingApplication:(NSString *)bundleIdentifier PF_WATCH_UNAVAILABLE PF_TV_UNAVAILABLE;
 
 /*!
  @abstract Application Group Identifier for Data Sharing
 
  @returns `NSString` value if data sharing is enabled, otherwise `nil`.
  */
-+ (NSString *)applicationGroupIdentifierForDataSharing;
++ (NSString *)applicationGroupIdentifierForDataSharing PF_WATCH_UNAVAILABLE PF_TV_UNAVAILABLE;
 
 /*!
  @abstract Containing application bundle identifier.
 
  @returns `NSString` value if data sharing is enabled, otherwise `nil`.
  */
-+ (NSString *)containingApplicationBundleIdentifierForDataSharing;
++ (NSString *)containingApplicationBundleIdentifierForDataSharing PF_WATCH_UNAVAILABLE PF_TV_UNAVAILABLE;
 
 #if PARSE_IOS_ONLY
 

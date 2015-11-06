@@ -28,13 +28,14 @@
  */
 typedef NS_OPTIONS(NSUInteger, FBSDKMessengerPlatformCapability)
 {
-  FBSDKMessengerPlatformCapabilityNone         = 0,
-  FBSDKMessengerPlatformCapabilityOpen         = 1 << 0,
-  FBSDKMessengerPlatformCapabilityImage        = 1 << 1,
-  FBSDKMessengerPlatformCapabilityAnimatedGIF  = 1 << 2,
-  FBSDKMessengerPlatformCapabilityAnimatedWebP = 1 << 3,
-  FBSDKMessengerPlatformCapabilityVideo        = 1 << 4,
-  FBSDKMessengerPlatformCapabilityAudio        = 1 << 5,
+  FBSDKMessengerPlatformCapabilityNone            = 0,
+  FBSDKMessengerPlatformCapabilityOpen            = 1 << 0,
+  FBSDKMessengerPlatformCapabilityImage           = 1 << 1,
+  FBSDKMessengerPlatformCapabilityAnimatedGIF     = 1 << 2,
+  FBSDKMessengerPlatformCapabilityAnimatedWebP    = 1 << 3,
+  FBSDKMessengerPlatformCapabilityVideo           = 1 << 4,
+  FBSDKMessengerPlatformCapabilityAudio           = 1 << 5,
+  FBSDKMessengerPlatformCapabilityRenderAsSticker = 1 << 6,
 };
 
 /*!
@@ -50,7 +51,7 @@ typedef NS_OPTIONS(NSUInteger, FBSDKMessengerPlatformCapability)
  - Once the data is shared in Messenger, the pasteboard with be cleared
  - The following strings need to be translated in your app:
     NSLocalizedString(@"Get Messenger", @"Alert title telling a user they need to install Messenger")
-    NSLocalizedString(@"You'll need to install the latest version of Messenger to send this.", @"Alert message when an old version of messenger is installed")
+    NSLocalizedString(@"You are using an older version of Messenger that does not support this feature.", @"Alert message when an old version of messenger is installed")
     NSLocalizedString(@"Not Now", @"Button label when user doesn't want to install Messenger")
     NSLocalizedString(@"Install", @"Button label to install Messenger")
     NSLocalizedString(@"Send", @"Button label for sending a message")
@@ -64,9 +65,12 @@ typedef NS_OPTIONS(NSUInteger, FBSDKMessengerPlatformCapability)
  @discussion
  Before sharing any media, first use this bitmask to check to see if it can be shared to Messenger
 
+ @deprecated
+ This method is deprecated as of iOS 9
+
  @return bitmask of the Messenger capabilities
  */
-+ (FBSDKMessengerPlatformCapability)messengerPlatformCapabilities;
++ (FBSDKMessengerPlatformCapability)messengerPlatformCapabilities __attribute__ ((deprecated("This is deprecated as of iOS 9. If you use this, you must configure your plist as described in https://developers.facebook.com/docs/ios/ios9")));
 
 /*!
  @abstract
@@ -86,7 +90,7 @@ typedef NS_OPTIONS(NSUInteger, FBSDKMessengerPlatformCapability)
  the user's app when they reply to an attributed message. This may be nil.
  @param context The way the content is to be shared in Messenger. If nil, a standard share will take place.
 
- @discussion If there is not an installed version of Messenger on the device that supports the share, an alert will be presented to the user to go to the App Store to install the latest version of Messenger
+ @discussion If there is not an installed version of Messenger on the device that supports the share, an alert will be presented to notify the user.
  */
 + (void)shareImage:(UIImage *)image
       withMetadata:(NSString *)metadata
@@ -99,7 +103,7 @@ typedef NS_OPTIONS(NSUInteger, FBSDKMessengerPlatformCapability)
  @param image The image to be shared in Messenger
  @param options Additional optional parameters that affect the way the content is shared
 
- @discussion If there is not an installed version of Messenger on the device that supports the share, an alert will be presented to the user to go to the App Store to install the latest version of Messenger
+ @discussion If there is not an installed version of Messenger on the device that supports the share, an alert will be presented to notify the user.
  */
 + (void)shareImage:(UIImage *)image withOptions:(FBSDKMessengerShareOptions *)options NS_EXTENSION_UNAVAILABLE_IOS("");
 
@@ -115,7 +119,7 @@ typedef NS_OPTIONS(NSUInteger, FBSDKMessengerPlatformCapability)
  the user's app when they reply to an attributed message. This may be nil.
  @param context The way the content is to be shared in Messenger. If nil, a standard share will take place.
 
- @discussion If there is not an installed version of Messenger on the device that supports the share, an alert will be presented to the user to go to the App Store to install the latest version of Messenger
+ @discussion If there is not an installed version of Messenger on the device that supports the share, an alert will be presented to notify the user.
  */
 + (void)shareAnimatedGIF:(NSData *)animatedGIFData
             withMetadata:(NSString *)metadata
@@ -128,7 +132,7 @@ typedef NS_OPTIONS(NSUInteger, FBSDKMessengerPlatformCapability)
  @param animatedGIFData The animated GIF to be shared in Messenger
  @param options Additional optional parameters that affect the way the content is shared
 
- @discussion If there is not an installed version of Messenger on the device that supports the share, an alert will be presented to the user to go to the App Store to install the latest version of Messenger
+ @discussion If there is not an installed version of Messenger on the device that supports the share, an alert will be presented to notify the user.
  */
 + (void)shareAnimatedGIF:(NSData *)animatedGIFData withOptions:(FBSDKMessengerShareOptions *)options NS_EXTENSION_UNAVAILABLE_IOS("");
 
@@ -144,7 +148,7 @@ typedef NS_OPTIONS(NSUInteger, FBSDKMessengerPlatformCapability)
  the user's app when they reply to an attributed message. This may be nil.
  @param context The way the content is to be shared in Messenger. If nil, a standard share will take place.
 
- @discussion If there is not an installed version of Messenger on the device that supports the share, an alert will be presented to the user to go to the App Store to install the latest version of Messenger
+ @discussion If there is not an installed version of Messenger on the device that supports the share, an alert will be presented to notify the user.
  */
 + (void)shareAnimatedWebP:(NSData *)animatedWebPData
              withMetadata:(NSString *)metadata
@@ -157,7 +161,7 @@ typedef NS_OPTIONS(NSUInteger, FBSDKMessengerPlatformCapability)
  @param animatedWebPData The animated WebP image to be shared in Messenger
  @param options Additional optional parameters that affect the way the content is shared
 
- @discussion If there is not an installed version of Messenger on the device that supports the share, an alert will be presented to the user to go to the App Store to install the latest version of Messenger
+ @discussion If there is not an installed version of Messenger on the device that supports the share, an alert will be presented to notify the user.
  */
 + (void)shareAnimatedWebP:(NSData *)animatedWebPData withOptions:(FBSDKMessengerShareOptions *)options NS_EXTENSION_UNAVAILABLE_IOS("");
 
@@ -178,7 +182,7 @@ typedef NS_OPTIONS(NSUInteger, FBSDKMessengerPlatformCapability)
  the user's app when they reply to an attributed message. This may be nil.
  @param context The way the content is to be shared in Messenger. If nil, a standard share will take place.
 
- @discussion If there is not an installed version of Messenger on the device that supports the share, an alert will be presented to the user to go to the App Store to install the latest version of Messenger
+ @discussion If there is not an installed version of Messenger on the device that supports the share, an alert will be presented to notify the user.
  */
 + (void)shareVideo:(NSData *)videoData
       withMetadata:(NSString *)metadata
@@ -196,7 +200,7 @@ typedef NS_OPTIONS(NSUInteger, FBSDKMessengerPlatformCapability)
  @param videoData The image to be shared in Messenger
  @param options Additional optional parameters that affect the way the content is shared
 
- @discussion If there is not an installed version of Messenger on the device that supports the share, an alert will be presented to the user to go to the App Store to install the latest version of Messenger
+ @discussion If there is not an installed version of Messenger on the device that supports the share, an alert will be presented to notify the user.
  */
 + (void)shareVideo:(NSData *)videoData withOptions:(FBSDKMessengerShareOptions *)options NS_EXTENSION_UNAVAILABLE_IOS("");
 
@@ -215,7 +219,7 @@ typedef NS_OPTIONS(NSUInteger, FBSDKMessengerPlatformCapability)
  @param audioData The audio to be shared in Messenger
  @param metadata Additional optional information to be sent to Messenger
 
- @discussion If there is not an installed version of Messenger on the device that supports the share, an alert will be presented to the user to go to the App Store to install the latest version of Messenger
+ @discussion If there is not an installed version of Messenger on the device that supports the share, an alert will be presented to notify the user.
 */
 + (void)shareAudio:(NSData *)audioData
       withMetadata:(NSString *)metadata
@@ -233,7 +237,7 @@ typedef NS_OPTIONS(NSUInteger, FBSDKMessengerPlatformCapability)
  @param audioData The audio to be shared in Messenger
  @param options Additional optional parameters that affect the way the content is shared
 
- @discussion If there is not an installed version of Messenger on the device that supports the share, an alert will be presented to the user to go to the App Store to install the latest version of Messenger
+ @discussion If there is not an installed version of Messenger on the device that supports the share, an alert will be presented to notify the user.
  */
 + (void)shareAudio:(NSData *)audioData withOptions:(FBSDKMessengerShareOptions *)options NS_EXTENSION_UNAVAILABLE_IOS("");
 

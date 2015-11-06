@@ -18,16 +18,17 @@
 
 #import <UIKit/UIKit.h>
 
-#import "FBAdChoicesView.h"
-#import "FBAdSettings.h"
-#import "FBAdView.h"
-#import "FBInterstitialAd.h"
-#import "FBMediaView.h"
-#import "FBNativeAd.h"
-#import "FBNativeAdScrollView.h"
-#import "FBNativeAdTableViewAdProvider.h"
-#import "FBNativeAdTableViewCellProvider.h"
-#import "FBNativeAdView.h"
-#import "FBNativeAdsManager.h"
+#import <FBAudienceNetwork/FBAdChoicesView.h>
+#import <FBAudienceNetwork/FBAdDefines.h>
+#import <FBAudienceNetwork/FBAdSettings.h>
+#import <FBAudienceNetwork/FBAdView.h>
+#import <FBAudienceNetwork/FBInterstitialAd.h>
+#import <FBAudienceNetwork/FBMediaView.h>
+#import <FBAudienceNetwork/FBNativeAd.h>
+#import <FBAudienceNetwork/FBNativeAdScrollView.h>
+#import <FBAudienceNetwork/FBNativeAdTableViewAdProvider.h>
+#import <FBAudienceNetwork/FBNativeAdTableViewCellProvider.h>
+#import <FBAudienceNetwork/FBNativeAdView.h>
+#import <FBAudienceNetwork/FBNativeAdsManager.h>
 
-#define FB_AD_SDK_VERSION @"4.3.0"
+#define FB_AD_SDK_VERSION @"4.7.1"

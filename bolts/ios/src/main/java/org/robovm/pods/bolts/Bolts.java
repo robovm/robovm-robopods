@@ -45,6 +45,7 @@ import org.robovm.apple.dispatch.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public Bolts() {}
+    protected Bolts(Handle h, long handle) { super(h, handle); }
     protected Bolts(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

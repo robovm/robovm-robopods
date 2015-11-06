@@ -50,7 +50,9 @@ public enum /*<name>*/FBSDKErrorCode/*</name>*/ implements NSErrorCode {
     GraphRequestProtocolMismatch(7L),
     GraphRequestGraphAPI(8L),
     DialogUnavailable(9L),
-    AccessTokenRequired(10L);
+    AccessTokenRequired(10L),
+    AppVersionUnsupported(11L),
+    BrowswerUnavailable(12L);
     /*</values>*/
 
     /*<bind>*/

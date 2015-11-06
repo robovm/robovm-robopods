@@ -45,7 +45,7 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKShareOpenGraphValueContainer() {}
-    protected FBSDKShareOpenGraphValueContainer(long handle) { super(handle); }
+    protected FBSDKShareOpenGraphValueContainer(Handle h, long handle) { super(h, handle); }
     protected FBSDKShareOpenGraphValueContainer(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

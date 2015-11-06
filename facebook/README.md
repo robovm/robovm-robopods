@@ -6,7 +6,7 @@ Build, grow, and monetize your app with Facebook. The Facebook SDK allows you to
 
 | Platform    | Version |
 |-------------|---------|
-| [iOS](ios/) | 4.3.0   |
+| [iOS](ios/) | 4.7.1   |
 |             |         |
 
 ## Official website

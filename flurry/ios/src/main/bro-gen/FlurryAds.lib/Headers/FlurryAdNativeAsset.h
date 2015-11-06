@@ -29,7 +29,7 @@ typedef enum
  *  Set of methods that allow publishers to retrieve assets for native ads.
  *
  *  For information on how to use Flurry's Ads SDK to
- *  attract high-quality users and monetize your user base see <a href="http://support.flurry.com/index.php?title=Publishers">Support Center - Publishers</a>.
+ *  attract high-quality users and monetize your user base see <a href="https://developer.yahoo.com/flurry/docs/howtos">Support Center - Publishers</a>.
  *
  *  @author 2009 - 2014 Flurry, Inc. All Rights Reserved.
  *  @version 6.0.0
@@ -42,7 +42,7 @@ typedef enum
  *
  *  @since 6.0.0
  */
-@property (nonatomic, retain, readonly) NSString *name;
+@property (nonatomic, strong, readonly) NSString *name;
 
 /*!
  *  @brief Read only property that indicates the type of asset.
@@ -56,7 +56,7 @@ typedef enum
  *
  *  @since 6.0.0
  */
-@property (nonatomic, retain, readonly) NSString *value;
+@property (nonatomic, strong, readonly) NSString *value;
 
 /*!
  *  @brief Read only property that indicates the width of the asset. This value is set if this object represents an image asset.

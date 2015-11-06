@@ -46,6 +46,7 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADNativeAd() {}
+    protected GADNativeAd(Handle h, long handle) { super(h, handle); }
     protected GADNativeAd(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -57,6 +58,10 @@ import org.robovm.apple.storekit.*;
     public native UIViewController getRootViewController();
     @Property(selector = "setRootViewController:", strongRef = true)
     public native void setRootViewController(UIViewController v);
+    @Property(selector = "extraAssets")
+    public native NSDictionary<?, ?> getExtraAssets();
+    @Property(selector = "adNetworkClassName")
+    public native String getAdNetworkClassName();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

@@ -46,8 +46,11 @@ import org.robovm.pods.parse.*;
     /*<bind>*/static { ObjCRuntime.bind(PFQueryTableViewController.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
+    protected PFQueryTableViewController(Handle h, long handle) { super(h, handle); }
     protected PFQueryTableViewController(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithStyle:className:")
     public PFQueryTableViewController(UITableViewStyle style, String className) { super((SkipInit) null); initObject(init(style, className)); }
+    @Method(selector = "initWithClassName:")
     public PFQueryTableViewController(String className) { super((SkipInit) null); initObject(init(className)); }
     /*</constructors>*/
     public PFQueryTableViewController(UITableViewStyle style, Class<T> subclass) {

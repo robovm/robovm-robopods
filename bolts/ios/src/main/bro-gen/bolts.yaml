@@ -5,7 +5,7 @@ include:
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/dispatch.yaml
 clang_args: ['-x', 'objective-c']
-header_root: '/../robopods/META-INF/robovm/ios/libs/'
+header_root: /../robopods/META-INF/robovm/ios/libs
 headers:
     - Bolts.framework/Headers/Bolts.h
 typedefs:
@@ -13,6 +13,7 @@ typedefs:
 private_typedefs:
     'void (^)(void (^)())': '@Block("(@Block)") VoidBlock1<Runnable>'
     'id (^)()': '@Block Block0<NSObject>'
+    BFGenericType: NSObject
     
 enums:
     BFAppLinkNavigationType: {}
@@ -33,6 +34,7 @@ classes:
         methods:
             '+appLinkWithSourceURL:targets:webURL:':
                 name: create
+                constructor: true
                 parameters:
                     targets:
                         type: NSArray<BFAppLinkTarget>
@@ -48,6 +50,7 @@ classes:
                 throws: NSErrorException
             '+navigationWithAppLink:extras:appLinkData:':
                 name: create
+                constructor: true
                 parameters:
                     extras:
                         type: 'NSDictionary<NSString, NSObject>'
@@ -75,6 +78,26 @@ classes:
         methods:
             '+appLinkTargetWithURL:appStoreId:appName:':
                 name: create
+                constructor: true
+    BFCancellationToken: # DONE
+        methods:
+            '-registerCancellationObserverWithBlock:':
+                name: registerCancellationObserver
+    BFCancellationTokenRegistration: # DONE
+        methods:
+            '-dispose':
+                name: destroy
+    BFCancellationTokenSource: # DONE
+        methods:
+            '-cancelAfterDelay:':
+                name: cancel
+                parameters:
+                    millis:
+                        name: delay
+            '-dispose':
+                name: destroy
+            '+cancellationTokenSource':
+                exclude: true
     BFExecutor: # DONE
         methods:
             '-execute:':
@@ -83,6 +106,7 @@ classes:
                 property: true
             '+executorWith.*':
                 name: create
+                constructor: true
     BFMeasurementEvent: {} # DONE
     BFTask: # DONE
         properties:
@@ -92,14 +116,17 @@ classes:
             'cancelled':
                 getter: isCancelled
         methods:
-            '-continue.*SuccessBlock:':
+            '-continue.*uccessBlock:.*':
                 name: continueOnSuccess0
                 return_type: '<TContinuationResult> BFTask<TContinuationResult>'
                 visibility: protected # generic block
-            '-continue.*Block:':
+            '-continue.*lock:.*':
                 name: continueWith0
                 return_type: '<TContinuationResult> BFTask<TContinuationResult>'
                 visibility: protected # generic block
+            '+taskWithDelay.*':
+                name: createWithDelay
+                return_type: BFTask<Void>
             '+taskWith(.*):':
                 name: 'createFor#{g[0]}'
                 return_type: '<T> BFTask<T>'
@@ -119,9 +146,6 @@ classes:
                 parameters:
                     tasks:
                         type: NSArray<BFTask<T>>
-            '+taskWithDelay:':
-                name: createWithDelay
-                return_type: BFTask<Void>
             '+taskFromExecutor:withBlock:':
                 name: create0
                 return_type: '<T> BFTask<T>'
@@ -131,7 +155,7 @@ classes:
             '-trySet.*':
                 trim_after_first_colon: true
             '+taskCompletionSource':
-                name: create
+                exclude: true
     BFURL: # DONE
         properties:
             'targetQueryParameters':
@@ -145,6 +169,7 @@ classes:
         methods:
             '+URLWith.*':
                 name: create
+                constructor: true
     BFWebViewAppLinkResolver: # DONE
         methods:
             '+sharedInstance':

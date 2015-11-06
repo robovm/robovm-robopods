@@ -48,17 +48,13 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFGeoPoint() {}
+    protected PFGeoPoint(Handle h, long handle) { super(h, handle); }
     protected PFGeoPoint(SkipInit skipInit) { super(skipInit); }
+    public PFGeoPoint(CLLocation location) { super((Handle) null, create(location)); retain(getHandle()); }
+    public PFGeoPoint(double latitude, double longitude) { super((Handle) null, create(latitude, longitude)); retain(getHandle()); }
+    @Method(selector = "initWithCoder:")
     public PFGeoPoint(NSCoder aDecoder) { super((SkipInit) null); initObject(init(aDecoder)); }
     /*</constructors>*/
-    public PFGeoPoint(CLLocation location) {
-        super(create(location));
-        retain(getHandle());
-    }
-    public PFGeoPoint(double latitude, double longitude) {
-        super(create(latitude, longitude));
-        retain(getHandle());
-    }
     /*<properties>*/
     @Property(selector = "latitude")
     public native double getLatitude();
@@ -82,7 +78,7 @@ import org.robovm.pods.bolts.*;
     @Method(selector = "geoPointWithLatitude:longitude:")
     protected static native @Pointer long create(double latitude, double longitude);
     @Method(selector = "geoPointForCurrentLocationInBackground:")
-    public static native void getCurrentLocationInBackground(@Block PFLocationCallback geoPointHandler);
+    public static native void getCurrentLocationInBackground(@Block PFLocationCallback resultBlock);
     @Method(selector = "encodeWithCoder:")
     public native void encode(NSCoder coder);
     @Method(selector = "initWithCoder:")

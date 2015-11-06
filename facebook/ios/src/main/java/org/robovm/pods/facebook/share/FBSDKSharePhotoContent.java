@@ -45,6 +45,7 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKSharePhotoContent() {}
+    protected FBSDKSharePhotoContent(Handle h, long handle) { super(h, handle); }
     protected FBSDKSharePhotoContent(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

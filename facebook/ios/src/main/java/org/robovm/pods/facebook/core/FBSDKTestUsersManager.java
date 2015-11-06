@@ -46,6 +46,7 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKTestUsersManager() {}
+    protected FBSDKTestUsersManager(Handle h, long handle) { super(h, handle); }
     protected FBSDKTestUsersManager(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

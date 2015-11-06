@@ -57,6 +57,7 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKAppEvents() {}
+    protected FBSDKAppEvents(Handle h, long handle) { super(h, handle); }
     protected FBSDKAppEvents(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

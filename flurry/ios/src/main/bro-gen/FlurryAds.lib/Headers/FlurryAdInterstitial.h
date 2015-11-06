@@ -19,7 +19,7 @@
  *
  *  @note This class depends on Flurry.h.
  *  For information on how to use Flurry's Ads SDK to
- *  attract high-quality users and monetize your user base see <a href="http://support.flurry.com/index.php?title=Publishers">Support Center - Publishers</a>.
+ *  attract high-quality users and monetize your user base see <a href="https://developer.yahoo.com/flurry/docs/howtos">Support Center - Publishers</a>.
  *
  *  @author 2009 - 2014 Flurry, Inc. All Rights Reserved.
  *  @version 6.0.0
@@ -48,7 +48,7 @@
  *  @return The ad targeting that was orignally set or nil if never set.
  *
  */
-@property (nonatomic, retain) FlurryAdTargeting *targeting;
+@property (nonatomic, strong) FlurryAdTargeting *targeting;
 
 /*!
  *  @brief Sets the object to receive various delegate methods.
@@ -73,7 +73,7 @@
  *  @return The ad delegate object if set earlier, or nil if never set
  *
  */
-@property (nonatomic, assign) id<FlurryAdInterstitialDelegate> adDelegate;
+@property (nonatomic, weak) id<FlurryAdInterstitialDelegate> adDelegate;
 
 
 /*!

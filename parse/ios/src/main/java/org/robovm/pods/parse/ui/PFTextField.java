@@ -47,7 +47,9 @@ import org.robovm.pods.parse.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFTextField() {}
+    protected PFTextField(Handle h, long handle) { super(h, handle); }
     protected PFTextField(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithFrame:separatorStyle:")
     public PFTextField(@ByVal CGRect frame, PFTextFieldSeparatorStyle separatorStyle) { super((SkipInit) null); initObject(init(frame, separatorStyle)); }
     /*</constructors>*/
     /*<properties>*/

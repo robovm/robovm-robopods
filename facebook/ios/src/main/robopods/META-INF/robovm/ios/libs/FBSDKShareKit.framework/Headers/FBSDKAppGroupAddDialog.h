@@ -18,7 +18,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "FBSDKAppGroupContent.h"
+#import <FBSDKShareKit/FBSDKAppGroupContent.h>
 
 @protocol FBSDKAppGroupAddDialogDelegate;
 

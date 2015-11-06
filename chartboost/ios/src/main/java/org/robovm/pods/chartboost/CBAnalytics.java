@@ -46,6 +46,7 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public CBAnalytics() {}
+    protected CBAnalytics(Handle h, long handle) { super(h, handle); }
     protected CBAnalytics(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

@@ -49,7 +49,8 @@ public enum /*<name>*/CBLoadError/*</name>*/ implements ValuedEnum {
     SessionNotStarted(7L),
     UserCancellation(8L),
     NoLocationFound(9L),
-    PrefetchingIncomplete(10L);
+    PrefetchingIncomplete(10L),
+    ImpressionAlreadyVisible(11L);
     /*</values>*/
 
     /*<bind>*/

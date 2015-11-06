@@ -47,7 +47,9 @@ import org.robovm.pods.parse.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFLogInView() {}
+    protected PFLogInView(Handle h, long handle) { super(h, handle); }
     protected PFLogInView(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithFields:")
     public PFLogInView(PFLogInFields fields) { super((SkipInit) null); initObject(init(fields)); }
     /*</constructors>*/
     public PFLogInView(CGRect frame) {
@@ -84,10 +86,6 @@ import org.robovm.pods.parse.*;
     public native UIButton getSignUpButton();
     @Property(selector = "dismissButton")
     public native UIButton getDismissButton();
-    @Property(selector = "externalLogInLabel")
-    public native UILabel getExternalLogInLabel();
-    @Property(selector = "signUpLabel")
-    public native UILabel getSignUpLabel();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

@@ -48,6 +48,7 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFNetworkActivityIndicatorManager() {}
+    protected PFNetworkActivityIndicatorManager(Handle h, long handle) { super(h, handle); }
     protected PFNetworkActivityIndicatorManager(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

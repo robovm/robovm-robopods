@@ -44,6 +44,7 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKMessengerURLHandlerReplyContext() {}
+    protected FBSDKMessengerURLHandlerReplyContext(Handle h, long handle) { super(h, handle); }
     protected FBSDKMessengerURLHandlerReplyContext(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

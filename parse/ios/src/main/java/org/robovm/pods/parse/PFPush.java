@@ -48,6 +48,7 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFPush() {}
+    protected PFPush(Handle h, long handle) { super(h, handle); }
     protected PFPush(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -151,6 +152,9 @@ import org.robovm.pods.bolts.*;
     public static native BFTask<Void> sendDataInBackground(PFQuery query, NSDictionary<?, ?> data);
     @Method(selector = "sendPushDataToQueryInBackground:withData:block:")
     public static native void sendDataInBackground(PFQuery<PFInstallation> query, NSDictionary<?, ?> data, @Block PFSendCallback block);
+    /**
+     * @since Available in iOS 3.0 and later.
+     */
     @Method(selector = "handlePush:")
     public static native void handle(UIRemoteNotification userInfo);
     @Method(selector = "storeDeviceToken:")

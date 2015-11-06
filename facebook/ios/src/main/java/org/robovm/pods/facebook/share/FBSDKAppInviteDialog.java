@@ -45,9 +45,14 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKAppInviteDialog() {}
+    protected FBSDKAppInviteDialog(Handle h, long handle) { super(h, handle); }
     protected FBSDKAppInviteDialog(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
+    @Property(selector = "fromViewController")
+    public native UIViewController getFromViewController();
+    @Property(selector = "setFromViewController:", strongRef = true)
+    public native void setFromViewController(UIViewController v);
     @Property(selector = "delegate")
     public native FBSDKAppInviteDialogDelegate getDelegate();
     @Property(selector = "setDelegate:", strongRef = true)
@@ -60,9 +65,9 @@ import org.robovm.pods.facebook.core.*;
     /*<members>*//*</members>*/
     private static FBSDKAppInviteDialogDelegate delegate;
     
-    public static FBSDKAppInviteDialog show(FBSDKAppInviteContent content, FBSDKAppInviteDialogDelegate delegate) {
+    public static FBSDKAppInviteDialog show(UIViewController viewController, FBSDKAppInviteContent content, FBSDKAppInviteDialogDelegate delegate) {
         FBSDKAppInviteDialog.delegate = delegate;
-        return show0(content, delegate);
+        return show0(viewController, content, delegate);
     }
     
     /*<methods>*/
@@ -78,7 +83,7 @@ import org.robovm.pods.facebook.core.*;
     }
     @Method(selector = "validateWithError:")
     private native boolean validate(NSError.NSErrorPtr errorRef);
-    @Method(selector = "showWithContent:delegate:")
-    private static native FBSDKAppInviteDialog show0(FBSDKAppInviteContent content, FBSDKAppInviteDialogDelegate delegate);
+    @Method(selector = "showFromViewController:withContent:delegate:")
+    private static native FBSDKAppInviteDialog show0(UIViewController viewController, FBSDKAppInviteContent content, FBSDKAppInviteDialogDelegate delegate);
     /*</methods>*/
 }

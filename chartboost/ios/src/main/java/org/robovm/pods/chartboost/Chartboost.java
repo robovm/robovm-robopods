@@ -46,6 +46,7 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public Chartboost() {}
+    protected Chartboost(Handle h, long handle) { super(h, handle); }
     protected Chartboost(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -134,7 +135,7 @@ import org.robovm.apple.storekit.*;
     @Method(selector = "setFramework:withVersion:")
     public static native void setFramework(CBFramework framework, String version);
     @Method(selector = "setMediation:withVersion:")
-    public static native void setMediation(String libraryName, String libraryVersion);
+    public static native void setMediation(CBMediation library, String libraryVersion);
     @Method(selector = "setShouldRequestInterstitialsInFirstSession:")
     public static native void setShouldRequestInterstitialsInFirstSession(boolean shouldRequest);
     @Method(selector = "setShouldPauseClickForConfirmation:")

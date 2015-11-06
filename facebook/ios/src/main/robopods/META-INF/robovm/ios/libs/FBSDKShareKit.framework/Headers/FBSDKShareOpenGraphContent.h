@@ -18,8 +18,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "FBSDKShareOpenGraphAction.h"
-#import "FBSDKSharingContent.h"
+#import <FBSDKShareKit/FBSDKShareOpenGraphAction.h>
+#import <FBSDKShareKit/FBSDKSharingContent.h>
 
 /*!
  @abstract A model for Open Graph content to be shared.

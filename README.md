@@ -40,13 +40,13 @@ to your `pom.xml`:
 
 |                  Name                   | Version | Dependency                                      |
 |-----------------------------------------|:-------:|-------------------------------------------------|
-| [Bolts](bolts/)                         | 1.1.5   | org.robovm:robopods-bolts-ios:1.9.0             |
-| [Chartboost](chartboost/)               | 5.5.0   | org.robovm:robopods-chartboost-ios:1.9.0        |
-| [Facebook](facebook/)                   | 4.3.0   | org.robovm:robopods-facebook-ios:1.9.0          |
-| [Flurry](flurry/)                       | 6.6.0   | org.robovm:robopods-flurry-ios:1.9.0            |
-| [Google Analytics](google-analytics/)   | 3.12    | org.robovm:robopods-google-analytics-ios:1.9.0  |
+| [Bolts](bolts/)                         | 1.2.2   | org.robovm:robopods-bolts-ios:1.9.0             |
+| [Chartboost](chartboost/)               | 6.0.1   | org.robovm:robopods-chartboost-ios:1.9.0        |
+| [Facebook](facebook/)                   | 4.7.1   | org.robovm:robopods-facebook-ios:1.9.0          |
+| [Flurry](flurry/)                       | 7.3.0   | org.robovm:robopods-flurry-ios:1.9.0            |
+| [Google Analytics](google-analytics/)   | 3.14    | org.robovm:robopods-google-analytics-ios:1.9.0  |
 | [Google APIs](google-apis/)             |         | org.robovm:robopods-google-apis-ios:1.9.0       |
-| [Google Mobile Ads](google-mobile-ads/) | 7.3.1   | org.robovm:robopods-google-mobile-ads-ios:1.9.0 |
+| [Google Mobile Ads](google-mobile-ads/) | 7.5.2   | org.robovm:robopods-google-mobile-ads-ios:1.9.0 |
 | [Google Play Games](google-play-games/) | 1.4.1   | org.robovm:robopods-google-play-games-ios:1.9.0 |
 | [Heyzap](heyzap/)                       | 9.2.4   | org.robovm:robopods-heyzap-ios:1.9.0            |
-| [Parse](parse/)                         | 1.7.4   | org.robovm:robopods-parse-ios:1.9.0             |
+| [Parse](parse/)                         | 1.9.1   | org.robovm:robopods-parse-ios:1.9.0             |

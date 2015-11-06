@@ -6,7 +6,7 @@ Measure, track and analyze app performance, user acquisition and activity with F
 
 | Platform    | Version |
 |-------------|---------|
-| [iOS](ios/) | 6.6.0   |
+| [iOS](ios/) | 7.3.0   |
 |             |         |
 
 ## Official website

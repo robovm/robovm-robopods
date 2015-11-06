@@ -48,6 +48,7 @@ import org.robovm.pods.parse.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFFacebookUtils() {}
+    protected PFFacebookUtils(Handle h, long handle) { super(h, handle); }
     protected PFFacebookUtils(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

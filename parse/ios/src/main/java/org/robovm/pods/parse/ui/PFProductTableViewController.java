@@ -46,7 +46,9 @@ import org.robovm.pods.parse.*;
     /*<bind>*/static { ObjCRuntime.bind(PFProductTableViewController.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
+    protected PFProductTableViewController(Handle h, long handle) { super(h, handle); }
     protected PFProductTableViewController(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithStyle:")
     public PFProductTableViewController(UITableViewStyle style) { super((SkipInit) null); initObject(init(style)); }
     /*</constructors>*/
     public PFProductTableViewController() {

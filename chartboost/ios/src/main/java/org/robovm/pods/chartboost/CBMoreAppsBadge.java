@@ -45,7 +45,7 @@ import org.robovm.apple.storekit.*;
     /*<bind>*/static { ObjCRuntime.bind(CBMoreAppsBadge.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public CBMoreAppsBadge() {}
+    protected CBMoreAppsBadge(Handle h, long handle) { super(h, handle); }
     protected CBMoreAppsBadge(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -53,7 +53,6 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "moreAppsBadge")
-    public static native CBMoreAppsBadge create();
+    
     /*</methods>*/
 }

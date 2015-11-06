@@ -47,6 +47,7 @@ import org.robovm.pods.parse.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFTableViewCell() {}
+    protected PFTableViewCell(Handle h, long handle) { super(h, handle); }
     protected PFTableViewCell(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     public PFTableViewCell(UITableViewCellStyle style, String reuseIdentifier) {

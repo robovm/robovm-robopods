@@ -45,6 +45,7 @@ import org.robovm.apple.dispatch.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public BFMeasurementEvent() {}
+    protected BFMeasurementEvent(Handle h, long handle) { super(h, handle); }
     protected BFMeasurementEvent(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

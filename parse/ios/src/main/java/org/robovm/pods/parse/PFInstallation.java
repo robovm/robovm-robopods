@@ -48,6 +48,7 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFInstallation() {}
+    protected PFInstallation(Handle h, long handle) { super(h, handle); }
     protected PFInstallation(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -68,7 +69,7 @@ import org.robovm.pods.bolts.*;
     @Property(selector = "channels")
     public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getChannels();
     @Property(selector = "setChannels:")
-    public native void setChannels(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class)List<String> v);
+    public native void setChannels(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

@@ -18,9 +18,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import "../../FBSDKCoreKit.framework/Headers/FBSDKCopying.h"
+#import <FBSDKCoreKit/FBSDKCopying.h>
 
-#import "FBSDKShareOpenGraphValueContainer.h"
+#import <FBSDKShareKit/FBSDKShareOpenGraphValueContainer.h>
 
 /*!
  @abstract An Open Graph Object for sharing.

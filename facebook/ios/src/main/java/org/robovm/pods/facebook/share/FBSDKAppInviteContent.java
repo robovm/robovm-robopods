@@ -45,6 +45,7 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKAppInviteContent() {}
+    protected FBSDKAppInviteContent(Handle h, long handle) { super(h, handle); }
     protected FBSDKAppInviteContent(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

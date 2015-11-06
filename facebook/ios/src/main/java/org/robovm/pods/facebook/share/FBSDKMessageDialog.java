@@ -45,6 +45,7 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKMessageDialog() {}
+    protected FBSDKMessageDialog(Handle h, long handle) { super(h, handle); }
     protected FBSDKMessageDialog(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

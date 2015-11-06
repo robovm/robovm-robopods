@@ -7,7 +7,7 @@ include:
     - ../../../../../bolts/ios/src/main/bro-gen/bolts.yaml
     - parse.yaml
 clang_args: ['-x', 'objective-c']
-header_root: '/../robopods/META-INF/robovm/ios/libs/'
+header_root: /../robopods/META-INF/robovm/ios/libs
 headers:
     - ParseUI.framework/Headers/ParseUI.h
 typedefs:

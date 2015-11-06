@@ -45,7 +45,9 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBInterstitialAd() {}
+    protected FBInterstitialAd(Handle h, long handle) { super(h, handle); }
     protected FBInterstitialAd(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithPlacementID:")
     public FBInterstitialAd(String placementID) { super((SkipInit) null); initObject(init(placementID)); }
     /*</constructors>*/
     /*<properties>*/

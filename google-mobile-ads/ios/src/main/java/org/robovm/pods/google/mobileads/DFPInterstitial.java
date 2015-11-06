@@ -46,13 +46,16 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public DFPInterstitial() {}
+    protected DFPInterstitial(Handle h, long handle) { super(h, handle); }
     protected DFPInterstitial(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "adUnitID")
     public native String getAdUnitID();
-    @Property(selector = "setAdUnitID:")
-    public native void setAdUnitID(String v);
+    @Property(selector = "correlator")
+    public native GADCorrelator getCorrelator();
+    @Property(selector = "setCorrelator:")
+    public native void setCorrelator(GADCorrelator v);
     @Property(selector = "appEventDelegate")
     public native GADAppEventDelegate getAppEventDelegate();
     @Property(selector = "setAppEventDelegate:", strongRef = true)

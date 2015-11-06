@@ -18,7 +18,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "FBSDKSharingContent.h"
+#import <FBSDKShareKit/FBSDKSharingContent.h>
 
 /*!
  @abstract A model for photo content to be shared.

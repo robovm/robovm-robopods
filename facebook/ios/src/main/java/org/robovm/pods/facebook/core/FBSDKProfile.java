@@ -62,7 +62,9 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKProfile() {}
+    protected FBSDKProfile(Handle h, long handle) { super(h, handle); }
     protected FBSDKProfile(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithUserID:firstName:middleName:lastName:name:linkURL:refreshDate:")
     public FBSDKProfile(String userID, String firstName, String middleName, String lastName, String name, NSURL linkURL, NSDate refreshDate) { super((SkipInit) null); initObject(init(userID, firstName, middleName, lastName, name, linkURL, refreshDate)); }
     /*</constructors>*/
     /*<properties>*/
@@ -88,8 +90,8 @@ import org.robovm.pods.bolts.*;
     
     @Method(selector = "initWithUserID:firstName:middleName:lastName:name:linkURL:refreshDate:")
     protected native @Pointer long init(String userID, String firstName, String middleName, String lastName, String name, NSURL linkURL, NSDate refreshDate);
-    @Method(selector = "imagePathForPictureMode:size:")
-    public native String getImagePath(FBSDKProfilePictureMode mode, @ByVal CGSize size);
+    @Method(selector = "imageURLForPictureMode:size:")
+    public native NSURL getImageURL(FBSDKProfilePictureMode mode, @ByVal CGSize size);
     @Method(selector = "isEqualToProfile:")
     public native boolean equalsTo(FBSDKProfile profile);
     @Method(selector = "currentProfile")

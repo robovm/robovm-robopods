@@ -46,6 +46,7 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKApplicationDelegate() {}
+    protected FBSDKApplicationDelegate(Handle h, long handle) { super(h, handle); }
     protected FBSDKApplicationDelegate(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

@@ -45,7 +45,9 @@ import org.robovm.apple.dispatch.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public BFAppLinkNavigation() {}
+    protected BFAppLinkNavigation(Handle h, long handle) { super(h, handle); }
     protected BFAppLinkNavigation(SkipInit skipInit) { super(skipInit); }
+    public BFAppLinkNavigation(BFAppLink appLink, NSDictionary<NSString, NSObject> extras, NSDictionary<NSString, NSObject> appLinkData) { super((Handle) null, create(appLink, extras, appLinkData)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "extras")
@@ -53,7 +55,7 @@ import org.robovm.apple.dispatch.*;
     @Property(selector = "appLinkData")
     public native NSDictionary<NSString, NSObject> getAppLinkData();
     @Property(selector = "appLink")
-    public native IntPtr getAppLink();
+    public native BFAppLink getAppLink();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -66,19 +68,19 @@ import org.robovm.apple.dispatch.*;
     @Method(selector = "navigate:")
     private native BFAppLinkNavigationType navigate(NSError.NSErrorPtr error);
     @Method(selector = "navigationWithAppLink:extras:appLinkData:")
-    public static native BFAppLinkNavigation create(NSObject appLink, NSDictionary<NSString, NSObject> extras, NSDictionary<NSString, NSObject> appLinkData);
+    protected static native @Pointer long create(BFAppLink appLink, NSDictionary<NSString, NSObject> extras, NSDictionary<NSString, NSObject> appLinkData);
     @Method(selector = "resolveAppLinkInBackground:")
     public static native BFTask resolveAppLinkInBackground(NSURL destination);
     @Method(selector = "resolveAppLinkInBackground:resolver:")
     public static native BFTask resolveAppLinkInBackground(NSURL destination, BFAppLinkResolving resolver);
-    public static BFAppLinkNavigationType navigateToAppLink(NSObject link) throws NSErrorException {
+    public static BFAppLinkNavigationType navigateToAppLink(BFAppLink link) throws NSErrorException {
        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
        BFAppLinkNavigationType result = navigateToAppLink(link, ptr);
        if (ptr.get() != null) { throw new NSErrorException(ptr.get()); }
        return result;
     }
     @Method(selector = "navigateToAppLink:error:")
-    private static native BFAppLinkNavigationType navigateToAppLink(NSObject link, NSError.NSErrorPtr error);
+    private static native BFAppLinkNavigationType navigateToAppLink(BFAppLink link, NSError.NSErrorPtr error);
     @Method(selector = "navigateToURLInBackground:")
     public static native BFTask navigateToURLInBackground(NSURL destination);
     @Method(selector = "navigateToURLInBackground:resolver:")

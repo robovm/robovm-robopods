@@ -20,7 +20,6 @@
 #import "FlurryAdNativeDelegate.h"
 #import "FlurryAdNativeStyle.h"
 #import "FlurryAdTargeting.h"
-
 typedef enum {
     BANNER_TOP    = 1,
     BANNER_BOTTOM = 2,
@@ -37,7 +36,7 @@ typedef enum {
  *  
  *  @note This class depends on Flurry.h.
  *  For information on how to use Flurry's Ads SDK to
- *  attract high-quality users and monetize your user base see <a href="http://support.flurry.com/index.php?title=Publishers">Support Center - Publishers</a>.
+ *  attract high-quality users and monetize your user base see <a href="https://developer.yahoo.com/flurry/docs/howtos">Support Center - Publishers</a>.
  *  
  *  @author 2009 - 2013 Flurry, Inc. All Rights Reserved.
  *  @version 4.3.0

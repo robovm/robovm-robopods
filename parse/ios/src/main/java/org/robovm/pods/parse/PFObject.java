@@ -116,7 +116,9 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFObject() {}
+    protected PFObject(Handle h, long handle) { super(h, handle); }
     protected PFObject(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithClassName:")
     public PFObject(String newClassName) { super((SkipInit) null); initObject(init(newClassName)); }
     /*</constructors>*/
     /*<properties>*/
@@ -349,6 +351,10 @@ import org.robovm.pods.bolts.*;
     public native void remove(String key);
     @Method(selector = "relationForKey:")
     public native <T extends PFObject> PFRelation<T> getRelation(String key);
+    @Method(selector = "revert")
+    public native void revert();
+    @Method(selector = "revertObjectForKey:")
+    public native void revert(String key);
     @Method(selector = "addObject:forKey:")
     private native void add0(NSObject object, String key);
     @Method(selector = "addObjectsFromArray:forKey:")
@@ -385,13 +391,14 @@ import org.robovm.pods.bolts.*;
     public native void saveEventually(@Block PFSaveCallback callback);
     @Method(selector = "isDataAvailable")
     public native boolean isDataAvailable();
-    public void fetch() throws NSErrorException {
+    public <T extends PFObject> T fetch() throws NSErrorException {
        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
-       fetch(ptr);
+       T result = fetch(ptr);
        if (ptr.get() != null) { throw new NSErrorException(ptr.get()); }
+       return result;
     }
     @Method(selector = "fetch:")
-    private native void fetch(NSError.NSErrorPtr error);
+    private native <T extends PFObject> T fetch(NSError.NSErrorPtr error);
     public <T extends PFObject> T fetchIfNeeded() throws NSErrorException {
        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
        T result = fetchIfNeeded(ptr);
@@ -412,13 +419,14 @@ import org.robovm.pods.bolts.*;
     protected native void fetchIfNeededInBackground0(@Block PFGetCallback<PFObject> block);
     @Method(selector = "fetchIfNeededInBackgroundWithTarget:selector:")
     public native void fetchIfNeededInBackground(NSObject target, Selector selector);
-    public void fetchFromLocalDatastore() throws NSErrorException {
+    public <T extends PFObject> T fetchFromLocalDatastore() throws NSErrorException {
        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
-       fetchFromLocalDatastore(ptr);
+       T result = fetchFromLocalDatastore(ptr);
        if (ptr.get() != null) { throw new NSErrorException(ptr.get()); }
+       return result;
     }
     @Method(selector = "fetchFromLocalDatastore:")
-    private native void fetchFromLocalDatastore(NSError.NSErrorPtr error);
+    private native <T extends PFObject> T fetchFromLocalDatastore(NSError.NSErrorPtr error);
     @Method(selector = "fetchFromLocalDatastoreInBackground")
     public native <T extends PFObject> BFTask<T> fetchFromLocalDatastoreInBackground();
     @Method(selector = "fetchFromLocalDatastoreInBackgroundWithBlock:")
@@ -493,10 +501,10 @@ import org.robovm.pods.bolts.*;
     public native void unpinInBackground(String name, @Block PFSaveCallback block);
     @Method(selector = "objectWithClassName:")
     public static native PFObject create(String className);
-    @Method(selector = "objectWithoutDataWithClassName:objectId:")
-    public static native PFObject createWithoutData(String className, String objectId);
     @Method(selector = "objectWithClassName:dictionary:")
     public static native PFObject create(String className, NSDictionary<?, ?> dictionary);
+    @Method(selector = "objectWithoutDataWithClassName:objectId:")
+    public static native PFObject createWithoutData(String className, String objectId);
     public static <T extends PFObject> boolean saveAll(NSArray<T> objects) throws NSErrorException {
        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
        boolean result = saveAll(objects, ptr);

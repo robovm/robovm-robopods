@@ -45,7 +45,9 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBNativeAdTableViewAdProvider() {}
+    protected FBNativeAdTableViewAdProvider(Handle h, long handle) { super(h, handle); }
     protected FBNativeAdTableViewAdProvider(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithManager:")
     public FBNativeAdTableViewAdProvider(FBNativeAdsManager manager) { super((SkipInit) null); initObject(init(manager)); }
     /*</constructors>*/
     /*<properties>*/

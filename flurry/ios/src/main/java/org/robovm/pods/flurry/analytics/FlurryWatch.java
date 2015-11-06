@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FlurryWatch() {}
+    protected FlurryWatch(Handle h, long handle) { super(h, handle); }
     protected FlurryWatch(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -59,5 +60,9 @@ import org.robovm.apple.coregraphics.*;
     public static native FlurryEventRecordStatus logWatchEvent(String eventName);
     @Method(selector = "logWatchEvent:withParameters:")
     public static native FlurryEventRecordStatus logWatchEvent(String eventName, NSDictionary<?, ?> parameters);
+    @Method(selector = "logWatchError:message:exception:")
+    public static native void logWatchError(String errorID, String message, NSException exception);
+    @Method(selector = "logWatchError:message:error:")
+    public static native void logWatchError(String errorID, String message, NSError error);
     /*</methods>*/
 }

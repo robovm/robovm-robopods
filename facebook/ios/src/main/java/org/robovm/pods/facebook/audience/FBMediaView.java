@@ -45,7 +45,9 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBMediaView() {}
+    protected FBMediaView(Handle h, long handle) { super(h, handle); }
     protected FBMediaView(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithNativeAd:")
     public FBMediaView(FBNativeAd nativeAd) { super((SkipInit) null); initObject(init(nativeAd)); }
     /*</constructors>*/
     /*<properties>*/
@@ -57,6 +59,10 @@ import org.robovm.apple.coregraphics.*;
     public native FBNativeAd getNativeAd();
     @Property(selector = "setNativeAd:")
     public native void setNativeAd(FBNativeAd v);
+    @Property(selector = "isAutoplayEnabled")
+    public native boolean isAutoplayEnabled();
+    @Property(selector = "setAutoplayEnabled:")
+    public native void setAutoplayEnabled(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

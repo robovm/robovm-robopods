@@ -18,7 +18,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "FBSDKCopying.h"
+#import <FBSDKCoreKit/FBSDKCopying.h>
 
 /*!
  @abstract Extension protocol for NSMutableCopying that adds the mutableCopy method, which is implemented on NSObject.

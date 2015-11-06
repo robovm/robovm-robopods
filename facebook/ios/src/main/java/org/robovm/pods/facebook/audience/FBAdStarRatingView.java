@@ -45,7 +45,9 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBAdStarRatingView() {}
+    protected FBAdStarRatingView(Handle h, long handle) { super(h, handle); }
     protected FBAdStarRatingView(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithFrame:withStarRating:")
     public FBAdStarRatingView(@ByVal CGRect frame, @ByVal FBAdStarRating starRating) { super((SkipInit) null); initObject(init(frame, starRating)); }
     /*</constructors>*/
     /*<properties>*/

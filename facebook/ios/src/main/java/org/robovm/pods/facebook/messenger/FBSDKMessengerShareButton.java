@@ -44,6 +44,7 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKMessengerShareButton() {}
+    protected FBSDKMessengerShareButton(Handle h, long handle) { super(h, handle); }
     protected FBSDKMessengerShareButton(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

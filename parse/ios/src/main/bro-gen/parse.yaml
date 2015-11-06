@@ -8,7 +8,7 @@ include:
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/storekit.yaml
     - ../../../../../bolts/ios/src/main/bro-gen/bolts.yaml
 clang_args: ['-x', 'objective-c']
-header_root: '/../robopods/META-INF/robovm/ios/libs/'
+header_root: /../robopods/META-INF/robovm/ios/libs
 headers:
     - Parse.framework/Headers/Parse.h
 typedefs:
@@ -28,7 +28,8 @@ typedefs:
     PFUserSessionUpgradeResultBlock: '@Block PFUserSessionUpgradeCallback'
     PFUserLogoutResultBlock: '@Block PFLogOutCallback'
     PFSessionResultBlock: '@Block PFGetCallback<PFSession>'
-    'void (^)(SKPaymentTransaction *)': '@Block PFProductObserver'
+    PFPurchaseProductObservationBlock: '@Block PFProductObserver'
+    PFFilePathResultBlock: '@Block PFGetFilePathCallback'
 
 private_typedefs:
     'void (^)(NSString *, NSError *)': '@Block VoidBlock2<String, NSError>'
@@ -54,15 +55,6 @@ classes:
                 property: true
             '+logLevel':
                 property: true
-    PF_Twitter: # DONE
-        name: PFTwitter
-        methods:
-            '-authorizeInBackground':
-                return_type: BFTask<Void>
-            '-authorizeWithSuccess:failure:cancel:':
-                name: authorize
-            '-signRequest:':
-                name: sign
     PFACL: # DONE
         methods:
             '-getReadAccessForRole.*':
@@ -89,8 +81,7 @@ classes:
                 exclude: true
             '+ACLWithUser:':
                 name: create
-                visibility: protected
-                return_type: '@Pointer long'
+                constructor: true
             '+setDefaultACL:withAccessForCurrentUser:':
                 trim_after_first_colon: true
     PFAnalytics: # DONE
@@ -202,14 +193,39 @@ classes:
             '-getDataStreamInBackgroundWithProgressBlock:':
                 name: getDataStreamInBackground
                 return_type: BFTask<NSInputStream>
+            '-getDataDownloadStreamInBackground':
+                return_type: BFTask<NSInputStream>
+            '-getDataDownloadStreamInBackgroundWithProgressBlock:':
+                name: getDataDownloadStreamInBackground
+                return_type: BFTask<NSInputStream>
             '-getDataInBackground.*':
                 name: getDataInBackground
             '-getDataStreamInBackground.*':
                 name: getDataStreamInBackground
+            '-getFilePathInBackground':
+                return_type: BFTask<NSString>
+            '-getFilePathInBackgroundWithProgressBlock:':
+                name: getFilePathInBackground
+                return_type: BFTask<NSString>
+            '-getFilePathInBackgroundWithBlock.*':
+                name: getFilePathInBackground
+            '+new':
+                exclude: true
+            '+fileWithName:contentsAtPath:':
+                exclude: true
+            '+fileWithName:contentsAtPath:error:':
+                name: create
+                constructor: true
+                throws: NSErrorException
+            '+fileWithName:data:contentType:':
+                exclude: true
+            '+fileWithName:data:contentType:error:':
+                name: create
+                constructor: true
+                throws: NSErrorException
             '+fileWith.*':
                 name: create
-                visibility: protected
-                return_type: '@Pointer long'
+                constructor: true
     PFGeoPoint: # DONE
         methods:
             '-distanceIn.*':
@@ -220,8 +236,7 @@ classes:
                 name: getCurrentLocationInBackground
             '+geoPointWith.*':
                 name: create
-                return_type: '@Pointer long'
-                visibility: protected
+                constructor: true
     PFInstallation: # DONE
         properties:
             'channels':
@@ -261,6 +276,8 @@ classes:
             '-relationForKey:':
                 name: getRelation
                 return_type: '<T extends PFObject> PFRelation<T>'
+            '-revertObjectForKey:':
+                name: revert
             '-addObject:forKey:':
                 name: add0
                 visibility: private
@@ -298,6 +315,7 @@ classes:
                 exclude: true 
             '-fetch:':
                 trim_after_first_colon: true
+                return_type: '<T extends PFObject> T'
                 throws: NSErrorException
             '-fetchIfNeeded':
                 exclude: true
@@ -329,6 +347,7 @@ classes:
                 exclude: true
             '-fetchFromLocalDatastore:':
                 trim_after_first_colon: true
+                return_type: '<T extends PFObject> T'
                 throws: NSErrorException
             '-fetchFromLocalDatastoreInBackground':
                 return_type: '<T extends PFObject> BFTask<T>'
@@ -970,43 +989,6 @@ classes:
                 return_type: BFTask<PFSession>
             '+getCurrentSessionInBackgroundWithBlock:':
                 name: getCurrentSessionInBackground
-    PFTwitterUtils: # DONE
-        methods:
-            '+twitter':
-                property: true
-            '+initializeWithConsumerKey:consumerSecret:':
-                name: initialize
-            '+logInInBackground':
-                return_type: BFTask<PFUser>
-            '+isLinkedWithUser:':
-                name: isLinked
-            '+logInWithTwitterIdInBackground:screenName:authToken:authTokenSecret:':
-                name: logIn
-                return_type: BFTask<PFUser>
-            '+logInWith.*':
-                name: logIn
-            '+linkUserInBackground:':
-                name: linkInBackground
-                return_type: BFTask<Void>
-            '+linkUserInBackground:twitterId:screenName:authToken:authTokenSecret:':
-                name: linkInBackground
-                return_type: BFTask<Void>
-            '+linkUserInBackground.*':
-                name: linkInBackground
-            '+linkUser:':
-                exclude: true # deprecated
-            '+linkUser.+':
-                name: link
-            '+unlinkUser:':
-                exclude: true
-            '+unlinkUser:error:':
-                name: unlink
-                throws: NSErrorException
-            '+unlinkUserInBackground:':
-                name: unlinkInBackground
-                return_type: BFTask<Void>
-            '+unlinkUserInBackground.*':
-                name: unlinkInBackground
     PFUser: # DONE
         methods:
             '-signUp':
@@ -1023,6 +1005,17 @@ classes:
                         type: '@Block PFSignUpCallback'
             '-signUpInBackgroundWith.*':
                 name: signUpInBackground
+            '-linkWithAuthTypeInBackground:authData:':
+                name: linkWithInBackground
+                return_type: BFTask<Void>
+                parameters:
+                    authData:
+                        type: 'NSDictionary<NSString, NSString>'
+            '-unlinkWithAuthTypeInBackground:':
+                name: unlinkFromInBackground
+                return_type: BFTask<Void>
+            '-isLinkedWithAuthType:':
+                name: isLinked
             '+currentUser':
                 property: true
             '+user':
@@ -1070,9 +1063,25 @@ classes:
                         type: '@Block PFRequestPasswordResetCallback'
             '+requestPasswordResetForEmailInBackground.*':
                 name: requestPasswordResetInBackground
+            '+registerAuthenticationDelegate:forAuthType:':
+                name: registerAuthenticationCallback0
+                visibility: private # reorder parameters
+            '+logInWithAuthTypeInBackground:authData:':
+                name: logInWithInBackground
+                return_type: BFTask<PFUser>
+                parameters:
+                    authData:
+                        type: 'NSDictionary<NSString, NSString>'
   
 protocols:
     # PFSubclassing  # ignore
+    PFUserAuthenticationDelegate: # DONE
+        methods:
+            '-restoreAuthenticationWithAuthData:':
+                name: restoreAuthentication
+                parameters:
+                    authData:
+                        type: 'NSDictionary<NSString, NSString>'
 
 functions:
     # Make sure we don't miss any functions if new ones are introduced in a later version
@@ -1085,9 +1094,21 @@ values:
         class: PFError
         name: getClassDomain
 
+    # PFObject
     PFObject(DefaultPin):
         class: PFObject
         name: 'get#{g[0]}'
+
+    # Parse
+    PFNetwork(.*Notification):
+        class: Parse
+        name: '#{g[0]}'
+        type: NSString
+    PFNetwork(.*UserInfoKey):
+        class: Parse
+        name: '#{g[0]}'
+        type: NSString
+        visibility: protected
 
     kPFDeviceType:
         exclude: true

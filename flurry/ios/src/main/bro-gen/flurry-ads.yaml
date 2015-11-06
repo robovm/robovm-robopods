@@ -10,12 +10,14 @@ header_root: '/'
 headers:
     - FlurryAds.lib/Headers/FlurryAds.h
 typedefs:
+    kFlurryAdNativeDisplayState: FlurryAdNativeDisplayState
     
 enums:
     FlurryAdSize: {first: BANNER_TOP}
     FlurryAdType: {first: WEB_BANNER}
     FlurryAdError: {first: FLURRY_AD_ERROR_DID_FAIL_TO_RENDER}
     FlurryAdNativeAssetType: {first: ASSET_TYPE_STRING}
+    FlurryAdNativeDisplayState: {first: FLURRY_NATIVE_AD_COLLAPSED}
     FlurryAdGender: {first: FL_MALE}
         
 classes:
@@ -68,6 +70,10 @@ classes:
                 parameters:
                     type:
                         type: FlurryAdNativeAssetType
+            '-setPencilViewToTrack:withExpandButton:andCTAButton:':
+                trim_after_first_colon: true
+            '-setExpandedViewToTrack:withExpandButton:andCTAButton:':
+                trim_after_first_colon: true
     FlurryAdNativeAsset: # DONE
         properties:
             'type':
@@ -153,6 +159,10 @@ protocols:
                 name: didReceiveClick
             '-adNative:adError:errorDescription:':
                 name: didFail
+            '-adNativeDidLogImpression:':
+                name: didLogImpression
+            '-adNativeExpandToggled:':
+                name: expandToggled
 
 functions:
     # Make sure we don't miss any functions if new ones are introduced in a later version

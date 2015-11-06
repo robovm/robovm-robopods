@@ -48,8 +48,11 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFRole() {}
+    protected PFRole(Handle h, long handle) { super(h, handle); }
     protected PFRole(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithName:")
     public PFRole(String name) { super((SkipInit) null); initObject(init(name)); }
+    @Method(selector = "initWithName:acl:")
     public PFRole(String name, PFACL acl) { super((SkipInit) null); initObject(init(name, acl)); }
     /*</constructors>*/
     /*<properties>*/

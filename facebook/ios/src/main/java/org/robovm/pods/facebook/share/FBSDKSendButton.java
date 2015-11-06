@@ -45,6 +45,7 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKSendButton() {}
+    protected FBSDKSendButton(Handle h, long handle) { super(h, handle); }
     protected FBSDKSendButton(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

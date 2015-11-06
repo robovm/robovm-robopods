@@ -46,6 +46,7 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKProfilePictureView() {}
+    protected FBSDKProfilePictureView(Handle h, long handle) { super(h, handle); }
     protected FBSDKProfilePictureView(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

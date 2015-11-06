@@ -47,6 +47,7 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKLoginTooltipView() {}
+    protected FBSDKLoginTooltipView(Handle h, long handle) { super(h, handle); }
     protected FBSDKLoginTooltipView(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

@@ -6,7 +6,7 @@ Focus on creating a great user experience and stop worrying about server mainten
 
 | Platform    | Version |
 |-------------|---------|
-| [iOS](ios/) | 1.7.4   |
+| [iOS](ios/) | 1.9.1   |
 |             |         |
 
 ## Official website

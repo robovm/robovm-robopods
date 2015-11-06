@@ -18,10 +18,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "../../FBSDKCoreKit.framework/Headers/FBSDKButton.h"
+#import <FBSDKCoreKit/FBSDKButton.h>
 
-#import "FBSDKLikeObjectType.h"
-#import "FBSDKLiking.h"
+#import <FBSDKShareKit/FBSDKLikeObjectType.h>
+#import <FBSDKShareKit/FBSDKLiking.h>
 
 /*!
  @abstract A button to like an object.

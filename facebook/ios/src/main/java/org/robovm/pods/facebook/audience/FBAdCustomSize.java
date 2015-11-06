@@ -45,8 +45,9 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBAdCustomSize() {}
+    protected FBAdCustomSize(Handle h, long handle) { super(h, handle); }
     protected FBAdCustomSize(SkipInit skipInit) { super(skipInit); }
-    public FBAdCustomSize(@ByVal CGSize size) { super(create(size)); retain(getHandle()); }
+    public FBAdCustomSize(@ByVal CGSize size) { super((Handle) null, create(size)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     

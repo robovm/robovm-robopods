@@ -47,7 +47,9 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKTooltipView() {}
+    protected FBSDKTooltipView(Handle h, long handle) { super(h, handle); }
     protected FBSDKTooltipView(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithTagline:message:colorStyle:")
     public FBSDKTooltipView(String tagline, String message, FBSDKTooltipColorStyle colorStyle) { super((SkipInit) null); initObject(init(tagline, message, colorStyle)); }
     /*</constructors>*/
     /*<properties>*/

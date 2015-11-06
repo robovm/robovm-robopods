@@ -62,7 +62,9 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKAccessToken() {}
+    protected FBSDKAccessToken(Handle h, long handle) { super(h, handle); }
     protected FBSDKAccessToken(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithTokenString:permissions:declinedPermissions:appID:userID:expirationDate:refreshDate:")
     public FBSDKAccessToken(String tokenString, @org.robovm.rt.bro.annotation.Marshaler(NSSet.AsStringSetMarshaler.class) Set<String> permissions, @org.robovm.rt.bro.annotation.Marshaler(NSSet.AsStringSetMarshaler.class) Set<String> declinedPermissions, String appID, String userID, NSDate expirationDate, NSDate refreshDate) { super((SkipInit) null); initObject(init(tokenString, permissions, declinedPermissions, appID, userID, expirationDate, refreshDate)); }
     /*</constructors>*/
     /*<properties>*/

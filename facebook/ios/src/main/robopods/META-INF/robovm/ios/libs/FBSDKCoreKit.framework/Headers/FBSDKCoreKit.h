@@ -18,25 +18,21 @@
 
 #import <UIKit/UIKit.h>
 
-#import "FBSDKAccessToken.h"
-#import "FBSDKAppEvents.h"
-#import "FBSDKAppLinkResolver.h"
-#import "FBSDKAppLinkUtility.h"
-#import "FBSDKApplicationDelegate.h"
-#import "FBSDKButton.h"
-#import "FBSDKConstants.h"
-#import "FBSDKCopying.h"
-#import "FBSDKGraphErrorRecoveryProcessor.h"
-#import "FBSDKGraphRequest.h"
-#import "FBSDKGraphRequestConnection.h"
-#import "FBSDKGraphRequestDataAttachment.h"
-#import "FBSDKMacros.h"
-#import "FBSDKMutableCopying.h"
-#import "FBSDKProfile.h"
-#import "FBSDKProfilePictureView.h"
-#import "FBSDKSettings.h"
-#import "FBSDKTestUsersManager.h"
-#import "FBSDKUtility.h"
+#import <FBSDKCoreKit/FBSDKAccessToken.h>
+#import <FBSDKCoreKit/FBSDKAppEvents.h>
+#import <FBSDKCoreKit/FBSDKAppLinkUtility.h>
+#import <FBSDKCoreKit/FBSDKApplicationDelegate.h>
+#import <FBSDKCoreKit/FBSDKConstants.h>
+#import <FBSDKCoreKit/FBSDKCopying.h>
+#import <FBSDKCoreKit/FBSDKGraphRequest.h>
+#import <FBSDKCoreKit/FBSDKGraphRequestConnection.h>
+#import <FBSDKCoreKit/FBSDKMacros.h>
+#import <FBSDKCoreKit/FBSDKMutableCopying.h>
+#import <FBSDKCoreKit/FBSDKProfile.h>
+#import <FBSDKCoreKit/FBSDKProfilePictureView.h>
+#import <FBSDKCoreKit/FBSDKSettings.h>
+#import <FBSDKCoreKit/FBSDKTestUsersManager.h>
+#import <FBSDKCoreKit/FBSDKUtility.h>
 
-#define FBSDK_VERSION_STRING @"4.3.0"
-#define FBSDK_TARGET_PLATFORM_VERSION @"v2.3"
+#define FBSDK_VERSION_STRING @"4.7.1"
+#define FBSDK_TARGET_PLATFORM_VERSION @"v2.5"

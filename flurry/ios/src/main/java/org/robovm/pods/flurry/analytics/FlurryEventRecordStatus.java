@@ -43,7 +43,8 @@ public enum /*<name>*/FlurryEventRecordStatus/*</name>*/ implements ValuedEnum {
     UniqueCountExceeded(2L),
     ParamsCountExceeded(3L),
     LogCountExceeded(4L),
-    LoggingDelayed(5L);
+    LoggingDelayed(5L),
+    AnalyticsDisabled(6L);
     /*</values>*/
 
     /*<bind>*/

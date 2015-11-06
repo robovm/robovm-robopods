@@ -19,7 +19,6 @@ package org.robovm.pods.parse.ui;
 import java.io.*;
 import java.nio.*;
 import java.util.*;
-
 import org.robovm.objc.*;
 import org.robovm.objc.annotation.*;
 import org.robovm.objc.block.*;
@@ -48,6 +47,7 @@ import org.robovm.pods.parse.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFCollectionViewCell() {}
+    protected PFCollectionViewCell(Handle h, long handle) { super(h, handle); }
     protected PFCollectionViewCell(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     public PFCollectionViewCell(CGRect frame) {

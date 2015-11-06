@@ -5,7 +5,7 @@ include:
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
     - facebook-corekit.yaml
 clang_args: ['-x', 'objective-c']
-header_root: '/../robopods/META-INF/robovm/ios/libs/'
+header_root: /../robopods/META-INF/robovm/ios/libs
 headers:
     - FBSDKShareKit.framework/Headers/FBSDKShareKit.h
 typedefs:
@@ -58,6 +58,8 @@ classes:
                 name: validate
                 throws: NSErrorException
             '+showWithContent:delegate:':
+                exclude: true # deprecated
+            '+showFromViewController:withContent:delegate:':
                 name: show0
                 visibility: private
     FBSDKGameRequestContent: # DONE

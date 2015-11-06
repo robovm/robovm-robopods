@@ -48,6 +48,7 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFRelation() {}
+    protected PFRelation(Handle h, long handle) { super(h, handle); }
     protected PFRelation(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

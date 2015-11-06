@@ -7,7 +7,7 @@ include:
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/accounts.yaml
     - facebook-corekit.yaml
 clang_args: ['-x', 'objective-c']
-header_root: '/../robopods/META-INF/robovm/ios/libs/'
+header_root: /../robopods/META-INF/robovm/ios/libs
 headers:
     - FBSDKLoginKit.framework/Headers/FBSDKLoginKit.h
 typedefs:
@@ -37,12 +37,16 @@ classes:
     FBSDKLoginManager: # DONE
         methods:
             '-logInWithReadPermissions:handler:':
+                exclude: true # deprecated
+            '-logInWithReadPermissions:fromViewController:handler:':
                 trim_after_first_colon: true
                 parameters:
                     permissions:
                         type: List<String>
                         marshaler: NSArray.AsStringListMarshaler
             '-logInWithPublishPermissions:handler:':
+                exclude: true # deprecated
+            '-logInWithPublishPermissions:fromViewController:handler:':
                 trim_after_first_colon: true
                 parameters:
                     permissions:
@@ -88,6 +92,8 @@ protocols:
                 name: didComplete
             '-loginButtonDidLogOut:':
                 name: didLogOut
+            '-loginButtonWillLogin:':
+                name: willLogin
     FBSDKLoginTooltipViewDelegate: # DONE
         methods:
             '-loginTooltipView:shouldAppear:':

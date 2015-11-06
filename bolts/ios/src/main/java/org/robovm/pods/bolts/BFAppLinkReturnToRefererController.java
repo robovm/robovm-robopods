@@ -38,14 +38,16 @@ import org.robovm.apple.dispatch.*;
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/BFAppLinkReturnToRefererController/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+    /*<implements>*/implements BFAppLinkReturnToRefererViewDelegate/*</implements>*/ {
 
     /*<ptr>*/public static class BFAppLinkReturnToRefererControllerPtr extends Ptr<BFAppLinkReturnToRefererController, BFAppLinkReturnToRefererControllerPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(BFAppLinkReturnToRefererController.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public BFAppLinkReturnToRefererController() {}
+    protected BFAppLinkReturnToRefererController(Handle h, long handle) { super(h, handle); }
     protected BFAppLinkReturnToRefererController(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initForDisplayAboveNavController:")
     public BFAppLinkReturnToRefererController(UINavigationController navController) { super((SkipInit) null); initObject(init(navController)); }
     /*</constructors>*/
     /*<properties>*/
@@ -54,9 +56,9 @@ import org.robovm.apple.dispatch.*;
     @Property(selector = "setDelegate:", strongRef = true)
     public native void setDelegate(BFAppLinkReturnToRefererControllerDelegate v);
     @Property(selector = "view")
-    public native IntPtr getView();
+    public native BFAppLinkReturnToRefererView getView();
     @Property(selector = "setView:")
-    public native void setView(IntPtr v);
+    public native void setView(BFAppLinkReturnToRefererView v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -70,5 +72,9 @@ import org.robovm.apple.dispatch.*;
     public native void showView(NSURL url);
     @Method(selector = "closeViewAnimated:")
     public native void closeView(boolean animated);
+    @Method(selector = "returnToRefererViewDidTapInsideCloseButton:")
+    public native void didTapInsideCloseButton(BFAppLinkReturnToRefererView view);
+    @Method(selector = "returnToRefererViewDidTapInsideLink:link:")
+    public native void didTapInsideLink(BFAppLinkReturnToRefererView view, BFAppLink link);
     /*</methods>*/
 }

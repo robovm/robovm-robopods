@@ -48,6 +48,7 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFPurchase() {}
+    protected PFPurchase(Handle h, long handle) { super(h, handle); }
     protected PFPurchase(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

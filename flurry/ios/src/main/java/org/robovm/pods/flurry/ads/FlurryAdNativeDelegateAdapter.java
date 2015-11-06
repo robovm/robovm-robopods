@@ -65,5 +65,9 @@ import org.robovm.apple.corelocation.*;
     public void didReceiveClick(FlurryAdNative nativeAd) {}
     @NotImplemented("adNative:adError:errorDescription:")
     public void didFail(FlurryAdNative nativeAd, FlurryAdError adError, NSError errorDescription) {}
+    @NotImplemented("adNativeDidLogImpression:")
+    public void didLogImpression(FlurryAdNative nativeAd) {}
+    @NotImplemented("adNativeExpandToggled:")
+    public void expandToggled(FlurryAdNative nativeAd) {}
     /*</methods>*/
 }

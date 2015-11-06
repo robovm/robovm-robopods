@@ -18,7 +18,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "../../FBSDKCoreKit.framework/Headers/FBSDKMacros.h"
+#import <FBSDKCoreKit/FBSDKMacros.h>
 
 /*!
  @typedef NS_ENUM(NSUInteger, FBSDKShareDialogMode)

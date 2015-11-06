@@ -45,10 +45,11 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKShareOpenGraphAction() {}
+    protected FBSDKShareOpenGraphAction(Handle h, long handle) { super(h, handle); }
     protected FBSDKShareOpenGraphAction(SkipInit skipInit) { super(skipInit); }
-    public FBSDKShareOpenGraphAction(String actionType, FBSDKShareOpenGraphObject object, String key) { super(create(actionType, object, key)); retain(getHandle()); }
-    public FBSDKShareOpenGraphAction(String actionType, String objectID, String key) { super(create(actionType, objectID, key)); retain(getHandle()); }
-    public FBSDKShareOpenGraphAction(String actionType, NSURL objectURL, String key) { super(create(actionType, objectURL, key)); retain(getHandle()); }
+    public FBSDKShareOpenGraphAction(String actionType, FBSDKShareOpenGraphObject object, String key) { super((Handle) null, create(actionType, object, key)); retain(getHandle()); }
+    public FBSDKShareOpenGraphAction(String actionType, String objectID, String key) { super((Handle) null, create(actionType, objectID, key)); retain(getHandle()); }
+    public FBSDKShareOpenGraphAction(String actionType, NSURL objectURL, String key) { super((Handle) null, create(actionType, objectURL, key)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "actionType")

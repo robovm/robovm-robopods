@@ -45,7 +45,9 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBAdImage() {}
+    protected FBAdImage(Handle h, long handle) { super(h, handle); }
     protected FBAdImage(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithURL:width:height:")
     public FBAdImage(NSURL url, @MachineSizedSInt long width, @MachineSizedSInt long height) { super((SkipInit) null); initObject(init(url, width, height)); }
     /*</constructors>*/
     /*<properties>*/

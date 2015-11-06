@@ -43,6 +43,7 @@ import org.robovm.apple.foundation.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public ParseCrashReporting() {}
+    protected ParseCrashReporting(Handle h, long handle) { super(h, handle); }
     protected ParseCrashReporting(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

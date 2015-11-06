@@ -48,13 +48,12 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFACL() {}
+    protected PFACL(Handle h, long handle) { super(h, handle); }
     protected PFACL(SkipInit skipInit) { super(skipInit); }
+    public PFACL(PFUser user) { super((Handle) null, create(user)); retain(getHandle()); }
+    @Method(selector = "initWithCoder:")
     public PFACL(NSCoder aDecoder) { super((SkipInit) null); initObject(init(aDecoder)); }
     /*</constructors>*/
-    public PFACL(PFUser user) {
-        super(create(user));
-        retain(getHandle());
-    }
     /*<properties>*/
     
     /*</properties>*/

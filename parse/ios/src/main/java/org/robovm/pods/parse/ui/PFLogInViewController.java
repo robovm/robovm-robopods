@@ -74,6 +74,7 @@ import org.robovm.pods.parse.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFLogInViewController() {}
+    protected PFLogInViewController(Handle h, long handle) { super(h, handle); }
     protected PFLogInViewController(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -90,7 +91,7 @@ import org.robovm.pods.parse.*;
     @Property(selector = "facebookPermissions")
     public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getFacebookPermissions();
     @Property(selector = "setFacebookPermissions:")
-    public native void setFacebookPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class)List<String> v);
+    public native void setFacebookPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> v);
     @Property(selector = "signUpController")
     public native PFSignUpViewController getSignUpController();
     @Property(selector = "setSignUpController:")

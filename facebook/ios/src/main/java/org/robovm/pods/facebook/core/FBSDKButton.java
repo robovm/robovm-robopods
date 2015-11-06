@@ -46,6 +46,7 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKButton() {}
+    protected FBSDKButton(Handle h, long handle) { super(h, handle); }
     protected FBSDKButton(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

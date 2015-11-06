@@ -46,6 +46,7 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADSearchBannerView() {}
+    protected GADSearchBannerView(Handle h, long handle) { super(h, handle); }
     protected GADSearchBannerView(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

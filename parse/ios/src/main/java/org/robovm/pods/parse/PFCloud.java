@@ -48,6 +48,7 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFCloud() {}
+    protected PFCloud(Handle h, long handle) { super(h, handle); }
     protected PFCloud(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

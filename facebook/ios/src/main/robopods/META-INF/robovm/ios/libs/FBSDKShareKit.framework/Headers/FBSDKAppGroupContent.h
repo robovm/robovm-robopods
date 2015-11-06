@@ -18,8 +18,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "../../FBSDKCoreKit.framework/Headers/FBSDKCopying.h"
-#import "../../FBSDKCoreKit.framework/Headers/FBSDKMacros.h"
+#import <FBSDKCoreKit/FBSDKCopying.h>
+#import <FBSDKCoreKit/FBSDKMacros.h>
 
 /*!
  @typedef NS_ENUM(NSUInteger, FBSDKAppGroupPrivacy)
@@ -47,11 +47,6 @@ FBSDK_EXTERN NSString *NSStringFromFBSDKAppGroupPrivacy(FBSDKAppGroupPrivacy pri
  @abstract The description of the group.
  */
 @property (nonatomic, copy) NSString *groupDescription;
-
-/*!
- @abstract The ID for the group.
- */
-@property (nonatomic, copy) NSString *groupID;
 
 /*!
  @abstract The name of the group.

@@ -36,7 +36,7 @@ Also add an entry for each framework and library in your `robovm.xml`.
 </libs>
 ```
 
-Ad networks that are available as RoboPods (like AdMob or Facebook Audience) should be added as a Maven/Gradle dependency instead.
+Ad networks that are available as RoboPods (like Chartboost or Facebook Audience Network) should be added as a Maven/Gradle dependency instead.
 
 ### Test integration
 

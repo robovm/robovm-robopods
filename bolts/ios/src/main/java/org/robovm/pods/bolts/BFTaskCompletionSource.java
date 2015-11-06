@@ -45,6 +45,7 @@ import org.robovm.apple.dispatch.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public BFTaskCompletionSource() {}
+    protected BFTaskCompletionSource(Handle h, long handle) { super(h, handle); }
     protected BFTaskCompletionSource(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -69,7 +70,5 @@ import org.robovm.apple.dispatch.*;
     public native boolean trySetException(NSException exception);
     @Method(selector = "trySetCancelled")
     public native boolean trySetCancelled();
-    @Method(selector = "taskCompletionSource")
-    public static native BFTaskCompletionSource create();
     /*</methods>*/
 }

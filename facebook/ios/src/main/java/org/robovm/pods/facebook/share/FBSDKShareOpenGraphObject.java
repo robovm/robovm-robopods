@@ -45,8 +45,9 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKShareOpenGraphObject() {}
+    protected FBSDKShareOpenGraphObject(Handle h, long handle) { super(h, handle); }
     protected FBSDKShareOpenGraphObject(SkipInit skipInit) { super(skipInit); }
-    public FBSDKShareOpenGraphObject(NSDictionary<?, ?> properties) { super(create(properties)); retain(getHandle()); }
+    public FBSDKShareOpenGraphObject(NSDictionary<?, ?> properties) { super((Handle) null, create(properties)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     

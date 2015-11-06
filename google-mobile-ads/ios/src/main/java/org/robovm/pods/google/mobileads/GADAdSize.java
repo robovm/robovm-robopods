@@ -75,6 +75,8 @@ import org.robovm.apple.storekit.*;
     public static native @ByVal GADAdSize SmartBannerPortrait();
     @GlobalValue(symbol="kGADAdSizeSmartBannerLandscape", optional=true)
     public static native @ByVal GADAdSize SmartBannerLandscape();
+    @GlobalValue(symbol="kGADAdSizeFluid", optional=true)
+    public static native @ByVal GADAdSize Fluid();
     @GlobalValue(symbol="kGADAdSizeInvalid", optional=true)
     public static native @ByVal GADAdSize Invalid();
     

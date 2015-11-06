@@ -44,6 +44,7 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKMessengerShareOptions() {}
+    protected FBSDKMessengerShareOptions(Handle h, long handle) { super(h, handle); }
     protected FBSDKMessengerShareOptions(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -55,6 +56,10 @@ import org.robovm.apple.uikit.*;
     public native NSURL getSourceURL();
     @Property(selector = "setSourceURL:")
     public native void setSourceURL(NSURL v);
+    @Property(selector = "renderAsSticker")
+    public native boolean isRenderAsSticker();
+    @Property(selector = "setRenderAsSticker:")
+    public native void setRenderAsSticker(boolean v);
     @Property(selector = "contextOverride")
     public native FBSDKMessengerContext getContextOverride();
     @Property(selector = "setContextOverride:")

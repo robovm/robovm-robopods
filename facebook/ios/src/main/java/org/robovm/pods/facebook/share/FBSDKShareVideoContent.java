@@ -45,6 +45,7 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKShareVideoContent() {}
+    protected FBSDKShareVideoContent(Handle h, long handle) { super(h, handle); }
     protected FBSDKShareVideoContent(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

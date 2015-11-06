@@ -18,9 +18,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "FBSDKShareDialogMode.h"
-#import "FBSDKSharing.h"
-#import "FBSDKSharingContent.h"
+#import <FBSDKShareKit/FBSDKShareDialogMode.h>
+#import <FBSDKShareKit/FBSDKSharing.h>
+#import <FBSDKShareKit/FBSDKSharingContent.h>
 
 /*!
  @abstract A dialog for sharing content on Facebook.
@@ -38,8 +38,8 @@
                               delegate:(id<FBSDKSharingDelegate>)delegate;
 
 /*!
- @abstract A UIViewController to present the dialog from, if appropriate.
- @discussion This value is required for FBSDKShareDialogModeShareSheet.
+ @abstract A UIViewController to present the dialog from.
+ @discussion If not specified, the top most view controller will be automatically determined as best as possible.
  */
 @property (nonatomic, weak) UIViewController *fromViewController;
 

@@ -8,9 +8,9 @@ include:
     - ../../../../../bolts/ios/src/main/bro-gen/bolts.yaml
     - parse.yaml
 clang_args: ['-x', 'objective-c']
-header_root: '/../robopods/META-INF/robovm/ios/libs/'
+header_root: /../robopods/META-INF/robovm/ios/libs
 headers:
-    - ParseFacebookUtilsV4.framework/Headers/PFFacebookUtils.h
+    - ParseFacebookUtilsV4.framework/Headers/ParseFacebookUtilsV4.h
 typedefs:
     
 enums:

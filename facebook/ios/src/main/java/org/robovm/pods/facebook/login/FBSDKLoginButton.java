@@ -47,6 +47,7 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKLoginButton() {}
+    protected FBSDKLoginButton(Handle h, long handle) { super(h, handle); }
     protected FBSDKLoginButton(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -65,11 +66,11 @@ import org.robovm.pods.facebook.core.*;
     @Property(selector = "publishPermissions")
     public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getPublishPermissions();
     @Property(selector = "setPublishPermissions:")
-    public native void setPublishPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class)List<String> v);
+    public native void setPublishPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> v);
     @Property(selector = "readPermissions")
     public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getReadPermissions();
     @Property(selector = "setReadPermissions:")
-    public native void setReadPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class)List<String> v);
+    public native void setReadPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> v);
     @Property(selector = "tooltipBehavior")
     public native FBSDKLoginButtonTooltipBehavior getTooltipBehavior();
     @Property(selector = "setTooltipBehavior:")

@@ -48,8 +48,10 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFQuery() {}
+    protected PFQuery(Handle h, long handle) { super(h, handle); }
     protected PFQuery(SkipInit skipInit) { super(skipInit); }
-    public PFQuery(String newClassName) { super((SkipInit) null); initObject(init(newClassName)); }
+    @Method(selector = "initWithClassName:")
+    public PFQuery(String className) { super((SkipInit) null); initObject(init(className)); }
     /*</constructors>*/
     
     private static final long sel_query = Selector.register("query").getHandle();
@@ -212,7 +214,7 @@ import org.robovm.pods.bolts.*;
     }
     /*<methods>*/
     @Method(selector = "initWithClassName:")
-    protected native @Pointer long init(String newClassName);
+    protected native @Pointer long init(String className);
     @Method(selector = "includeKey:")
     public native PFQuery<T> include(String key);
     @Method(selector = "selectKeys:")

@@ -45,7 +45,10 @@ import org.robovm.apple.dispatch.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public BFURL() {}
+    protected BFURL(Handle h, long handle) { super(h, handle); }
     protected BFURL(SkipInit skipInit) { super(skipInit); }
+    public BFURL(NSURL url) { super((Handle) null, create(url)); retain(getHandle()); }
+    public BFURL(NSURL url, String sourceApplication) { super((Handle) null, create(url, sourceApplication)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "targetURL")
@@ -66,8 +69,8 @@ import org.robovm.apple.dispatch.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "URLWithURL:")
-    public static native BFURL create(NSURL url);
+    protected static native @Pointer long create(NSURL url);
     @Method(selector = "URLWithInboundURL:sourceApplication:")
-    public static native BFURL create(NSURL url, String sourceApplication);
+    protected static native @Pointer long create(NSURL url, String sourceApplication);
     /*</methods>*/
 }

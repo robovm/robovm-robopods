@@ -46,6 +46,7 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public DFPBannerView() {}
+    protected DFPBannerView(Handle h, long handle) { super(h, handle); }
     protected DFPBannerView(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
 
@@ -81,6 +82,10 @@ import org.robovm.apple.storekit.*;
     private native NSArray<NSValue> getValidAdSizes0();
     @Property(selector = "setValidAdSizes:")
     private native void setValidAdSizes0(NSArray<NSValue> v);
+    @Property(selector = "correlator")
+    public native GADCorrelator getCorrelator();
+    @Property(selector = "setCorrelator:")
+    public native void setCorrelator(GADCorrelator v);
     @Property(selector = "enableManualImpressions")
     public native boolean areManualImpressionsEnabled();
     @Property(selector = "setEnableManualImpressions:")

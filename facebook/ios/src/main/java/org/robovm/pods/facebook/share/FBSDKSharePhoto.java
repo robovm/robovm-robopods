@@ -45,9 +45,10 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKSharePhoto() {}
+    protected FBSDKSharePhoto(Handle h, long handle) { super(h, handle); }
     protected FBSDKSharePhoto(SkipInit skipInit) { super(skipInit); }
-    public FBSDKSharePhoto(UIImage image, boolean userGenerated) { super(create(image, userGenerated)); retain(getHandle()); }
-    public FBSDKSharePhoto(NSURL imageURL, boolean userGenerated) { super(create(imageURL, userGenerated)); retain(getHandle()); }
+    public FBSDKSharePhoto(UIImage image, boolean userGenerated) { super((Handle) null, create(image, userGenerated)); retain(getHandle()); }
+    public FBSDKSharePhoto(NSURL imageURL, boolean userGenerated) { super((Handle) null, create(imageURL, userGenerated)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "image")

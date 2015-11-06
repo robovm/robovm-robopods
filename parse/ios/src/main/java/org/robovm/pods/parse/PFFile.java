@@ -48,28 +48,28 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFFile() {}
+    protected PFFile(Handle h, long handle) { super(h, handle); }
     protected PFFile(SkipInit skipInit) { super(skipInit); }
+    public PFFile(NSData data) { super((Handle) null, create(data)); retain(getHandle()); }
+    public PFFile(String name, NSData data) { super((Handle) null, create(name, data)); retain(getHandle()); }
+    public PFFile(String name, String path) throws NSErrorException {
+       this(name, path, new NSError.NSErrorPtr());
+    }
+    private PFFile(String name, String path, NSError.NSErrorPtr ptr) throws NSErrorException {
+       super((Handle) null, create(name, path, ptr));
+       retain(getHandle());
+       if (ptr.get() != null) { throw new NSErrorException(ptr.get()); }
+    }
+    public PFFile(String name, NSData data, String contentType) throws NSErrorException {
+       this(name, data, contentType, new NSError.NSErrorPtr());
+    }
+    private PFFile(String name, NSData data, String contentType, NSError.NSErrorPtr ptr) throws NSErrorException {
+       super((Handle) null, create(name, data, contentType, ptr));
+       retain(getHandle());
+       if (ptr.get() != null) { throw new NSErrorException(ptr.get()); }
+    }
+    public PFFile(NSData data, String contentType) { super((Handle) null, create(data, contentType)); retain(getHandle()); }
     /*</constructors>*/
-    public PFFile(NSData data) {
-        super(create(data));
-        retain(getHandle());
-    }
-    public PFFile(String name, NSData data) {
-        super(create(name, data));
-        retain(getHandle());
-    }
-    public PFFile(String name, String path) {
-        super(create(name, path));
-        retain(getHandle());
-    }
-    public PFFile(String name, NSData data, String contentType) {
-        super(create(name, data, contentType));
-        retain(getHandle());
-    }
-    public PFFile(NSData data, String contentType) {
-        super(create(data, contentType));
-        retain(getHandle());
-    }
     /*<properties>*/
     @Property(selector = "name")
     public native String getName();
@@ -122,8 +122,12 @@ import org.robovm.pods.bolts.*;
     public native BFTask<NSData> getDataInBackground(@Block PFProgressCallback progressBlock);
     @Method(selector = "getDataStreamInBackground")
     public native BFTask<NSInputStream> getDataStreamInBackground();
+    @Method(selector = "getDataDownloadStreamInBackground")
+    public native BFTask<NSInputStream> getDataDownloadStreamInBackground();
     @Method(selector = "getDataStreamInBackgroundWithProgressBlock:")
     public native BFTask<NSInputStream> getDataStreamInBackground(@Block PFProgressCallback progressBlock);
+    @Method(selector = "getDataDownloadStreamInBackgroundWithProgressBlock:")
+    public native BFTask<NSInputStream> getDataDownloadStreamInBackground(@Block PFProgressCallback progressBlock);
     @Method(selector = "getDataInBackgroundWithBlock:")
     public native void getDataInBackground(@Block PFGetDataCallback block);
     @Method(selector = "getDataStreamInBackgroundWithBlock:")
@@ -134,16 +138,24 @@ import org.robovm.pods.bolts.*;
     public native void getDataStreamInBackground(@Block PFGetDataStreamCallback resultBlock, @Block PFProgressCallback progressBlock);
     @Method(selector = "getDataInBackgroundWithTarget:selector:")
     public native void getDataInBackground(NSObject target, Selector selector);
+    @Method(selector = "getFilePathInBackground")
+    public native BFTask<NSString> getFilePathInBackground();
+    @Method(selector = "getFilePathInBackgroundWithProgressBlock:")
+    public native BFTask<NSString> getFilePathInBackground(@Block PFProgressCallback progressBlock);
+    @Method(selector = "getFilePathInBackgroundWithBlock:")
+    public native void getFilePathInBackground(@Block PFGetFilePathCallback block);
+    @Method(selector = "getFilePathInBackgroundWithBlock:progressBlock:")
+    public native void getFilePathInBackground(@Block PFGetFilePathCallback block, @Block PFProgressCallback progressBlock);
     @Method(selector = "cancel")
     public native void cancel();
     @Method(selector = "fileWithData:")
     protected static native @Pointer long create(NSData data);
     @Method(selector = "fileWithName:data:")
     protected static native @Pointer long create(String name, NSData data);
-    @Method(selector = "fileWithName:contentsAtPath:")
-    protected static native @Pointer long create(String name, String path);
-    @Method(selector = "fileWithName:data:contentType:")
-    protected static native @Pointer long create(String name, NSData data, String contentType);
+    @Method(selector = "fileWithName:contentsAtPath:error:")
+    protected static native @Pointer long create(String name, String path, NSError.NSErrorPtr error);
+    @Method(selector = "fileWithName:data:contentType:error:")
+    protected static native @Pointer long create(String name, NSData data, String contentType, NSError.NSErrorPtr error);
     @Method(selector = "fileWithData:contentType:")
     protected static native @Pointer long create(NSData data, String contentType);
     /*</methods>*/

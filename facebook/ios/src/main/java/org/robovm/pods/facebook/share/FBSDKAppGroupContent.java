@@ -45,6 +45,7 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKAppGroupContent() {}
+    protected FBSDKAppGroupContent(Handle h, long handle) { super(h, handle); }
     protected FBSDKAppGroupContent(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -52,10 +53,6 @@ import org.robovm.pods.facebook.core.*;
     public native String getGroupDescription();
     @Property(selector = "setGroupDescription:")
     public native void setGroupDescription(String v);
-    @Property(selector = "groupID")
-    public native String getGroupID();
-    @Property(selector = "setGroupID:")
-    public native void setGroupID(String v);
     @Property(selector = "name")
     public native String getName();
     @Property(selector = "setName:")

@@ -5,7 +5,9 @@
 //  Copyright 2012 Google Inc. All rights reserved.
 //
 
-#import "GADBannerView.h"
+#import <GoogleMobileAds/GADBannerView.h>
+#import <GoogleMobileAds/GADCorrelator.h>
+#import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 
 @protocol DFPCustomRenderedBannerViewDelegate;
 @protocol GADAdSizeDelegate;
@@ -47,6 +49,9 @@
 ///   \endcode
 @property(nonatomic, copy) NSArray *validAdSizes;
 
+/// Correlator object for correlating this object to other ad objects.
+@property(nonatomic, strong) GADCorrelator *correlator;
+
 /// Indicates that the publisher will record impressions manually when the ad becomes visible to the
 /// user.
 @property(nonatomic, assign) BOOL enableManualImpressions;
@@ -73,6 +78,6 @@
 ///   [bannerView setValidAdSizesWithSizes:&size1, &size2, NULL];
 ///   \endcode
 - (void)setValidAdSizesWithSizes:(GADAdSize *)firstSize, ... NS_REQUIRES_NIL_TERMINATION
-                                 DEPRECATED_MSG_ATTRIBUTE("Use validAdSizes property.");
+                                 GAD_DEPRECATED_MSG_ATTRIBUTE("Use validAdSizes property.");
 
 @end

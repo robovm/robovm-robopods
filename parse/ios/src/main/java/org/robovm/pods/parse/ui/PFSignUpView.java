@@ -47,7 +47,9 @@ import org.robovm.pods.parse.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFSignUpView() {}
+    protected PFSignUpView(Handle h, long handle) { super(h, handle); }
     protected PFSignUpView(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithFields:")
     public PFSignUpView(PFSignUpFields fields) { super((SkipInit) null); initObject(init(fields)); }
     /*</constructors>*/
     public PFSignUpView(CGRect frame) {

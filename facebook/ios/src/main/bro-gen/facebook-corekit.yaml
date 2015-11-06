@@ -6,9 +6,10 @@ include:
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
     - ../../../../../bolts/ios/src/main/bro-gen/bolts.yaml
 clang_args: ['-x', 'objective-c']
-header_root: '/../robopods/META-INF/robovm/ios/libs/'
+header_root: /../robopods/META-INF/robovm/ios/libs
 headers:
     - FBSDKCoreKit.framework/Headers/FBSDKCoreKit.h
+    - FBSDKCoreKit.framework/Headers/FBSDKButton.h
 typedefs:
     FBSDKGraphRequestHandler: '@Block VoidBlock3<FBSDKGraphRequestConnection, NSObject, NSError>'
     FBSDKDeferredAppLinkHandler: '@Block VoidBlock2<NSURL, NSError>'
@@ -53,6 +54,8 @@ classes:
                 property: true
             '+refreshCurrentAccessToken:':
                 trim_after_first_colon: true
+            '+new':
+                exclude: true
     FBSDKAppEvents: # DONE
         methods:
             '+logEvent:.*':
@@ -130,7 +133,9 @@ classes:
             '-initWithUserID:firstName:middleName:lastName:name:linkURL:refreshDate:':
                 name: init
             '-imagePathForPictureMode:size:':
-                name: getImagePath
+                exclude: true # deprecated
+            '-imageURLForPictureMode:size:':
+                name: getImageURL
             '-isEqualToProfile:':
                 name: equalsTo
             '+currentProfile':

@@ -19,7 +19,6 @@ package org.robovm.pods.flurry.analytics;
 import java.io.*;
 import java.nio.*;
 import java.util.*;
-
 import org.robovm.objc.*;
 import org.robovm.objc.annotation.*;
 import org.robovm.objc.block.*;
@@ -46,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public Flurry() {}
+    protected Flurry(Handle h, long handle) { super(h, handle); }
     protected Flurry(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -144,6 +144,12 @@ import org.robovm.apple.coregraphics.*;
     public static native void setDelegate(FlurryDelegate delegate);
     @Method(selector = "pauseBackgroundSession")
     public static native void pauseBackgroundSession();
+    @Method(selector = "addSessionOrigin:withDeepLink:")
+    public static native void addSessionOrigin(String sessionOriginName, String deepLink);
+    @Method(selector = "addSessionOrigin:")
+    public static native void addSessionOrigin(String sessionOriginName);
+    @Method(selector = "sessionProperties:")
+    public static native void setSessionProperties(NSDictionary<?, ?> parameters);
     @Method(selector = "addOrigin:withVersion:")
     public static native void addOrigin(String originName, String originVersion);
     @Method(selector = "addOrigin:withVersion:withParameters:")
@@ -186,5 +192,7 @@ import org.robovm.apple.coregraphics.*;
     public static native void setEventLoggingEnabled(boolean value);
     @Method(selector = "setPulseEnabled:")
     public static native void setPulseEnabled(boolean value);
+    @Method(selector = "logEvent:syndicationID:parameters:")
+    public static native FlurryEventRecordStatus logEvent(FlurrySyndicationEvent syndicationEvent, String syndicationID, NSDictionary<?, ?> parameters);
     /*</methods>*/
 }

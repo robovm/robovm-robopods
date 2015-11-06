@@ -46,7 +46,9 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public CBMoreAppsButton() {}
+    protected CBMoreAppsButton(Handle h, long handle) { super(h, handle); }
     protected CBMoreAppsButton(SkipInit skipInit) { super(skipInit); }
+    public CBMoreAppsButton(UIImage customImage, UIViewController viewController, NSObject location) { super((Handle) null, create(customImage, viewController, location)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     
@@ -54,6 +56,6 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "moreAppsButtonWithImage:fromViewController:location:")
-    public static native CBMoreAppsButton create(UIImage customImage, UIViewController viewController, NSObject location);
+    protected static native @Pointer long create(UIImage customImage, UIViewController viewController, NSObject location);
     /*</methods>*/
 }

@@ -6,7 +6,7 @@ Bolts is a collection of low-level libraries designed to make developing mobile 
 
 | Platform    | Version |
 |-------------|---------|
-| [iOS](ios/) | 1.1.5   |
+| [iOS](ios/) | 1.2.2   |
 |             |         |
 
 ## Official website

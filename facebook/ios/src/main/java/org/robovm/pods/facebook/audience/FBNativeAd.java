@@ -45,7 +45,9 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBNativeAd() {}
+    protected FBNativeAd(Handle h, long handle) { super(h, handle); }
     protected FBNativeAd(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithPlacementID:")
     public FBNativeAd(String placementID) { super((SkipInit) null); initObject(init(placementID)); }
     /*</constructors>*/
     /*<properties>*/

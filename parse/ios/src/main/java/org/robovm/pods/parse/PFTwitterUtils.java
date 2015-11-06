@@ -29,10 +29,10 @@ import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
-import org.robovm.apple.coregraphics.*;
-import org.robovm.apple.corelocation.*;
-import org.robovm.apple.storekit.*;
+import org.robovm.pods.facebook.core.*;
+import org.robovm.pods.facebook.login.*;
 import org.robovm.pods.bolts.*;
+import org.robovm.pods.parse.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -48,6 +48,7 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public PFTwitterUtils() {}
+    protected PFTwitterUtils(Handle h, long handle) { super(h, handle); }
     protected PFTwitterUtils(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

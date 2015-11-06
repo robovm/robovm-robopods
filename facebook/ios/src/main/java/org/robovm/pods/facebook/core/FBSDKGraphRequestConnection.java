@@ -46,6 +46,7 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKGraphRequestConnection() {}
+    protected FBSDKGraphRequestConnection(Handle h, long handle) { super(h, handle); }
     protected FBSDKGraphRequestConnection(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -76,5 +77,7 @@ import org.robovm.pods.bolts.*;
     public native void setDelegateQueue(NSOperationQueue queue);
     @Method(selector = "overrideVersionPartWith:")
     public native void overrideVersionPart(String version);
+    @Method(selector = "setDefaultConnectionTimeout:")
+    public static native void setDefaultConnectionTimeout(double defaultConnectionTimeout);
     /*</methods>*/
 }

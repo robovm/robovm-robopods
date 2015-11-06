@@ -5,7 +5,7 @@ include:
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
 clang_args: ['-x', 'objective-c']
-header_root: '/'
+header_root: /
 headers:
     - GoogleTagManager.lib/Headers/GoogleTagManager.h
 typedefs:

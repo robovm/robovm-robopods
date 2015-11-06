@@ -45,7 +45,9 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBNativeAdsManager() {}
+    protected FBNativeAdsManager(Handle h, long handle) { super(h, handle); }
     protected FBNativeAdsManager(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithPlacementID:forNumAdsRequested:")
     public FBNativeAdsManager(String placementID, @MachineSizedUInt long numAdsRequested) { super((SkipInit) null); initObject(init(placementID, numAdsRequested)); }
     /*</constructors>*/
     /*<properties>*/

@@ -45,6 +45,7 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKShareLinkContent() {}
+    protected FBSDKShareLinkContent(Handle h, long handle) { super(h, handle); }
     protected FBSDKShareLinkContent(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

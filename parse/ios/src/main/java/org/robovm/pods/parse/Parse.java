@@ -43,11 +43,44 @@ import org.robovm.pods.bolts.*;
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
+    public static class Notifications {
+        public static NSObject observeWillSendURLRequest(final VoidBlock1<NSURLRequest> block) {
+            return NSNotificationCenter.getDefaultCenter().addObserver(WillSendURLRequestNotification(), null, NSOperationQueue.getMainQueue(), new VoidBlock1<NSNotification>() {
+                @Override
+                public void invoke(NSNotification notification) {
+                    NSDictionary<?, ?> data = notification.getUserInfo();
+                    NSURLRequest urlRequest = null;
+                    if (data != null) {
+                        urlRequest = (NSURLRequest) data.get(NotificationURLRequestUserInfoKey());
+                    }
+                    block.invoke(urlRequest);
+                }
+            });
+        }
+        
+        public static NSObject observeDidReceiveURLResponse(final VoidBlock2<NSURLResponse, String> block) {
+            return NSNotificationCenter.getDefaultCenter().addObserver(DidReceiveURLResponseNotification(), null, NSOperationQueue.getMainQueue(), new VoidBlock1<NSNotification>() {
+                @Override
+                public void invoke(NSNotification notification) {
+                    NSDictionary<?, ?> data = notification.getUserInfo();
+                    NSURLResponse urlResponse = null;
+                    String body = null;
+                    if (data != null) {
+                        urlResponse = (NSURLResponse) data.get(NotificationURLResponseUserInfoKey());
+                        body = data.getString(NotificationURLResponseBodyUserInfoKey());
+                    }
+                    block.invoke(urlResponse, body);
+                }
+            });
+        }
+    }
+    
     /*<ptr>*/public static class ParsePtr extends Ptr<Parse, ParsePtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(Parse.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public Parse() {}
+    protected Parse(Handle h, long handle) { super(h, handle); }
     protected Parse(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -55,6 +88,17 @@ import org.robovm.pods.bolts.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @GlobalValue(symbol="PFNetworkWillSendURLRequestNotification", optional=true)
+    public static native NSString WillSendURLRequestNotification();
+    @GlobalValue(symbol="PFNetworkDidReceiveURLResponseNotification", optional=true)
+    public static native NSString DidReceiveURLResponseNotification();
+    @GlobalValue(symbol="PFNetworkNotificationURLRequestUserInfoKey", optional=true)
+    protected static native NSString NotificationURLRequestUserInfoKey();
+    @GlobalValue(symbol="PFNetworkNotificationURLResponseUserInfoKey", optional=true)
+    protected static native NSString NotificationURLResponseUserInfoKey();
+    @GlobalValue(symbol="PFNetworkNotificationURLResponseBodyUserInfoKey", optional=true)
+    protected static native NSString NotificationURLResponseBodyUserInfoKey();
+    
     @Method(selector = "setApplicationId:clientKey:")
     public static native void initialize(String applicationId, String clientKey);
     @Method(selector = "getApplicationId")

@@ -45,7 +45,9 @@ import org.robovm.apple.dispatch.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public BFAppLinkTarget() {}
+    protected BFAppLinkTarget(Handle h, long handle) { super(h, handle); }
     protected BFAppLinkTarget(SkipInit skipInit) { super(skipInit); }
+    public BFAppLinkTarget(NSURL url, String appStoreId, String appName) { super((Handle) null, create(url, appStoreId, appName)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "URL")
@@ -58,6 +60,6 @@ import org.robovm.apple.dispatch.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "appLinkTargetWithURL:appStoreId:appName:")
-    public static native BFAppLinkTarget create(NSURL url, String appStoreId, String appName);
+    protected static native @Pointer long create(NSURL url, String appStoreId, String appName);
     /*</methods>*/
 }

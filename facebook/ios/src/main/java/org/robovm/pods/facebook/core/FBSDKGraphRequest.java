@@ -46,9 +46,13 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKGraphRequest() {}
+    protected FBSDKGraphRequest(Handle h, long handle) { super(h, handle); }
     protected FBSDKGraphRequest(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithGraphPath:parameters:")
     public FBSDKGraphRequest(String graphPath, NSDictionary<?, ?> parameters) { super((SkipInit) null); initObject(init(graphPath, parameters)); }
+    @Method(selector = "initWithGraphPath:parameters:HTTPMethod:")
     public FBSDKGraphRequest(String graphPath, NSDictionary<?, ?> parameters, String HTTPMethod) { super((SkipInit) null); initObject(init(graphPath, parameters, HTTPMethod)); }
+    @Method(selector = "initWithGraphPath:parameters:tokenString:version:HTTPMethod:")
     public FBSDKGraphRequest(String graphPath, NSDictionary<?, ?> parameters, String tokenString, String version, String HTTPMethod) { super((SkipInit) null); initObject(init(graphPath, parameters, tokenString, version, HTTPMethod)); }
     /*</constructors>*/
     /*<properties>*/

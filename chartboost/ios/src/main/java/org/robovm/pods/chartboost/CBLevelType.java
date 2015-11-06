@@ -36,7 +36,7 @@ import org.robovm.apple.storekit.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*//*</annotations>*/
+/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedUIntMarshaler.class)/*</annotations>*/
 public enum /*<name>*/CBLevelType/*</name>*/ implements ValuedEnum {
     /*<values>*/
     HIGHEST_LEVEL_REACHED(1L),

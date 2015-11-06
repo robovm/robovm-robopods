@@ -18,7 +18,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "../../FBSDKCoreKit.framework/Headers/FBSDKCopying.h"
+#import <FBSDKCoreKit/FBSDKCopying.h>
 
 /*!
  @abstract A video for sharing.

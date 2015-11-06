@@ -46,7 +46,9 @@ import org.robovm.apple.corelocation.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FlurryAdNative() {}
+    protected FlurryAdNative(Handle h, long handle) { super(h, handle); }
     protected FlurryAdNative(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithSpace:")
     public FlurryAdNative(String space) { super((SkipInit) null); initObject(init(space)); }
     /*</constructors>*/
     /*<properties>*/
@@ -60,6 +62,10 @@ import org.robovm.apple.corelocation.*;
     public native boolean isReady();
     @Property(selector = "expired")
     public native boolean isExpired();
+    @Property(selector = "displayState")
+    public native FlurryAdNativeDisplayState getDisplayState();
+    @Property(selector = "setDisplayState:")
+    public native void setDisplayState(FlurryAdNativeDisplayState v);
     @Property(selector = "assetList")
     public native NSArray<FlurryAdNativeAsset> getAssetList();
     @Property(selector = "trackingView")
@@ -70,6 +76,10 @@ import org.robovm.apple.corelocation.*;
     public native UIViewController getViewControllerForPresentation();
     @Property(selector = "setViewControllerForPresentation:")
     public native void setViewControllerForPresentation(UIViewController v);
+    @Property(selector = "videoViewContainer")
+    public native UIView getVideoViewContainer();
+    @Property(selector = "setVideoViewContainer:")
+    public native void setVideoViewContainer(UIView v);
     @Property(selector = "targeting")
     public native FlurryAdTargeting getTargeting();
     @Property(selector = "setTargeting:")
@@ -85,5 +95,11 @@ import org.robovm.apple.corelocation.*;
     public native NSArray<FlurryAdNativeAsset> getAssetListForType(FlurryAdNativeAssetType type);
     @Method(selector = "removeTrackingView")
     public native void removeTrackingView();
+    @Method(selector = "isVideoAd")
+    public native boolean isVideoAd();
+    @Method(selector = "setPencilViewToTrack:withExpandButton:andCTAButton:")
+    public native void setPencilViewToTrack(UIView pencilView, UIButton expandButton, UIButton ctaButton);
+    @Method(selector = "setExpandedViewToTrack:withExpandButton:andCTAButton:")
+    public native void setExpandedViewToTrack(UIView expandedView, UIButton expandButton, UIButton ctaButton);
     /*</methods>*/
 }
