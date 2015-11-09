@@ -70,7 +70,7 @@
                             <goal>wget</goal>
                         </goals>
                         <configuration>
-                            <url>http://libgdx.badlogicgames.com/robopods-binaries/gpg-cpp-sdk-1.4.1-framework.zip</url>
+                            <url>http://download.robovm.org/robopods-binaries/gpg-cpp-sdk-2.0.0-framework.zip</url>
                             <unpack>true</unpack>
                             <outputDirectory>${project.build.directory}/classes/META-INF/robovm/ios/libs</outputDirectory>
                         </configuration>
