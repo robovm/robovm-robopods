@@ -6,7 +6,7 @@ include:
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
     - google-open-source.yaml
 clang_args: ['-x', 'objective-c']
-header_root: '/../robopods/META-INF/robovm/ios/libs/'
+header_root: /../robopods/META-INF/robovm/ios/libs
 headers:
     - GooglePlus.framework/Headers/GooglePlus.h
 typedefs:

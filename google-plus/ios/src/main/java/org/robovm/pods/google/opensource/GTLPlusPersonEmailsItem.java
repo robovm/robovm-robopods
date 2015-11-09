@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GTLPlusPersonEmailsItem() {}
+    protected GTLPlusPersonEmailsItem(Handle h, long handle) { super(h, handle); }
     protected GTLPlusPersonEmailsItem(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

@@ -45,7 +45,9 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPGLeaderboard() {}
+    protected GPGLeaderboard(Handle h, long handle) { super(h, handle); }
     protected GPGLeaderboard(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithLeaderboardId:")
     public GPGLeaderboard(String leaderboardId) { super((SkipInit) null); initObject(init(leaderboardId)); }
     /*</constructors>*/
     /*<properties>*/

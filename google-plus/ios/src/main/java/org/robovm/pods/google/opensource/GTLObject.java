@@ -45,7 +45,9 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GTLObject() {}
+    protected GTLObject(Handle h, long handle) { super(h, handle); }
     protected GTLObject(SkipInit skipInit) { super(skipInit); }
+    public GTLObject(NSMutableDictionary<?, ?> dict) { super((Handle) null, create(dict)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "JSON")
@@ -91,10 +93,8 @@ import org.robovm.apple.coregraphics.*;
     public native String getFieldsDescription();
     @Method(selector = "patchObjectFromOriginal:")
     public native NSObject getPatchObject(GTLObject original);
-    @Method(selector = "object")
-    public static native NSObject create();
     @Method(selector = "objectWithJSON:")
-    public static native NSObject create(NSMutableDictionary<?, ?> dict);
+    protected static native @Pointer long create(NSMutableDictionary<?, ?> dict);
     @Method(selector = "nullValue")
     public static native NSObject getNullValue();
     /*</methods>*/

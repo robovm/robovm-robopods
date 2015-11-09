@@ -45,7 +45,9 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GTLQuery() {}
+    protected GTLQuery(Handle h, long handle) { super(h, handle); }
     protected GTLQuery(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithMethodName:")
     public GTLQuery(String method) { super((SkipInit) null); initObject(init(method)); }
     /*</constructors>*/
     /*<properties>*/

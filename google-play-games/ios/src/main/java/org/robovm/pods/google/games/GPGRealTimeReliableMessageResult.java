@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPGRealTimeReliableMessageResult() {}
+    protected GPGRealTimeReliableMessageResult(Handle h, long handle) { super(h, handle); }
     protected GPGRealTimeReliableMessageResult(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

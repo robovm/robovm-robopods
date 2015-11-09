@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GTLPlusPersonCoverCoverPhoto() {}
+    protected GTLPlusPersonCoverCoverPhoto(Handle h, long handle) { super(h, handle); }
     protected GTLPlusPersonCoverCoverPhoto(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

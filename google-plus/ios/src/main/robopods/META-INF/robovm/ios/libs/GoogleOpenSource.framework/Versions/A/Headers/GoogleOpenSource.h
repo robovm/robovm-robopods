@@ -10,7 +10,7 @@
 
 
 // GTM.
-//#import "GTMDefines.h"
+#import "GTMDefines.h"
 #import "GTMGarbageCollection.h"
 #import "GTMHTTPFetcher.h"
 #import "GTMHTTPFetcherLogging.h"
@@ -24,7 +24,7 @@
 #import "GTMOAuth2Authentication.h"
 #import "GTMOAuth2SignIn.h"
 #import "GTMOAuth2ViewControllerTouch.h"
-//#import "GTMObjC2Runtime.h"
+#import "GTMObjC2Runtime.h"
 
 // Chrome.
 #import "OpenInChromeController.h"
@@ -34,7 +34,7 @@
 #import "GTLBatchQuery.h"
 #import "GTLBatchResult.h"
 #import "GTLDateTime.h"
-//#import "GTLDefines.h"
+#import "GTLDefines.h"
 #import "GTLErrorObject.h"
 #import "GTLFramework.h"
 #import "GTLJSONParser.h"

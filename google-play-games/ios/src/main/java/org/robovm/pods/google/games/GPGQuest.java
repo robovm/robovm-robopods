@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPGQuest() {}
+    protected GPGQuest(Handle h, long handle) { super(h, handle); }
     protected GPGQuest(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

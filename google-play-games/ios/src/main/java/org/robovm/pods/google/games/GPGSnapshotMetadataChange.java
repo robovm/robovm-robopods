@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPGSnapshotMetadataChange() {}
+    protected GPGSnapshotMetadataChange(Handle h, long handle) { super(h, handle); }
     protected GPGSnapshotMetadataChange(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

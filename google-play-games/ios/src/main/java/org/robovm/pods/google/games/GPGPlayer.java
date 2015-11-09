@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPGPlayer() {}
+    protected GPGPlayer(Handle h, long handle) { super(h, handle); }
     protected GPGPlayer(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

@@ -45,7 +45,9 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPGAchievement() {}
+    protected GPGAchievement(Handle h, long handle) { super(h, handle); }
     protected GPGAchievement(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithAchievementId:")
     public GPGAchievement(String achievementId) { super((SkipInit) null); initObject(init(achievementId)); }
     /*</constructors>*/
     /*<properties>*/

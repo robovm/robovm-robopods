@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public OpenInChromeController() {}
+    protected OpenInChromeController(Handle h, long handle) { super(h, handle); }
     protected OpenInChromeController(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

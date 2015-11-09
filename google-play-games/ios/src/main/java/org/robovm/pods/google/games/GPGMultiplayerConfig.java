@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPGMultiplayerConfig() {}
+    protected GPGMultiplayerConfig(Handle h, long handle) { super(h, handle); }
     protected GPGMultiplayerConfig(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -55,7 +56,7 @@ import org.robovm.apple.coregraphics.*;
     @Property(selector = "invitedPlayerIds")
     public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getInvitedPlayerIds();
     @Property(selector = "setInvitedPlayerIds:")
-    public native void setInvitedPlayerIds(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class)List<String> v);
+    public native void setInvitedPlayerIds(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> v);
     @Property(selector = "maxAutoMatchingPlayers")
     public native int getMaxAutoMatchingPlayers();
     @Property(selector = "setMaxAutoMatchingPlayers:")

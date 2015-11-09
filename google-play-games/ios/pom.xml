@@ -44,6 +44,11 @@
             <artifactId>robopods-google-plus-ios</artifactId>
             <version>${robopods.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.robovm</groupId>
+            <artifactId>robopods-google-signin-ios</artifactId>
+            <version>${robopods.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

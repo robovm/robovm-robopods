@@ -46,6 +46,7 @@ import org.robovm.pods.google.opensource.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPPSignIn() {}
+    protected GPPSignIn(Handle h, long handle) { super(h, handle); }
     protected GPPSignIn(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -80,7 +81,7 @@ import org.robovm.pods.google.opensource.*;
     @Property(selector = "scopes")
     public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getScopes();
     @Property(selector = "setScopes:")
-    public native void setScopes(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class)List<String> v);
+    public native void setScopes(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> v);
     @Property(selector = "attemptSSO")
     public native boolean isAttemptSSO();
     @Property(selector = "setAttemptSSO:")
@@ -96,7 +97,7 @@ import org.robovm.pods.google.opensource.*;
     @Property(selector = "actions")
     public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getActions();
     @Property(selector = "setActions:")
-    public native void setActions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class)List<String> v);
+    public native void setActions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> v);
     @Property(selector = "shouldFetchGoogleUserEmail")
     public native boolean shouldFetchGoogleUserEmail();
     @Property(selector = "setShouldFetchGoogleUserEmail:")

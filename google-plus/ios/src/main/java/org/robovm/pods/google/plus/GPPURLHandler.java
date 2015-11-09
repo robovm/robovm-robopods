@@ -46,6 +46,7 @@ import org.robovm.pods.google.opensource.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPPURLHandler() {}
+    protected GPPURLHandler(Handle h, long handle) { super(h, handle); }
     protected GPPURLHandler(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

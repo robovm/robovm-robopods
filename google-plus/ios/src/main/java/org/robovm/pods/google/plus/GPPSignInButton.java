@@ -46,6 +46,7 @@ import org.robovm.pods.google.opensource.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPPSignInButton() {}
+    protected GPPSignInButton(Handle h, long handle) { super(h, handle); }
     protected GPPSignInButton(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

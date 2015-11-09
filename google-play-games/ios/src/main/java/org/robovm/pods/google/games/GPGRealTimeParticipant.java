@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPGRealTimeParticipant() {}
+    protected GPGRealTimeParticipant(Handle h, long handle) { super(h, handle); }
     protected GPGRealTimeParticipant(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

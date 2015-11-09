@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GTLServicePlus() {}
+    protected GTLServicePlus(Handle h, long handle) { super(h, handle); }
     protected GTLServicePlus(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

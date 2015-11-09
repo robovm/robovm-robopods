@@ -45,7 +45,9 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPGSnapshotMetadataChangeCoverImage() {}
+    protected GPGSnapshotMetadataChangeCoverImage(Handle h, long handle) { super(h, handle); }
     protected GPGSnapshotMetadataChangeCoverImage(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithImage:")
     public GPGSnapshotMetadataChangeCoverImage(UIImage uiImage) { super((SkipInit) null); initObject(init(uiImage)); }
     /*</constructors>*/
     /*<properties>*/

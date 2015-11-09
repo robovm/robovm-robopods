@@ -45,8 +45,11 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPGScore() {}
+    protected GPGScore(Handle h, long handle) { super(h, handle); }
     protected GPGScore(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithLeaderboardId:")
     public GPGScore(String leaderboardId) { super((SkipInit) null); initObject(init(leaderboardId)); }
+    @Method(selector = "initWithCoder:")
     public GPGScore(NSCoder aDecoder) { super((SkipInit) null); initObject(init(aDecoder)); }
     /*</constructors>*/
     /*<properties>*/

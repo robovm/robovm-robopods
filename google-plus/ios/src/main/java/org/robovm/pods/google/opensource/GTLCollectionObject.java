@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GTLCollectionObject() {}
+    protected GTLCollectionObject(Handle h, long handle) { super(h, handle); }
     protected GTLCollectionObject(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

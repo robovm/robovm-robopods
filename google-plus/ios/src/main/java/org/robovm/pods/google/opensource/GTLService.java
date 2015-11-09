@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GTLService() {}
+    protected GTLService(Handle h, long handle) { super(h, handle); }
     protected GTLService(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -99,7 +100,7 @@ import org.robovm.apple.coregraphics.*;
     @Property(selector = "runLoopModes")
     public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getRunLoopModes();
     @Property(selector = "setRunLoopModes:")
-    public native void setRunLoopModes(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class)List<String> v);
+    public native void setRunLoopModes(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> v);
     @Property(selector = "allowInsecureQueries")
     public native boolean allowsInsecureQueries();
     @Property(selector = "setAllowInsecureQueries:")

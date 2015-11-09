@@ -45,7 +45,9 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GTLServiceTicket() {}
+    protected GTLServiceTicket(Handle h, long handle) { super(h, handle); }
     protected GTLServiceTicket(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithService:")
     public GTLServiceTicket(GTLService service) { super((SkipInit) null); initObject(init(service)); }
     /*</constructors>*/
     /*<properties>*/

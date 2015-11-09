@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPGLeaderboardMetadata() {}
+    protected GPGLeaderboardMetadata(Handle h, long handle) { super(h, handle); }
     protected GPGLeaderboardMetadata(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

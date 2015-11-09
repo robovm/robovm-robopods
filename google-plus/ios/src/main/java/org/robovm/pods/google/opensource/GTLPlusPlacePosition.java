@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GTLPlusPlacePosition() {}
+    protected GTLPlusPlacePosition(Handle h, long handle) { super(h, handle); }
     protected GTLPlusPlacePosition(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

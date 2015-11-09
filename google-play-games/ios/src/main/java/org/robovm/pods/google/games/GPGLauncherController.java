@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPGLauncherController() {}
+    protected GPGLauncherController(Handle h, long handle) { super(h, handle); }
     protected GPGLauncherController(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -87,6 +88,8 @@ import org.robovm.apple.coregraphics.*;
     public native void presentSnapshotList();
     @Method(selector = "presentLeaderboardWithLeaderboardId:")
     public native void presentLeaderboard(String leaderboardId);
+    @Method(selector = "presentLeaderboardWithLeaderboardId:andTimeScope:")
+    public native void presentLeaderboard(String leaderboardId, GPGLeaderboardTimeScope timeScope);
     @Method(selector = "presentLeaderboardList")
     public native void presentLeaderboardList();
     @Method(selector = "presentAchievementList")

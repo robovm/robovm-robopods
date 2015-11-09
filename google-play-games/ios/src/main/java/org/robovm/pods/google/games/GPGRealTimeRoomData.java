@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPGRealTimeRoomData() {}
+    protected GPGRealTimeRoomData(Handle h, long handle) { super(h, handle); }
     protected GPGRealTimeRoomData(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

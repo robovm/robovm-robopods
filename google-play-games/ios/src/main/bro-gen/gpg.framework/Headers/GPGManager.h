@@ -9,7 +9,7 @@
 typedef void (^GPGReAuthenticationBlock)(BOOL requiresKeychainWipe, NSError *error);
 typedef void (^GPGRevisionCheckBlock)(GPGRevisionStatus revisionStatus, NSError *error);
 
-@class GPPSignIn;
+@class GIDSignIn;
 @class GPGTurnBasedParticipant;
 @class GPGRealTimeRoomData;
 @class GPGTurnBasedMatch;
@@ -22,7 +22,7 @@ typedef void (^GPGRevisionCheckBlock)(GPGRevisionStatus revisionStatus, NSError 
 @protocol GPGRealTimeRoomDelegate;
 @protocol GPGQuestDelegate;
 
-@protocol GPGStatusDelegate <NSObject>
+@protocol GPGStatusDelegate<NSObject>
 
 @optional
 
@@ -40,7 +40,7 @@ typedef void (^GPGRevisionCheckBlock)(GPGRevisionStatus revisionStatus, NSError 
 
 @end
 
-@protocol GPGTurnBasedMatchDelegate <NSObject>
+@protocol GPGTurnBasedMatchDelegate<NSObject>
 
 @optional
 
@@ -65,18 +65,15 @@ typedef void (^GPGRevisionCheckBlock)(GPGRevisionStatus revisionStatus, NSError 
 + (instancetype)sharedInstance;
 
 #pragma mark Authentication 
-- (BOOL)hasAuthorizer __attribute__((deprecated));
-
 - (void)signOut;
-
-- (void)signIn:(GPPSignIn *)signIn
-    reauthorizeHandler:(GPGReAuthenticationBlock)reauthenticationBlock __attribute__((deprecated));
 
 - (void)signIn;
 
 - (BOOL)signInWithClientID:(NSString *)clientID silently:(BOOL)silently;
 
-- (BOOL)signInWithClientID:(NSString *)clientID silently:(BOOL)silently withExtraScopes:(NSArray *)scopes;
+- (BOOL)signInWithClientID:(NSString *)clientID
+                  silently:(BOOL)silently
+           withExtraScopes:(NSArray *)scopes;
 
 #pragma mark Push Notifications 
 - (BOOL)tryHandleRemoteNotification:(NSDictionary *)userInfo;
@@ -103,7 +100,7 @@ typedef void (^GPGRevisionCheckBlock)(GPGRevisionStatus revisionStatus, NSError 
 
 @property(nonatomic, weak) id<GPGQuestDelegate> questDelegate;
 
-@property(nonatomic, readonly, assign, getter = isSignedIn) BOOL signedIn;
+@property(nonatomic, readonly, assign, getter=isSignedIn) BOOL signedIn;
 
 @property(nonatomic, assign) BOOL snapshotsEnabled;
 

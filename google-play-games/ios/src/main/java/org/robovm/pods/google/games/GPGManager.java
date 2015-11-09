@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPGManager() {}
+    protected GPGManager(Handle h, long handle) { super(h, handle); }
     protected GPGManager(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

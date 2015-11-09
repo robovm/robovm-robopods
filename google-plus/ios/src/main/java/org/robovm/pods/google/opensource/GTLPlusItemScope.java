@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GTLPlusItemScope() {}
+    protected GTLPlusItemScope(Handle h, long handle) { super(h, handle); }
     protected GTLPlusItemScope(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -55,7 +56,7 @@ import org.robovm.apple.coregraphics.*;
     @Property(selector = "additionalName")
     public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getAdditionalName();
     @Property(selector = "setAdditionalName:")
-    public native void setAdditionalName(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class)List<String> v);
+    public native void setAdditionalName(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> v);
     @Property(selector = "address")
     public native GTLPlusItemScope getAddress();
     @Property(selector = "setAddress:")

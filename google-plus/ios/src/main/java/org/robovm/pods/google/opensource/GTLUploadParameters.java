@@ -45,7 +45,11 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GTLUploadParameters() {}
+    protected GTLUploadParameters(Handle h, long handle) { super(h, handle); }
     protected GTLUploadParameters(SkipInit skipInit) { super(skipInit); }
+    public GTLUploadParameters(NSData data, String mimeType) { super((Handle) null, create(data, mimeType)); retain(getHandle()); }
+    public GTLUploadParameters(NSFileHandle fileHandle, String mimeType) { super((Handle) null, create(fileHandle, mimeType)); retain(getHandle()); }
+    public GTLUploadParameters(NSURL fileHandle, String mimeType) { super((Handle) null, create(fileHandle, mimeType)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "MIMEType")
@@ -80,10 +84,10 @@ import org.robovm.apple.coregraphics.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "uploadParametersWithData:MIMEType:")
-    public static native GTLUploadParameters create(NSData data, String mimeType);
+    protected static native @Pointer long create(NSData data, String mimeType);
     @Method(selector = "uploadParametersWithFileHandle:MIMEType:")
-    public static native GTLUploadParameters create(NSFileHandle fileHandle, String mimeType);
+    protected static native @Pointer long create(NSFileHandle fileHandle, String mimeType);
     @Method(selector = "uploadParametersWithFileURL:MIMEType:")
-    public static native GTLUploadParameters create(NSURL fileHandle, String mimeType);
+    protected static native @Pointer long create(NSURL fileHandle, String mimeType);
     /*</methods>*/
 }

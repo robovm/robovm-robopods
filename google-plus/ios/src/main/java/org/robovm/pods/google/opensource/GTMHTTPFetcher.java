@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GTMHTTPFetcher() {}
+    protected GTMHTTPFetcher(Handle h, long handle) { super(h, handle); }
     protected GTMHTTPFetcher(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

@@ -46,6 +46,7 @@ import org.robovm.pods.google.opensource.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPPDeepLink() {}
+    protected GPPDeepLink(Handle h, long handle) { super(h, handle); }
     protected GPPDeepLink(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

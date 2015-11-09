@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GTLQueryCollectionImpl() {}
+    protected GTLQueryCollectionImpl(Handle h, long handle) { super(h, handle); }
     protected GTLQueryCollectionImpl(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

@@ -5,7 +5,7 @@ include:
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
 clang_args: ['-x', 'objective-c']
-header_root: '/../robopods/META-INF/robovm/ios/libs/'
+header_root: /../robopods/META-INF/robovm/ios/libs
 headers:
     - GoogleOpenSource.framework/Headers/GoogleOpenSource.h
 typedefs:
@@ -24,6 +24,7 @@ classes:
         methods:
             '+dateTime.*':
                 name: create
+                constructor: true
                 parameters:
                     str:
                         name: rfc3339
@@ -66,9 +67,10 @@ classes:
             '-patchObjectFromOriginal:':
                 name: getPatchObject
             '+object':
-                name: create
+                exclude: true
             '+objectWithJSON:':
                 name: create
+                constructor: true
             '+nullValue':
                 property: true
             '+.*':
@@ -285,6 +287,7 @@ classes:
         methods:
             '+uploadParametersWith.*':
                 name: create
+                constructor: true
 #    GTLUtilities: {}
 #    GTMBridgeFetcher: {}
     GTMHTTPFetcher:

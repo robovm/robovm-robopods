@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GTMOAuth2Authentication() {}
+    protected GTMOAuth2Authentication(Handle h, long handle) { super(h, handle); }
     protected GTMOAuth2Authentication(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

@@ -125,7 +125,7 @@ classes:
                         type: NSArray<GPGTurnBasedMatch>
             '-presentQuestListWithQuestId:':
                 name: presentQuestList
-            '-presentLeaderboardWithLeaderboardId:':
+            '-presentLeaderboardWithLeaderboardId.*':
                 name: presentLeaderboard
             '-presentRealTimeInvitesWithRoomDataList:':
                 name: presentRealTimeInvites

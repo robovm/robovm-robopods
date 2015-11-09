@@ -21,7 +21,6 @@
 
 + (instancetype)sharedInstance;
 
-
 @property(nonatomic, weak) id<GPGLauncherDelegate> launcherDelegate;
 
 @property(nonatomic, weak) id<GPGPlayerPickerLauncherDelegate> playerPickerLauncherDelegate;
@@ -41,7 +40,6 @@
 
 - (void)presentTurnBasedMatchList;
 
-
 - (void)presentTurnBasedMatchListWithMatches:(NSArray *)matches;
 
 - (void)presentQuestList;
@@ -51,6 +49,9 @@
 - (void)presentSnapshotList;
 
 - (void)presentLeaderboardWithLeaderboardId:(NSString *)leaderboardId;
+
+- (void)presentLeaderboardWithLeaderboardId:(NSString *)leaderboardId
+                               andTimeScope:(GPGLeaderboardTimeScope)timeScope;
 
 - (void)presentLeaderboardList;
 
@@ -63,8 +64,7 @@
                            exclusiveBitMask:(uint64_t)exclusiveBitMask
                                     variant:(int)variant;
 
-- (void)presentRealTimeInviteWithMinPlayers:(int)minPlayers
-                                 maxPlayers:(int)maxPlayers;
+- (void)presentRealTimeInviteWithMinPlayers:(int)minPlayers maxPlayers:(int)maxPlayers;
 
 - (void)presentRealTimeWaitingRoomWithConfig:(GPGMultiplayerConfig *)config;
 
@@ -72,8 +72,7 @@
 
 - (void)presentSettings;
 
-- (void)dismissAnimated:(BOOL)animated
-      completionHandler:(void (^)())completionHandler;
+- (void)dismissAnimated:(BOOL)animated completionHandler:(void (^)())completionHandler;
 
 @end
 

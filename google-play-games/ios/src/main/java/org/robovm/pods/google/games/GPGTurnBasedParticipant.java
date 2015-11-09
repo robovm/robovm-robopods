@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPGTurnBasedParticipant() {}
+    protected GPGTurnBasedParticipant(Handle h, long handle) { super(h, handle); }
     protected GPGTurnBasedParticipant(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

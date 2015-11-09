@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GTLPlusPerson() {}
+    protected GTLPlusPerson(Handle h, long handle) { super(h, handle); }
     protected GTLPlusPerson(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     

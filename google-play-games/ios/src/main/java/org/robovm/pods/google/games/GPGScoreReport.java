@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPGScoreReport() {}
+    protected GPGScoreReport(Handle h, long handle) { super(h, handle); }
     protected GPGScoreReport(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

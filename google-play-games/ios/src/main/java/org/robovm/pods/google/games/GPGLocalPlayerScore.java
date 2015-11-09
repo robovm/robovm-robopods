@@ -45,7 +45,9 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPGLocalPlayerScore() {}
+    protected GPGLocalPlayerScore(Handle h, long handle) { super(h, handle); }
     protected GPGLocalPlayerScore(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithCoder:")
     public GPGLocalPlayerScore(NSCoder aDecoder) { super((SkipInit) null); initObject(init(aDecoder)); }
     /*</constructors>*/
     /*<properties>*/

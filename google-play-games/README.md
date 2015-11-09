@@ -6,7 +6,7 @@ Start integrating popular gaming features in your mobile games and web games by 
 
 | Platform    | Version |
 |-------------|---------|
-| [iOS](ios/) | 1.4.1   |
+| [iOS](ios/) | 2.0     |
 |             |         |
 
 ## Official website

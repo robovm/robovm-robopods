@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPGQuestMilestone() {}
+    protected GPGQuestMilestone(Handle h, long handle) { super(h, handle); }
     protected GPGQuestMilestone(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

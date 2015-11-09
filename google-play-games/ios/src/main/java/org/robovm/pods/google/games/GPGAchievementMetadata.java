@@ -45,7 +45,9 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPGAchievementMetadata() {}
+    protected GPGAchievementMetadata(Handle h, long handle) { super(h, handle); }
     protected GPGAchievementMetadata(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithCoder:")
     public GPGAchievementMetadata(NSCoder aDecoder) { super((SkipInit) null); initObject(init(aDecoder)); }
     /*</constructors>*/
     /*<properties>*/

@@ -45,7 +45,12 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GTLDateTime() {}
+    protected GTLDateTime(Handle h, long handle) { super(h, handle); }
     protected GTLDateTime(SkipInit skipInit) { super(skipInit); }
+    public GTLDateTime(String rfc3339) { super((Handle) null, create(rfc3339)); retain(getHandle()); }
+    public GTLDateTime(NSDate date, NSTimeZone tz) { super((Handle) null, create(date, tz)); retain(getHandle()); }
+    public GTLDateTime(NSDate date) { super((Handle) null, create(date)); retain(getHandle()); }
+    public GTLDateTime(NSDateComponents date) { super((Handle) null, create(date)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "date")
@@ -72,12 +77,12 @@ import org.robovm.apple.coregraphics.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "dateTimeWithRFC3339String:")
-    public static native GTLDateTime create(String rfc3339);
+    protected static native @Pointer long create(String rfc3339);
     @Method(selector = "dateTimeWithDate:timeZone:")
-    public static native GTLDateTime create(NSDate date, NSTimeZone tz);
+    protected static native @Pointer long create(NSDate date, NSTimeZone tz);
     @Method(selector = "dateTimeForAllDayWithDate:")
-    public static native GTLDateTime create(NSDate date);
+    protected static native @Pointer long create(NSDate date);
     @Method(selector = "dateTimeWithDateComponents:")
-    public static native GTLDateTime create(NSDateComponents date);
+    protected static native @Pointer long create(NSDateComponents date);
     /*</methods>*/
 }

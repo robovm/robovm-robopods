@@ -1,0 +1,106 @@
+package: org.robovm.pods.google.signin
+framework: GoogleSignIn
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
+    - ../../../../../google-plus/ios/src/main/bro-gen/google-open-source.yaml
+clang_args: ['-x', 'objective-c']
+header_root: /../robopods/META-INF/robovm/ios/libs
+headers:
+    - GoogleSignIn.framework/Headers/GoogleSignIn.h
+typedefs:
+    GIDAuthenticationHandler: '@Block VoidBlock2<GIDAuthentication, NSError>'
+    GIDAccessTokenHandler: '@Block VoidBlock2<String, NSError>'
+
+categories:
+    GIDSignIn: # DONE
+        methods:
+            '-gid_signInWithGoogle':
+                name: signInWithGoogle
+    
+enums:
+    GIDSignInErrorCode: {}
+    GIDSignInButtonStyle: {}
+    GIDSignInButtonColorScheme: {}
+        
+classes:
+    GIDSignInError:
+        extends: NSError
+        annotations: ['@StronglyLinked']
+
+    GIDAuthentication: # DONE
+        methods:
+            '-fetcherAuthorizer':
+                property: true
+            '-getTokensWithHandler:':
+                name: getTokens
+            '-refreshTokensWithHandler:':
+                name: refreshTokens
+            '-getAccessTokenWithHandler:':
+                name: getAccessToken
+            '-refreshAccessTokenWithHandler:':
+                name: refreshAccessToken
+    GIDGoogleUser: # DONE
+        properties:
+            'accessibleScopes':
+                type: List<String>
+                marshaler: NSArray.AsStringListMarshaler
+    GIDProfileData: # DONE
+        methods:
+            '-imageURLWithDimension:':
+                name: getImageURL
+    GIDSignIn: # DONE
+        properties:
+            'scopes':
+                type: List<String>
+                marshaler: NSArray.AsStringListMarshaler
+        methods:
+            '-handleURL:sourceApplication:annotation:':
+                trim_after_first_colon: true
+                parameters:
+                    annotation:
+                        type: NSPropertyList
+            '-checkGoogleSignInAppInstalled:': # DEPRECATED TODO remove
+                trim_after_first_colon: true
+            '+sharedInstance':
+                property: true
+    GIDSignInButton: {} # DONE
+
+protocols:
+    GIDSignInDelegate: # DONE
+        methods:
+            '-signIn:didSignInForUser:withError:':
+                name: didSignIn
+            '-signIn:didDisconnectWithUser:withError:':
+                name: didDisconnect
+    GIDSignInUIDelegate: # DONE
+        methods:
+            '-signInWillDispatch:error:':
+                name: willDispatch
+            '-signIn:presentViewController:':
+                name: presentViewController
+            '-signIn:dismissViewController:':
+                name: dismissViewController
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?GID.*):
+        class: GoogleSignIn
+        name: 'Function__#{g[0]}'
+
+values:
+    kGIDSignInErrorDomain:
+        class: GIDSignInError
+        name: getClassDomain
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?GID.*):
+        class: GoogleSignIn
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?GID.*):
+        class: GoogleSignIn
+        name: 'Constant__#{g[0]}'

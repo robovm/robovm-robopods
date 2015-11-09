@@ -46,6 +46,7 @@ import org.robovm.pods.google.opensource.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GPPShare() {}
+    protected GPPShare(Handle h, long handle) { super(h, handle); }
     protected GPPShare(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
