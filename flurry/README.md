@@ -4,10 +4,11 @@ Measure, track and analyze app performance, user acquisition and activity with F
 
 ## Available RoboPods
 
-| Platform    | Version |
-|-------------|---------|
-| [iOS](ios/) | 7.3.0   |
-|             |         |
+| Platform                        | Version | Description                  |
+|---------------------------------|---------|------------------------------|
+| [iOS](ios/)                     | 7.3.0   | Flurry iOS binding           |
+| [iOS Ads](ios-ads/)             | 7.3.0   | Flurry Ads iOS binding       |
+| [iOS Analytics](ios-analytics/) | 7.3.0   | Flurry Analytics iOS binding |
 
 ## Official website
 

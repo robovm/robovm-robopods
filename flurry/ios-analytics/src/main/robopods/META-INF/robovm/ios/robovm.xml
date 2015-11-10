@@ -1,0 +1,16 @@
+<config>
+    <libs>
+        <lib>libs/libFlurry_7.3.0.a</lib>
+    </libs>
+    <frameworks>
+        <framework>AVFoundation</framework>
+        <framework>CoreGraphics</framework>
+        <framework>CoreMedia</framework>
+        <framework>CoreMotion</framework>
+        <framework>MediaPlayer</framework>
+        <framework>QuartzCore</framework>
+        <framework>Security</framework>
+        <framework>StoreKit</framework>
+        <framework>SystemConfiguration</framework>
+    </frameworks>
+</config>

@@ -1,15 +1,15 @@
 <config>
     <libs>
-        <lib>libs/libFlurry_7.3.0.a</lib>
         <lib>libs/libFlurryAds_7.3.0.a</lib>
-        
-        <lib>z</lib>
     </libs>
     <frameworks>
         <framework>AdSupport</framework>
+        <framework>AVFoundation</framework>
         <framework>CoreGraphics</framework>
+        <framework>CoreMedia</framework>
         <framework>CoreMotion</framework>
         <framework>MediaPlayer</framework>
+        <framework>QuartzCore</framework>
         <framework>Security</framework>
         <framework>StoreKit</framework>
         <framework>SystemConfiguration</framework>

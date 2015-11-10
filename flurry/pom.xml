@@ -35,5 +35,7 @@
 
     <modules>
         <module>ios</module>
+        <module>ios-ads</module>
+        <module>ios-analytics</module>
     </modules>
 </project>

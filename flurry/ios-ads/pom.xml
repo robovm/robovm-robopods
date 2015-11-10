@@ -5,8 +5,8 @@
         <artifactId>robopods-flurry-parent</artifactId>
         <version>1.9.1-SNAPSHOT</version>
     </parent>
-    <artifactId>robopods-flurry-ios</artifactId>
-    <name>RoboPods Flurry iOS</name>
+    <artifactId>robopods-flurry-ios-ads</artifactId>
+    <name>RoboPods Flurry Advertising iOS</name>
     <packaging>jar</packaging>
 
     <licenses>
@@ -41,7 +41,7 @@
         </dependency>
         <dependency>
             <groupId>org.robovm</groupId>
-            <artifactId>robopods-flurry-ios-ads</artifactId>
+            <artifactId>robopods-flurry-ios-analytics</artifactId>
             <version>${robopods.version}</version>
         </dependency>
     </dependencies>
