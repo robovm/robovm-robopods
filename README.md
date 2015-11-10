@@ -36,6 +36,12 @@ to your `pom.xml`:
 </dependency>
 ```
 
+### Snapshot versions
+
+If you want to use the latest and greatest of every RoboPod, use the latest snapshot version for your dependencies:
+
+> 1.9.1-SNAPSHOT
+
 ## List of available RoboPods for iOS
 
 |                  Name                   | Version | Dependency                                      |
