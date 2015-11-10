@@ -7,7 +7,7 @@ Collect, configure, and analyze your data to reach the right audience.
 | Platform                 | Version | Description                                     |
 |--------------------------|---------|-------------------------------------------------|
 | [iOS](ios/)              | 3.1.4   | Google Analytics iOS binding                    |
-| [iOS No ads](ios-noads/) | 3.1.4   | Google Analytics iOS binding without ad support |
+| [iOS-noads](ios-noads/)  | 3.1.4   | Google Analytics iOS binding without ad support |
 
 ## Official website
 
