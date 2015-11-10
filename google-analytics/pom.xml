@@ -33,5 +33,6 @@
 
     <modules>
         <module>ios</module>
+        <module>ios-noads</module>
     </modules>
 </project>

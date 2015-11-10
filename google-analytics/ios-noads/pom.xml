@@ -5,8 +5,8 @@
         <artifactId>robopods-google-analytics-parent</artifactId>
         <version>1.9.1-SNAPSHOT</version>
     </parent>
-    <artifactId>robopods-google-analytics-ios</artifactId>
-    <name>RoboPods Google Analytics iOS</name>
+    <artifactId>robopods-google-analytics-ios-noads</artifactId>
+    <name>RoboPods Google Analytics iOS, without ad support</name>
     <packaging>jar</packaging>
 
     <licenses>
@@ -20,7 +20,28 @@
     <dependencies>
         <dependency>
             <groupId>org.robovm</groupId>
-            <artifactId>robopods-google-analytics-ios-noads</artifactId>
+            <artifactId>robovm-rt</artifactId>
+            <version>${robovm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.robovm</groupId>
+            <artifactId>robovm-objc</artifactId>
+            <version>${robovm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.robovm</groupId>
+            <artifactId>robovm-cocoatouch</artifactId>
+            <version>${robovm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.robovm</groupId>
+            <artifactId>robopods-google-apis-ios</artifactId>
             <version>${robopods.version}</version>
         </dependency>
     </dependencies>
