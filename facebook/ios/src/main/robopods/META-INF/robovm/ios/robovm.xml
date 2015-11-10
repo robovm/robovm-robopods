@@ -13,6 +13,9 @@
         <framework>Bolts</framework>
 
         <framework>AdSupport</framework>
+        <framework>AVFoundation</framework>
+        <framework>CoreGraphics</framework>
+        <framework>CoreMedia</framework>
         <framework>CoreMotion</framework>
         <framework>StoreKit</framework>
     </frameworks>
