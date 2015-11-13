@@ -29,9 +29,11 @@
         <framework>Social</framework>
         <framework>StoreKit</framework>
         <framework>SystemConfiguration</framework>
-        <framework>WebKit</framework>
         <framework>iAd</framework>
     </frameworks>
+    <weakFrameworks>
+        <framework>WebKit</framework>
+    </weakFrameworks>
     <forceLinkClasses>
         <pattern>org.robovm.pods.heyzap.ads.HZAdMobBannerSupport</pattern>
     </forceLinkClasses>
