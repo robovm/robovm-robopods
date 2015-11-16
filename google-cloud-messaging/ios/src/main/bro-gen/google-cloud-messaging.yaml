@@ -1,0 +1,75 @@
+package: org.robovm.pods.google.cloudmessaging
+framework: GoogleCloudMessaging
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+clang_args: ['-x', 'objective-c']
+header_root: '/'
+headers:
+    - GoogleCloudMessaging.lib/Headers/GoogleCloudMessaging.h
+typedefs:
+    GCMPubSubCompletion: '@Block GCMSubscriptionCallback'
+    GCMServiceConnectCompletion: '@Block GCMServiceConnectionCallback'
+    
+enums:
+    GCMLogLevel: {}
+    GCMServiceErrorCode: {}
+        
+classes:
+    GCMConfig: # DONE
+        methods:
+            '+defaultConfig':
+                property: true
+    GCMPubSub: # DONE
+        methods:
+            '+sharedInstance':
+                property: true
+            '-subscribeWithToken:topic:options:handler:':
+                name: subscribe
+            '-unsubscribeWithToken:topic:options:handler:':
+                name: unsubscribe
+    GCMService: #DONE
+        methods:
+            '+sharedInstance':
+                property: true
+            '-startWithConfig:':
+                name: start
+            '-teardown':
+                name: teardown
+            '-appDidReceiveMessage:':
+                name: appDidReceiveMessage
+            '-connectWithHandler:':
+                name: connect
+            '-disconnect':
+                name: disconnect
+            '-sendMessage:to:withId:':
+                name: sendMessage
+            '-sendMessage:to:timeToLive:withId:':
+                name: sendMessage
+
+protocols:
+    GCMReceiverDelegate: # DONE
+        methods:
+            '-willSendDataMessageWithID:error:':
+                name: onSendError
+            '-didSendDataMessageWithID:':
+                name: onMessageSent
+            '-didDeleteMessagesOnServer':
+                name: onDeletedMessages
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?GGL.*):
+        class: GCMService
+        name: 'Function__#{g[0]}'
+
+values:
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?GGL.*):
+        class: GCMService
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?GGL.*):
+        class: GCMService
+        name: 'Constant__#{g[0]}'

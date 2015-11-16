@@ -172,5 +172,11 @@
         <module>google-signin</module>
         <module>heyzap</module>
         <module>parse</module>
+        <module>google-symbol-utilities</module>
+        <module>google-utilities</module>
+        <module>google-interchange-utilities</module>
+        <module>google-networking-utilities</module>
+        <module>google-instance-id</module>
+        <module>google-cloud-messaging</module>
     </modules>
 </project>

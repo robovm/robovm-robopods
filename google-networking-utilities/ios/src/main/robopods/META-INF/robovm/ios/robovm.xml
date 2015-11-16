@@ -1,0 +1,6 @@
+<config>    
+    <libs>
+		<lib>libs/libGTMSessionFetcher_core.a</lib>
+		<lib>libs/libGTMSessionFetcher_full.a</lib>
+    </libs>
+</config>
