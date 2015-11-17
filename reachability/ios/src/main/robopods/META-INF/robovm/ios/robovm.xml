@@ -1,0 +1,5 @@
+<config>    
+    <frameworks>
+        <framework>SystemConfiguration</framework>
+    </frameworks>
+</config>
