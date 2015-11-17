@@ -42,6 +42,8 @@ If you want to use the latest and greatest of every RoboPod, use the latest snap
 
 > 1.9.1-SNAPSHOT
 
+To prevent compatibility issues make sure you also use the same RoboVM version.
+
 ## List of available RoboPods for iOS
 
 |                  Name                   | Version | Dependency                                      |
@@ -58,3 +60,4 @@ If you want to use the latest and greatest of every RoboPod, use the latest snap
 | [Google SignIn](google-signin/)         | 2.4.0   | org.robovm:robopods-google-signin-ios:1.9.0     |
 | [Heyzap](heyzap/)                       | 9.2.4   | org.robovm:robopods-heyzap-ios:1.9.0            |
 | [Parse](parse/)                         | 1.9.1   | org.robovm:robopods-parse-ios:1.9.0             |
+| [Reachability](reachability/)           | 1.0     | org.robovm:robopods-reachability-ios:1.9.0      |
