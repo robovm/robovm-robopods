@@ -78,7 +78,7 @@
  *
  *  @param viewController The view controller which should present the `SKStoreProductViewController`.
  *  @param storeDelegate  The delegate for the `SKStoreProductViewController`. The delegate should dismiss the `SKStoreProductViewController` when `productViewControllerDidFinish:` is called on it.
- *  @param completion     In rare cases, `SKStoreProductViewController` will fail to load the App Store, as described in `loadProductWithParameters:completionBlock:`. This method will call the completion block with the values that API returns. If the `SKStoreProductViewController` fails to load, we open the App Store App using `[UIApplication openURL:]`.
+ *  @param completion     In rare cases, `SKStoreProductViewController` will fail to load the App Store modally, as described in `loadProductWithParameters:completionBlock:`. We may also choose not to use the `SKStoreProductViewController` under certain error conditions. This block's `result` will be set to `YES` if the `SKStoreProductViewController` was presented, or `NO` otherwise. The `error` may contain more information on the failure when `result` is `NO`. If we do not load a `SKStoreProductViewController` successfully, we will open the App Store App directly using `[UIApplication openURL:]` instead.
  *
  *  @return Returns the SKStoreProductViewController, if we create one, and otherwise returns `nil`. Note that even if we create an `SKStoreProductViewController`, it won't necessarily be presented (see the description of the `completion` parameter).
  

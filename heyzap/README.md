@@ -6,7 +6,7 @@ Mobile Advertising done right.
 
 | Platform    | Version |
 |-------------|---------|
-| [iOS](ios/) | 9.2.4   |
+| [iOS](ios/) | 9.2.7   |
 |             |         |
 
 ## Official website
