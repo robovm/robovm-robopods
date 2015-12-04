@@ -24,11 +24,11 @@ public class NetworkReachability extends NSObject {
     private final boolean reachableOnWWAN;
 
     public static NetworkReachability forHostname(String hostname) {
-        return new NetworkReachability(SCNetworkReachability.create(hostname));
+        return new NetworkReachability(new SCNetworkReachability(hostname));
     }
 
     public static NetworkReachability forAddress(InetSocketAddress hostAddress) {
-        return new NetworkReachability(SCNetworkReachability.create(hostAddress));
+        return new NetworkReachability(new SCNetworkReachability(hostAddress));
     }
 
     public static NetworkReachability forInternetConnection() {
