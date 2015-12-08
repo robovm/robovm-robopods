@@ -44,6 +44,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <robovm.version>${project.version}</robovm.version>
         <robopods.version>${project.version}</robopods.version>
+        <android.version>4.1.1.4</android.version>
     </properties>
 
     <dependencyManagement>
@@ -160,6 +161,8 @@
     </pluginRepositories>
 
     <modules>
+        <module>components</module>
+    
         <module>bolts</module>
         <module>chartboost</module>
         <module>facebook</module>
