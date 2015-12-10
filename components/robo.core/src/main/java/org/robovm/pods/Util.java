@@ -1,6 +1,6 @@
 package org.robovm.pods;
 
-public class Util {
+public final class Util {
     /**
      * Checks that the specified object reference is not {@code null}. This
      * method is designed primarily for doing parameter validation in methods

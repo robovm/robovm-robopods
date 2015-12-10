@@ -5,14 +5,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Objects;
 
 import org.robovm.apple.foundation.NSOperationQueue;
 
+import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
 
@@ -28,27 +33,32 @@ public abstract class Platform {
     private static Platform findPlatform() {
         String vm = System.getProperty("java.runtime.name");
         if (vm.contains("Android Runtime")) {
-            return new Android();
+            return new AndroidPlatform();
         } else if (vm.contains("RoboVM Runtime")) {
-            return new IOS();
+            return new IOSPlatform();
         } else {
-            return new Unknown();
+            return new UnknownPlatform();
         }
     }
 
     private void readImpls() {
-        try (InputStream is = Platform.class.getResourceAsStream("/classes.txt")) {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-            String targetPlatform = getPlatformType().name().toLowerCase();
+        try {
+            Enumeration<URL> resources = Platform.class.getClassLoader().getResources("classes.txt");
+            while (resources.hasMoreElements()) {
+                URL url = resources.nextElement();
+                InputStream is = url.openStream();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+                String targetPlatform = getPlatformType().name().toLowerCase();
 
-            String line;
-            boolean correctPlatform = false;
-            while ((line = reader.readLine()) != null) {
-                line = line.trim();
-                if (correctPlatform && !line.isEmpty()) {
-                    classes.add(Class.forName(line));
-                } else if (line.toLowerCase().contains(targetPlatform)) {
-                    correctPlatform = true;
+                String line;
+                boolean correctPlatform = false;
+                while ((line = reader.readLine()) != null) {
+                    line = line.trim();
+                    if (correctPlatform && !line.isEmpty()) {
+                        classes.add(Class.forName(line));
+                    } else if (line.toLowerCase().contains(targetPlatform)) {
+                        correctPlatform = true;
+                    }
                 }
             }
         } catch (IOException e) {
@@ -108,16 +118,57 @@ public abstract class Platform {
 
     public abstract void runOnUIThread(Runnable runnable);
 
-    static class Android extends Platform {
+    public static final class AndroidPlatform extends Platform {
         final Handler handler;
+        Activity launchActivity;
 
-        Android() {
+        private AndroidPlatform() {
             handler = new Handler(Looper.getMainLooper());
+            setLaunchActivity(findLaunchActivity());
         }
 
         @Override
         PlatformType getPlatformType() {
             return PlatformType.Android;
+        }
+
+        public Activity getLaunchActivity() {
+            return launchActivity;
+        }
+
+        public void setLaunchActivity(Activity mainActivity) {
+            this.launchActivity = mainActivity;
+        }
+
+        private Activity findLaunchActivity() {
+            try {
+                Class<?> activityThreadClass = Class.forName("android.app.ActivityThread");
+                Object activityThread = activityThreadClass.getMethod("currentActivityThread").invoke(null);
+                Field activitiesField = activityThreadClass.getDeclaredField("mActivities");
+                activitiesField.setAccessible(true);
+                Object activities = activitiesField.get(activityThread);
+                Collection<?> values = (Collection<?>) activities.getClass().getDeclaredMethod("values")
+                        .invoke(activities);
+
+                for (Object activityRecord : values) {
+                    Class<?> activityRecordClass = activityRecord.getClass();
+                    Field pausedField = activityRecordClass.getDeclaredField("paused");
+                    pausedField.setAccessible(true);
+                    if (!pausedField.getBoolean(activityRecord)) {
+                        Field activityField = activityRecordClass.getDeclaredField("activity");
+                        activityField.setAccessible(true);
+                        Activity activity = (Activity) activityField.get(activityRecord);
+                        if (activity.getIntent().getCategories().contains("android.intent.category.LAUNCHER")) {
+                            return activity;
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.err.println(
+                        "Couldn't find launch activity! "
+                                + "Specify manually with ((AndroidPlatform) Platform.getPlatform()).setLaunchActivity(activity); to make RoboPods work correctly!");
+            }
+            return null;
         }
 
         @Override
@@ -126,10 +177,10 @@ public abstract class Platform {
         }
     }
 
-    static class IOS extends Platform {
+    public static final class IOSPlatform extends Platform {
         final NSOperationQueue mainQueue;
 
-        IOS() {
+        private IOSPlatform() {
             mainQueue = NSOperationQueue.getMainQueue();
         }
 
@@ -144,7 +195,9 @@ public abstract class Platform {
         }
     }
 
-    static class Unknown extends Platform {
+    public static final class UnknownPlatform extends Platform {
+        private UnknownPlatform() {}
+
         @Override
         PlatformType getPlatformType() {
             return PlatformType.Unknown;
