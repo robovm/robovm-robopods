@@ -1,0 +1,9 @@
+- Android -
+org.robovm.pods.dialog.AndroidAlertDialog
+org.robovm.pods.dialog.AndroidInputDialog
+org.robovm.pods.dialog.AndroidProgressDialog
+
+- iOS -
+org.robovm.pods.dialog.IOSAlertDialog
+org.robovm.pods.dialog.IOSInputDialog
+org.robovm.pods.dialog.IOSProgressDialog
