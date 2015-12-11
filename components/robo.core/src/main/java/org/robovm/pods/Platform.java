@@ -139,7 +139,6 @@ public abstract class Platform {
 
         private AndroidPlatform() {
             handler = new Handler(Looper.getMainLooper());
-            setLaunchActivity(findLaunchActivity());
         }
 
         @Override
@@ -148,6 +147,9 @@ public abstract class Platform {
         }
 
         public Activity getLaunchActivity() {
+            if (launchActivity == null) {
+                launchActivity = findLaunchActivity();
+            }
             return launchActivity;
         }
 
