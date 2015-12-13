@@ -52,7 +52,7 @@ public abstract class Platform {
         } else if (vm.contains("RoboVM Runtime")) {
             return new IOSPlatform();
         } else {
-            return new UnknownPlatform();
+            return new HeadlessPlatform();
         }
     }
 
@@ -212,12 +212,12 @@ public abstract class Platform {
         }
     }
 
-    public static final class UnknownPlatform extends Platform {
-        private UnknownPlatform() {}
+    public static final class HeadlessPlatform extends Platform {
+        private HeadlessPlatform() {}
 
         @Override
         PlatformType getPlatformType() {
-            return PlatformType.Unknown;
+            return PlatformType.Headless;
         }
 
         @Override
