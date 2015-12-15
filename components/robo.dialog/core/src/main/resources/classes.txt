@@ -7,3 +7,8 @@ org.robovm.pods.dialog.AndroidProgressDialog
 org.robovm.pods.dialog.IOSAlertDialog
 org.robovm.pods.dialog.IOSInputDialog
 org.robovm.pods.dialog.IOSProgressDialog
+
+- Headless -
+org.robovm.pods.dialog.HeadlessAlertDialog
+org.robovm.pods.dialog.HeadlessInputDialog
+org.robovm.pods.dialog.HeadlessProgressDialog
