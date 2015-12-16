@@ -69,7 +69,7 @@ public abstract class Platform {
                 boolean correctPlatform = false;
                 while ((line = reader.readLine()) != null) {
                     line = line.trim();
-                    if (correctPlatform && !line.isEmpty()) {
+                    if (correctPlatform && !line.isEmpty() && !line.contains("-")) {
                         classes.add(Class.forName(line));
                     } else if (line.toLowerCase().contains(targetPlatform)) {
                         correctPlatform = true;
