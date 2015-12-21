@@ -4,10 +4,11 @@ Mobile Advertising done right.
 
 ## Available RoboPods
 
-| Platform    | Version |
-|-------------|---------|
-| [iOS](ios/) | 9.2.7   |
-|             |         |
+| Platform            | Version |
+|---------------------|---------|
+| [Android](android/) | 9.3.4   |
+| [iOS](ios/)         | 9.2.7   |
+|                     |         |
 
 ## Official website
 

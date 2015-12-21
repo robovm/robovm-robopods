@@ -34,6 +34,7 @@
     </build>
 
     <modules>
+        <module>android</module>
         <module>ios</module>
     </modules>
 </project>
