@@ -33,6 +33,7 @@ import java.util.Objects;
 import org.robovm.apple.foundation.NSOperationQueue;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 
@@ -136,6 +137,7 @@ public abstract class Platform {
     public static final class AndroidPlatform extends Platform {
         final Handler handler;
         Activity launchActivity;
+        List<ActivityLifecycleListener> lifecycleListeners = new ArrayList<>();
 
         private AndroidPlatform() {
             handler = new Handler(Looper.getMainLooper());
@@ -155,6 +157,10 @@ public abstract class Platform {
 
         public void setLaunchActivity(Activity mainActivity) {
             this.launchActivity = mainActivity;
+        }
+
+        public void registerActivityLifecycleListener(ActivityLifecycleListener listener) {
+            lifecycleListeners.add(listener);
         }
 
         private Activity findLaunchActivity() {
@@ -181,9 +187,8 @@ public abstract class Platform {
                     }
                 }
             } catch (Exception e) {
-                System.err.println(
-                        "Couldn't find launch activity! "
-                                + "Specify manually with ((AndroidPlatform) Platform.getPlatform()).setLaunchActivity(activity); to make RoboPods work correctly!");
+                System.err.println("Couldn't find launch activity! "
+                        + "Specify manually with ((AndroidPlatform) Platform.getPlatform()).setLaunchActivity(activity); to make RoboPods work correctly!");
             }
             return null;
         }
@@ -191,6 +196,14 @@ public abstract class Platform {
         @Override
         public void runOnUIThread(Runnable runnable) {
             handler.post(runnable);
+        }
+
+        // FIXME this is just temporary. We should use a proxy activity that
+        // is launched with the target activity to listen for lifecycle events.
+        public void onActivityResult(int requestCode, int resultCode, Intent data) {
+            for (ActivityLifecycleListener listener : lifecycleListeners) {
+                listener.onActivityResult(requestCode, resultCode, data);
+            }
         }
     }
 
