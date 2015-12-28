@@ -16,19 +16,27 @@
 package org.robovm.pods;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.net.JarURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Objects;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 import org.robovm.apple.foundation.NSOperationQueue;
 
@@ -39,6 +47,9 @@ import android.os.Looper;
 
 public abstract class Platform {
     private static Platform PLATFORM = findPlatform();
+    private static final String ROBOPODS_CLASSES_DIR_NAME = "robopods-classes/";
+    private static final String JAR_URL_SEPARATOR = "!/";
+    private static final String FILE_URL_PREFIX = "file:";
 
     private List<Class<?>> classes = new ArrayList<>();
 
@@ -59,26 +70,96 @@ public abstract class Platform {
 
     private void readImpls() {
         try {
-            Enumeration<URL> resources = Platform.class.getClassLoader().getResources("classes.txt");
+            Enumeration<URL> resources = Platform.class.getClassLoader().getResources(ROBOPODS_CLASSES_DIR_NAME);
             while (resources.hasMoreElements()) {
                 URL url = resources.nextElement();
-                InputStream is = url.openStream();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-                String targetPlatform = getPlatformType().name().toLowerCase();
 
-                String line;
-                boolean correctPlatform = false;
-                while ((line = reader.readLine()) != null) {
-                    line = line.trim();
-                    if (correctPlatform && !line.isEmpty() && !line.contains("-")) {
-                        classes.add(Class.forName(line));
-                    } else if (line.toLowerCase().contains(targetPlatform)) {
-                        correctPlatform = true;
+                if (isJarURL(url)) {
+                    URLConnection con = url.openConnection();
+                    JarFile jarFile;
+                    boolean newJarFile = false;
+
+                    if (con instanceof JarURLConnection) {
+                        JarURLConnection jarCon = (JarURLConnection) con;
+                        jarFile = jarCon.getJarFile();
+                    } else {
+                        jarFile = createJarFile(url.getFile());
+                        newJarFile = true;
+                    }
+
+                    for (Enumeration<JarEntry> entries = jarFile.entries(); entries.hasMoreElements();) {
+                        JarEntry entry = entries.nextElement();
+                        if (entry.getName().contains(ROBOPODS_CLASSES_DIR_NAME) && entry.getName().endsWith("txt")) {
+                            readClassesFromStream(jarFile.getInputStream(entry));
+                        }
+                    }
+
+                    if (newJarFile) {
+                        jarFile.close();
+                    }
+                } else {
+                    File file = new File(url.getFile());
+
+                    if (file.isDirectory()) {
+                        final File[] fileList = file.listFiles();
+                        for (final File entry : fileList) {
+                            if (entry.getName().endsWith("txt")) {
+                                readClassesFromStream(new FileInputStream(file));
+                            }
+                        }
                     }
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    private JarFile createJarFile(String urlFile) throws IOException {
+        String jarFileUrl;
+
+        int separatorIndex = urlFile.indexOf(JAR_URL_SEPARATOR);
+        if (separatorIndex != -1) {
+            jarFileUrl = urlFile.substring(0, separatorIndex);
+            if (jarFileUrl.startsWith(FILE_URL_PREFIX)) {
+                try {
+                    return new JarFile(new URI(jarFileUrl).getSchemeSpecificPart());
+                } catch (URISyntaxException ex) {
+                    return new JarFile(jarFileUrl.substring(FILE_URL_PREFIX.length()));
+                }
+            } else {
+                return new JarFile(jarFileUrl);
+            }
+        } else {
+            return new JarFile(urlFile);
+        }
+    }
+
+    private boolean isJarURL(URL url) {
+        String protocol = url.getProtocol();
+        return "jar".equalsIgnoreCase(protocol) || "zip".equalsIgnoreCase(protocol)
+                || "wsjar".equalsIgnoreCase(protocol);
+    }
+
+    private void readClassesFromStream(InputStream is) throws IOException {
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            String targetPlatform = getPlatformType().name().toLowerCase();
+
+            String line;
+            boolean correctPlatform = false;
+            while ((line = reader.readLine()) != null) {
+                line = line.trim();
+                if (correctPlatform && !line.isEmpty()) {
+                    if (!line.contains("-")) {
+                        classes.add(Class.forName(line));
+                    } else {
+                        break;
+                    }
+                } else if (line.toLowerCase().contains(targetPlatform)) {
+                    correctPlatform = true;
+                }
+            }
         } catch (ClassNotFoundException e) {
             // We will end here when there are classes not available to the
             // current platform.
