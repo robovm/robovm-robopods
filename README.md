@@ -58,6 +58,6 @@ To prevent compatibility issues make sure you also use the same RoboVM version.
 | [Google Play Games](google-play-games/) | 2.0     | org.robovm:robopods-google-play-games-ios:1.9.0 |
 | [Google Plus](google-plus/)             | 1.7.1   | org.robovm:robopods-google-plus-ios:1.9.0       |
 | [Google SignIn](google-signin/)         | 2.4.0   | org.robovm:robopods-google-signin-ios:1.9.0     |
-| [Heyzap](heyzap/)                       | 9.2.7   | org.robovm:robopods-heyzap-ios:1.9.0            |
+| [Heyzap](heyzap/)                       | 9.3.4   | org.robovm:robopods-heyzap-ios:1.9.0            |
 | [Parse](parse/)                         | 1.9.1   | org.robovm:robopods-parse-ios:1.9.0             |
 | [Reachability](reachability/)           | 1.0     | org.robovm:robopods-reachability-ios:1.9.0      |

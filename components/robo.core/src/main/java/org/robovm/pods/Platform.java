@@ -16,27 +16,20 @@
 package org.robovm.pods;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.net.JarURLConnection;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 
 import org.robovm.apple.foundation.NSOperationQueue;
 
@@ -47,15 +40,10 @@ import android.os.Looper;
 
 public abstract class Platform {
     private static Platform PLATFORM = findPlatform();
-    private static final String ROBOPODS_CLASSES_DIR_NAME = "robopods-classes/";
-    private static final String JAR_URL_SEPARATOR = "!/";
-    private static final String FILE_URL_PREFIX = "file:";
 
-    private List<Class<?>> classes = new ArrayList<>();
+    private Map<Class<?>, List<Class<?>>> implementations = new HashMap<>();
 
-    private Platform() {
-        readImpls();
-    }
+    private Platform() {}
 
     private static Platform findPlatform() {
         String vm = System.getProperty("java.runtime.name");
@@ -65,104 +53,6 @@ public abstract class Platform {
             return new IOSPlatform();
         } else {
             return new HeadlessPlatform();
-        }
-    }
-
-    private void readImpls() {
-        try {
-            Enumeration<URL> resources = Platform.class.getClassLoader().getResources(ROBOPODS_CLASSES_DIR_NAME);
-            while (resources.hasMoreElements()) {
-                URL url = resources.nextElement();
-
-                if (isJarURL(url)) {
-                    URLConnection con = url.openConnection();
-                    JarFile jarFile;
-                    boolean newJarFile = false;
-
-                    if (con instanceof JarURLConnection) {
-                        JarURLConnection jarCon = (JarURLConnection) con;
-                        jarFile = jarCon.getJarFile();
-                    } else {
-                        jarFile = createJarFile(url.getFile());
-                        newJarFile = true;
-                    }
-
-                    for (Enumeration<JarEntry> entries = jarFile.entries(); entries.hasMoreElements();) {
-                        JarEntry entry = entries.nextElement();
-                        if (entry.getName().contains(ROBOPODS_CLASSES_DIR_NAME) && entry.getName().endsWith("txt")) {
-                            readClassesFromStream(jarFile.getInputStream(entry));
-                        }
-                    }
-
-                    if (newJarFile) {
-                        jarFile.close();
-                    }
-                } else {
-                    File file = new File(url.getFile());
-
-                    if (file.isDirectory()) {
-                        final File[] fileList = file.listFiles();
-                        for (final File entry : fileList) {
-                            if (entry.getName().endsWith("txt")) {
-                                readClassesFromStream(new FileInputStream(file));
-                            }
-                        }
-                    }
-                }
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private JarFile createJarFile(String urlFile) throws IOException {
-        String jarFileUrl;
-
-        int separatorIndex = urlFile.indexOf(JAR_URL_SEPARATOR);
-        if (separatorIndex != -1) {
-            jarFileUrl = urlFile.substring(0, separatorIndex);
-            if (jarFileUrl.startsWith(FILE_URL_PREFIX)) {
-                try {
-                    return new JarFile(new URI(jarFileUrl).getSchemeSpecificPart());
-                } catch (URISyntaxException ex) {
-                    return new JarFile(jarFileUrl.substring(FILE_URL_PREFIX.length()));
-                }
-            } else {
-                return new JarFile(jarFileUrl);
-            }
-        } else {
-            return new JarFile(urlFile);
-        }
-    }
-
-    private boolean isJarURL(URL url) {
-        String protocol = url.getProtocol();
-        return "jar".equalsIgnoreCase(protocol) || "zip".equalsIgnoreCase(protocol)
-                || "wsjar".equalsIgnoreCase(protocol);
-    }
-
-    private void readClassesFromStream(InputStream is) throws IOException {
-        try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-            String targetPlatform = getPlatformType().name().toLowerCase();
-
-            String line;
-            boolean correctPlatform = false;
-            while ((line = reader.readLine()) != null) {
-                line = line.trim();
-                if (correctPlatform && !line.isEmpty()) {
-                    if (!line.contains("-")) {
-                        classes.add(Class.forName(line));
-                    } else {
-                        break;
-                    }
-                } else if (line.toLowerCase().contains(targetPlatform)) {
-                    correctPlatform = true;
-                }
-            }
-        } catch (ClassNotFoundException e) {
-            // We will end here when there are classes not available to the
-            // current platform.
         }
     }
 
@@ -180,27 +70,67 @@ public abstract class Platform {
         if (!type.isInterface()) {
             throw new IllegalArgumentException("type must be an interface");
         }
-        Class<?> target = null;
-        for (Class<?> c : classes) {
-            if (Arrays.asList(c.getInterfaces()).contains(type)) {
-                target = c;
-                break;
-            }
+
+        List<Class<?>> classes = implementations.get(type);
+        if (classes == null) {
+            classes = findImplementations(type);
+            implementations.put(type, classes);
         }
-        if (target != null) {
-            try {
-                Constructor<?> construct = target.getDeclaredConstructor(getClassesOfArguments(args));
-                construct.setAccessible(true);
-                return (T) construct.newInstance(args);
-            } catch (InstantiationException
-                    | IllegalAccessException
-                    | IllegalArgumentException
-                    | InvocationTargetException
-                    | NoSuchMethodException e) {
-                throw new AssertionError(e);
-            }
+        if (classes.size() > 0) {
+            Class<?> target = classes.get(0); // We only use the first at the
+                                              // moment.
+            return (T) constructInstance(target, args);
         }
         throw new IllegalArgumentException("No class found that implements " + type.getSimpleName());
+    }
+
+    @SuppressWarnings("unchecked")
+    private <T> T constructInstance(Class<T> type, Object... args) {
+        try {
+            Constructor<?> construct = type.getDeclaredConstructor(getClassesOfArguments(args));
+            construct.setAccessible(true);
+            return (T) construct.newInstance(args);
+        } catch (InstantiationException
+                | IllegalAccessException
+                | IllegalArgumentException
+                | InvocationTargetException
+                | NoSuchMethodException e) {
+            throw new AssertionError(e);
+        }
+    }
+
+    private List<Class<?>> findImplementations(Class<?> type) {
+        List<Class<?>> classes = new ArrayList<>();
+        try {
+            Enumeration<URL> resources = Platform.class.getClassLoader().getResources("services/" + type.getName());
+            while (resources.hasMoreElements()) {
+                URL url = resources.nextElement();
+                InputStream is = url.openStream();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+                String targetPlatform = getPlatformType().name().toLowerCase();
+
+                String line;
+                boolean correctPlatform = false;
+                while ((line = reader.readLine()) != null) {
+                    line = line.trim();
+                    if (correctPlatform && !line.isEmpty()) {
+                        if (!line.contains("#")) {
+                            classes.add(Class.forName(line));
+                        } else {
+                            break;
+                        }
+                    } else if (line.toLowerCase().contains(targetPlatform)) {
+                        correctPlatform = true;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            // We will end here when there are classes not available to the
+            // current platform.
+        }
+        return classes;
     }
 
     private Class<?>[] getClassesOfArguments(Object... args) {
