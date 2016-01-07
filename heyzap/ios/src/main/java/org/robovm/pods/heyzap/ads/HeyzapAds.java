@@ -30,6 +30,7 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.corelocation.*;
 import org.robovm.apple.storekit.*;
 /*</imports>*/
 
@@ -98,14 +99,16 @@ import org.robovm.apple.storekit.*;
     public static native String getDefaultTagName();
     @Method(selector = "remoteData")
     public static native NSDictionary<?, ?> getRemoteData();
+    @Method(selector = "getRemoteDataJsonString")
+    public static native String getRemoteDataJsonString();
+    @Method(selector = "demographicInformation")
+    public static native HZDemographics getDemographicInformation();
     @Method(selector = "presentMediationDebugViewController")
     public static native void presentMediationDebugViewController();
     @Method(selector = "pauseExpensiveWork")
     public static native void pauseExpensiveWork();
     @Method(selector = "resumeExpensiveWork")
     public static native void resumeExpensiveWork();
-    @Method(selector = "getRemoteDataJsonString")
-    public static native String getRemoteDataJsonString();
     @Method(selector = "onIAPPurchaseComplete:productName:price:")
     public static native void onIAPPurchaseComplete(String productId, String productName, NSDecimalNumber price);
     /*</methods>*/

@@ -22,10 +22,21 @@
  *  The name of the game being advertised, e.g. "Clash of Clans". This property is guaranteed to be non-nil.
  */
 @property (nonatomic, readonly) NSString *appName;
+
+/**
+ *  A very short phrase prompting the user to act, e.g. "Install Now". This property is guaranteed to be non-nil.
+ */
+@property (nonatomic, readonly) NSString *callToAction;
+
 /**
  *  The URL of the game's icon. Images are 256x256 px PNGs. These images do not necessarily already have rounded corners, so you'll need to apply a mask or corner radius yourself. Guaranteed to be non-nil.
  */
-@property (nonatomic, readonly) NSURL *iconURL;
+@property (nonatomic, readonly) NSURL *iconURL __attribute__((deprecated("Use the `url` property of `iconImage` instead.")));
+
+/**
+ *  The icon for the game. Images are 256x256 px PNGs. These images do not necessarily already have rounded corners, so you'll need to apply a mask or corner radius yourself. Guaranteed to be non-nil.
+ */
+@property (nonatomic, readonly) HZNativeAdImage *iconImage;
 
 /**
  *  A large landscape image. Usually this will be non-nil, but this can't be guaranteed (for example, an advertiser might only upload portrait creatives).

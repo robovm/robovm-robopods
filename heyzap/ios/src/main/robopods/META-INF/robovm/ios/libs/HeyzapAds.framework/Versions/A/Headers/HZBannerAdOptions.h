@@ -62,18 +62,45 @@ typedef NS_ENUM(NSUInteger, HZAdMobBannerSize){
     HZAdMobBannerSizeFullBanner,
 };
 
+/** The constant for a banner 320 points wide and 50 points high. */
+extern const CGSize HZInMobiBannerSize320x50;
+/** The constant for a banner 468 points wide and 60 points high. */
+extern const CGSize HZInMobiBannerSize468x60;
+/** The constant for a banner 480 points wide and 75 points high. */
+extern const CGSize HZInMobiBannerSize480x75;
+/** The constant for a banner 728 points wide and 90 points high. */
+extern const CGSize HZInMobiBannerSize728x90;
+
 @interface HZBannerAdOptions : NSObject <NSCopying>
 
 /**
  *  The size to use for Facebook Audience Network banners. Defaults to HZFacebookBannerSizeFlexibleWidthHeight50.
  */
 @property (nonatomic) HZFacebookBannerSize facebookBannerSize;
+
 /**
  *  The size to use for Admob banners.
  */
 @property (nonatomic) HZAdMobBannerSize admobBannerSize;
 
-// iAds does not offer sizing options. Please refer to the `ADBannerView` documentation for information on ad sizes.
+/**
+ *  InMobi allows setting an arbitrary size to use for banners, but only some intrinsic banner sizes are supported. 
+ *  It's recommended that you choose one of the `HZInMobiBannerSize` constants above.
+ *  If you choose an unsupported size, InMobi may scale a similar sized ad to the size you requested.
+ *
+ *  If you don't select a size, a default size is used based on the current orientation and interface idiom:
+ *  Portrait iPhones: `HZInMobiBannerSize320x50`
+ *  Landscape iPhones: `HZInMobiBannerSize468x60`
+ *  iPads: `HZInMobiBannerSize728x90`
+ */
+@property (nonatomic) CGSize inMobiBannerSize;
+
+#pragma mark - iAd
+
+// iAd does not offer sizing options. Please refer to the `ADBannerView` documentation for information on ad sizes.
+
+/// @name Other Banner Options
+#pragma mark - Other Banner Options
 
 /**
  *  The view controller to present the ad from. 

@@ -30,6 +30,7 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.corelocation.*;
 import org.robovm.apple.storekit.*;
 /*</imports>*/
 
@@ -61,12 +62,16 @@ import org.robovm.apple.storekit.*;
     public static native void setDebugLevel(HZDebugLevel debugLevel);
     @Method(selector = "debugLevel")
     public static native HZDebugLevel getDebugLevel();
+    @Method(selector = "debug:")
+    public static native void debug(String message);
     @Method(selector = "info:")
     public static native void info(String message);
     @Method(selector = "error:")
     public static native void error(String message);
-    @Method(selector = "debug:")
-    public static native void debug(String message);
+    @Method(selector = "always:")
+    public static native void always(String message);
+    @Method(selector = "log:atDebugLevel:")
+    public static native void log(String message, HZDebugLevel debugLevel);
     @Method(selector = "isThirdPartyLoggingEnabled")
     public static native boolean isThirdPartyLoggingEnabled();
     @Method(selector = "setThirdPartyLoggingEnabled:")

@@ -30,6 +30,7 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.corelocation.*;
 import org.robovm.apple.storekit.*;
 /*</imports>*/
 
@@ -58,6 +59,10 @@ import org.robovm.apple.storekit.*;
     public native HZAdMobBannerSize getAdmobBannerSize();
     @Property(selector = "setAdmobBannerSize:")
     public native void setAdmobBannerSize(HZAdMobBannerSize v);
+    @Property(selector = "inMobiBannerSize")
+    public native @ByVal CGSize getInMobiBannerSize();
+    @Property(selector = "setInMobiBannerSize:")
+    public native void setInMobiBannerSize(@ByVal CGSize v);
     @Property(selector = "presentingViewController")
     public native UIViewController getPresentingViewController();
     @Property(selector = "setPresentingViewController:", strongRef = true)

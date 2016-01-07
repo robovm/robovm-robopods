@@ -16,6 +16,7 @@
         <framework>CFNetwork</framework>
         <framework>CoreGraphics</framework>
         <framework>CoreImage</framework>
+        <framework>CoreLocation</framework>
         <framework>CoreMedia</framework>
         <framework>CoreMotion</framework>
         <framework>CoreTelephony</framework>

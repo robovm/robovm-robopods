@@ -27,12 +27,10 @@ typedef NS_ENUM(NSUInteger, HZBannerPosition){
     HZBannerPositionBottom,
 };
 
-// In addition to the delegate methods, Heyzap also posts `NSNotification`s for each event. Each the notification's `object` property will the `HZBannerAd` instance issuing the notification.
-
+// In addition to the delegate methods, Heyzap also posts `NSNotification`s for each event. Each notification's `object` property will be the `HZBannerAd` instance issuing the notification, when applicable.
 // This approach gives you the flexibility to have multiple objects listening for information about banners.
 // Since notifications aren't coupled to individual `HZBannerAd` instances, they also ease integration with components not directly related to displaying banners (e.g. an analytics object tracking clicks).
-// Additionally, since listeners are only weakly coupled to individual `HZBannerAd` instances, this also eases integration with
-
+// The `userInfo` property of the NSNotifications may contain more information. These keys may be present in the dictionary: `HZAdTagUserInfoKey` (from `HeyzapAds.h`), `HZNetworkNameUserInfoKey` (from `HeyzapAds.h`), and `NSUnderlyingErrorKey`.
 extern NSString * const kHZBannerAdDidReceiveAdNotification;
 extern NSString * const kHZBannerAdDidFailToReceiveAdNotification;
 extern NSString * const kHZBannerAdWasClickedNotification;
@@ -40,12 +38,12 @@ extern NSString * const kHZBannerAdWillPresentModalViewNotification;
 extern NSString * const kHZBannerAdDidDismissModalViewNotification;
 extern NSString * const kHZBannerAdWillLeaveApplicationNotification;
 
-// The `userInfo` property uses the keys listed below.
 
 /**
  *  The error causing the banner to not load an ad. This key is only available for the `kHZBannerAdDidFailToReceiveAdNotification` notification.
+ *  @deprecated Use `NSUnderlyingErrorKey` instead.
  */
-extern NSString * const kHZBannerAdNotificationErrorKey;
+extern NSString * const kHZBannerAdNotificationErrorKey DEPRECATED_ATTRIBUTE;
 
 @class HZBannerAd;
 

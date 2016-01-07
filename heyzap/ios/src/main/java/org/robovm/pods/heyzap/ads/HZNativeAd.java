@@ -30,6 +30,7 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.corelocation.*;
 import org.robovm.apple.storekit.*;
 /*</imports>*/
 
@@ -52,8 +53,10 @@ import org.robovm.apple.storekit.*;
     /*<properties>*/
     @Property(selector = "appName")
     public native String getAppName();
-    @Property(selector = "iconURL")
-    public native NSURL getIconURL();
+    @Property(selector = "callToAction")
+    public native String getCallToAction();
+    @Property(selector = "iconImage")
+    public native HZNativeAdImage getIconImage();
     @Property(selector = "landscapeCreative")
     public native HZNativeAdImage getLandscapeCreative();
     @Property(selector = "portraitCreative")

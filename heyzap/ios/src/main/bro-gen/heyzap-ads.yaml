@@ -4,22 +4,30 @@ include:
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/corelocation.yaml
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/storekit.yaml
 clang_args: ['-x', 'objective-c']
 header_root: /../robopods/META-INF/robovm/ios/libs
 headers:
     - HeyzapAds.framework/Headers/HeyzapAds.h
+    - HeyzapAds.framework/Headers/HZMediatedNativeAd.h
+    - HeyzapAds.framework/Headers/HZMediatedNativeAdManager.h
+    - HeyzapAds.framework/Headers/HZMediatedNativeAdViewRegisterer.h
 typedefs:
     'void (^)(HZBannerAd *)': '@Block VoidBlock1<HZBannerAd>'
     'void (^)(BOOL, NSError *)': '@Block VoidBlock2<Boolean, NSError>'
     'void (^)(NSError *, HZNativeAdCollection *)': '@Block VoidBlock2<NSError, HZNativeAdCollection>'
+    'void (^)(id<HZMediatedNativeAdViewRegisterer>)': '@Block VoidBlock1<HZMediatedNativeAdViewRegisterer>'
     
 enums:
+    HZAdMobBannerSize: {}
+    HZAdMobNativeAdImageOrientation: {}
     HZAdOptions: {bits: true}
     HZBannerPosition: {}
     HZFacebookBannerSize: {}
-    HZAdMobBannerSize: {}
     HZDebugLevel: {first: HZDebugLevelVerbose}
+    HZMediatedNativeAdType: {}
+    HZPreferredImageOrientation: {}
         
 classes:
     HeyzapAds: # DONE
@@ -38,7 +46,7 @@ classes:
                 trim_after_first_colon: true
             '+startWithPublisherID:.*':
                 name: start
-            '+(defaultTagName|remoteData)':
+            '+(defaultTagName|remoteData|demographicInformation)':
                 property: true
             '+onIAPPurchaseComplete:productName:price:':
                 trim_after_first_colon: true
@@ -51,6 +59,12 @@ classes:
             '+requestBannerWithOptions:success:failure:':
                 name: requestBanner
     HZBannerAdOptions: {} # DONE
+    HZDemographics: {} # DONE
+    HZFetchOptions: # DONE
+        properties:
+            'admobNativeAdTypes':
+                type: List<String>
+                marshaler: NSArray.AsStringListMarshaler
     HZIncentivizedAd: # DONE
         methods:
             '+setDelegate:':
@@ -89,7 +103,26 @@ classes:
                 property: true
             '+.*':
                 trim_after_first_colon: true
+    HZMediatedNativeAd: # DONE
+        methods:
+            '-coverImageWithPreferredOrientation:':
+                name: getCoverImage
+            '-registerViews:':
+                trim_after_first_colon: true
+            '-wrapperView':
+                property: true
+                return_type: UIView
+    HZMediatedNativeAdManager: # DONE
+        methods:
+            '+fetchNativeAdWithOptions:':
+                name: fetchNativeAd
+            '+getNextNativeAdForTag:error:':
+                name: getNextNativeAd
+                throws: NSErrorException
     HZNativeAd: # DONE
+        properties:
+            'iconURL':
+                exclude: true # deprecated
         methods:
             '-presentAppStoreFromViewController:storeDelegate:completion:':
                 name: presentAppStore
@@ -134,12 +167,6 @@ protocols:
                 name: didClickAd
             '-didHideAdWithTag:':
                 name: didHideAd
-    HZIncentivizedAdDelegate: # DONE
-        methods:
-            '-didCompleteAdWithTag:':
-                name: didCompleteAd
-            '-didFailToCompleteAdWithTag:':
-                name: didFailToCompleteAd
     HZBannerAdDelegate: # DONE
         methods:
             '-bannerDidReceiveAd:':
@@ -154,6 +181,21 @@ protocols:
                 name: didDismissModalView
             '-bannerWillLeaveApplication:':
                 name: willLeaveApplication
+    HZIncentivizedAdDelegate: # DONE
+        methods:
+            '-didCompleteAdWithTag:':
+                name: didCompleteAd
+            '-didFailToCompleteAdWithTag:':
+                name: didFailToCompleteAd
+    HZMediatedNativeAdViewRegisterer: # DONE
+        methods:
+            '-registerOtherViews:tappable:':
+                trim_after_first_colon: true
+                parameters:
+                    views:
+                        type: NSArray<UIView>
+            '-register.*':
+                trim_after_first_colon: true
 
 functions:
     # Make sure we don't miss any functions if new ones are introduced in a later version
@@ -164,6 +206,20 @@ functions:
 values:
     kHZBannerAd.*:
         exclude: true
+    HZMediation.*:
+        exclude: true
+    HZAdTagUserInfoKey:
+        exclude: true
+    HZNetworkNameUserInfoKey:
+        exclude: true
+    HZNetworkCallbackNameUserInfoKey:
+        exclude: true
+    HZMediatedNativeAd.*:
+        exclude: true
+
+    HZInMobiBanner(Size.*):
+        class: HZInMobiBannerSize
+        name: '#{g[0]}'
     
     HZNetworkCallback(.*):
         class: HZNetworkCallback
