@@ -22,6 +22,8 @@
 #import "FBAdDefines.h"
 #import "FBAdView.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol FBInterstitialAdDelegate;
 
 /*!
@@ -52,7 +54,7 @@ FB_CLASS_EXPORT
 
  @param placementID The id of the ad placement. You can create your placement id from Facebook developers page.
  */
-- (nonnull instancetype)initWithPlacementID:(nonnull NSString *)placementID;
+- (instancetype)initWithPlacementID:(NSString *)placementID;
 
 /*!
  @property
@@ -86,7 +88,7 @@ FB_CLASS_EXPORT
  @discussion You can implement `interstitialAdDidClick:`, `interstitialAdWillClose:` and `interstitialAdWillClose`
  methods of `FBInterstitialAdDelegate` if you would like to stay informed for thoses events
  */
-- (BOOL)showAdFromRootViewController:(nonnull UIViewController *)rootViewController;
+- (BOOL)showAdFromRootViewController:(UIViewController *)rootViewController;
 
 @end
 
@@ -111,7 +113,7 @@ FB_CLASS_EXPORT
 
  @param interstitialAd An FBInterstitialAd object sending the message.
  */
-- (void)interstitialAdDidClick:(nonnull FBInterstitialAd *)interstitialAd;
+- (void)interstitialAdDidClick:(FBInterstitialAd *)interstitialAd;
 
 /*!
  @method
@@ -122,7 +124,7 @@ FB_CLASS_EXPORT
 
  @param interstitialAd An FBInterstitialAd object sending the message.
  */
-- (void)interstitialAdDidClose:(nonnull FBInterstitialAd *)interstitialAd;
+- (void)interstitialAdDidClose:(FBInterstitialAd *)interstitialAd;
 
 /*!
  @method
@@ -132,7 +134,7 @@ FB_CLASS_EXPORT
 
  @param interstitialAd An FBInterstitialAd object sending the message.
  */
-- (void)interstitialAdWillClose:(nonnull FBInterstitialAd *)interstitialAd;
+- (void)interstitialAdWillClose:(FBInterstitialAd *)interstitialAd;
 
 /*!
  @method
@@ -142,7 +144,7 @@ FB_CLASS_EXPORT
 
  @param interstitialAd An FBInterstitialAd object sending the message.
  */
-- (void)interstitialAdDidLoad:(nonnull FBInterstitialAd *)interstitialAd;
+- (void)interstitialAdDidLoad:(FBInterstitialAd *)interstitialAd;
 
 /*!
  @method
@@ -153,7 +155,7 @@ FB_CLASS_EXPORT
  @param interstitialAd An FBInterstitialAd object sending the message.
  @param error An error object containing details of the error.
  */
-- (void)interstitialAd:(nonnull FBInterstitialAd *)interstitialAd didFailWithError:(nonnull NSError *)error;
+- (void)interstitialAd:(FBInterstitialAd *)interstitialAd didFailWithError:(NSError *)error;
 
 /*!
  @method
@@ -163,6 +165,8 @@ FB_CLASS_EXPORT
 
  @param interstitialAd An FBInterstitialAd object sending the message.
  */
-- (void)interstitialAdWillLogImpression:(nonnull FBInterstitialAd *)interstitialAd;
+- (void)interstitialAdWillLogImpression:(FBInterstitialAd *)interstitialAd;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -20,6 +20,8 @@
 
 #import "FBAdDefines.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 FB_EXPORT NSString * const __nonnull FBAudienceNetworkErrorDomain;
 
 typedef NS_ENUM(NSInteger, FBAdLogLevel) {
@@ -52,7 +54,7 @@ FB_CLASS_EXPORT
  Copy the current device Id from debug log and add it as a test device to get test ads. Apps
  running on emulator will automatically get test ads. Test devices should be added before loadAd is called.
  */
-+ (void)addTestDevice:(nonnull NSString *)deviceHash;
++ (void)addTestDevice:(NSString *)deviceHash;
 
 /*!
  @method
@@ -62,7 +64,7 @@ FB_CLASS_EXPORT
 
  @param devicesHash The array of the device id to use test mode, can be obtained from debug log
  */
-+ (void)addTestDevices:(nonnull NSArray *)devicesHash;
++ (void)addTestDevices:(FB_NSArrayOf(NSString *)*)devicesHash;
 
 /*!
  @method
@@ -95,7 +97,7 @@ FB_CLASS_EXPORT
  @discussion
  This method should never be used in production.
  */
-+ (void)setUrlPrefix:(nonnull NSString *) urlPrefix;
++ (void)setUrlPrefix:(NSString *) urlPrefix;
 
 /*!
  @method
@@ -114,3 +116,5 @@ FB_CLASS_EXPORT
 + (void)setLogLevel:(FBAdLogLevel)level;
 
 @end
+
+NS_ASSUME_NONNULL_END

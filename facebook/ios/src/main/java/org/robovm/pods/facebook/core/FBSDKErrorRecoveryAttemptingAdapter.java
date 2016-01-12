@@ -34,6 +34,7 @@ import org.robovm.pods.bolts.*;
 /*</imports>*/
 
 /*<javadoc>*/
+
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FBSDKErrorRecoveryAttemptingAdapter/*</name>*/ 

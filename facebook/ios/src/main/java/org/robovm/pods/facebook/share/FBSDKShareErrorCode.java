@@ -40,7 +40,8 @@ public enum /*<name>*/FBSDKShareErrorCode/*</name>*/ implements NSErrorCode {
     /*<values>*/
     Reserved(200L),
     OpenGraph(201L),
-    DialogNotAvailable(202L);
+    DialogNotAvailable(202L),
+    Unknown(203L);
     /*</values>*/
 
     /*<bind>*/

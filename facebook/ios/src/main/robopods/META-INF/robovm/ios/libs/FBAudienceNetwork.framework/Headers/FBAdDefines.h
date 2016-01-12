@@ -34,6 +34,37 @@
 #endif
 
 #define FB_CLASS_EXPORT __attribute__((visibility("default")))
+#define FB_DEPRECATED __attribute__((deprecated))
+
+#if __has_attribute(objc_boxable)
+#define FB_OBJC_BOXABLE __attribute__((objc_boxable))
+#else
+#define FB_OBJC_BOXABLE
+#endif
+
+#if __has_feature(objc_generics)
+#define FB_NSArrayOf(x) NSArray<x>
+#define FB_NSMutableArrayOf(x) NSMutableArray<x>
+#define FB_NSDictionaryOf(x,y) NSDictionary<x, y>
+#define FB_NSMutableDictionaryOf(x, y) NSMutableDictionary<x, y>
+#define FB_NSSetOf(x) NSSet<x>
+#define FB_NSMutableSetOf(x) NSMutableSet<x>
+#else
+#define FB_NSArrayOf(x) NSArray
+#define FB_NSMutableArrayOf(x) NSMutableArray
+#define FB_NSDictionaryOf(x,y) NSDictionary
+#define FB_NSMutableDictionaryOf(x, y) NSMutableDictionary
+#define FB_NSSetOf(x) NSSet
+#define FB_NSMutableSetOf(x) NSMutableSet
+#define __covariant
+#endif
+
+#if ! __has_feature(nullability)
+#define NS_ASSUME_NONNULL_BEGIN
+#define NS_ASSUME_NONNULL_END
+#define nullable
+#define __nullable
+#endif
 
 #if __IPHONE_9_0
 #define FBInterfaceOrientationMask UIInterfaceOrientationMask

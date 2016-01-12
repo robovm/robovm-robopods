@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TAGDataLayer() {}
+    protected TAGDataLayer(Handle h, long handle) { super(h, handle); }
     protected TAGDataLayer(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

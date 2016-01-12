@@ -49,6 +49,8 @@ import org.robovm.apple.storekit.*;
     
     /*</properties>*/
     /*<methods>*/
+    @Method(selector = "didInitialize:")
+    void didInitialize(boolean status);
     @Method(selector = "shouldRequestInterstitial:")
     boolean shouldRequestInterstitial(String location);
     @Method(selector = "shouldDisplayInterstitial:")

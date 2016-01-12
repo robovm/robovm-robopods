@@ -23,6 +23,8 @@
 #import "FBNativeAd.h"
 #import "FBNativeAdsManager.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /*!
  @class FBNativeAdTableViewAdProvider
 
@@ -44,7 +46,7 @@ FB_CLASS_EXPORT
 
  @param manager The FBNativeAdsManager which is consumed by this class.
  */
-- (nonnull instancetype)initWithManager:(nonnull FBNativeAdsManager *)manager NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithManager:(FBNativeAdsManager *)manager NS_DESIGNATED_INITIALIZER;
 
 /*!
  @method
@@ -55,7 +57,7 @@ FB_CLASS_EXPORT
  @param indexPath The indexPath to use as a key for this native ad
  @return A FBNativeAd which is loaded and ready to be used.
  */
-- (nonnull FBNativeAd *)tableView:(nonnull UITableView *)tableView nativeAdForRowAtIndexPath:(nonnull NSIndexPath *)indexPath;
+- (FBNativeAd *)tableView:(UITableView *)tableView nativeAdForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 /*!
  @method
@@ -66,7 +68,7 @@ FB_CLASS_EXPORT
  @param stride The frequency that native ads are to appear within the table view
  @return Boolean indicating whether the cell at the path is an ad
  */
-- (BOOL)isAdCellAtIndexPath:(nonnull NSIndexPath *)indexPath forStride:(NSUInteger)stride;
+- (BOOL)isAdCellAtIndexPath:(NSIndexPath *)indexPath forStride:(NSUInteger)stride;
 
 /*!
  @method
@@ -77,7 +79,7 @@ FB_CLASS_EXPORT
  @param stride The frequency that native ads are to appear within the table view
  @return An indexPath adjusted to what it would be in a table view with no ads
  */
-- (nonnull NSIndexPath *)adjustNonAdCellIndexPath:(nonnull NSIndexPath *)indexPath forStride:(NSUInteger)stride;
+- (NSIndexPath *)adjustNonAdCellIndexPath:(NSIndexPath *)indexPath forStride:(NSUInteger)stride;
 
 /*!
  @method
@@ -91,3 +93,5 @@ FB_CLASS_EXPORT
 - (NSUInteger)adjustCount:(NSUInteger)count forStride:(NSUInteger)stride;
 
 @end
+
+NS_ASSUME_NONNULL_END

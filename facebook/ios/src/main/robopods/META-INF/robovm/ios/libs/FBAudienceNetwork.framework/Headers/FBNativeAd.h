@@ -20,6 +20,8 @@
 
 #import "FBAdDefines.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol FBNativeAdDelegate;
 @class FBAdImage;
 
@@ -49,7 +51,7 @@ FB_CLASS_EXPORT
  @property
  @abstract Typed access to the ad star rating. See `FBAdStarRating` for details.
  */
-@property (nonatomic, assign, readonly) struct FBAdStarRating starRating;
+@property (nonatomic, assign, readonly) struct FBAdStarRating starRating FB_DEPRECATED;
 /*!
  @property
  @abstract Typed access to the ad title.
@@ -105,7 +107,7 @@ FB_CLASS_EXPORT
 
  @param placementID The id of the ad placement. You can create your placement id from Facebook developers page.
  */
-- (nonnull instancetype)initWithPlacementID:(nonnull NSString *)placementID NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithPlacementID:(NSString *)placementID NS_DESIGNATED_INITIALIZER;
 
 /*!
  @method
@@ -119,8 +121,8 @@ FB_CLASS_EXPORT
 
  @discussion The whole area of the UIView will be clickable.
  */
-- (void)registerViewForInteraction:(nonnull UIView *)view
-                withViewController:(nonnull UIViewController *)viewController;
+- (void)registerViewForInteraction:(UIView *)view
+                withViewController:(UIViewController *)viewController;
 
 /*!
  @method
@@ -135,9 +137,9 @@ FB_CLASS_EXPORT
  @param clickableViews An array of UIView you created to render the native ads data element, e.g.
  CallToAction button, Icon image, which you want to specify as clickable.
  */
-- (void)registerViewForInteraction:(nonnull UIView *)view
-                withViewController:(nonnull UIViewController *)viewController
-                withClickableViews:(nonnull NSArray *)clickableViews;
+- (void)registerViewForInteraction:(UIView *)view
+                withViewController:(UIViewController *)viewController
+                withClickableViews:(FB_NSArrayOf(UIView *)*)clickableViews;
 
 /*!
  @method
@@ -188,7 +190,7 @@ FB_CLASS_EXPORT
 
  @param nativeAd An FBNativeAd object sending the message.
  */
-- (void)nativeAdDidLoad:(nonnull FBNativeAd *)nativeAd;
+- (void)nativeAdDidLoad:(FBNativeAd *)nativeAd;
 
 /*!
  @method
@@ -198,7 +200,7 @@ FB_CLASS_EXPORT
 
  @param nativeAd An FBNativeAd object sending the message.
  */
-- (void)nativeAdWillLogImpression:(nonnull FBNativeAd *)nativeAd;
+- (void)nativeAdWillLogImpression:(FBNativeAd *)nativeAd;
 
 /*!
  @method
@@ -209,7 +211,7 @@ FB_CLASS_EXPORT
  @param nativeAd An FBNativeAd object sending the message.
  @param error An error object containing details of the error.
  */
-- (void)nativeAd:(nonnull FBNativeAd *)nativeAd didFailWithError:(nonnull NSError *)error;
+- (void)nativeAd:(FBNativeAd *)nativeAd didFailWithError:(NSError *)error;
 
 /*!
  @method
@@ -219,7 +221,7 @@ FB_CLASS_EXPORT
 
  @param nativeAd An FBNativeAd object sending the message.
  */
-- (void)nativeAdDidClick:(nonnull FBNativeAd *)nativeAd;
+- (void)nativeAdDidClick:(FBNativeAd *)nativeAd;
 
 /*!
  @method
@@ -231,7 +233,7 @@ FB_CLASS_EXPORT
 
  @param nativeAd An FBNativeAd object sending the message.
  */
-- (void)nativeAdDidFinishHandlingClick:(nonnull FBNativeAd *)nativeAd;
+- (void)nativeAdDidFinishHandlingClick:(FBNativeAd *)nativeAd;
 
 @end
 
@@ -241,9 +243,9 @@ FB_CLASS_EXPORT
  @abstract
  Represents the Facebook ad star rating, which contains the rating value and rating scale.
  */
-FB_EXPORT struct FBAdStarRating {
-  CGFloat value;
-  NSInteger scale;
+FB_EXPORT FB_OBJC_BOXABLE struct FBAdStarRating {
+    CGFloat value;
+    NSInteger scale;
 } FBAdStarRating;
 
 /*!
@@ -280,7 +282,9 @@ FB_CLASS_EXPORT
  @param width the image width.
  @param height the image height.
  */
-- (nonnull instancetype)initWithURL:(nonnull NSURL *)url width:(NSInteger)width height:(NSInteger)height NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithURL:(NSURL *)url
+                      width:(NSInteger)width
+                     height:(NSInteger)height NS_DESIGNATED_INITIALIZER;
 
 /*!
  @method
@@ -300,26 +304,26 @@ FB_CLASS_EXPORT
  @abstract
  Helper view that draws a star rating based off a native ad.
  */
-FB_CLASS_EXPORT
+FB_CLASS_EXPORT FB_DEPRECATED
 @interface FBAdStarRatingView : UIView
 
 /*!
  @property
  @abstract The current rating from an FBNativeAd. When set, updates the view.
  */
-@property (nonatomic) struct FBAdStarRating rating;
+@property (nonatomic) struct FBAdStarRating rating FB_DEPRECATED;
 
 /*!
  @property
  @abstract The color drawn for filled-in stars. Defaults to yellow.
  */
-@property (strong, nonatomic, nonnull) UIColor *primaryColor;
+@property (strong, nonatomic, nonnull) UIColor *primaryColor FB_DEPRECATED;
 
 /*!
  @property
  @abstract The color drawn for empty stars. Defaults to gray.
  */
-@property (strong, nonatomic, nonnull) UIColor *secondaryColor;
+@property (strong, nonatomic, nonnull) UIColor *secondaryColor FB_DEPRECATED;
 
 /*!
  @method
@@ -330,6 +334,8 @@ FB_CLASS_EXPORT
  @param frame Frame of this view.
  @param starRating Star rating from a native ad.
  */
-- (nonnull instancetype)initWithFrame:(CGRect)frame withStarRating:(struct FBAdStarRating)starRating NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithFrame:(CGRect)frame withStarRating:(struct FBAdStarRating)starRating NS_DESIGNATED_INITIALIZER FB_DEPRECATED;
 
 @end
+
+NS_ASSUME_NONNULL_END

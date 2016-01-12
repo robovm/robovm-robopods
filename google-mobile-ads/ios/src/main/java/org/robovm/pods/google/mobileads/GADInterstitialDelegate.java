@@ -38,7 +38,7 @@ import org.robovm.apple.storekit.*;
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ interface /*<name>*/GADInterstitialDelegate/*</name>*/ 
-    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
+    /*<implements>*/extends GADAdDelegate/*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/

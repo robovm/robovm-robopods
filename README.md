@@ -40,7 +40,7 @@ to your `pom.xml`:
 
 If you want to use the latest and greatest of every RoboPod, use the latest snapshot version for your dependencies:
 
-> 1.9.1-SNAPSHOT
+> 1.12.1-SNAPSHOT
 
 To prevent compatibility issues make sure you also use the same RoboVM version.
 
@@ -49,10 +49,10 @@ To prevent compatibility issues make sure you also use the same RoboVM version.
 |                  Name                   | Version | Dependency                                      |
 |-----------------------------------------|:-------:|-------------------------------------------------|
 | [Bolts](bolts/)                         | 1.2.2   | org.robovm:robopods-bolts-ios:1.12.0            |
-| [Chartboost](chartboost/)               | 6.0.1   | org.robovm:robopods-chartboost-ios:1.12.0       |
-| [Facebook](facebook/)                   | 4.7.1   | org.robovm:robopods-facebook-ios:1.12.0         |
+| [Chartboost](chartboost/)               | 6.1.1   | org.robovm:robopods-chartboost-ios:1.12.0       |
+| [Facebook](facebook/)                   | 4.8.0   | org.robovm:robopods-facebook-ios:1.12.0         |
 | [Flurry](flurry/)                       | 7.3.0   | org.robovm:robopods-flurry-ios:1.12.0           |
-| [Google Analytics](google-analytics/)   | 3.14    | org.robovm:robopods-google-analytics-ios:1.12.0 |
+| [Google Analytics](google-analytics/)   | 3.15    | org.robovm:robopods-google-analytics-ios:1.12.0 |
 | [Google APIs](google-apis/)             |         | org.robovm:robopods-google-apis-ios:1.12.0      |
 | [Google Mobile Ads](google-mobile-ads/) | 7.5.2   | org.robovm:robopods-google-mobile-ads-ios:1.12.0|
 | [Google Play Games](google-play-games/) | 2.0     | org.robovm:robopods-google-play-games-ios:1.12.0|

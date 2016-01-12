@@ -34,6 +34,7 @@ import org.robovm.apple.storekit.*;
 /*</imports>*/
 
 /*<javadoc>*/
+
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/GADCustomEventBannerAdapter/*</name>*/ 

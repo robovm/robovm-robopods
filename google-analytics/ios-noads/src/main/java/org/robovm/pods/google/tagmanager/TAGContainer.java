@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TAGContainer() {}
+    protected TAGContainer(Handle h, long handle) { super(h, handle); }
     protected TAGContainer(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

@@ -34,6 +34,7 @@ import org.robovm.apple.storekit.*;
 /*</imports>*/
 
 /*<javadoc>*/
+
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/ChartboostDelegateAdapter/*</name>*/ 
@@ -51,6 +52,8 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @NotImplemented("didInitialize:")
+    public void didInitialize(boolean status) {}
     @NotImplemented("shouldRequestInterstitial:")
     public boolean shouldRequestInterstitial(String location) { return true; }
     @NotImplemented("shouldDisplayInterstitial:")

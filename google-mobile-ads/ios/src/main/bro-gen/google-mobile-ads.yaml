@@ -47,6 +47,9 @@ classes:
             'categoryExclusions':
                 type: List<String>
                 marshaler: NSArray.AsStringListMarshaler
+        methods:
+            '+updateCorrelator':
+                exclude: true # deprecated
     GADAdLoader: # DONE
         methods:
             '-initWithAdUnitID:rootViewController:adTypes:options:':
@@ -124,7 +127,10 @@ classes:
                 name: didDismissScreen
             '+mediatedNativeAdWillLeaveApplication:':
                 name: willLeaveApplication
-    GADMobileAds: {} # DONE
+    GADMobileAds: # DONE
+        methods:
+            '+sharedInstance':
+                property: true
     GADNativeAd: {} # DONE
     GADNativeAdImage: # DONE
         methods:
@@ -185,8 +191,10 @@ classes:
                 parameters:
                     aClass:
                         type: 'Class<? extends GADAdNetworkExtras>'
-            '-setLocation.*':
+            '-setLocationWithLatitude:longitude:accuracy:':
                 name: setLocation
+            '-setLocationWithDescription:':
+                exclude: true # deprecated
             '-tagForChildDirectedTreatment:':
                 trim_after_first_colon: true
             '+request':
@@ -211,6 +219,10 @@ protocols:
         methods:
             '-interstitial:didReceiveCustomRenderedAd:':
                 name: didReceiveCustomRenderedAd
+    GADAdDelegate: # DONE
+        methods:
+            '-ad:shouldChangeAudioSessionToCategory:':
+                name: shouldChangeAudioSessionToCategory
     GADAdLoaderDelegate: # DONE
         methods:
             '-adLoader:didFailToReceiveAdWithError:':
@@ -392,7 +404,7 @@ protocols:
                 name: willLeaveApplication
             '-rewardBasedVideoAd:didRewardUserWithReward:':
                 name: didRewardUser
-            '-rewardBasedVideoAd:didFailToLoadwithError:':
+            '-rewardBasedVideoAd:didFailToLoadWithError:':
                 name: didFailToLoad
 
 functions:

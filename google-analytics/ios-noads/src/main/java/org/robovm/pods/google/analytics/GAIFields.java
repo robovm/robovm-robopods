@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GAIFields() {}
+    protected GAIFields(Handle h, long handle) { super(h, handle); }
     protected GAIFields(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

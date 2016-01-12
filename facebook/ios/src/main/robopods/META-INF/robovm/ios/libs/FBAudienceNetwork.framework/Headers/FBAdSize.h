@@ -21,13 +21,15 @@
 
 #import "FBAdDefines.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /*!
  @typedef FBAdSize
 
  @abstract
  Represents the ad size.
  */
-typedef struct FBAdSize {
+typedef struct FB_OBJC_BOXABLE FBAdSize {
   CGSize size;
 } FBAdSize;
 
@@ -65,3 +67,5 @@ FB_CLASS_EXPORT
 + (FBAdSize)customSize:(CGSize)size;
 
 @end
+
+NS_ASSUME_NONNULL_END

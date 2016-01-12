@@ -20,6 +20,8 @@
 
 #import "FBAdDefines.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol FBMediaViewDelegate;
 @class FBNativeAd;
 
@@ -44,7 +46,7 @@ FB_CLASS_EXPORT
  This is a method to create a media view using the given native ad.
  @param nativeAd The native ad to load media content from.
  */
-- (nonnull instancetype)initWithNativeAd:(nonnull FBNativeAd *)nativeAd;
+- (instancetype)initWithNativeAd:(FBNativeAd *)nativeAd;
 
 /*!
  @property
@@ -78,6 +80,8 @@ FB_CLASS_EXPORT
 
  @param mediaView An FBMediaView object sending the message.
  */
-- (void)mediaViewDidLoad:(nonnull FBMediaView *)mediaView;
+- (void)mediaViewDidLoad:(FBMediaView *)mediaView;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GAIDictionaryBuilder() {}
+    protected GAIDictionaryBuilder(Handle h, long handle) { super(h, handle); }
     protected GAIDictionaryBuilder(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

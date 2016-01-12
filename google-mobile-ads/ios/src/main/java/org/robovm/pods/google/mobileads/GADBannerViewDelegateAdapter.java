@@ -34,10 +34,11 @@ import org.robovm.apple.storekit.*;
 /*</imports>*/
 
 /*<javadoc>*/
+
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/GADBannerViewDelegateAdapter/*</name>*/ 
-    extends /*<extends>*/NSObject/*</extends>*/ 
+    extends /*<extends>*/GADAdDelegateAdapter/*</extends>*/ 
     /*<implements>*/implements GADBannerViewDelegate/*</implements>*/ {
 
     /*<ptr>*/

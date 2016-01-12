@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GAIEcommercePromotion() {}
+    protected GAIEcommercePromotion(Handle h, long handle) { super(h, handle); }
     protected GAIEcommercePromotion(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

@@ -20,6 +20,8 @@
 
 #import "FBAdDefines.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class FBAdImage;
 @class FBNativeAd;
 @class FBNativeAdViewAttributes;
@@ -59,7 +61,7 @@ FB_CLASS_EXPORT
 
  @param nativeAd The native ad to initialize with.
  */
-- (nonnull instancetype)initWithNativeAd:(nonnull FBNativeAd *)nativeAd;
+- (instancetype)initWithNativeAd:(FBNativeAd *)nativeAd;
 
 /*!
  @method
@@ -70,8 +72,8 @@ FB_CLASS_EXPORT
  @param nativeAd The native ad to initialize with.
  @param expandable Controls whether view defaults to expanded or not, see property documentation
  */
-- (nonnull instancetype)initWithNativeAd:(nonnull FBNativeAd *)nativeAd
-                              expandable:(BOOL)expandable;
+- (instancetype)initWithNativeAd:(FBNativeAd *)nativeAd
+                      expandable:(BOOL)expandable;
 
 /*!
  @method
@@ -84,10 +86,10 @@ FB_CLASS_EXPORT
  @param adChoicesLinkURL Native ad AdChoices link URL.
  @param attributes Attributes to configure look and feel.
  */
-- (nonnull instancetype)initWithViewController:(nonnull UIViewController *)viewController
-                                 adChoicesIcon:(nonnull FBAdImage *)adChoicesIcon
-                              adChoicesLinkURL:(nonnull NSURL *)adChoicesLinkURL
-                                    attributes:(nullable FBNativeAdViewAttributes *)attributes;
+- (instancetype)initWithViewController:(UIViewController *)viewController
+                         adChoicesIcon:(FBAdImage *)adChoicesIcon
+                      adChoicesLinkURL:(NSURL *)adChoicesLinkURL
+                            attributes:(nullable FBNativeAdViewAttributes *)attributes;
 /*!
  @method
 
@@ -100,11 +102,11 @@ FB_CLASS_EXPORT
  @param attributes Attributes to configure look and feel.
  @param expandable Controls whether view defaults to expanded or not, see property documentation
  */
-- (nonnull instancetype)initWithViewController:(nonnull UIViewController *)viewController
-                                 adChoicesIcon:(nonnull FBAdImage *)adChoicesIcon
-                              adChoicesLinkURL:(nonnull NSURL *)adChoicesLinkURL
-                                    attributes:(nullable FBNativeAdViewAttributes *)attributes
-                                    expandable:(BOOL)expandable NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithViewController:(UIViewController *)viewController
+                         adChoicesIcon:(FBAdImage *)adChoicesIcon
+                      adChoicesLinkURL:(NSURL *)adChoicesLinkURL
+                            attributes:(nullable FBNativeAdViewAttributes *)attributes
+                            expandable:(BOOL)expandable NS_DESIGNATED_INITIALIZER;
 /*!
  @method
 
@@ -124,3 +126,5 @@ FB_CLASS_EXPORT
 - (void)updateFrameFromSuperview:(UIRectCorner)corner;
 
 @end
+
+NS_ASSUME_NONNULL_END

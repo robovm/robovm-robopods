@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TAGManager() {}
+    protected TAGManager(Handle h, long handle) { super(h, handle); }
     protected TAGManager(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

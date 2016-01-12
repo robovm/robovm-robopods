@@ -22,6 +22,8 @@
 #import "FBNativeAdView.h"
 #import "FBNativeAdsManager.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol FBNativeAdView;
 
 /*!
@@ -125,3 +127,5 @@ FB_CLASS_EXPORT
                                      withMaximum:(NSUInteger)maximumNativeAdCount NS_DESIGNATED_INITIALIZER;
 
 @end
+
+NS_ASSUME_NONNULL_END

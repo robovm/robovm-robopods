@@ -34,6 +34,7 @@ import org.robovm.apple.storekit.*;
 /*</imports>*/
 
 /*<javadoc>*/
+
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/GADRewardBasedVideoAdDelegateAdapter/*</name>*/ 
@@ -63,7 +64,7 @@ import org.robovm.apple.storekit.*;
     public void willLeaveApplication(GADRewardBasedVideoAd rewardBasedVideoAd) {}
     @NotImplemented("rewardBasedVideoAd:didRewardUserWithReward:")
     public void didRewardUser(GADRewardBasedVideoAd rewardBasedVideoAd, GADAdReward reward) {}
-    @NotImplemented("rewardBasedVideoAd:didFailToLoadwithError:")
+    @NotImplemented("rewardBasedVideoAd:didFailToLoadWithError:")
     public void didFailToLoad(GADRewardBasedVideoAd rewardBasedVideoAd, NSError error) {}
     /*</methods>*/
 }

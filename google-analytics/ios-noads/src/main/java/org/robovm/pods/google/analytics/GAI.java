@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GAI() {}
+    protected GAI(Handle h, long handle) { super(h, handle); }
     protected GAI(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /**

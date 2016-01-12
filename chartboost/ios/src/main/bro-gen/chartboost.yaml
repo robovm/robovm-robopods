@@ -64,6 +64,10 @@ classes:
                 parameters:
                     location:
                         type: String
+            '-didInitialize:':
+                trim_after_first_colon: true
+            '-didPrefetchVideos':
+                exclude: true # deprecated
             '+.*':
                 trim_after_first_colon: true
 

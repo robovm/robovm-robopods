@@ -21,6 +21,8 @@
 #import "FBAdDefines.h"
 #import "FBNativeAd.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class FBNativeAdViewAttributes;
 
 /*!
@@ -85,7 +87,7 @@ FB_CLASS_EXPORT
 @interface FBNativeAdViewAttributes : NSObject <NSCopying>
 
 /*!
- ​​@method
+ @method
  @abstract
  This is a method to create native ad view attributes with a dictionary
  */
@@ -162,3 +164,5 @@ FB_CLASS_EXPORT
 + (nonnull instancetype)defaultAttributesForType:(FBNativeAdViewType)type;
 
 @end
+
+NS_ASSUME_NONNULL_END

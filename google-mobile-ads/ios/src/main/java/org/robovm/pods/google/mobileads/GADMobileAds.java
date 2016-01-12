@@ -50,10 +50,15 @@ import org.robovm.apple.storekit.*;
     protected GADMobileAds(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "applicationVolume")
+    public native float getApplicationVolume();
+    @Property(selector = "setApplicationVolume:")
+    public native void setApplicationVolume(float v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "sharedInstance")
+    public static native GADMobileAds getSharedInstance();
     @Method(selector = "disableAutomatedInAppPurchaseReporting")
     public static native void disableAutomatedInAppPurchaseReporting();
     @Method(selector = "disableSDKCrashReporting")

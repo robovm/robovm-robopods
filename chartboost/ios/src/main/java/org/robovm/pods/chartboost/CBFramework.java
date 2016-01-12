@@ -46,10 +46,9 @@ public enum /*<name>*/CBFramework/*</name>*/ implements ValuedEnum {
     Cordova(4L),
     CocoonJS(5L),
     Cocos2dx(6L),
-    MoPub(7L),
-    Fyber(8L),
-    Prime31Unreal(9L),
-    Weeby(10L);
+    Prime31Unreal(7L),
+    Weeby(8L),
+    Other(9L);
     /*</values>*/
 
     /*<bind>*/

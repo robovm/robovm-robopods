@@ -45,6 +45,7 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GAITrackedViewController() {}
+    protected GAITrackedViewController(Handle h, long handle) { super(h, handle); }
     protected GAITrackedViewController(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
