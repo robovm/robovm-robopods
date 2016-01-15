@@ -8,6 +8,7 @@ include:
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/storekit.yaml
     - ../../../../../bolts/ios/src/main/bro-gen/bolts.yaml
 clang_args: ['-x', 'objective-c']
+platforms: [iOS, tvOS, watchOS]
 header_root: /../robopods/META-INF/robovm/ios/libs
 headers:
     - Parse.framework/Headers/Parse.h
@@ -33,6 +34,7 @@ typedefs:
 
 private_typedefs:
     'void (^)(NSString *, NSError *)': '@Block VoidBlock2<String, NSError>'
+    'void (^)(id<ParseMutableClientConfiguration>)': '@Block VoidBlock1<ParseMutableClientConfiguration>'
     
 enums:
     PFCachePolicy: {}
@@ -47,6 +49,10 @@ classes:
         methods:
             '+setApplicationId:clientKey:':
                 name: initialize
+            '+initializeWithConfiguration:':
+                name: initialize
+            '+currentConfiguration':
+                property: true
             '+enableDataSharing.*':
                 name: enableDataSharing
             '+applicationGroupIdentifierForDataSharing':
@@ -55,7 +61,23 @@ classes:
                 property: true
             '+logLevel':
                 property: true
+            '+offlineMessagesEnabled:':
+                exclude: true
+            '+errorMessagesEnabled:':
+                exclude: true
+    ParseClientConfiguration: # DONE
+        methods:
+            '+configurationWithBlock:':
+                name: create
+                constructor: true
+            '+new':
+                exclude: true
     PFACL: # DONE
+        properties:
+            'publicReadAccess':
+                getter: getPublicReadAccess
+            'publicWriteAccess':
+                getter: getPublicWriteAccess
         methods:
             '-getReadAccessForRole.*':
                 name: getRoleReadAccess
@@ -117,6 +139,8 @@ classes:
         methods:
             '+logInInBackground':
                 return_type: BFTask<PFUser>
+            '+logInWithTarget:selector:':
+                exclude: true # deprecated
             '+logInWith.*':
                 name: logIn
             '+isLinkedWithUser:':
@@ -139,6 +163,8 @@ classes:
                 parameters:
                     block:
                         type: '@Block PFFunctionCallback<NSObject>'
+            '+callFunctionInBackground:withParameters:target:selector:':
+                exclude: true # deprecated
             '+callFunctionInBackground.*':
                 trim_after_first_colon: true
     PFConfig: # DONE
@@ -171,6 +197,8 @@ classes:
             '-saveInBackgroundWithProgressBlock:':
                 name: saveInBackground
                 return_type: BFTask<Void>
+            '-saveInBackgroundWithTarget:selector:':
+                exclude: true # deprecated
             '-saveInBackground.*':
                 name: saveInBackground
             '-getData':
@@ -198,6 +226,8 @@ classes:
             '-getDataDownloadStreamInBackgroundWithProgressBlock:':
                 name: getDataDownloadStreamInBackground
                 return_type: BFTask<NSInputStream>
+            '-getDataInBackgroundWithTarget:selector:':
+                exclude: true # deprecated
             '-getDataInBackground.*':
                 name: getDataInBackground
             '-getDataStreamInBackground.*':
@@ -255,13 +285,14 @@ classes:
             '+sharedManager':
                 property: true
     PFObject: # DONE
+        properties:
+            'allKeys':
+                getter: keys
+                type: List<String>
+                marshaler: NSArray.AsStringListMarshaler
         methods:
             '-initWithClassName:':
                 name: init
-            '-allKeys':
-                name: keys
-                return_type: List<String>
-                return_marshaler: NSArray.AsStringListMarshaler
             '-objectForKey:':
                 name: get
             '-setObject:forKey:':
@@ -276,6 +307,8 @@ classes:
             '-relationForKey:':
                 name: getRelation
                 return_type: '<T extends PFObject> PFRelation<T>'
+            '-relationforKey:':
+                exclude: true # deprecated
             '-revertObjectForKey:':
                 name: revert
             '-addObject:forKey:':
@@ -305,12 +338,16 @@ classes:
                 throws: NSErrorException
             '-saveInBackground':
                 return_type: BFTask<Void>
+            '-saveInBackgroundWithTarget:selector:':
+                exclude: true # deprecated
             '-saveInBackgroundWith.*':
                 name: saveInBackground
             '-saveEventually':
                 return_type: BFTask<Void>
             '-saveEventually:':
                 trim_after_first_colon: true
+            '-refresh.*':
+                exclude: true # deprecated
             '-fetch':
                 exclude: true 
             '-fetch:':
@@ -331,6 +368,8 @@ classes:
                 parameters:
                     block:
                         type: '@Block PFGetCallback<PFObject>'
+            '-fetchInBackgroundWithTarget:selector:':
+                exclude: true # deprecated
             '-fetchInBackground.*':
                 name: fetchInBackground
             '-fetchIfNeededInBackground':
@@ -341,6 +380,8 @@ classes:
                 parameters:
                     block:
                         type: '@Block PFGetCallback<PFObject>'
+            '-fetchIfNeededInBackgroundWithTarget:selector:':
+                exclude: true # deprecated
             '-fetchIfNeededInBackground.*':
                 name: fetchIfNeededInBackground
             '-fetchFromLocalDatastore':
@@ -369,6 +410,8 @@ classes:
                 parameters:
                     block:
                         type: '@Block PFDeleteCallback'
+            '-deleteInBackgroundWithTarget:selector:':
+                exclude: true # deprecated
             '-deleteInBackground.*':
                 name: deleteInBackground
             '-deleteEventually':
@@ -430,6 +473,8 @@ classes:
                 parameters:
                     objects:
                         type: NSArray<T>
+            '+saveAllInBackground:target:selector:':
+                exclude: true # deprecated  
             '+saveAllInBackground.*':
                 trim_after_first_colon: true
                 return_type: '<T extends PFObject> void'
@@ -457,6 +502,8 @@ classes:
                 parameters:
                     block:
                         type: '@Block PFDeleteCallback'
+            '+deleteAllInBackground:target:selector:':
+                exclude: true # deprecated
             '+deleteAllInBackground.*':
                 trim_after_first_colon: true
                 return_type: '<T extends PFObject> void'
@@ -496,6 +543,8 @@ classes:
                         type: NSArray<T>
                     block:
                         type: '@Block PFFindCallback<PFObject>'
+            '+fetchAllInBackground:target:selector:':
+                exclude: true # deprecated
             '+fetchAllInBackground.*':
                 trim_after_first_colon: true
                 return_type: '<T extends PFObject> void'
@@ -517,6 +566,8 @@ classes:
                         type: NSArray<T>
                     block:
                         type: '@Block PFFindCallback<PFObject>'
+            '+fetchAllIfNeededInBackground:target:selector:':
+                exclude: true # deprecated
             '+fetchAllIfNeededInBackground.*':
                 trim_after_first_colon: true
                 return_type: '<T extends PFObject> void'
@@ -667,7 +718,7 @@ classes:
                     block:
                         type: '@Block PFSendCallback'
             '-sendPushInBackgroundWithTarget:selector:':
-                name: sendInBackground
+                exclude: true # deprecated
             '+push':
                 exclude: true
             '+sendPushMessageToChannel:withMessage:error:':
@@ -676,6 +727,8 @@ classes:
             '+sendPushMessageToChannelInBackground:withMessage:':
                 name: sendMessageInBackground
                 return_type: BFTask<Void>
+            '+sendPushMessageToChannelInBackground:withMessage:target:selector:':
+                exclude: true # deprecated
             '+sendPushMessageToChannelInBackground:.*':
                 name: sendMessageInBackground
                 parameters:
@@ -703,6 +756,8 @@ classes:
             '+sendPushDataToChannelInBackground:withData:':
                 name: sendDataInBackground
                 return_type: BFTask<Void>
+            '+sendPushDataToChannelInBackground:withData:target:selector:':
+                exclude: true # deprecated
             '+sendPushDataToChannelInBackground.*':
                 name: sendDataInBackground
                 parameters:
@@ -741,6 +796,8 @@ classes:
                 visibility: protected
             '+getSubscribedChannelsInBackground':
                 return_type: BFTask<NSSet<NSString>>
+            '+getSubscribedChannelsInBackgroundWithTarget:selector:':
+                exclude: true # deprecated
             '+getSubscribedChannelsInBackground.*':
                 name: getSubscribedChannelsInBackground
             '+subscribeToChannel:error:':
@@ -749,6 +806,8 @@ classes:
             '+subscribeToChannelInBackground:':
                 name: subscribeInBackground
                 return_type: BFTask<Void>
+            '+subscribeToChannelInBackground:target:selector:':
+                exclude: true # deprecated
             '+subscribeToChannelInBackground:.*':
                 name: subscribeInBackground
             '+unsubscribeFromChannel:error:':
@@ -757,8 +816,14 @@ classes:
             '+unsubscribeFromChannelInBackground:':
                 name: unsubscribeInBackground
                 return_type: BFTask<Void>
+            '+unsubscribeFromChannelInBackground:target:selector:':
+                exclude: true # deprecated
             '+unsubscribeFromChannelInBackground:.*':
                 name: unsubscribeInBackground
+            '-setPushToAndroid:':
+                exclude: true # deprecated
+            '-setPushToIOS:':
+                exclude: true # deprecated
     PFQuery: # DONE
         methods:
             '-initWithClassName:':
@@ -884,6 +949,8 @@ classes:
                 parameters:
                     block:
                         type: '@Block PFGetCallback<PFObject>'
+            '-getObjectInBackgroundWithId:target:selector:':
+                exclude: true # deprecated
             '-getObjectInBackgroundWithId.*':
                 name: getInBackground
             '-findObjects':
@@ -901,6 +968,8 @@ classes:
                 parameters:
                     block:
                         type: '@Block PFFindCallback<PFObject>'
+            '-findObjectsInBackgroundWithTarget:selector:':
+                exclude: true # deprecated
             '-findObjectsInBackground.*':
                 name: findInBackground
             '-getFirstObject':
@@ -918,6 +987,8 @@ classes:
                 parameters:
                     block:
                         type: '@Block PFGetCallback<PFObject>'
+            '-getFirstObjectInBackgroundWithTarget:selector:':
+                exclude: true # deprecated
             '-getFirstObjectInBackgroundWith.*':
                 name: getFirstInBackground
             '-countObjects':
@@ -928,6 +999,8 @@ classes:
             '-countObjectsInBackground':
                 name: countInBackground
                 return_type: BFTask<NSNumber>
+            '-countObjectsInBackgroundWithTarget:selector:':
+                exclude: true # deprecated
             '-countObjectsInBackground.*':
                 name: countInBackground
             '-fromPinWithName:':
@@ -957,6 +1030,8 @@ classes:
             '+getUserObjectWithId:error:':
                 name: getUser
                 throws: NSErrorException
+            '+queryForUser':
+                exclude: true # deprecated
     PFRelation: # DONE
         methods:
             '-query':
@@ -1003,6 +1078,8 @@ classes:
                 parameters:
                     block:
                         type: '@Block PFSignUpCallback'
+            '-signUpInBackgroundWithTarget:selector:':
+                exclude: true # deprecated
             '-signUpInBackgroundWith.*':
                 name: signUpInBackground
             '-linkWithAuthTypeInBackground:authData:':
@@ -1028,6 +1105,8 @@ classes:
             '+logInWithUsernameInBackground:password:':
                 name: logInInBackground
                 return_type: BFTask<PFUser>
+            '+logInWithUsernameInBackground:password:target:selector:':
+                exclude: true # deprecated
             '+logInWithUsernameInBackground.*':
                 name: logInInBackground
             '+become:':
@@ -1038,6 +1117,8 @@ classes:
             '+becomeInBackground:':
                 trim_after_first_colon: true
                 return_type: BFTask<PFUser>
+            '+becomeInBackground:target:selector:':
+                exclude: true # deprecated
             '+becomeInBackground.*':
                 trim_after_first_colon: true
             '+enableRevocableSessionInBackground':
@@ -1061,6 +1142,8 @@ classes:
                 parameters:
                     block:
                         type: '@Block PFRequestPasswordResetCallback'
+            '+requestPasswordResetForEmailInBackground:target:selector:':
+                exclude: true # deprecated
             '+requestPasswordResetForEmailInBackground.*':
                 name: requestPasswordResetInBackground
             '+registerAuthenticationDelegate:forAuthType:':
@@ -1074,6 +1157,8 @@ classes:
                         type: 'NSDictionary<NSString, NSString>'
   
 protocols:
+    ParseMutableClientConfiguration: # DONE
+        skip_adapter: true
     # PFSubclassing  # ignore
     PFUserAuthenticationDelegate: # DONE
         methods:

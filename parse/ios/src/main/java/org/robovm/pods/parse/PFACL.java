@@ -55,7 +55,14 @@ import org.robovm.pods.bolts.*;
     public PFACL(NSCoder aDecoder) { super((SkipInit) null); initObject(init(aDecoder)); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "getPublicReadAccess")
+    public native boolean getPublicReadAccess();
+    @Property(selector = "setPublicReadAccess:")
+    public native void setPublicReadAccess(boolean v);
+    @Property(selector = "getPublicWriteAccess")
+    public native boolean getPublicWriteAccess();
+    @Property(selector = "setPublicWriteAccess:")
+    public native void setPublicWriteAccess(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     public void setReadAccess(String userId, boolean allowed) {
@@ -83,14 +90,6 @@ import org.robovm.pods.bolts.*;
         setRoleWriteAccess0(allowed, role);
     }
     /*<methods>*/
-    @Method(selector = "setPublicReadAccess:")
-    public native void setPublicReadAccess(boolean allowed);
-    @Method(selector = "getPublicReadAccess")
-    public native boolean getPublicReadAccess();
-    @Method(selector = "setPublicWriteAccess:")
-    public native void setPublicWriteAccess(boolean allowed);
-    @Method(selector = "getPublicWriteAccess")
-    public native boolean getPublicWriteAccess();
     @Method(selector = "setReadAccess:forUserId:")
     private native void setReadAccess0(boolean allowed, String userId);
     @Method(selector = "getReadAccessForUserId:")

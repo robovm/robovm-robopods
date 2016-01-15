@@ -35,6 +35,7 @@ import org.robovm.pods.parse.*;
 /*</imports>*/
 
 /*<javadoc>*/
+
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/PFSignUpViewControllerDelegateAdapter/*</name>*/ 

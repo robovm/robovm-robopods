@@ -60,6 +60,10 @@ import org.robovm.pods.bolts.*;
     }
 
     /*<methods>*/
+    @Method(selector = "callFunctionInBackground:withParameters:")
+    public static native <T extends NSObject> BFTask<T> callFunctionInBackground(String function, NSDictionary<?, ?> parameters);
+    @Method(selector = "callFunctionInBackground:withParameters:block:")
+    protected static native void callFunctionInBackground0(String function, NSDictionary<?, ?> parameters, @Block PFFunctionCallback<NSObject> block);
     public static <T extends NSObject> T callFunction(String function, NSDictionary<?, ?> parameters) throws NSErrorException {
        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
        T result = callFunction(function, parameters, ptr);
@@ -68,11 +72,5 @@ import org.robovm.pods.bolts.*;
     }
     @Method(selector = "callFunction:withParameters:error:")
     private static native <T extends NSObject> T callFunction(String function, NSDictionary<?, ?> parameters, NSError.NSErrorPtr error);
-    @Method(selector = "callFunctionInBackground:withParameters:")
-    public static native <T extends NSObject> BFTask<T> callFunctionInBackground(String function, NSDictionary<?, ?> parameters);
-    @Method(selector = "callFunctionInBackground:withParameters:block:")
-    protected static native void callFunctionInBackground0(String function, NSDictionary<?, ?> parameters, @Block PFFunctionCallback<NSObject> block);
-    @Method(selector = "callFunctionInBackground:withParameters:target:selector:")
-    public static native void callFunctionInBackground(String function, NSDictionary<?, ?> parameters, NSObject target, Selector selector);
     /*</methods>*/
 }

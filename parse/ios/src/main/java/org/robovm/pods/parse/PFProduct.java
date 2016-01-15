@@ -36,7 +36,7 @@ import org.robovm.pods.bolts.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
+@Availability({ @PlatformVersion(platform = Platform.iOS), @PlatformVersion(platform = Platform.tvOS) })
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/PFProduct/*</name>*/ 

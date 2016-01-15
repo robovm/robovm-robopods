@@ -48,7 +48,7 @@ To prevent compatibility issues make sure you also use the same RoboVM version.
 
 |                  Name                   | Version | Dependency                                      |
 |-----------------------------------------|:-------:|-------------------------------------------------|
-| [Bolts](bolts/)                         | 1.2.2   | org.robovm:robopods-bolts-ios:1.12.0            |
+| [Bolts](bolts/)                         | 1.5.1   | org.robovm:robopods-bolts-ios:1.12.0            |
 | [Chartboost](chartboost/)               | 6.1.1   | org.robovm:robopods-chartboost-ios:1.12.0       |
 | [Facebook](facebook/)                   | 4.8.0   | org.robovm:robopods-facebook-ios:1.12.0         |
 | [Flurry](flurry/)                       | 7.3.0   | org.robovm:robopods-flurry-ios:1.12.0           |
@@ -59,5 +59,5 @@ To prevent compatibility issues make sure you also use the same RoboVM version.
 | [Google Plus](google-plus/)             | 1.7.1   | org.robovm:robopods-google-plus-ios:1.12.0      |
 | [Google SignIn](google-signin/)         | 2.4.0   | org.robovm:robopods-google-signin-ios:1.12.0    |
 | [Heyzap](heyzap/)                       | 9.3.5   | org.robovm:robopods-heyzap-ios:1.12.0           |
-| [Parse](parse/)                         | 1.9.1   | org.robovm:robopods-parse-ios:1.12.0            |
+| [Parse](parse/)                         | 1.12.0  | org.robovm:robopods-parse-ios:1.12.0            |
 | [Reachability](reachability/)           | 1.0     | org.robovm:robopods-reachability-ios:1.12.0     |

@@ -159,6 +159,10 @@ import org.robovm.pods.bolts.*;
     public native NSObject get(String key);
     @Method(selector = "currentConfig")
     public static native PFConfig getCurrentConfig();
+    @Method(selector = "getConfigInBackground")
+    public static native BFTask<PFConfig> getInBackground();
+    @Method(selector = "getConfigInBackgroundWithBlock:")
+    public static native void getInBackground(@Block PFConfigCallback block);
     public static PFConfig get() throws NSErrorException {
        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
        PFConfig result = get(ptr);
@@ -167,9 +171,5 @@ import org.robovm.pods.bolts.*;
     }
     @Method(selector = "getConfig:")
     private static native PFConfig get(NSError.NSErrorPtr error);
-    @Method(selector = "getConfigInBackground")
-    public static native BFTask<PFConfig> getInBackground();
-    @Method(selector = "getConfigInBackgroundWithBlock:")
-    public static native void getInBackground(@Block PFConfigCallback block);
     /*</methods>*/
 }

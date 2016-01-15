@@ -101,20 +101,27 @@ import org.robovm.pods.bolts.*;
     
     @Method(selector = "setApplicationId:clientKey:")
     public static native void initialize(String applicationId, String clientKey);
+    @Method(selector = "initializeWithConfiguration:")
+    public static native void initialize(ParseClientConfiguration configuration);
+    @Method(selector = "currentConfiguration")
+    public static native ParseClientConfiguration getCurrentConfiguration();
     @Method(selector = "getApplicationId")
     public static native String getApplicationId();
     @Method(selector = "getClientKey")
     public static native String getClientKey();
+    @Availability({ @PlatformVersion(platform = Platform.iOS), @PlatformVersion(platform = Platform.watchOS) })
     @Method(selector = "enableLocalDatastore")
     public static native void enableLocalDatastore();
+    @Availability({ @PlatformVersion(platform = Platform.iOS), @PlatformVersion(platform = Platform.watchOS) })
     @Method(selector = "isLocalDatastoreEnabled")
     public static native boolean isLocalDatastoreEnabled();
-    @Method(selector = "enableDataSharingWithApplicationGroupIdentifier:")
-    public static native void enableDataSharing(String groupIdentifier);
+    @Availability({ @PlatformVersion(platform = Platform.iOS) })
     @Method(selector = "enableDataSharingWithApplicationGroupIdentifier:containingApplication:")
     public static native void enableDataSharing(String groupIdentifier, String bundleIdentifier);
+    @Availability({ @PlatformVersion(platform = Platform.iOS) })
     @Method(selector = "applicationGroupIdentifierForDataSharing")
     public static native String getApplicationGroupIdentifierForDataSharing();
+    @Availability({ @PlatformVersion(platform = Platform.iOS) })
     @Method(selector = "containingApplicationBundleIdentifierForDataSharing")
     public static native String getContainingApplicationBundleIdentifierForDataSharing();
     @Method(selector = "setLogLevel:")

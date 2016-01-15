@@ -136,6 +136,12 @@ import org.robovm.pods.bolts.*;
     public native PFACL getACL();
     @Property(selector = "setACL:")
     public native void setACL(PFACL v);
+    @Property(selector = "allKeys")
+    public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> keys();
+    @Property(selector = "isDataAvailable")
+    public native boolean isDataAvailable();
+    @Property(selector = "isDirty")
+    public native boolean isDirty();
     /*</properties>*/
     /*<members>*//*</members>*/
     public void put(String key, NSObject object) {
@@ -341,8 +347,6 @@ import org.robovm.pods.bolts.*;
     
     @Method(selector = "initWithClassName:")
     protected native @Pointer long init(String newClassName);
-    @Method(selector = "allKeys")
-    public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> keys();
     @Method(selector = "objectForKey:")
     public native NSObject get(String key);
     @Method(selector = "setObject:forKey:")
@@ -371,6 +375,99 @@ import org.robovm.pods.bolts.*;
     public native void increment(String key);
     @Method(selector = "incrementKey:byAmount:")
     public native void increment(String key, NSNumber amount);
+    @Method(selector = "saveInBackground")
+    public native BFTask<Void> saveInBackground();
+    @Method(selector = "saveInBackgroundWithBlock:")
+    public native void saveInBackground(@Block PFSaveCallback block);
+    @Availability({ @PlatformVersion(platform = Platform.iOS) })
+    @Method(selector = "saveEventually")
+    public native BFTask<Void> saveEventually();
+    @Availability({ @PlatformVersion(platform = Platform.iOS) })
+    @Method(selector = "saveEventually:")
+    public native void saveEventually(@Block PFSaveCallback callback);
+    @Method(selector = "fetchInBackground")
+    public native <T extends PFObject> BFTask<T> fetchInBackground();
+    @Method(selector = "fetchInBackgroundWithBlock:")
+    protected native void fetchInBackground0(@Block PFGetCallback<PFObject> block);
+    @Method(selector = "fetchIfNeededInBackground")
+    public native <T extends PFObject> BFTask<T> fetchIfNeededInBackground();
+    @Method(selector = "fetchIfNeededInBackgroundWithBlock:")
+    protected native void fetchIfNeededInBackground0(@Block PFGetCallback<PFObject> block);
+    @Method(selector = "fetchFromLocalDatastoreInBackground")
+    public native <T extends PFObject> BFTask<T> fetchFromLocalDatastoreInBackground();
+    @Method(selector = "fetchFromLocalDatastoreInBackgroundWithBlock:")
+    protected native void fetchFromLocalDatastoreInBackground0(@Block PFGetCallback<PFObject> block);
+    @Method(selector = "deleteInBackground")
+    public native BFTask<Void> deleteInBackground();
+    @Method(selector = "deleteInBackgroundWithBlock:")
+    public native void deleteInBackground(@Block PFDeleteCallback block);
+    @Availability({ @PlatformVersion(platform = Platform.iOS) })
+    @Method(selector = "deleteEventually")
+    public native BFTask<Void> deleteEventually();
+    @Method(selector = "isDirtyForKey:")
+    public native boolean isDirty(String key);
+    @Method(selector = "pinInBackground")
+    public native BFTask<Void> pinInBackground();
+    @Method(selector = "pinInBackgroundWithBlock:")
+    public native void pinInBackground(@Block PFSaveCallback block);
+    @Method(selector = "pinInBackgroundWithName:")
+    public native BFTask<Void> pinInBackground(String name);
+    @Method(selector = "pinInBackgroundWithName:block:")
+    public native void pinInBackground(String name, @Block PFSaveCallback block);
+    @Method(selector = "unpinInBackground")
+    public native BFTask<Void> unpinInBackground();
+    @Method(selector = "unpinInBackgroundWithBlock:")
+    public native void unpinInBackground(@Block PFSaveCallback block);
+    @Method(selector = "unpinInBackgroundWithName:")
+    public native BFTask<Void> unpinInBackground(String name);
+    @Method(selector = "unpinInBackgroundWithName:block:")
+    public native void unpinInBackground(String name, @Block PFSaveCallback block);
+    @Method(selector = "objectWithClassName:")
+    public static native PFObject create(String className);
+    @Method(selector = "objectWithClassName:dictionary:")
+    public static native PFObject create(String className, NSDictionary<?, ?> dictionary);
+    @Method(selector = "objectWithoutDataWithClassName:objectId:")
+    public static native PFObject createWithoutData(String className, String objectId);
+    @Method(selector = "saveAllInBackground:")
+    public static native <T extends PFObject> BFTask<Void> saveAllInBackground(NSArray<T> objects);
+    @Method(selector = "saveAllInBackground:block:")
+    public static native <T extends PFObject> void saveAllInBackground(NSArray<T> objects, @Block PFSaveCallback block);
+    @Method(selector = "deleteAllInBackground:")
+    public static native <T extends PFObject> BFTask<Void> deleteAllInBackground(NSArray<T> objects);
+    @Method(selector = "deleteAllInBackground:block:")
+    public static native <T extends PFObject> void deleteAllInBackground(NSArray<?> objects, @Block PFDeleteCallback block);
+    @Method(selector = "fetchAllInBackground:")
+    public static native <T extends PFObject> BFTask<NSArray<T>> fetchAllInBackground(NSArray<T> objects);
+    @Method(selector = "fetchAllInBackground:block:")
+    protected static native <T extends PFObject> void fetchAllInBackground0(NSArray<T> objects, @Block PFFindCallback<PFObject> block);
+    @Method(selector = "fetchAllIfNeededInBackground:")
+    public static native <T extends PFObject> BFTask<NSArray<T>> fetchAllIfNeededInBackground(NSArray<T> objects);
+    @Method(selector = "fetchAllIfNeededInBackground:block:")
+    protected static native <T extends PFObject> void fetchAllIfNeededInBackground0(NSArray<T> objects, @Block PFFindCallback<PFObject> block);
+    @Method(selector = "pinAllInBackground:")
+    public static native <T extends PFObject> BFTask<Void> pinAllInBackground(NSArray<T> objects);
+    @Method(selector = "pinAllInBackground:block:")
+    public static native <T extends PFObject> void pinAllInBackground(NSArray<T> objects, @Block PFSaveCallback block);
+    @Method(selector = "pinAllInBackground:withName:")
+    public static native <T extends PFObject> void pinAllInBackground(NSArray<T> objects, String name);
+    @Method(selector = "pinAllInBackground:withName:block:")
+    public static native <T extends PFObject> void pinAllInBackground(NSArray<T> objects, String name, @Block PFSaveCallback block);
+    @Method(selector = "unpinAllObjectsInBackground")
+    public static native BFTask<Void> unpinAllInBackground();
+    @Method(selector = "unpinAllObjectsInBackgroundWithBlock:")
+    public static native void unpinAllInBackground(@Block PFSaveCallback block);
+    @Method(selector = "unpinAllObjectsInBackgroundWithName:")
+    public static native BFTask<Void> unpinAllInBackground(String name);
+    @Method(selector = "unpinAllObjectsInBackgroundWithName:block:")
+    public static native void unpinAllInBackground(String name, @Block PFSaveCallback block);
+    @Method(selector = "unpinAllInBackground:")
+    public static native <T extends PFObject> BFTask<Void> unpinAllInBackground(NSArray<T> objects);
+    @Method(selector = "unpinAllInBackground:block:")
+    public static native <T extends PFObject> void unpinAllInBackground(NSArray<T> objects, @Block PFSaveCallback block);
+    @Method(selector = "unpinAllInBackground:withName:")
+    public static native <T extends PFObject> BFTask<Void> unpinAllInBackground(NSArray<T> objects, String name);
+    @Method(selector = "unpinAllInBackground:withName:block:")
+    public static native <T extends PFObject> void unpinAllInBackground(NSArray<T> objects, String name, @Block PFSaveCallback block);
     public boolean save() throws NSErrorException {
        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
        boolean result = save(ptr);
@@ -379,18 +476,6 @@ import org.robovm.pods.bolts.*;
     }
     @Method(selector = "save:")
     private native boolean save(NSError.NSErrorPtr error);
-    @Method(selector = "saveInBackground")
-    public native BFTask<Void> saveInBackground();
-    @Method(selector = "saveInBackgroundWithBlock:")
-    public native void saveInBackground(@Block PFSaveCallback block);
-    @Method(selector = "saveInBackgroundWithTarget:selector:")
-    public native void saveInBackground(NSObject target, Selector selector);
-    @Method(selector = "saveEventually")
-    public native BFTask<Void> saveEventually();
-    @Method(selector = "saveEventually:")
-    public native void saveEventually(@Block PFSaveCallback callback);
-    @Method(selector = "isDataAvailable")
-    public native boolean isDataAvailable();
     public <T extends PFObject> T fetch() throws NSErrorException {
        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
        T result = fetch(ptr);
@@ -407,18 +492,6 @@ import org.robovm.pods.bolts.*;
     }
     @Method(selector = "fetchIfNeeded:")
     private native <T extends PFObject> T fetchIfNeeded(NSError.NSErrorPtr error);
-    @Method(selector = "fetchInBackground")
-    public native <T extends PFObject> BFTask<T> fetchInBackground();
-    @Method(selector = "fetchInBackgroundWithBlock:")
-    protected native void fetchInBackground0(@Block PFGetCallback<PFObject> block);
-    @Method(selector = "fetchInBackgroundWithTarget:selector:")
-    public native void fetchInBackground(NSObject target, Selector selector);
-    @Method(selector = "fetchIfNeededInBackground")
-    public native <T extends PFObject> BFTask<T> fetchIfNeededInBackground();
-    @Method(selector = "fetchIfNeededInBackgroundWithBlock:")
-    protected native void fetchIfNeededInBackground0(@Block PFGetCallback<PFObject> block);
-    @Method(selector = "fetchIfNeededInBackgroundWithTarget:selector:")
-    public native void fetchIfNeededInBackground(NSObject target, Selector selector);
     public <T extends PFObject> T fetchFromLocalDatastore() throws NSErrorException {
        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
        T result = fetchFromLocalDatastore(ptr);
@@ -427,10 +500,6 @@ import org.robovm.pods.bolts.*;
     }
     @Method(selector = "fetchFromLocalDatastore:")
     private native <T extends PFObject> T fetchFromLocalDatastore(NSError.NSErrorPtr error);
-    @Method(selector = "fetchFromLocalDatastoreInBackground")
-    public native <T extends PFObject> BFTask<T> fetchFromLocalDatastoreInBackground();
-    @Method(selector = "fetchFromLocalDatastoreInBackgroundWithBlock:")
-    protected native void fetchFromLocalDatastoreInBackground0(@Block PFGetCallback<PFObject> block);
     public boolean delete() throws NSErrorException {
        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
        boolean result = delete(ptr);
@@ -439,18 +508,6 @@ import org.robovm.pods.bolts.*;
     }
     @Method(selector = "delete:")
     private native boolean delete(NSError.NSErrorPtr error);
-    @Method(selector = "deleteInBackground")
-    public native BFTask<Void> deleteInBackground();
-    @Method(selector = "deleteInBackgroundWithBlock:")
-    public native void deleteInBackground(@Block PFDeleteCallback block);
-    @Method(selector = "deleteInBackgroundWithTarget:selector:")
-    public native void deleteInBackground(NSObject target, Selector selector);
-    @Method(selector = "deleteEventually")
-    public native BFTask<Void> deleteEventually();
-    @Method(selector = "isDirty")
-    public native boolean isDirty();
-    @Method(selector = "isDirtyForKey:")
-    public native boolean isDirty(String key);
     public boolean pin() throws NSErrorException {
        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
        boolean result = pin(ptr);
@@ -467,14 +524,6 @@ import org.robovm.pods.bolts.*;
     }
     @Method(selector = "pinWithName:error:")
     private native boolean pin(String name, NSError.NSErrorPtr error);
-    @Method(selector = "pinInBackground")
-    public native BFTask<Void> pinInBackground();
-    @Method(selector = "pinInBackgroundWithBlock:")
-    public native void pinInBackground(@Block PFSaveCallback block);
-    @Method(selector = "pinInBackgroundWithName:")
-    public native BFTask<Void> pinInBackground(String name);
-    @Method(selector = "pinInBackgroundWithName:block:")
-    public native void pinInBackground(String name, @Block PFSaveCallback block);
     public boolean unpin() throws NSErrorException {
        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
        boolean result = unpin(ptr);
@@ -491,20 +540,6 @@ import org.robovm.pods.bolts.*;
     }
     @Method(selector = "unpinWithName:error:")
     private native boolean unpin(String name, NSError.NSErrorPtr error);
-    @Method(selector = "unpinInBackground")
-    public native BFTask<Void> unpinInBackground();
-    @Method(selector = "unpinInBackgroundWithBlock:")
-    public native void unpinInBackground(@Block PFSaveCallback block);
-    @Method(selector = "unpinInBackgroundWithName:")
-    public native BFTask<Void> unpinInBackground(String name);
-    @Method(selector = "unpinInBackgroundWithName:block:")
-    public native void unpinInBackground(String name, @Block PFSaveCallback block);
-    @Method(selector = "objectWithClassName:")
-    public static native PFObject create(String className);
-    @Method(selector = "objectWithClassName:dictionary:")
-    public static native PFObject create(String className, NSDictionary<?, ?> dictionary);
-    @Method(selector = "objectWithoutDataWithClassName:objectId:")
-    public static native PFObject createWithoutData(String className, String objectId);
     public static <T extends PFObject> boolean saveAll(NSArray<T> objects) throws NSErrorException {
        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
        boolean result = saveAll(objects, ptr);
@@ -513,26 +548,6 @@ import org.robovm.pods.bolts.*;
     }
     @Method(selector = "saveAll:error:")
     private static native <T extends PFObject> boolean saveAll(NSArray<T> objects, NSError.NSErrorPtr error);
-    @Method(selector = "saveAllInBackground:")
-    public static native <T extends PFObject> BFTask<Void> saveAllInBackground(NSArray<T> objects);
-    @Method(selector = "saveAllInBackground:block:")
-    public static native <T extends PFObject> void saveAllInBackground(NSArray<T> objects, @Block PFSaveCallback block);
-    @Method(selector = "saveAllInBackground:target:selector:")
-    public static native <T extends PFObject> void saveAllInBackground(NSArray<T> objects, NSObject target, Selector selector);
-    public static <T extends PFObject> boolean deleteAll(NSArray<T> objects) throws NSErrorException {
-       NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
-       boolean result = deleteAll(objects, ptr);
-       if (ptr.get() != null) { throw new NSErrorException(ptr.get()); }
-       return result;
-    }
-    @Method(selector = "deleteAll:error:")
-    private static native <T extends PFObject> boolean deleteAll(NSArray<T> objects, NSError.NSErrorPtr error);
-    @Method(selector = "deleteAllInBackground:")
-    public static native <T extends PFObject> BFTask<Void> deleteAllInBackground(NSArray<T> objects);
-    @Method(selector = "deleteAllInBackground:block:")
-    public static native <T extends PFObject> void deleteAllInBackground(NSArray<?> objects, @Block PFDeleteCallback block);
-    @Method(selector = "deleteAllInBackground:target:selector:")
-    public static native <T extends PFObject> void deleteAllInBackground(NSArray<T> objects, NSObject target, Selector selector);
     public static <T extends PFObject> void fetchAll(NSArray<T> objects) throws NSErrorException {
        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
        fetchAll(objects, ptr);
@@ -547,18 +562,14 @@ import org.robovm.pods.bolts.*;
     }
     @Method(selector = "fetchAllIfNeeded:error:")
     private static native <T extends PFObject> void fetchAllIfNeeded(NSArray<T> objects, NSError.NSErrorPtr error);
-    @Method(selector = "fetchAllInBackground:")
-    public static native <T extends PFObject> BFTask<NSArray<T>> fetchAllInBackground(NSArray<T> objects);
-    @Method(selector = "fetchAllInBackground:block:")
-    protected static native <T extends PFObject> void fetchAllInBackground0(NSArray<T> objects, @Block PFFindCallback<PFObject> block);
-    @Method(selector = "fetchAllInBackground:target:selector:")
-    public static native <T extends PFObject> void fetchAllInBackground(NSArray<T> objects, NSObject target, Selector selector);
-    @Method(selector = "fetchAllIfNeededInBackground:")
-    public static native <T extends PFObject> BFTask<NSArray<T>> fetchAllIfNeededInBackground(NSArray<T> objects);
-    @Method(selector = "fetchAllIfNeededInBackground:block:")
-    protected static native <T extends PFObject> void fetchAllIfNeededInBackground0(NSArray<T> objects, @Block PFFindCallback<PFObject> block);
-    @Method(selector = "fetchAllIfNeededInBackground:target:selector:")
-    public static native <T extends PFObject> void fetchAllIfNeededInBackground(NSArray<T> objects, NSObject target, Selector selector);
+    public static <T extends PFObject> boolean deleteAll(NSArray<T> objects) throws NSErrorException {
+       NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
+       boolean result = deleteAll(objects, ptr);
+       if (ptr.get() != null) { throw new NSErrorException(ptr.get()); }
+       return result;
+    }
+    @Method(selector = "deleteAll:error:")
+    private static native <T extends PFObject> boolean deleteAll(NSArray<T> objects, NSError.NSErrorPtr error);
     public static <T extends PFObject> boolean pinAll(NSArray<T> objects) throws NSErrorException {
        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
        boolean result = pinAll(objects, ptr);
@@ -575,14 +586,6 @@ import org.robovm.pods.bolts.*;
     }
     @Method(selector = "pinAll:withName:error:")
     private static native <T extends PFObject> boolean pinAll(NSArray<T> objects, String name, NSError.NSErrorPtr error);
-    @Method(selector = "pinAllInBackground:")
-    public static native <T extends PFObject> BFTask<Void> pinAllInBackground(NSArray<T> objects);
-    @Method(selector = "pinAllInBackground:block:")
-    public static native <T extends PFObject> void pinAllInBackground(NSArray<T> objects, @Block PFSaveCallback block);
-    @Method(selector = "pinAllInBackground:withName:")
-    public static native <T extends PFObject> void pinAllInBackground(NSArray<T> objects, String name);
-    @Method(selector = "pinAllInBackground:withName:block:")
-    public static native <T extends PFObject> void pinAllInBackground(NSArray<T> objects, String name, @Block PFSaveCallback block);
     public static boolean unpinAll() throws NSErrorException {
        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
        boolean result = unpinAll(ptr);
@@ -599,14 +602,6 @@ import org.robovm.pods.bolts.*;
     }
     @Method(selector = "unpinAllObjectsWithName:error:")
     private static native boolean unpinAll(String name, NSError.NSErrorPtr error);
-    @Method(selector = "unpinAllObjectsInBackground")
-    public static native BFTask<Void> unpinAllInBackground();
-    @Method(selector = "unpinAllObjectsInBackgroundWithBlock:")
-    public static native void unpinAllInBackground(@Block PFSaveCallback block);
-    @Method(selector = "unpinAllObjectsInBackgroundWithName:")
-    public static native BFTask<Void> unpinAllInBackground(String name);
-    @Method(selector = "unpinAllObjectsInBackgroundWithName:block:")
-    public static native void unpinAllInBackground(String name, @Block PFSaveCallback block);
     public static <T extends PFObject> boolean unpinAll(NSArray<T> objects) throws NSErrorException {
        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
        boolean result = unpinAll(objects, ptr);
@@ -623,13 +618,5 @@ import org.robovm.pods.bolts.*;
     }
     @Method(selector = "unpinAll:withName:error:")
     private static native <T extends PFObject> boolean unpinAll(NSArray<T> objects, String name, NSError.NSErrorPtr error);
-    @Method(selector = "unpinAllInBackground:")
-    public static native <T extends PFObject> BFTask<Void> unpinAllInBackground(NSArray<T> objects);
-    @Method(selector = "unpinAllInBackground:block:")
-    public static native <T extends PFObject> void unpinAllInBackground(NSArray<T> objects, @Block PFSaveCallback block);
-    @Method(selector = "unpinAllInBackground:withName:")
-    public static native <T extends PFObject> BFTask<Void> unpinAllInBackground(NSArray<T> objects, String name);
-    @Method(selector = "unpinAllInBackground:withName:block:")
-    public static native <T extends PFObject> void unpinAllInBackground(NSArray<T> objects, String name, @Block PFSaveCallback block);
     /*</methods>*/
 }

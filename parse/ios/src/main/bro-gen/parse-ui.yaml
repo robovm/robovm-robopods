@@ -38,6 +38,9 @@ classes:
                     progressBlock:
                         type: '@Block PFProgressCallback'
     PFLogInView: # DONE
+        properties:
+            '(externalLogInLabel|signUpLabel)':
+                exclude: true # deprecated
         methods:
             '-initWithFields:':
                 name: init
@@ -79,7 +82,7 @@ classes:
                         type: NSArray<NSIndexPath>
             '-loadObjects.*':
                 trim_after_first_colon: true
-                return_type: BFTask<Void>
+                return_type: BFTask<NSArray<T>>
             '-queryForCollection':
                 name: getQuery
                 return_type: PFQuery<T>
@@ -125,11 +128,11 @@ classes:
             '-removeObjectsAtIndexPaths:.*':
                 name: removeObjects
                 parameters:
-                    indexes:
+                    indexPaths:
                         type: NSArray<NSIndexPath>
             '-loadObjects.*':
                 trim_after_first_colon: true
-                return_type: BFTask<Void>
+                return_type: BFTask<NSArray<T>>
             '-queryForTable':
                 name: getQuery
                 return_type: PFQuery<T>
@@ -183,9 +186,21 @@ functions:
         name: 'Function__#{g[0]}'
 
 values:
+    # PFLoginView
+    PFLogInView(.*)AccessibilityIdentifier:
+        enum: PFLogInViewAccessibilityIdentifier
+        name: '#{g[0]}'
+        type: NSString
+
     # PFLogInViewController
     PFLogIn(.*Notification):
         class: PFLogInViewController
+        name: '#{g[0]}'
+        type: NSString
+
+    # PFSignUpView
+    PFSignUpView(.*)AccessibilityIdentifier:
+        enum: PFSignUpViewAccessibilityIdentifier
         name: '#{g[0]}'
         type: NSString
     

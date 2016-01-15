@@ -60,8 +60,6 @@ import org.robovm.pods.bolts.*;
     public static native BFTask<PFUser> logInInBackground();
     @Method(selector = "logInWithBlock:")
     public static native void logIn(@Block PFLogInCallback block);
-    @Method(selector = "logInWithTarget:selector:")
-    public static native void logIn(NSObject target, Selector selector);
     @Method(selector = "isLinkedWithUser:")
     public static native boolean isLinked(PFUser user);
     /*</methods>*/

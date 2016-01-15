@@ -130,15 +130,15 @@ import org.robovm.pods.parse.*;
     @Method(selector = "removeObjectAtIndexPath:animated:")
     public native void removeObject(NSIndexPath indexPath, boolean animated);
     @Method(selector = "removeObjectsAtIndexPaths:")
-    public native void removeObjects(NSArray<NSIndexPath> indexes);
+    public native void removeObjects(NSArray<NSIndexPath> indexPaths);
     @Method(selector = "removeObjectsAtIndexPaths:animated:")
-    public native void removeObjects(NSArray<NSIndexPath> indexes, boolean animated);
+    public native void removeObjects(NSArray<NSIndexPath> indexPaths, boolean animated);
     @Method(selector = "clear")
     public native void clear();
     @Method(selector = "loadObjects")
-    public native BFTask<Void> loadObjects();
+    public native BFTask<NSArray<T>> loadObjects();
     @Method(selector = "loadObjects:clear:")
-    public native BFTask<Void> loadObjects(@MachineSizedSInt long page, boolean clear);
+    public native BFTask<NSArray<T>> loadObjects(@MachineSizedSInt long page, boolean clear);
     @Method(selector = "loadNextPage")
     public native void loadNextPage();
     @Method(selector = "queryForTable")

@@ -82,14 +82,6 @@ import org.robovm.pods.bolts.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    public boolean save() throws NSErrorException {
-       NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
-       boolean result = save(ptr);
-       if (ptr.get() != null) { throw new NSErrorException(ptr.get()); }
-       return result;
-    }
-    @Method(selector = "save:")
-    private native boolean save(NSError.NSErrorPtr error);
     @Method(selector = "saveInBackground")
     public native BFTask<Void> saveInBackground();
     @Method(selector = "saveInBackgroundWithProgressBlock:")
@@ -98,24 +90,6 @@ import org.robovm.pods.bolts.*;
     public native void saveInBackground(@Block PFSaveCallback block);
     @Method(selector = "saveInBackgroundWithBlock:progressBlock:")
     public native void saveInBackground(@Block PFSaveCallback block, @Block PFProgressCallback progressBlock);
-    @Method(selector = "saveInBackgroundWithTarget:selector:")
-    public native void saveInBackground(NSObject target, Selector selector);
-    public NSData getData() throws NSErrorException {
-       NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
-       NSData result = getData(ptr);
-       if (ptr.get() != null) { throw new NSErrorException(ptr.get()); }
-       return result;
-    }
-    @Method(selector = "getData:")
-    private native NSData getData(NSError.NSErrorPtr error);
-    public NSInputStream getDataStream() throws NSErrorException {
-       NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
-       NSInputStream result = getDataStream(ptr);
-       if (ptr.get() != null) { throw new NSErrorException(ptr.get()); }
-       return result;
-    }
-    @Method(selector = "getDataStream:")
-    private native NSInputStream getDataStream(NSError.NSErrorPtr error);
     @Method(selector = "getDataInBackground")
     public native BFTask<NSData> getDataInBackground();
     @Method(selector = "getDataInBackgroundWithProgressBlock:")
@@ -136,8 +110,6 @@ import org.robovm.pods.bolts.*;
     public native void getDataInBackground(@Block PFGetDataCallback resultBlock, @Block PFProgressCallback progressBlock);
     @Method(selector = "getDataStreamInBackgroundWithBlock:progressBlock:")
     public native void getDataStreamInBackground(@Block PFGetDataStreamCallback resultBlock, @Block PFProgressCallback progressBlock);
-    @Method(selector = "getDataInBackgroundWithTarget:selector:")
-    public native void getDataInBackground(NSObject target, Selector selector);
     @Method(selector = "getFilePathInBackground")
     public native BFTask<NSString> getFilePathInBackground();
     @Method(selector = "getFilePathInBackgroundWithProgressBlock:")
@@ -158,5 +130,29 @@ import org.robovm.pods.bolts.*;
     protected static native @Pointer long create(String name, NSData data, String contentType, NSError.NSErrorPtr error);
     @Method(selector = "fileWithData:contentType:")
     protected static native @Pointer long create(NSData data, String contentType);
+    public boolean save() throws NSErrorException {
+       NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
+       boolean result = save(ptr);
+       if (ptr.get() != null) { throw new NSErrorException(ptr.get()); }
+       return result;
+    }
+    @Method(selector = "save:")
+    private native boolean save(NSError.NSErrorPtr error);
+    public NSData getData() throws NSErrorException {
+       NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
+       NSData result = getData(ptr);
+       if (ptr.get() != null) { throw new NSErrorException(ptr.get()); }
+       return result;
+    }
+    @Method(selector = "getData:")
+    private native NSData getData(NSError.NSErrorPtr error);
+    public NSInputStream getDataStream() throws NSErrorException {
+       NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
+       NSInputStream result = getDataStream(ptr);
+       if (ptr.get() != null) { throw new NSErrorException(ptr.get()); }
+       return result;
+    }
+    @Method(selector = "getDataStream:")
+    private native NSInputStream getDataStream(NSError.NSErrorPtr error);
     /*</methods>*/
 }
