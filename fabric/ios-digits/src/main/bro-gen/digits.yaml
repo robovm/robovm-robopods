@@ -8,6 +8,7 @@ include:
     - ../../../../ios-twittercore/src/main/bro-gen/twittercore.yaml
 clang_args: ['-x', 'objective-c']
 header_root: '/../robopods/META-INF/robovm/ios/libs/'
+platforms: [iOS, tvOS]
 headers:
     - DigitsKit.framework/Headers/DigitsKit.h
 typedefs:
@@ -16,8 +17,6 @@ private_typedefs:
     DGTLookupContactsCompletion: '@Block VoidBlock3<NSArray<DGTUser>, String, NSError>'
     DGTDeleteAllUploadedContactsCompletion: '@Block VoidBlock1<NSError>'
     DGTAuthenticationCompletion: '@Block VoidBlock2<DGTSession, NSError>'
-    DGTDeviceRegisterResponse: NSObject # type info not available ???
-    DGTLogInAuthResponse: NSObject # type info not available ???
     
 enums:
     DGTAccountFields: {}
@@ -111,8 +110,14 @@ protocols:
                 name: setChallengeViewController
             '-signUpViewControllerWithDeviceRegisterResponse:':
                 name: getSignUpViewController
+                parameters:
+                    deviceRegisterResponse:
+                        type: NSObject ### TODO type info ???
             '-logInViewControllerWithLogInResponse:':
                 name: getLogInViewController
+                parameters:
+                    logInResponse:
+                        type: NSObject ### TODO type info ???
     DGTCompletionViewController: # DONE
         skip_adapter: true
         methods:

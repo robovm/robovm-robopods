@@ -59,10 +59,13 @@ import org.robovm.pods.twitter.*;
     public native void start(String consumerKey, String consumerSecret, String accessGroup);
     @Method(selector = "session")
     public native DGTSession getSession();
+    @Availability({ @PlatformVersion(platform = Platform.iOS) })
     @Method(selector = "authenticateWithCompletion:")
     public native void authenticate(@Block VoidBlock2<DGTSession, NSError> completion);
+    @Availability({ @PlatformVersion(platform = Platform.iOS) })
     @Method(selector = "authenticateWithViewController:configuration:completion:")
     public native void authenticate(UIViewController viewController, DGTAuthenticationConfiguration configuration, @Block VoidBlock2<DGTSession, NSError> completion);
+    @Availability({ @PlatformVersion(platform = Platform.iOS) })
     @Method(selector = "authenticateWithNavigationViewController:configuration:completionViewController:")
     public native void authenticate(UINavigationController navigationController, DGTAuthenticationConfiguration configuration, UIViewController completionViewController);
     @Method(selector = "logOut")

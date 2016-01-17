@@ -49,8 +49,8 @@ import org.robovm.pods.twitter.*;
     @NotImplemented("challengeViewController:error:")
     public void setChallengeViewController(UIViewController challengeViewController, NSError error) {}
     @NotImplemented("signUpViewControllerWithDeviceRegisterResponse:")
-    public UIViewController getSignUpViewController(NSObject deviceRegisterResponse) { return null; }
+    public UIViewController getSignUpViewController(DGTDeviceRegisterResponse deviceRegisterResponse) { return null; }
     @NotImplemented("logInViewControllerWithLogInResponse:")
-    public UIViewController getLogInViewController(NSObject logInResponse) { return null; }
+    public UIViewController getLogInViewController(DGTLogInAuthResponse logInResponse) { return null; }
     /*</methods>*/
 }
