@@ -1,0 +1,148 @@
+package: org.robovm.pods.digits
+framework: DigitsKit
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/addressbook.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coredata.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
+    - ../../../../ios-twittercore/src/main/bro-gen/twittercore.yaml
+clang_args: ['-x', 'objective-c']
+header_root: '/../robopods/META-INF/robovm/ios/libs/'
+headers:
+    - DigitsKit.framework/Headers/DigitsKit.h
+typedefs:
+private_typedefs:
+    DGTUploadContactsCompletion: '@Block VoidBlock2<DGTContactsUploadResult, NSError>'
+    DGTLookupContactsCompletion: '@Block VoidBlock3<NSArray<DGTUser>, String, NSError>'
+    DGTDeleteAllUploadedContactsCompletion: '@Block VoidBlock1<NSError>'
+    DGTAuthenticationCompletion: '@Block VoidBlock2<DGTSession, NSError>'
+    DGTDeviceRegisterResponse: NSObject # type info not available ???
+    DGTLogInAuthResponse: NSObject # type info not available ???
+    
+enums:
+    DGTAccountFields: {}
+    DGTContactAccessAuthorizationStatus: {}
+    DGTErrorCode: {}
+        
+classes:
+    DGTError: # DONE
+        extends: NSError
+        annotations: ['@StronglyLinked']
+
+    Digits: # DONE
+        methods:
+            '-startWithConsumerKey.*':
+                name: start
+                parameters:
+                    accessGroup:
+                        type: String
+            '-session':
+                property: true
+                return_type: DGTSession
+            '-authenticateWithCompletion:':
+                name: authenticate
+            '-authenticateWithTitle:completion:':
+                exclude: true # deprecated
+            '-authenticateWithViewController:title:completion:':
+                exclude: true # deprecated
+            '-authenticateWithDigitsAppearance:viewController:title:completion:':
+                exclude: true # deprecated
+            '-authenticateWithPhoneNumber:digitsAppearance:viewController:title:completion:':
+                exclude: true # deprecated
+            '-authenticateWithNavigationViewController:phoneNumber:digitsAppearance:title:completionViewController:':
+                exclude: true # deprecated
+            '-authenticateWithViewController:configuration:completion:':
+                name: authenticate
+                parameters:
+                    viewController:
+                        type: UIViewController
+            '-authenticateWithNavigationViewController:configuration:completionViewController:':
+                name: authenticate
+            '+sharedInstance':
+                property: true
+    DGTAPIClient: # DONE
+        methods:
+            '-authenticateWithConfiguration:delegate:completion:':
+                name: authenticate
+    DGTAppearance: {} # DONE
+    DGTAuthenticateButton: # DONE
+        methods:
+            '+buttonWithAuthenticationCompletion:':
+                name: create
+                constructor: true
+    DGTAuthenticationConfiguration: # DONE
+        skip_def_constructor: true
+        methods:
+            '-initWithAccountFields:':
+                name: init
+    DGTCompletionViewController: {} # DONE
+    DGTContacts: # DONE
+        methods:
+            '-initWithUserSession:':
+                name: init
+            '-startContactsUploadWith.*':
+                name: startContactsUpload
+            '-lookupContactMatchesWithCursor:completion:':
+                name: lookupContactMatches
+            '-deleteAllUploadedContactsWithCompletion:':
+                name: deleteAllUploadedContacts
+            '+contactsAccessAuthorizationStatus':
+                property: true
+    DGTContactsUploadResult: # DONE
+        skip_def_constructor: true
+    DGTOAuthSigning:  # DONE
+        skip_def_constructor: true
+        methods:
+            '-initWithAuthConfig:authSession:':
+                name: init
+            '-OAuthEchoHeadersToVerifyCredentialsWithParams:':
+                name: getOAuthEchoHeadersToVerifyCredentials
+                return_type: TWTROAuthEchoHeaders
+    DGTSession: # DONE
+        methods:
+            '-init.*':
+                name: init
+    DGTUser: {} # DONE
+    
+protocols:
+    DGTAPIAuthenticationDelegate: # DONE
+        methods:
+            '-challengeViewController:error:':
+                name: setChallengeViewController
+            '-signUpViewControllerWithDeviceRegisterResponse:':
+                name: getSignUpViewController
+            '-logInViewControllerWithLogInResponse:':
+                name: getLogInViewController
+    DGTCompletionViewController: # DONE
+        skip_adapter: true
+        methods:
+            '-digitsAuthenticationFinishedWithSession:error:':
+                name: digitsAuthenticationFinished
+    DGTSessionUpdateDelegate: # DONE
+        methods:
+            '-digitsSessionHasChanged:':
+                name: digitsSessionHasChanged
+            '-digitsSessionExpiredForUserID:':
+                name: digitsSessionExpired
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?DGT.*):
+        class: DigitsKit
+        name: 'Function__#{g[0]}'
+
+values:
+    DGTErrorDomain:
+        class: DGTError
+        name: getClassDomain
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?DGT.*):
+        class: DigitsKit
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?DGT.*):
+        class: DigitsKit
+        name: 'Constant__#{g[0]}'
