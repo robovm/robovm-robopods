@@ -1,8 +1,6 @@
 <config>    
     <frameworks>
-        <framework>Bolts</framework>
         <framework>Parse</framework>
-        <framework>ParseCrashReporting</framework>
         <framework>ParseFacebookUtilsV4</framework>
         <framework>ParseUI</framework>
         
