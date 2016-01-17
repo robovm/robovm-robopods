@@ -46,9 +46,9 @@ import org.robovm.pods.twitter.*;
     @Method(selector = "challengeViewController:error:")
     void setChallengeViewController(UIViewController challengeViewController, NSError error);
     @Method(selector = "signUpViewControllerWithDeviceRegisterResponse:")
-    UIViewController getSignUpViewController(DGTDeviceRegisterResponse deviceRegisterResponse);
+    UIViewController getSignUpViewController(NSObject deviceRegisterResponse);
     @Method(selector = "logInViewControllerWithLogInResponse:")
-    UIViewController getLogInViewController(DGTLogInAuthResponse logInResponse);
+    UIViewController getLogInViewController(NSObject logInResponse);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/
