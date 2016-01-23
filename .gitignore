@@ -8,3 +8,4 @@ a.out
 .idea/
 target/
 bin/
+gen-external-apklibs/
