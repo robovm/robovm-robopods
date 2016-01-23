@@ -15,11 +15,8 @@
  */
 package org.robovm.pods.fabric.answers;
 
-import org.robovm.apple.foundation.NSNumber;
-
 public final class InviteEvent extends AnswersEvent<InviteEvent> {
     protected String inviteMethod;
-    protected NSNumber loginSucceeded;
 
     public InviteEvent putMethod(String inviteMethod) {
         this.inviteMethod = inviteMethod;
