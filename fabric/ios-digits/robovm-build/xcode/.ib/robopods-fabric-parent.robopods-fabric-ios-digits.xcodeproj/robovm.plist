@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>classToHeader</key>
+	<dict>
+		<key>/Users/BlueRiverTeam/development/robovm/robovm-robopods/fabric/ios-digits/target/classes/org/robovm/pods/digits/DGTAuthenticateButton.class</key>
+		<string>/Users/BlueRiverTeam/development/robovm/robovm-robopods/fabric/ios-digits/robovm-build/xcode/.ib/org.robovm.pods.digits/DGTAuthenticateButton.h</string>
+	</dict>
+	<key>implementationToBuild</key>
+	<dict>
+		<key>BE84D413A3C5450586FB20D2</key>
+		<string>4917A01DF779453BA13A559F</string>
+	</dict>
+</dict>
+</plist>
