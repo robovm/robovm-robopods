@@ -1,0 +1,269 @@
+package: org.robovm.pods.twitter
+framework: TwitterKit
+include: 
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/accounts.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/mediaplayer.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/social.yaml
+    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
+    - ../../../../ios-twittercore/src/main/bro-gen/twittercore.yaml
+clang_args: ['-x', 'objective-c']
+header_root: '/../robopods/META-INF/robovm/ios/libs/'
+headers:
+    - TwitterKit.framework/Headers/TwitterKit.h
+typedefs:
+    TWTRLogInCompletion: '@Block VoidBlock2<TWTRAuthSession, NSError>'
+    TWTRLoadUserCompletion: '@Block VoidBlock2<TWTRUser, NSError>'
+    TWTRLoadTweetCompletion: '@Block VoidBlock2<TWTRTweet, NSError>'
+    TWTRLoadTweetsCompletion: '@Block VoidBlock2<NSArray<TWTRTweet>, NSError>'
+    TWTRNetworkCompletion: '@Block VoidBlock3<NSURLResponse, NSData, NSError>'
+    TWTRJSONRequestCompletion: '@Block VoidBlock3<NSURLResponse, NSObject, NSError>'
+    TWTRTweetActionCompletion: '@Block VoidBlock2<TWTRTweet, NSError>'
+    TWTRComposerCompletion: '@Block VoidBlock1<TWTRComposerResult>'
+    TWTRShareEmailCompletion: '@Block VoidBlock2<String, NSError>'
+    TWTRLoadTimelineCompletion: '@Block VoidBlock3<NSArray<TWTRTweet>, NSObject, NSError>'  # TWTRTimelineCursor unknown type ???
+    TWTRAuthenticationCompletionHandler: '@Block VoidBlock2<TWTRSessionStore, String>'
+    
+enums:
+    TWTRCardType: {}
+    TWTRComposerResult: {}
+    TWTRComposerThemeType: {}
+    TWTRTimelineType: {}
+    TWTRTweetViewStyle: {}
+    TWTRTweetViewTheme: {}
+    
+categories:
+    TWTRDeprecated:
+        exclude: true
+        
+classes:
+    Twitter: # DONE
+        methods:
+            '-startWith.*':
+                name: start
+            '-logInWith.*':
+                name: logIn
+                parameters:
+                    completion:
+                        type: '@Block VoidBlock2<TWTRAuthSession, NSError>'
+            '+sharedInstance':
+                property: true
+    TWTRAPIClient: # DONE
+        methods:
+            '-init.*':
+                name: init
+            '-URLRequestWithMethod:URL:parameters:error:':
+                name: getURLRequest
+                throws: NSErrorException
+            '-sendTwitterRequest:completion:':
+                trim_after_first_colon: true
+            '-loadUserWithID:completion:':
+                trim_after_first_colon: true
+            '-loadTweetWithID:completion:':
+                trim_after_first_colon: true
+            '-loadTweetsWithIDs:completion:':
+                trim_after_first_colon: true
+                parameters:
+                    tweetIDStrings:
+                        type: List<String>
+                        marshaler: NSArray.AsStringListMarshaler
+    TWTRCardConfiguration: # DONE
+        skip_def_constructor: true
+        methods:
+            '+appCardConfigurationWithPromoImage:iPhoneAppID:iPadAppID:googlePlayAppID:':
+                name: create
+                constructor: true
+    TWTRCollectionTimelineDataSource: # DONE
+        skip_def_constructor: true
+        methods:
+            '-init.*':
+                name: init
+    TWTRComposer: # DONE
+        methods:
+            '-set.*':
+                trim_after_first_colon: true
+            '-showFromViewController:completion:':
+                name: show
+    TWTRComposerTheme: # DONE
+        methods:
+            '-init.*':
+                name: init
+    TWTRComposerViewController: # DONE
+        skip_def_constructor: true
+        methods:
+            '-init.*':
+                name: init
+    TWTRListTimelineDataSource: # DONE
+        skip_def_constructor: true
+        properties:
+            'includeRetweets':
+                name: includesRetweets
+        methods:
+            '-init.*':
+                name: init
+    TWTRLogInButton: # DONE
+        properties:
+            'logInCompletion':
+                type: '@Block VoidBlock2<TWTRAuthSession, NSError>'
+        methods:
+            '+buttonWithLogInCompletion:':
+                name: create
+                constructor: true
+                parameters:
+                    completion:
+                        type: '@Block VoidBlock2<TWTRAuthSession, NSError>'
+    TWTROAuthSigning: # DONE
+        skip_def_constructor: true
+        methods:
+            '-init.*':
+                name: init
+    TWTRSearchTimelineDataSource: # DONE
+        skip_def_constructor: true
+        methods:
+            '-init.*':
+                name: init
+    TWTRShareEmailViewController: # DONE
+        methods:
+            '-init.*':
+                name: init
+    TWTRTimelineViewController: # DONE
+        properties:
+            'showTweetActions':
+                name: showsTweetActions
+        methods:
+            '-init.*':
+                name: init
+            '-initWithStyle:':
+                exclude: true # deprecated
+    TWTRTweet: # DONE
+        properties:
+            '(favoriteCount|isFavorited)':
+                exclude: true # deprecated
+        methods:
+            '-tweetWithFavoriteToggled':
+                exclude: true # deprecated
+            '-initWithJSONDictionary:':
+                name: init
+            '-tweetWithLikeToggled':
+                property: true
+            '+tweetsWithJSONArray:':
+                name: getTweets
+                return_type: NSArray<TWTRTweet>
+    TWTRTweetTableViewCell: # DONE
+        methods:
+            '-configureWithTweet:':
+                name: configure
+            '+heightForTweet.*':
+                name: getHeightForTweet
+            '-calculatedHeightForWidth:':
+                exclude: true # deprecated
+    TWTRTweetView: # DONE
+        properties:
+            'showBorder':
+                name: showsBorder
+            'showActionButtons':
+                name: showsActionButtons
+        methods:
+            '-init.*':
+                name: init
+            '-initWithFrame:':
+                exclude: true # deprecated
+            '-sizeThatFits:':
+                name: getSizeThatFits
+            '-configureWithTweet:':
+                name: configure
+    TWTRUser: # DONE
+        methods:
+            '-initWithJSONDictionary:':
+                name: init
+            '+usersWithJSONArray:':
+                name: getUsers
+                return_type: NSArray<TWTRUser>
+    TWTRUserTimelineDataSource: # DONE
+        skip_def_constructor: true
+        properties:
+            'includeReplies':
+                name: includesReplies
+            'includeRetweets':
+                name: includesRetweets
+        methods:
+            '-init.*':
+                name: init
+    
+protocols:
+    TWTRComposerViewControllerDelegate: # DONE
+        methods:
+            '-composerDidCancel:':
+                name: didCancel
+            '-composerDidSucceed:withTweet:':
+                name: didSucceed
+            '-composerDidFail:withError:':
+                name: didFail
+    TWTRTimelineDataSource: # DONE
+        methods:
+            '-loadPreviousTweetsBeforePosition:completion:':
+                name: loadPreviousTweets
+    TWTRTweetViewDelegate: # DONE
+        methods:
+            '-tweetView:didSelectTweet:':
+                name: didSelectTweet
+            '-tweetView:didTapImage:withURL:':
+                name: didTapImage
+            '-tweetView:didTapVideoWithURL:':
+                name: didTapVideo
+            '-tweetView:didTapURL:':
+                name: didTapURL
+            '-tweetView:didTapProfileImageForUser:':
+                name: didTapProfileImage
+            '-tweetView:willShareTweet:':
+                name: willShareTweet
+            '-tweetView:didShareTweet:withType:':
+                name: didShareTweet
+            '-tweetView:cancelledShareTweet:':
+                name: didCancelShareTweet
+            '-tweetView:didLikeTweet:':
+                name: didLikeTweet
+            '-tweetView:didUnlikeTweet:':
+                name: didUnlikeTweet
+            '-tweetView:willRequireAuthenticationCompletionHandler:':
+                name: willRequireAuthentication
+            '-tweetView:didFavoriteTweet:':
+                exclude: true # deprecated
+            '-tweetView:didUnfavoriteTweet:':
+                exclude: true # deprecated
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?TWTR.*):
+        class: TwitterKit
+        name: 'Function__#{g[0]}'
+
+values:
+    TWTR(TweetsNotLoaded)Key:
+        enum: TWTRErrorUserInfoKey
+        name: '#{g[0]}'
+        type: NSString
+        extends: NSErrorUserInfoKey
+
+    # Twitter
+    TWTR(UserDidLogOutNotification):
+        class: Twitter
+        name: '#{g[0]}'
+        type: NSString
+    TWTR(LoggedOutUserIDKey):
+        class: Twitter
+        name: '#{g[0]}'
+        type: NSString
+        visibility: protected
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?TWTR.*):
+        class: TwitterKit
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?TWTR.*):
+        class: TwitterKit
+        name: 'Constant__#{g[0]}'

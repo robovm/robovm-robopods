@@ -12,7 +12,6 @@ header_root: '/../robopods/META-INF/robovm/ios/libs/'
 headers:
     - TwitterCore.framework/Headers/TwitterCore.h
 typedefs:
-private_typedefs:
     TWTRGuestLogInCompletion: '@Block VoidBlock2<TWTRGuestSession, NSError>'
     TWTRLogInCompletion: '@Block VoidBlock2<TWTRAuthSession, NSError>'
     TWTRSessionStoreRefreshCompletion: '@Block VoidBlock2<TWTRAuthSession, NSError>'
@@ -108,7 +107,7 @@ protocols:
 
 functions:
     # Make sure we don't miss any functions if new ones are introduced in a later version
-    (k?TWT.*):
+    (k?TWTR.*):
         class: TwitterCore
         name: 'Function__#{g[0]}'
 
@@ -137,12 +136,12 @@ values:
                 type: String
 
     # Make sure we don't miss any values if new ones are introduced in a later version
-    (k?TWT.*):
+    (k?TWTR.*):
         class: TwitterCore
         name: 'Value__#{g[0]}'
 
 constants:
     # Make sure we don't miss any constants if new ones are introduced in a later version
-    (k?TWT.*):
+    (k?TWTR.*):
         class: TwitterCore
         name: 'Constant__#{g[0]}'

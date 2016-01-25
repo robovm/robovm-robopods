@@ -1,0 +1,15 @@
+<config>
+    <frameworkPaths>
+        <path>libs</path>
+    </frameworkPaths>
+    <frameworks>
+        <framework>TwitterKit</framework>
+        
+        <framework>Accounts</framework>
+        <framework>CoreGraphics</framework>
+        <framework>MediaPlayer</framework>
+        <framework>Social</framework>
+        <framework>TwitterCore</framework>
+        <framework>UIKit</framework>
+    </frameworks>
+</config>
