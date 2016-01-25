@@ -1,4 +1,4 @@
-package: org.robovm.pods.twitter
+package: org.robovm.pods.fabric.twitter
 framework: TwitterCore
 include: 
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml

@@ -1,4 +1,4 @@
-package: org.robovm.pods.digits
+package: org.robovm.pods.fabric.digits
 framework: DigitsKit
 include: 
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
