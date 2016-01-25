@@ -1,0 +1,27 @@
+<config>
+    <resources>
+        <resource>
+            <directory>libs/MoPub.framework/Resources</directory>
+        </resource>
+    </resources>
+    <frameworkPaths>
+        <path>libs</path>
+    </frameworkPaths>
+    <frameworks>
+        <framework>MoPub</framework>
+        
+        <framework>AdSupport</framework>
+        <framework>CoreGraphics</framework>
+        <framework>CoreLocation</framework>
+        <framework>CoreMedia</framework>
+        <framework>CoreTelephony</framework>
+        <framework>EventKit</framework>
+        <framework>EventKitUI</framework>
+        <framework>MediaPlayer</framework>
+        <framework>MessageUI</framework>
+        <framework>QuartzCore</framework>
+        <framework>StoreKit</framework>
+        <framework>SystemConfiguration</framework>
+        <framework>UIKit</framework>
+    </frameworks>
+</config>

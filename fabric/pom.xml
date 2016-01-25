@@ -40,7 +40,7 @@
         <module>ios-crashlytics</module>
         <module>ios-twittercore</module>
         <module>ios-digits</module>
-    <!--    <module>ios-mopub</module>-->
+        <module>ios-mopub</module>
         <module>ios-twitter</module> 
     </modules>
 </project>
