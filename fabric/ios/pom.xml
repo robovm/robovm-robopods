@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.robovm</groupId>
         <artifactId>robopods-fabric-parent</artifactId>
-        <version>1.12.1-SNAPSHOT</version>
+        <version>1.13.0</version>
     </parent>
     <artifactId>robopods-fabric-ios</artifactId>
     <name>RoboPods Fabric iOS</name>
