@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.robovm</groupId>
         <artifactId>robopods-dialog-parent</artifactId>
-        <version>1.13.0</version>
+        <version>1.13.1-SNAPSHOT</version>
     </parent>
     <artifactId>robopods-dialog-ios</artifactId>
     <name>Robo.Dialog iOS</name>
