@@ -43,7 +43,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <robovm.version>${project.version}</robovm.version>
+        <robovm.version>1.13.0</robovm.version>
         <robopods.version>${project.version}</robopods.version>
         <android.version>4.1.1.4</android.version>
     </properties>
