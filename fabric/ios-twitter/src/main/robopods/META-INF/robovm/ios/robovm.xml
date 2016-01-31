@@ -1,4 +1,9 @@
 <config>
+    <resources>
+        <resource>
+            <directory>libs/TwitterKit.framework/Resources</directory>
+        </resource>
+    </resources>
     <frameworkPaths>
         <path>libs</path>
     </frameworkPaths>

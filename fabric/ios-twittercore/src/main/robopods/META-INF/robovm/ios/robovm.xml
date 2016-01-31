@@ -3,8 +3,6 @@
         <path>libs</path>
     </frameworkPaths>
     <frameworks>
-        <framework>DigitsKit</framework>
-        
         <framework>AddressBook</framework>
         <framework>CoreData</framework>
         <framework>UIKit</framework>
