@@ -24,8 +24,14 @@ public interface ProgressDialog extends Dialog {
 
     double getProgress();
 
-    public static class Builder extends DialogBuilder<Builder, ProgressDialog> {
+    class Builder extends DialogBuilder<Builder, ProgressDialog> {
         ProgressDialogStyle style;
+
+        public Builder() {}
+
+        public Builder(String title, String message) {
+            super(title, message);
+        }
 
         public Builder setProgressStyle(ProgressDialogStyle style) {
             this.style = style;

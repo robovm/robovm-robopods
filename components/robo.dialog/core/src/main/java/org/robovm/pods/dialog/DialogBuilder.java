@@ -15,11 +15,16 @@
  */
 package org.robovm.pods.dialog;
 
-abstract class DialogBuilder<T extends DialogBuilder<T, R>, R> {
+abstract class DialogBuilder<T extends DialogBuilder<T, R>, R extends Dialog> {
     String title;
     String message;
 
     DialogBuilder() {}
+
+    DialogBuilder(String title, String message) {
+        this.title = title;
+        this.message = message;
+    }
 
     @SuppressWarnings("unchecked")
     public T setTitle(String title) {
@@ -34,4 +39,10 @@ abstract class DialogBuilder<T extends DialogBuilder<T, R>, R> {
     }
 
     public abstract R build();
+
+    public R show() {
+        R dialog = build();
+        dialog.show();
+        return dialog;
+    }
 }

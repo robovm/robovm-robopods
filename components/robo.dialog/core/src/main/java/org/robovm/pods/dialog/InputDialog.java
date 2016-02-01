@@ -18,9 +18,15 @@ package org.robovm.pods.dialog;
 import org.robovm.pods.Platform;
 
 public interface InputDialog extends AlertDialog {
-    public static class Builder extends AlertDialog.Builder {
+    class Builder extends AlertDialog.Builder {
         InputDialogStyle inputStyle;
         DialogTextInputChangeListener inputChangeListener;
+
+        public Builder() {}
+
+        public Builder(String title, String message, String button) {
+            super(title, message, button);
+        }
 
         public Builder setInputStyle(InputDialogStyle inputStyle) {
             this.inputStyle = inputStyle;
