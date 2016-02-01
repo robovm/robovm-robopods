@@ -1,0 +1,74 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.robovm</groupId>
+        <artifactId>robopods-billing-parent</artifactId>
+        <version>1.13.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>robopods-billing-android</artifactId>
+    <name>Robo.Billing Android</name>
+    <packaging>jar</packaging>
+
+    <repositories>
+        <repository>
+            <id>opf</id>
+            <name>OPF mvn repo</name>
+            <url>https://raw.githubusercontent.com/onepf/OPF-mvn-repo/master/</url>
+        </repository>
+    </repositories>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.robovm</groupId>
+            <artifactId>robopods-billing-core</artifactId>
+            <version>${robovm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android</artifactId>
+            <version>${android.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.onepf</groupId>
+            <artifactId>openiab</artifactId>
+            <version>0.9.8.7</version>
+        </dependency>
+        <dependency>
+            <groupId>com.amazon</groupId>
+            <artifactId>in-app-purchasing</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.braintree</groupId>
+            <artifactId>fortumo-in-app</artifactId>
+            <version>9.1.2</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>net.orfjackal.retrolambda</groupId>
+                <artifactId>retrolambda-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

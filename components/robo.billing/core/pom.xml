@@ -1,16 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.robovm</groupId>
-        <artifactId>robopods-parent</artifactId>
+        <artifactId>robopods-billing-parent</artifactId>
         <version>1.13.1-SNAPSHOT</version>
     </parent>
-
-    <artifactId>robopods-components-parent</artifactId>
-    <name>RoboPods Components Parent</name>
-    <packaging>pom</packaging>
+    <artifactId>robopods-billing-core</artifactId>
+    <name>Robo.Billing Core</name>
+    <packaging>jar</packaging>
 
     <licenses>
         <license>
@@ -19,6 +17,14 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.robovm</groupId>
+            <artifactId>robopods-components-core</artifactId>
+            <version>${robovm.version}</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -36,11 +42,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <modules>
-        <module>robo.core</module>
-        
-        <module>robo.billing</module>
-        <module>robo.dialog</module>
-    </modules>
 </project>

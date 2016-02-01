@@ -1,0 +1,14 @@
+package org.robovm.pods.billing;
+
+public enum StoreType {
+    HEADLESS,
+    IOS_APP_STORE,
+    ANDROID_GOOGLE_PLAY,
+    ANDROID_AMAZON,
+    ANDROID_SAMSUNG,
+    ANDROID_NOKIA,
+    ANDROID_SLIDEME,
+    ANDROID_APTOIDE,
+    ANDROID_APPLAND,
+    ANDROID_YANDEX
+}
