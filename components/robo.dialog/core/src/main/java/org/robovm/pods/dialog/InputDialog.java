@@ -28,6 +28,10 @@ public interface InputDialog extends AlertDialog {
             super(title, message, button);
         }
 
+        public Builder(String title, String message, String button, DialogButtonClickListener buttonListener) {
+            super(title, message, button, buttonListener);
+        }
+
         public Builder setInputStyle(InputDialogStyle inputStyle) {
             this.inputStyle = inputStyle;
             return this;

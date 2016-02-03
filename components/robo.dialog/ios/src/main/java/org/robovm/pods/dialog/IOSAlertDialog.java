@@ -16,11 +16,7 @@
 package org.robovm.pods.dialog;
 
 import org.robovm.apple.foundation.Foundation;
-import org.robovm.apple.uikit.UIAlertAction;
-import org.robovm.apple.uikit.UIAlertActionStyle;
-import org.robovm.apple.uikit.UIAlertControllerStyle;
-import org.robovm.apple.uikit.UIAlertView;
-import org.robovm.apple.uikit.UIAlertViewDelegateAdapter;
+import org.robovm.apple.uikit.*;
 import org.robovm.objc.LongMap;
 import org.robovm.objc.block.VoidBlock1;
 import org.robovm.pods.Platform;
@@ -64,7 +60,7 @@ public class IOSAlertDialog implements AlertDialog {
 
     private VoidBlock1<UIAlertAction> getActionCallbackForButton(DialogButton button) {
         if (button.getClickListener() == null) {
-            return null;
+            return (action) -> alertController.didDismiss();
         }
         return (action) -> {
             button.getClickListener().onClick(IOSAlertDialog.this, button);

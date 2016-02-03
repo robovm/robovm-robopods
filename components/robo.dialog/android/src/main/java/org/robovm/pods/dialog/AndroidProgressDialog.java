@@ -15,11 +15,10 @@
  */
 package org.robovm.pods.dialog;
 
-import org.robovm.pods.Platform;
-import org.robovm.pods.Platform.AndroidPlatform;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
+import org.robovm.pods.Platform;
+import org.robovm.pods.Platform.AndroidPlatform;
 
 public class AndroidProgressDialog implements org.robovm.pods.dialog.ProgressDialog {
     private ProgressDialog progressDialog;

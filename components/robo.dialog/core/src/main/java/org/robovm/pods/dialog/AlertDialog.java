@@ -15,10 +15,10 @@
  */
 package org.robovm.pods.dialog;
 
+import org.robovm.pods.Platform;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import org.robovm.pods.Platform;
 
 public interface AlertDialog extends Dialog {
     String getTextInput();

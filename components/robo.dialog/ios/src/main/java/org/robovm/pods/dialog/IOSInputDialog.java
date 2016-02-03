@@ -40,9 +40,8 @@ public class IOSInputDialog extends IOSAlertDialog implements InputDialog {
 
     private void addTextFieldListener(UITextField textField, DialogTextInputChangeListener inputChangeListener) {
         if (inputChangeListener != null) {
-            textField.addOnEditingChangedListener((control) -> {
-                inputChangeListener.onChange(IOSInputDialog.this, getTextInput());
-            });
+            textField.addOnEditingChangedListener(
+                    (control) -> inputChangeListener.onChange(IOSInputDialog.this, getTextInput()));
         }
     }
 

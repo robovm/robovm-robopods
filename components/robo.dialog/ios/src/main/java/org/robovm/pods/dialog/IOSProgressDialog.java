@@ -15,31 +15,9 @@
  */
 package org.robovm.pods.dialog;
 
-import org.robovm.apple.coregraphics.CGAffineTransform;
-import org.robovm.apple.coregraphics.CGColorSpace;
-import org.robovm.apple.coregraphics.CGContext;
-import org.robovm.apple.coregraphics.CGGradient;
-import org.robovm.apple.coregraphics.CGGradientDrawingOptions;
-import org.robovm.apple.coregraphics.CGPoint;
-import org.robovm.apple.coregraphics.CGRect;
-import org.robovm.apple.coregraphics.CGSize;
+import org.robovm.apple.coregraphics.*;
 import org.robovm.apple.foundation.NSString;
-import org.robovm.apple.uikit.NSAttributedStringAttributes;
-import org.robovm.apple.uikit.NSStringDrawingOptions;
-import org.robovm.apple.uikit.NSTextAlignment;
-import org.robovm.apple.uikit.UIActivityIndicatorView;
-import org.robovm.apple.uikit.UIActivityIndicatorViewStyle;
-import org.robovm.apple.uikit.UIColor;
-import org.robovm.apple.uikit.UIFont;
-import org.robovm.apple.uikit.UIGraphics;
-import org.robovm.apple.uikit.UILabel;
-import org.robovm.apple.uikit.UIScreen;
-import org.robovm.apple.uikit.UIView;
-import org.robovm.apple.uikit.UIViewAutoresizing;
-import org.robovm.apple.uikit.UIViewContentMode;
-import org.robovm.apple.uikit.UIViewController;
-import org.robovm.apple.uikit.UIWindow;
-import org.robovm.apple.uikit.UIWindowLevel;
+import org.robovm.apple.uikit.*;
 import org.robovm.pods.Platform;
 
 public class IOSProgressDialog extends UIView implements ProgressDialog {
@@ -175,7 +153,7 @@ public class IOSProgressDialog extends UIView implements ProgressDialog {
         CGSize maxSize = new CGSize(maxWidth, remainingHeight);
         CGSize messageLabelSize = messageText.length() > 0
                 ? NSString.getBoundingRect(messageText, maxSize, NSStringDrawingOptions.UsesLineFragmentOrigin,
-                        new NSAttributedStringAttributes().setFont(message.getFont()), null).getSize()
+                new NSAttributedStringAttributes().setFont(message.getFont()), null).getSize()
                 : new CGSize();
 
         totalSize.setWidth(Math.max(totalSize.getWidth(), messageLabelSize.getWidth()));
@@ -306,7 +284,7 @@ public class IOSProgressDialog extends UIView implements ProgressDialog {
                 UIView.animate(0.3, () -> {
                     setTransform(CGAffineTransform.Identity().concat(CGAffineTransform.createScale(1.5, 1.5)));
                     setAlpha(0.02);
-                } , (complete) -> {
+                }, (complete) -> {
                     setAlpha(0);
                     removeFromSuperview();
                     alertWindow.setHidden(true);
