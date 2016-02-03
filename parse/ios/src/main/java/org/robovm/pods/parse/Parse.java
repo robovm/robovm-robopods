@@ -116,6 +116,9 @@ import org.robovm.pods.bolts.*;
     @Method(selector = "isLocalDatastoreEnabled")
     public static native boolean isLocalDatastoreEnabled();
     @Availability({ @PlatformVersion(platform = Platform.iOS) })
+    @Method(selector = "enableDataSharingWithApplicationGroupIdentifier:")
+    public static native void enableDataSharing(String groupIdentifier);
+    @Availability({ @PlatformVersion(platform = Platform.iOS) })
     @Method(selector = "enableDataSharingWithApplicationGroupIdentifier:containingApplication:")
     public static native void enableDataSharing(String groupIdentifier, String bundleIdentifier);
     @Availability({ @PlatformVersion(platform = Platform.iOS) })

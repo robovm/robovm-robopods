@@ -109,6 +109,12 @@ import org.robovm.pods.bolts.*;
     public static native BFTask<Void> sendDataInBackground(PFQuery query, NSDictionary<?, ?> data);
     @Method(selector = "sendPushDataToQueryInBackground:withData:block:")
     public static native void sendDataInBackground(PFQuery<PFInstallation> query, NSDictionary<?, ?> data, @Block PFSendCallback block);
+    /**
+     * @since Available since iOS 3.0.
+     */
+    @Availability({ @PlatformVersion(platform = Platform.iOS, minVersion = "3.0") })
+    @Method(selector = "handlePush:")
+    public static native void handle(UIRemoteNotification userInfo);
     @Method(selector = "storeDeviceToken:")
     public static native void storeDeviceToken(NSObject deviceToken);
     @Method(selector = "getSubscribedChannelsInBackground")
