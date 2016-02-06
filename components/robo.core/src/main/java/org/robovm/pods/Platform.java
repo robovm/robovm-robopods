@@ -15,6 +15,12 @@
  */
 package org.robovm.pods;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import org.robovm.apple.foundation.NSOperationQueue;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,20 +29,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-
-import org.robovm.apple.foundation.NSOperationQueue;
-
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
+import java.util.*;
 
 public abstract class Platform {
     private static Platform PLATFORM = findPlatform();
@@ -66,7 +59,7 @@ public abstract class Platform {
 
     @SuppressWarnings("unchecked")
     public <T> T getInstance(Class<T> type, Object... args) {
-        Objects.requireNonNull(type, "type");
+        Util.requireNonNull(type, "type");
         if (!type.isInterface()) {
             throw new IllegalArgumentException("type must be an interface");
         }
@@ -78,7 +71,7 @@ public abstract class Platform {
         }
         if (classes.size() > 0) {
             Class<?> target = classes.get(0); // We only use the first at the
-                                              // moment.
+            // moment.
             return (T) constructInstance(target, args);
         }
         throw new IllegalArgumentException("No class found that implements " + type.getSimpleName());
