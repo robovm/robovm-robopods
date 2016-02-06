@@ -3,11 +3,12 @@
   <groupId>org.robovm</groupId>
   <artifactId>heyzap-android</artifactId>
   <versioning>
-    <release>9.3.5</release>
+    <release>9.3.9</release>
     <versions>
       <version>9.3.4</version>
       <version>9.3.5</version>
+      <version>9.3.9</version>
     </versions>
-    <lastUpdated>20160107140016</lastUpdated>
+    <lastUpdated>20160206202224</lastUpdated>
   </versioning>
 </metadata>
