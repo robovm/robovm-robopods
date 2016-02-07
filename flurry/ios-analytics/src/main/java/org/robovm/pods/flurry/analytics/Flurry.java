@@ -100,7 +100,7 @@ import org.robovm.apple.coregraphics.*;
     protected static NSDictionary<?, ?> stringMapToDictionary(Map<String, String> map) {
         NSDictionary<NSString, NSString> o = new NSMutableDictionary<>();
         for (Map.Entry<String, String> e : map.entrySet()) {
-            o.put(new NSString(e.getKey()), new NSString(e.getValue()));
+            o.put(e.getKey(), e.getValue());
         }
         return o;
     }
