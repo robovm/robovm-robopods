@@ -174,7 +174,7 @@
     </pluginRepositories>
 
     <modules>
-        <module>components</module>
+        <module>plugins</module>
 
         <module>bolts</module>
         <module>chartboost</module>

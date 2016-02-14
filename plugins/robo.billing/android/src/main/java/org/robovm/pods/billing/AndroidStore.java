@@ -20,6 +20,7 @@ import android.content.Intent;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.onepf.oms.OpenIabHelper;
+import org.onepf.oms.OpenIabHelper.Options;
 import org.onepf.oms.appstore.googleUtils.IabHelper;
 import org.onepf.oms.appstore.googleUtils.IabHelper.OnIabPurchaseFinishedListener;
 import org.onepf.oms.appstore.googleUtils.Inventory;
@@ -76,7 +77,7 @@ public class AndroidStore implements Store {
         }
 
         final OpenIabHelper.Options.Builder openIABBuilder = new OpenIabHelper.Options.Builder();
-        openIABBuilder.setVerifyMode(OpenIabHelper.Options.VERIFY_SKIP);
+        openIABBuilder.setVerifyMode(Options.VERIFY_SKIP);
         openIABBuilder.setStoreSearchStrategy(OpenIabHelper.Options.SEARCH_STRATEGY_INSTALLER_THEN_BEST_FIT);
         openIABBuilder.addStoreKeys(storeKeys);
         openIabOptions = openIABBuilder.build();
@@ -327,7 +328,7 @@ public class AndroidStore implements Store {
                     }
                 }
             } else {
-                if (autoVerifyTransactions) {
+                if (autoVerifyTransactions && !TestProducts.isTestProduct(product)) {
                     transaction.verify((t, isValid, error) -> {
                         if (error == null && isValid) {
                             if (autoFinishTransactions
@@ -350,7 +351,7 @@ public class AndroidStore implements Store {
                         }
                     });
                 } else {
-                    if (autoFinishTransactions && transaction.getProduct().getType() == ProductType.CONSUMABLE) {
+                    if (autoFinishTransactions && product.getType() == ProductType.CONSUMABLE) {
                         transaction.finish();
                     }
                     for (BillingObserver observer : billingObservers) {

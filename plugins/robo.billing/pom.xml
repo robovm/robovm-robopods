@@ -4,12 +4,12 @@
 
     <parent>
         <groupId>org.robovm</groupId>
-        <artifactId>robopods-parent</artifactId>
+        <artifactId>robopods-plugins-parent</artifactId>
         <version>1.13.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>robopods-components-parent</artifactId>
-    <name>RoboPods Components Parent</name>
+    <artifactId>robopods-billing-parent</artifactId>
+    <name>Robo.Billing Parent</name>
     <packaging>pom</packaging>
 
     <licenses>
@@ -38,9 +38,8 @@
     </build>
 
     <modules>
-        <module>robo.core</module>
-        
-        <module>robo.billing</module>
-        <module>robo.dialog</module>
+        <module>core</module>
+        <module>android</module>
+        <module>ios</module>
     </modules>
 </project>
