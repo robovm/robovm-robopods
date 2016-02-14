@@ -7,8 +7,8 @@ to your most favorite app services.
 
 ## Usage
 
-A RoboPod comes in form of a simple JAR file published via Maven Central so you can easily 
-integrate it via Maven or Gradle.
+A RoboPod comes in form of a simple JAR file published to Maven Central so you can easily 
+integrate it with Maven or Gradle.
 Just add a depencency to your maven or gradle files and you are ready to go!
 
 For example, if you want to integrate Facebook in your iOS project, just add the following
@@ -20,7 +20,7 @@ to your `build.gradle`:
 ```
 dependencies {
    ... other dependencies ...
-   compile "org.robovm:robopods-facebook-ios:1.12.0"
+   compile "org.robovm:robopods-facebook-ios:1.13.0"
 }
 ```
 
@@ -32,7 +32,7 @@ to your `pom.xml`:
 <dependency>
    <groupId>org.robovm</groupId>
    <artifactId>robopods-facebook-ios</artifactId>
-   <version>1.12.0</version>
+   <version>1.13.0</version>
 </dependency>
 ```
 
@@ -40,7 +40,7 @@ to your `pom.xml`:
 
 If you want to use the latest and greatest of every RoboPod, use the latest snapshot version for your dependencies:
 
-> 1.12.1-SNAPSHOT
+> 1.13.1-SNAPSHOT
 
 To prevent compatibility issues make sure you also use the same RoboVM version.
 

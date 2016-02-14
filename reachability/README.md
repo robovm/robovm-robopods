@@ -6,5 +6,5 @@ Monitor network reachability.
 
 | Platform    | Version |
 |-------------|---------|
-| [iOS](ios/) | 1..0    |
+| [iOS](ios/) | 1.0     |
 |             |         |

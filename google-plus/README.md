@@ -1,6 +1,6 @@
 # RoboPods for Google+
 
-Google+
+Google+ has been deprecated by Google. Please use Google SignIn instead: [Link](../google-signin)
 
 ## Available RoboPods
 

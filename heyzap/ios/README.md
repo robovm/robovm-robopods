@@ -1,28 +1,88 @@
-# Heyzap on iOS
+# Heyzap iOS
 
-## Instructions
+## Sample app
 
-### Initialize the SDK
+[Link](https://github.com/robovm/robovm-samples/tree/master/robopods/heyzap/ios)
 
-In your application delegate's `didFinishLaunching(...)` method, start the Heyzap SDK:
+## Install Instructions
 
-```Java
-@Override
-public boolean didFinishLaunching(UIApplication application, UIApplicationLaunchOptions launchOptions) {
-    super.didFinishLaunching(application, launchOptions);
+### Gradle
 
-    HeyzapAds.start("YOUR_PUBLISHER_ID");
-    
-    return true;
+Add the following dependency to your `build.gradle`:
+
+```
+dependencies {
+   ... other dependencies ...
+   compile "org.robovm:robopods-heyzap-ios:$robopodsVersion"
 }
 ```
 
-### Integrate 3rd Party ad networks
+### Maven
 
-You can use all ad networks that you setup in your mediation dashboard.
+Add the following dependency to your `pom.xml`:
+
+```
+<dependency>
+   <groupId>org.robovm</groupId>
+   <artifactId>robopods-heyzap-ios</artifactId>
+   <version>${robopods.version}</version>
+</dependency>
+```
+
+## Code Examples
+
+### SDK setup
+
+Before you can display any ads, you have to setup the SDK.
+
+#### Start Heyzap in your app
+
+Add the following code to your application's entry point, typically `didFinishLaunching()`
+in your app delegate.
+
+```Java
+HeyzapAds.start("PUBLISHER_ID");
+```
+
+Change the `PUBLISHER_ID` with the id that you can find in your Heyzap [dashboard](https://developers.heyzap.com/account).
+
+#### Enable debug logging
+
+When setting up Heyzap it's very helpful to get logs.  
+Add the following code before starting Heyzap:
+
+```Java
+HeyzapAds.setDebug(true);
+HeyzapAds.setDebugLevel(HZDebugLevel.Verbose); // Adjust level to your needs.
+
+...
+
+HeyzapAds.start("PUBLISHER_ID");
+```
+
+__Note:__ Don't forget to disable debug logging when you release your app!
+
+##### Having trouble?
+
+- Make sure you have setup an app in your Heyzap [dashboard](https://developers.heyzap.com/)
+and specified the correct `PUBLISHER_ID`.
+- Check your logs for any errors, like network failures.
+
+##### Next steps
+
+- Integrate 3rd party ad networks: [Link](#integrate-3rd-party-ad-networks)
+- Read the official Heyzap iOS documentation: [Link](https://developers.heyzap.com/docs/ios_sdk_setup_and_requirements)
+
+### Integrate 3rd party ad networks
+
+Heyzap is an ad mediation network, so we should add as many different ad providers as possible.
+
+#### Add 3rd party SDKs
+
+You can use all ad networks that you setup in the Heyzap mediation dashboard.  
 Use the following link to download all SDKs of ad networks you want to integrate:
 
-> https://developers.heyzap.com/docs/ios_sdk_setup_and_requirements
+[Link](https://developers.heyzap.com/docs/ios_sdk_setup_and_requirements)
 
 Copy the `.framework` or `.a` files into your project `libs/` folder.
 Also add an entry for each framework and library in your `robovm.xml`.
@@ -36,61 +96,83 @@ Also add an entry for each framework and library in your `robovm.xml`.
 </libs>
 ```
 
-Ad networks that are available as RoboPods (like Chartboost or Facebook Audience Network) should be added as a Maven/Gradle dependency instead.
+__Note:__ Ad networks that are available as RoboPods (like Chartboost or Facebook Audience Network) should be added as a Maven/Gradle dependency instead!
 
-### Test integration
+#### Test integration
 
 You can use the Mediation Test Suite to check if all networks are correctly setup.
 
 To use the Mediation Test Suite, simply call `presentMediationDebugViewController()` after you start the SDK and have setup a root view controller:
 
 ```Java
-@Override
-public boolean didFinishLaunching(UIApplication application, UIApplicationLaunchOptions launchOptions) {
-    super.didFinishLaunching(application, launchOptions);
+HeyzapAds.start("PUBLISHER_ID");
     
-    HeyzapAds.start("YOUR_PUBLISHER_ID");
-    
-    HeyzapAds.presentMediationDebugViewController();
-    
-    return true;
-}
+HeyzapAds.presentMediationDebugViewController();
 ```
 
-### Show Ads
+##### Having trouble?
+
+- Make sure you have setup different ad networks app in your Heyzap [dashboard](https://developers.heyzap.com/).
+- Check your logs for any errors, like network failures.
+
+##### Next steps
+
+- Load and display advertisements in your app: [Link](#display-ads) TODO
+- Read the official Heyzap iOS documentation: [Link](https://developers.heyzap.com/docs/ios_sdk_setup_and_requirements)
+
+### Display ads
+
+Load and display ads.
 
 #### Interstitial Ads
 
+Interstitial ads are automatically loaded by Heyzap, you only have to show them when needed:
+
 ```Java
-// InterstitialAds are automatically fetched from the server
 HZInterstitialAd.show();
 ```
 
 #### Video Ads
 
-```Java
-// As early as possible, and after showing a video, call fetch
-HZVideoAd.fetch();
+Video ads need to be fetched before showing them:
 
-// Later, such as after a level is completed
+```Java
+HZVideoAd.fetch();
+```
+
+When you are ready to show them use the following code:
+
+```Java
 HZVideoAd.show();
 ```
 
 #### Rewarded Video Ads
 
-```Java
-// As early as possible, and after showing a rewarded video, call fetch
-HZIncentivizedAd.fetch();
+Rewarded video ads need to be fetched before showing them:
 
-// Later, such as after a level is completed
+```Java
+HZIncentivizedAd.fetch();
+```
+
+When you are ready to show them use the following code:
+
+```Java
 HZIncentivizedAd.show();
 ```
 
 #### Banner Ads
 
+To add banner ads to your app you first have to create banner options. You can specify the presenting view controller and 
+banner sizes for various ad providers along with other options:
+
 ```Java
 HZBannerAdOptions options = new HZBannerAdOptions();
-HZBannerAd.placeBannerInView(getView(),
+```
+
+Now you just need to place the banner in your view controller:
+
+```Java
+HZBannerAd.placeBannerInView(viewController.getView(),
         HZBannerPosition.Bottom,
         options,
         banner -> {
@@ -101,6 +183,20 @@ HZBannerAd.placeBannerInView(getView(),
         });
 ```
 
-## Sample
+Specify the view controllers view, the banner position, the options you created earlier and callbacks for success and error.  
+You can store and modify the `HZBannerAd` instance that you get in the success callback.
 
-https://github.com/robovm/robovm-samples/tree/master/robopods/heyzap/ios
+#### Try it out!
+
+Add the code for ads to your app and run the app. If you setup everything correctly you should see ads in your app after a little loading time.
+
+##### Having trouble?
+
+- Make sure you have setup the Heyzap SDK: [Link](#sdk-setup)
+- Make sure you have setup your app in your Heyzap dashboard: [Link](https://developers.heyzap.com/)
+- Check your logs for any errors, like network failures.
+
+##### Next steps
+
+- Take a look at our sample app: [Link](https://github.com/robovm/robovm-samples/tree/master/robopods/heyzap/ios)
+- Read the official Heyzap iOS documentation: [Link](https://developers.heyzap.com/docs/ios_sdk_setup_and_requirements)

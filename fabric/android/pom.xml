@@ -25,13 +25,6 @@
         </repository>
     </repositories>
 
-    <!--    <pluginRepositories>
-            <pluginRepository>
-                <id>crashlytics-plugin-repo</id>
-                <url>http://download.crashlytics.com/maven</url>
-            </pluginRepository>
-        </pluginRepositories> -->
-
     <dependencies>
         <dependency>
             <groupId>com.google.android</groupId>
@@ -75,25 +68,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
             </plugin>
-            <!--  <plugin>
-                  <groupId>com.crashlytics</groupId>
-                  <artifactId>crashlytics-maven</artifactId>
-                  <version>1.12.0</version>
-                  <executions>
-                      <execution>
-                          <id>GenerateResources</id>
-                          <goals>
-                              <goal>GenerateResources</goal>
-                          </goals>
-                      </execution>
-                      <execution>
-                          <id>CleanupResources</id>
-                          <goals>
-                              <goal>CleanupResources</goal>
-                          </goals>
-                      </execution>
-                  </executions>
-              </plugin>-->
             <plugin>
                 <groupId>net.orfjackal.retrolambda</groupId>
                 <artifactId>retrolambda-maven-plugin</artifactId>
