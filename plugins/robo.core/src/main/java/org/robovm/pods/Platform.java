@@ -28,13 +28,14 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Proxy;
 import java.net.URL;
 import java.util.*;
 
 public abstract class Platform {
     private static Platform PLATFORM = findPlatform();
 
-    private Map<Class<?>, List<Class<?>>> implementations = new HashMap<>();
+    private Map<Class<?>, Map<String, Class<?>>> implementations = new HashMap<>();
 
     private Platform() {}
 
@@ -57,24 +58,49 @@ public abstract class Platform {
         return PLATFORM.getPlatformType();
     }
 
-    @SuppressWarnings("unchecked")
     public <T> T getInstance(Class<T> type, Object... args) {
+        return getInstance(null, type, args);
+    }
+
+    @SuppressWarnings("unchecked")
+    public <T> T getInstance(String identifier, Class<T> type, Object... args) {
         Util.requireNonNull(type, "type");
         if (!type.isInterface()) {
             throw new IllegalArgumentException("type must be an interface");
         }
 
-        List<Class<?>> classes = implementations.get(type);
+        Map<String, Class<?>> classes = implementations.get(type);
         if (classes == null) {
             classes = findImplementations(type);
             implementations.put(type, classes);
         }
         if (classes.size() > 0) {
-            Class<?> target = classes.get(0); // We only use the first at the
-            // moment.
+            Class<?> target = classes.get(identifier);
             return (T) constructInstance(target, args);
         }
+        if (getType() == PlatformType.Headless) {
+            // Create default implementation on headless platforms.
+            return (T) Proxy.newProxyInstance(type.getClassLoader(), new Class[] { type },
+                    (proxy, method, args1) -> {
+                        Class<?> returnType = method.getReturnType();
+                        if (returnType.isPrimitive()) {
+                            return getPrimitiveNullValue(returnType);
+                        }
+                        return null;
+                    });
+        }
         throw new IllegalArgumentException("No class found that implements " + type.getSimpleName());
+    }
+
+    private static Object getPrimitiveNullValue(Class<?> primitiveClass) {
+        if (primitiveClass.equals(boolean.class)) {
+            return Boolean.FALSE;
+        } else if (primitiveClass.equals(byte.class)) {
+            return (byte) 0;
+        } else if (primitiveClass.equals(short.class)) {
+            return (short) 0;
+        }
+        return 0;
     }
 
     @SuppressWarnings("unchecked")
@@ -92,37 +118,47 @@ public abstract class Platform {
         }
     }
 
-    private List<Class<?>> findImplementations(Class<?> type) {
-        List<Class<?>> classes = new ArrayList<>();
+    private Map<String, Class<?>> findImplementations(Class<?> type) {
+        Map<String, Class<?>> classes = new HashMap<>();
         try {
             Enumeration<URL> resources = Platform.class.getClassLoader().getResources("services/" + type.getName());
             while (resources.hasMoreElements()) {
                 URL url = resources.nextElement();
                 InputStream is = url.openStream();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-                String targetPlatform = getPlatformType().name().toLowerCase();
+
+                PlatformType targetPlatform = getPlatformType();
+                PlatformType currentPlatform = null;
 
                 String line;
-                boolean correctPlatform = false;
                 while ((line = reader.readLine()) != null) {
                     line = line.trim();
-                    if (correctPlatform && !line.isEmpty()) {
-                        if (!line.contains("#")) {
-                            classes.add(Class.forName(line));
-                        } else {
-                            break;
+
+                    if (!line.isEmpty()) {
+                        if (line.startsWith("#")) {
+                            PlatformType newPlatform = PlatformType.fromString(line);
+                            if (newPlatform != null) {
+                                if (currentPlatform == targetPlatform) {
+                                    break;
+                                } else {
+                                    currentPlatform = PlatformType.fromString(line);
+                                }
+                            }
+                        } else if (currentPlatform == null || currentPlatform == targetPlatform) {
+                            if (line.contains(":")) {
+                                String[] parts = line.split(":");
+                                classes.put(parts[0], Class.forName(parts[1]));
+                            } else {
+                                classes.put(null, Class.forName(line));
+                            }
                         }
-                    } else if (line.toLowerCase().contains(targetPlatform)) {
-                        correctPlatform = true;
                     }
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            // We will end here when there are classes not available to the
-            // current platform.
-        }
+        } catch (ClassNotFoundException ignored) {}
+
         return classes;
     }
 

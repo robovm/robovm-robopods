@@ -15,6 +15,21 @@
  */
 package org.robovm.pods;
 
+import java.util.Locale;
+
 public enum PlatformType {
-    Android, iOS, Headless
+    Android, iOS, Headless;
+
+    static PlatformType fromString(String platform) {
+        if (platform == null) {
+            return null;
+        }
+        platform = platform.toLowerCase(Locale.ENGLISH);
+        for (PlatformType type : values()) {
+            if (platform.contains(type.name().toLowerCase(Locale.ENGLISH))) {
+                return type;
+            }
+        }
+        return null;
+    }
 }
