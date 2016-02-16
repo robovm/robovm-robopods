@@ -1,0 +1,24 @@
+<config>
+    <resources>
+        <resource>
+            <directory>res</directory>
+        </resource>
+    </resources>
+    <frameworks>
+        <framework>FBSDKCoreKit</framework>
+        <framework>Bolts</framework>
+
+        <framework>AVFoundation</framework>
+        <framework>CoreGraphics</framework>
+        <framework>CoreMedia</framework>
+        <framework>CoreMotion</framework>
+        <framework>StoreKit</framework>
+    </frameworks>
+    <frameworkPaths>
+        <path>libs</path>
+    </frameworkPaths>
+    <exportedSymbols>
+        <symbol>FB*</symbol>
+        <symbol>kFB*</symbol>
+    </exportedSymbols>
+</config>

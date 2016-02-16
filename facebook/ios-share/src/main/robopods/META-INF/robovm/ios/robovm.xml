@@ -1,0 +1,18 @@
+<config>
+    <frameworks>
+        <framework>FBSDKShareKit</framework>
+
+        <framework>AVFoundation</framework>
+        <framework>CoreGraphics</framework>
+        <framework>CoreMedia</framework>
+        <framework>CoreMotion</framework>
+        <framework>StoreKit</framework>
+    </frameworks>
+    <frameworkPaths>
+        <path>libs</path>
+    </frameworkPaths>
+    <exportedSymbols>
+        <symbol>FB*</symbol>
+        <symbol>kFB*</symbol>
+    </exportedSymbols>
+</config>

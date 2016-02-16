@@ -5,8 +5,8 @@
         <artifactId>robopods-facebook-parent</artifactId>
         <version>1.13.1-SNAPSHOT</version>
     </parent>
-    <artifactId>robopods-facebook-ios</artifactId>
-    <name>RoboPods Facebook iOS</name>
+    <artifactId>robopods-facebook-ios-messenger</artifactId>
+    <name>RoboPods Facebook iOS - MessengerShareKit</name>
     <packaging>jar</packaging>
 
     <licenses>
@@ -38,26 +38,6 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.robovm</groupId>
-            <artifactId>robopods-facebook-ios-core</artifactId>
-            <version>${robopods.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.robovm</groupId>
-            <artifactId>robopods-facebook-ios-login</artifactId>
-            <version>${robopods.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.robovm</groupId>
-            <artifactId>robopods-facebook-ios-messenger</artifactId>
-            <version>${robopods.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.robovm</groupId>
-            <artifactId>robopods-facebook-ios-share</artifactId>
-            <version>${robopods.version}</version>
         </dependency>
     </dependencies>
 

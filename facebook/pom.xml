@@ -35,5 +35,10 @@
 
     <modules>
         <module>ios</module>
+        <module>ios-audience</module>
+        <module>ios-core</module>
+        <module>ios-login</module>
+        <module>ios-messenger</module>
+        <module>ios-share</module>
     </modules>
 </project>
