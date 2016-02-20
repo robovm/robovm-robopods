@@ -17,6 +17,7 @@ package org.robovm.pods.billing;
 
 import org.robovm.apple.foundation.NSData;
 import org.robovm.apple.foundation.NSDataBase64EncodingOptions;
+import org.robovm.apple.foundation.NSDate;
 import org.robovm.apple.storekit.SKPaymentQueue;
 import org.robovm.apple.storekit.SKPaymentTransaction;
 import org.robovm.pods.billing.AppStoreReceiptRequest.AppStoreReceiptRequestListener;
@@ -52,7 +53,11 @@ public class IOSTransaction implements Transaction {
 
     @Override
     public Date getTransactionDate() {
-        return skTransaction.getTransactionDate().toDate();
+        NSDate date = skTransaction.getTransactionDate();
+        if (date != null) {
+            return date.toDate();
+        }
+        return null;
     }
 
     @Override
