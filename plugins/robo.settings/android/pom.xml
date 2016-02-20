@@ -1,16 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>org.robovm</groupId>
-        <artifactId>robopods-parent</artifactId>
+        <artifactId>robopods-settings-parent</artifactId>
         <version>1.13.1-SNAPSHOT</version>
     </parent>
-
-    <artifactId>robopods-plugins-parent</artifactId>
-    <name>RoboPods Plugins Parent</name>
-    <packaging>pom</packaging>
+    <artifactId>robopods-settings-android</artifactId>
+    <name>Robo.Settings Android</name>
+    <packaging>jar</packaging>
 
     <licenses>
         <license>
@@ -19,6 +16,20 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.robovm</groupId>
+            <artifactId>robopods-settings-core</artifactId>
+            <version>${robovm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android</artifactId>
+            <version>${android.version}</version>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -36,12 +47,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <modules>
-        <module>robo.core</module>
-        
-        <module>robo.billing</module>
-        <module>robo.dialog</module>
-        <module>robo.settings</module>
-    </modules>
 </project>
