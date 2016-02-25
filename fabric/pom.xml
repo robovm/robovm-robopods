@@ -34,7 +34,6 @@
     </build>
 
     <modules>
-  <!--      <module>android</module> -->
         <module>ios</module>
         <module>ios-answers</module>
         <module>ios-crashlytics</module>
