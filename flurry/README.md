@@ -6,9 +6,6 @@ Measure, track and analyze app performance, user acquisition and activity with F
 
 | Platform                                  | Version | Description                  |
 |-------------------------------------------|---------|------------------------------|
-| [android](android/)                       | 7.3.0   | Flurry Android               |
-| [android-ads](android-ads/)               | 7.3.0   | Flurry Ads Android           |
-| [android-analytics](android-analytics/)   | 7.3.0   | Flurry Analytics Android     |
 | [ios](ios/)                               | 7.3.0   | Flurry iOS binding           |
 | [ios-ads](ios-ads/)                       | 7.3.0   | Flurry Ads iOS binding       |
 | [ios-analytics](ios-analytics/)           | 7.3.0   | Flurry Analytics iOS binding |
