@@ -1,7 +1,5 @@
 <config>    
     <frameworks>
-        <framework>GoogleMobileAds</framework>
-    
         <framework>AdSupport</framework>
         <framework>AudioToolbox</framework>
         <framework>AVFoundation</framework>
@@ -14,12 +12,7 @@
         <framework>StoreKit</framework>
         <framework>SystemConfiguration</framework>
     </frameworks>
-    <frameworkPaths>
-        <path>libs</path>
-    </frameworkPaths>
     <libs>
-        <lib>libs/libGGLAdMob.a</lib>
-    
         <lib>z</lib>
     </libs>
     <unhideSymbols>
