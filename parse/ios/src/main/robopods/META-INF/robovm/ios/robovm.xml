@@ -1,9 +1,5 @@
 <config>    
     <frameworks>
-        <framework>Parse</framework>
-        <framework>ParseFacebookUtilsV4</framework>
-        <framework>ParseUI</framework>
-        
         <framework>AudioToolbox</framework>
         <framework>CFNetwork</framework>
         <framework>CoreGraphics</framework>
@@ -16,9 +12,6 @@
         <framework>Accounts</framework>
         <framework>Social</framework>
     </frameworks>
-    <frameworkPaths>
-        <path>libs</path>
-    </frameworkPaths>
     <libs>
         <lib>z</lib>
         <lib>sqlite3</lib>
