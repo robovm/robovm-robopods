@@ -30,7 +30,6 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
-import org.robovm.pods.google.opensource.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -67,8 +66,6 @@ import org.robovm.pods.google.opensource.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "fetcherAuthorizer")
-    public native GTMFetcherAuthorizationProtocol getFetcherAuthorizer();
     @Method(selector = "getTokensWithHandler:")
     public native void getTokens(@Block VoidBlock2<GIDAuthentication, NSError> handler);
     @Method(selector = "refreshTokensWithHandler:")

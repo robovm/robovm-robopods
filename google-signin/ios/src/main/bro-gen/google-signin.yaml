@@ -4,7 +4,6 @@ include:
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
     - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
-    - ../../../../../google-plus/ios/src/main/bro-gen/google-open-source.yaml
 clang_args: ['-x', 'objective-c']
 header_root: /../robopods/META-INF/robovm/ios/libs
 headers:
@@ -32,7 +31,7 @@ classes:
     GIDAuthentication: # DONE
         methods:
             '-fetcherAuthorizer':
-                property: true
+                exclude: true
             '-getTokensWithHandler:':
                 name: getTokens
             '-refreshTokensWithHandler:':

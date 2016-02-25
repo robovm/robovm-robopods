@@ -39,11 +39,6 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.robovm</groupId>
-            <artifactId>robopods-google-plus-ios</artifactId>
-            <version>${robopods.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
