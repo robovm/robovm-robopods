@@ -3,13 +3,8 @@
         <lib>sqlite3</lib>
         <lib>xml2</lib>
         <lib>z</lib>
-    </libs>
-    <frameworkPaths>
-        <path>libs</path>
-    </frameworkPaths>
-    <frameworks>
-        <framework>HeyzapAds</framework>
-        
+    </libs>    
+    <frameworks>                
         <framework>AVFoundation</framework>
         <framework>AdSupport</framework>
         <framework>AudioToolbox</framework>
