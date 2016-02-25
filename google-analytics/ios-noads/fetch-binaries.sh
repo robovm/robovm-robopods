@@ -12,7 +12,10 @@ curl -O https://dl.google.com/googleanalyticsservices/GoogleAnalyticsServicesiOS
 tar xzf GoogleAnalyticsServicesiOS_$VERSION.zip -C analytics
 rm -rf libs/
 mkdir libs
+mkdir libs/headers
 cp -r analytics/GoogleAnalyticsServicesiOS_$VERSION/libGoogleAnalyticsServices.a libs/
 cp -r analytics/GoogleAnalyticsServicesiOS_$VERSION/libAdIdAccess.a libs/
+cp -r analytics/GoogleAnalyticsServicesiOS_$VERSION/GoogleAnalytics/Library/. libs/headers
+cp -r analytics/GoogleAnalyticsServicesiOS_$VERSION/GoogleTagManager/Library/. libs/headers
 rm GoogleAnalyticsServicesiOS_$VERSION.zip
 rm -r analytics
