@@ -2,7 +2,4 @@
     <frameworks>
         <framework>AdSupport</framework>
     </frameworks>
-    <libs>
-        <lib>libs/libAdIdAccess.a</lib>
-    </libs>
 </config>
