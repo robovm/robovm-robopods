@@ -1,6 +1,6 @@
 # RoboPods for Google SignIn
 
-Google SignIn
+Get users into your apps quickly and securely, using a registration system they already use and trust—their Google account.
 
 ## Available RoboPods
 
