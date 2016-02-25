@@ -33,8 +33,7 @@
         </plugins>
     </build>
 
-    <modules>
-        <module>android</module>
+    <modules>        
         <module>ios</module>
     </modules>
 </project>
