@@ -15,13 +15,13 @@ This RoboPod requires you to download and add the native 3rd party framework man
 
 ```
 <config>
-  ...
-  <frameworkPaths>
-    <path>libs</path>
-  </frameworkPaths>
-  <frameworks>
-    <framework>Chartboost</framework>
-  </frameworks>
+    ...
+    <frameworkPaths>
+        <path>libs</path>
+    </frameworkPaths>
+    <frameworks>
+        <framework>Chartboost</framework>
+    </frameworks>
 </config>
 ```
 

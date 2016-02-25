@@ -6,6 +6,24 @@
 
 ## Install Instructions
 
+### 3rd party native framework
+This RoboPod requires you to download and add the native 3rd party library manually:
+
+1. Download the SDK for iOS from https://dev.flurry.com
+2. Put the `libFlurry_X.X.X.a` file in your iOS project's `libs/` folder
+3. Add the following to your `robovm.xml`
+
+```
+<config>
+    ...
+    <libs>
+        <lib>libs/libFlurry_X.X.X.a</lib>
+    </libs>
+</config>
+```
+
+Change `X.X.X` with the version number of the library.
+
 ### Gradle
 
 Add the following dependency to your `build.gradle`:

@@ -1,7 +1,4 @@
 <config>
-    <libs>
-        <lib>libs/libFlurry_7.3.0.a</lib>
-    </libs>
     <frameworks>
         <framework>AVFoundation</framework>
         <framework>CoreGraphics</framework>

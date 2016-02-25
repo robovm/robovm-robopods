@@ -1,7 +1,4 @@
 <config>
-    <libs>
-        <lib>libs/libFlurryAds_7.3.0.a</lib>
-    </libs>
     <frameworks>
         <framework>AdSupport</framework>
         <framework>AVFoundation</framework>
