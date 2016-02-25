@@ -115,8 +115,6 @@ Also add an entry for each framework and library in your `robovm.xml`.
 </libs>
 ```
 
-__Note:__ Ad networks that are available as RoboPods (like Chartboost or Facebook Audience Network) should be added as a Maven/Gradle dependency instead!
-
 #### Test integration
 
 You can use the Mediation Test Suite to check if all networks are correctly setup.

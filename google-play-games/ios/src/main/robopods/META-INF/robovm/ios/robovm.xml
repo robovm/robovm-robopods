@@ -1,16 +1,9 @@
 <config>
-    <resources>
-        <resource>
-            <directory>res</directory>
-        </resource>
-    </resources>
     <libs>
         <lib>c++</lib>
         <lib>z</lib>
     </libs>
     <frameworks>
-        <framework>gpg</framework>
-        
         <framework>AddressBook</framework>
         <framework>AssetsLibrary</framework>
         <framework>CoreData</framework>
@@ -23,9 +16,6 @@
         <framework>Security</framework>
         <framework>SystemConfiguration</framework>
     </frameworks>
-    <frameworkPaths>
-        <path>libs</path>
-    </frameworkPaths>
     <exportedSymbols>
         <symbol>GPG*</symbol>
         <symbol>kGPG*</symbol>
