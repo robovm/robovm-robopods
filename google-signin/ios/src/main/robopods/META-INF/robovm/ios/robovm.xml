@@ -1,12 +1,5 @@
 <config>
-    <resources>
-        <resource>
-            <directory>res</directory>
-        </resource>
-    </resources>
     <frameworks>
-        <framework>GoogleSignIn</framework>
-        
         <framework>AddressBook</framework>
         <framework>AssetsLibrary</framework>
         <framework>CoreLocation</framework>
@@ -17,9 +10,6 @@
         <framework>Security</framework>
         <framework>SystemConfiguration</framework>
     </frameworks>
-    <frameworkPaths>
-        <path>libs</path>
-    </frameworkPaths>
     <unhideSymbols>
         <symbol>kGIDSignInErrorDomain</symbol>
     </unhideSymbols>
