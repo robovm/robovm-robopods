@@ -6,6 +6,25 @@
 
 ## Install Instructions
 
+To use this RoboPod, you will need to manually add the HeyZap native framework to your
+project.
+
+1. Download the HeyZap native SDK for iOS from https://developers.heyzap.com
+2. In your RoboVM iOS project, create a folder called `libs/` and put the `HeyzapAds.framework` into it
+3. Open your `robovm.xml` file and add the following entries:
+
+```
+<config>
+	...
+	<frameworkPaths>
+		<path>libs</path>
+	</frameworkPaths>
+	<frameworks>
+		<framework>HeyzapAds</framework>
+	</frameworks>
+</config>
+```
+
 ### Gradle
 
 Add the following dependency to your `build.gradle`:
