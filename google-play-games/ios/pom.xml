@@ -54,26 +54,6 @@
         </resources>
         <plugins>
             <plugin>
-                <groupId>com.googlecode.maven-download-plugin</groupId>
-                <artifactId>download-maven-plugin</artifactId>
-                <version>1.2.1</version>
-                <executions>
-                    <execution>
-                        <id>download-gpgs-binaries</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>wget</goal>
-                        </goals>
-                        <configuration>
-                            <url>http://download.robovm.org/robopods-binaries/gpg-cpp-sdk-2.0.0-framework.zip</url>
-                            <unpack>true</unpack>
-                            <outputDirectory>${project.build.directory}/classes/META-INF/robovm/ios/libs</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
             </plugin>
