@@ -8,7 +8,9 @@
         <framework>CoreTelephony</framework>
         <framework>EventKit</framework>
         <framework>EventKitUI</framework>
+        <framework>MediaPlayer</framework>
         <framework>MessageUI</framework>
+        <framework>QuartzCore</framework>
         <framework>StoreKit</framework>
         <framework>SystemConfiguration</framework>
     </frameworks>
