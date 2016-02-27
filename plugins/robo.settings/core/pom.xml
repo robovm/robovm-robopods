@@ -21,7 +21,7 @@
     <dependencies>
         <dependency>
             <groupId>org.robovm</groupId>
-            <artifactId>robopods-components-core</artifactId>
+            <artifactId>robopods-plugins-core</artifactId>
             <version>${robovm.version}</version>
         </dependency>
         <dependency>
