@@ -8,7 +8,7 @@ import android.os.Build;
 import org.robovm.pods.Platform;
 import org.robovm.pods.Platform.AndroidPlatform;
 
-class AndroidSettings implements InternalSettings {
+public class AndroidSettings implements InternalSettings {
     private String name;
     private SharedPreferences preferences;
     private Editor editor;

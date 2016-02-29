@@ -7,7 +7,7 @@ import org.robovm.pods.Log;
 
 import java.io.File;
 
-class IOSSettings implements InternalSettings {
+public class IOSSettings implements InternalSettings {
     private NSDictionary<?, ?> preferences;
     private File path;
 
