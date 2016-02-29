@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.robovm</groupId>
         <artifactId>robopods-fabric-parent</artifactId>
-        <version>1.13.1-SNAPSHOT</version>
+        <version>1.14.0</version>
     </parent>
     <artifactId>robopods-fabric-ios-digits</artifactId>
     <name>RoboPods Fabric Digits iOS</name>
