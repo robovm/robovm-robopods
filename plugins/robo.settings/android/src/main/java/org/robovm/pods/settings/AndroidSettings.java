@@ -5,20 +5,21 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
-import org.robovm.pods.Platform;
-import org.robovm.pods.Platform.AndroidPlatform;
+import org.robovm.pods.android.ActivityConfigurable;
+import org.robovm.pods.android.AndroidConfig;
 
-public class AndroidSettings implements InternalSettings {
+public class AndroidSettings implements InternalSettings, ActivityConfigurable {
     private String name;
     private SharedPreferences preferences;
     private Editor editor;
 
     AndroidSettings(String name) {
         this.name = name;
-        setActivity(((AndroidPlatform) Platform.getPlatform()).getLaunchActivity()); // TODO use android config
+        setActivity(AndroidConfig.getActivity(this));
     }
 
-    public void setActivity(Activity activity) { // TODO use AndroidConfig
+    @Override
+    public void setActivity(Activity activity) {
         preferences = activity.getSharedPreferences(name, Context.MODE_PRIVATE);
     }
 

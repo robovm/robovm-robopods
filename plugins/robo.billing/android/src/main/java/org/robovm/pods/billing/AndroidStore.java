@@ -29,16 +29,17 @@ import org.onepf.oms.appstore.googleUtils.SkuDetails;
 import org.robovm.pods.ActivityLifecycleListener;
 import org.robovm.pods.Log;
 import org.robovm.pods.Platform;
-import org.robovm.pods.Platform.AndroidPlatform;
 import org.robovm.pods.Util;
+import org.robovm.pods.android.ActivityConfigurable;
+import org.robovm.pods.android.AndroidConfig;
 import org.robovm.pods.billing.BillingError.ErrorType;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.*;
 
-public class AndroidStore implements Store {
-    private static final int REQUEST_CODE = 15864252;
+public class AndroidStore implements Store, ActivityConfigurable {
+    private static final int REQUEST_CODE = 15864252; // FIXME
     private final ProductCatalog productCatalog;
 
     private final List<BillingObserver> billingObservers;
@@ -82,14 +83,15 @@ public class AndroidStore implements Store {
         openIABBuilder.addStoreKeys(storeKeys);
         openIabOptions = openIABBuilder.build();
 
-        setActivity(((AndroidPlatform) Platform.getPlatform()).getLaunchActivity());
+        setActivity(AndroidConfig.getActivity(this));
     }
 
+    @Override
     public void setActivity(Activity activity) {
         this.activity = activity;
     }
 
-    public void setRequestCode(int requestCode) {
+    public void setRequestCode(int requestCode) { // TODO should also be configurable via AndroidConfig ???
         this.requestCode = requestCode;
     }
 
@@ -98,7 +100,7 @@ public class AndroidStore implements Store {
         Util.requireNonNull(activity, "activity");
         Util.requireNonNull(listener, "listener");
 
-        ((AndroidPlatform) Platform.getPlatform()).registerActivityLifecycleListener(new ActivityLifecycleListener() {
+        AndroidConfig.registerActivityLifecycleListener(new ActivityLifecycleListener() {
             @Override
             public void onActivityResult(int requestCode, int resultCode, Intent data) {
                 iabHelper.handleActivityResult(requestCode, resultCode, data);

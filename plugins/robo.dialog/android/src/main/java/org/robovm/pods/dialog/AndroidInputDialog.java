@@ -29,8 +29,8 @@ public class AndroidInputDialog extends AndroidAlertDialog implements InputDialo
     }
 
     @Override
-    AlertDialog.Builder setupAlert(org.robovm.pods.dialog.AlertDialog.Builder builder) {
-        AlertDialog.Builder b = super.setupAlert(builder);
+    AlertDialog.Builder setupAlert() {
+        AlertDialog.Builder b = super.setupAlert();
         inputTextField = new EditText(b.getContext());
         InputDialog.Builder ib = (InputDialog.Builder) builder;
         if (ib.inputStyle == InputDialogStyle.Secure) {

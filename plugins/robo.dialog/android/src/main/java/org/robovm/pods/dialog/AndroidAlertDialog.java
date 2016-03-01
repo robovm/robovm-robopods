@@ -15,31 +15,31 @@
  */
 package org.robovm.pods.dialog;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface.OnClickListener;
 import org.robovm.pods.Platform;
-import org.robovm.pods.Platform.AndroidPlatform;
+import org.robovm.pods.android.ActivityConfigurable;
+import org.robovm.pods.android.AndroidConfig;
 
 import java.util.Collections;
 import java.util.List;
 
-public class AndroidAlertDialog implements org.robovm.pods.dialog.AlertDialog {
-    private final AlertDialog alert;
-    private final String title;
-    private final String message;
+public class AndroidAlertDialog implements org.robovm.pods.dialog.AlertDialog, ActivityConfigurable {
+    Activity activity;
+    AlertDialog alert;
+    final org.robovm.pods.dialog.AlertDialog.Builder builder;
 
     AndroidAlertDialog(org.robovm.pods.dialog.AlertDialog.Builder builder) {
-        this.title = builder.title;
-        this.message = builder.message;
+        this.builder = builder;
 
-        AlertDialog.Builder b = setupAlert(builder);
-        alert = b.create();
+        setActivity(AndroidConfig.getActivity(this));
     }
 
-    AlertDialog.Builder setupAlert(org.robovm.pods.dialog.AlertDialog.Builder builder) {
+    AlertDialog.Builder setupAlert() {
         List<DialogButton> buttons = builder.buttons;
 
-        AlertDialog.Builder b = new AlertDialog.Builder(((AndroidPlatform) Platform.getPlatform()).getLaunchActivity())
+        AlertDialog.Builder b = new AlertDialog.Builder(activity)
                 .setTitle(builder.title)
                 .setMessage(builder.message);
 
@@ -73,12 +73,12 @@ public class AndroidAlertDialog implements org.robovm.pods.dialog.AlertDialog {
 
     @Override
     public String getTitle() {
-        return title;
+        return builder.title;
     }
 
     @Override
     public String getMessage() {
-        return message;
+        return builder.message;
     }
 
     @Override
@@ -94,5 +94,12 @@ public class AndroidAlertDialog implements org.robovm.pods.dialog.AlertDialog {
     @Override
     public String getTextInput() {
         return null;
+    }
+
+    @Override
+    public void setActivity(Activity activity) {
+        this.activity = activity;
+        AlertDialog.Builder b = setupAlert();
+        alert = b.create();
     }
 }

@@ -17,42 +17,44 @@ package org.robovm.pods.dialog;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import org.robovm.pods.Platform;
-import org.robovm.pods.Platform.AndroidPlatform;
+import org.robovm.pods.android.ActivityConfigurable;
+import org.robovm.pods.android.AndroidConfig;
 
-public class AndroidProgressDialog implements org.robovm.pods.dialog.ProgressDialog {
-    private ProgressDialog progressDialog;
-    private String title;
-    private String message;
-    private ProgressDialogStyle style;
+public class AndroidProgressDialog implements org.robovm.pods.dialog.ProgressDialog, ActivityConfigurable {
+    Activity activity;
+    ProgressDialog progressDialog;
+    final org.robovm.pods.dialog.ProgressDialog.Builder builder;
 
-    private double progress;
+    double progress;
 
     AndroidProgressDialog(org.robovm.pods.dialog.ProgressDialog.Builder builder) {
-        this.title = builder.title;
-        this.message = builder.message;
-        this.style = builder.style;
+        this.builder = builder;
 
-        Activity activity = ((AndroidPlatform) Platform.getPlatform()).getLaunchActivity();
+        setActivity(AndroidConfig.getActivity(this));
+    }
 
-        progressDialog = new ProgressDialog(activity);
-        progressDialog.setTitle(title);
-        progressDialog.setMessage(message);
-        progressDialog.setIndeterminate(style != ProgressDialogStyle.Determinate);
+    ProgressDialog setupDialog() {
+        ProgressDialog progressDialog = new ProgressDialog(activity);
+        progressDialog.setTitle(builder.title);
+        progressDialog.setMessage(builder.message);
+        progressDialog.setIndeterminate(builder.style != ProgressDialogStyle.Determinate);
         progressDialog.setMax(100);
-        progressDialog.setProgressStyle(style == ProgressDialogStyle.Determinate ? ProgressDialog.STYLE_HORIZONTAL
-                : ProgressDialog.STYLE_SPINNER);
+        progressDialog
+                .setProgressStyle(builder.style == ProgressDialogStyle.Determinate ? ProgressDialog.STYLE_HORIZONTAL
+                        : ProgressDialog.STYLE_SPINNER);
         // TODO support text style
+
+        return progressDialog;
     }
 
     @Override
     public String getTitle() {
-        return title;
+        return builder.title;
     }
 
     @Override
     public String getMessage() {
-        return message;
+        return builder.message;
     }
 
     @Override
@@ -67,7 +69,7 @@ public class AndroidProgressDialog implements org.robovm.pods.dialog.ProgressDia
 
     @Override
     public ProgressDialogStyle getStyle() {
-        return style;
+        return builder.style;
     }
 
     @Override
@@ -79,5 +81,11 @@ public class AndroidProgressDialog implements org.robovm.pods.dialog.ProgressDia
     @Override
     public double getProgress() {
         return progress;
+    }
+
+    @Override
+    public void setActivity(Activity activity) {
+        this.activity = activity;
+        progressDialog = setupDialog();
     }
 }
