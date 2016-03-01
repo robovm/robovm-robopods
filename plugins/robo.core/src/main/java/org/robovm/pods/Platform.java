@@ -15,8 +15,6 @@
  */
 package org.robovm.pods;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import org.robovm.apple.foundation.NSOperationQueue;
@@ -26,11 +24,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Proxy;
 import java.net.URL;
-import java.util.*;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class Platform {
     private static Platform PLATFORM = findPlatform();
@@ -176,8 +175,6 @@ public abstract class Platform {
 
     public static final class AndroidPlatform extends Platform {
         final Handler handler;
-        Activity launchActivity;
-        List<ActivityLifecycleListener> lifecycleListeners = new ArrayList<>();
 
         private AndroidPlatform() {
             handler = new Handler(Looper.getMainLooper());
@@ -188,62 +185,9 @@ public abstract class Platform {
             return PlatformType.Android;
         }
 
-        public Activity getLaunchActivity() {
-            if (launchActivity == null) {
-                launchActivity = findLaunchActivity();
-            }
-            return launchActivity;
-        }
-
-        public void setLaunchActivity(Activity mainActivity) {
-            this.launchActivity = mainActivity;
-        }
-
-        public void registerActivityLifecycleListener(ActivityLifecycleListener listener) {
-            lifecycleListeners.add(listener);
-        }
-
-        private Activity findLaunchActivity() {
-            try {
-                Class<?> activityThreadClass = Class.forName("android.app.ActivityThread");
-                Object activityThread = activityThreadClass.getMethod("currentActivityThread").invoke(null);
-                Field activitiesField = activityThreadClass.getDeclaredField("mActivities");
-                activitiesField.setAccessible(true);
-                Object activities = activitiesField.get(activityThread);
-                Collection<?> values = (Collection<?>) activities.getClass().getDeclaredMethod("values")
-                        .invoke(activities);
-
-                for (Object activityRecord : values) {
-                    Class<?> activityRecordClass = activityRecord.getClass();
-                    Field pausedField = activityRecordClass.getDeclaredField("paused");
-                    pausedField.setAccessible(true);
-                    if (!pausedField.getBoolean(activityRecord)) {
-                        Field activityField = activityRecordClass.getDeclaredField("activity");
-                        activityField.setAccessible(true);
-                        Activity activity = (Activity) activityField.get(activityRecord);
-                        if (activity.getIntent().getCategories().contains("android.intent.category.LAUNCHER")) {
-                            return activity;
-                        }
-                    }
-                }
-            } catch (Exception e) {
-                System.err.println("Couldn't find launch activity! "
-                        + "Specify manually with ((AndroidPlatform) Platform.getPlatform()).setLaunchActivity(activity); to make RoboPods work correctly!");
-            }
-            return null;
-        }
-
         @Override
         public void runOnUIThread(Runnable runnable) {
             handler.post(runnable);
-        }
-
-        // FIXME this is just temporary. We should use a proxy activity that
-        // is launched with the target activity to listen for lifecycle events.
-        public void onActivityResult(int requestCode, int resultCode, Intent data) {
-            for (ActivityLifecycleListener listener : lifecycleListeners) {
-                listener.onActivityResult(requestCode, resultCode, data);
-            }
         }
     }
 
