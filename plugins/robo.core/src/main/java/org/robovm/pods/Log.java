@@ -19,9 +19,21 @@ public final class Log {
     private static Logger logger = Logger.DEFAULT;
     private static LogLevel level = LogLevel.ERROR;
 
+    public static void log(String message) {
+        if (level == LogLevel.DEBUG) {
+            logger.log(message);
+        }
+    }
+
     public static void log(String message, Object... replacements) {
         if (level == LogLevel.DEBUG) {
             logger.log(String.format(message, replacements));
+        }
+    }
+
+    public static void err(String message) {
+        if (level == LogLevel.ERROR || level == LogLevel.DEBUG) {
+            logger.err(message);
         }
     }
 
