@@ -1,0 +1,12 @@
+<config>
+    <libs>
+        <lib>libs/libGameAnalytics.a</lib>
+
+        <lib>sqlite3</lib>
+        <lib>z</lib>
+    </libs>
+    <frameworks>
+        <framework>AdSupport</framework>
+        <framework>SystemConfiguration</framework>
+    </frameworks>
+</config>

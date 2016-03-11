@@ -181,6 +181,7 @@
         <module>fabric</module>
         <module>facebook</module>
         <module>flurry</module>
+        <module>game-analytics</module>
         <module>google-apis</module>
         <module>google-analytics</module>
         <module>google-mobile-ads</module>
