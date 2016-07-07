@@ -53,7 +53,7 @@ When you add a dependency, you can refer to the variable like this:
 
 ```maven
 <dependency>
-   <groupId>org.robovm</groupId>
+   <groupId>com.mobidevelop.robovm</groupId>
    <artifactId>robopods-facebook-ios</artifactId>
    <version>${robopods.version}</version>
 </dependency>
@@ -70,7 +70,7 @@ The current stable version is:
 
 If you want to use the latest and greatest of every RoboPod, use the latest snapshot version for your dependencies:
 
-> 1.14.1-SNAPSHOT
+> 2.2.0-SNAPSHOT
 
 
 ## List of RoboPods

@@ -45,7 +45,7 @@ Add the following dependency to your `pom.xml`:
 
 ```
 <dependency>
-   <groupId>org.robovm</groupId>
+   <groupId>com.mobidevelop.robovm</groupId>
    <artifactId>robopods-parse-ios</artifactId>
    <version>${robopods.version}</version>
 </dependency>
