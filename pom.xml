@@ -178,16 +178,16 @@
 
         <module>bolts</module>
         <module>chartboost</module>
-        <module>fabric</module>
-        <module>facebook</module>
-        <module>flurry</module>
+        <!-- <module>fabric</module> -->
+        <!-- <module>facebook</module> -->
+        <!-- <module>flurry</module> -->
         <module>google-apis</module>
-        <module>google-analytics</module>
+        <!-- <module>google-analytics</module> -->
         <module>google-mobile-ads</module>
-        <module>google-play-games</module>
-        <module>google-signin</module>
-        <module>heyzap</module>
-        <module>parse</module>
-        <module>reachability</module>
+        <!-- <module>google-play-games</module> -->
+        <!-- <module>google-signin</module> -->
+        <!-- <module>heyzap</module> -->
+        <!-- <module>parse</module> -->
+        <!-- <module>reachability</module> -->
     </modules>
 </project>
