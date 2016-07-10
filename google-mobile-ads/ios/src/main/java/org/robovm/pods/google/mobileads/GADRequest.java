@@ -45,9 +45,7 @@ import org.robovm.apple.storekit.*;
     /*<bind>*/static { ObjCRuntime.bind(GADRequest.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected GADRequest(Handle h, long handle) { super(h, handle); }
     protected GADRequest(SkipInit skipInit) { super(skipInit); }
-    public GADRequest() { super((Handle) null, create()); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "testDevices")

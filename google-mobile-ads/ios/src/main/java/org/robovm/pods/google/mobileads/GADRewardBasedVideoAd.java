@@ -46,7 +46,6 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADRewardBasedVideoAd() {}
-    protected GADRewardBasedVideoAd(Handle h, long handle) { super(h, handle); }
     protected GADRewardBasedVideoAd(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

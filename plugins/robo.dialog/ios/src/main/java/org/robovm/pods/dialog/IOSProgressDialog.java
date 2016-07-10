@@ -171,8 +171,8 @@ public class IOSProgressDialog extends UIView implements ProgressDialog {
         double yPos = Math.round(((bounds.getSize().getHeight() - totalSize.getHeight()) / 2) + margin);
         double xPos = 0;
 
-        indicatorF.setY(yPos);
-        indicatorF.setX(Math.round((bounds.getSize().getWidth() - indicatorF.getSize().getWidth()) / 2) + xPos);
+        indicatorF.getOrigin().setY(yPos);
+        indicatorF.getOrigin().setX(Math.round((bounds.getSize().getWidth() - indicatorF.getSize().getWidth()) / 2) + xPos);
 
         indicator.setFrame(indicatorF);
         yPos += indicatorF.getSize().getHeight();
@@ -182,8 +182,8 @@ public class IOSProgressDialog extends UIView implements ProgressDialog {
         }
 
         CGRect labelF = new CGRect();
-        labelF.setY(yPos);
-        labelF.setX(Math.round((bounds.getSize().getWidth() - titleLabelSize.getWidth()) / 2) + xPos);
+        labelF.getOrigin().setY(yPos);
+        labelF.getOrigin().setX(Math.round((bounds.getSize().getWidth() - titleLabelSize.getWidth()) / 2) + xPos);
         labelF.setSize(titleLabelSize);
         title.setFrame(labelF);
         yPos += labelF.getSize().getHeight();
@@ -194,8 +194,8 @@ public class IOSProgressDialog extends UIView implements ProgressDialog {
         }
 
         CGRect detailsLabelF = new CGRect();
-        detailsLabelF.setY(yPos);
-        detailsLabelF.setX(Math.round((bounds.getSize().getWidth() - messageLabelSize.getWidth()) / 2) + xPos);
+        detailsLabelF.getOrigin().setY(yPos);
+        detailsLabelF.getOrigin().setX(Math.round((bounds.getSize().getWidth() - messageLabelSize.getWidth()) / 2) + xPos);
         detailsLabelF.setSize(messageLabelSize);
         message.setFrame(detailsLabelF);
 
@@ -215,8 +215,8 @@ public class IOSProgressDialog extends UIView implements ProgressDialog {
         UIGraphics.pushContext(context);
 
         if (dimsBackground) {
-            CGColorSpace colorSpace = CGColorSpace.deviceRGB();
-            CGGradient gradient = new CGGradient(colorSpace, new double[] { 0, 1 },
+            CGColorSpace colorSpace = CGColorSpace.createDeviceRGB();
+            CGGradient gradient = CGGradient.create(colorSpace, new double[] { 0, 1 },
                     new double[] { 0, 0, 0, 0, 0, 0, 0, 0.75 });
             CGPoint gradCenter = new CGPoint(getBounds().getWidth() / 2, getBounds().getHeight() / 2);
             double gradRadius = Math.min(getBounds().getWidth(), getBounds().getHeight());
@@ -242,10 +242,10 @@ public class IOSProgressDialog extends UIView implements ProgressDialog {
         float radius = 10;
         context.beginPath();
         context.moveToPoint(boxRect.getMinX() + radius, boxRect.getMinY());
-        context.addArc(boxRect.getMaxX() - radius, boxRect.getMinY() + radius, radius, 3 * Math.PI / 2, 0, false);
-        context.addArc(boxRect.getMaxX() - radius, boxRect.getMaxY() - radius, radius, 0, Math.PI / 2, false);
-        context.addArc(boxRect.getMinX() + radius, boxRect.getMaxY() - radius, radius, Math.PI / 2, Math.PI, false);
-        context.addArc(boxRect.getMinX() + radius, boxRect.getMinY() + radius, radius, Math.PI, 3 * Math.PI / 2, false);
+        context.addArc(boxRect.getMaxX() - radius, boxRect.getMinY() + radius, radius, 3 * Math.PI / 2, 0, 0);
+        context.addArc(boxRect.getMaxX() - radius, boxRect.getMaxY() - radius, radius, 0, Math.PI / 2, 0);
+        context.addArc(boxRect.getMinX() + radius, boxRect.getMaxY() - radius, radius, Math.PI / 2, Math.PI, 0);
+        context.addArc(boxRect.getMinX() + radius, boxRect.getMinY() + radius, radius, Math.PI, 3 * Math.PI / 2, 0);
         context.closePath();
         context.fillPath();
 

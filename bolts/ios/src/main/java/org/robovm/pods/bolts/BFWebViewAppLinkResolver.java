@@ -45,7 +45,6 @@ import org.robovm.apple.dispatch.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public BFWebViewAppLinkResolver() {}
-    protected BFWebViewAppLinkResolver(Handle h, long handle) { super(h, handle); }
     protected BFWebViewAppLinkResolver(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

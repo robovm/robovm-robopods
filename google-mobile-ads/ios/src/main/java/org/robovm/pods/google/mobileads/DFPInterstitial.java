@@ -46,7 +46,6 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public DFPInterstitial() {}
-    protected DFPInterstitial(Handle h, long handle) { super(h, handle); }
     protected DFPInterstitial(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

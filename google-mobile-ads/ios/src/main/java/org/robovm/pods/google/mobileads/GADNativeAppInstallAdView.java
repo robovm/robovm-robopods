@@ -46,7 +46,6 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADNativeAppInstallAdView() {}
-    protected GADNativeAppInstallAdView(Handle h, long handle) { super(h, handle); }
     protected GADNativeAppInstallAdView(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

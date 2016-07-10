@@ -46,7 +46,6 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADNativeAdImageAdLoaderOptions() {}
-    protected GADNativeAdImageAdLoaderOptions(Handle h, long handle) { super(h, handle); }
     protected GADNativeAdImageAdLoaderOptions(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

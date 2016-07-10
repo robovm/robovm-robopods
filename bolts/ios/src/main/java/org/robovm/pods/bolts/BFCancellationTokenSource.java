@@ -45,7 +45,6 @@ import org.robovm.apple.dispatch.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public BFCancellationTokenSource() {}
-    protected BFCancellationTokenSource(Handle h, long handle) { super(h, handle); }
     protected BFCancellationTokenSource(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

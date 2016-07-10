@@ -46,7 +46,6 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADCorrelatorAdLoaderOptions() {}
-    protected GADCorrelatorAdLoaderOptions(Handle h, long handle) { super(h, handle); }
     protected GADCorrelatorAdLoaderOptions(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

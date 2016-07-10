@@ -45,7 +45,6 @@ import org.robovm.apple.dispatch.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public BFAppLinkReturnToRefererView() {}
-    protected BFAppLinkReturnToRefererView(Handle h, long handle) { super(h, handle); }
     protected BFAppLinkReturnToRefererView(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

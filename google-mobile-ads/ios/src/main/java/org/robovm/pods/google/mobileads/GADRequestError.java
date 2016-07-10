@@ -45,7 +45,6 @@ import org.robovm.apple.storekit.*;
     /*<bind>*/static { ObjCRuntime.bind(GADRequestError.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected GADRequestError(Handle h, long handle) { super(h, handle); }
     protected GADRequestError(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

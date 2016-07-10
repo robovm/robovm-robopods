@@ -98,7 +98,7 @@ public class ProgressBarView extends UIView {
             double angle = -Math.acos(x / radius);
             if (Double.isNaN(angle))
                 angle = 0;
-            context.addArc(rect.getWidth() - radius - 4, rect.getHeight() / 2, radius, Math.PI, angle, false);
+            context.addArc(rect.getWidth() - radius - 4, rect.getHeight() / 2, radius, Math.PI, angle, 0);
             context.addLineToPoint(amount, rect.getHeight() / 2);
 
             context.moveToPoint(4, rect.getHeight() / 2);
@@ -107,7 +107,7 @@ public class ProgressBarView extends UIView {
             angle = Math.acos(x / radius);
             if (Double.isNaN(angle))
                 angle = 0;
-            context.addArc(rect.getWidth() - radius - 4, rect.getHeight() / 2, radius, -Math.PI, angle, true);
+            context.addArc(rect.getWidth() - radius - 4, rect.getHeight() / 2, radius, -Math.PI, angle, 1);
             context.addLineToPoint(amount, rect.getHeight() / 2);
 
             context.fillPath();

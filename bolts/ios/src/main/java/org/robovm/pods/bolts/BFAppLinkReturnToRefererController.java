@@ -45,9 +45,7 @@ import org.robovm.apple.dispatch.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public BFAppLinkReturnToRefererController() {}
-    protected BFAppLinkReturnToRefererController(Handle h, long handle) { super(h, handle); }
     protected BFAppLinkReturnToRefererController(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initForDisplayAboveNavController:")
     public BFAppLinkReturnToRefererController(UINavigationController navController) { super((SkipInit) null); initObject(init(navController)); }
     /*</constructors>*/
     /*<properties>*/

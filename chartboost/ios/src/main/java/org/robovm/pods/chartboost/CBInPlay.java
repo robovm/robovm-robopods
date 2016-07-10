@@ -46,7 +46,6 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public CBInPlay() {}
-    protected CBInPlay(Handle h, long handle) { super(h, handle); }
     protected CBInPlay(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

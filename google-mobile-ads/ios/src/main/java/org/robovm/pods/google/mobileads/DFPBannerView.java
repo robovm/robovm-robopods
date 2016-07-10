@@ -46,7 +46,6 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public DFPBannerView() {}
-    protected DFPBannerView(Handle h, long handle) { super(h, handle); }
     protected DFPBannerView(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
 

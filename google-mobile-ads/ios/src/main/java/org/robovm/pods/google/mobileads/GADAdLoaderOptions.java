@@ -46,7 +46,6 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADAdLoaderOptions() {}
-    protected GADAdLoaderOptions(Handle h, long handle) { super(h, handle); }
     protected GADAdLoaderOptions(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

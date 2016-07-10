@@ -46,7 +46,6 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADInAppPurchase() {}
-    protected GADInAppPurchase(Handle h, long handle) { super(h, handle); }
     protected GADInAppPurchase(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

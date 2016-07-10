@@ -46,11 +46,8 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADNativeAdImage() {}
-    protected GADNativeAdImage(Handle h, long handle) { super(h, handle); }
     protected GADNativeAdImage(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithImage:")
     public GADNativeAdImage(UIImage image) { super((SkipInit) null); initObject(init(image)); }
-    @Method(selector = "initWithURL:scale:")
     public GADNativeAdImage(NSURL URL, @MachineSizedFloat double scale) { super((SkipInit) null); initObject(init(URL, scale)); }
     /*</constructors>*/
     /*<properties>*/

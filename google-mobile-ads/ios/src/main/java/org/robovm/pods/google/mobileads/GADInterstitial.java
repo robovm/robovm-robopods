@@ -46,9 +46,7 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADInterstitial() {}
-    protected GADInterstitial(Handle h, long handle) { super(h, handle); }
     protected GADInterstitial(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithAdUnitID:")
     public GADInterstitial(String adUnitID) { super((SkipInit) null); initObject(init(adUnitID)); }
     /*</constructors>*/
     /*<properties>*/

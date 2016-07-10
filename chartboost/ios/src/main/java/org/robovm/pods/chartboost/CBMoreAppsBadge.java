@@ -45,7 +45,6 @@ import org.robovm.apple.storekit.*;
     /*<bind>*/static { ObjCRuntime.bind(CBMoreAppsBadge.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected CBMoreAppsBadge(Handle h, long handle) { super(h, handle); }
     protected CBMoreAppsBadge(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

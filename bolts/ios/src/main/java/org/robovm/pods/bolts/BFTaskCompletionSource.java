@@ -45,7 +45,6 @@ import org.robovm.apple.dispatch.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public BFTaskCompletionSource() {}
-    protected BFTaskCompletionSource(Handle h, long handle) { super(h, handle); }
     protected BFTaskCompletionSource(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

@@ -46,7 +46,6 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADMediatedNativeAdNotificationSource() {}
-    protected GADMediatedNativeAdNotificationSource(Handle h, long handle) { super(h, handle); }
     protected GADMediatedNativeAdNotificationSource(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
