@@ -15,23 +15,16 @@
  */
 package org.robovm.pods.facebook.login;
 
-/*<imports>*/
-import java.io.*;
-import java.nio.*;
-import java.util.*;
-import org.robovm.objc.*;
+import java.util.Set;
+
+import org.robovm.apple.foundation.NSObject;
+import org.robovm.apple.foundation.NSSet;
+import org.robovm.objc.ObjCRuntime;
 import org.robovm.objc.annotation.*;
-import org.robovm.objc.block.*;
-import org.robovm.rt.*;
-import org.robovm.rt.annotation.*;
-import org.robovm.rt.bro.*;
-import org.robovm.rt.bro.annotation.*;
-import org.robovm.rt.bro.ptr.*;
-import org.robovm.apple.foundation.*;
-import org.robovm.apple.uikit.*;
-import org.robovm.apple.coregraphics.*;
-import org.robovm.apple.accounts.*;
-import org.robovm.pods.facebook.core.*;
+import org.robovm.pods.facebook.core.FBSDKAccessToken;
+import org.robovm.rt.bro.annotation.Library;
+import org.robovm.rt.bro.annotation.Pointer;
+import org.robovm.rt.bro.ptr.Ptr;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -47,9 +40,9 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKLoginManagerLoginResult() {}
-    protected FBSDKLoginManagerLoginResult(Handle h, long handle) { super(h, handle); }
+    protected FBSDKLoginManagerLoginResult(long handle) { super(handle); }
     protected FBSDKLoginManagerLoginResult(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithToken:isCancelled:grantedPermissions:declinedPermissions:")
+
     public FBSDKLoginManagerLoginResult(FBSDKAccessToken token, boolean isCancelled, @org.robovm.rt.bro.annotation.Marshaler(NSSet.AsStringSetMarshaler.class) Set<String> grantedPermissions, @org.robovm.rt.bro.annotation.Marshaler(NSSet.AsStringSetMarshaler.class) Set<String> declinedPermissions) { super((SkipInit) null); initObject(init(token, isCancelled, grantedPermissions, declinedPermissions)); }
     /*</constructors>*/
     /*<properties>*/

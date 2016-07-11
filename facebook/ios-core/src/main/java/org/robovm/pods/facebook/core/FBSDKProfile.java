@@ -15,22 +15,13 @@
  */
 package org.robovm.pods.facebook.core;
 
-/*<imports>*/
-import java.io.*;
-import java.nio.*;
-import java.util.*;
-import org.robovm.objc.*;
-import org.robovm.objc.annotation.*;
-import org.robovm.objc.block.*;
-import org.robovm.rt.*;
-import org.robovm.rt.annotation.*;
-import org.robovm.rt.bro.*;
-import org.robovm.rt.bro.annotation.*;
-import org.robovm.rt.bro.ptr.*;
+import org.robovm.apple.coregraphics.CGSize;
 import org.robovm.apple.foundation.*;
-import org.robovm.apple.uikit.*;
-import org.robovm.apple.coregraphics.*;
-import org.robovm.pods.bolts.*;
+import org.robovm.objc.ObjCRuntime;
+import org.robovm.objc.annotation.*;
+import org.robovm.objc.block.VoidBlock1;
+import org.robovm.rt.bro.annotation.*;
+import org.robovm.rt.bro.ptr.Ptr;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -62,9 +53,9 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKProfile() {}
-    protected FBSDKProfile(Handle h, long handle) { super(h, handle); }
+    protected FBSDKProfile(long handle) { super(handle); }
     protected FBSDKProfile(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithUserID:firstName:middleName:lastName:name:linkURL:refreshDate:")
+
     public FBSDKProfile(String userID, String firstName, String middleName, String lastName, String name, NSURL linkURL, NSDate refreshDate) { super((SkipInit) null); initObject(init(userID, firstName, middleName, lastName, name, linkURL, refreshDate)); }
     /*</constructors>*/
     /*<properties>*/

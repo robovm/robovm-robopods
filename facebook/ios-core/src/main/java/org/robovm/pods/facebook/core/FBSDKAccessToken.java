@@ -15,22 +15,15 @@
  */
 package org.robovm.pods.facebook.core;
 
-/*<imports>*/
-import java.io.*;
-import java.nio.*;
-import java.util.*;
-import org.robovm.objc.*;
-import org.robovm.objc.annotation.*;
-import org.robovm.objc.block.*;
-import org.robovm.rt.*;
-import org.robovm.rt.annotation.*;
-import org.robovm.rt.bro.*;
-import org.robovm.rt.bro.annotation.*;
-import org.robovm.rt.bro.ptr.*;
+import java.util.Set;
+
 import org.robovm.apple.foundation.*;
-import org.robovm.apple.uikit.*;
-import org.robovm.apple.coregraphics.*;
-import org.robovm.pods.bolts.*;
+import org.robovm.objc.ObjCRuntime;
+import org.robovm.objc.annotation.*;
+import org.robovm.objc.block.VoidBlock1;
+import org.robovm.objc.block.VoidBlock3;
+import org.robovm.rt.bro.annotation.*;
+import org.robovm.rt.bro.ptr.Ptr;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -62,9 +55,9 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKAccessToken() {}
-    protected FBSDKAccessToken(Handle h, long handle) { super(h, handle); }
+    protected FBSDKAccessToken(long handle) { super(handle); }
     protected FBSDKAccessToken(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithTokenString:permissions:declinedPermissions:appID:userID:expirationDate:refreshDate:")
+
     public FBSDKAccessToken(String tokenString, @org.robovm.rt.bro.annotation.Marshaler(NSSet.AsStringSetMarshaler.class) Set<String> permissions, @org.robovm.rt.bro.annotation.Marshaler(NSSet.AsStringSetMarshaler.class) Set<String> declinedPermissions, String appID, String userID, NSDate expirationDate, NSDate refreshDate) { super((SkipInit) null); initObject(init(tokenString, permissions, declinedPermissions, appID, userID, expirationDate, refreshDate)); }
     /*</constructors>*/
     /*<properties>*/

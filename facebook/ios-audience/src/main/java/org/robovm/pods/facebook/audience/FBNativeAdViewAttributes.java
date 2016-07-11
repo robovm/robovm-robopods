@@ -15,21 +15,15 @@
  */
 package org.robovm.pods.facebook.audience;
 
-/*<imports>*/
-import java.io.*;
-import java.nio.*;
-import java.util.*;
-import org.robovm.objc.*;
+import org.robovm.apple.foundation.NSDictionary;
+import org.robovm.apple.foundation.NSObject;
+import org.robovm.apple.uikit.UIColor;
+import org.robovm.apple.uikit.UIFont;
+import org.robovm.objc.ObjCRuntime;
 import org.robovm.objc.annotation.*;
-import org.robovm.objc.block.*;
-import org.robovm.rt.*;
-import org.robovm.rt.annotation.*;
-import org.robovm.rt.bro.*;
-import org.robovm.rt.bro.annotation.*;
-import org.robovm.rt.bro.ptr.*;
-import org.robovm.apple.foundation.*;
-import org.robovm.apple.uikit.*;
-import org.robovm.apple.coregraphics.*;
+import org.robovm.rt.bro.annotation.Library;
+import org.robovm.rt.bro.annotation.Pointer;
+import org.robovm.rt.bro.ptr.Ptr;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -45,9 +39,9 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBNativeAdViewAttributes() {}
-    protected FBNativeAdViewAttributes(Handle h, long handle) { super(h, handle); }
+    protected FBNativeAdViewAttributes(long handle) { super(handle); }
     protected FBNativeAdViewAttributes(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithDictionary:")
+
     public FBNativeAdViewAttributes(NSDictionary<?, ?> dict) { super((SkipInit) null); initObject(init(dict)); }
     /*</constructors>*/
     /*<properties>*/

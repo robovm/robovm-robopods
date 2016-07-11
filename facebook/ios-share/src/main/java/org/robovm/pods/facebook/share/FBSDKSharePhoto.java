@@ -15,21 +15,15 @@
  */
 package org.robovm.pods.facebook.share;
 
-/*<imports>*/
-import java.io.*;
-import java.nio.*;
-import java.util.*;
-import org.robovm.objc.*;
+import org.robovm.apple.foundation.NSObject;
+import org.robovm.apple.foundation.NSURL;
+import org.robovm.apple.uikit.UIImage;
+import org.robovm.objc.ObjCRuntime;
 import org.robovm.objc.annotation.*;
-import org.robovm.objc.block.*;
-import org.robovm.rt.*;
-import org.robovm.rt.annotation.*;
-import org.robovm.rt.bro.*;
-import org.robovm.rt.bro.annotation.*;
-import org.robovm.rt.bro.ptr.*;
-import org.robovm.apple.foundation.*;
-import org.robovm.apple.uikit.*;
-import org.robovm.pods.facebook.core.*;
+import org.robovm.pods.facebook.core.FBSDKCopying;
+import org.robovm.rt.bro.annotation.Library;
+import org.robovm.rt.bro.annotation.Pointer;
+import org.robovm.rt.bro.ptr.Ptr;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -45,10 +39,10 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKSharePhoto() {}
-    protected FBSDKSharePhoto(Handle h, long handle) { super(h, handle); }
+    protected FBSDKSharePhoto(long handle) { super(handle); }
     protected FBSDKSharePhoto(SkipInit skipInit) { super(skipInit); }
-    public FBSDKSharePhoto(UIImage image, boolean userGenerated) { super((Handle) null, create(image, userGenerated)); retain(getHandle()); }
-    public FBSDKSharePhoto(NSURL imageURL, boolean userGenerated) { super((Handle) null, create(imageURL, userGenerated)); retain(getHandle()); }
+    public FBSDKSharePhoto(UIImage image, boolean userGenerated) { super(create(image, userGenerated)); retain(getHandle()); }
+    public FBSDKSharePhoto(NSURL imageURL, boolean userGenerated) { super(create(imageURL, userGenerated)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "image")

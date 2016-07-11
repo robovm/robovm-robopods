@@ -15,21 +15,13 @@
  */
 package org.robovm.pods.facebook.audience;
 
-/*<imports>*/
-import java.io.*;
-import java.nio.*;
-import java.util.*;
-import org.robovm.objc.*;
+import org.robovm.apple.uikit.UIView;
+import org.robovm.apple.uikit.UIViewController;
+import org.robovm.objc.ObjCRuntime;
 import org.robovm.objc.annotation.*;
-import org.robovm.objc.block.*;
-import org.robovm.rt.*;
-import org.robovm.rt.annotation.*;
-import org.robovm.rt.bro.*;
+import org.robovm.objc.block.Block2;
 import org.robovm.rt.bro.annotation.*;
-import org.robovm.rt.bro.ptr.*;
-import org.robovm.apple.foundation.*;
-import org.robovm.apple.uikit.*;
-import org.robovm.apple.coregraphics.*;
+import org.robovm.rt.bro.ptr.Ptr;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -45,17 +37,17 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBNativeAdScrollView() {}
-    protected FBNativeAdScrollView(Handle h, long handle) { super(h, handle); }
+    protected FBNativeAdScrollView(long handle) { super(handle); }
     protected FBNativeAdScrollView(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithNativeAdsManager:withType:")
+
     public FBNativeAdScrollView(FBNativeAdsManager manager, FBNativeAdViewType type) { super((SkipInit) null); initObject(init(manager, type)); }
-    @Method(selector = "initWithNativeAdsManager:withType:withAttributes:")
+
     public FBNativeAdScrollView(FBNativeAdsManager manager, FBNativeAdViewType type, FBNativeAdViewAttributes attributes) { super((SkipInit) null); initObject(init(manager, type, attributes)); }
-    @Method(selector = "initWithNativeAdsManager:withType:withAttributes:withMaximum:")
+
     public FBNativeAdScrollView(FBNativeAdsManager manager, FBNativeAdViewType type, FBNativeAdViewAttributes attributes, @MachineSizedUInt long maximumNativeAdCount) { super((SkipInit) null); initObject(init(manager, type, attributes, maximumNativeAdCount)); }
-    @Method(selector = "initWithNativeAdsManager:withViewProvider:")
+
     public FBNativeAdScrollView(FBNativeAdsManager manager, @Block("(,@MachineSizedUInt)") Block2<FBNativeAd, Long, UIView> childViewProvider) { super((SkipInit) null); initObject(init(manager, childViewProvider)); }
-    @Method(selector = "initWithNativeAdsManager:withViewProvider:withMaximum:")
+
     public FBNativeAdScrollView(FBNativeAdsManager manager, @Block("(,@MachineSizedUInt)") Block2<FBNativeAd, Long, UIView> childViewProvider, @MachineSizedUInt long maximumNativeAdCount) { super((SkipInit) null); initObject(init(manager, childViewProvider, maximumNativeAdCount)); }
     /*</constructors>*/
     /*<properties>*/
