@@ -15,22 +15,15 @@
  */
 package org.robovm.pods.facebook.share;
 
-/*<imports>*/
-import java.io.*;
-import java.nio.*;
-import java.util.*;
-import org.robovm.objc.*;
+import org.robovm.apple.foundation.NSObject;
+import org.robovm.apple.foundation.NSURL;
+import org.robovm.objc.ObjCRuntime;
 import org.robovm.objc.annotation.*;
-import org.robovm.objc.block.*;
-import org.robovm.rt.*;
-import org.robovm.rt.annotation.*;
-import org.robovm.rt.bro.*;
-import org.robovm.rt.bro.annotation.*;
-import org.robovm.rt.bro.ptr.*;
-import org.robovm.apple.foundation.*;
-import org.robovm.apple.uikit.*;
-import org.robovm.pods.facebook.core.*;
 /*</imports>*/
+import org.robovm.pods.facebook.core.FBSDKCopying;
+import org.robovm.rt.bro.annotation.Library;
+import org.robovm.rt.bro.annotation.Pointer;
+import org.robovm.rt.bro.ptr.Ptr;
 
 /*<javadoc>*/
 
@@ -45,11 +38,10 @@ import org.robovm.pods.facebook.core.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKShareOpenGraphAction() {}
-    protected FBSDKShareOpenGraphAction(Handle h, long handle) { super(h, handle); }
     protected FBSDKShareOpenGraphAction(SkipInit skipInit) { super(skipInit); }
-    public FBSDKShareOpenGraphAction(String actionType, FBSDKShareOpenGraphObject object, String key) { super((Handle) null, create(actionType, object, key)); retain(getHandle()); }
-    public FBSDKShareOpenGraphAction(String actionType, String objectID, String key) { super((Handle) null, create(actionType, objectID, key)); retain(getHandle()); }
-    public FBSDKShareOpenGraphAction(String actionType, NSURL objectURL, String key) { super((Handle) null, create(actionType, objectURL, key)); retain(getHandle()); }
+    public FBSDKShareOpenGraphAction(String actionType, FBSDKShareOpenGraphObject object, String key) { super(create(actionType, object, key)); retain(getHandle()); }
+    public FBSDKShareOpenGraphAction(String actionType, String objectID, String key) { super(create(actionType, objectID, key)); retain(getHandle()); }
+    public FBSDKShareOpenGraphAction(String actionType, NSURL objectURL, String key) { super(create(actionType, objectURL, key)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "actionType")

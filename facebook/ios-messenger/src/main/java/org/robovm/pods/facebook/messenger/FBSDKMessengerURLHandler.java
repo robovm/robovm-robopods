@@ -15,20 +15,12 @@
  */
 package org.robovm.pods.facebook.messenger;
 
-/*<imports>*/
-import java.io.*;
-import java.nio.*;
-import java.util.*;
-import org.robovm.objc.*;
+import org.robovm.apple.foundation.NSObject;
+import org.robovm.apple.foundation.NSURL;
+import org.robovm.objc.ObjCRuntime;
 import org.robovm.objc.annotation.*;
-import org.robovm.objc.block.*;
-import org.robovm.rt.*;
-import org.robovm.rt.annotation.*;
-import org.robovm.rt.bro.*;
-import org.robovm.rt.bro.annotation.*;
-import org.robovm.rt.bro.ptr.*;
-import org.robovm.apple.foundation.*;
-import org.robovm.apple.uikit.*;
+import org.robovm.rt.bro.annotation.Library;
+import org.robovm.rt.bro.ptr.Ptr;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -44,7 +36,7 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKMessengerURLHandler() {}
-    protected FBSDKMessengerURLHandler(Handle h, long handle) { super(h, handle); }
+    protected FBSDKMessengerURLHandler(long handle) { super(handle); }
     protected FBSDKMessengerURLHandler(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

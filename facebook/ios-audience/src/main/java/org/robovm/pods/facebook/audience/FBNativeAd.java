@@ -15,22 +15,14 @@
  */
 package org.robovm.pods.facebook.audience;
 
-/*<imports>*/
-import java.io.*;
-import java.nio.*;
-import java.util.*;
-import org.robovm.objc.*;
+import org.robovm.apple.foundation.NSArray;
+import org.robovm.apple.foundation.NSObject;
+import org.robovm.apple.uikit.UIView;
+import org.robovm.apple.uikit.UIViewController;
+import org.robovm.objc.ObjCRuntime;
 import org.robovm.objc.annotation.*;
-import org.robovm.objc.block.*;
-import org.robovm.rt.*;
-import org.robovm.rt.annotation.*;
-import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
-import org.robovm.rt.bro.ptr.*;
-import org.robovm.apple.foundation.*;
-import org.robovm.apple.uikit.*;
-import org.robovm.apple.coregraphics.*;
-/*</imports>*/
+import org.robovm.rt.bro.ptr.Ptr;
 
 /*<javadoc>*/
 
@@ -45,9 +37,9 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBNativeAd() {}
-    protected FBNativeAd(Handle h, long handle) { super(h, handle); }
+    protected FBNativeAd(long handle) { super(handle); }
     protected FBNativeAd(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithPlacementID:")
+
     public FBNativeAd(String placementID) { super((SkipInit) null); initObject(init(placementID)); }
     /*</constructors>*/
     /*<properties>*/

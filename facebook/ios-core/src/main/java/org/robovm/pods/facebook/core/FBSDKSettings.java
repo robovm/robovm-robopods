@@ -15,22 +15,15 @@
  */
 package org.robovm.pods.facebook.core;
 
-/*<imports>*/
-import java.io.*;
-import java.nio.*;
-import java.util.*;
-import org.robovm.objc.*;
-import org.robovm.objc.annotation.*;
-import org.robovm.objc.block.*;
-import org.robovm.rt.*;
-import org.robovm.rt.annotation.*;
-import org.robovm.rt.bro.*;
-import org.robovm.rt.bro.annotation.*;
-import org.robovm.rt.bro.ptr.*;
-import org.robovm.apple.foundation.*;
-import org.robovm.apple.uikit.*;
-import org.robovm.apple.coregraphics.*;
-import org.robovm.pods.bolts.*;
+import java.util.Set;
+
+import org.robovm.apple.foundation.NSObject;
+import org.robovm.objc.ObjCRuntime;
+import org.robovm.objc.annotation.Method;
+import org.robovm.objc.annotation.NativeClass;
+import org.robovm.rt.bro.annotation.Library;
+import org.robovm.rt.bro.annotation.MachineSizedFloat;
+import org.robovm.rt.bro.ptr.Ptr;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -46,7 +39,7 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKSettings() {}
-    protected FBSDKSettings(Handle h, long handle) { super(h, handle); }
+    protected FBSDKSettings(long handle) { super(handle); }
     protected FBSDKSettings(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

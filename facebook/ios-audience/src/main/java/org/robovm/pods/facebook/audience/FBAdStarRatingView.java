@@ -15,21 +15,13 @@
  */
 package org.robovm.pods.facebook.audience;
 
-/*<imports>*/
-import java.io.*;
-import java.nio.*;
-import java.util.*;
-import org.robovm.objc.*;
+import org.robovm.apple.coregraphics.CGRect;
+import org.robovm.apple.uikit.UIColor;
+import org.robovm.apple.uikit.UIView;
+import org.robovm.objc.ObjCRuntime;
 import org.robovm.objc.annotation.*;
-import org.robovm.objc.block.*;
-import org.robovm.rt.*;
-import org.robovm.rt.annotation.*;
-import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
-import org.robovm.rt.bro.ptr.*;
-import org.robovm.apple.foundation.*;
-import org.robovm.apple.uikit.*;
-import org.robovm.apple.coregraphics.*;
+import org.robovm.rt.bro.ptr.Ptr;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -45,9 +37,9 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBAdStarRatingView() {}
-    protected FBAdStarRatingView(Handle h, long handle) { super(h, handle); }
+    protected FBAdStarRatingView(long handle) { super(handle); }
     protected FBAdStarRatingView(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithFrame:withStarRating:")
+
     public FBAdStarRatingView(@ByVal CGRect frame, @ByVal FBAdStarRating starRating) { super((SkipInit) null); initObject(init(frame, starRating)); }
     /*</constructors>*/
     /*<properties>*/
