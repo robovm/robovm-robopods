@@ -37,8 +37,8 @@ import org.robovm.apple.storekit.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/GADRewardBasedVideoAd/*</name>*/ 
-    extends /*<extends>*/NSObject/*</extends>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/GADRewardBasedVideoAd/*</name>*/
+    extends /*<extends>*/NSObject/*</extends>*/
     /*<implements>*//*</implements>*/ {
 
     /*<ptr>*/public static class GADRewardBasedVideoAdPtr extends Ptr<GADRewardBasedVideoAd, GADRewardBasedVideoAdPtr> {}/*</ptr>*/
@@ -58,8 +58,8 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "loadRequest:withAdUnitID:userID:")
-    public native void loadRequest(GADRequest request, String adUnitID, String userID);
+    @Method(selector = "loadRequest:withAdUnitID:")
+    public native void loadRequest(GADRequest request, String adUnitID);
     @Method(selector = "presentFromRootViewController:")
     public native void present(UIViewController viewController);
     @Method(selector = "sharedInstance")
