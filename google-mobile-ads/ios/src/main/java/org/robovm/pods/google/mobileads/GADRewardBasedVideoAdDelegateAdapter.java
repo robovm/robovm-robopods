@@ -52,6 +52,8 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @NotImplemented("rewardBasedVideoAd:didFailToLoadWithError:")
+    public void didFailToLoad(GADRewardBasedVideoAd rewardBasedVideoAd, NSError error) {}
     @NotImplemented("rewardBasedVideoAdDidReceiveAd:")
     public void didReceiveAd(GADRewardBasedVideoAd rewardBasedVideoAd) {}
     @NotImplemented("rewardBasedVideoAdDidOpen:")
@@ -64,7 +66,5 @@ import org.robovm.apple.storekit.*;
     public void willLeaveApplication(GADRewardBasedVideoAd rewardBasedVideoAd) {}
     @NotImplemented("rewardBasedVideoAd:didRewardUserWithReward:")
     public void didRewardUser(GADRewardBasedVideoAd rewardBasedVideoAd, GADAdReward reward) {}
-    @NotImplemented("rewardBasedVideoAd:didFailToLoadWithError:")
-    public void didFailToLoad(GADRewardBasedVideoAd rewardBasedVideoAd, NSError error) {}
     /*</methods>*/
 }

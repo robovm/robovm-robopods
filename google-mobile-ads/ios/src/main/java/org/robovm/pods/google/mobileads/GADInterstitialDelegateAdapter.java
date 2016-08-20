@@ -58,6 +58,8 @@ import org.robovm.apple.storekit.*;
     public void didFailToReceiveAd(GADInterstitial ad, GADRequestError error) {}
     @NotImplemented("interstitialWillPresentScreen:")
     public void willPresentScreen(GADInterstitial ad) {}
+    @NotImplemented("interstitialDidFailToPresentScreen:")
+    public void didFailToPresentScreen(GADInterstitial ad) {}
     @NotImplemented("interstitialWillDismissScreen:")
     public void willDismissScreen(GADInterstitial ad) {}
     @NotImplemented("interstitialDidDismissScreen:")

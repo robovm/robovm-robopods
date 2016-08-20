@@ -53,6 +53,10 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "mediatedNativeAdDidRecordImpression:")
+    public static native void didRecordImpression(GADMediatedNativeAd mediatedNativeAd);
+    @Method(selector = "mediatedNativeAdDidRecordClick:")
+    public static native void didRecordClick(GADMediatedNativeAd mediatedNativeAd);
     @Method(selector = "mediatedNativeAdWillPresentScreen:")
     public static native void willPresentScreen(GADMediatedNativeAd mediatedNativeAd);
     @Method(selector = "mediatedNativeAdWillDismissScreen:")

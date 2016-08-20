@@ -65,6 +65,8 @@ import org.robovm.apple.storekit.*;
     public native NSArray<GADNativeAdImage> getImages();
     @Property(selector = "starRating")
     public native NSDecimalNumber getStarRating();
+    @Property(selector = "videoController")
+    public native GADVideoController getVideoController();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

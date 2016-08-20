@@ -85,6 +85,10 @@ import org.robovm.apple.storekit.*;
     public native UIView getStarRatingView();
     @Property(selector = "setStarRatingView:", strongRef = true)
     public native void setStarRatingView(UIView v);
+    @Property(selector = "mediaView")
+    public native GADMediaView getMediaView();
+    @Property(selector = "setMediaView:", strongRef = true)
+    public native void setMediaView(GADMediaView v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

@@ -55,6 +55,8 @@ import org.robovm.apple.storekit.*;
     void didFailToReceiveAd(GADInterstitial ad, GADRequestError error);
     @Method(selector = "interstitialWillPresentScreen:")
     void willPresentScreen(GADInterstitial ad);
+    @Method(selector = "interstitialDidFailToPresentScreen:")
+    void didFailToPresentScreen(GADInterstitial ad);
     @Method(selector = "interstitialWillDismissScreen:")
     void willDismissScreen(GADInterstitial ad);
     @Method(selector = "interstitialDidDismissScreen:")

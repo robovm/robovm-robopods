@@ -71,6 +71,10 @@ import org.robovm.apple.storekit.*;
     public native GADInAppPurchaseDelegate getInAppPurchaseDelegate();
     @Property(selector = "setInAppPurchaseDelegate:", strongRef = true)
     public native void setInAppPurchaseDelegate(GADInAppPurchaseDelegate v);
+    @Property(selector = "adSizeDelegate")
+    public native GADAdSizeDelegate getAdSizeDelegate();
+    @Property(selector = "setAdSizeDelegate:", strongRef = true)
+    public native void setAdSizeDelegate(GADAdSizeDelegate v);
     @Property(selector = "isAutoloadEnabled")
     public native boolean isAutoloadEnabled();
     @Property(selector = "setAutoloadEnabled:")

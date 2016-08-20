@@ -53,11 +53,19 @@ import org.robovm.apple.storekit.*;
     public native float getApplicationVolume();
     @Property(selector = "setApplicationVolume:")
     public native void setApplicationVolume(float v);
+    @Property(selector = "applicationMuted")
+    public native boolean isApplicationMuted();
+    @Property(selector = "setApplicationMuted:")
+    public native void setApplicationMuted(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "isSDKVersionAtLeastMajor:minor:patch:")
+    public native boolean isSDKVersionAtLeast(@MachineSizedSInt long major, @MachineSizedSInt long minor, @MachineSizedSInt long patch);
     @Method(selector = "sharedInstance")
     public static native GADMobileAds getSharedInstance();
+    @Method(selector = "configureWithApplicationID:")
+    public static native void configure(String applicationID);
     @Method(selector = "disableAutomatedInAppPurchaseReporting")
     public static native void disableAutomatedInAppPurchaseReporting();
     @Method(selector = "disableSDKCrashReporting")

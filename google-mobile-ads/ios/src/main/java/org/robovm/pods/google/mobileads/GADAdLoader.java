@@ -54,6 +54,8 @@ import org.robovm.apple.storekit.*;
     public native GADAdLoaderDelegate getDelegate();
     @Property(selector = "setDelegate:", strongRef = true)
     public native void setDelegate(GADAdLoaderDelegate v);
+    @Property(selector = "adUnitID")
+    public native String getAdUnitID();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

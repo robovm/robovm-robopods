@@ -37,8 +37,8 @@ import org.robovm.apple.storekit.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/GADRequest/*</name>*/
-    extends /*<extends>*/NSObject/*</extends>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/GADRequest/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
     /*<ptr>*/public static class GADRequestPtr extends Ptr<GADRequest, GADRequestPtr> {}/*</ptr>*/
@@ -78,7 +78,7 @@ import org.robovm.apple.storekit.*;
     /*<methods>*/
     @GlobalValue(symbol="kGADSimulatorID", optional=true)
     public static native String getSimulatorID();
-
+    
     @Method(selector = "registerAdNetworkExtras:")
     public native void registerAdNetworkExtras(GADAdNetworkExtras extras);
     @Method(selector = "adNetworkExtrasFor:")

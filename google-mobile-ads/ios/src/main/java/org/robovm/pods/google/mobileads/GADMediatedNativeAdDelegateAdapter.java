@@ -52,11 +52,13 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @NotImplemented("mediatedNativeAd:didRenderInView:")
-    public void didRenderInView(GADMediatedNativeAd mediatedNativeAd, UIView view) {}
+    @NotImplemented("mediatedNativeAd:didRenderInView:viewController:")
+    public void didRenderInView(GADMediatedNativeAd mediatedNativeAd, UIView view, UIViewController viewController) {}
     @NotImplemented("mediatedNativeAdDidRecordImpression:")
     public void didRecordImpression(GADMediatedNativeAd mediatedNativeAd) {}
     @NotImplemented("mediatedNativeAd:didRecordClickOnAssetWithName:view:viewController:")
     public void didRecordClickOnAsset(GADMediatedNativeAd mediatedNativeAd, String assetName, UIView view, UIViewController viewController) {}
+    @NotImplemented("mediatedNativeAd:didUntrackView:")
+    public void didUntrackView(GADMediatedNativeAd mediatedNativeAd, UIView view) {}
     /*</methods>*/
 }

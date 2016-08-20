@@ -49,7 +49,10 @@ import org.robovm.apple.storekit.*;
     protected GADSearchBannerView(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "adSizeDelegate")
+    public native GADAdSizeDelegate getAdSizeDelegate();
+    @Property(selector = "setAdSizeDelegate:", strongRef = true)
+    public native void setAdSizeDelegate(GADAdSizeDelegate v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
