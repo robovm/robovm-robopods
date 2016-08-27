@@ -39,7 +39,6 @@ import org.robovm.apple.uikit.*;
     /*<bind>*/static { ObjCRuntime.bind(TWTRSessionStore.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected TWTRSessionStore(Handle h, long handle) { super(h, handle); }
     protected TWTRSessionStore(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

@@ -42,9 +42,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TWTRAPIClient() {}
-    protected TWTRAPIClient(Handle h, long handle) { super(h, handle); }
     protected TWTRAPIClient(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithUserID:")
     public TWTRAPIClient(String userID) { super((SkipInit) null); initObject(init(userID)); }
     /*</constructors>*/
     /*<properties>*/
@@ -71,5 +69,11 @@ import org.robovm.pods.fabric.twitter.*;
     public native void loadTweetWithID(String tweetID, @Block VoidBlock2<TWTRTweet, NSError> completion);
     @Method(selector = "loadTweetsWithIDs:completion:")
     public native void loadTweetsWithIDs(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> tweetIDStrings, @Block VoidBlock2<NSArray<TWTRTweet>, NSError> completion);
+    @Method(selector = "uploadMedia:contentType:completion:")
+    public native void uploadMedia(NSData media, String contentType, @Block VoidBlock2<String, NSError> completion);
+    @Method(selector = "requestEmailForCurrentUser:")
+    public native void requestEmailForCurrentUser(@Block VoidBlock2<String, NSError> completion);
+    @Method(selector = "clientWithCurrentUser")
+    public static native TWTRAPIClient getCurrentUser();
     /*</methods>*/
 }

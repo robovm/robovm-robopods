@@ -32,7 +32,7 @@ import org.robovm.apple.uikit.*;
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ interface /*<name>*/TWTRBaseSession/*</name>*/ 
-    /*<implements>*/extends NSCoding/*</implements>*/ {
+    /*<implements>*/extends NSObjectProtocol, NSCoding/*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/

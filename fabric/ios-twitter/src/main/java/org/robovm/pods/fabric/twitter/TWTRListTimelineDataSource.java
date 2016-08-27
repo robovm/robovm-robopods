@@ -41,13 +41,9 @@ import org.robovm.pods.fabric.twitter.*;
     /*<bind>*/static { ObjCRuntime.bind(TWTRListTimelineDataSource.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected TWTRListTimelineDataSource(Handle h, long handle) { super(h, handle); }
     protected TWTRListTimelineDataSource(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithListID:APIClient:")
     public TWTRListTimelineDataSource(String listID, TWTRAPIClient client) { super((SkipInit) null); initObject(init(listID, client)); }
-    @Method(selector = "initWithListSlug:listOwnerScreenName:APIClient:")
     public TWTRListTimelineDataSource(String listSlug, String listOwnerScreenName, TWTRAPIClient client) { super((SkipInit) null); initObject(init(listSlug, listOwnerScreenName, client)); }
-    @Method(selector = "initWithListID:listSlug:listOwnerScreenName:APIClient:maxTweetsPerRequest:includeRetweets:")
     public TWTRListTimelineDataSource(String listID, String listSlug, String listOwnerScreenName, TWTRAPIClient client, @MachineSizedUInt long maxTweetsPerRequest, boolean includeRetweets) { super((SkipInit) null); initObject(init(listID, listSlug, listOwnerScreenName, client, maxTweetsPerRequest, includeRetweets)); }
     /*</constructors>*/
     /*<properties>*/

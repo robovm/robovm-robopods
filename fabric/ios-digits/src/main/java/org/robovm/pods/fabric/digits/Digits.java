@@ -40,7 +40,6 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public Digits() {}
-    protected Digits(Handle h, long handle) { super(h, handle); }
     protected Digits(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -50,6 +49,18 @@ import org.robovm.pods.fabric.twitter.*;
     public native DGTSessionUpdateDelegate getSessionUpdateDelegate();
     @Property(selector = "setSessionUpdateDelegate:", strongRef = true)
     public native void setSessionUpdateDelegate(DGTSessionUpdateDelegate v);
+    @Property(selector = "authEventDelegate")
+    public native DGTAuthEventDelegate getAuthEventDelegate();
+    @Property(selector = "setAuthEventDelegate:", strongRef = true)
+    public native void setAuthEventDelegate(DGTAuthEventDelegate v);
+    @Property(selector = "contactsEventDelegate")
+    public native DGTContactsEventDelegate getContactsEventDelegate();
+    @Property(selector = "setContactsEventDelegate:", strongRef = true)
+    public native void setContactsEventDelegate(DGTContactsEventDelegate v);
+    @Property(selector = "debugOverrides")
+    public native DGTDebugConfiguration getDebugOverrides();
+    @Property(selector = "setDebugOverrides:")
+    public native void setDebugOverrides(DGTDebugConfiguration v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -59,15 +70,12 @@ import org.robovm.pods.fabric.twitter.*;
     public native void start(String consumerKey, String consumerSecret, String accessGroup);
     @Method(selector = "session")
     public native DGTSession getSession();
-    @Availability({ @PlatformVersion(platform = Platform.iOS) })
     @Method(selector = "authenticateWithCompletion:")
     public native void authenticate(@Block VoidBlock2<DGTSession, NSError> completion);
-    @Availability({ @PlatformVersion(platform = Platform.iOS) })
     @Method(selector = "authenticateWithViewController:configuration:completion:")
     public native void authenticate(UIViewController viewController, DGTAuthenticationConfiguration configuration, @Block VoidBlock2<DGTSession, NSError> completion);
-    @Availability({ @PlatformVersion(platform = Platform.iOS) })
     @Method(selector = "authenticateWithNavigationViewController:configuration:completionViewController:")
-    public native void authenticate(UINavigationController navigationController, DGTAuthenticationConfiguration configuration, UIViewController completionViewController);
+    public native void authenticate(UINavigationController navigationController, DGTAuthenticationConfiguration configuration, DGTCompletionViewController completionViewController);
     @Method(selector = "logOut")
     public native void logOut();
     @Method(selector = "sharedInstance")

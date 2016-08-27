@@ -40,7 +40,6 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public DGTAppearance() {}
-    protected DGTAppearance(Handle h, long handle) { super(h, handle); }
     protected DGTAppearance(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

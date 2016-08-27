@@ -39,7 +39,6 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public MPVideoNativeAdView() {}
-    protected MPVideoNativeAdView(Handle h, long handle) { super(h, handle); }
     protected MPVideoNativeAdView(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

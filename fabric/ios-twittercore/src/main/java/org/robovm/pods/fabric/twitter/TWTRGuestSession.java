@@ -39,13 +39,9 @@ import org.robovm.apple.uikit.*;
     /*<bind>*/static { ObjCRuntime.bind(TWTRGuestSession.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected TWTRGuestSession(Handle h, long handle) { super(h, handle); }
     protected TWTRGuestSession(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithSessionDictionary:")
     public TWTRGuestSession(NSDictionary<?, ?> sessionDictionary) { super((SkipInit) null); initObject(init(sessionDictionary)); }
-    @Method(selector = "initWithAccessToken:guestToken:")
     public TWTRGuestSession(String accessToken, String guestToken) { super((SkipInit) null); initObject(init(accessToken, guestToken)); }
-    @Method(selector = "initWithCoder:")
     public TWTRGuestSession(NSCoder aDecoder) { super((SkipInit) null); initObject(init(aDecoder)); }
     /*</constructors>*/
     /*<properties>*/
@@ -53,6 +49,8 @@ import org.robovm.apple.uikit.*;
     public native String getAccessToken();
     @Property(selector = "guestToken")
     public native String getGuestToken();
+    @Property(selector = "probablyNeedsRefreshing")
+    public native boolean probablyNeedsRefreshing();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

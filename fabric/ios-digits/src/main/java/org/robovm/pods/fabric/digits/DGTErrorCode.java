@@ -45,7 +45,15 @@ public enum /*<name>*/DGTErrorCode/*</name>*/ implements NSErrorCode {
     UnableToUploadContacts(8L),
     UnableToDeleteContacts(9L),
     UnableToLookupContactMatches(10L),
-    UnableToCreateEmailAddress(11L);
+    UnableToCreateEmailAddress(11L),
+    UnableToUploadContactsRateLimit(12L),
+    UnableToUploadContactsInternalServer0(13L),
+    UnableToUploadContactsInternalServer131(14L),
+    UnableToUploadContactsServerUnavailable(15L),
+    UnableToUploadContactsEntityTooLarge(16L),
+    UnableToUploadContactsBadAuthentication(17L),
+    UnableToUploadContactsOutOfBoundsTimestamp(18L),
+    UnableToUploadContactsGenericBadRequest(19L);
     /*</values>*/
 
     /*<bind>*/

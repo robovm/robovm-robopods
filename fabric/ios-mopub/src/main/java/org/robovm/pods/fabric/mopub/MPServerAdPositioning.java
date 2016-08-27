@@ -39,7 +39,6 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public MPServerAdPositioning() {}
-    protected MPServerAdPositioning(Handle h, long handle) { super(h, handle); }
     protected MPServerAdPositioning(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

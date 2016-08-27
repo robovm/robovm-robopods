@@ -35,19 +35,16 @@ import org.robovm.pods.fabric.twitter.*;
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/TWTRUser/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements NSCoding/*</implements>*/ {
+    /*<implements>*/implements NSCoding, TWTRJSONConvertible/*</implements>*/ {
 
     /*<ptr>*/public static class TWTRUserPtr extends Ptr<TWTRUser, TWTRUserPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(TWTRUser.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TWTRUser() {}
-    protected TWTRUser(Handle h, long handle) { super(h, handle); }
     protected TWTRUser(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithJSONDictionary:")
-    public TWTRUser(NSDictionary<?, ?> dictionary) { super((SkipInit) null); initObject(init(dictionary)); }
-    @Method(selector = "initWithCoder:")
     public TWTRUser(NSCoder aDecoder) { super((SkipInit) null); initObject(init(aDecoder)); }
+    public TWTRUser(NSDictionary<?, ?> jsonDictionary) { super((SkipInit) null); initObject(init(jsonDictionary)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "userID")
@@ -73,13 +70,11 @@ import org.robovm.pods.fabric.twitter.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithJSONDictionary:")
-    protected native @Pointer long init(NSDictionary<?, ?> dictionary);
-    @Method(selector = "usersWithJSONArray:")
-    public static native NSArray<TWTRUser> getUsers(NSArray<?> array);
     @Method(selector = "encodeWithCoder:")
     public native void encode(NSCoder coder);
     @Method(selector = "initWithCoder:")
     protected native @Pointer long init(NSCoder aDecoder);
+    @Method(selector = "initWithJSONDictionary:")
+    protected native @Pointer long init(NSDictionary<?, ?> jsonDictionary);
     /*</methods>*/
 }

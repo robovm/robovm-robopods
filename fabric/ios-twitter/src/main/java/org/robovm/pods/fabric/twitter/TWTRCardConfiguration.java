@@ -41,9 +41,8 @@ import org.robovm.pods.fabric.twitter.*;
     /*<bind>*/static { ObjCRuntime.bind(TWTRCardConfiguration.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected TWTRCardConfiguration(Handle h, long handle) { super(h, handle); }
     protected TWTRCardConfiguration(SkipInit skipInit) { super(skipInit); }
-    public TWTRCardConfiguration(UIImage promoImage, String iPhoneAppID, String iPadAppID, String googlePlayAppID) { super((Handle) null, create(promoImage, iPhoneAppID, iPadAppID, googlePlayAppID)); retain(getHandle()); }
+    public TWTRCardConfiguration(UIImage promoImage, String iPhoneAppID, String iPadAppID, String googlePlayAppID) { super(create(promoImage, iPhoneAppID, iPadAppID, googlePlayAppID)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "cardType")

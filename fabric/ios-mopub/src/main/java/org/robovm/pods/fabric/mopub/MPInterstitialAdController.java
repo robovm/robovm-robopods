@@ -39,7 +39,6 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public MPInterstitialAdController() {}
-    protected MPInterstitialAdController(Handle h, long handle) { super(h, handle); }
     protected MPInterstitialAdController(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

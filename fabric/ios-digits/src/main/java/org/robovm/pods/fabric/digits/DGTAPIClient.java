@@ -40,7 +40,6 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public DGTAPIClient() {}
-    protected DGTAPIClient(Handle h, long handle) { super(h, handle); }
     protected DGTAPIClient(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

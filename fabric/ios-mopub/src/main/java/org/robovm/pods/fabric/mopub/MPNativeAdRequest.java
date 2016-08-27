@@ -39,9 +39,8 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public MPNativeAdRequest() {}
-    protected MPNativeAdRequest(Handle h, long handle) { super(h, handle); }
     protected MPNativeAdRequest(SkipInit skipInit) { super(skipInit); }
-    public MPNativeAdRequest(String identifier, NSArray<MPNativeAdRendererConfiguration> rendererConfigurations) { super((Handle) null, create(identifier, rendererConfigurations)); retain(getHandle()); }
+    public MPNativeAdRequest(String identifier, NSArray<MPNativeAdRendererConfiguration> rendererConfigurations) { super(create(identifier, rendererConfigurations)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "targeting")

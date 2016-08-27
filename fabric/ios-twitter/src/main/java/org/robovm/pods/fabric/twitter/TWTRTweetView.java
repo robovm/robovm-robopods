@@ -42,14 +42,13 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TWTRTweetView() {}
-    protected TWTRTweetView(Handle h, long handle) { super(h, handle); }
     protected TWTRTweetView(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithTweet:")
     public TWTRTweetView(TWTRTweet tweet) { super((SkipInit) null); initObject(init(tweet)); }
-    @Method(selector = "initWithTweet:style:")
     public TWTRTweetView(TWTRTweet tweet, TWTRTweetViewStyle style) { super((SkipInit) null); initObject(init(tweet, style)); }
     /*</constructors>*/
     /*<properties>*/
+    @Property(selector = "tweet")
+    public native TWTRTweet getTweet();
     @Property(selector = "backgroundColor")
     public native UIColor getBackgroundColor();
     @Property(selector = "setBackgroundColor:")

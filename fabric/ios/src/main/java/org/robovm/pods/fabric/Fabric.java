@@ -42,7 +42,6 @@ import org.robovm.apple.foundation.*;
     /*<bind>*/static { ObjCRuntime.bind(Fabric.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected Fabric(Handle h, long handle) { super(h, handle); }
     protected Fabric(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

@@ -39,7 +39,6 @@ import org.robovm.pods.fabric.twitter.*;
     /*<bind>*/static { ObjCRuntime.bind(DGTContactsUploadResult.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected DGTContactsUploadResult(Handle h, long handle) { super(h, handle); }
     protected DGTContactsUploadResult(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

@@ -1,11 +1,8 @@
 package: org.robovm.pods.fabric.crashlytics
 framework: Crashlytics
-include: 
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
+include: [foundation]
 clang_args: ['-x', 'objective-c']
-header_root: '/../robopods/META-INF/robovm/ios/libs/'
-headers:
-    - Crashlytics.framework/Headers/Crashlytics.h
+headers: [Crashlytics.h]
 typedefs:
     
 enums:

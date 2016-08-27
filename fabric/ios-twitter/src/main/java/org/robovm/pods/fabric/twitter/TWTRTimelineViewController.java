@@ -42,26 +42,45 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TWTRTimelineViewController() {}
-    protected TWTRTimelineViewController(Handle h, long handle) { super(h, handle); }
     protected TWTRTimelineViewController(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithDataSource:")
     public TWTRTimelineViewController(TWTRTimelineDataSource dataSource) { super((SkipInit) null); initObject(init(dataSource)); }
+    public TWTRTimelineViewController(TWTRTimelineDataSource dataSource, TWTRMoPubAdConfiguration adConfiguration) { super((SkipInit) null); initObject(init(dataSource, adConfiguration)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "dataSource")
     public native TWTRTimelineDataSource getDataSource();
     @Property(selector = "setDataSource:")
     public native void setDataSource(TWTRTimelineDataSource v);
+    @Property(selector = "adConfiguration")
+    public native TWTRMoPubAdConfiguration getAdConfiguration();
+    @Property(selector = "setAdConfiguration:")
+    public native void setAdConfiguration(TWTRMoPubAdConfiguration v);
     @Property(selector = "showTweetActions")
     public native boolean showsTweetActions();
     @Property(selector = "setShowTweetActions:")
     public native void setShowsTweetActions(boolean v);
+    @Property(selector = "tweetViewDelegate")
+    public native TWTRTweetViewDelegate getTweetViewDelegate();
+    @Property(selector = "setTweetViewDelegate:", strongRef = true)
+    public native void setTweetViewDelegate(TWTRTweetViewDelegate v);
+    @Property(selector = "timelineDelegate")
+    public native TWTRTimelineDelegate getTimelineDelegate();
+    @Property(selector = "setTimelineDelegate:", strongRef = true)
+    public native void setTimelineDelegate(TWTRTimelineDelegate v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "initWithDataSource:")
     protected native @Pointer long init(TWTRTimelineDataSource dataSource);
+    @Method(selector = "initWithDataSource:adConfiguration:")
+    protected native @Pointer long init(TWTRTimelineDataSource dataSource, TWTRMoPubAdConfiguration adConfiguration);
     @Method(selector = "refresh")
     public native void refresh();
+    @Method(selector = "countOfTweets")
+    public native @MachineSizedUInt long getTweetsCount();
+    @Method(selector = "tweetAtIndex:")
+    public native TWTRTweet getTweet(@MachineSizedSInt long index);
+    @Method(selector = "snapshotTweets")
+    public native NSArray<TWTRTweet> getSnapshotTweets();
     /*</methods>*/
 }

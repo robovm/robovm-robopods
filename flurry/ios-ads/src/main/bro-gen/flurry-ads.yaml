@@ -1,14 +1,8 @@
 package: org.robovm.pods.flurry.ads
 framework: FlurryAds
-include: 
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/corelocation.yaml
+include:  [foundation, uikit, coregraphics, corelocation]
 clang_args: ['-x', 'objective-c']
-header_root: '/'
-headers:
-    - FlurryAds.lib/Headers/FlurryAds.h
+headers: [FlurryAds.h]
 typedefs:
     kFlurryAdNativeDisplayState: FlurryAdNativeDisplayState
     

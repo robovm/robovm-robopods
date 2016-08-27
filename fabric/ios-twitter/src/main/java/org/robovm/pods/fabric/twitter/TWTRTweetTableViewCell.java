@@ -42,7 +42,6 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TWTRTweetTableViewCell() {}
-    protected TWTRTweetTableViewCell(Handle h, long handle) { super(h, handle); }
     protected TWTRTweetTableViewCell(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -53,9 +52,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<methods>*/
     @Method(selector = "configureWithTweet:")
     public native void configure(TWTRTweet tweet);
-    @Method(selector = "heightForTweet:width:showingActions:")
-    public static native @MachineSizedFloat double getHeightForTweet(TWTRTweet tweet, @MachineSizedFloat double width, boolean actionsAreVisible);
-    @Method(selector = "heightForTweet:width:")
-    public static native @MachineSizedFloat double getHeightForTweet(TWTRTweet tweet, @MachineSizedFloat double width);
+    @Method(selector = "heightForTweet:style:width:showingActions:")
+    public static native @MachineSizedFloat double getHeightForTweet(TWTRTweet tweet, TWTRTweetViewStyle style, @MachineSizedFloat double width, boolean showActions);
     /*</methods>*/
 }

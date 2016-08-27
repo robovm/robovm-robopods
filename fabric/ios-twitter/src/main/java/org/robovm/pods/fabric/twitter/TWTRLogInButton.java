@@ -42,15 +42,18 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TWTRLogInButton() {}
-    protected TWTRLogInButton(Handle h, long handle) { super(h, handle); }
     protected TWTRLogInButton(SkipInit skipInit) { super(skipInit); }
-    public TWTRLogInButton(@Block VoidBlock2<TWTRAuthSession, NSError> completion) { super((Handle) null, create(completion)); retain(getHandle()); }
+    public TWTRLogInButton(@Block VoidBlock2<TWTRAuthSession, NSError> completion) { super(create(completion)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "logInCompletion")
     public native @Block VoidBlock2<TWTRAuthSession, NSError> getLogInCompletion();
     @Property(selector = "setLogInCompletion:")
     public native void setLogInCompletion(@Block VoidBlock2<TWTRAuthSession, NSError> v);
+    @Property(selector = "loginMethods")
+    public native TWTRLoginMethod getLoginMethods();
+    @Property(selector = "setLoginMethods:")
+    public native void setLoginMethods(TWTRLoginMethod v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

@@ -39,9 +39,7 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public MPNativeAd() {}
-    protected MPNativeAd(Handle h, long handle) { super(h, handle); }
     protected MPNativeAd(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithAdAdapter:")
     public MPNativeAd(MPNativeAdAdapter adAdapter) { super((SkipInit) null); initObject(init(adAdapter)); }
     /*</constructors>*/
     /*<properties>*/

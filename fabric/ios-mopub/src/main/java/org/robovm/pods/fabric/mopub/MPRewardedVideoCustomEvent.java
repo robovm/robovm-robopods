@@ -39,7 +39,6 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public MPRewardedVideoCustomEvent() {}
-    protected MPRewardedVideoCustomEvent(Handle h, long handle) { super(h, handle); }
     protected MPRewardedVideoCustomEvent(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

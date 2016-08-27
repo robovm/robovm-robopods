@@ -35,19 +35,16 @@ import org.robovm.pods.fabric.twitter.*;
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/TWTRTweet/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements NSCoding/*</implements>*/ {
+    /*<implements>*/implements NSCoding, TWTRJSONConvertible/*</implements>*/ {
 
     /*<ptr>*/public static class TWTRTweetPtr extends Ptr<TWTRTweet, TWTRTweetPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(TWTRTweet.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TWTRTweet() {}
-    protected TWTRTweet(Handle h, long handle) { super(h, handle); }
     protected TWTRTweet(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithJSONDictionary:")
-    public TWTRTweet(NSDictionary<?, ?> dictionary) { super((SkipInit) null); initObject(init(dictionary)); }
-    @Method(selector = "initWithCoder:")
     public TWTRTweet(NSCoder aDecoder) { super((SkipInit) null); initObject(init(aDecoder)); }
+    public TWTRTweet(NSDictionary<?, ?> jsonDictionary) { super((SkipInit) null); initObject(init(jsonDictionary)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "tweetID")
@@ -58,10 +55,14 @@ import org.robovm.pods.fabric.twitter.*;
     public native String getText();
     @Property(selector = "author")
     public native TWTRUser getAuthor();
+    @Property(selector = "perspectivalUserID")
+    public native String getPerspectivalUserID();
     @Property(selector = "likeCount")
     public native long getLikeCount();
     @Property(selector = "retweetCount")
     public native long getRetweetCount();
+    @Property(selector = "languageCode")
+    public native String getLanguageCode();
     @Property(selector = "inReplyToTweetID")
     public native String getInReplyToTweetID();
     @Property(selector = "inReplyToUserID")
@@ -83,8 +84,6 @@ import org.robovm.pods.fabric.twitter.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithJSONDictionary:")
-    protected native @Pointer long init(NSDictionary<?, ?> dictionary);
     @Method(selector = "tweetWithLikeToggled")
     public native TWTRTweet getTweetWithLikeToggled();
     @Method(selector = "tweetsWithJSONArray:")
@@ -93,5 +92,7 @@ import org.robovm.pods.fabric.twitter.*;
     public native void encode(NSCoder coder);
     @Method(selector = "initWithCoder:")
     protected native @Pointer long init(NSCoder aDecoder);
+    @Method(selector = "initWithJSONDictionary:")
+    protected native @Pointer long init(NSDictionary<?, ?> jsonDictionary);
     /*</methods>*/
 }

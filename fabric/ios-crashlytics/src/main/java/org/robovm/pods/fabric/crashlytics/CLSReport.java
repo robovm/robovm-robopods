@@ -43,7 +43,6 @@ import org.robovm.apple.foundation.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public CLSReport() {}
-    protected CLSReport(Handle h, long handle) { super(h, handle); }
     protected CLSReport(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

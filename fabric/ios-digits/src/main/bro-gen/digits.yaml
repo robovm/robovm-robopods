@@ -1,16 +1,9 @@
 package: org.robovm.pods.fabric.digits
 framework: DigitsKit
-include: 
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/addressbook.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coredata.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
-    - ../../../../ios-twittercore/src/main/bro-gen/twittercore.yaml
+include: [foundation, addressbook, coredata, uikit, ../../../../ios-twittercore/src/main/bro-gen/twittercore.yaml]
 clang_args: ['-x', 'objective-c']
-header_root: '/../robopods/META-INF/robovm/ios/libs/'
 platforms: [iOS, tvOS]
-headers:
-    - DigitsKit.framework/Headers/DigitsKit.h
+headers: [DigitsKit.h]
 typedefs:
 private_typedefs:
     DGTUploadContactsCompletion: '@Block VoidBlock2<DGTContactsUploadResult, NSError>'
@@ -64,6 +57,7 @@ classes:
             '-authenticateWithConfiguration:delegate:completion:':
                 name: authenticate
     DGTAppearance: {} # DONE
+    DGTAuthEventDetails: {} # DONE
     DGTAuthenticateButton: # DONE
         methods:
             '+buttonWithAuthenticationCompletion:':
@@ -87,8 +81,24 @@ classes:
                 name: deleteAllUploadedContacts
             '+contactsAccessAuthorizationStatus':
                 property: true
+    DGTContactsDebugConfiguration: # DONE
+        methods:
+            '-init.*':
+                name: init
+            '+stubbedContactsWithDigitsUserIDs:':
+                name: getStubbedContacts
+                parameters:
+                    digitsUserIDs:
+                        type: List<String>
+                        marshaler: NSArray.AsStringListMarshaler
     DGTContactsUploadResult: # DONE
         skip_def_constructor: true
+    DGTDebugConfiguration: # DONE
+        methods:
+            '-init.*':
+                name: init
+            '+defaultDebugSession':
+                property: true
     DGTOAuthSigning:  # DONE
         skip_def_constructor: true
         methods:
@@ -118,6 +128,10 @@ protocols:
                 parameters:
                     logInResponse:
                         type: NSObject ### TODO type info ???
+    DGTAuthEventDelegate: # DONE
+        methods:
+            '-digits(.*):':
+                name: '#{g[0].downcase_first}'
     DGTCompletionViewController: # DONE
         skip_adapter: true
         methods:
@@ -129,6 +143,44 @@ protocols:
                 name: digitsSessionHasChanged
             '-digitsSessionExpiredForUserID:':
                 name: digitsSessionExpired
+    DGTContactsEventDelegate: # DONE
+        methods:
+            '-contacts(.*):':
+                name: 'on#{g[0]}'
+    ContactsPermissionForDigitsImpressionDetails:
+        skip_adapter: true
+    ContactsPermissionForDigitsAllowedDetails:
+        skip_adapter: true
+    ContactsPermissionForDigitsDeferredDetails:
+        skip_adapter: true
+    ContactsUploadStartDetails:
+        skip_adapter: true
+    ContactsUploadSuccessDetails:
+        skip_adapter: true
+        methods:
+            '-.*':
+                property: true
+    ContactsUploadFailureDetails:
+        skip_adapter: true
+        methods:
+            '-.*':
+                property: true
+    ContactsLookupStartDetails:
+        skip_adapter: true
+    ContactsLookupSuccessDetails:
+        skip_adapter: true
+        methods:
+            '-.*':
+                property: true
+    ContactsLookupFailureDetails:
+        skip_adapter: true
+    ContactsDeletionStartDetails:
+        skip_adapter: true
+    ContactsDeletionSuccessDetails:
+        skip_adapter: true
+    ContactsDeletionFailureDetails:
+        skip_adapter: true
+    
 
 functions:
     # Make sure we don't miss any functions if new ones are introduced in a later version

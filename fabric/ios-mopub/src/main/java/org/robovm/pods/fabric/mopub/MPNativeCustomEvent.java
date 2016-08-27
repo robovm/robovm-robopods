@@ -39,7 +39,6 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public MPNativeCustomEvent() {}
-    protected MPNativeCustomEvent(Handle h, long handle) { super(h, handle); }
     protected MPNativeCustomEvent(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

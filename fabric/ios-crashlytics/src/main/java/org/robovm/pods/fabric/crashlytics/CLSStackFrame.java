@@ -42,17 +42,20 @@ import org.robovm.apple.foundation.*;
     /*<bind>*/static { ObjCRuntime.bind(CLSStackFrame.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected CLSStackFrame(Handle h, long handle) { super(h, handle); }
     protected CLSStackFrame(SkipInit skipInit) { super(skipInit); }
-    public CLSStackFrame() { super((Handle) null, create()); retain(getHandle()); }
-    public CLSStackFrame(@MachineSizedUInt long address) { super((Handle) null, create(address)); retain(getHandle()); }
-    public CLSStackFrame(String symbol) { super((Handle) null, create(symbol)); retain(getHandle()); }
+    public CLSStackFrame() { super(create()); retain(getHandle()); }
+    public CLSStackFrame(@MachineSizedUInt long address) { super(create(address)); retain(getHandle()); }
+    public CLSStackFrame(String symbol) { super(create(symbol)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "symbol")
     public native String getSymbol();
     @Property(selector = "setSymbol:")
     public native void setSymbol(String v);
+    @Property(selector = "rawSymbol")
+    public native String getRawSymbol();
+    @Property(selector = "setRawSymbol:")
+    public native void setRawSymbol(String v);
     @Property(selector = "library")
     public native String getLibrary();
     @Property(selector = "setLibrary:")

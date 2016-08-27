@@ -38,11 +38,7 @@ import org.robovm.apple.uikit.*;
     /*<bind>*/static { ObjCRuntime.bind(MoPub.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MoPub() {}
-    protected MoPub(Handle h, long handle) { super(h, handle); }
     protected MoPub(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initializeRewardedVideoWithGlobalMediationSettings:delegate:")
-    public MoPub(NSArray<?> globalMediationSettings, MPRewardedVideoDelegate delegate) { super((SkipInit) null); initObject(init(globalMediationSettings, delegate)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "locationUpdatesEnabled")
@@ -53,7 +49,7 @@ import org.robovm.apple.uikit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "initializeRewardedVideoWithGlobalMediationSettings:delegate:")
-    protected native @Pointer long init(NSArray<?> globalMediationSettings, MPRewardedVideoDelegate delegate);
+    public native void initializeRewardedVideo(NSArray<?> globalMediationSettings, MPRewardedVideoDelegate delegate);
     @Method(selector = "globalMediationSettingsForClass:")
     public native MPMediationSettingsProtocol getGlobalMediationSettings(Class<?> aClass);
     @Method(selector = "start")
