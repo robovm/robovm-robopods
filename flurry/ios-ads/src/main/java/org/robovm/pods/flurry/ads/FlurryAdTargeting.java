@@ -46,7 +46,6 @@ import org.robovm.apple.corelocation.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FlurryAdTargeting() {}
-    protected FlurryAdTargeting(Handle h, long handle) { super(h, handle); }
     protected FlurryAdTargeting(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

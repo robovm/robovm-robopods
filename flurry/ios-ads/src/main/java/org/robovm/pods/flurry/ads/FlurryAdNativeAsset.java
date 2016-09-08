@@ -46,7 +46,6 @@ import org.robovm.apple.corelocation.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FlurryAdNativeAsset() {}
-    protected FlurryAdNativeAsset(Handle h, long handle) { super(h, handle); }
     protected FlurryAdNativeAsset(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

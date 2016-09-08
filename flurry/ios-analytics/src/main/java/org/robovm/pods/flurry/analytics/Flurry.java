@@ -45,7 +45,6 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public Flurry() {}
-    protected Flurry(Handle h, long handle) { super(h, handle); }
     protected Flurry(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

@@ -146,6 +146,9 @@ classes:
                 return_type: '<T> BFTask<T>'
                 visibility: protected # generic block
     BFTaskCompletionSource: # DONE
+        properties:
+            'task':
+                type: BFTask<?>
         methods:
             '-trySet.*':
                 trim_after_first_colon: true

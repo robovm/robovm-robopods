@@ -5,9 +5,6 @@
         <framework>CoreGraphics</framework>
         <framework>StoreKit</framework>
     </frameworks>
-    <frameworkPaths>
-        <path>lib</path>
-    </frameworkPaths>
     <exportedSymbols>
         <symbol>CBLocation*</symbol>
     </exportedSymbols>

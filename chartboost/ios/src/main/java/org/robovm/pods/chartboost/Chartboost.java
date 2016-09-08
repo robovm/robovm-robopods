@@ -46,6 +46,7 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public Chartboost() {}
+    protected Chartboost(Handle h, long handle) { super(h, handle); }
     protected Chartboost(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

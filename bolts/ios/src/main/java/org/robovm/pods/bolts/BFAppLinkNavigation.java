@@ -45,8 +45,9 @@ import org.robovm.apple.dispatch.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public BFAppLinkNavigation() {}
+    protected BFAppLinkNavigation(Handle h, long handle) { super(h, handle); }
     protected BFAppLinkNavigation(SkipInit skipInit) { super(skipInit); }
-    public BFAppLinkNavigation(BFAppLink appLink, NSDictionary<NSString, NSObject> extras, NSDictionary<NSString, NSObject> appLinkData) { super(create(appLink, extras, appLinkData)); retain(getHandle()); }
+    public BFAppLinkNavigation(BFAppLink appLink, NSDictionary<NSString, NSObject> extras, NSDictionary<NSString, NSObject> appLinkData) { super((Handle) null, create(appLink, extras, appLinkData)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "extras")

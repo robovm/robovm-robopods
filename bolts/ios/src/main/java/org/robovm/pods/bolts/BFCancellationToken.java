@@ -45,11 +45,12 @@ import org.robovm.apple.dispatch.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public BFCancellationToken() {}
+    protected BFCancellationToken(Handle h, long handle) { super(h, handle); }
     protected BFCancellationToken(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "isCancellationRequested")
-    public native boolean cancellationRequested();
+    public native boolean isCancellationRequested();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

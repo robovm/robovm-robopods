@@ -45,10 +45,11 @@ import org.robovm.apple.dispatch.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public BFExecutor() {}
+    protected BFExecutor(Handle h, long handle) { super(h, handle); }
     protected BFExecutor(SkipInit skipInit) { super(skipInit); }
-    public BFExecutor(@Block("(@Block)") VoidBlock1<Runnable> block) { super(create(block)); retain(getHandle()); }
-    public BFExecutor(DispatchQueue queue) { super(create(queue)); retain(getHandle()); }
-    public BFExecutor(NSOperationQueue queue) { super(create(queue)); retain(getHandle()); }
+    public BFExecutor(@Block("(@Block)") VoidBlock1<Runnable> block) { super((Handle) null, create(block)); retain(getHandle()); }
+    public BFExecutor(DispatchQueue queue) { super((Handle) null, create(queue)); retain(getHandle()); }
+    public BFExecutor(NSOperationQueue queue) { super((Handle) null, create(queue)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     

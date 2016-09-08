@@ -45,8 +45,9 @@ import org.robovm.apple.dispatch.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public BFAppLink() {}
+    protected BFAppLink(Handle h, long handle) { super(h, handle); }
     protected BFAppLink(SkipInit skipInit) { super(skipInit); }
-    public BFAppLink(NSURL sourceURL, NSArray<BFAppLinkTarget> targets, NSURL webURL) { super(create(sourceURL, targets, webURL)); retain(getHandle()); }
+    public BFAppLink(NSURL sourceURL, NSArray<BFAppLinkTarget> targets, NSURL webURL) { super((Handle) null, create(sourceURL, targets, webURL)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "sourceURL")
