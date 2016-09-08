@@ -5,9 +5,9 @@ clang_args: ['-x', 'objective-c']
 headers: [HeyzapAds.h, HZMediatedNativeAd.h, HZMediatedNativeAdManager.h, HZMediatedNativeAdViewRegisterer.h]
 typedefs:
     'void (^)(HZBannerAd *)': '@Block VoidBlock1<HZBannerAd>'
-    'void (^)(BOOL, NSError *)': '@Block VoidBlock2<Boolean, NSError>'
+    'void (^)(BOOL, NSError * _Nullable)': '@Block VoidBlock2<Boolean, NSError>'
     'void (^)(NSError *, HZNativeAdCollection *)': '@Block VoidBlock2<NSError, HZNativeAdCollection>'
-    'void (^)(id<HZMediatedNativeAdViewRegisterer>)': '@Block VoidBlock1<HZMediatedNativeAdViewRegisterer>'
+    'void (^)(id<HZMediatedNativeAdViewRegisterer> _Nonnull)': '@Block VoidBlock1<HZMediatedNativeAdViewRegisterer>'
     
 enums:
     HZAdMobBannerSize: {}
@@ -209,6 +209,10 @@ values:
 
     HZInMobiBanner(Size.*):
         class: HZInMobiBannerSize
+        name: '#{g[0]}'
+    
+    HZHeyzapExchangeBanner(Size.*):
+        class: HZHeyzapExchangeBannerSize
         name: '#{g[0]}'
     
     HZNetworkCallback(.*):

@@ -46,6 +46,7 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADExtras() {}
+    protected GADExtras(Handle h, long handle) { super(h, handle); }
     protected GADExtras(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

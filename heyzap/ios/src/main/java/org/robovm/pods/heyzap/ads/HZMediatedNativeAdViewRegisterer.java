@@ -55,6 +55,8 @@ import org.robovm.apple.storekit.*;
     void registerCallToActionView(UIView view);
     @Method(selector = "registerAdvertiserNameView:tappable:")
     void registerAdvertiserNameView(UIView view, boolean tappable);
+    @Method(selector = "registerRatingView:tappable:")
+    void registerRatingView(UIView view, boolean tappable);
     @Method(selector = "registerOtherView:tappable:")
     void registerOtherView(UIView view, boolean tappable);
     @Method(selector = "registerOtherViews:tappable:")

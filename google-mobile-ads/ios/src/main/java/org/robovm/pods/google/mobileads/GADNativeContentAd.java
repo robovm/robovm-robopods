@@ -46,6 +46,7 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADNativeContentAd() {}
+    protected GADNativeContentAd(Handle h, long handle) { super(h, handle); }
     protected GADNativeContentAd(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

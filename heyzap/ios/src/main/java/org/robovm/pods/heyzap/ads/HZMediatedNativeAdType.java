@@ -37,7 +37,9 @@ public enum /*<name>*/HZMediatedNativeAdType/*</name>*/ implements ValuedEnum {
     AdMobContent(1L),
     AdMobAppInstall(2L),
     Heyzap(3L),
-    HeyzapCrossPromo(4L);
+    HeyzapCrossPromo(4L),
+    InMobi(5L),
+    AppLovin(6L);
     /*</values>*/
 
     /*<bind>*/

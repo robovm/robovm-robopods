@@ -46,6 +46,7 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADBannerView() {}
+    protected GADBannerView(Handle h, long handle) { super(h, handle); }
     protected GADBannerView(SkipInit skipInit) { super(skipInit); }
     public GADBannerView(@ByVal GADAdSize adSize, @ByVal CGPoint origin) { super((SkipInit) null); initObject(init(adSize, origin)); }
     public GADBannerView(@ByVal GADAdSize adSize) { super((SkipInit) null); initObject(init(adSize)); }

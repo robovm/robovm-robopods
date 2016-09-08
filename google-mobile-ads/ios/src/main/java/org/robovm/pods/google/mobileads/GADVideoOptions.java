@@ -46,6 +46,7 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADVideoOptions() {}
+    protected GADVideoOptions(Handle h, long handle) { super(h, handle); }
     protected GADVideoOptions(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

@@ -46,6 +46,7 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADMobileAds() {}
+    protected GADMobileAds(Handle h, long handle) { super(h, handle); }
     protected GADMobileAds(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

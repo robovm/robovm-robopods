@@ -46,6 +46,7 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADAdLoader() {}
+    protected GADAdLoader(Handle h, long handle) { super(h, handle); }
     protected GADAdLoader(SkipInit skipInit) { super(skipInit); }
     public GADAdLoader(String adUnitID, UIViewController rootViewController, @org.robovm.rt.bro.annotation.Marshaler(GADAdLoaderAdType.AsListMarshaler.class) List<GADAdLoaderAdType> adTypes, NSArray<GADAdLoaderOptions> options) { super((SkipInit) null); initObject(init(adUnitID, rootViewController, adTypes, options)); }
     /*</constructors>*/

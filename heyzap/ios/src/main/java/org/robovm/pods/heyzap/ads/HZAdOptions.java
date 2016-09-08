@@ -47,6 +47,7 @@ public final class /*<name>*/HZAdOptions/*</name>*/ extends Bits</*<name>*/HZAdO
     public static final HZAdOptions Amazon = new HZAdOptions(4L);
     public static final HZAdOptions DisableMedation = new HZAdOptions(8L);
     public static final HZAdOptions DisableAutomaticIAPRecording = new HZAdOptions(16L);
+    public static final HZAdOptions ChildDirectedAds = new HZAdOptions(64L);
     /*</values>*/
 
     /*<bind>*/

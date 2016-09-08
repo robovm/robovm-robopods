@@ -46,6 +46,7 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADMediaView() {}
+    protected GADMediaView(Handle h, long handle) { super(h, handle); }
     protected GADMediaView(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
