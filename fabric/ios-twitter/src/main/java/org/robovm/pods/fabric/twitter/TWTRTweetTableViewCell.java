@@ -42,6 +42,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TWTRTweetTableViewCell() {}
+    protected TWTRTweetTableViewCell(Handle h, long handle) { super(h, handle); }
     protected TWTRTweetTableViewCell(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

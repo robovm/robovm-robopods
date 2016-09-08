@@ -39,6 +39,7 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public MPRewardedVideoReward() {}
+    protected MPRewardedVideoReward(Handle h, long handle) { super(h, handle); }
     protected MPRewardedVideoReward(SkipInit skipInit) { super(skipInit); }
     public MPRewardedVideoReward(NSNumber amount) { super((SkipInit) null); initObject(init(amount)); }
     public MPRewardedVideoReward(String currencyType, NSNumber amount) { super((SkipInit) null); initObject(init(currencyType, amount)); }

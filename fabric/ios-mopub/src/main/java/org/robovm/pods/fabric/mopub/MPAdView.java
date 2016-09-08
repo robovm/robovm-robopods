@@ -39,6 +39,7 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public MPAdView() {}
+    protected MPAdView(Handle h, long handle) { super(h, handle); }
     protected MPAdView(SkipInit skipInit) { super(skipInit); }
     public MPAdView(String adUnitId, @ByVal CGSize size) { super((SkipInit) null); initObject(init(adUnitId, size)); }
     /*</constructors>*/

@@ -38,6 +38,7 @@ import org.robovm.apple.uikit.*;
     /*<bind>*/static { ObjCRuntime.bind(MoPub.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
+    protected MoPub(Handle h, long handle) { super(h, handle); }
     protected MoPub(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

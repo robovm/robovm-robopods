@@ -42,6 +42,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TWTRTimelineViewController() {}
+    protected TWTRTimelineViewController(Handle h, long handle) { super(h, handle); }
     protected TWTRTimelineViewController(SkipInit skipInit) { super(skipInit); }
     public TWTRTimelineViewController(TWTRTimelineDataSource dataSource) { super((SkipInit) null); initObject(init(dataSource)); }
     public TWTRTimelineViewController(TWTRTimelineDataSource dataSource, TWTRMoPubAdConfiguration adConfiguration) { super((SkipInit) null); initObject(init(dataSource, adConfiguration)); }

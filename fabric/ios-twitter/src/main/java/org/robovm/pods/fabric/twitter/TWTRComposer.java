@@ -42,6 +42,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TWTRComposer() {}
+    protected TWTRComposer(Handle h, long handle) { super(h, handle); }
     protected TWTRComposer(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

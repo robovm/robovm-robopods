@@ -39,6 +39,7 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public MOPUBNativeVideoAdRenderer() {}
+    protected MOPUBNativeVideoAdRenderer(Handle h, long handle) { super(h, handle); }
     protected MOPUBNativeVideoAdRenderer(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

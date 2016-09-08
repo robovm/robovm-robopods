@@ -3,9 +3,6 @@
         <lib>c++</lib>
         <lib>z</lib>
     </libs>
-    <frameworkPaths>
-        <path>libs</path>
-    </frameworkPaths>
     <frameworks>
         <framework>Answers</framework>
         

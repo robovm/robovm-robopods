@@ -49,9 +49,10 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TWTRMediaEntitySize() {}
+    protected TWTRMediaEntitySize(Handle h, long handle) { super(h, handle); }
     protected TWTRMediaEntitySize(SkipInit skipInit) { super(skipInit); }
     public TWTRMediaEntitySize(String name, TWTRMediaEntitySizeResizingMode resizingMode, @ByVal CGSize size) { super((SkipInit) null); initObject(init(name, resizingMode, size)); }
-    public TWTRMediaEntitySize(NSCoder aDecoder) { super((SkipInit) null); initObject(init(aDecoder)); }
+    public TWTRMediaEntitySize(NSCoder decoder) { super((SkipInit) null); initObject(init(decoder)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "name")
@@ -72,6 +73,6 @@ import org.robovm.pods.fabric.twitter.*;
     @Method(selector = "encodeWithCoder:")
     public native void encode(NSCoder coder);
     @Method(selector = "initWithCoder:")
-    protected native @Pointer long init(NSCoder aDecoder);
+    protected native @Pointer long init(NSCoder decoder);
     /*</methods>*/
 }

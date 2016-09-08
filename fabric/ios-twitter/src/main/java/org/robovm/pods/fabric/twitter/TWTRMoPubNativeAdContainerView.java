@@ -49,6 +49,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TWTRMoPubNativeAdContainerView() {}
+    protected TWTRMoPubNativeAdContainerView(Handle h, long handle) { super(h, handle); }
     protected TWTRMoPubNativeAdContainerView(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

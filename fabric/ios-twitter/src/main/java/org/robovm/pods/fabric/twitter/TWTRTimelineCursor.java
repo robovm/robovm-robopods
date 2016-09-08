@@ -49,6 +49,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TWTRTimelineCursor() {}
+    protected TWTRTimelineCursor(Handle h, long handle) { super(h, handle); }
     protected TWTRTimelineCursor(SkipInit skipInit) { super(skipInit); }
     public TWTRTimelineCursor(String maxPosition, String minPosition) { super((SkipInit) null); initObject(init(maxPosition, minPosition)); }
     /*</constructors>*/

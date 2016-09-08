@@ -40,8 +40,9 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public DGTAuthenticateButton() {}
+    protected DGTAuthenticateButton(Handle h, long handle) { super(h, handle); }
     protected DGTAuthenticateButton(SkipInit skipInit) { super(skipInit); }
-    public DGTAuthenticateButton(@Block VoidBlock2<DGTSession, NSError> completion) { super(create(completion)); retain(getHandle()); }
+    public DGTAuthenticateButton(@Block VoidBlock2<DGTSession, NSError> completion) { super((Handle) null, create(completion)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "digitsAppearance")

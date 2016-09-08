@@ -49,6 +49,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TWTRTweetCashtagEntity() {}
+    protected TWTRTweetCashtagEntity(Handle h, long handle) { super(h, handle); }
     protected TWTRTweetCashtagEntity(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

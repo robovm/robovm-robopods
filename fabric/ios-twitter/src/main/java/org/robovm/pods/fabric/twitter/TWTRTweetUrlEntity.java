@@ -49,6 +49,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TWTRTweetUrlEntity() {}
+    protected TWTRTweetUrlEntity(Handle h, long handle) { super(h, handle); }
     protected TWTRTweetUrlEntity(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

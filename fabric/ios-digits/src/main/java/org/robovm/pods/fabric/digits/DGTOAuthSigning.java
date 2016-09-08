@@ -39,6 +39,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<bind>*/static { ObjCRuntime.bind(DGTOAuthSigning.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
+    protected DGTOAuthSigning(Handle h, long handle) { super(h, handle); }
     protected DGTOAuthSigning(SkipInit skipInit) { super(skipInit); }
     public DGTOAuthSigning(TWTRAuthConfig authConfig, DGTSession authSession) { super((SkipInit) null); initObject(init(authConfig, authSession)); }
     /*</constructors>*/

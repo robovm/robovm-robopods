@@ -39,6 +39,7 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public MPStaticNativeAdRendererSettings() {}
+    protected MPStaticNativeAdRendererSettings(Handle h, long handle) { super(h, handle); }
     protected MPStaticNativeAdRendererSettings(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

@@ -41,6 +41,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<bind>*/static { ObjCRuntime.bind(TWTRListTimelineDataSource.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
+    protected TWTRListTimelineDataSource(Handle h, long handle) { super(h, handle); }
     protected TWTRListTimelineDataSource(SkipInit skipInit) { super(skipInit); }
     public TWTRListTimelineDataSource(String listID, TWTRAPIClient client) { super((SkipInit) null); initObject(init(listID, client)); }
     public TWTRListTimelineDataSource(String listSlug, String listOwnerScreenName, TWTRAPIClient client) { super((SkipInit) null); initObject(init(listSlug, listOwnerScreenName, client)); }

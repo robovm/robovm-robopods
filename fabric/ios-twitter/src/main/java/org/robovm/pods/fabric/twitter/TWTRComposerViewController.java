@@ -41,6 +41,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<bind>*/static { ObjCRuntime.bind(TWTRComposerViewController.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
+    protected TWTRComposerViewController(Handle h, long handle) { super(h, handle); }
     protected TWTRComposerViewController(SkipInit skipInit) { super(skipInit); }
     public TWTRComposerViewController(String userID) { super((SkipInit) null); initObject(init(userID)); }
     public TWTRComposerViewController(String userID, TWTRCardConfiguration cardConfig) { super((SkipInit) null); initObject(init(userID, cardConfig)); }

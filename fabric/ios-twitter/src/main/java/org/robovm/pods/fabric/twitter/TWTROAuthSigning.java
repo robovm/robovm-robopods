@@ -41,6 +41,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<bind>*/static { ObjCRuntime.bind(TWTROAuthSigning.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
+    protected TWTROAuthSigning(Handle h, long handle) { super(h, handle); }
     protected TWTROAuthSigning(SkipInit skipInit) { super(skipInit); }
     public TWTROAuthSigning(TWTRAuthConfig authConfig, TWTRSession authSession) { super((SkipInit) null); initObject(init(authConfig, authSession)); }
     /*</constructors>*/

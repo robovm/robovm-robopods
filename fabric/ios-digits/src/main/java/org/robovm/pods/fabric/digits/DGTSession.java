@@ -40,6 +40,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public DGTSession() {}
+    protected DGTSession(Handle h, long handle) { super(h, handle); }
     protected DGTSession(SkipInit skipInit) { super(skipInit); }
     public DGTSession(String authToken, String authTokenSecret, String userID, String phoneNumber) { super((SkipInit) null); initObject(init(authToken, authTokenSecret, userID, phoneNumber)); }
     public DGTSession(String authToken, String authTokenSecret, String userID, String phoneNumber, String emailAddress, boolean emailAddressIsVerified) { super((SkipInit) null); initObject(init(authToken, authTokenSecret, userID, phoneNumber, emailAddress, emailAddressIsVerified)); }

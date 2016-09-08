@@ -16,7 +16,7 @@ classes:
                 visibility: private
                 parameters:
                     kitClasses:
-                        type: 'List<ObjCClass>'
+                        type: List<ObjCClass>
                         marshaler: NSArray.AsListMarshaler
             '+sharedSDK':
                 property: true

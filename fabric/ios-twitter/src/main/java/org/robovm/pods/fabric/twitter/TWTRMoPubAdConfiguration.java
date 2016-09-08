@@ -49,6 +49,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TWTRMoPubAdConfiguration() {}
+    protected TWTRMoPubAdConfiguration(Handle h, long handle) { super(h, handle); }
     protected TWTRMoPubAdConfiguration(SkipInit skipInit) { super(skipInit); }
     public TWTRMoPubAdConfiguration(String adUnitID, String keywords) { super((SkipInit) null); initObject(init(adUnitID, keywords)); }
     /*</constructors>*/

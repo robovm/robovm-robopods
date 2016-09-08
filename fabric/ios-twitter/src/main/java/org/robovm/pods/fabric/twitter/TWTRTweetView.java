@@ -42,6 +42,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TWTRTweetView() {}
+    protected TWTRTweetView(Handle h, long handle) { super(h, handle); }
     protected TWTRTweetView(SkipInit skipInit) { super(skipInit); }
     public TWTRTweetView(TWTRTweet tweet) { super((SkipInit) null); initObject(init(tweet)); }
     public TWTRTweetView(TWTRTweet tweet, TWTRTweetViewStyle style) { super((SkipInit) null); initObject(init(tweet, style)); }

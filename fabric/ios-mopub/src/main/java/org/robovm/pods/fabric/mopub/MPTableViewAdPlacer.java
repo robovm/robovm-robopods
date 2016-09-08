@@ -39,9 +39,10 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public MPTableViewAdPlacer() {}
+    protected MPTableViewAdPlacer(Handle h, long handle) { super(h, handle); }
     protected MPTableViewAdPlacer(SkipInit skipInit) { super(skipInit); }
-    public MPTableViewAdPlacer(UITableView tableView, UIViewController controller, NSArray<?> rendererConfigurations) { super(create(tableView, controller, rendererConfigurations)); retain(getHandle()); }
-    public MPTableViewAdPlacer(UITableView tableView, UIViewController controller, MPAdPositioning positioning, NSArray<?> rendererConfigurations) { super(create(tableView, controller, positioning, rendererConfigurations)); retain(getHandle()); }
+    public MPTableViewAdPlacer(UITableView tableView, UIViewController controller, NSArray<?> rendererConfigurations) { super((Handle) null, create(tableView, controller, rendererConfigurations)); retain(getHandle()); }
+    public MPTableViewAdPlacer(UITableView tableView, UIViewController controller, MPAdPositioning positioning, NSArray<?> rendererConfigurations) { super((Handle) null, create(tableView, controller, positioning, rendererConfigurations)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "delegate")

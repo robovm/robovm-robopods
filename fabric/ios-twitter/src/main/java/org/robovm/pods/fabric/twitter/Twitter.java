@@ -59,6 +59,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public Twitter() {}
+    protected Twitter(Handle h, long handle) { super(h, handle); }
     protected Twitter(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

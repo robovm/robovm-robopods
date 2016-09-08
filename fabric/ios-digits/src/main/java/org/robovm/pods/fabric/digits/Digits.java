@@ -40,6 +40,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public Digits() {}
+    protected Digits(Handle h, long handle) { super(h, handle); }
     protected Digits(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

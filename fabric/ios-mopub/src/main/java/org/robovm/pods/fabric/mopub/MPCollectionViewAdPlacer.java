@@ -39,9 +39,10 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public MPCollectionViewAdPlacer() {}
+    protected MPCollectionViewAdPlacer(Handle h, long handle) { super(h, handle); }
     protected MPCollectionViewAdPlacer(SkipInit skipInit) { super(skipInit); }
-    public MPCollectionViewAdPlacer(UICollectionView collectionView, UIViewController controller, NSArray<?> rendererConfigurations) { super(create(collectionView, controller, rendererConfigurations)); retain(getHandle()); }
-    public MPCollectionViewAdPlacer(UICollectionView collectionView, UIViewController controller, MPAdPositioning positioning, NSArray<?> rendererConfigurations) { super(create(collectionView, controller, positioning, rendererConfigurations)); retain(getHandle()); }
+    public MPCollectionViewAdPlacer(UICollectionView collectionView, UIViewController controller, NSArray<?> rendererConfigurations) { super((Handle) null, create(collectionView, controller, rendererConfigurations)); retain(getHandle()); }
+    public MPCollectionViewAdPlacer(UICollectionView collectionView, UIViewController controller, MPAdPositioning positioning, NSArray<?> rendererConfigurations) { super((Handle) null, create(collectionView, controller, positioning, rendererConfigurations)); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "delegate")

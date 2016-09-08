@@ -39,10 +39,11 @@ import org.robovm.apple.uikit.*;
     /*<bind>*/static { ObjCRuntime.bind(TWTRSession.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
+    protected TWTRSession(Handle h, long handle) { super(h, handle); }
     protected TWTRSession(SkipInit skipInit) { super(skipInit); }
     public TWTRSession(NSDictionary<?, ?> sessionDictionary) { super((SkipInit) null); initObject(init(sessionDictionary)); }
     public TWTRSession(String authToken, String authTokenSecret, String userName, String userID) { super((SkipInit) null); initObject(init(authToken, authTokenSecret, userName, userID)); }
-    public TWTRSession(NSCoder aDecoder) { super((SkipInit) null); initObject(init(aDecoder)); }
+    public TWTRSession(NSCoder decoder) { super((SkipInit) null); initObject(init(decoder)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "authToken")
@@ -63,6 +64,6 @@ import org.robovm.apple.uikit.*;
     @Method(selector = "encodeWithCoder:")
     public native void encode(NSCoder coder);
     @Method(selector = "initWithCoder:")
-    protected native @Pointer long init(NSCoder aDecoder);
+    protected native @Pointer long init(NSCoder decoder);
     /*</methods>*/
 }

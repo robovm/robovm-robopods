@@ -43,6 +43,7 @@ import org.robovm.apple.foundation.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public Crashlytics() {}
+    protected Crashlytics(Handle h, long handle) { super(h, handle); }
     protected Crashlytics(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

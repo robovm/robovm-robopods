@@ -47,6 +47,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public DGTContactsDebugConfiguration() {}
+    protected DGTContactsDebugConfiguration(Handle h, long handle) { super(h, handle); }
     protected DGTContactsDebugConfiguration(SkipInit skipInit) { super(skipInit); }
     public DGTContactsDebugConfiguration(NSArray<DGTUser> contacts) { super((SkipInit) null); initObject(init(contacts)); }
     public DGTContactsDebugConfiguration(DGTErrorCode error) { super((SkipInit) null); initObject(init(error)); }

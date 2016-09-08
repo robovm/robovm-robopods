@@ -49,6 +49,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TWTRTweetDetailViewController() {}
+    protected TWTRTweetDetailViewController(Handle h, long handle) { super(h, handle); }
     protected TWTRTweetDetailViewController(SkipInit skipInit) { super(skipInit); }
     public TWTRTweetDetailViewController(TWTRTweet tweet) { super((SkipInit) null); initObject(init(tweet)); }
     /*</constructors>*/

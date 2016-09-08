@@ -41,6 +41,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<bind>*/static { ObjCRuntime.bind(TWTRSearchTimelineDataSource.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
+    protected TWTRSearchTimelineDataSource(Handle h, long handle) { super(h, handle); }
     protected TWTRSearchTimelineDataSource(SkipInit skipInit) { super(skipInit); }
     public TWTRSearchTimelineDataSource(String searchQuery, TWTRAPIClient client) { super((SkipInit) null); initObject(init(searchQuery, client)); }
     public TWTRSearchTimelineDataSource(String searchQuery, TWTRAPIClient client, String languageCode, @MachineSizedUInt long maxTweetsPerRequest) { super((SkipInit) null); initObject(init(searchQuery, client, languageCode, maxTweetsPerRequest)); }

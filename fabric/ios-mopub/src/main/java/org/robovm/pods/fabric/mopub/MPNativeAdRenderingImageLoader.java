@@ -39,6 +39,7 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public MPNativeAdRenderingImageLoader() {}
+    protected MPNativeAdRenderingImageLoader(Handle h, long handle) { super(h, handle); }
     protected MPNativeAdRenderingImageLoader(SkipInit skipInit) { super(skipInit); }
     public MPNativeAdRenderingImageLoader(NSObject imageHandler) { super((SkipInit) null); initObject(init(imageHandler)); }
     /*</constructors>*/

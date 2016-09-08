@@ -39,6 +39,7 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public MPBannerCustomEvent() {}
+    protected MPBannerCustomEvent(Handle h, long handle) { super(h, handle); }
     protected MPBannerCustomEvent(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

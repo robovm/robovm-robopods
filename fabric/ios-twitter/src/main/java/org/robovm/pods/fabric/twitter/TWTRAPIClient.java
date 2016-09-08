@@ -42,6 +42,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TWTRAPIClient() {}
+    protected TWTRAPIClient(Handle h, long handle) { super(h, handle); }
     protected TWTRAPIClient(SkipInit skipInit) { super(skipInit); }
     public TWTRAPIClient(String userID) { super((SkipInit) null); initObject(init(userID)); }
     /*</constructors>*/

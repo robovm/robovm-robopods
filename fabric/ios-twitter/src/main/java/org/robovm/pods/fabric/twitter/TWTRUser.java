@@ -42,8 +42,9 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TWTRUser() {}
+    protected TWTRUser(Handle h, long handle) { super(h, handle); }
     protected TWTRUser(SkipInit skipInit) { super(skipInit); }
-    public TWTRUser(NSCoder aDecoder) { super((SkipInit) null); initObject(init(aDecoder)); }
+    public TWTRUser(NSCoder decoder) { super((SkipInit) null); initObject(init(decoder)); }
     public TWTRUser(NSDictionary<?, ?> jsonDictionary) { super((SkipInit) null); initObject(init(jsonDictionary)); }
     /*</constructors>*/
     /*<properties>*/
@@ -73,7 +74,7 @@ import org.robovm.pods.fabric.twitter.*;
     @Method(selector = "encodeWithCoder:")
     public native void encode(NSCoder coder);
     @Method(selector = "initWithCoder:")
-    protected native @Pointer long init(NSCoder aDecoder);
+    protected native @Pointer long init(NSCoder decoder);
     @Method(selector = "initWithJSONDictionary:")
     protected native @Pointer long init(NSDictionary<?, ?> jsonDictionary);
     /*</methods>*/

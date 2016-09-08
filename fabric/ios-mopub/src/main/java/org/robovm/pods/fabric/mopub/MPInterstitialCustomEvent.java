@@ -39,6 +39,7 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public MPInterstitialCustomEvent() {}
+    protected MPInterstitialCustomEvent(Handle h, long handle) { super(h, handle); }
     protected MPInterstitialCustomEvent(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

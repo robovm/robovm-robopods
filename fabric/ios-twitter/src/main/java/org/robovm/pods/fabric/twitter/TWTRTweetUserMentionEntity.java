@@ -49,6 +49,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public TWTRTweetUserMentionEntity() {}
+    protected TWTRTweetUserMentionEntity(Handle h, long handle) { super(h, handle); }
     protected TWTRTweetUserMentionEntity(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

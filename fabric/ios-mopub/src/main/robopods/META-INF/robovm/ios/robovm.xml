@@ -1,12 +1,9 @@
 <config>
     <resources>
         <resource>
-            <directory>libs/MoPub.framework/Resources</directory>
+            <directory>res</directory>
         </resource>
     </resources>
-    <frameworkPaths>
-        <path>libs</path>
-    </frameworkPaths>
     <frameworks>
         <framework>MoPub</framework>
         

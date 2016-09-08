@@ -39,6 +39,7 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public MPNativeAdRequestTargeting() {}
+    protected MPNativeAdRequestTargeting(Handle h, long handle) { super(h, handle); }
     protected MPNativeAdRequestTargeting(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

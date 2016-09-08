@@ -40,6 +40,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public DGTContacts() {}
+    protected DGTContacts(Handle h, long handle) { super(h, handle); }
     protected DGTContacts(SkipInit skipInit) { super(skipInit); }
     public DGTContacts(DGTSession userSession) { super((SkipInit) null); initObject(init(userSession)); }
     /*</constructors>*/

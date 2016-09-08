@@ -47,6 +47,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public DGTAuthEventDetails() {}
+    protected DGTAuthEventDetails(Handle h, long handle) { super(h, handle); }
     protected DGTAuthEventDetails(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

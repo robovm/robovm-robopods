@@ -47,6 +47,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public DGTDebugConfiguration() {}
+    protected DGTDebugConfiguration(Handle h, long handle) { super(h, handle); }
     protected DGTDebugConfiguration(SkipInit skipInit) { super(skipInit); }
     public DGTDebugConfiguration(DGTSession session) { super((SkipInit) null); initObject(init(session)); }
     public DGTDebugConfiguration(DGTErrorCode error) { super((SkipInit) null); initObject(init(error)); }
