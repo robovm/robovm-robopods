@@ -159,6 +159,8 @@ import org.robovm.pods.bolts.*;
     public native NSObject get(String key);
     @Method(selector = "currentConfig")
     public static native PFConfig getCurrentConfig();
+    @Method(selector = "getCurrentConfigInBackground")
+    public static native BFTask<PFConfig> getCurrentConfigInBackground();
     @Method(selector = "getConfigInBackground")
     public static native BFTask<PFConfig> getInBackground();
     @Method(selector = "getConfigInBackgroundWithBlock:")

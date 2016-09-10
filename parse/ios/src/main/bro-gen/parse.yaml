@@ -1,17 +1,8 @@
 package: org.robovm.pods.parse
 framework: Parse
-include: 
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/corelocation.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/storekit.yaml
-    - ../../../../../bolts/ios/src/main/bro-gen/bolts.yaml
+include: [foundation, uikit, coregraphics, corelocation, storekit, ../../../../../bolts/ios/src/main/bro-gen/bolts.yaml]
 clang_args: ['-x', 'objective-c']
-platforms: [iOS, tvOS, watchOS]
-header_root: /../robopods/META-INF/robovm/ios/libs
-headers:
-    - Parse.framework/Headers/Parse.h
+headers: [Parse.h]
 typedefs:
     PFBooleanResultBlock: '@Block PFSaveCallback'
     PFIntegerResultBlock: '@Block PFCountCallback'
@@ -34,7 +25,7 @@ typedefs:
 
 private_typedefs:
     'void (^)(NSString *, NSError *)': '@Block VoidBlock2<String, NSError>'
-    'void (^)(id<ParseMutableClientConfiguration>)': '@Block VoidBlock1<ParseMutableClientConfiguration>'
+    'void (^)(id<ParseMutableClientConfiguration> _Nonnull)': '@Block VoidBlock1<ParseMutableClientConfiguration>'
     
 enums:
     PFCachePolicy: {}
@@ -831,6 +822,13 @@ classes:
             '-includeKey:':
                 name: include
                 return_type: PFQuery<T>
+            '-includeKeys:':
+                name: include
+                return_type: PFQuery<T>
+                parameters:
+                    keys:
+                        type: List<String>
+                        marshaler: NSArray.AsStringListMarshaler
             '-selectKeys:':
                 name: selectKeys
                 return_type: PFQuery<T>

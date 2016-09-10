@@ -118,7 +118,6 @@ import org.robovm.pods.bolts.*;
     public PFObject() {}
     protected PFObject(Handle h, long handle) { super(h, handle); }
     protected PFObject(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithClassName:")
     public PFObject(String newClassName) { super((SkipInit) null); initObject(init(newClassName)); }
     /*</constructors>*/
     /*<properties>*/
@@ -379,10 +378,8 @@ import org.robovm.pods.bolts.*;
     public native BFTask<Void> saveInBackground();
     @Method(selector = "saveInBackgroundWithBlock:")
     public native void saveInBackground(@Block PFSaveCallback block);
-    @Availability({ @PlatformVersion(platform = Platform.iOS) })
     @Method(selector = "saveEventually")
     public native BFTask<Void> saveEventually();
-    @Availability({ @PlatformVersion(platform = Platform.iOS) })
     @Method(selector = "saveEventually:")
     public native void saveEventually(@Block PFSaveCallback callback);
     @Method(selector = "fetchInBackground")
@@ -401,7 +398,6 @@ import org.robovm.pods.bolts.*;
     public native BFTask<Void> deleteInBackground();
     @Method(selector = "deleteInBackgroundWithBlock:")
     public native void deleteInBackground(@Block PFDeleteCallback block);
-    @Availability({ @PlatformVersion(platform = Platform.iOS) })
     @Method(selector = "deleteEventually")
     public native BFTask<Void> deleteEventually();
     @Method(selector = "isDirtyForKey:")
@@ -435,7 +431,7 @@ import org.robovm.pods.bolts.*;
     @Method(selector = "deleteAllInBackground:")
     public static native <T extends PFObject> BFTask<Void> deleteAllInBackground(NSArray<T> objects);
     @Method(selector = "deleteAllInBackground:block:")
-    public static native <T extends PFObject> void deleteAllInBackground(NSArray<?> objects, @Block PFDeleteCallback block);
+    public static native <T extends PFObject> void deleteAllInBackground(NSArray<PFObject> objects, @Block PFDeleteCallback block);
     @Method(selector = "fetchAllInBackground:")
     public static native <T extends PFObject> BFTask<NSArray<T>> fetchAllInBackground(NSArray<T> objects);
     @Method(selector = "fetchAllInBackground:block:")

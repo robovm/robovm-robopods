@@ -53,22 +53,16 @@ import org.robovm.pods.bolts.*;
     String getServer();
     @Property(selector = "setServer:")
     void setServer(String v);
-    @Availability({ @PlatformVersion(platform = Platform.iOS), @PlatformVersion(platform = Platform.watchOS) })
     @Property(selector = "isLocalDatastoreEnabled")
     boolean isLocalDatastoreEnabled();
-    @Availability({ @PlatformVersion(platform = Platform.iOS), @PlatformVersion(platform = Platform.watchOS) })
     @Property(selector = "setLocalDatastoreEnabled:")
     void setLocalDatastoreEnabled(boolean v);
-    @Availability({ @PlatformVersion(platform = Platform.iOS) })
     @Property(selector = "applicationGroupIdentifier")
     String getApplicationGroupIdentifier();
-    @Availability({ @PlatformVersion(platform = Platform.iOS) })
     @Property(selector = "setApplicationGroupIdentifier:")
     void setApplicationGroupIdentifier(String v);
-    @Availability({ @PlatformVersion(platform = Platform.iOS) })
     @Property(selector = "containingApplicationBundleIdentifier")
     String getContainingApplicationBundleIdentifier();
-    @Availability({ @PlatformVersion(platform = Platform.iOS) })
     @Property(selector = "setContainingApplicationBundleIdentifier:")
     void setContainingApplicationBundleIdentifier(String v);
     @Property(selector = "networkRetryAttempts")

@@ -1,5 +1,7 @@
-<config>    
+<config>
     <frameworks>
+        <framework>Parse</framework>
+    
         <framework>AudioToolbox</framework>
         <framework>CFNetwork</framework>
         <framework>CoreGraphics</framework>

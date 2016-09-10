@@ -40,7 +40,7 @@ import org.robovm.pods.bolts.*;
     /*<bind>*/static { ObjCRuntime.bind(ParseClientConfiguration.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public ParseClientConfiguration() {}
+    protected ParseClientConfiguration() {}
     protected ParseClientConfiguration(Handle h, long handle) { super(h, handle); }
     protected ParseClientConfiguration(SkipInit skipInit) { super(skipInit); }
     public ParseClientConfiguration(@Block VoidBlock1<ParseMutableClientConfiguration> configurationBlock) { super((Handle) null, create(configurationBlock)); retain(getHandle()); }

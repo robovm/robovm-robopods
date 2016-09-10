@@ -187,7 +187,7 @@
         <module>google-play-games</module>
         <module>google-signin</module>
         <module>heyzap</module>
-        <!-- <module>parse</module> -->
+        <module>parse</module>
         <module>reachability</module>
     </modules>
 </project>
