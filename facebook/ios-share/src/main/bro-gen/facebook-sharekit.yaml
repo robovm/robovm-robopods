@@ -1,17 +1,13 @@
 package: org.robovm.pods.facebook.share
 framework: FBSDKShareKit
-include: 
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
-    - facebook-corekit.yaml
+include: [foundation, uikit, ../../../../ios-core/src/main/bro-gen/facebook-corekit.yaml]
 clang_args: ['-x', 'objective-c']
-header_root: /../robopods/META-INF/robovm/ios/libs
-headers:
-    - FBSDKShareKit.framework/Headers/FBSDKShareKit.h
+headers: [FBSDKShareKit.h]
 typedefs:
     
 enums:
     FBSDKAppGroupPrivacy: {}
+    FBSDKAppInviteDestination: {}
     FBSDKGameRequestActionType: {}
     FBSDKGameRequestFilter: {}
     FBSDKLikeControlAuxiliaryPosition: {}
@@ -25,26 +21,10 @@ classes:
     FBSDKShareError:
         extends: NSError
 
-    FBSDKAppGroupAddDialog: # DONE
-        methods:
-            '-validateWithError:':
-                name: validate
-                throws: NSErrorException
-            '+showWithContent:delegate:':
-                name: show0
-                visibility: private
     FBSDKAppGroupContent: # DONE
         methods:
             '-isEqualToAppGroupContent:':
                 name: equalsTo
-    FBSDKAppGroupJoinDialog: # DONE
-        methods:
-            '-validateWithError:':
-                name: validate
-                throws: NSErrorException
-            '+showWithGroupID:delegate:':
-                name: show0
-                visibility: private
     FBSDKAppInviteContent: # DONE
         properties:
             'previewImageURL':
@@ -83,6 +63,13 @@ classes:
             '+showWithContent:delegate:':
                 name: show0
                 visibility: private
+    FBSDKHashtag: # DONE
+        methods:
+            '-isEqualToHashtag:':
+                name: equalsTo
+            '+hashtagWithString:':
+                name: create
+                constructor: true
     FBSDKLikeButton: {} # DONE
     FBSDKLikeControl: {} # DONE
     FBSDKMessageDialog: # DONE
@@ -111,6 +98,10 @@ classes:
         methods:
             '-isEqualToShareLinkContent:':
                 name: equalsTo
+    FBSDKShareMediaContent: # DONE
+        methods:
+            '-isEqualToShareMediaContent:':
+                name: equalsTo
     FBSDKShareOpenGraphAction: # DONE
         methods:
             '-isEqualToShareOpenGraphAction:':
@@ -129,8 +120,7 @@ classes:
             '+objectWithProperties:':
                 name: create
                 constructor: true
-    FBSDKShareOpenGraphValueContainer: # DONE
-        skip_handle_constructor: false
+    FBSDKShareOpenGraphValueContainer: {} # DONE
     FBSDKSharePhoto: # DONE
         methods:
             '-isEqualToSharePhoto:':
@@ -152,7 +142,7 @@ classes:
         methods:
             '-isEqualToShareVideo:':
                 name: equalsTo
-            '+videoWithVideoURL:':
+            '+videoWithVideoURL.*':
                 name: create
                 constructor: true
     FBSDKShareVideoContent: # DONE
@@ -161,22 +151,6 @@ classes:
                 name: equalsTo
 
 protocols:
-    FBSDKAppGroupAddDialogDelegate: # DONE
-        methods:
-            '-appGroupAddDialog:didCompleteWithResults:':
-                name: didComplete
-            '-appGroupAddDialog:didFailWithError:':
-                name: didFail
-            '-appGroupAddDialogDidCancel:':
-                name: didCancel
-    FBSDKAppGroupJoinDialogDelegate: # DONE
-        methods:
-            '-appGroupJoinDialog:didCompleteWithResults:':
-                name: didComplete
-            '-appGroupJoinDialog:didFailWithError:':
-                name: didFail
-            '-appGroupJoinDialogDidCancel:':
-                name: didCancel
     FBSDKAppInviteDialogDelegate: # DONE
         methods:
             '-appInviteDialog:didCompleteWithResults:':

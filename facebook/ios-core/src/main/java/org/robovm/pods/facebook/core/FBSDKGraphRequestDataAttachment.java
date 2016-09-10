@@ -46,6 +46,7 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKGraphRequestDataAttachment() {}
+    protected FBSDKGraphRequestDataAttachment(Handle h, long handle) { super(h, handle); }
     protected FBSDKGraphRequestDataAttachment(SkipInit skipInit) { super(skipInit); }
     public FBSDKGraphRequestDataAttachment(NSData data, String filename, String contentType) { super((SkipInit) null); initObject(init(data, filename, contentType)); }
     /*</constructors>*/

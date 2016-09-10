@@ -15,14 +15,21 @@
  */
 package org.robovm.pods.facebook.audience;
 
-import org.robovm.apple.foundation.NSObject;
-import org.robovm.apple.foundation.NSURL;
-import org.robovm.apple.uikit.UIImage;
-import org.robovm.objc.ObjCRuntime;
+/*<imports>*/
+import java.io.*;
+import java.nio.*;
+import java.util.*;
+import org.robovm.objc.*;
 import org.robovm.objc.annotation.*;
-import org.robovm.objc.block.VoidBlock1;
+import org.robovm.objc.block.*;
+import org.robovm.rt.*;
+import org.robovm.rt.annotation.*;
+import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
-import org.robovm.rt.bro.ptr.Ptr;
+import org.robovm.rt.bro.ptr.*;
+import org.robovm.apple.foundation.*;
+import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -38,9 +45,8 @@ import org.robovm.rt.bro.ptr.Ptr;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBAdImage() {}
-    protected FBAdImage(long handle) { super(handle); }
+    protected FBAdImage(Handle h, long handle) { super(h, handle); }
     protected FBAdImage(SkipInit skipInit) { super(skipInit); }
-  
     public FBAdImage(NSURL url, @MachineSizedSInt long width, @MachineSizedSInt long height) { super((SkipInit) null); initObject(init(url, width, height)); }
     /*</constructors>*/
     /*<properties>*/

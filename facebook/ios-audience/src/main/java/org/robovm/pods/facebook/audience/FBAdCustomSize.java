@@ -15,6 +15,7 @@
  */
 package org.robovm.pods.facebook.audience;
 
+/*<imports>*/
 import org.robovm.apple.coregraphics.CGSize;
 import org.robovm.apple.foundation.NSObject;
 import org.robovm.objc.ObjCRuntime;

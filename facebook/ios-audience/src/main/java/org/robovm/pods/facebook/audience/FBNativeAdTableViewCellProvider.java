@@ -15,14 +15,21 @@
  */
 package org.robovm.pods.facebook.audience;
 
-import org.robovm.apple.foundation.NSIndexPath;
-import org.robovm.apple.uikit.UITableView;
-import org.robovm.apple.uikit.UITableViewCell;
-import org.robovm.objc.ObjCRuntime;
-import org.robovm.objc.annotation.Method;
-import org.robovm.objc.annotation.NativeClass;
+/*<imports>*/
+import java.io.*;
+import java.nio.*;
+import java.util.*;
+import org.robovm.objc.*;
+import org.robovm.objc.annotation.*;
+import org.robovm.objc.block.*;
+import org.robovm.rt.*;
+import org.robovm.rt.annotation.*;
+import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
-import org.robovm.rt.bro.ptr.Ptr;
+import org.robovm.rt.bro.ptr.*;
+import org.robovm.apple.foundation.*;
+import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -38,11 +45,9 @@ import org.robovm.rt.bro.ptr.Ptr;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBNativeAdTableViewCellProvider() {}
-    protected FBNativeAdTableViewCellProvider(long handle) { super(handle); }
+    protected FBNativeAdTableViewCellProvider(Handle h, long handle) { super(h, handle); }
     protected FBNativeAdTableViewCellProvider(SkipInit skipInit) { super(skipInit); }
-
     public FBNativeAdTableViewCellProvider(FBNativeAdsManager manager, FBNativeAdViewType type) { super((SkipInit) null); initObject(init(manager, type)); }
-
     public FBNativeAdTableViewCellProvider(FBNativeAdsManager manager, FBNativeAdViewType type, FBNativeAdViewAttributes attributes) { super((SkipInit) null); initObject(init(manager, type, attributes)); }
     /*</constructors>*/
     /*<properties>*/

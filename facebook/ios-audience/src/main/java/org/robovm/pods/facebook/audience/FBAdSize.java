@@ -61,8 +61,8 @@ import org.robovm.apple.coregraphics.*;
     public static native @ByVal FBAdSize Height50Banner();
     @GlobalValue(symbol="kFBAdSizeHeight90Banner", optional=true)
     public static native @ByVal FBAdSize Height90Banner();
-    @GlobalValue(symbol="kFBAdSizeInterstital", optional=true)
-    public static native @ByVal FBAdSize Interstital();
+    @GlobalValue(symbol="kFBAdSizeInterstitial", optional=true)
+    public static native @ByVal FBAdSize Interstitial();
     @GlobalValue(symbol="kFBAdSizeHeight250Rectangle", optional=true)
     public static native @ByVal FBAdSize Height250Rectangle();
     /*</methods>*/

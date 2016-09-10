@@ -1,0 +1,11 @@
+<config>
+    <frameworks>
+        <framework>FBNotifications</framework>
+
+        <framework>UIKit</framework>
+    </frameworks>
+    <exportedSymbols>
+        <symbol>FB*</symbol>
+        <symbol>kFB*</symbol>
+    </exportedSymbols>
+</config>

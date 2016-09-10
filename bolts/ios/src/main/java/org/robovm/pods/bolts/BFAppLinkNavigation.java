@@ -67,8 +67,12 @@ import org.robovm.apple.dispatch.*;
     }
     @Method(selector = "navigate:")
     private native BFAppLinkNavigationType navigate(NSError.NSErrorPtr error);
+    @Method(selector = "navigationType")
+    public native BFAppLinkNavigationType getNavigationType();
     @Method(selector = "navigationWithAppLink:extras:appLinkData:")
     protected static native @Pointer long create(BFAppLink appLink, NSDictionary<NSString, NSObject> extras, NSDictionary<NSString, NSObject> appLinkData);
+    @Method(selector = "callbackAppLinkDataForAppWithName:url:")
+    public static native NSDictionary<?, ?> getCallbackAppLinkData(String appName, String url);
     @Method(selector = "resolveAppLinkInBackground:")
     public static native BFTask resolveAppLinkInBackground(NSURL destination);
     @Method(selector = "resolveAppLinkInBackground:resolver:")
@@ -81,6 +85,8 @@ import org.robovm.apple.dispatch.*;
     }
     @Method(selector = "navigateToAppLink:error:")
     private static native BFAppLinkNavigationType navigateToAppLink(BFAppLink link, NSError.NSErrorPtr error);
+    @Method(selector = "navigationTypeForLink:")
+    public static native BFAppLinkNavigationType getNavigationTypeForLink(BFAppLink link);
     @Method(selector = "navigateToURLInBackground:")
     public static native BFTask navigateToURLInBackground(NSURL destination);
     @Method(selector = "navigateToURLInBackground:resolver:")

@@ -9,6 +9,7 @@ private_typedefs:
     'void (^)(void (^ _Nonnull)())': '@Block("(@Block)") VoidBlock1<Runnable>'
     'id  _Nonnull (^)()': '@Block Block0<NSObject>'
     BFGenericType: NSObject
+    ResultType: NSObject
     
 enums:
     BFAppLinkNavigationType: {}
@@ -43,6 +44,10 @@ classes:
             '-navigate:':
                 trim_after_first_colon: true
                 throws: NSErrorException
+            '-navigationType':
+                property: true
+            '+callbackAppLinkDataForAppWithName:url:':
+                name: getCallbackAppLinkData
             '+navigationWithAppLink:extras:appLinkData:':
                 name: create
                 constructor: true
@@ -51,6 +56,8 @@ classes:
                         type: 'NSDictionary<NSString, NSObject>'
                     appLinkData:
                         type: 'NSDictionary<NSString, NSObject>'
+            '+navigationTypeForLink:':
+                name: getNavigationTypeForLink
             '+resolveAppLinkInBackground:.*':
                 trim_after_first_colon: true
             '+navigateToAppLink:error:':
@@ -135,6 +142,12 @@ classes:
                 parameters:
                     tasks:
                         type: NSArray<BFTask<T>>
+            '+taskForCompletionOfAnyTask:':
+                name: createForCompletionOfAnyTasks
+                return_type: '<T> BFTask<Void>'
+                parameters:
+                    tasks:
+                        type: NSArray<BFTask<T>>
             '+taskForCompletionOfAllTasksWithResults:':
                 name: createForCompletionOfAllTasksWithResults
                 return_type: '<T extends NSObject> BFTask<NSArray<T>>'
@@ -204,9 +217,9 @@ values:
     BFTaskErrorDomain:
         class: BFTaskError
         name: getClassDomain
-    BFTaskMultipleExceptionsException:
+    BFTaskMultipleExceptions.*:
         exclude: true
-    kBFMultipleErrorsError:
+    BFMultipleErrors.*:
         exclude: true
 
     # BFAppLink

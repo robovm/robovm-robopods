@@ -15,13 +15,21 @@
  */
 package org.robovm.pods.facebook.share;
 
-import org.robovm.apple.foundation.NSObject;
-import org.robovm.apple.foundation.NSURL;
-import org.robovm.objc.ObjCRuntime;
+/*<imports>*/
+import java.io.*;
+import java.nio.*;
+import java.util.*;
+import org.robovm.objc.*;
 import org.robovm.objc.annotation.*;
-import org.robovm.pods.facebook.core.FBSDKCopying;
-import org.robovm.rt.bro.annotation.Library;
-import org.robovm.rt.bro.ptr.Ptr;
+import org.robovm.objc.block.*;
+import org.robovm.rt.*;
+import org.robovm.rt.annotation.*;
+import org.robovm.rt.bro.*;
+import org.robovm.rt.bro.annotation.*;
+import org.robovm.rt.bro.ptr.*;
+import org.robovm.apple.foundation.*;
+import org.robovm.apple.uikit.*;
+import org.robovm.pods.facebook.core.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -30,14 +38,14 @@ import org.robovm.rt.bro.ptr.Ptr;
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FBSDKAppInviteContent/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements FBSDKCopying/*</implements>*/ {
+    /*<implements>*//*</implements>*/ {
 
     /*<ptr>*/public static class FBSDKAppInviteContentPtr extends Ptr<FBSDKAppInviteContent, FBSDKAppInviteContentPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(FBSDKAppInviteContent.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKAppInviteContent() {}
-    protected FBSDKAppInviteContent(long handle) { super(handle); }
+    protected FBSDKAppInviteContent(Handle h, long handle) { super(h, handle); }
     protected FBSDKAppInviteContent(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -49,12 +57,22 @@ import org.robovm.rt.bro.ptr.Ptr;
     public native NSURL getAppLinkURL();
     @Property(selector = "setAppLinkURL:")
     public native void setAppLinkURL(NSURL v);
+    @Property(selector = "promotionCode")
+    public native String getPromotionCode();
+    @Property(selector = "setPromotionCode:")
+    public native void setPromotionCode(String v);
+    @Property(selector = "promotionText")
+    public native String getPromotionText();
+    @Property(selector = "setPromotionText:")
+    public native void setPromotionText(String v);
+    @Property(selector = "destination")
+    public native FBSDKAppInviteDestination getDestination();
+    @Property(selector = "setDestination:")
+    public native void setDestination(FBSDKAppInviteDestination v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "isEqualToAppInviteContent:")
     public native boolean equalsTo(FBSDKAppInviteContent content);
-    @Method(selector = "copy")
-    public native NSObject copy();
     /*</methods>*/
 }

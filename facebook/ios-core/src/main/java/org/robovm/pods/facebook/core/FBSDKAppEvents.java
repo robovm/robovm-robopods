@@ -15,14 +15,22 @@
  */
 package org.robovm.pods.facebook.core;
 
+/*<imports>*/
+import java.io.*;
+import java.nio.*;
+import java.util.*;
+import org.robovm.objc.*;
+import org.robovm.objc.annotation.*;
+import org.robovm.objc.block.*;
+import org.robovm.rt.*;
+import org.robovm.rt.annotation.*;
+import org.robovm.rt.bro.*;
+import org.robovm.rt.bro.annotation.*;
+import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
-import org.robovm.objc.ObjCRuntime;
-import org.robovm.objc.annotation.Method;
-import org.robovm.objc.annotation.NativeClass;
-import org.robovm.objc.block.VoidBlock1;
-import org.robovm.rt.bro.annotation.GlobalValue;
-import org.robovm.rt.bro.annotation.Library;
-import org.robovm.rt.bro.ptr.Ptr;
+import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
+import org.robovm.pods.bolts.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -49,7 +57,7 @@ import org.robovm.rt.bro.ptr.Ptr;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKAppEvents() {}
-    protected FBSDKAppEvents(long handle) { super(handle); }
+    protected FBSDKAppEvents(Handle h, long handle) { super(h, handle); }
     protected FBSDKAppEvents(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -149,8 +157,14 @@ import org.robovm.rt.bro.ptr.Ptr;
     public static native void logPurchase(double purchaseAmount, String currency, NSDictionary<NSString, NSObject> parameters);
     @Method(selector = "logPurchase:currency:parameters:accessToken:")
     public static native void logPurchase(double purchaseAmount, String currency, NSDictionary<NSString, NSObject> parameters, FBSDKAccessToken accessToken);
+    @Method(selector = "logPushNotificationOpen:")
+    public static native void logPushNotificationOpen(UIRemoteNotification payload);
+    @Method(selector = "logPushNotificationOpen:action:")
+    public static native void logPushNotificationOpen(UIRemoteNotification payload, String action);
     @Method(selector = "activateApp")
     public static native void activateApp();
+    @Method(selector = "setPushNotificationsDeviceToken:")
+    public static native void setPushNotificationsDeviceToken(NSData deviceToken);
     @Method(selector = "flushBehavior")
     public static native FBSDKAppEventsFlushBehavior getFlushBehavior();
     @Method(selector = "setFlushBehavior:")

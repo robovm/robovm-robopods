@@ -1,21 +1,15 @@
 package: org.robovm.pods.facebook.core
 framework: FBSDKCoreKit
-include: 
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
-    - ../../../../../bolts/ios/src/main/bro-gen/bolts.yaml
+include: [foundation, uikit, coregraphics, ../../../../../bolts/ios/src/main/bro-gen/bolts.yaml]
 clang_args: ['-x', 'objective-c']
-header_root: /../robopods/META-INF/robovm/ios/libs
-headers:
-    - FBSDKCoreKit.framework/Headers/FBSDKCoreKit.h
-    - FBSDKCoreKit.framework/Headers/FBSDKButton.h
+headers: [FBSDKCoreKit.h, FBSDKButton.h]
 typedefs:
     FBSDKGraphRequestHandler: '@Block VoidBlock3<FBSDKGraphRequestConnection, NSObject, NSError>'
     FBSDKDeferredAppLinkHandler: '@Block VoidBlock2<NSURL, NSError>'
     FBSDKGraphRequestHandler: '@Block VoidBlock3<FBSDKGraphRequestConnection, NSObject, NSError>'
     FBSDKTestUsersManagerRetrieveTestAccountTokensHandler: '@Block VoidBlock2<NSArray<FBSDKAccessToken>, NSError>'
     FBSDKTestUsersManagerRemoveTestAccountHandler: '@Block VoidBlock1<NSError>'
+    'void (^)(FBSDKProfile *, NSError *)': '@Block VoidBlock2<FBSDKProfile, NSError>'
     
 enums:
     FBSDKAppEventsFlushBehavior: {}
@@ -74,6 +68,11 @@ classes:
                 property: true
             '+requestForCustomAudienceThirdPartyIDWithAccessToken:':
                 name: requestForCustomAudienceThirdPartyID
+            '+logPushNotificationOpen.*':
+                trim_after_first_colon: true
+                parameters:
+                    payload:
+                        type: UIRemoteNotification
     FBSDKApplicationDelegate: # DONE
         methods:
             '-application:openURL:sourceApplication:annotation:':
@@ -102,6 +101,8 @@ classes:
         methods:
             '+fetchDeferredAppLink:':
                 trim_after_first_colon: true
+            '+appInvitePromotionCodeFromURL:':
+                name: getAppInvitePromotionCodeFromURL
     FBSDKButton: {} # DONE
     FBSDKGraphErrorRecoveryProcessor: # DONE
         methods:
@@ -132,8 +133,6 @@ classes:
         methods:
             '-initWithUserID:firstName:middleName:lastName:name:linkURL:refreshDate:':
                 name: init
-            '-imagePathForPictureMode:size:':
-                exclude: true # deprecated
             '-imageURLForPictureMode:size:':
                 name: getImageURL
             '-isEqualToProfile:':
@@ -142,6 +141,8 @@ classes:
                 property: true
             '+enableUpdatesOnAccessTokenChange:':
                 trim_after_first_colon: true
+            '+loadCurrentProfileWithCompletion:':
+                name: loadCurrentProfile
     FBSDKProfilePictureView: {} # DONE
     FBSDKSettings: # DONE
         methods:
@@ -217,8 +218,6 @@ protocols:
                 parameters:
                     contextInfo:
                         type: '@Pointer long'
-    FBSDKCopying: # DONE
-        skip_adapter: true
     FBSDKGraphErrorRecoveryProcessorDelegate: # DONE
         methods:
             '-processorDidAttemptRecovery:didRecover:error:':
@@ -236,8 +235,6 @@ protocols:
                 name: didFail
             '-requestConnection:didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:':
                 name: didSendBodyData
-    FBSDKMutableCopying: # DONE
-        skip_adapter: true
 
 functions:
     # Make sure we don't miss any functions if new ones are introduced in a later version

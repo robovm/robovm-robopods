@@ -15,13 +15,22 @@
  */
 package org.robovm.pods.facebook.share;
 
-import java.util.List;
-
-import org.robovm.apple.foundation.*;
-import org.robovm.objc.ObjCRuntime;
+/*<imports>*/
+import java.io.*;
+import java.nio.*;
+import java.util.*;
+import org.robovm.objc.*;
 import org.robovm.objc.annotation.*;
-import org.robovm.rt.bro.annotation.Library;
-import org.robovm.rt.bro.ptr.Ptr;
+import org.robovm.objc.block.*;
+import org.robovm.rt.*;
+import org.robovm.rt.annotation.*;
+import org.robovm.rt.bro.*;
+import org.robovm.rt.bro.annotation.*;
+import org.robovm.rt.bro.ptr.*;
+import org.robovm.apple.foundation.*;
+import org.robovm.apple.uikit.*;
+import org.robovm.pods.facebook.core.*;
+/*</imports>*/
 
 /*<javadoc>*/
 
@@ -36,7 +45,7 @@ import org.robovm.rt.bro.ptr.Ptr;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKShareOpenGraphContent() {}
-    protected FBSDKShareOpenGraphContent(long handle) { super(handle); }
+    protected FBSDKShareOpenGraphContent(Handle h, long handle) { super(h, handle); }
     protected FBSDKShareOpenGraphContent(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -52,6 +61,10 @@ import org.robovm.rt.bro.ptr.Ptr;
     public native NSURL getContentURL();
     @Property(selector = "setContentURL:")
     public native void setContentURL(NSURL v);
+    @Property(selector = "hashtag")
+    public native FBSDKHashtag getHashtag();
+    @Property(selector = "setHashtag:")
+    public native void setHashtag(FBSDKHashtag v);
     @Property(selector = "peopleIDs")
     public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getPeopleIDs();
     @Property(selector = "setPeopleIDs:")
@@ -69,7 +82,5 @@ import org.robovm.rt.bro.ptr.Ptr;
     /*<methods>*/
     @Method(selector = "isEqualToShareOpenGraphContent:")
     public native boolean equalsTo(FBSDKShareOpenGraphContent content);
-    @Method(selector = "copy")
-    public native NSObject copy();
     /*</methods>*/
 }

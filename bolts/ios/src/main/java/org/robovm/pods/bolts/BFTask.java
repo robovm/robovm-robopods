@@ -128,6 +128,8 @@ import org.robovm.apple.dispatch.*;
     public static native <T> BFTask<Void> createForCompletionOfAllTasks(NSArray<BFTask<T>> tasks);
     @Method(selector = "taskForCompletionOfAllTasksWithResults:")
     public static native <T extends NSObject> BFTask<NSArray<T>> createForCompletionOfAllTasksWithResults(NSArray<BFTask<T>> tasks);
+    @Method(selector = "taskForCompletionOfAnyTask:")
+    public static native <T> BFTask<Void> createForCompletionOfAnyTasks(NSArray<BFTask<T>> tasks);
     @Method(selector = "taskWithDelay:")
     public static native BFTask<Void> createWithDelay(int millis);
     @Method(selector = "taskWithDelay:cancellationToken:")
