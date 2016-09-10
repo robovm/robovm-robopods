@@ -57,10 +57,6 @@ import org.robovm.apple.coregraphics.*;
     public native GIDSignInButtonColorScheme getColorScheme();
     @Property(selector = "setColorScheme:")
     public native void setColorScheme(GIDSignInButtonColorScheme v);
-    @Property(selector = "delegate")
-    public native UIViewController getDelegate();
-    @Property(selector = "setDelegate:", strongRef = true)
-    public native void setDelegate(UIViewController v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

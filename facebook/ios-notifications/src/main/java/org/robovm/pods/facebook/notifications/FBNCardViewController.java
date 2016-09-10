@@ -43,6 +43,7 @@ import org.robovm.apple.uikit.*;
     /*<bind>*/static { ObjCRuntime.bind(FBNCardViewController.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
+    protected FBNCardViewController() {}
     protected FBNCardViewController(Handle h, long handle) { super(h, handle); }
     protected FBNCardViewController(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/

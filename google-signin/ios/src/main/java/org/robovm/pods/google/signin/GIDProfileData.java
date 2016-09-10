@@ -47,14 +47,17 @@ import org.robovm.apple.coregraphics.*;
     public GIDProfileData() {}
     protected GIDProfileData(Handle h, long handle) { super(h, handle); }
     protected GIDProfileData(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithCoder:")
-    public GIDProfileData(NSCoder aDecoder) { super((SkipInit) null); initObject(init(aDecoder)); }
+    public GIDProfileData(NSCoder decoder) { super((SkipInit) null); initObject(init(decoder)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "email")
     public native String getEmail();
     @Property(selector = "name")
     public native String getName();
+    @Property(selector = "givenName")
+    public native String getGivenName();
+    @Property(selector = "familyName")
+    public native String getFamilyName();
     @Property(selector = "hasImage")
     public native boolean hasImage();
     /*</properties>*/
@@ -65,6 +68,6 @@ import org.robovm.apple.coregraphics.*;
     @Method(selector = "encodeWithCoder:")
     public native void encode(NSCoder coder);
     @Method(selector = "initWithCoder:")
-    protected native @Pointer long init(NSCoder aDecoder);
+    protected native @Pointer long init(NSCoder decoder);
     /*</methods>*/
 }

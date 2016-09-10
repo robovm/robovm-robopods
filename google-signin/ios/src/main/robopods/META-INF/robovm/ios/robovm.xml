@@ -1,5 +1,12 @@
 <config>
+    <resources>
+        <resource>
+            <directory>res</directory>
+        </resource>
+    </resources>
     <frameworks>
+        <framework>GoogleSignIn</framework>
+    
         <framework>AddressBook</framework>
         <framework>AssetsLibrary</framework>
         <framework>CoreLocation</framework>

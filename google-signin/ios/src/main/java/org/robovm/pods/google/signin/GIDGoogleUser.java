@@ -47,8 +47,7 @@ import org.robovm.apple.coregraphics.*;
     public GIDGoogleUser() {}
     protected GIDGoogleUser(Handle h, long handle) { super(h, handle); }
     protected GIDGoogleUser(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithCoder:")
-    public GIDGoogleUser(NSCoder aDecoder) { super((SkipInit) null); initObject(init(aDecoder)); }
+    public GIDGoogleUser(NSCoder decoder) { super((SkipInit) null); initObject(init(decoder)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "userID")
@@ -69,6 +68,6 @@ import org.robovm.apple.coregraphics.*;
     @Method(selector = "encodeWithCoder:")
     public native void encode(NSCoder coder);
     @Method(selector = "initWithCoder:")
-    protected native @Pointer long init(NSCoder aDecoder);
+    protected native @Pointer long init(NSCoder decoder);
     /*</methods>*/
 }

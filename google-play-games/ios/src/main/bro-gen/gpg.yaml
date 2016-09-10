@@ -1,13 +1,8 @@
 package: org.robovm.pods.google.games
 framework: gpg
-include: 
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
+include: [foundation, uikit, coregraphics]
 clang_args: ['-x', 'objective-c']
-header_root: '/'
-headers:
-    - gpg.framework/Headers/GooglePlayGames.h
+headers: [GooglePlayGames.h]
 typedefs:
     GPGAchievementDidUnlockBlock: '@Block GPGAchievementUnlockCallback'
     GPGAchievementDidIncrementBlock: '@Block GPGAchievementIncrementStepsCallback'

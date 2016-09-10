@@ -43,6 +43,7 @@ import org.robovm.apple.uikit.*;
     /*<bind>*/static { ObjCRuntime.bind(FBNotificationsManager.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
+    protected FBNotificationsManager() {}
     protected FBNotificationsManager(Handle h, long handle) { super(h, handle); }
     protected FBNotificationsManager(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/

@@ -4,6 +4,8 @@
         <lib>z</lib>
     </libs>
     <frameworks>
+        <framework>gpg</framework>
+    
         <framework>AddressBook</framework>
         <framework>AssetsLibrary</framework>
         <framework>CoreData</framework>
