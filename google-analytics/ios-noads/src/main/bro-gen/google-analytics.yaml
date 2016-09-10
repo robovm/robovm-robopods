@@ -2,7 +2,18 @@ package: org.robovm.pods.google.analytics
 framework: GoogleAnalytics
 include: [foundation, uikit, coregraphics]
 clang_args: ['-x', 'objective-c']
-headers: [GoogleAnalytics.h]
+headers: 
+    - GAI.h
+    - GAIDictionaryBuilder.h
+    - GAIEcommerceFields.h
+    - GAIEcommerceProduct.h
+    - GAIEcommerceProductAction.h
+    - GAIEcommercePromotion.h
+    - GAIFields.h
+    - GAILogger.h
+    - GAITrackedViewController.h
+    - GAITracker.h
+
 typedefs:
     'void (^)(GAIDispatchResult)': '@Block VoidBlock1<GAIDispatchResult>'
     

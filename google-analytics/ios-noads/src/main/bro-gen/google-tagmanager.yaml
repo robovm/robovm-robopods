@@ -2,7 +2,13 @@ package: org.robovm.pods.google.tagmanager
 framework: GoogleTagManager
 include: [foundation, uikit, coregraphics]
 clang_args: ['-x', 'objective-c']
-headers: [GoogleTagManager.h]
+headers:
+    - TAGContainer.h
+    - TAGContainerOpener.h
+    - TAGDataLayer.h
+    - TAGLogger.h
+    - TAGManager.h
+
 typedefs:
     'void (^)(TAGDispatchResult)': '@Block VoidBlock1<TAGDispatchResult>'
     
@@ -55,6 +61,9 @@ classes:
         methods:
             '-openContainerById:callback:':
                 name: openContainer
+                parameters:
+                    callback:
+                        type: TAGContainerCallback
             '-getContainerById:':
                 name: getContainer
             '-previewWithUrl:':
