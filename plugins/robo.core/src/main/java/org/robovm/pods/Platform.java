@@ -75,6 +75,12 @@ public abstract class Platform {
         }
         if (classes.size() > 0) {
             Class<?> target = classes.get(identifier);
+            if (target == null && identifier != null) {
+                target = classes.get(null);
+            }
+            if (target == null) {
+                throw new IllegalArgumentException("No class found that implements " + type.getSimpleName());
+            }
             return (T) constructInstance(target, args);
         }
         if (getType() == PlatformType.Headless) {
@@ -123,42 +129,60 @@ public abstract class Platform {
             Enumeration<URL> resources = Platform.class.getClassLoader().getResources("services/" + type.getName());
             while (resources.hasMoreElements()) {
                 URL url = resources.nextElement();
-                InputStream is = url.openStream();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-
-                PlatformType targetPlatform = getPlatformType();
-                PlatformType currentPlatform = null;
-
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    line = line.trim();
-
-                    if (!line.isEmpty()) {
-                        if (line.startsWith("#")) {
-                            PlatformType newPlatform = PlatformType.fromString(line);
-                            if (newPlatform != null) {
-                                if (currentPlatform == targetPlatform) {
-                                    break;
-                                } else {
-                                    currentPlatform = PlatformType.fromString(line);
-                                }
-                            }
-                        } else if (currentPlatform == null || currentPlatform == targetPlatform) {
-                            if (line.contains(":")) {
-                                String[] parts = line.split(":");
-                                classes.put(parts[0], Class.forName(parts[1]));
-                            } else {
-                                classes.put(null, Class.forName(line));
-                            }
-                        }
-                    }
+                addNewImplementations(url, classes);
+            }
+            // To support user-defined implementations on Android, custom service files must be suffixed with -X, where X is a number.
+            for (int i = 1; i < 100; i++) {
+                resources = Platform.class.getClassLoader()
+                        .getResources(String.format("services/%s-%d", type.getName(), i));
+                if (!resources.hasMoreElements()) {
+                    break;
+                }
+                while (resources.hasMoreElements()) {
+                    URL url = resources.nextElement();
+                    addNewImplementations(url, classes);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException ignored) {}
+        }
 
         return classes;
+    }
+
+    private void addNewImplementations(URL url, Map<String, Class<?>> classes) throws IOException {
+        try {
+            InputStream is = url.openStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+
+            PlatformType targetPlatform = getPlatformType();
+            PlatformType currentPlatform = null;
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                line = line.trim();
+
+                if (!line.isEmpty()) {
+                    if (line.startsWith("#")) {
+                        PlatformType newPlatform = PlatformType.fromString(line);
+                        if (newPlatform != null) {
+                            if (currentPlatform == targetPlatform) {
+                                break;
+                            } else {
+                                currentPlatform = PlatformType.fromString(line);
+                            }
+                        }
+                    } else if (currentPlatform == null || currentPlatform == targetPlatform) {
+                        if (line.contains(":")) {
+                            String[] parts = line.split(":");
+                            classes.put(parts[0], Class.forName(parts[1]));
+                        } else {
+                            classes.put(null, Class.forName(line));
+                        }
+                    }
+                }
+            }
+        } catch (ClassNotFoundException ignored) {}
     }
 
     private Class<?>[] getClassesOfArguments(Object... args) {

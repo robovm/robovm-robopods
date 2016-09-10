@@ -29,7 +29,7 @@
         <dependency>
             <groupId>com.mobidevelop.robovm</groupId>
             <artifactId>robopods-billing-core</artifactId>
-            <version>${robovm.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.android</groupId>

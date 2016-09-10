@@ -170,7 +170,7 @@ class IOSStore implements Store {
         if (product == null) {
             product = productCatalog.getProduct(id);
         }
-        return new IOSTransaction(skTransaction, product, transactionVerificator);
+        return new IOSTransaction(product, transactionVerificator, skTransaction);
     }
 
     @Override
@@ -185,7 +185,7 @@ class IOSStore implements Store {
 
     @Override
     public void requestProductData() {
-        if (productsRequest != null) {
+        if (isRequestingProductData()) {
             BillingError error = new BillingError(ErrorType.ALREADY_REQUESTING_PRODUCTS,
                     "Already requesting product data!");
 
@@ -212,12 +212,17 @@ class IOSStore implements Store {
         productsRequest.start();
     }
 
+    @Override
+    public boolean isRequestingProductData() {
+        return productsRequest != null;
+    }
+
     private class ProductsRequestDelegate extends SKProductsRequestDelegateAdapter {
         @Override
         public void didReceiveResponse(SKProductsRequest request, SKProductsResponse response) {
             List<SKProduct> products = response.getProducts();
 
-            requestedProducts = new HashMap<>();
+            Map<String, SKProduct> requestedProducts = new HashMap<>();
 
             for (SKProduct skProduct : products) {
                 String id = skProduct.getProductIdentifier();
@@ -234,6 +239,7 @@ class IOSStore implements Store {
                     product.setPrice(skProduct.getPrice().doubleValue(), skProduct.getPriceLocale().getCurrencyCode());
                 }
             }
+            IOSStore.this.requestedProducts = requestedProducts;
 
             productsRequest = null;
             for (BillingObserver observer : billingObservers) {
@@ -261,7 +267,7 @@ class IOSStore implements Store {
 
     @Override
     public void restoreTransactions() {
-        if (restoringTransactions) {
+        if (isRestoringTransactions()) {
             BillingError error = new BillingError(ErrorType.ALREADY_RESTORING, "Already restoring transactions!");
             for (BillingObserver observer : billingObservers) {
                 observer.onRestoreError(error);
@@ -274,11 +280,16 @@ class IOSStore implements Store {
     }
 
     @Override
+    public boolean isRestoringTransactions() {
+        return restoringTransactions;
+    }
+
+    @Override
     public void purchaseProduct(Product product) {
         Util.requireNonNull(product, "product");
         if (requestedProducts == null) {
             BillingError error = new BillingError(ErrorType.PRODUCTS_NOT_REQUESTED,
-                    "Product data not requested! Need to call requestProductData() first.");
+                    "Product data not requested!");
             for (BillingObserver observer : billingObservers) {
                 observer.onPurchaseError(null, error);
             }
@@ -287,7 +298,7 @@ class IOSStore implements Store {
         String id = product.getIdentifier(getType());
         if (!requestedProducts.containsKey(id)) {
             BillingError error = new BillingError(ErrorType.UNKNOWN_PRODUCT_IDENTIFIER,
-                    "Product identifier cannot be found for this store!");
+                    "Product identifier cannot be found for this store: " + id);
             for (BillingObserver observer : billingObservers) {
                 observer.onPurchaseError(null, error);
             }

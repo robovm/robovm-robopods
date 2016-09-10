@@ -17,18 +17,47 @@ package org.robovm.pods.billing;
 
 import java.util.Date;
 
-public interface Transaction {
-    Product getProduct();
+public abstract class Transaction {
+    protected final Product product;
+    protected final TransactionVerificator verificator;
 
-    String getTransactionIdentifier();
+    protected String identifier;
+    protected Date date;
+    protected String receipt;
+    // Only used by Android
+    protected String signature;
+    protected String token;
 
-    Date getTransactionDate();
+    Transaction(Product product, TransactionVerificator verificator) {
+        this.product = product;
+        this.verificator = verificator;
+    }
 
-    String getReceipt();
+    public Product getProduct() {
+        return product;
+    }
 
-    String getSignature();
+    public String getIdentifier() {
+        return identifier;
+    }
 
-    void finish();
+    public Date getDate() {
+        return date;
+    }
 
-    void verify(VerificationCallback callback);
+    public String getReceipt() {
+        return receipt;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public abstract void finish();
+
+    public abstract void verify(VerificationCallback callback);
 }
