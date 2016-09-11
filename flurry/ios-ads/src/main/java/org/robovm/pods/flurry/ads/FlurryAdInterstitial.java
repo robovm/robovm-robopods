@@ -46,6 +46,7 @@ import org.robovm.apple.corelocation.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FlurryAdInterstitial() {}
+    protected FlurryAdInterstitial(Handle h, long handle) { super(h, handle); }
     protected FlurryAdInterstitial(SkipInit skipInit) { super(skipInit); }
     public FlurryAdInterstitial(String space) { super((SkipInit) null); initObject(init(space)); }
     /*</constructors>*/

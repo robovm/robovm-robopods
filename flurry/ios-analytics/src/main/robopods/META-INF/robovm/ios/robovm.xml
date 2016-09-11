@@ -11,6 +11,6 @@
         <framework>SystemConfiguration</framework>
     </frameworks>
     <libs>
-        <lib>libs/libFlurry_7.6.6.a</lib>
+        <lib>libs/libFlurry.a</lib>
     </libs>
 </config>

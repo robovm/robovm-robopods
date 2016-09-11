@@ -12,7 +12,7 @@
         <framework>SystemConfiguration</framework>
     </frameworks>
     <libs>
-        <lib>libs/libFlurryAds_7.6.6.a</lib>
+        <lib>libs/libFlurryAds.a</lib>
     </libs>
     <exportedSymbols>
         <symbol>STYLE1_SMALL</symbol>

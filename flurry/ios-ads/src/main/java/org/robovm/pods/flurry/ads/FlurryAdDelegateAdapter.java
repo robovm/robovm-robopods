@@ -103,8 +103,6 @@ import org.robovm.apple.corelocation.*;
     public String getAppSpotJumptapLeaderboardAdSpotID() { return null; }
     @NotImplemented("appSpotJumptapMediumRectangleAdSpotID")
     public String getAppSpotJumptapMediumRectangleAdSpotID() { return null; }
-    @NotImplemented("appSpotRootViewController")
-    public NSObject getAppSpotRootViewController() { return null; }
     @NotImplemented("appSpotAccelerometerEnabled")
     public boolean isAppSpotAccelerometerEnabled() { return false; }
     /*</methods>*/
