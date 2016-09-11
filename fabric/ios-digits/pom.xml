@@ -42,7 +42,7 @@
         <dependency>
             <groupId>com.mobidevelop.robovm</groupId>
             <artifactId>robopods-fabric-ios-twittercore</artifactId>
-            <version>${project.version}</version>
+            <version>${robopods.version}</version>
         </dependency>
     </dependencies>
 

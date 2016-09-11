@@ -1,16 +1,113 @@
 <config>
+    <libs>
+        <lib>xml2</lib>
+    </libs>
     <frameworks>
         <framework>FBAudienceNetwork</framework>
 
         <framework>AdSupport</framework>
+        <framework>AudioToolbox</framework>
         <framework>AVFoundation</framework>
         <framework>CoreGraphics</framework>
         <framework>CoreMedia</framework>
         <framework>CoreMotion</framework>
+        <framework>OpenGLES</framework>
+        <framework>QuartzCore</framework>
         <framework>StoreKit</framework>
     </frameworks>
-    <exportedSymbols>
-        <symbol>FB*</symbol>
-        <symbol>kFB*</symbol>
-    </exportedSymbols>
+    <unhideSymbols>
+        <symbol>FBAdContentContainerCreate</symbol>
+        <symbol>FBAdCustomSizeCreate</symbol>
+        <symbol>FBAdMonotonicTimeGetCurrentSeconds</symbol>
+        <symbol>FBAdMonotonicTimeGetCurrentMilliseconds</symbol>
+        <symbol>FBAdMonotonicTimeGetCurrentNanoseconds</symbol>
+        <symbol>FBAdMonotonicTimeConvertSecondsToMachUnits</symbol>
+        <symbol>FBAdMonotonicTimeConvertMachUnitsToSeconds</symbol>
+        <symbol>FBAdStatusBarFrameWithRespectToView</symbol>
+        <symbol>FBAdCacheDefaultStoragePathForType</symbol>
+        <symbol>FBAdCacheKeyForURL</symbol>
+        <symbol>FBAdCacheKeyForBlurredImageURL</symbol>
+        <symbol>FBAdCacheDefaultStoragePath</symbol>
+        <symbol>FBAdCacheDefaultStoragePathForData</symbol>
+        <symbol>FBAdCacheDefaultStoragePathForImage</symbol>
+        <symbol>FBAdCacheDefaultStoragePathForVideo</symbol>
+        <symbol>FBAdCacheKeyForEnvironmentData</symbol>
+        <symbol>FBVideoScrubberLoadingAnimationDuration</symbol>
+        <symbol>FBVideoScrubberTrackHeight</symbol>
+        <symbol>FBVideoScrubberTrackHeightWhileInteracting</symbol>
+        <symbol>FBVideoScrubberTrackXInset</symbol>
+        <symbol>FBVideoScrubberOpacity</symbol>
+        <symbol>FBVideoScrubberShadowOpacity</symbol>
+        <symbol>FBVideoScrubberThumbImageSize</symbol>
+        <symbol>kFBSwizzleInvalid</symbol>
+        <symbol>FBDispatchTimerMake</symbol>
+        <symbol>FBAdErrorDetailKey</symbol>
+        <symbol>FBAdErrorNetworkError</symbol>
+        <symbol>FBAdErrorNoFill</symbol>
+        <symbol>FBAdErrorLoadTooFrequently</symbol>
+        <symbol>FBAdErrorServerError</symbol>
+        <symbol>FBAdErrorInternalError</symbol>
+        <symbol>FBAdErrorMediationError</symbol>
+        <symbol>kFBAdSizeUnknown</symbol>
+        <symbol>FBAspectRatioInfoZero</symbol>
+        <symbol>FBAdSubclassOverridesSelector</symbol>
+        <symbol>FBAdExchangeSelectors</symbol>
+        <symbol>FBAdProtocolContainsMethodWithSelector</symbol>
+        <symbol>FBAdContentContainerCreate</symbol>
+        <symbol>FBAdCustomSizeCreate</symbol>
+        <symbol>FBAdMonotonicTimeGetCurrentSeconds</symbol>
+        <symbol>FBAdMonotonicTimeGetCurrentMilliseconds</symbol>
+        <symbol>FBAdMonotonicTimeGetCurrentNanoseconds</symbol>
+        <symbol>FBAdMonotonicTimeConvertSecondsToMachUnits</symbol>
+        <symbol>FBAdMonotonicTimeConvertMachUnitsToSeconds</symbol>
+        <symbol>FBAdStatusBarFrameWithRespectToView</symbol>
+        <symbol>FBAdStatusBarHeight</symbol>
+        <symbol>FBCreateNSString</symbol>
+        <symbol>FBCString</symbol>
+        <symbol>FBIsKindOfClass</symbol>
+        <symbol>FBIsMemberOfClass</symbol>
+        <symbol>FBIsTablet</symbol>
+        <symbol>FBDouble</symbol>
+        <symbol>FBTriple</symbol>
+        <symbol>FBQuadruple</symbol>
+        <symbol>FBHalve</symbol>
+        <symbol>FBOneThird</symbol>
+        <symbol>FBTwoThirds</symbol>
+        <symbol>FBOneFourth</symbol>
+        <symbol>FBOneFifth</symbol>
+        <symbol>FBTwoFifths</symbol>
+        <symbol>FBThreeFifths</symbol>
+        <symbol>FBFourFifths</symbol>
+        <symbol>FBNineTenths</symbol>
+        <symbol>FB_CLIP_ON_HEIGHT</symbol>
+        <symbol>FB_CGRectCeil</symbol>
+        <symbol>FBCGSizeIntegral</symbol>
+        <symbol>FB_CGRectAlign</symbol>
+        <symbol>FB_CGRectReduce</symbol>
+        <symbol>FBRoundPixelValueForScale</symbol>
+        <symbol>FBRoundPixelValue</symbol>
+        <symbol>FB_CGPointMult</symbol>
+        <symbol>FB_CGSizeMult</symbol>
+        <symbol>FB_CGRectMult</symbol>
+        <symbol>FB_CGFloatFuzzyEquals</symbol>
+        <symbol>FBCGAffineTransformForRotationToInterfaceOrientation</symbol>
+        <symbol>FBUIInterfaceOrientationOriginalFromTransform</symbol>
+        <symbol>FBInterfaceOrientationMaskFromOrientation</symbol>
+        <symbol>FBPreferredInterfaceOrientationFromSupportedMask</symbol>
+        <symbol>FBLongHash</symbol>
+        <symbol>FBPointerHash</symbol>
+        <symbol>FBIntegerHash</symbol>
+        <symbol>FBFloatHash</symbol>
+        <symbol>FBDoubleHash</symbol>
+        <symbol>FBCGFloatHash</symbol>
+        <symbol>FBIntegerPairHash</symbol>
+        <symbol>FBIntegerArrayHash</symbol>
+        <symbol>FBStringSHA256Hash</symbol>
+        <symbol>FBStringSHA1Hash</symbol>
+        <symbol>kFBAdSize300x50</symbol>
+        <symbol>kFBAdSize300x250</symbol>
+        <symbol>kFBAdSizeNative</symbol>
+        <symbol>FBAdBackgroundDeallocatedAVPlayerClass</symbol>
+        <symbol>FBAdBackgroundDeallocatedAVPlayerItemClass</symbol>
+    </unhideSymbols>
 </config>

@@ -3,8 +3,12 @@
         <lib>c++</lib>
         <lib>z</lib>
     </libs>
+    <frameworkPaths>
+        <path>libs</path>
+    </frameworkPaths>
     <frameworks>
         <framework>gpg</framework>
+        <framework>GoogleOpenSource</framework>
     
         <framework>AddressBook</framework>
         <framework>AssetsLibrary</framework>

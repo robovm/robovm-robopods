@@ -8,6 +8,7 @@
         <framework>CoreBluetooth</framework>
         <framework>CoreGraphics</framework>
         <framework>CoreMedia</framework>
+        <framework>CoreMotion</framework>
         <framework>CoreTelephony</framework>
         <framework>EventKit</framework>
         <framework>EventKitUI</framework>
