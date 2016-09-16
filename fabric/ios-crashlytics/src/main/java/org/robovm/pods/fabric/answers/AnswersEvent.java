@@ -37,4 +37,12 @@ public abstract class AnswersEvent<T extends AnswersEvent> {
         customAttributes.put(key, NSNumber.valueOf(value));
         return (T) this;
     }
+    
+    public T putCustomAttribute(String key, boolean value) {
+        if (customAttributes == null) {
+            customAttributes = new NSMutableDictionary();
+        }
+        customAttributes.put(key, NSNumber.valueOf(value));
+        return (T) this;
+    }
 }

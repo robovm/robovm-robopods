@@ -15,62 +15,45 @@
  */
 package org.robovm.pods.billing;
 
-import org.onepf.oms.OpenIabHelper;
 import org.onepf.oms.appstore.googleUtils.Purchase;
-import org.robovm.pods.Log;
 import org.robovm.pods.billing.BillingError.ErrorType;
 
 import java.util.Date;
 
-public class AndroidTransaction implements Transaction {
-    private final OpenIabHelper iabHelper;
-    private final Purchase purchase;
-    private final Product product;
-    private final TransactionVerificator verificator;
+public class AndroidTransaction extends Transaction {
+    private final AndroidStoreImpl store;
 
-    private final Date purchaseDate;
+    // Only needed for OpenIab
+    private Purchase purchase;
 
-    AndroidTransaction(OpenIabHelper iabHelper, Purchase purchase, Product product,
-            TransactionVerificator verificator) {
-        this.iabHelper = iabHelper;
-        this.purchase = purchase;
-        this.product = product;
-        this.verificator = verificator;
-        this.purchaseDate = new Date(purchase.getPurchaseTime());
+    AndroidTransaction(Product product, TransactionVerificator verificator, AndroidStoreImpl store) {
+        super(product, verificator);
+        this.store = store;
     }
 
-    @Override
-    public Product getProduct() {
-        return product;
+    protected void setIdentifier(String identifier) {
+        this.identifier = identifier;
     }
 
-    @Override
-    public String getTransactionIdentifier() {
-        return purchase.getOrderId();
+    protected void setDate(Date date) {
+        this.date = date;
     }
 
-    @Override
-    public Date getTransactionDate() {
-        return purchaseDate;
+    protected void setReceipt(String receipt) {
+        this.receipt = receipt;
     }
 
-    @Override
-    public String getReceipt() {
-        return purchase.getOriginalJson();
+    protected void setSignature(String signature) {
+        this.signature = signature;
     }
 
-    @Override
-    public String getSignature() {
-        return purchase.getSignature();
+    protected void setToken(String token) {
+        this.token = token;
     }
 
     @Override
     public void finish() {
-        iabHelper.consumeAsync(purchase, (purchase, result) -> {
-            if (!result.isSuccess()) {
-                Log.err("Failed to finish transaction: " + getTransactionIdentifier());
-            }
-        });
+        store.finishTransaction(this);
     }
 
     @Override
@@ -81,5 +64,21 @@ public class AndroidTransaction implements Transaction {
         } else {
             verificator.verify(this, callback);
         }
+    }
+
+    // Only needed for OpenIab
+    protected void setPurchase(Purchase purchase) {
+        this.purchase = purchase;
+        if (purchase != null) {
+            setIdentifier(purchase.getOrderId());
+            setDate(new Date(purchase.getPurchaseTime()));
+            setReceipt(purchase.getOriginalJson());
+            setSignature(purchase.getSignature());
+            setToken(purchase.getToken());
+        }
+    }
+
+    protected Purchase getPurchase() {
+        return purchase;
     }
 }

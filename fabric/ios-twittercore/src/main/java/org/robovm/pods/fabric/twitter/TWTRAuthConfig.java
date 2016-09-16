@@ -41,7 +41,6 @@ import org.robovm.apple.uikit.*;
     /*<constructors>*/
     protected TWTRAuthConfig(Handle h, long handle) { super(h, handle); }
     protected TWTRAuthConfig(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithConsumerKey:consumerSecret:")
     public TWTRAuthConfig(String consumerKey, String consumerSecret) { super((SkipInit) null); initObject(init(consumerKey, consumerSecret)); }
     /*</constructors>*/
     /*<properties>*/

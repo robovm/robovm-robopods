@@ -48,7 +48,6 @@ import org.robovm.apple.corelocation.*;
     public FlurryAdNativeStyle() {}
     protected FlurryAdNativeStyle(Handle h, long handle) { super(h, handle); }
     protected FlurryAdNativeStyle(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithStyle:")
     public FlurryAdNativeStyle(int styleNum) { super((SkipInit) null); initObject(init(styleNum)); }
     /*</constructors>*/
     /*<properties>*/

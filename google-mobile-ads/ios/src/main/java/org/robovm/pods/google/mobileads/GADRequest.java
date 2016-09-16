@@ -37,16 +37,17 @@ import org.robovm.apple.storekit.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/GADRequest/*</name>*/
-    extends /*<extends>*/NSObject/*</extends>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/GADRequest/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
     /*<ptr>*/public static class GADRequestPtr extends Ptr<GADRequest, GADRequestPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(GADRequest.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
+    protected GADRequest(Handle h, long handle) { super(h, handle); }
     protected GADRequest(SkipInit skipInit) { super(skipInit); }
-    public GADRequest() { super(create()); retain(getHandle()); }
+    public GADRequest() { super((Handle) null, create()); retain(getHandle()); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "testDevices")
@@ -78,7 +79,7 @@ import org.robovm.apple.storekit.*;
     /*<methods>*/
     @GlobalValue(symbol="kGADSimulatorID", optional=true)
     public static native String getSimulatorID();
-
+    
     @Method(selector = "registerAdNetworkExtras:")
     public native void registerAdNetworkExtras(GADAdNetworkExtras extras);
     @Method(selector = "adNetworkExtrasFor:")

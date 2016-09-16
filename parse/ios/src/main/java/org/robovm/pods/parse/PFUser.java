@@ -92,6 +92,8 @@ import org.robovm.pods.bolts.*;
     public native boolean isLinked(String authType);
     @Method(selector = "currentUser")
     public static native PFUser getCurrentUser();
+    @Method(selector = "getCurrentUserInBackground")
+    public static native BFTask<PFUser> getCurrentUserInBackground();
     @Method(selector = "enableAutomaticUser")
     public static native void enableAutomaticUser();
     @Method(selector = "logInWithUsernameInBackground:password:")

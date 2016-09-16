@@ -47,7 +47,6 @@ import org.robovm.apple.coregraphics.*;
     public GPGTurnBasedParticipantResult() {}
     protected GPGTurnBasedParticipantResult(Handle h, long handle) { super(h, handle); }
     protected GPGTurnBasedParticipantResult(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithParticipantId:")
     public GPGTurnBasedParticipantResult(String participantId) { super((SkipInit) null); initObject(init(participantId)); }
     /*</constructors>*/
     /*<properties>*/

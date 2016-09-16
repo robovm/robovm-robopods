@@ -8,9 +8,6 @@
         <framework>CoreMotion</framework>
         <framework>StoreKit</framework>
     </frameworks>
-    <frameworkPaths>
-        <path>libs</path>
-    </frameworkPaths>
     <exportedSymbols>
         <symbol>FB*</symbol>
         <symbol>kFB*</symbol>

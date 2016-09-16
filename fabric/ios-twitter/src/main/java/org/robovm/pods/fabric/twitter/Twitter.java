@@ -83,8 +83,14 @@ import org.robovm.pods.fabric.twitter.*;
     public native void start(String consumerKey, String consumerSecret, String accessGroup);
     @Method(selector = "logInWithCompletion:")
     public native void logIn(@Block VoidBlock2<TWTRAuthSession, NSError> completion);
+    @Method(selector = "logInWithMethods:completion:")
+    public native void logIn(TWTRLoginMethod methods, @Block VoidBlock2<TWTRAuthSession, NSError> completion);
     @Method(selector = "logInWithViewController:completion:")
     public native void logIn(UIViewController viewController, @Block VoidBlock2<TWTRAuthSession, NSError> completion);
+    @Method(selector = "logInWithViewController:methods:completion:")
+    public native void logIn(UIViewController viewController, TWTRLoginMethod methods, @Block VoidBlock2<TWTRAuthSession, NSError> completion);
+    @Method(selector = "application:openURL:options:")
+    public native boolean openURL(UIApplication application, NSURL url, UIApplicationOpenURLOptions options);
     @Method(selector = "sharedInstance")
     public static native Twitter getSharedInstance();
     /*</methods>*/

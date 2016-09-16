@@ -23,6 +23,10 @@ public class BillingError extends RuntimeException {
         super(message);
     }
 
+    public BillingError(String message, Throwable throwable) {
+        super(message, throwable);
+    }
+
     public BillingError(ErrorType errorType) {
         this.errorType = errorType;
     }
@@ -45,6 +49,18 @@ public class BillingError extends RuntimeException {
         return errorType;
     }
 
+    @Override
+    public String getMessage() {
+        String msg = super.getMessage();
+        if (errorType == null) {
+            return msg;
+        }
+        if (msg == null) {
+            return errorType.toString();
+        }
+        return msg + " Type: " + errorType.toString();
+    }
+
     public enum ErrorType {
         UNKNOWN,
         UNAVAILABLE,
@@ -52,6 +68,7 @@ public class BillingError extends RuntimeException {
         ALREADY_REQUESTING_PRODUCTS,
         PRODUCTS_NOT_REQUESTED,
         ALREADY_RESTORING,
+        PRODUCT_ALREADY_OWNED,
         UNKNOWN_PRODUCT_IDENTIFIER,
         TRANSACTION_DEFERRED,
         TRANSACTION_VERIFICATION_FAILED,

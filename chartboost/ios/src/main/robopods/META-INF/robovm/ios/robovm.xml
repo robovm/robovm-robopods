@@ -1,8 +1,10 @@
-<config>    
-    <frameworks>                
+<config>
+    <frameworks>
+        <framework>Chartboost</framework>
+        
         <framework>CoreGraphics</framework>
         <framework>StoreKit</framework>
-    </frameworks>    
+    </frameworks>
     <exportedSymbols>
         <symbol>CBLocation*</symbol>
     </exportedSymbols>

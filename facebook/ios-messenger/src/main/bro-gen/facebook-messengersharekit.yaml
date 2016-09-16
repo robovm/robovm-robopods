@@ -1,12 +1,8 @@
 package: org.robovm.pods.facebook.messenger
 framework: FBSDKMessengerShareKit
-include: 
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
+include: [foundation, uikit]
 clang_args: ['-x', 'objective-c']
-header_root: /../robopods/META-INF/robovm/ios/libs
-headers:
-    - FBSDKMessengerShareKit.framework/Headers/FBSDKMessengerShareKit.h
+headers: [FBSDKMessengerShareKit.h]
 typedefs:
     
 enums:

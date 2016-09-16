@@ -41,7 +41,6 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constructors>*/
     protected DGTAuthenticationConfiguration(Handle h, long handle) { super(h, handle); }
     protected DGTAuthenticationConfiguration(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithAccountFields:")
     public DGTAuthenticationConfiguration(DGTAccountFields accountFields) { super((SkipInit) null); initObject(init(accountFields)); }
     /*</constructors>*/
     /*<properties>*/

@@ -43,9 +43,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constructors>*/
     protected TWTRCollectionTimelineDataSource(Handle h, long handle) { super(h, handle); }
     protected TWTRCollectionTimelineDataSource(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithCollectionID:APIClient:")
     public TWTRCollectionTimelineDataSource(String collectionID, TWTRAPIClient client) { super((SkipInit) null); initObject(init(collectionID, client)); }
-    @Method(selector = "initWithCollectionID:APIClient:maxTweetsPerRequest:")
     public TWTRCollectionTimelineDataSource(String collectionID, TWTRAPIClient client, @MachineSizedUInt long maxTweetsPerRequest) { super((SkipInit) null); initObject(init(collectionID, client, maxTweetsPerRequest)); }
     /*</constructors>*/
     /*<properties>*/

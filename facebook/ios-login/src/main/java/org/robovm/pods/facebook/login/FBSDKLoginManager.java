@@ -15,16 +15,23 @@
  */
 package org.robovm.pods.facebook.login;
 
-import java.util.List;
-
-import org.robovm.apple.accounts.ACAccountCredentialRenewResult;
-import org.robovm.apple.foundation.*;
-import org.robovm.apple.uikit.UIViewController;
-import org.robovm.objc.ObjCRuntime;
+/*<imports>*/
+import java.io.*;
+import java.nio.*;
+import java.util.*;
+import org.robovm.objc.*;
 import org.robovm.objc.annotation.*;
-import org.robovm.objc.block.VoidBlock2;
-import org.robovm.rt.bro.annotation.Library;
-import org.robovm.rt.bro.ptr.Ptr;
+import org.robovm.objc.block.*;
+import org.robovm.rt.*;
+import org.robovm.rt.annotation.*;
+import org.robovm.rt.bro.*;
+import org.robovm.rt.bro.annotation.*;
+import org.robovm.rt.bro.ptr.*;
+import org.robovm.apple.foundation.*;
+import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.accounts.*;
+import org.robovm.pods.facebook.core.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -40,7 +47,7 @@ import org.robovm.rt.bro.ptr.Ptr;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKLoginManager() {}
-    protected FBSDKLoginManager(long handle) { super(handle); }
+    protected FBSDKLoginManager(Handle h, long handle) { super(h, handle); }
     protected FBSDKLoginManager(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

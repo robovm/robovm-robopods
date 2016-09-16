@@ -1,23 +1,13 @@
 package: org.robovm.pods.heyzap.ads
 framework: HeyzapAds
-include: 
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/corelocation.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/storekit.yaml
+include: [foundation, uikit, coregraphics, corelocation, storekit]
 clang_args: ['-x', 'objective-c']
-header_root: /../robopods/META-INF/robovm/ios/libs
-headers:
-    - HeyzapAds.framework/Headers/HeyzapAds.h
-    - HeyzapAds.framework/Headers/HZMediatedNativeAd.h
-    - HeyzapAds.framework/Headers/HZMediatedNativeAdManager.h
-    - HeyzapAds.framework/Headers/HZMediatedNativeAdViewRegisterer.h
+headers: [HeyzapAds.h, HZMediatedNativeAd.h, HZMediatedNativeAdManager.h, HZMediatedNativeAdViewRegisterer.h]
 typedefs:
     'void (^)(HZBannerAd *)': '@Block VoidBlock1<HZBannerAd>'
-    'void (^)(BOOL, NSError *)': '@Block VoidBlock2<Boolean, NSError>'
+    'void (^)(BOOL, NSError * _Nullable)': '@Block VoidBlock2<Boolean, NSError>'
     'void (^)(NSError *, HZNativeAdCollection *)': '@Block VoidBlock2<NSError, HZNativeAdCollection>'
-    'void (^)(id<HZMediatedNativeAdViewRegisterer>)': '@Block VoidBlock1<HZMediatedNativeAdViewRegisterer>'
+    'void (^)(id<HZMediatedNativeAdViewRegisterer> _Nonnull)': '@Block VoidBlock1<HZMediatedNativeAdViewRegisterer>'
     
 enums:
     HZAdMobBannerSize: {}
@@ -219,6 +209,10 @@ values:
 
     HZInMobiBanner(Size.*):
         class: HZInMobiBannerSize
+        name: '#{g[0]}'
+    
+    HZHeyzapExchangeBanner(Size.*):
+        class: HZHeyzapExchangeBannerSize
         name: '#{g[0]}'
     
     HZNetworkCallback(.*):

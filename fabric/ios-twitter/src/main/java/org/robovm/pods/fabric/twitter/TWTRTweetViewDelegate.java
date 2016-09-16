@@ -45,8 +45,6 @@ import org.robovm.pods.fabric.twitter.*;
     
     /*</properties>*/
     /*<methods>*/
-    @Method(selector = "tweetView:didSelectTweet:")
-    void didSelectTweet(TWTRTweetView tweetView, TWTRTweet tweet);
     @Method(selector = "tweetView:didTapImage:withURL:")
     void didTapImage(TWTRTweetView tweetView, UIImage image, NSURL imageURL);
     @Method(selector = "tweetView:didTapVideoWithURL:")
@@ -55,18 +53,8 @@ import org.robovm.pods.fabric.twitter.*;
     void didTapURL(TWTRTweetView tweetView, NSURL url);
     @Method(selector = "tweetView:didTapProfileImageForUser:")
     void didTapProfileImage(TWTRTweetView tweetView, TWTRUser user);
-    @Method(selector = "tweetView:willShareTweet:")
-    void willShareTweet(TWTRTweetView tweetView, TWTRTweet tweet);
-    @Method(selector = "tweetView:didShareTweet:withType:")
-    void didShareTweet(TWTRTweetView tweetView, TWTRTweet tweet, String shareType);
-    @Method(selector = "tweetView:cancelledShareTweet:")
-    void didCancelShareTweet(TWTRTweetView tweetView, TWTRTweet tweet);
-    @Method(selector = "tweetView:didLikeTweet:")
-    void didLikeTweet(TWTRTweetView tweetView, TWTRTweet tweet);
-    @Method(selector = "tweetView:didUnlikeTweet:")
-    void didUnlikeTweet(TWTRTweetView tweetView, TWTRTweet tweet);
-    @Method(selector = "tweetView:willRequireAuthenticationCompletionHandler:")
-    void willRequireAuthentication(TWTRTweetView tweetView, @Block VoidBlock2<TWTRSessionStore, String> authenticationCompletionHandler);
+    @Method(selector = "tweetView:shouldDisplayDetailViewController:")
+    boolean shouldDisplayDetailViewController(TWTRTweetView tweetView, TWTRTweetDetailViewController controller);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

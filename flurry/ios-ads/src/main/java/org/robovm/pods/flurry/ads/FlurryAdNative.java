@@ -48,7 +48,6 @@ import org.robovm.apple.corelocation.*;
     public FlurryAdNative() {}
     protected FlurryAdNative(Handle h, long handle) { super(h, handle); }
     protected FlurryAdNative(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithSpace:")
     public FlurryAdNative(String space) { super((SkipInit) null); initObject(init(space)); }
     /*</constructors>*/
     /*<properties>*/

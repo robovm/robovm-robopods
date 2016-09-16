@@ -45,6 +45,8 @@ import org.robovm.apple.storekit.*;
     /*<bind>*/static { ObjCRuntime.bind(DFPRequest.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
+    public DFPRequest() {}
+    protected DFPRequest(Handle h, long handle) { super(h, handle); }
     protected DFPRequest(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

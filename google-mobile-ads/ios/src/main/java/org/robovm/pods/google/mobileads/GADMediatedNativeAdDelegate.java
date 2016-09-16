@@ -49,12 +49,14 @@ import org.robovm.apple.storekit.*;
     
     /*</properties>*/
     /*<methods>*/
-    @Method(selector = "mediatedNativeAd:didRenderInView:")
-    void didRenderInView(GADMediatedNativeAd mediatedNativeAd, UIView view);
+    @Method(selector = "mediatedNativeAd:didRenderInView:viewController:")
+    void didRenderInView(GADMediatedNativeAd mediatedNativeAd, UIView view, UIViewController viewController);
     @Method(selector = "mediatedNativeAdDidRecordImpression:")
     void didRecordImpression(GADMediatedNativeAd mediatedNativeAd);
     @Method(selector = "mediatedNativeAd:didRecordClickOnAssetWithName:view:viewController:")
     void didRecordClickOnAsset(GADMediatedNativeAd mediatedNativeAd, String assetName, UIView view, UIViewController viewController);
+    @Method(selector = "mediatedNativeAd:didUntrackView:")
+    void didUntrackView(GADMediatedNativeAd mediatedNativeAd, UIView view);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

@@ -46,6 +46,7 @@ import org.robovm.pods.bolts.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKAppLinkResolver() {}
+    protected FBSDKAppLinkResolver(Handle h, long handle) { super(h, handle); }
     protected FBSDKAppLinkResolver(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

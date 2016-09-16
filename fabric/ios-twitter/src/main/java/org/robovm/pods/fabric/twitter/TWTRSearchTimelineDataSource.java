@@ -43,9 +43,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constructors>*/
     protected TWTRSearchTimelineDataSource(Handle h, long handle) { super(h, handle); }
     protected TWTRSearchTimelineDataSource(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithSearchQuery:APIClient:")
     public TWTRSearchTimelineDataSource(String searchQuery, TWTRAPIClient client) { super((SkipInit) null); initObject(init(searchQuery, client)); }
-    @Method(selector = "initWithSearchQuery:APIClient:languageCode:maxTweetsPerRequest:")
     public TWTRSearchTimelineDataSource(String searchQuery, TWTRAPIClient client, String languageCode, @MachineSizedUInt long maxTweetsPerRequest) { super((SkipInit) null); initObject(init(searchQuery, client, languageCode, maxTweetsPerRequest)); }
     /*</constructors>*/
     /*<properties>*/
@@ -55,6 +53,18 @@ import org.robovm.pods.fabric.twitter.*;
     public native String getLanguageCode();
     @Property(selector = "maxTweetsPerRequest")
     public native @MachineSizedUInt long getMaxTweetsPerRequest();
+    @Property(selector = "geocodeSpecifier")
+    public native String getGeocodeSpecifier();
+    @Property(selector = "setGeocodeSpecifier:")
+    public native void setGeocodeSpecifier(String v);
+    @Property(selector = "topTweetsOnly")
+    public native boolean isTopTweetsOnly();
+    @Property(selector = "setTopTweetsOnly:")
+    public native void setTopTweetsOnly(boolean v);
+    @Property(selector = "filterSensitiveTweets")
+    public native boolean isFilterSensitiveTweets();
+    @Property(selector = "setFilterSensitiveTweets:")
+    public native void setFilterSensitiveTweets(boolean v);
     @Property(selector = "timelineType")
     public native TWTRTimelineType getTimelineType();
     @Property(selector = "APIClient")

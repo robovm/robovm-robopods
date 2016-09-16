@@ -72,27 +72,24 @@ import org.robovm.apple.uikit.*;
     @Method(selector = "connection:willSendRequestForAuthenticationChallenge:")
     public native void willSendRequestForAuthenticationChallenge(NSURLConnection connection, NSURLAuthenticationChallenge challenge);
     /**
-     * @since Available since iOS 3.0.
+     * @since Available in iOS 3.0 and later.
      * @deprecated Deprecated in iOS 8.0.
      */
     @Deprecated
-    @Availability({ @PlatformVersion(platform = Platform.iOS, minVersion = "3.0", maxVersion = "8.0") })
     @Method(selector = "connection:canAuthenticateAgainstProtectionSpace:")
     public native boolean canAuthenticateAgainstProtectionSpace(NSURLConnection connection, NSURLProtectionSpace protectionSpace);
     /**
-     * @since Available since iOS 2.0.
+     * @since Available in iOS 2.0 and later.
      * @deprecated Deprecated in iOS 8.0.
      */
     @Deprecated
-    @Availability({ @PlatformVersion(platform = Platform.iOS, minVersion = "2.0", maxVersion = "8.0") })
     @Method(selector = "connection:didReceiveAuthenticationChallenge:")
     public native void didReceiveAuthenticationChallenge(NSURLConnection connection, NSURLAuthenticationChallenge challenge);
     /**
-     * @since Available since iOS 2.0.
+     * @since Available in iOS 2.0 and later.
      * @deprecated Deprecated in iOS 8.0.
      */
     @Deprecated
-    @Availability({ @PlatformVersion(platform = Platform.iOS, minVersion = "2.0", maxVersion = "8.0") })
     @Method(selector = "connection:didCancelAuthenticationChallenge:")
     public native void didCancelAuthenticationChallenge(NSURLConnection connection, NSURLAuthenticationChallenge challenge);
     /*</methods>*/

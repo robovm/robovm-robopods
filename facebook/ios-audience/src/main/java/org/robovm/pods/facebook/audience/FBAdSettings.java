@@ -15,15 +15,21 @@
  */
 package org.robovm.pods.facebook.audience;
 
-import java.util.List;
-
-import org.robovm.apple.foundation.NSArray;
-import org.robovm.apple.foundation.NSObject;
-import org.robovm.objc.ObjCRuntime;
-import org.robovm.objc.annotation.Method;
-import org.robovm.objc.annotation.NativeClass;
-import org.robovm.rt.bro.annotation.Library;
-import org.robovm.rt.bro.ptr.Ptr;
+/*<imports>*/
+import java.io.*;
+import java.nio.*;
+import java.util.*;
+import org.robovm.objc.*;
+import org.robovm.objc.annotation.*;
+import org.robovm.objc.block.*;
+import org.robovm.rt.*;
+import org.robovm.rt.annotation.*;
+import org.robovm.rt.bro.*;
+import org.robovm.rt.bro.annotation.*;
+import org.robovm.rt.bro.ptr.*;
+import org.robovm.apple.foundation.*;
+import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -39,7 +45,7 @@ import org.robovm.rt.bro.ptr.Ptr;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBAdSettings() {}
-    protected FBAdSettings(long handle) { super(handle); }
+    protected FBAdSettings(Handle h, long handle) { super(h, handle); }
     protected FBAdSettings(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -55,6 +61,8 @@ import org.robovm.rt.bro.ptr.Ptr;
     public static native void clearTestDevices();
     @Method(selector = "setIsChildDirected:")
     public static native void setIsChildDirected(boolean isChildDirected);
+    @Method(selector = "setMediationService:")
+    public static native void setMediationService(String service);
     @Method(selector = "setUrlPrefix:")
     public static native void setUrlPrefix(String urlPrefix);
     @Method(selector = "getLogLevel")

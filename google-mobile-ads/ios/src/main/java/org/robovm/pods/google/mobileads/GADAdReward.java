@@ -46,6 +46,7 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADAdReward() {}
+    protected GADAdReward(Handle h, long handle) { super(h, handle); }
     protected GADAdReward(SkipInit skipInit) { super(skipInit); }
     public GADAdReward(String rewardType, NSDecimalNumber rewardAmount) { super((SkipInit) null); initObject(init(rewardType, rewardAmount)); }
     /*</constructors>*/

@@ -95,6 +95,9 @@ import org.robovm.apple.storekit.*;
     public boolean isValid() { return isValid(this); }
     @Bridge(symbol="IsGADAdSizeValid", optional=true)
     private static native boolean isValid(@ByVal GADAdSize size);
+    public boolean isFluid() { return isFluid(this); }
+    @Bridge(symbol="GADAdSizeIsFluid", optional=true)
+    private static native boolean isFluid(@ByVal GADAdSize size);
     @Bridge(symbol="NSStringFromGADAdSize", optional=true)
     protected static native String toString(@ByVal GADAdSize size);
     @Bridge(symbol="NSValueFromGADAdSize", optional=true)

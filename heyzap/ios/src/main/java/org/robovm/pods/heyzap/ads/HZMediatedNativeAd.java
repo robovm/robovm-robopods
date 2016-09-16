@@ -52,6 +52,8 @@ import org.robovm.apple.storekit.*;
     public native String getCallToAction();
     @Property(selector = "iconImage")
     public native HZNativeAdImage getIconImage();
+    @Property(selector = "rating")
+    public native NSNumber getRating();
     @Property(selector = "presentingViewController")
     public native IntPtr getPresentingViewController();
     @Property(selector = "setPresentingViewController:", strongRef = true)

@@ -15,15 +15,21 @@
  */
 package org.robovm.pods.facebook.messenger;
 
-import org.robovm.apple.foundation.NSData;
-import org.robovm.apple.foundation.NSObject;
+/*<imports>*/
+import java.io.*;
+import java.nio.*;
+import java.util.*;
+import org.robovm.objc.*;
+import org.robovm.objc.annotation.*;
+import org.robovm.objc.block.*;
+import org.robovm.rt.*;
+import org.robovm.rt.annotation.*;
+import org.robovm.rt.bro.*;
+import org.robovm.rt.bro.annotation.*;
+import org.robovm.rt.bro.ptr.*;
+import org.robovm.apple.foundation.*;
+import org.robovm.apple.uikit.*;
 /*</imports>*/
-import org.robovm.apple.uikit.UIImage;
-import org.robovm.objc.ObjCRuntime;
-import org.robovm.objc.annotation.Method;
-import org.robovm.objc.annotation.NativeClass;
-import org.robovm.rt.bro.annotation.Library;
-import org.robovm.rt.bro.ptr.Ptr;
 
 /*<javadoc>*/
 
@@ -38,7 +44,7 @@ import org.robovm.rt.bro.ptr.Ptr;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKMessengerSharer() {}
-    protected FBSDKMessengerSharer(long handle) { super(handle); }
+    protected FBSDKMessengerSharer(Handle h, long handle) { super(h, handle); }
     protected FBSDKMessengerSharer(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -46,8 +52,6 @@ import org.robovm.rt.bro.ptr.Ptr;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "messengerPlatformCapabilities")
-    public static native FBSDKMessengerPlatformCapability getMessengerPlatformCapabilities();
     @Method(selector = "openMessenger")
     public static native void openMessenger();
     @Method(selector = "shareImage:withOptions:")

@@ -1,13 +1,14 @@
 package: org.robovm.pods.google.tagmanager
 framework: GoogleTagManager
-include: 
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
+include: [foundation, uikit, coregraphics]
 clang_args: ['-x', 'objective-c']
-header_root: /
 headers:
-    - GoogleTagManager.lib/Headers/GoogleTagManager.h
+    - TAGContainer.h
+    - TAGContainerOpener.h
+    - TAGDataLayer.h
+    - TAGLogger.h
+    - TAGManager.h
+
 typedefs:
     'void (^)(TAGDispatchResult)': '@Block VoidBlock1<TAGDispatchResult>'
     
@@ -60,6 +61,9 @@ classes:
         methods:
             '-openContainerById:callback:':
                 name: openContainer
+                parameters:
+                    callback:
+                        type: TAGContainerCallback
             '-getContainerById:':
                 name: getContainer
             '-previewWithUrl:':

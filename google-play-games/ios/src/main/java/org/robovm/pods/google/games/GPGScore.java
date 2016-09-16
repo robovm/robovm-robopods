@@ -47,10 +47,8 @@ import org.robovm.apple.coregraphics.*;
     public GPGScore() {}
     protected GPGScore(Handle h, long handle) { super(h, handle); }
     protected GPGScore(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithLeaderboardId:")
     public GPGScore(String leaderboardId) { super((SkipInit) null); initObject(init(leaderboardId)); }
-    @Method(selector = "initWithCoder:")
-    public GPGScore(NSCoder aDecoder) { super((SkipInit) null); initObject(init(aDecoder)); }
+    public GPGScore(NSCoder decoder) { super((SkipInit) null); initObject(init(decoder)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "leaderboardId")
@@ -89,6 +87,6 @@ import org.robovm.apple.coregraphics.*;
     @Method(selector = "encodeWithCoder:")
     public native void encode(NSCoder coder);
     @Method(selector = "initWithCoder:")
-    protected native @Pointer long init(NSCoder aDecoder);
+    protected native @Pointer long init(NSCoder decoder);
     /*</methods>*/
 }

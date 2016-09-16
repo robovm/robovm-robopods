@@ -58,6 +58,8 @@ import org.robovm.apple.storekit.*;
     public void registerCallToActionView(UIView view) {}
     @NotImplemented("registerAdvertiserNameView:tappable:")
     public void registerAdvertiserNameView(UIView view, boolean tappable) {}
+    @NotImplemented("registerRatingView:tappable:")
+    public void registerRatingView(UIView view, boolean tappable) {}
     @NotImplemented("registerOtherView:tappable:")
     public void registerOtherView(UIView view, boolean tappable) {}
     @NotImplemented("registerOtherViews:tappable:")

@@ -46,6 +46,7 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADCustomEventRequest() {}
+    protected GADCustomEventRequest(Handle h, long handle) { super(h, handle); }
     protected GADCustomEventRequest(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

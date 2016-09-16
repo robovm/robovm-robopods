@@ -15,14 +15,22 @@
  */
 package org.robovm.pods.facebook.audience;
 
-import org.robovm.apple.foundation.NSArray;
-import org.robovm.apple.foundation.NSObject;
-import org.robovm.apple.uikit.UIView;
-import org.robovm.apple.uikit.UIViewController;
-import org.robovm.objc.ObjCRuntime;
+/*<imports>*/
+import java.io.*;
+import java.nio.*;
+import java.util.*;
+import org.robovm.objc.*;
 import org.robovm.objc.annotation.*;
+import org.robovm.objc.block.*;
+import org.robovm.rt.*;
+import org.robovm.rt.annotation.*;
+import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
-import org.robovm.rt.bro.ptr.Ptr;
+import org.robovm.rt.bro.ptr.*;
+import org.robovm.apple.foundation.*;
+import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
+/*</imports>*/
 
 /*<javadoc>*/
 
@@ -37,16 +45,13 @@ import org.robovm.rt.bro.ptr.Ptr;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBNativeAd() {}
-    protected FBNativeAd(long handle) { super(handle); }
+    protected FBNativeAd(Handle h, long handle) { super(h, handle); }
     protected FBNativeAd(SkipInit skipInit) { super(skipInit); }
-
     public FBNativeAd(String placementID) { super((SkipInit) null); initObject(init(placementID)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "placementID")
     public native String getPlacementID();
-    @Property(selector = "starRating")
-    public native @ByVal FBAdStarRating getStarRating();
     @Property(selector = "title")
     public native String getTitle();
     @Property(selector = "subtitle")

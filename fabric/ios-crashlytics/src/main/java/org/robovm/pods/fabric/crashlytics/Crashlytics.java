@@ -61,6 +61,29 @@ import org.robovm.apple.foundation.*;
     public native void setDelegate(CrashlyticsDelegate v);
     /*</properties>*/
     /*<members>*//*</members>*/
+    
+    /* Logging */
+    public static void log(String format, Object... args) {
+        log(String.format(format, args));
+    }
+    @Bridge(symbol = "CLSLog")
+    public static native void log(String format);
+    @Bridge(symbol = "CLSLog")
+    @Variadic(1)
+    public static native void log(String format, NSObject arg1);
+    @Bridge(symbol = "CLSLog")
+    @Variadic(1)
+    public static native void log(String format, NSObject arg1, NSObject arg2);
+    @Bridge(symbol = "CLSLog")
+    @Variadic(1)
+    public static native void log(String format, NSObject arg1, NSObject arg2, NSObject arg3);
+    @Bridge(symbol = "CLSLog")
+    @Variadic(1)
+    public static native void log(String format, NSObject arg1, NSObject arg2, NSObject arg3, NSObject arg4);
+    @Bridge(symbol = "CLSLog")
+    @Variadic(1)
+    public static native void log(String format, NSObject arg1, NSObject arg2, NSObject arg3, NSObject arg4, NSObject arg5);
+    
     public void setObject(String key, NSObject value) {
         setObject0(value, key);
     }

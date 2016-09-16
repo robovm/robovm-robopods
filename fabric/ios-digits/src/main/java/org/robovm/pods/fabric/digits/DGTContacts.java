@@ -42,11 +42,17 @@ import org.robovm.pods.fabric.twitter.*;
     public DGTContacts() {}
     protected DGTContacts(Handle h, long handle) { super(h, handle); }
     protected DGTContacts(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithUserSession:")
     public DGTContacts(DGTSession userSession) { super((SkipInit) null); initObject(init(userSession)); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "uploadDebugOverrides")
+    public native DGTContactsDebugConfiguration getUploadDebugOverrides();
+    @Property(selector = "setUploadDebugOverrides:")
+    public native void setUploadDebugOverrides(DGTContactsDebugConfiguration v);
+    @Property(selector = "lookupDebugOverrides")
+    public native DGTContactsDebugConfiguration getLookupDebugOverrides();
+    @Property(selector = "setLookupDebugOverrides:")
+    public native void setLookupDebugOverrides(DGTContactsDebugConfiguration v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

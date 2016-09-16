@@ -1,12 +1,9 @@
 <config>
     <resources>
         <resource>
-            <directory>libs/DigitsKit.framework/Resources</directory>
+            <directory>res</directory>
         </resource>
     </resources>
-    <frameworkPaths>
-        <path>libs</path>
-    </frameworkPaths>
     <frameworks>
         <framework>DigitsKit</framework>
         

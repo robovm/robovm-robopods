@@ -1,16 +1,11 @@
 package: org.robovm.pods.facebook.audience
 framework: FBAudienceNetwork
-include: 
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
+include: [foundation, uikit, coregraphics]
 clang_args: ['-x', 'objective-c']
-header_root: /../robopods/META-INF/robovm/ios/libs
-headers:
-    - FBAudienceNetwork.framework/Headers/FBAudienceNetwork.h
+headers: [FBAudienceNetwork.h]
 typedefs:
-    'void (^)(UIImage *)': '@Block VoidBlock1<UIImage>'
-    'UIView * (^)(FBNativeAd *, NSUInteger)': '@Block("(,@MachineSizedUInt)") Block2<FBNativeAd, Long, UIView>'
+    'void (^)(UIImage * _Nullable)': '@Block VoidBlock1<UIImage>'
+    'UIView * _Nonnull (^)(FBNativeAd * _Nonnull, NSUInteger)': '@Block("(,@MachineSizedUInt)") Block2<FBNativeAd, Long, UIView>'
     
 enums:
     FBAdLogLevel: {}
@@ -68,17 +63,12 @@ classes:
                 parameters:
                     clickableViews:
                         type: NSArray<UIView>
-    FBAdStarRating: {} # DONE
     FBAdImage: # DONE
         methods:
             '-initWithURL:width:height:':
                 name: init
             '-loadImageAsyncWithBlock:':
                 name: loadImageAsync
-    FBAdStarRatingView: # DONE
-        methods:
-            '-initWithFrame:withStarRating:':
-                name: init
     FBNativeAdScrollView: # DONE
         methods:
             '-init.*':

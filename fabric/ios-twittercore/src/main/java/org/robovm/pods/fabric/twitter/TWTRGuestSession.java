@@ -41,18 +41,17 @@ import org.robovm.apple.uikit.*;
     /*<constructors>*/
     protected TWTRGuestSession(Handle h, long handle) { super(h, handle); }
     protected TWTRGuestSession(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithSessionDictionary:")
     public TWTRGuestSession(NSDictionary<?, ?> sessionDictionary) { super((SkipInit) null); initObject(init(sessionDictionary)); }
-    @Method(selector = "initWithAccessToken:guestToken:")
     public TWTRGuestSession(String accessToken, String guestToken) { super((SkipInit) null); initObject(init(accessToken, guestToken)); }
-    @Method(selector = "initWithCoder:")
-    public TWTRGuestSession(NSCoder aDecoder) { super((SkipInit) null); initObject(init(aDecoder)); }
+    public TWTRGuestSession(NSCoder decoder) { super((SkipInit) null); initObject(init(decoder)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "accessToken")
     public native String getAccessToken();
     @Property(selector = "guestToken")
     public native String getGuestToken();
+    @Property(selector = "probablyNeedsRefreshing")
+    public native boolean probablyNeedsRefreshing();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -63,6 +62,6 @@ import org.robovm.apple.uikit.*;
     @Method(selector = "encodeWithCoder:")
     public native void encode(NSCoder coder);
     @Method(selector = "initWithCoder:")
-    protected native @Pointer long init(NSCoder aDecoder);
+    protected native @Pointer long init(NSCoder decoder);
     /*</methods>*/
 }

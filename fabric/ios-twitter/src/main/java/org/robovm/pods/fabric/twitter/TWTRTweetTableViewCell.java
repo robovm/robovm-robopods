@@ -53,9 +53,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<methods>*/
     @Method(selector = "configureWithTweet:")
     public native void configure(TWTRTweet tweet);
-    @Method(selector = "heightForTweet:width:showingActions:")
-    public static native @MachineSizedFloat double getHeightForTweet(TWTRTweet tweet, @MachineSizedFloat double width, boolean actionsAreVisible);
-    @Method(selector = "heightForTweet:width:")
-    public static native @MachineSizedFloat double getHeightForTweet(TWTRTweet tweet, @MachineSizedFloat double width);
+    @Method(selector = "heightForTweet:style:width:showingActions:")
+    public static native @MachineSizedFloat double getHeightForTweet(TWTRTweet tweet, TWTRTweetViewStyle style, @MachineSizedFloat double width, boolean showActions);
     /*</methods>*/
 }

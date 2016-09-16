@@ -37,8 +37,8 @@ import org.robovm.apple.storekit.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/GADRewardBasedVideoAd/*</name>*/
-    extends /*<extends>*/NSObject/*</extends>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/GADRewardBasedVideoAd/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
     /*<ptr>*/public static class GADRewardBasedVideoAdPtr extends Ptr<GADRewardBasedVideoAd, GADRewardBasedVideoAdPtr> {}/*</ptr>*/
@@ -46,6 +46,7 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADRewardBasedVideoAd() {}
+    protected GADRewardBasedVideoAd(Handle h, long handle) { super(h, handle); }
     protected GADRewardBasedVideoAd(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

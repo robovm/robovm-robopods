@@ -39,11 +39,10 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>com.mobidevelop.robovm</groupId>
             <artifactId>robopods-fabric-ios-twittercore</artifactId>
-            <version>${robovm.version}</version>
+            <version>${robopods.version}</version>
         </dependency>
     </dependencies>
 

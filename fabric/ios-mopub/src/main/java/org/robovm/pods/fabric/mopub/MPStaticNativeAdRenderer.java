@@ -42,7 +42,6 @@ import org.robovm.apple.uikit.*;
     protected MPStaticNativeAdRenderer(Handle h, long handle) { super(h, handle); }
     protected MPStaticNativeAdRenderer(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
-    @Method(selector = "initWithRendererSettings:")
     public MPStaticNativeAdRenderer(MPNativeAdRendererSettings rendererSettings) { super((SkipInit) null); initObject(init(rendererSettings)); }
     /*<properties>*/
     @Property(selector = "viewSizeHandler")

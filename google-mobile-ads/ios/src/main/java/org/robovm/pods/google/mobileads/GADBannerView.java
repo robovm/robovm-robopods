@@ -46,6 +46,7 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADBannerView() {}
+    protected GADBannerView(Handle h, long handle) { super(h, handle); }
     protected GADBannerView(SkipInit skipInit) { super(skipInit); }
     public GADBannerView(@ByVal GADAdSize adSize, @ByVal CGPoint origin) { super((SkipInit) null); initObject(init(adSize, origin)); }
     public GADBannerView(@ByVal GADAdSize adSize) { super((SkipInit) null); initObject(init(adSize)); }
@@ -71,6 +72,10 @@ import org.robovm.apple.storekit.*;
     public native GADInAppPurchaseDelegate getInAppPurchaseDelegate();
     @Property(selector = "setInAppPurchaseDelegate:", strongRef = true)
     public native void setInAppPurchaseDelegate(GADInAppPurchaseDelegate v);
+    @Property(selector = "adSizeDelegate")
+    public native GADAdSizeDelegate getAdSizeDelegate();
+    @Property(selector = "setAdSizeDelegate:", strongRef = true)
+    public native void setAdSizeDelegate(GADAdSizeDelegate v);
     @Property(selector = "isAutoloadEnabled")
     public native boolean isAutoloadEnabled();
     @Property(selector = "setAutoloadEnabled:")

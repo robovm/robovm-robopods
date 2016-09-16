@@ -32,7 +32,11 @@ public interface Store {
 
     void requestProductData();
 
+    boolean isRequestingProductData();
+
     void restoreTransactions();
+
+    boolean isRestoringTransactions();
 
     void purchaseProduct(Product product);
 

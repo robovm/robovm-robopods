@@ -44,7 +44,7 @@ import org.robovm.apple.coregraphics.*;
     /*<bind>*/static { ObjCRuntime.bind(TAGContainer.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public TAGContainer() {}
+    protected TAGContainer() {}
     protected TAGContainer(Handle h, long handle) { super(h, handle); }
     protected TAGContainer(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/

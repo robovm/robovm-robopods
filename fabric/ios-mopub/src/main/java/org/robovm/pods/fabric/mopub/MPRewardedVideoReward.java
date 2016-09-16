@@ -41,9 +41,7 @@ import org.robovm.apple.uikit.*;
     public MPRewardedVideoReward() {}
     protected MPRewardedVideoReward(Handle h, long handle) { super(h, handle); }
     protected MPRewardedVideoReward(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithCurrencyAmount:")
     public MPRewardedVideoReward(NSNumber amount) { super((SkipInit) null); initObject(init(amount)); }
-    @Method(selector = "initWithCurrencyType:amount:")
     public MPRewardedVideoReward(String currencyType, NSNumber amount) { super((SkipInit) null); initObject(init(currencyType, amount)); }
     /*</constructors>*/
     /*<properties>*/

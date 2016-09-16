@@ -43,9 +43,7 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constructors>*/
     protected TWTRComposerViewController(Handle h, long handle) { super(h, handle); }
     protected TWTRComposerViewController(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithUserID:")
     public TWTRComposerViewController(String userID) { super((SkipInit) null); initObject(init(userID)); }
-    @Method(selector = "initWithUserID:cardConfiguration:")
     public TWTRComposerViewController(String userID, TWTRCardConfiguration cardConfig) { super((SkipInit) null); initObject(init(userID, cardConfig)); }
     /*</constructors>*/
     /*<properties>*/
@@ -57,6 +55,10 @@ import org.robovm.pods.fabric.twitter.*;
     public native TWTRComposerTheme getTheme();
     @Property(selector = "setTheme:")
     public native void setTheme(TWTRComposerTheme v);
+    @Property(selector = "hashtags")
+    public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getHashtags();
+    @Property(selector = "setHashtags:")
+    public native void setHashtags(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

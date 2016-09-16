@@ -15,11 +15,11 @@
  */
 package org.robovm.pods.billing;
 
+import org.robovm.pods.Util;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import org.robovm.pods.Util;
 
 public class HeadlessStore implements Store {
     private List<BillingObserver> observers;
@@ -59,10 +59,20 @@ public class HeadlessStore implements Store {
     }
 
     @Override
+    public boolean isRequestingProductData() {
+        return false;
+    }
+
+    @Override
     public void restoreTransactions() {
         for (BillingObserver observer : observers) {
             observer.onRestoreSuccess(new ArrayList<>());
         }
+    }
+
+    @Override
+    public boolean isRestoringTransactions() {
+        return false;
     }
 
     @Override
@@ -80,38 +90,12 @@ public class HeadlessStore implements Store {
         return StoreType.HEADLESS;
     }
 
-    private static class HeadlessTransaction implements Transaction {
-        private Product product;
-        private Date date;
-
+    private static class HeadlessTransaction extends Transaction {
         private HeadlessTransaction(Product product) {
-            this.product = product;
+            super(product, null);
+            this.identifier = "";
             this.date = new Date();
-        }
-
-        @Override
-        public Product getProduct() {
-            return product;
-        }
-
-        @Override
-        public String getTransactionIdentifier() {
-            return "";
-        }
-
-        @Override
-        public Date getTransactionDate() {
-            return date;
-        }
-
-        @Override
-        public String getReceipt() {
-            return "";
-        }
-
-        @Override
-        public String getSignature() {
-            return null;
+            this.receipt = "";
         }
 
         @Override

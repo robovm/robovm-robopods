@@ -51,6 +51,10 @@ import org.robovm.pods.fabric.twitter.*;
     public native @Block VoidBlock2<TWTRAuthSession, NSError> getLogInCompletion();
     @Property(selector = "setLogInCompletion:")
     public native void setLogInCompletion(@Block VoidBlock2<TWTRAuthSession, NSError> v);
+    @Property(selector = "loginMethods")
+    public native TWTRLoginMethod getLoginMethods();
+    @Property(selector = "setLoginMethods:")
+    public native void setLoginMethods(TWTRLoginMethod v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

@@ -52,7 +52,7 @@ public enum /*<name>*/FBSDKErrorCode/*</name>*/ implements NSErrorCode {
     DialogUnavailable(9L),
     AccessTokenRequired(10L),
     AppVersionUnsupported(11L),
-    BrowswerUnavailable(12L);
+    BrowserUnavailable(12L);
     /*</values>*/
 
     /*<bind>*/

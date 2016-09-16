@@ -15,13 +15,21 @@
  */
 package org.robovm.pods.facebook.audience;
 
-import org.robovm.apple.foundation.NSError;
-import org.robovm.apple.uikit.UIViewController;
-import org.robovm.objc.ObjCRuntime;
+/*<imports>*/
+import java.io.*;
+import java.nio.*;
+import java.util.*;
+import org.robovm.objc.*;
 import org.robovm.objc.annotation.*;
-import org.robovm.rt.bro.annotation.Library;
-import org.robovm.rt.bro.annotation.Pointer;
-import org.robovm.rt.bro.ptr.Ptr;
+import org.robovm.objc.block.*;
+import org.robovm.rt.*;
+import org.robovm.rt.annotation.*;
+import org.robovm.rt.bro.*;
+import org.robovm.rt.bro.annotation.*;
+import org.robovm.rt.bro.ptr.*;
+import org.robovm.apple.foundation.*;
+import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -29,17 +37,16 @@ import org.robovm.rt.bro.ptr.Ptr;
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FBInterstitialAd/*</name>*/ 
-    extends /*<extends>*/UIViewController/*</extends>*/ 
-    /*<implements>*/implements FBAdViewDelegate/*</implements>*/ {
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*//*</implements>*/ {
 
     /*<ptr>*/public static class FBInterstitialAdPtr extends Ptr<FBInterstitialAd, FBInterstitialAdPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(FBInterstitialAd.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBInterstitialAd() {}
-    protected FBInterstitialAd(long handle) { super(handle); }
+    protected FBInterstitialAd(Handle h, long handle) { super(h, handle); }
     protected FBInterstitialAd(SkipInit skipInit) { super(skipInit); }
-
     public FBInterstitialAd(String placementID) { super((SkipInit) null); initObject(init(placementID)); }
     /*</constructors>*/
     /*<properties>*/
@@ -60,17 +67,5 @@ import org.robovm.rt.bro.ptr.Ptr;
     public native void loadAd();
     @Method(selector = "showAdFromRootViewController:")
     public native boolean showAd(UIViewController rootViewController);
-    @Method(selector = "adViewDidClick:")
-    public native void didClick(FBAdView adView);
-    @Method(selector = "adViewDidFinishHandlingClick:")
-    public native void didFinishHandlingClick(FBAdView adView);
-    @Method(selector = "adViewDidLoad:")
-    public native void didLoad(FBAdView adView);
-    @Method(selector = "adView:didFailWithError:")
-    public native void didFail(FBAdView adView, NSError error);
-    @Method(selector = "adViewWillLogImpression:")
-    public native void willLogImpression(FBAdView adView);
-    @Method(selector = "viewControllerForPresentingModalView")
-    public native UIViewController getViewControllerForPresentingModalView();
     /*</methods>*/
 }

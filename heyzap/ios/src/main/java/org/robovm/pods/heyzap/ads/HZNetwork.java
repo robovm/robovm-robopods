@@ -75,5 +75,7 @@ import org.robovm.apple.storekit.*;
     public static native String HeyzapExchange();
     @GlobalValue(symbol="HZNetworkLeadbolt", optional=true)
     public static native String Leadbolt();
+    @GlobalValue(symbol="HZNetworkInMobi", optional=true)
+    public static native String InMobi();
     /*</methods>*/
 }

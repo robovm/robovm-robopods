@@ -1,17 +1,8 @@
 package: org.robovm.pods.fabric.twitter
 framework: TwitterKit
-include: 
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/accounts.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/mediaplayer.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/social.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
-    - ../../../../ios-twittercore/src/main/bro-gen/twittercore.yaml
+include: [foundation, accounts, coregraphics, mediaplayer, social, uikit, ../../../../ios-twittercore/src/main/bro-gen/twittercore.yaml]
 clang_args: ['-x', 'objective-c']
-header_root: '/../robopods/META-INF/robovm/ios/libs/'
-headers:
-    - TwitterKit.framework/Headers/TwitterKit.h
+headers: [TwitterKit.h]
 typedefs:
     TWTRLogInCompletion: '@Block VoidBlock2<TWTRAuthSession, NSError>'
     TWTRLoadUserCompletion: '@Block VoidBlock2<TWTRUser, NSError>'
@@ -24,11 +15,16 @@ typedefs:
     TWTRShareEmailCompletion: '@Block VoidBlock2<String, NSError>'
     TWTRLoadTimelineCompletion: '@Block VoidBlock3<NSArray<TWTRTweet>, NSObject, NSError>'  # TWTRTimelineCursor unknown type ???
     TWTRAuthenticationCompletionHandler: '@Block VoidBlock2<TWTRSessionStore, String>'
+    TWTRMediaUploadResponseCompletion: '@Block VoidBlock2<String, NSError>'
+    TWTRRequestEmailCompletion: '@Block VoidBlock2<String, NSError>'
     
 enums:
     TWTRCardType: {}
     TWTRComposerResult: {}
     TWTRComposerThemeType: {}
+    TWTRLoginMethod: {}
+    TWTRMediaEntitySizeResizingMode: {}
+    TWTRNativeAdTheme: {}
     TWTRTimelineType: {}
     TWTRTweetViewStyle: {}
     TWTRTweetViewTheme: {}
@@ -47,6 +43,11 @@ classes:
                 parameters:
                     completion:
                         type: '@Block VoidBlock2<TWTRAuthSession, NSError>'
+            '-application:openURL:options:':
+                name: openURL
+                parameters:
+                    options:
+                        type: UIApplicationOpenURLOptions
             '+sharedInstance':
                 property: true
     TWTRAPIClient: # DONE
@@ -68,6 +69,12 @@ classes:
                     tweetIDStrings:
                         type: List<String>
                         marshaler: NSArray.AsStringListMarshaler
+            '-uploadMedia:contentType:completion:':
+                trim_after_first_colon: true
+            '-requestEmailForCurrentUser:':
+                trim_after_first_colon: true
+            '+clientWithCurrentUser':
+                name: getCurrentUser
     TWTRCardConfiguration: # DONE
         skip_def_constructor: true
         methods:
@@ -91,6 +98,10 @@ classes:
                 name: init
     TWTRComposerViewController: # DONE
         skip_def_constructor: true
+        properties:
+            'hashtags':
+                type: List<String>
+                marshaler: NSArray.AsStringListMarshaler
         methods:
             '-init.*':
                 name: init
@@ -113,6 +124,20 @@ classes:
                 parameters:
                     completion:
                         type: '@Block VoidBlock2<TWTRAuthSession, NSError>'
+    TWTRMediaEntitySize: # DONE
+        methods:
+            '-init.*':
+                name: init
+            '-isEqualToMediaEntitySize:':
+                name: equalsTo
+            '+mediaEntitySizesWithJSONDictionary:':
+                name: getMediaEntitySizes
+                return_type: 'NSDictionary<NSString, TWTRMediaEntitySize>'
+    TWTRMoPubAdConfiguration: # DONE
+        methods:
+            '-init.*':
+                name: init
+    TWTRMoPubNativeAdContainerView: {} # DONE
     TWTROAuthSigning: # DONE
         skip_def_constructor: true
         methods:
@@ -123,7 +148,7 @@ classes:
         methods:
             '-init.*':
                 name: init
-    TWTRShareEmailViewController: # DONE
+    TWTRTimelineCursor: # DONE
         methods:
             '-init.*':
                 name: init
@@ -136,6 +161,13 @@ classes:
                 name: init
             '-initWithStyle:':
                 exclude: true # deprecated
+            '-countOfTweets':
+                name: getTweetsCount
+            '-tweetAtIndex:':
+                name: getTweet
+            '-snapshotTweets':
+                property: true
+                return_type: NSArray<TWTRTweet>
     TWTRTweet: # DONE
         properties:
             '(favoriteCount|isFavorited)':
@@ -150,6 +182,11 @@ classes:
             '+tweetsWithJSONArray:':
                 name: getTweets
                 return_type: NSArray<TWTRTweet>
+    TWTRTweetCashtagEntity: {} # DONE
+    TWTRTweetDetailViewController: # DONE
+        methods:
+            '-init.*':
+                name: init
     TWTRTweetTableViewCell: # DONE
         methods:
             '-configureWithTweet:':
@@ -158,6 +195,15 @@ classes:
                 name: getHeightForTweet
             '-calculatedHeightForWidth:':
                 exclude: true # deprecated
+    TWTRTweetEntity: # DONE
+        methods:
+            '-init.*':
+                name: init
+            '-accessibilityValue':
+                property: true
+    TWTRTweetHashtagEntity: {} # DONE
+    TWTRTweetUrlEntity: {} # DONE
+    TWTRTweetUserMentionEntity: {} # DONE
     TWTRTweetView: # DONE
         properties:
             'showBorder':
@@ -190,6 +236,8 @@ classes:
         methods:
             '-init.*':
                 name: init
+    TWTRVideoMetaData: {}
+    TWTRVideoMetaDataVariant: {} # DONE
     
 protocols:
     TWTRComposerViewControllerDelegate: # DONE
@@ -200,10 +248,38 @@ protocols:
                 name: didSucceed
             '-composerDidFail:withError:':
                 name: didFail
+    TWTRJSONConvertible: # DONE
+        methods:
+            '-initWithJSONDictionary:':
+                name: init
+                parameters:
+                    dictionary:
+                        name: jsonDictionary
     TWTRTimelineDataSource: # DONE
         methods:
             '-loadPreviousTweetsBeforePosition:completion:':
                 name: loadPreviousTweets
+    TWTRTweetDetailViewControllerDelegate: # DONE
+        methods:
+            '-tweetDetailViewController:didTapURL:':
+                name: didTapURL
+            '-tweetDetailViewController:didTapProfileImageForUser:':
+                name: didTapProfileImage
+            '-tweetDetailViewController:didTapHashtag:':
+                name: didTapHashtag
+            '-tweetDetailViewController:didTapCashtag:':
+                name: didTapCashtag
+            '-tweetDetailViewController:didTapUserMention:':
+                name: didTapUserMention
+    TWTRTimelineDelegate: # DONE
+        methods:
+            '-timelineDidBeginLoading:':
+                name: didBeginLoading
+            '-timeline:didFinishLoadingTweets:error:':
+                name: didFinishLoading
+                parameters:
+                    tweets:
+                        type: NSArray<TWTRTweet>
     TWTRTweetViewDelegate: # DONE
         methods:
             '-tweetView:didSelectTweet:':
@@ -228,10 +304,8 @@ protocols:
                 name: didUnlikeTweet
             '-tweetView:willRequireAuthenticationCompletionHandler:':
                 name: willRequireAuthentication
-            '-tweetView:didFavoriteTweet:':
-                exclude: true # deprecated
-            '-tweetView:didUnfavoriteTweet:':
-                exclude: true # deprecated
+            '-tweetView:shouldDisplayDetailViewController:':
+                name: shouldDisplayDetailViewController
 
 functions:
     # Make sure we don't miss any functions if new ones are introduced in a later version

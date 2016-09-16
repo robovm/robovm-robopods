@@ -37,7 +37,7 @@ import org.robovm.pods.facebook.core.*;
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ interface /*<name>*/FBSDKSharingContent/*</name>*/ 
-    /*<implements>*/extends FBSDKCopying/*</implements>*/ {
+    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/
@@ -49,6 +49,10 @@ import org.robovm.pods.facebook.core.*;
     NSURL getContentURL();
     @Property(selector = "setContentURL:")
     void setContentURL(NSURL v);
+    @Property(selector = "hashtag")
+    FBSDKHashtag getHashtag();
+    @Property(selector = "setHashtag:")
+    void setHashtag(FBSDKHashtag v);
     @Property(selector = "peopleIDs")
     @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getPeopleIDs();
     @Property(selector = "setPeopleIDs:")

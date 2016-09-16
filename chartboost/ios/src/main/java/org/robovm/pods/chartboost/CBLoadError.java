@@ -47,10 +47,11 @@ public enum /*<name>*/CBLoadError/*</name>*/ implements ValuedEnum {
     NetworkFailure(5L),
     NoAdFound(6L),
     SessionNotStarted(7L),
-    UserCancellation(8L),
-    NoLocationFound(9L),
-    PrefetchingIncomplete(10L),
-    ImpressionAlreadyVisible(11L);
+    ImpressionAlreadyVisible(8L),
+    UserCancellation(10L),
+    NoLocationFound(11L),
+    AssetDownloadFailure(16L),
+    PrefetchingIncomplete(21L);
     /*</values>*/
 
     /*<bind>*/

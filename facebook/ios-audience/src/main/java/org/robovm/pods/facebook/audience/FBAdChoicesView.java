@@ -15,13 +15,21 @@
  */
 package org.robovm.pods.facebook.audience;
 
-import org.robovm.apple.foundation.NSURL;
-import org.robovm.apple.uikit.*;
-import org.robovm.objc.ObjCRuntime;
+/*<imports>*/
+import java.io.*;
+import java.nio.*;
+import java.util.*;
+import org.robovm.objc.*;
 import org.robovm.objc.annotation.*;
-import org.robovm.rt.bro.annotation.Library;
-import org.robovm.rt.bro.annotation.Pointer;
-import org.robovm.rt.bro.ptr.Ptr;
+import org.robovm.objc.block.*;
+import org.robovm.rt.*;
+import org.robovm.rt.annotation.*;
+import org.robovm.rt.bro.*;
+import org.robovm.rt.bro.annotation.*;
+import org.robovm.rt.bro.ptr.*;
+import org.robovm.apple.foundation.*;
+import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -37,16 +45,13 @@ import org.robovm.rt.bro.ptr.Ptr;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBAdChoicesView() {}
-    protected FBAdChoicesView(long handle) { super(handle); }
+    protected FBAdChoicesView(Handle h, long handle) { super(h, handle); }
     protected FBAdChoicesView(SkipInit skipInit) { super(skipInit); }
-
     public FBAdChoicesView(FBNativeAd nativeAd) { super((SkipInit) null); initObject(init(nativeAd)); }
-
     public FBAdChoicesView(FBNativeAd nativeAd, boolean expandable) { super((SkipInit) null); initObject(init(nativeAd, expandable)); }
-
     public FBAdChoicesView(UIViewController viewController, FBAdImage adChoicesIcon, NSURL adChoicesLinkURL, FBNativeAdViewAttributes attributes) { super((SkipInit) null); initObject(init(viewController, adChoicesIcon, adChoicesLinkURL, attributes)); }
-
     public FBAdChoicesView(UIViewController viewController, FBAdImage adChoicesIcon, NSURL adChoicesLinkURL, FBNativeAdViewAttributes attributes, boolean expandable) { super((SkipInit) null); initObject(init(viewController, adChoicesIcon, adChoicesLinkURL, attributes, expandable)); }
+    public FBAdChoicesView(UIViewController viewController, FBAdImage adChoicesIcon, NSURL adChoicesLinkURL, String adChoicesText, FBNativeAdViewAttributes attributes, boolean expandable) { super((SkipInit) null); initObject(init(viewController, adChoicesIcon, adChoicesLinkURL, adChoicesText, attributes, expandable)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "label")
@@ -57,6 +62,18 @@ import org.robovm.rt.bro.ptr.Ptr;
     public native void setBackgroundShown(boolean v);
     @Property(selector = "isExpandable")
     public native boolean isExpandable();
+    @Property(selector = "nativeAd")
+    public native FBNativeAd getNativeAd();
+    @Property(selector = "setNativeAd:", strongRef = true)
+    public native void setNativeAd(FBNativeAd v);
+    @Property(selector = "corner")
+    public native UIRectCorner getCorner();
+    @Property(selector = "setCorner:")
+    public native void setCorner(UIRectCorner v);
+    @Property(selector = "viewController")
+    public native UIViewController getViewController();
+    @Property(selector = "setViewController:", strongRef = true)
+    public native void setViewController(UIViewController v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -68,6 +85,8 @@ import org.robovm.rt.bro.ptr.Ptr;
     protected native @Pointer long init(UIViewController viewController, FBAdImage adChoicesIcon, NSURL adChoicesLinkURL, FBNativeAdViewAttributes attributes);
     @Method(selector = "initWithViewController:adChoicesIcon:adChoicesLinkURL:attributes:expandable:")
     protected native @Pointer long init(UIViewController viewController, FBAdImage adChoicesIcon, NSURL adChoicesLinkURL, FBNativeAdViewAttributes attributes, boolean expandable);
+    @Method(selector = "initWithViewController:adChoicesIcon:adChoicesLinkURL:adChoicesText:attributes:expandable:")
+    protected native @Pointer long init(UIViewController viewController, FBAdImage adChoicesIcon, NSURL adChoicesLinkURL, String adChoicesText, FBNativeAdViewAttributes attributes, boolean expandable);
     @Method(selector = "updateFrameFromSuperview")
     public native void updateFrameFromSuperview();
     @Method(selector = "updateFrameFromSuperview:")

@@ -1,0 +1,5 @@
+<config>    
+    <libs>
+        <lib>libs/libGGLCore.a</lib>
+    </libs>
+</config>

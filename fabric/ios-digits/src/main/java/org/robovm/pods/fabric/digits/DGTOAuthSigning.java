@@ -41,7 +41,6 @@ import org.robovm.pods.fabric.twitter.*;
     /*<constructors>*/
     protected DGTOAuthSigning(Handle h, long handle) { super(h, handle); }
     protected DGTOAuthSigning(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithAuthConfig:authSession:")
     public DGTOAuthSigning(TWTRAuthConfig authConfig, DGTSession authSession) { super((SkipInit) null); initObject(init(authConfig, authSession)); }
     /*</constructors>*/
     /*<properties>*/

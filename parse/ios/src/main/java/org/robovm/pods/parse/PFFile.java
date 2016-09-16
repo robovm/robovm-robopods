@@ -47,7 +47,7 @@ import org.robovm.pods.bolts.*;
     /*<bind>*/static { ObjCRuntime.bind(PFFile.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public PFFile() {}
+    protected PFFile() {}
     protected PFFile(Handle h, long handle) { super(h, handle); }
     protected PFFile(SkipInit skipInit) { super(skipInit); }
     public PFFile(NSData data) { super((Handle) null, create(data)); retain(getHandle()); }
@@ -120,6 +120,8 @@ import org.robovm.pods.bolts.*;
     public native void getFilePathInBackground(@Block PFGetFilePathCallback block, @Block PFProgressCallback progressBlock);
     @Method(selector = "cancel")
     public native void cancel();
+    @Method(selector = "clearCachedDataInBackground")
+    public native BFTask clearCachedDataInBackground();
     @Method(selector = "fileWithData:")
     protected static native @Pointer long create(NSData data);
     @Method(selector = "fileWithName:data:")
@@ -130,6 +132,8 @@ import org.robovm.pods.bolts.*;
     protected static native @Pointer long create(String name, NSData data, String contentType, NSError.NSErrorPtr error);
     @Method(selector = "fileWithData:contentType:")
     protected static native @Pointer long create(NSData data, String contentType);
+    @Method(selector = "clearAllCachedDataInBackground")
+    public static native BFTask clearAllCachedDataInBackground();
     public boolean save() throws NSErrorException {
        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
        boolean result = save(ptr);

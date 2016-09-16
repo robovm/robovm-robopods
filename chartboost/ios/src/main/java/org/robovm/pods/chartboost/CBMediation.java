@@ -45,7 +45,9 @@ public enum /*<name>*/CBMediation/*</name>*/ implements ValuedEnum {
     Fyber(3L),
     HeyZap(4L),
     MoPub(5L),
-    Supersonic(6L);
+    Supersonic(6L),
+    AdMob(7L),
+    HyprMX(8L);
     /*</values>*/
 
     /*<bind>*/

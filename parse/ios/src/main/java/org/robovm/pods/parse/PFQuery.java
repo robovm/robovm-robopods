@@ -50,7 +50,6 @@ import org.robovm.pods.bolts.*;
     public PFQuery() {}
     protected PFQuery(Handle h, long handle) { super(h, handle); }
     protected PFQuery(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithClassName:")
     public PFQuery(String className) { super((SkipInit) null); initObject(init(className)); }
     /*</constructors>*/
     
@@ -219,6 +218,8 @@ import org.robovm.pods.bolts.*;
     protected native @Pointer long init(String className);
     @Method(selector = "includeKey:")
     public native PFQuery<T> include(String key);
+    @Method(selector = "includeKeys:")
+    public native PFQuery<T> include(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> keys);
     @Method(selector = "selectKeys:")
     public native PFQuery<T> selectKeys(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> keys);
     @Method(selector = "whereKeyExists:")

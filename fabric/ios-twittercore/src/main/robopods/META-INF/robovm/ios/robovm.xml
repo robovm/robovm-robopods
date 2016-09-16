@@ -1,7 +1,4 @@
 <config>
-    <frameworkPaths>
-        <path>libs</path>
-    </frameworkPaths>
     <frameworks>
         <framework>AddressBook</framework>
         <framework>CoreData</framework>

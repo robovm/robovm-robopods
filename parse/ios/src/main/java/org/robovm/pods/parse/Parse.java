@@ -109,22 +109,16 @@ import org.robovm.pods.bolts.*;
     public static native String getApplicationId();
     @Method(selector = "getClientKey")
     public static native String getClientKey();
-    @Availability({ @PlatformVersion(platform = Platform.iOS), @PlatformVersion(platform = Platform.watchOS) })
     @Method(selector = "enableLocalDatastore")
     public static native void enableLocalDatastore();
-    @Availability({ @PlatformVersion(platform = Platform.iOS), @PlatformVersion(platform = Platform.watchOS) })
     @Method(selector = "isLocalDatastoreEnabled")
     public static native boolean isLocalDatastoreEnabled();
-    @Availability({ @PlatformVersion(platform = Platform.iOS) })
     @Method(selector = "enableDataSharingWithApplicationGroupIdentifier:")
     public static native void enableDataSharing(String groupIdentifier);
-    @Availability({ @PlatformVersion(platform = Platform.iOS) })
     @Method(selector = "enableDataSharingWithApplicationGroupIdentifier:containingApplication:")
     public static native void enableDataSharing(String groupIdentifier, String bundleIdentifier);
-    @Availability({ @PlatformVersion(platform = Platform.iOS) })
     @Method(selector = "applicationGroupIdentifierForDataSharing")
     public static native String getApplicationGroupIdentifierForDataSharing();
-    @Availability({ @PlatformVersion(platform = Platform.iOS) })
     @Method(selector = "containingApplicationBundleIdentifierForDataSharing")
     public static native String getContainingApplicationBundleIdentifierForDataSharing();
     @Method(selector = "setLogLevel:")

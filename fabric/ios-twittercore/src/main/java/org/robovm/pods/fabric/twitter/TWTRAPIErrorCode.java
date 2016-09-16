@@ -37,6 +37,7 @@ public enum /*<name>*/TWTRAPIErrorCode/*</name>*/ implements NSErrorCode {
     CouldNotAuthenticate(32L),
     PageNotExist(34L),
     NotAuthorizedForEndpoint(37L),
+    InvalidParameter(44L),
     AccountSuspended(64L),
     APIVersionRetired(68L),
     RateLimitExceeded(88L),
@@ -53,11 +54,13 @@ public enum /*<name>*/TWTRAPIErrorCode/*</name>*/ implements NSErrorCode {
     BadAuthenticationData(215L),
     RequestIsAutomated(226L),
     UserMustVerifyLogin(231L),
+    ChallengeCodeInvalid(236L),
     BadGuestToken(239L),
     EndpointRetired(251L),
     ApplicationCannotPerformWriteAction(261L),
     CannotMuteSelf(271L),
     CannotMuteSpecifiedUser(272L),
+    DeviceCarrierNotSupported(286L),
     AlreadyRetweeted(327L),
     TooManyRequests(429L);
     /*</values>*/

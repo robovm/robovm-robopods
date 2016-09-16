@@ -21,7 +21,7 @@
         <dependency>
             <groupId>com.mobidevelop.robovm</groupId>
             <artifactId>robopods-settings-core</artifactId>
-            <version>${robovm.version}</version>
+            <version>${robopods.version}</version>
         </dependency>
         <dependency>
             <groupId>com.mobidevelop.robovm</groupId>

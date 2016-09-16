@@ -46,6 +46,7 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GADNativeAppInstallAd() {}
+    protected GADNativeAppInstallAd(Handle h, long handle) { super(h, handle); }
     protected GADNativeAppInstallAd(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -65,6 +66,8 @@ import org.robovm.apple.storekit.*;
     public native NSArray<GADNativeAdImage> getImages();
     @Property(selector = "starRating")
     public native NSDecimalNumber getStarRating();
+    @Property(selector = "videoController")
+    public native GADVideoController getVideoController();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

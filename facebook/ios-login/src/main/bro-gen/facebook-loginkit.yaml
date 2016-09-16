@@ -1,15 +1,8 @@
 package: org.robovm.pods.facebook.login
 framework: FBSDKLoginKit
-include: 
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/accounts.yaml
-    - facebook-corekit.yaml
+include: [foundation, uikit, coregraphics, accounts, ../../../../ios-core/src/main/bro-gen/facebook-corekit.yaml]
 clang_args: ['-x', 'objective-c']
-header_root: /../robopods/META-INF/robovm/ios/libs
-headers:
-    - FBSDKLoginKit.framework/Headers/FBSDKLoginKit.h
+headers: [FBSDKLoginKit.h]
 typedefs:
     FBSDKLoginManagerRequestTokenHandler: '@Block VoidBlock2<FBSDKLoginManagerLoginResult, NSError>'
     'void (^)(ACAccountCredentialRenewResult, NSError *)': '@Block VoidBlock2<ACAccountCredentialRenewResult, NSError>'

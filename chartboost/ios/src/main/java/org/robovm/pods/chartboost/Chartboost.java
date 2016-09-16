@@ -46,6 +46,7 @@ import org.robovm.apple.storekit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public Chartboost() {}
+    protected Chartboost(Handle h, long handle) { super(h, handle); }
     protected Chartboost(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
@@ -101,6 +102,8 @@ import org.robovm.apple.storekit.*;
     /*<methods>*/
     @Method(selector = "startWithAppId:appSignature:delegate:")
     private static native void start0(String appId, String appSignature, ChartboostDelegate delegate);
+    @Method(selector = "setDelegate:")
+    public static native void setDelegate(ChartboostDelegate del);
     @Method(selector = "isAnyViewVisible")
     public static native boolean isAnyViewVisible();
     @Method(selector = "hasInterstitial:")
@@ -143,6 +146,8 @@ import org.robovm.apple.storekit.*;
     public static native void setShouldDisplayLoadingViewForMoreApps(boolean shouldDisplay);
     @Method(selector = "setShouldPrefetchVideoContent:")
     public static native void setShouldPrefetchVideoContent(boolean shouldPrefetch);
+    @Method(selector = "getSDKVersion")
+    public static native String getSDKVersion();
     @Method(selector = "cacheInterstitial:")
     public static native void cacheInterstitial(String location);
     @Method(selector = "cacheMoreApps:")
@@ -157,6 +162,8 @@ import org.robovm.apple.storekit.*;
     public static native void closeImpression();
     @Method(selector = "setStatusBarBehavior:")
     public static native void setStatusBarBehavior(CBStatusBarBehavior statusBarBehavior);
+    @Method(selector = "getAutoIAPTracking")
+    public static native boolean getAutoIAPTracking();
     @Method(selector = "cacheInPlay:")
     public static native void cacheInPlay(String location);
     @Method(selector = "hasInPlay:")

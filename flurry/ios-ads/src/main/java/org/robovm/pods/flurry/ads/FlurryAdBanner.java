@@ -48,7 +48,6 @@ import org.robovm.apple.corelocation.*;
     public FlurryAdBanner() {}
     protected FlurryAdBanner(Handle h, long handle) { super(h, handle); }
     protected FlurryAdBanner(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithSpace:")
     public FlurryAdBanner(String space) { super((SkipInit) null); initObject(init(space)); }
     /*</constructors>*/
     /*<properties>*/

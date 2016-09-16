@@ -53,6 +53,10 @@ import org.robovm.apple.foundation.*;
     public native String getSymbol();
     @Property(selector = "setSymbol:")
     public native void setSymbol(String v);
+    @Property(selector = "rawSymbol")
+    public native String getRawSymbol();
+    @Property(selector = "setRawSymbol:")
+    public native void setRawSymbol(String v);
     @Property(selector = "library")
     public native String getLibrary();
     @Property(selector = "setLibrary:")

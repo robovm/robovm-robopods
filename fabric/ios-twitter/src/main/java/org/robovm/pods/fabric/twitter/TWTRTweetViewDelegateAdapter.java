@@ -48,8 +48,6 @@ import org.robovm.pods.fabric.twitter.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @NotImplemented("tweetView:didSelectTweet:")
-    public void didSelectTweet(TWTRTweetView tweetView, TWTRTweet tweet) {}
     @NotImplemented("tweetView:didTapImage:withURL:")
     public void didTapImage(TWTRTweetView tweetView, UIImage image, NSURL imageURL) {}
     @NotImplemented("tweetView:didTapVideoWithURL:")
@@ -58,17 +56,7 @@ import org.robovm.pods.fabric.twitter.*;
     public void didTapURL(TWTRTweetView tweetView, NSURL url) {}
     @NotImplemented("tweetView:didTapProfileImageForUser:")
     public void didTapProfileImage(TWTRTweetView tweetView, TWTRUser user) {}
-    @NotImplemented("tweetView:willShareTweet:")
-    public void willShareTweet(TWTRTweetView tweetView, TWTRTweet tweet) {}
-    @NotImplemented("tweetView:didShareTweet:withType:")
-    public void didShareTweet(TWTRTweetView tweetView, TWTRTweet tweet, String shareType) {}
-    @NotImplemented("tweetView:cancelledShareTweet:")
-    public void didCancelShareTweet(TWTRTweetView tweetView, TWTRTweet tweet) {}
-    @NotImplemented("tweetView:didLikeTweet:")
-    public void didLikeTweet(TWTRTweetView tweetView, TWTRTweet tweet) {}
-    @NotImplemented("tweetView:didUnlikeTweet:")
-    public void didUnlikeTweet(TWTRTweetView tweetView, TWTRTweet tweet) {}
-    @NotImplemented("tweetView:willRequireAuthenticationCompletionHandler:")
-    public void willRequireAuthentication(TWTRTweetView tweetView, @Block VoidBlock2<TWTRSessionStore, String> authenticationCompletionHandler) {}
+    @NotImplemented("tweetView:shouldDisplayDetailViewController:")
+    public boolean shouldDisplayDetailViewController(TWTRTweetView tweetView, TWTRTweetDetailViewController controller) { return false; }
     /*</methods>*/
 }

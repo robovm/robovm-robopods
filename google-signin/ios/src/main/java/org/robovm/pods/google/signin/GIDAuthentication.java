@@ -47,8 +47,7 @@ import org.robovm.apple.coregraphics.*;
     public GIDAuthentication() {}
     protected GIDAuthentication(Handle h, long handle) { super(h, handle); }
     protected GIDAuthentication(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithCoder:")
-    public GIDAuthentication(NSCoder aDecoder) { super((SkipInit) null); initObject(init(aDecoder)); }
+    public GIDAuthentication(NSCoder decoder) { super((SkipInit) null); initObject(init(decoder)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "clientID")
@@ -77,6 +76,6 @@ import org.robovm.apple.coregraphics.*;
     @Method(selector = "encodeWithCoder:")
     public native void encode(NSCoder coder);
     @Method(selector = "initWithCoder:")
-    protected native @Pointer long init(NSCoder aDecoder);
+    protected native @Pointer long init(NSCoder decoder);
     /*</methods>*/
 }

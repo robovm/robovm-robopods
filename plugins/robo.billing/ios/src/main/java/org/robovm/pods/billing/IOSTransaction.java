@@ -23,41 +23,22 @@ import org.robovm.apple.storekit.SKPaymentTransaction;
 import org.robovm.pods.billing.AppStoreReceiptRequest.AppStoreReceiptRequestListener;
 import org.robovm.pods.billing.BillingError.ErrorType;
 
-import java.util.Date;
-
-public class IOSTransaction implements Transaction {
+public class IOSTransaction extends Transaction {
     private final SKPaymentTransaction skTransaction;
-    private final Product product;
-    private final TransactionVerificator verificator;
-    private String receipt;
 
-    IOSTransaction(SKPaymentTransaction transaction, Product product, TransactionVerificator verificator) {
+    IOSTransaction(Product product, TransactionVerificator verificator, SKPaymentTransaction transaction) {
+        super(product, verificator);
         this.skTransaction = transaction;
-        this.product = product;
-        this.verificator = verificator;
+
+        this.identifier = skTransaction.getTransactionIdentifier();
+        NSDate nsDate = skTransaction.getTransactionDate();
+        if (nsDate != null) {
+            this.date = nsDate.toDate();
+        }
 
         if (verificator != null) {
             requestReceipt(null);
         }
-    }
-
-    @Override
-    public Product getProduct() {
-        return product;
-    }
-
-    @Override
-    public String getTransactionIdentifier() {
-        return skTransaction.getTransactionIdentifier();
-    }
-
-    @Override
-    public Date getTransactionDate() {
-        NSDate date = skTransaction.getTransactionDate();
-        if (date != null) {
-            return date.toDate();
-        }
-        return null;
     }
 
     @Override
@@ -103,16 +84,5 @@ public class IOSTransaction implements Transaction {
                 }
             }
         });
-    }
-
-    @Override
-    public String getReceipt() {
-        return receipt;
-    }
-
-    @Override
-    public String getSignature() {
-        // Not available on iOS
-        return null;
     }
 }

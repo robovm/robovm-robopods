@@ -51,8 +51,7 @@ import org.robovm.pods.bolts.*;
     protected PFACL(Handle h, long handle) { super(h, handle); }
     protected PFACL(SkipInit skipInit) { super(skipInit); }
     public PFACL(PFUser user) { super((Handle) null, create(user)); retain(getHandle()); }
-    @Method(selector = "initWithCoder:")
-    public PFACL(NSCoder aDecoder) { super((SkipInit) null); initObject(init(aDecoder)); }
+    public PFACL(NSCoder decoder) { super((SkipInit) null); initObject(init(decoder)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "getPublicReadAccess")
@@ -129,6 +128,6 @@ import org.robovm.pods.bolts.*;
     @Method(selector = "encodeWithCoder:")
     public native void encode(NSCoder coder);
     @Method(selector = "initWithCoder:")
-    protected native @Pointer long init(NSCoder aDecoder);
+    protected native @Pointer long init(NSCoder decoder);
     /*</methods>*/
 }

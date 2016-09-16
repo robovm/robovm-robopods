@@ -59,6 +59,10 @@ import org.robovm.apple.storekit.*;
     public native HZAdMobBannerSize getAdmobBannerSize();
     @Property(selector = "setAdmobBannerSize:")
     public native void setAdmobBannerSize(HZAdMobBannerSize v);
+    @Property(selector = "heyzapExchangeBannerSize")
+    public native @ByVal CGSize getHeyzapExchangeBannerSize();
+    @Property(selector = "setHeyzapExchangeBannerSize:")
+    public native void setHeyzapExchangeBannerSize(@ByVal CGSize v);
     @Property(selector = "inMobiBannerSize")
     public native @ByVal CGSize getInMobiBannerSize();
     @Property(selector = "setInMobiBannerSize:")

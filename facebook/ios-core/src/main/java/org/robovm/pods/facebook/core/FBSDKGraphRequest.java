@@ -15,13 +15,22 @@
  */
 package org.robovm.pods.facebook.core;
 
-import org.robovm.apple.foundation.*;
-import org.robovm.objc.ObjCRuntime;
+/*<imports>*/
+import java.io.*;
+import java.nio.*;
+import java.util.*;
+import org.robovm.objc.*;
 import org.robovm.objc.annotation.*;
-import org.robovm.objc.block.VoidBlock3;
-import org.robovm.rt.bro.annotation.Library;
-import org.robovm.rt.bro.annotation.Pointer;
-import org.robovm.rt.bro.ptr.Ptr;
+import org.robovm.objc.block.*;
+import org.robovm.rt.*;
+import org.robovm.rt.annotation.*;
+import org.robovm.rt.bro.*;
+import org.robovm.rt.bro.annotation.*;
+import org.robovm.rt.bro.ptr.*;
+import org.robovm.apple.foundation.*;
+import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
+import org.robovm.pods.bolts.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -37,13 +46,10 @@ import org.robovm.rt.bro.ptr.Ptr;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public FBSDKGraphRequest() {}
-    protected FBSDKGraphRequest(long handle) { super(handle); }
+    protected FBSDKGraphRequest(Handle h, long handle) { super(h, handle); }
     protected FBSDKGraphRequest(SkipInit skipInit) { super(skipInit); }
-
     public FBSDKGraphRequest(String graphPath, NSDictionary<?, ?> parameters) { super((SkipInit) null); initObject(init(graphPath, parameters)); }
-
     public FBSDKGraphRequest(String graphPath, NSDictionary<?, ?> parameters, String HTTPMethod) { super((SkipInit) null); initObject(init(graphPath, parameters, HTTPMethod)); }
-
     public FBSDKGraphRequest(String graphPath, NSDictionary<?, ?> parameters, String tokenString, String version, String HTTPMethod) { super((SkipInit) null); initObject(init(graphPath, parameters, tokenString, version, HTTPMethod)); }
     /*</constructors>*/
     /*<properties>*/

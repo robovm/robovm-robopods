@@ -1,15 +1,8 @@
 package: org.robovm.pods.fabric.mopub
-framework: TwitterCore
-include: 
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/corelocation.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
-    
+framework: MoPub
+include: [foundation, coregraphics, corelocation, uikit]
 clang_args: ['-x', 'objective-c']
-header_root: '/../robopods/META-INF/robovm/ios/libs/'
-headers:
-    - MoPub.framework/Headers/MoPub.h
+headers: [MoPub.h]
 typedefs:
 private_typedefs:
     MPNativeAdRequestHandler: '@Block VoidBlock3<MPNativeAdRequest, MPNativeAd, NSError>'
@@ -28,12 +21,13 @@ classes:
         annotations: ['@StronglyLinked']
 
     MoPub: # DONE
+        skip_def_constructor: true
         properties:
             'locationUpdatesEnabled':
                 getter: areLocationUpdatesEnabled
         methods:
             '-initializeRewardedVideoWithGlobalMediationSettings:delegate:':
-                name: init
+                name: initializeRewardedVideo
             '-globalMediationSettingsForClass:':
                 name: getGlobalMediationSettings
             '-(version|bundleIdentifier)':

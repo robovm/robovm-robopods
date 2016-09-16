@@ -35,7 +35,7 @@ When you add a dependency, you can refer to the variable like this:
 ```gradle
 dependencies {
    ... other dependencies ...
-   compile "org.robovm:robopods-facebook-ios:$robopodsVersion"
+   compile "com.mobidevelop.robovm:robopods-facebook-ios:$robopodsVersion"
 }
 ```
 
