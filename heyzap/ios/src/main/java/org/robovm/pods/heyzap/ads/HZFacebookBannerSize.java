@@ -40,7 +40,6 @@ import org.robovm.apple.storekit.*;
 /*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedUIntMarshaler.class)/*</annotations>*/
 public enum /*<name>*/HZFacebookBannerSize/*</name>*/ implements ValuedEnum {
     /*<values>*/
-    _320x50(0L),
     FlexibleWidthHeight50(1L),
     FlexibleWidthHeight90(2L);
     /*</values>*/

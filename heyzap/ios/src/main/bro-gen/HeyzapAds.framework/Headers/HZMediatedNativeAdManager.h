@@ -16,4 +16,6 @@
 + (void)fetchNativeAdWithOptions:(HZFetchOptions * __nullable)fetchOptions;
 + (HZMediatedNativeAd * __nullable)getNextNativeAdForTag:(NSString * __nullable)tag error:(NSError * __nullable * __nullable)error;
 
++ (BOOL)isAvailableForTag:(NSString * __nullable)tag;
+
 @end

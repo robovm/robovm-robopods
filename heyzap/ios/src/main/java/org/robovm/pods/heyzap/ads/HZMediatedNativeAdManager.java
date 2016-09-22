@@ -58,5 +58,7 @@ import org.robovm.apple.storekit.*;
     }
     @Method(selector = "getNextNativeAdForTag:error:")
     private static native HZMediatedNativeAd getNextNativeAd(String tag, NSError.NSErrorPtr error);
+    @Method(selector = "isAvailableForTag:")
+    public static native boolean isAvailable(String tag);
     /*</methods>*/
 }
