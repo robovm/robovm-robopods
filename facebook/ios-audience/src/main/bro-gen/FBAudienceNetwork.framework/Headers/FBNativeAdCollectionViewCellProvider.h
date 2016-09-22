@@ -21,24 +21,24 @@
 
 #import "FBAdDefines.h"
 #import "FBNativeAd.h"
-#import "FBNativeAdTableViewAdProvider.h"
+#import "FBNativeAdCollectionViewAdProvider.h"
 #import "FBNativeAdView.h"
 #import "FBNativeAdsManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 /*!
- @class FBNativeAdTableViewCellProvider
+ @class FBNativeAdCollectionViewCellProvider
 
- @abstract Class which assists in putting FBNativeAdViews into UITableViews. This class manages the creation of UITableViewCells which host native ad views. Functionality is provided to create UITableCellViews as needed for a given indexPath as well as computing the height of the cells.
+ @abstract Class which assists in putting FBNativeAdViews into UICollectionViews. This class manages the creation of UICollectionViewCells which host native ad views. Functionality is provided to create UICollectionCellViews as needed for a given indexPath as well as computing the height of the cells.
  */
 FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED
-@interface FBNativeAdTableViewCellProvider : FBNativeAdTableViewAdProvider<UITableViewDataSource>
+@interface FBNativeAdCollectionViewCellProvider : FBNativeAdCollectionViewAdProvider
 
 /*!
  @method
 
- @abstract Method to create a FBNativeAdTableViewCellProvider.
+ @abstract Method to create a FBNativeAdCollectionViewCellProvider.
 
  @param manager The naitve ad manager consumed by this provider
  @param type The type of this native ad template. For more information, consult FBNativeAdViewType.
@@ -48,7 +48,7 @@ FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED
 /*!
  @method
 
- @abstract Method to create a FBNativeAdTableViewCellProvider.
+ @abstract Method to create a FBNativeAdCollectionViewCellProvider.
 
  @param manager The naitve ad manager consumed by this provider
  @param type The type of this native ad template. For more information, consult FBNativeAdViewType.
@@ -59,23 +59,16 @@ FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED
 /*!
  @method
 
- @abstract Helper method for implementors of UITableViewDataSource who would like to host native ad UITableViewCells in their table view.
+ @abstract Helper method for implementors of UICollectionViewDataSource who would like to host native ad UICollectionViewCells in their collection view.
  */
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
 
 /*!
  @method
 
- @abstract Helper method for implementors of UITableViewDelegate who would like to host native ad UITableViewCells in their table view.
+ @abstract Helper method for implementors of UICollectionViewDelegate who would like to host native ad UICollectionViewCells in their collection view.
  */
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
-
-/*!
- @method
-
- @abstract Helper method for implementors of UITableViewDelegate who would like to host native ad UITableViewCells in their table view.
- */
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (CGFloat)collectionView:(nonnull UICollectionView *)collectionView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath;
 
 @end
 

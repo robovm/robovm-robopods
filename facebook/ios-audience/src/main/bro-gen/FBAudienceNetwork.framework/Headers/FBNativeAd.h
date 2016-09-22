@@ -170,6 +170,8 @@ FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED
  */
 @property (nonatomic, getter=isAdValid, readonly) BOOL adValid;
 
+@property (nonatomic, copy, readonly, nullable, getter=getAdNetwork) NSString *adNetwork;
+
 @end
 
 /*!
@@ -312,7 +314,7 @@ FB_CLASS_EXPORT FB_DEPRECATED
  @property
  @abstract The current rating from an FBNativeAd. When set, updates the view.
  */
-@property (nonatomic) struct FBAdStarRating rating FB_DEPRECATED;
+@property (nonatomic, assign) struct FBAdStarRating rating FB_DEPRECATED;
 
 /*!
  @property

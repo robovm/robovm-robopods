@@ -47,7 +47,8 @@ import org.robovm.apple.coregraphics.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*//*</constructors>*/
     /*<properties>*/
-    
+    @NotImplemented("viewControllerForPresentingModalView")
+    public UIViewController getViewControllerForPresentingModalView() { return null; }
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -61,7 +62,5 @@ import org.robovm.apple.coregraphics.*;
     public void didFail(FBAdView adView, NSError error) {}
     @NotImplemented("adViewWillLogImpression:")
     public void willLogImpression(FBAdView adView) {}
-    @NotImplemented("viewControllerForPresentingModalView")
-    public UIViewController getViewControllerForPresentingModalView() { return null; }
     /*</methods>*/
 }

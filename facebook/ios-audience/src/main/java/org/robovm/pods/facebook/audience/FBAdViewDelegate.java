@@ -45,7 +45,8 @@ import org.robovm.apple.coregraphics.*;
     /*</bind>*/
     /*<constants>*//*</constants>*/
     /*<properties>*/
-    
+    @Property(selector = "viewControllerForPresentingModalView")
+    UIViewController getViewControllerForPresentingModalView();
     /*</properties>*/
     /*<methods>*/
     @Method(selector = "adViewDidClick:")
@@ -58,8 +59,6 @@ import org.robovm.apple.coregraphics.*;
     void didFail(FBAdView adView, NSError error);
     @Method(selector = "adViewWillLogImpression:")
     void willLogImpression(FBAdView adView);
-    @Method(selector = "viewControllerForPresentingModalView")
-    UIViewController getViewControllerForPresentingModalView();
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

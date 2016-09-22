@@ -32,6 +32,8 @@ classes:
                     devicesHash:
                         type: List<String>
                         marshaler: NSArray.AsStringListMarshaler
+            '+urlPrefix':
+                property: true
     FBAdCustomSize: # DONE
         methods:
             '+customSize:':
@@ -69,6 +71,26 @@ classes:
                 name: init
             '-loadImageAsyncWithBlock:':
                 name: loadImageAsync
+    FBNativeAdCollectionViewAdProvider: # DONE
+        methods:
+            '-initWithManager:':
+                name: init
+            '-collectionView:nativeAdForRowAtIndexPath:':
+                name: getNativeAdForRow
+            '-isAdCellAtIndexPath:forStride:':
+                name: isAdCell
+            '-adjustNonAdCellIndexPath:forStride:':
+                name: adjustNonAdCell
+            '-adjustCount:forStride:':
+                name: adjustCount
+    FBNativeAdCollectionViewCellProvider: # DONE
+        methods:
+            '-init.*':
+                name: init
+            '-collectionView:cellForItemAtIndexPath:':
+                name: getCellForItem
+            '-collectionView:heightForRowAtIndexPath:':
+                name: getHeightForRow
     FBNativeAdScrollView: # DONE
         methods:
             '-init.*':
@@ -77,8 +99,6 @@ classes:
         methods:
             '-initWithPlacementID:forNumAdsRequested:':
                 name: init
-            '-nextNativeAd':
-                property: true
     FBNativeAdTableViewAdProvider: # DONE
         methods:
             '-initWithManager:':
@@ -128,8 +148,6 @@ protocols:
                 name: didFail
             '-adViewWillLogImpression:':
                 name: willLogImpression
-            '-viewControllerForPresentingModalView':
-                property: true
     FBInterstitialAdDelegate: # DONE
         methods:
             '-interstitialAdDidClick:':

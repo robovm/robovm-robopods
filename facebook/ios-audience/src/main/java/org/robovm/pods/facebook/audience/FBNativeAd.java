@@ -76,6 +76,8 @@ import org.robovm.apple.coregraphics.*;
     public native void setDelegate(FBNativeAdDelegate v);
     @Property(selector = "isAdValid")
     public native boolean isAdValid();
+    @Property(selector = "getAdNetwork")
+    public native String getAdNetwork();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
