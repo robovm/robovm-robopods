@@ -4,9 +4,6 @@
             <directory>res</directory>
         </resource>
     </resources>
-    <frameworkPaths>
-        <path>libs</path>
-    </frameworkPaths>
     <frameworks>
         <framework>GoogleSignIn</framework>
         <framework>GoogleAppUtilities</framework>
