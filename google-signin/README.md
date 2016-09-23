@@ -6,7 +6,7 @@ Get users into your apps quickly and securely, using a registration system they 
 
 | Platform    | Version |
 |-------------|---------|
-| [iOS](ios/) | 2.4.0   |
+| [iOS](ios/) | 4.0.0   |
 |             |         |
 
 ## Official website

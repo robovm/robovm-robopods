@@ -36,6 +36,7 @@ This RoboPod includes all Facebook frameworks except for AudienceNetwork.
 __CoreKit:__ [Link](../ios-core)
 __LoginKit:__ [Link](../ios-login)
 __MessengerShareKit:__ [Link](../ios-messenger)
+__Notifications:__ [Link](../ios-notifications)
 __ShareKit:__ [Link](../ios-share)
 __AudienceNetwork:__ [Link](../ios-audience)
 

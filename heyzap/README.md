@@ -7,7 +7,7 @@ The mobile ad network Heyzap runs multiple premium networks under one integratio
 
 | Platform            | Version |
 |---------------------|---------|
-| [iOS](ios/)         | 9.3.5   |
+| [iOS](ios/)         | 9.6.8   |
 |                     |         |
 
 ## Official website
