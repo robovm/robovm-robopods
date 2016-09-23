@@ -26,7 +26,7 @@ In your project's root `build.gradle` file add the following at the top of the `
 
 ```gradle
 buildscript {
-   project.ext.robopodsVersion = "1.14.0"
+   project.ext.robopodsVersion = "2.2.0"
 }
 ```
 
@@ -45,7 +45,7 @@ In your project's root `pom.xml` file add the following property:
 
 ```maven
 <properties>
-   <robopods.version>1.14.0</robopods.version>
+   <robopods.version>2.2.0</robopods.version>
 </properties>
 ```
 
