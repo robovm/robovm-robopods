@@ -115,7 +115,7 @@ FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED
 
  @return A FBNativeAd which is loaded and ready to be used.
  */
-- (nullable FBNativeAd *)nextNativeAd;
+@property (nonatomic, readonly, strong, nullable) FBNativeAd *nextNativeAd;
 
 @end
 

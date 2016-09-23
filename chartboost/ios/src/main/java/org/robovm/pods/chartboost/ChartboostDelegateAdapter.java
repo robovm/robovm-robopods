@@ -86,8 +86,6 @@ import org.robovm.apple.storekit.*;
     public void didClickMoreApps(String location) {}
     @NotImplemented("didFailToLoadMoreApps:withError:")
     public void didFailToLoadMoreApps(String location, CBLoadError error) {}
-    @NotImplemented("didPrefetchVideos")
-    public void didPrefetchVideos() {}
     @NotImplemented("shouldDisplayRewardedVideo:")
     public boolean shouldDisplayRewardedVideo(String location) { return true; }
     @NotImplemented("didDisplayRewardedVideo:")
@@ -114,7 +112,5 @@ import org.robovm.apple.storekit.*;
     public void didCompleteAppStoreSheetFlow() {}
     @NotImplemented("didPauseClickForConfirmation")
     public void didPauseClickForConfirmation() {}
-    @NotImplemented("didFailToLoadMoreApps:")
-    public void didFailToLoadMoreApps(CBLoadError error) {}
     /*</methods>*/
 }

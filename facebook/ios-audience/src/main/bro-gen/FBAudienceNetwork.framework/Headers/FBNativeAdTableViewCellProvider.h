@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
  @abstract Class which assists in putting FBNativeAdViews into UITableViews. This class manages the creation of UITableViewCells which host native ad views. Functionality is provided to create UITableCellViews as needed for a given indexPath as well as computing the height of the cells.
  */
 FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED
-@interface FBNativeAdTableViewCellProvider : FBNativeAdTableViewAdProvider
+@interface FBNativeAdTableViewCellProvider : FBNativeAdTableViewAdProvider<UITableViewDataSource>
 
 /*!
  @method

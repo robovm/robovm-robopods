@@ -62,6 +62,8 @@ import org.robovm.apple.coregraphics.*;
     public native @MachineSizedUInt long getUniqueNativeAdCount();
     @Property(selector = "isValid")
     public native boolean isValid();
+    @Property(selector = "nextNativeAd")
+    public native FBNativeAd getNextNativeAd();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -71,7 +73,5 @@ import org.robovm.apple.coregraphics.*;
     public native void loadAds();
     @Method(selector = "disableAutoRefresh")
     public native void disableAutoRefresh();
-    @Method(selector = "nextNativeAd")
-    public native FBNativeAd getNextNativeAd();
     /*</methods>*/
 }

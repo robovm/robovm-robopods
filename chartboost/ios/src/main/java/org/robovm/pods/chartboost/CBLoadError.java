@@ -51,7 +51,8 @@ public enum /*<name>*/CBLoadError/*</name>*/ implements ValuedEnum {
     UserCancellation(10L),
     NoLocationFound(11L),
     AssetDownloadFailure(16L),
-    PrefetchingIncomplete(21L);
+    PrefetchingIncomplete(21L),
+    WebViewScriptError(22L);
     /*</values>*/
 
     /*<bind>*/

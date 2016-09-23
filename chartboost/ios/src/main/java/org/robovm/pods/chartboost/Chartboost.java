@@ -130,10 +130,8 @@ import org.robovm.apple.storekit.*;
     public static native void setCustomId(String customId);
     @Method(selector = "getCustomId")
     public static native String getCustomId();
-    @Method(selector = "setFrameworkVersion:")
-    public static native void setFrameworkVersion(String frameworkVersion);
-    @Method(selector = "setFramework:")
-    public static native void setFramework(CBFramework framework);
+    @Method(selector = "setChartboostWrapperVersion:")
+    public static native void setChartboostWrapperVersion(String chartboostWrapperVersion);
     @Method(selector = "setFramework:withVersion:")
     public static native void setFramework(CBFramework framework, String version);
     @Method(selector = "setMediation:withVersion:")
@@ -158,8 +156,6 @@ import org.robovm.apple.storekit.*;
     public static native void setAutoCacheAds(boolean shouldCache);
     @Method(selector = "getAutoCacheAds")
     public static native boolean getAutoCacheAds();
-    @Method(selector = "closeImpression")
-    public static native void closeImpression();
     @Method(selector = "setStatusBarBehavior:")
     public static native void setStatusBarBehavior(CBStatusBarBehavior statusBarBehavior);
     @Method(selector = "getAutoIAPTracking")

@@ -7,7 +7,7 @@ Free Cross Promotion. Buy and sell mobile ads directly with other developers in 
 
 | Platform    | Version |
 |-------------|---------|
-| [iOS](ios/) | 6.1.1   |
+| [iOS](ios/) | 6.5.1   |
 |             |         |
 
 ## Official website

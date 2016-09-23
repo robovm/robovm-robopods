@@ -22,7 +22,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-FB_EXPORT NSString * const __nonnull FBAudienceNetworkErrorDomain;
+FB_EXPORT NSString * const FBAudienceNetworkErrorDomain;
 
 typedef NS_ENUM(NSInteger, FBAdLogLevel) {
     FBAdLogLevelNone,
@@ -90,13 +90,24 @@ FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED
 
 /*!
  @method
- 
+
  @abstract
  If an ad provided service is mediating Audience Network in their sdk, it is required to set the name of the mediation service
- 
+
  @param service Representing the name of the mediation that is mediation Audience Network
  */
 + (void)setMediationService:(NSString *)service;
+
+/*!
+ @method
+
+ @abstract
+ Gets the url prefix to use when making ad requests.
+
+ @discussion
+ This method should never be used in production.
+ */
++ (NSString *)urlPrefix;
 
 /*!
  @method

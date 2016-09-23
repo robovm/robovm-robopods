@@ -83,8 +83,6 @@ import org.robovm.apple.storekit.*;
     void didClickMoreApps(String location);
     @Method(selector = "didFailToLoadMoreApps:withError:")
     void didFailToLoadMoreApps(String location, CBLoadError error);
-    @Method(selector = "didPrefetchVideos")
-    void didPrefetchVideos();
     @Method(selector = "shouldDisplayRewardedVideo:")
     boolean shouldDisplayRewardedVideo(String location);
     @Method(selector = "didDisplayRewardedVideo:")
@@ -111,8 +109,6 @@ import org.robovm.apple.storekit.*;
     void didCompleteAppStoreSheetFlow();
     @Method(selector = "didPauseClickForConfirmation")
     void didPauseClickForConfirmation();
-    @Method(selector = "didFailToLoadMoreApps:")
-    void didFailToLoadMoreApps(CBLoadError error);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

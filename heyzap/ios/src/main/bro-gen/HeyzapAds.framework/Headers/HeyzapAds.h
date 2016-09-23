@@ -57,7 +57,7 @@
 #define NS_ENUM(_type, _name) enum _name : _type _name; enum _name : _type
 #endif
 
-#define SDK_VERSION @"9.6.5"
+#define SDK_VERSION @"9.6.8"
 
 #if __has_feature(objc_modules)
 @import AdSupport;
@@ -70,8 +70,6 @@
 @import MobileCoreServices;
 @import Security;
 @import SystemConfiguration;
-@import EventKit;
-@import EventKitUI;
 @import MessageUI;
 @import CoreLocation;
 #endif

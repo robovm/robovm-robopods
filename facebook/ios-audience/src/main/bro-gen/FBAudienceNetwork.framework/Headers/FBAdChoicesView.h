@@ -57,7 +57,7 @@ FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED
  @property
  @abstract The native ad that provides AdChoices info, such as the image url, and click url. Setting this updates the nativeAd.
  */
-@property (nonatomic, weak, readwrite) FBNativeAd *nativeAd;
+@property (nonatomic, weak, readwrite, nullable) FBNativeAd *nativeAd;
 
 /*
  @property

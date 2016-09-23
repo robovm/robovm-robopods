@@ -91,7 +91,7 @@ FB_CLASS_EXPORT
  @abstract
  This is a method to create native ad view attributes with a dictionary
  */
-- (nonnull instancetype)initWithDictionary:(nonnull NSDictionary *) dict;
+- (nonnull instancetype)initWithDictionary:(nonnull NSDictionary *) dict NS_DESIGNATED_INITIALIZER;
 
 /*!
  @property

@@ -85,8 +85,6 @@ import org.robovm.apple.storekit.*;
     public static native boolean isAvailable();
     @Method(selector = "isAvailableForTag:")
     public static native boolean isAvailable(String tag);
-    @Method(selector = "setUserIdentifier:")
-    public static native void setUserIdentifier(String userIdentifier);
     @Method(selector = "setCreativeID:")
     public static native void setCreativeID(int creativeID);
     /*</methods>*/

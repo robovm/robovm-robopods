@@ -2,6 +2,7 @@
     <frameworks>
         <framework>FBNotifications</framework>
 
+        <framework>CoreGraphics</framework>
         <framework>ImageIO</framework>
         <framework>UIKit</framework>
     </frameworks>

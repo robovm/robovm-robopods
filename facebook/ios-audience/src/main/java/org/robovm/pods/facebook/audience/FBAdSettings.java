@@ -63,6 +63,8 @@ import org.robovm.apple.coregraphics.*;
     public static native void setIsChildDirected(boolean isChildDirected);
     @Method(selector = "setMediationService:")
     public static native void setMediationService(String service);
+    @Method(selector = "urlPrefix")
+    public static native String getUrlPrefix();
     @Method(selector = "setUrlPrefix:")
     public static native void setUrlPrefix(String urlPrefix);
     @Method(selector = "getLogLevel")
