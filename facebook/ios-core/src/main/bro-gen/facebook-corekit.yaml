@@ -77,9 +77,6 @@ classes:
         methods:
             '-application:openURL:sourceApplication:annotation:':
                 name: openURL
-                parameters:
-                    annotation:
-                        type: NSPropertyList
             '-application:didFinishLaunchingWithOptions:':
                 name: didFinishLaunching
                 parameters:
