@@ -5,14 +5,11 @@
         <framework>AdSupport</framework>
         <framework>AudioToolbox</framework>
         <framework>AVFoundation</framework>
-        <framework>CoreBluetooth</framework>
         <framework>CoreGraphics</framework>
         <framework>CoreMedia</framework>
         <framework>CoreMotion</framework>
         <framework>CoreTelephony</framework>
         <framework>CoreVideo</framework>
-        <framework>EventKit</framework>
-        <framework>EventKitUI</framework>
         <framework>GLKit</framework>
         <framework>MediaPlayer</framework>
         <framework>MessageUI</framework>
