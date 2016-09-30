@@ -10,11 +10,13 @@
         <framework>CoreMedia</framework>
         <framework>CoreMotion</framework>
         <framework>CoreTelephony</framework>
+        <framework>CoreVideo</framework>
         <framework>EventKit</framework>
         <framework>EventKitUI</framework>
         <framework>GLKit</framework>
         <framework>MediaPlayer</framework>
         <framework>MessageUI</framework>
+        <framework>OpenGLES</framework>
         <framework>QuartzCore</framework>
         <framework>SafariServices</framework>
         <framework>StoreKit</framework>
