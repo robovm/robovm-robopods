@@ -1,0 +1,25 @@
+<config>
+    <libs>
+        <lib>sqlite3</lib>
+        <lib>z</lib>
+        <lib>c++</lib>
+    </libs>    
+    <frameworks>        
+        <framework>YandexMobileMetrica</framework>
+
+        <framework>SystemConfiguration</framework>
+        <framework>UIKit</framework>
+        <framework>Foundation</framework>
+        <framework>CoreTelephony</framework>
+        <framework>CoreLocation</framework>
+        <framework>CoreGraphics</framework>
+        <framework>AdSupport</framework>
+        <framework>Security</framework>
+    </frameworks>
+    <weakFrameworks>
+        <framework>SafariServices</framework>
+    </weakFrameworks>
+    <forceLinkClasses>
+        <pattern>org.robovm.pods.appmetrica.YMMYandexMetrica</pattern>
+    </forceLinkClasses>
+</config>
