@@ -177,6 +177,7 @@
         <module>plugins</module>
 
         <module>appmetrica</module>
+        <module>appodeal</module>
         <module>bolts</module>
         <module>chartboost</module>
         <module>fabric</module>

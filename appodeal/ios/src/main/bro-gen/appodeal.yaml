@@ -1,0 +1,105 @@
+package: org.robovm.pods.appodeal
+framework: Appodeal
+include: [foundation, uikit, coregraphics, corelocation, storekit]
+clang_args: ['-x', 'objective-c']
+headers: [Appodeal.h]
+typedefs: {}
+
+enums:
+    AppodealAdType: {bits: true}
+    AppodealShowStyle: {}
+    AppodealUserGender: {}
+    AppodealUserOccupation: {}
+    AppodealUserRelationship: {}
+    AppodealUserSmokingAttitude: {}
+    AppodealUserAlcoholAttitude: {}
+
+classes:
+    Appodeal:
+        methods:
+            '+confirmUsage:':
+                name: confirmUsage
+            '+initializeWithApiKey:.*':
+                name: initialize
+            '+showAd:rootViewController:':
+                name: showAd
+                return_type: boolean
+                parameters:
+                    style:
+                        type: AppodealShowStyle
+                    rootViewController:
+                        type: UIViewController
+            '+showAd:forPlacement:rootViewController:':
+                name: showAd
+                return_type: boolean
+                parameters:
+                    style:
+                        type: AppodealShowStyle
+                    placement:
+                        type: String
+                    rootViewController:
+                        type: UIViewController
+            '+cacheAd:':
+                name: cacheAd
+                parameters:
+                    type:
+                        type: AppodealAdType
+            '+.*isReadyForShow.*:':
+                name: isReadyForShow
+            '+setAutocache.*':
+                name: setAutocache
+            '+setFramework:':
+                exclude: true
+
+protocols:
+    AppodealBannerDelegate: # DONE
+        methods:
+            '-bannerDidLoadAdIsPrecache:':
+                name: bannerDidLoadAd
+
+    AppodealInterstitialDelegate: # DONE
+        methods:
+            '-interstitialDidLoadAdisPrecache:':
+                name: interstitialDidLoadAd
+
+    AppodealRewardedVideoDelegate: # DONE
+        methods:
+            '-rewardedVideoDidFinish:.*':
+                name: rewardedVideoDidFinish
+
+    AppodealNonSkippableVideoDelegate: {} # DONE
+
+    AppodealSkippableVideoDelegate: {} # DONE
+
+functions:
+    'AppodealAvailableUnitSizes':
+        class: AppodealUnitSize
+        name: availableUnitSizes
+    'AppodealIsUnitSizeSupported':
+        class: AppodealUnitSize
+        name: isUnitSizeSupported
+    'AppodealIsUnitSizeAvailable':
+        class: AppodealUnitSize
+        name: isUnitSizeAvailable
+    'AppodealNearestUnitSizeForSize':
+        class: AppodealUnitSize
+        name: nearestUnitSizeForSize
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?Appodeal.*):
+        class: AppodealGlobals
+        name: 'Function__#{g[0]}'
+
+values:
+    'kAppodealUnitSize_(.+)':
+        class: AppodealUnitSize
+        name: 'Size_#{g[0]}'
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?Appodeal.*):
+        class: AppodealGlobals
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?Appodeal.*):
+        class: AppodealGlobals
+        name: 'Constant__#{g[0]}'
