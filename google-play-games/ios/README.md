@@ -43,21 +43,6 @@ The following additional components are required:
 2. Put the `gpg.framework` folder in your iOS project's `libs/` folder
 3. Put the `gpg.bundle` in your iOS project's `resources/` folder
 
-### Entitlements.plist
-
-Add a file named `Entitlements.plist` to a folder plis under your iOS subProject.
-The file contains:
-
-```
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-</dict>
-</plist>
-```
-
-
 ### robovm.xml
 
 
@@ -65,8 +50,6 @@ Apply the following changes to your `robovm.xml` file:
 
 ```
 <config>
-    ...
-    <iosEntitlementsPList>plists/Entitlements.plist</iosEntitlementsPList>
     ...
     <resources>
         ...
