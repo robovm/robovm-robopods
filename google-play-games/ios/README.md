@@ -5,14 +5,15 @@
 This [test application](https://github.com/julienvillegas/libgdx-GPGS) is a small self-contained integration of a LibGDX game with Google Play Game Services on iOS.
 All it does is to start the application and log you into Google Play Game Services.
 This should allow you to easily extend to include items such as Leaderboard...
-To see an example of a game using Leaderboard, signin, AdMobs check out [Wordfiesta](wordfiesta.com). It is available for [iOS](https://itunes.apple.com/bj/app/word-fiesta-free-version/id1050452690?mt=8) and [Android](https://play.google.com/store/apps/details?id=com.wordfiesta.free_version). 
+
+To see an example of a game using Leaderboard, signin, AdMobs check out [Wordfiesta](http://wordfiesta.com/). It is available for [iOS](https://itunes.apple.com/bj/app/word-fiesta-free-version/id1050452690?mt=8) and [Android](https://play.google.com/store/apps/details?id=com.wordfiesta.free_version). 
 
 *Note:* With Xcode 8.1 and Xcode 8.2 there is an error preventing your from running on a simulator.
 You will get an error: `[GPGManager signIn:didSignInForUser:withError:]:[main] FAILED LOGGING INTO GOOGLE PLUS GAMES`
 Until this is addressed by Apple you will need to run it on a device.
 
 
-## Pre-requisite
+## Pre-requisites
 
 It is assumed that you have:
 * Setup your IDE according to generic instruction. For this sample application I am using Android Studio and habe configured my system according to [these instructions](https://github.com/libgdx/libgdx/wiki/Setting-up-your-Development-Environment-%28Eclipse%2C-Intellij-IDEA%2C-NetBeans%29)
