@@ -7,7 +7,7 @@ All it does is to start the application and log you into Google Play Game Servic
 This should allow you to easily extend to include items such as Leaderboard...
 To see an example of a game using Leaderboard, signin, AdMobs check out [Wordfiesta](wordfiesta.com). It is available for [iOS](https://itunes.apple.com/bj/app/word-fiesta-free-version/id1050452690?mt=8) and [Android](https://play.google.com/store/apps/details?id=com.wordfiesta.free_version). 
 
-*Note:* With Xcode 8.1 and Xcode 8.2 there is an error preventing your from running on a simulator.
+*Note:* With Xcode 8.1 and Xcode 8.2 there is an error preventing you from running on a simulator.
 You will get an error: `[GPGManager signIn:didSignInForUser:withError:]:[main] FAILED LOGGING INTO GOOGLE PLUS GAMES`
 Until this is addressed by Apple you will need to run it on a device.
 
@@ -15,7 +15,7 @@ Until this is addressed by Apple you will need to run it on a device.
 ## Pre-requisite
 
 It is assumed that you have:
-* Setup your IDE according to generic instruction. For this sample application I am using Android Studio and habe configured my system according to [these instructions](https://github.com/libgdx/libgdx/wiki/Setting-up-your-Development-Environment-%28Eclipse%2C-Intellij-IDEA%2C-NetBeans%29)
+* Setup your IDE according to generic instruction. For this sample application I am using Android Studio and have configured my system according to [these instructions](https://github.com/libgdx/libgdx/wiki/Setting-up-your-Development-Environment-%28Eclipse%2C-Intellij-IDEA%2C-NetBeans%29)
 * Created a LibGDX application. I have created this sample using the standard [gdx-setup wizard](https://github.com/libgdx/libgdx/wiki/Project-Setup-Gradle)
 
 ## Instructions
@@ -72,7 +72,7 @@ Apply the following changes to your `robovm.xml` file:
 ### Gradle
 
 Make the following changes to your `build.gradle` file.
-Note that I had to use the 2.2.1-SNAPSHOT for robopods. the 2.2.0 version did not work for me.
+Note that I had to use the 2.2.1-SNAPSHOT for robopods. The 2.2.0 version did not work for me.
 
 ```
 allprojects {
