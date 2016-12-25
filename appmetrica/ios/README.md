@@ -28,7 +28,7 @@ Add the following dependency to your `build.gradle`:
 ```
 dependencies {
    ... other dependencies ...
-   compile "org.robovm:robopods-appmetrica-ios:$robopodsVersion"
+   compile "com.mobidevelop.robovm:robopods-appmetrica-ios:$robopodsVersion"
 }
 ```
 

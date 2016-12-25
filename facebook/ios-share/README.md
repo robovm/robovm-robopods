@@ -13,7 +13,7 @@ Add the following dependency to your `build.gradle`:
 ```
 dependencies {
    ... other dependencies ...
-   compile "org.robovm:robopods-facebook-ios-share:$robopodsVersion"
+   compile "com.mobidevelop.robovm:robopods-facebook-ios-share:$robopodsVersion"
 }
 ```
 
