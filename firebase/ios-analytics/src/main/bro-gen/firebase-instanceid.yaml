@@ -1,0 +1,15 @@
+package: org.robovm.pods.firebase.instanceid
+framework: FirebaseInstanceID
+include: [foundation]
+clang_args: ['-x', 'objective-c']
+headers: [FIRInstanceID.h]
+
+enums:
+    FIRInstanceIDError: {}
+    FIRInstanceIDAPNSTokenType: {}
+
+classes:
+    FIRInstanceID:
+        methods:
+            '.+':
+                trim_after_first_colon: true

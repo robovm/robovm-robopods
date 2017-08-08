@@ -1,0 +1,11 @@
+package: org.robovm.pods.firebase.analytics
+framework: FirebaseAnalytics
+include: [foundation]
+clang_args: ['-x', 'objective-c']
+headers: [FIRAnalytics.h]
+
+classes:
+    FIRAnalytics:
+        methods:
+            '.+':
+                trim_after_first_colon: true
