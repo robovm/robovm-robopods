@@ -17,8 +17,6 @@
         <framework>CoreMedia</framework>
         <framework>CoreMotion</framework>
         <framework>CoreTelephony</framework>
-        <framework>EventKit</framework>
-        <framework>EventKitUI</framework>
         <framework>MediaPlayer</framework>
         <framework>MessageUI</framework>
         <framework>MobileCoreServices</framework>
