@@ -44,6 +44,24 @@ Download ZIP with frameworks from here: [Link](https://firebase.google.com/docs/
 
 Download 'GoogleService-Info.plist' from Firebase Console and put it into data/ folder of your RoboVM project.
 
+#### Disable method swizzling
+
+It seems to be that method swizzling doesn't work with RoboVM (at least for Firebase), so you have to disable
+it in the Info.plist.xml via adding this:
+```
+<plist>
+<dict>
+...
+    <key>FirebaseAppDelegateProxyEnabled</key>
+    <false/>
+...
+</dict>
+</plist>
+```
+
+Disabling it requires to write additional code like wiring APN token and APN notifications to FCM.
+So, you have to consider this while reading the official documentation.
+
 ##### Next steps
 
 - Read the official Firebase documentation: [Link](https://firebase.google.com/docs/cloud-messaging/ios/client)
