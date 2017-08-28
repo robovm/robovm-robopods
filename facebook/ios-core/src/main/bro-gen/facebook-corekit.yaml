@@ -77,6 +77,9 @@ classes:
         methods:
             '-application:openURL:sourceApplication:annotation:':
                 name: openURL
+                parameters:
+                    annotation:
+                        type: ObjCProtocol
             '-application:didFinishLaunchingWithOptions:':
                 name: didFinishLaunching
                 parameters:

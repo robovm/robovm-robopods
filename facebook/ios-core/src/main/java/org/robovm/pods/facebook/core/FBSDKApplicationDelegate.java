@@ -55,7 +55,7 @@ import org.robovm.pods.bolts.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "application:openURL:sourceApplication:annotation:")
-    public native boolean openURL(UIApplication application, NSURL url, String sourceApplication, NSObject annotation);
+    public native boolean openURL(UIApplication application, NSURL url, String sourceApplication, ObjCProtocol annotation);
     @Method(selector = "application:didFinishLaunchingWithOptions:")
     public native boolean didFinishLaunching(UIApplication application, UIApplicationLaunchOptions launchOptions);
     @Method(selector = "sharedInstance")
