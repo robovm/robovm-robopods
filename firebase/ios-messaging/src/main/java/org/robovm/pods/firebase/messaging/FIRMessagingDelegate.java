@@ -47,12 +47,12 @@ import org.robovm.apple.foundation.*;
     /*</properties>*/
     /*<methods>*/
     @Method(selector = "messaging:didRefreshRegistrationToken:")
-    void messaging(FIRMessaging messaging, String fcmToken);
+    void didRefreshRegistrationToken(FIRMessaging messaging, String fcmToken);
     /**
      * @since Available in iOS 10.0 and later.
      */
     @Method(selector = "messaging:didReceiveMessage:")
-    void messaging(FIRMessaging messaging, FIRMessagingRemoteMessage remoteMessage);
+    void didReceiveMessage(FIRMessaging messaging, FIRMessagingRemoteMessage remoteMessage);
     @Method(selector = "applicationReceivedRemoteMessage:")
     void applicationReceivedRemoteMessage(FIRMessagingRemoteMessage remoteMessage);
     /*</methods>*/

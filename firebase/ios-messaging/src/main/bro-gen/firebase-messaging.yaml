@@ -19,6 +19,8 @@ classes:
 protocols:
     FIRMessagingDelegate:
         methods:
-            '.+':
-                trim_after_first_colon: true
+            '-messaging:didRefreshRegistrationToken:':
+                name: didRefreshRegistrationToken
+            '-messaging:didReceiveMessage:':
+                name: didReceiveMessage
 
