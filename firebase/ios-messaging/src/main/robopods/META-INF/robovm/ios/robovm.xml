@@ -1,0 +1,15 @@
+<config>
+    <libs>
+        <lib>sqlite3</lib>
+    </libs>
+    <frameworks>
+        <framework>FirebaseMessaging</framework>
+        <framework>Protobuf</framework>
+        
+        <framework>AddressBook</framework>
+        <framework>SystemConfiguration</framework>
+    </frameworks>
+    <exportedSymbols>
+        <symbol>FIR*</symbol>
+    </exportedSymbols>
+</config>

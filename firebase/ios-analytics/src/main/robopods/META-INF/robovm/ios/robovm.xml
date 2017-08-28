@@ -1,0 +1,22 @@
+<config>
+    <libs>
+        <lib>sqlite3</lib>
+        <lib>z</lib>
+        <lib>c++</lib>
+    </libs>
+    <frameworks>
+        <framework>FirebaseAnalytics</framework>
+        <framework>FirebaseCore</framework>
+        <framework>FirebaseCoreDiagnostics</framework>
+        <framework>FirebaseInstanceID</framework>
+        <framework>FirebaseNanoPB</framework>
+        <framework>GoogleToolboxForMac</framework>
+        <framework>nanopb</framework>
+
+        <framework>StoreKit</framework>
+        <framework>SystemConfiguration</framework>
+    </frameworks>
+    <exportedSymbols>
+        <symbol>FIR*</symbol>
+    </exportedSymbols>
+</config>

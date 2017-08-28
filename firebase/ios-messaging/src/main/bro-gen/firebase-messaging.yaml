@@ -1,0 +1,26 @@
+package: org.robovm.pods.firebase.messaging
+framework: FirebaseMessaging
+include: [foundation]
+clang_args: ['-x', 'objective-c']
+headers: [FirebaseMessaging.h]
+
+enums:
+    FIRMessagingAPNSTokenType: {}
+    FIRMessagingMessageStatus: {}
+
+classes:
+    FIRMessaging:
+        methods:
+            '.+':
+                trim_after_first_colon: true
+    FIRMessagingRemoteMessage: {}
+    FIRMessagingMessageInfo: {}
+
+protocols:
+    FIRMessagingDelegate:
+        methods:
+            '-messaging:didRefreshRegistrationToken:':
+                name: didRefreshRegistrationToken
+            '-messaging:didReceiveMessage:':
+                name: didReceiveMessage
+

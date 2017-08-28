@@ -42,7 +42,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <robovm.version>2.3.0</robovm.version>
+        <robovm.version>2.3.1</robovm.version>
         <robopods.version>${project.version}</robopods.version>
         <android.version>4.1.1.4</android.version>
     </properties>
@@ -181,6 +181,7 @@
         <module>chartboost</module>
         <module>fabric</module>
         <module>facebook</module>
+        <module>firebase</module>
         <module>flurry</module>
         <module>google-apis</module>
         <module>google-analytics</module>
