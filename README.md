@@ -84,6 +84,7 @@ This is the list of currently available RoboPods. Click them to get more informa
 | [Chartboost](chartboost/)                     | Chartboost is a mobile ads network for games. |
 | [Fabric](fabric/)                             | Twitter's Mobile Development Platform |
 | [Facebook](facebook/)                         | Build, grow, and monetize your app with Facebook. The Facebook SDK allows you to natively integrate Facebook into your app. |
+| [Firebase](firebase/)                         | Firebase Analytics and Firebase Messaging bindings. |
 | [Flurry](flurry/)                             | Measure, track and analyze app performance, user acquisition and activity with Flurry Analytics. |
 | [Google Analytics](google-analytics/)         | Collect, configure, and analyze your data to reach the right audience. |
 | [Google APIs](google-apis/)                   | Google APIs is used by several Google services such as Google Analytics to configure them in a single configuration file. |
