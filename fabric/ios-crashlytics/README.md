@@ -8,3 +8,5 @@ In addition to adding the robopod and framework dependencies, Crashlytics requir
         <symbol>CLS*</symbol>
     </exportedSymbols>
 ```
+
+Forward uncaught runtime exceptions to Crashlytics crash reporter by calling `org.robovm.apple.foundation.NSException#registerDefaultJavaUncaughtExceptionHandler` in `com.badlogic.gdx.backends.iosrobovm.IOSApplication.Delegate#didFinishLaunching`.
