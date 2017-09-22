@@ -13,7 +13,7 @@ Add the dependencies to your project and start coding without thinking about pla
 
 A RoboPod comes in form of a simple JAR file published to Maven Central so you can easily 
 integrate it with Maven or Gradle.
-Just add a depencency to your Maven or Gradle build files and you are ready to go!
+Add a depencency to your Maven or Gradle build files, download native frameworks, define frameworks in robovm.xml and you are ready to go!
 
 ### Versioning
 
@@ -58,6 +58,34 @@ When you add a dependency, you can refer to the variable like this:
    <version>${robopods.version}</version>
 </dependency>
 ```
+
+#### Add native frameworks
+
+Native frameworks can be embedded in the Robopod jars, but often need to be added manually. A robopod jar has embedded its native frameworks if in path `META-INF/robovm/ios/libs/` `.framework` or `.a` files are present.
+
+If natives are not present, you need to add them manually. Download the native frameworks, add them to the project and update robovm.xml.
+
+Below an example if you'd like to use the Facebook SDK Share dialog.
+
+Download the iOS SDK from [https://developers.facebook.com/docs/ios/downloads](https://developers.facebook.com/docs/ios/downloads)
+
+Copy the Bolts.framework, FBSDKCoreKit.framework and FBSDKShareKit.framework
+into ./lib (relative to robovm.xml)
+
+Add to robovm.xml:
+    
+    <frameworkPaths>
+        <path>lib</path>
+    </frameworkPaths>
+    
+    
+    <frameworks>
+        ...
+        <framework>Bolts</framework>
+        <framework>FBSDKCoreKit</framework>
+        <framework>FBSDKShareKit</framework>
+        ...
+    </frameworks>
 
 #### Current versions
 
