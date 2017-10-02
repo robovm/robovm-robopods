@@ -9,4 +9,7 @@
         <framework>SystemConfiguration</framework>
         <framework>Security</framework>
     </frameworks>
+    <exportedSymbols>
+        <symbol>CLS*</symbol>
+    </exportedSymbols>
 </config>
