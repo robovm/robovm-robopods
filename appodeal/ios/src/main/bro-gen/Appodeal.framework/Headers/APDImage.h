@@ -2,14 +2,16 @@
 //  APDImage.h
 //  Appodeal
 //
-//  Copyright © 2016 Appodeal, Inc. All rights reserved.
+//  AppodealSDK version 2.1.4-Release
+//
+//  Copyright © 2017 Appodeal, Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 
 /*!
- *  Instance of this class contains url to image source and size of image
+ *  Instance of this class contains URL to image source and size of image
  */
 @interface APDImage : NSObject
 

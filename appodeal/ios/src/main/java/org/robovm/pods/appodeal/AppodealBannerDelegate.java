@@ -52,6 +52,8 @@ import org.robovm.apple.storekit.*;
     /*<methods>*/
     @Method(selector = "bannerDidLoadAdIsPrecache:")
     void bannerDidLoadAd(boolean precache);
+    @Method(selector = "bannerDidLoadAd")
+    void bannerDidLoadAd();
     @Method(selector = "bannerDidRefresh")
     void bannerDidRefresh();
     @Method(selector = "bannerDidFailToLoadAd")

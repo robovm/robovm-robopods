@@ -59,9 +59,9 @@ import org.robovm.apple.storekit.*;
     @Bridge(symbol="AppodealAvailableUnitSizes", optional=true)
     public static native NSArray<?> availableUnitSizes();
     @Bridge(symbol="AppodealIsUnitSizeSupported", optional=true)
-    public static native int isUnitSizeSupported();
+    public static native boolean isUnitSizeSupported(@ByVal CGSize size, NSArray<?> supportedSizes);
     @Bridge(symbol="AppodealIsUnitSizeAvailable", optional=true)
-    public static native int isUnitSizeAvailable();
+    public static native boolean isUnitSizeAvailable(@ByVal CGSize size);
     @Bridge(symbol="AppodealNearestUnitSizeForSize", optional=true)
     public static native @ByVal CGSize nearestUnitSizeForSize(@ByVal CGSize size);
     /*</methods>*/

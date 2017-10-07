@@ -38,7 +38,7 @@ import org.robovm.apple.storekit.*;
 
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ interface /*<name>*/AppodealNonSkippableVideoDelegate/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ interface /*<name>*/APDReward/*</name>*/ 
     /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
     /*<ptr>*/
@@ -47,23 +47,13 @@ import org.robovm.apple.storekit.*;
     /*</bind>*/
     /*<constants>*//*</constants>*/
     /*<properties>*/
-    
+    @Property(selector = "currencyName")
+    String getCurrencyName();
+    @Property(selector = "amount")
+    @MachineSizedUInt long getAmount();
     /*</properties>*/
     /*<methods>*/
-    @Method(selector = "nonSkippableVideoDidLoadAd")
-    void nonSkippableVideoDidLoadAd();
-    @Method(selector = "nonSkippableVideoDidFailToLoadAd")
-    void nonSkippableVideoDidFailToLoadAd();
-    @Method(selector = "nonSkippableVideoDidPresent")
-    void nonSkippableVideoDidPresent();
-    @Method(selector = "nonSkippableVideoDidFailToPresent")
-    void nonSkippableVideoDidFailToPresent();
-    @Method(selector = "nonSkippableVideoWillDismiss")
-    void nonSkippableVideoWillDismiss();
-    @Method(selector = "nonSkippableVideoDidFinish")
-    void nonSkippableVideoDidFinish();
-    @Method(selector = "nonSkippableVideoDidClick")
-    void nonSkippableVideoDidClick();
+    
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

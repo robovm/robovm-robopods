@@ -38,7 +38,7 @@ import org.robovm.apple.storekit.*;
 
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ interface /*<name>*/AppodealNonSkippableVideoDelegate/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ interface /*<name>*/AppodealRequestDelegate/*</name>*/ 
     /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
     /*<ptr>*/
@@ -50,20 +50,18 @@ import org.robovm.apple.storekit.*;
     
     /*</properties>*/
     /*<methods>*/
-    @Method(selector = "nonSkippableVideoDidLoadAd")
-    void nonSkippableVideoDidLoadAd();
-    @Method(selector = "nonSkippableVideoDidFailToLoadAd")
-    void nonSkippableVideoDidFailToLoadAd();
-    @Method(selector = "nonSkippableVideoDidPresent")
-    void nonSkippableVideoDidPresent();
-    @Method(selector = "nonSkippableVideoDidFailToPresent")
-    void nonSkippableVideoDidFailToPresent();
-    @Method(selector = "nonSkippableVideoWillDismiss")
-    void nonSkippableVideoWillDismiss();
-    @Method(selector = "nonSkippableVideoDidFinish")
-    void nonSkippableVideoDidFinish();
-    @Method(selector = "nonSkippableVideoDidClick")
-    void nonSkippableVideoDidClick();
+    @Method(selector = "mediationDidStartForAdType:")
+    void mediationDidStartForAdType(AppodealAdType adType);
+    @Method(selector = "willStartAdRequestForAdNetwork:adType:")
+    void willStartAdRequestForAdNetwork(String adNetwork, AppodealAdType adType);
+    @Method(selector = "didReceiveAdResponseFromAdNetwork:adType:wasFilled:")
+    void didReceiveAdResponseFromAdNetwork(String adNetwork, AppodealAdType adType, boolean filled);
+    @Method(selector = "didFinishMediationForAdType:hasFilledAd:")
+    void didFinishMediationForAdType(AppodealAdType adType, boolean filled);
+    @Method(selector = "didDetectImpressionForAdNetwork:adType:")
+    void didDetectImpressionForAdNetwork(String adNetwork, AppodealAdType adType);
+    @Method(selector = "didDetectClickForAdNetwork:adType:")
+    void didDetectClickForAdNetwork(String adNetwork, AppodealAdType adType);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

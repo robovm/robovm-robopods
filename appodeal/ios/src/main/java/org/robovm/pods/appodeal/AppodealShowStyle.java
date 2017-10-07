@@ -37,15 +37,17 @@ import org.robovm.apple.storekit.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
-public enum /*<name>*/AppodealShowStyle/*</name>*/ implements ValuedEnum {
+/*<annotations>*/@Marshaler(Bits.AsMachineSizedIntMarshaler.class)/*</annotations>*/
+public final class /*<name>*/AppodealShowStyle/*</name>*/ extends Bits</*<name>*/AppodealShowStyle/*</name>*/> {
     /*<values>*/
-    Interstitial(1L),
-    SkippableVideo(2L),
-    BannerTop(4L),
-    BannerBottom(5L),
-    RewardedVideo(6L),
-    NonSkippableVideo(7L);
+    public static final AppodealShowStyle None = new AppodealShowStyle(0L);
+    public static final AppodealShowStyle Interstitial = new AppodealShowStyle(1L);
+    public static final AppodealShowStyle SkippableVideo = new AppodealShowStyle(1L);
+    public static final AppodealShowStyle VideoOrInterstitial = new AppodealShowStyle(1L);
+    public static final AppodealShowStyle BannerTop = new AppodealShowStyle(4L);
+    public static final AppodealShowStyle BannerBottom = new AppodealShowStyle(8L);
+    public static final AppodealShowStyle RewardedVideo = new AppodealShowStyle(16L);
+    public static final AppodealShowStyle NonSkippableVideo = new AppodealShowStyle(32L);
     /*</values>*/
 
     /*<bind>*/
@@ -53,17 +55,17 @@ public enum /*<name>*/AppodealShowStyle/*</name>*/ implements ValuedEnum {
     /*<constants>*//*</constants>*/
     /*<methods>*//*</methods>*/
 
-    private final long n;
+    private static final /*<name>*/AppodealShowStyle/*</name>*/[] values = _values(/*<name>*/AppodealShowStyle/*</name>*/.class);
 
-    private /*<name>*/AppodealShowStyle/*</name>*/(long n) { this.n = n; }
-    public long value() { return n; }
-    public static /*<name>*/AppodealShowStyle/*</name>*/ valueOf(long n) {
-        for (/*<name>*/AppodealShowStyle/*</name>*/ v : values()) {
-            if (v.n == n) {
-                return v;
-            }
-        }
-        throw new IllegalArgumentException("No constant with value " + n + " found in " 
-            + /*<name>*/AppodealShowStyle/*</name>*/.class.getName());
+    public /*<name>*/AppodealShowStyle/*</name>*/(long value) { super(value); }
+    private /*<name>*/AppodealShowStyle/*</name>*/(long value, long mask) { super(value, mask); }
+    protected /*<name>*/AppodealShowStyle/*</name>*/ wrap(long value, long mask) {
+        return new /*<name>*/AppodealShowStyle/*</name>*/(value, mask);
+    }
+    protected /*<name>*/AppodealShowStyle/*</name>*/[] _values() {
+        return values;
+    }
+    public static /*<name>*/AppodealShowStyle/*</name>*/[] values() {
+        return values.clone();
     }
 }

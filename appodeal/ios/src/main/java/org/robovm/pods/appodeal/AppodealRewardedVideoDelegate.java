@@ -54,6 +54,8 @@ import org.robovm.apple.storekit.*;
     void rewardedVideoDidLoadAd();
     @Method(selector = "rewardedVideoDidFailToLoadAd")
     void rewardedVideoDidFailToLoadAd();
+    @Method(selector = "rewardedVideoDidFailToPresent")
+    void rewardedVideoDidFailToPresent();
     @Method(selector = "rewardedVideoDidPresent")
     void rewardedVideoDidPresent();
     @Method(selector = "rewardedVideoWillDismiss")

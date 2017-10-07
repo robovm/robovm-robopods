@@ -2,7 +2,9 @@
 //  APDUserInfoProtocol.h
 //  Appodeal
 //
-//  Copyright © 2016 Appodeal, Inc. All rights reserved.
+//  AppodealSDK version 2.1.4-Release
+//
+//  Copyright © 2017 Appodeal, Inc. All rights reserved.
 //
 
 
@@ -17,6 +19,7 @@
 @property (copy, nonatomic, readonly) NSDictionary *ext;
 
 @property (strong, nonatomic, readonly) NSDate *birthday;
+@property (strong, nonatomic, readonly) NSString *birthdayString;
 @property (assign, nonatomic, readonly) NSUInteger age;
 @property (assign, nonatomic, readonly) APDUserGender gender;
 @property (assign, nonatomic, readonly) APDUserOccupation occupation;

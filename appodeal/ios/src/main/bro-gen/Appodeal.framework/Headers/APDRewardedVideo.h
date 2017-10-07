@@ -2,7 +2,9 @@
 //  APDReviewVideo.h
 //  Appodeal
 //
-//  Copyright © 2016 Appodeal, Inc. All rights reserved.
+//  AppodealSDK version 2.1.4-Release
+//
+//  Copyright © 2017 Appodeal, Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,8 +13,11 @@
 #import <Appodeal/APDSdk.h>
 #import <Appodeal/APDRewardProtocol.h>
 
-@class APDRewardedVideo;
+#ifdef ADVANCED_INTEGRATION
+#import <Appodeal/AppodealRequestDelegateProtocol.h>
+#endif
 
+@class APDRewardedVideo;
 
 /*!
  *  Declaration of rewarded video delegate
@@ -22,73 +27,76 @@
 @optional
 
 /*!
- *  Method called when rewarded video did load
+ *  Method called when rewarded video loads
  *
  *  @param rewardedVideo Ready to show rewarded video
  */
 - (void)rewardedVideoDidLoad:(APDRewardedVideo *)rewardedVideo;
 
 /*!
- *  Method called if skippable rewarded mediation was failed
+ *  Method called if skippable rewarded mediation failed
  *
  *  @param rewardedVideo Failed rewarded video
  */
 - (void)rewardedVideo:(APDRewardedVideo *)rewardedVideo didFailToLoadWithError:(NSError *)error;
 
 /*!
- *  Method called if rewarded video adapter become unavailable
- *  This case can occure only for singleton ad networks: AdColony, Vungle, Unity
+ *  Method called if rewarded video adapter becomes unavailable
+ *  This case can occur only for singleton ad networks: AdColony, Vungle, Unity
  *
  *  @param rewardedVideo Failed rewarded video
  */
 - (void)rewardedVideoDidBecomeUnavailable:(APDRewardedVideo *)rewardedVideo;
 
 /*!
- *  Method called after rewarded video did show
+ *  Method called after rewarded video shows
  *
  *  @param rewardedVideo Shown rewarded video
  */
 - (void)rewardedVideoDidAppear:(APDRewardedVideo *)rewardedVideo;
 
 /*!
- *  Method called after rewarded video did dismiss from screen
+ *  Method called after rewarded video is dismissed from screen
  *
  *  @param rewardedVideo Shown rewarded video
  */
 - (void)rewardedVideoDidDisappear:(APDRewardedVideo *)rewardedVideo;
 
 /*!
- *   Method called after rewarded video did finish
- *   @warning After call this method video controller can show postbanner 
+ *   Method called after rewarded video completes
+ *   @warning After calling this method video controller can show postbanner
  *   view and stay on screen.
  *
- *  @param rewardedVideo Finished rewarded video
- *  @param reward        Object conformed APDReward protocol with values tunned by Dashboard
+ *  @param rewardedVideo Completed rewarded video
+ *  @param reward        Object conformed APDReward protocol with values turned on in Appodeal Dashboard
  */
 - (void)rewardedVideo:(APDRewardedVideo *)rewardedVideo didFinishWithReward:(id<APDReward>)reward;
 
 /*!
- *  Method called if rewarded video adapter occure some error while presenting
+ *  Method called if an error occurs while presenting the rewarded video adapter
  *
  *  @param rewardedVideo  Failed rewarded video
- *  @param error          Occured error
+ *  @param error          Error occurred
  */
-
 - (void)rewardedVideo:(APDRewardedVideo *)rewardedVideo didFailToPresentWithError:(NSError *)error;
 
 @end
 
 /*!
- *  You should have strong refrence on loading rewarded video instance
+ *  You should have strong reference on loading rewarded video instance
  *  Instance of rewarded video ad can try to load ad only once!
  *  Create new rewarded video before any call -loadAd!
  *  @code - (void) loadRewardedVideo {
- self.rewardedVideo = [APDRewaredVideo new];
- self.rewardedVideo.delegate = self;
- [self.rewardedVideo loadAd]
- }
+            self.rewardedVideo = [APDRewaredVideo new];
+            self.rewardedVideo.delegate = self;
+            [self.rewardedVideo loadAd]
+        }
  */
 @interface APDRewardedVideo : NSObject
+
+#ifdef ADVANCED_INTEGRATION
+@property (weak, nonatomic) id<APDRewardedVideoRequestDelegate> requestDelegate;
+#endif
 
 /*!
  *  Set delegate to skippable video
@@ -96,22 +104,27 @@
 @property (weak, nonatomic) id<APDRewardedVideoDelegate> delegate;
 
 /*!
- *  Set custom placement name, that you create in Appodeal Dashbord
+ *  Return reward object currencyName as NSString, and amount as NSUInteger
+ */
+@property (strong, nonatomic, readonly) id<APDReward> reward;
+
+/*!
+ *  Set custom placement name, that you create in the Appodeal Dashboard
  */
 @property (copy, nonatomic) NSString *placement;
 
 /*!
- *  Set custom sdk
+ *  Set custom SDK
  */
 @property (weak, nonatomic) APDSdk *customSdk;
 
 /*!
- *  Getter rewarded video availability
+ *  Get rewarded video availability
  */
 @property (assign, nonatomic, readonly, getter=isReady) BOOL ready;
 
 /*!
- *  Start rewarded video loading
+ *  Start loading rewarded video
  */
 - (void)loadAd;
 

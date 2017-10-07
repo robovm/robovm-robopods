@@ -7,7 +7,7 @@ The mobile ad network Appodeal runs multiple premium networks under one integrat
 
 | Platform            | Version |
 |---------------------|---------|
-| [iOS](ios/)         | 1.3.3   |
+| [iOS](ios/)         | 2.1.4   |
 |                     |         |
 
 ## Official website
