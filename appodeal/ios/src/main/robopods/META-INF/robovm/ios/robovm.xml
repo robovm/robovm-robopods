@@ -8,17 +8,20 @@
     <frameworks>        
         <framework>Appodeal</framework>
 
+        <framework>AdSupport</framework>
         <framework>AudioToolbox</framework>
         <framework>AVFoundation</framework>
         <framework>CFNetwork</framework>
-        <framework>CoreFoundation</framework>
         <framework>CoreGraphics</framework>
         <framework>CoreImage</framework>
         <framework>CoreLocation</framework>
         <framework>CoreMedia</framework>
         <framework>CoreMotion</framework>
-        <framework>EventKit</framework>
+        <framework>CoreTelephony</framework>
         <framework>EventKitUI</framework>
+        <framework>GLKit</framework>
+        <framework>ImageIO</framework>
+        <framework>JavaScriptCore</framework>
         <framework>MediaPlayer</framework>
         <framework>MessageUI</framework>
         <framework>MobileCoreServices</framework>
@@ -30,15 +33,7 @@
         <framework>Twitter</framework>
         <framework>UIKit</framework>
         <framework>WebKit</framework>
-        <framework>JavaScriptCore</framework>
-        <framework>CoreBluetooth</framework>
-        <framework>GLKit</framework>
-        <framework>SafariServices</framework>
     </frameworks>
-    <weakFrameworks>
-        <framework>AdSupport</framework>
-        <framework>CoreTelephony</framework>
-    </weakFrameworks>
     <forceLinkClasses>
         <pattern>org.robovm.pods.appodeal.Appodeal</pattern>
     </forceLinkClasses>

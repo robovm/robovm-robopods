@@ -35,36 +35,34 @@ import org.robovm.apple.storekit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ interface /*<name>*/AppodealNonSkippableVideoDelegate/*</name>*/ 
-    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/AppodealRequestDelegateAdapter/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*/implements AppodealRequestDelegate/*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/
     /*<bind>*/
     /*</bind>*/
     /*<constants>*//*</constants>*/
+    /*<constructors>*//*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
+    /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "nonSkippableVideoDidLoadAd")
-    void nonSkippableVideoDidLoadAd();
-    @Method(selector = "nonSkippableVideoDidFailToLoadAd")
-    void nonSkippableVideoDidFailToLoadAd();
-    @Method(selector = "nonSkippableVideoDidPresent")
-    void nonSkippableVideoDidPresent();
-    @Method(selector = "nonSkippableVideoDidFailToPresent")
-    void nonSkippableVideoDidFailToPresent();
-    @Method(selector = "nonSkippableVideoWillDismiss")
-    void nonSkippableVideoWillDismiss();
-    @Method(selector = "nonSkippableVideoDidFinish")
-    void nonSkippableVideoDidFinish();
-    @Method(selector = "nonSkippableVideoDidClick")
-    void nonSkippableVideoDidClick();
+    @NotImplemented("mediationDidStartForAdType:")
+    public void mediationDidStartForAdType(AppodealAdType adType) {}
+    @NotImplemented("willStartAdRequestForAdNetwork:adType:")
+    public void willStartAdRequestForAdNetwork(String adNetwork, AppodealAdType adType) {}
+    @NotImplemented("didReceiveAdResponseFromAdNetwork:adType:wasFilled:")
+    public void didReceiveAdResponseFromAdNetwork(String adNetwork, AppodealAdType adType, boolean filled) {}
+    @NotImplemented("didFinishMediationForAdType:hasFilledAd:")
+    public void didFinishMediationForAdType(AppodealAdType adType, boolean filled) {}
+    @NotImplemented("didDetectImpressionForAdNetwork:adType:")
+    public void didDetectImpressionForAdNetwork(String adNetwork, AppodealAdType adType) {}
+    @NotImplemented("didDetectClickForAdNetwork:adType:")
+    public void didDetectClickForAdNetwork(String adNetwork, AppodealAdType adType) {}
     /*</methods>*/
-    /*<adapter>*/
-    /*</adapter>*/
 }

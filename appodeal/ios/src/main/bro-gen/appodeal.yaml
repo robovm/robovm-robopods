@@ -6,7 +6,9 @@ headers: [Appodeal.h]
 typedefs: {}
 
 enums:
-    AppodealAdType: {bits: true}
+    APDLogLevel: {}
+    APDNativeAdType: {}
+    AppodealAdType: {}
     AppodealShowStyle: {}
     AppodealUserGender: {}
     AppodealUserOccupation: {}
@@ -17,10 +19,18 @@ enums:
 classes:
     Appodeal:
         methods:
+            '+cacheAd:.*':
+                name: cacheAd
+            '+canShowAd:.*':
+                name: canShowAd
             '+confirmUsage:':
                 name: confirmUsage
+            '+disableNetworkForAdType:.*':
+                name: disableNetworkForAdType
             '+initializeWithApiKey:.*':
                 name: initialize
+            '+loadNaitveAd:.*':
+                name: loadNativeAd
             '+showAd:rootViewController:':
                 name: showAd
                 return_type: boolean
@@ -50,6 +60,8 @@ classes:
                 name: setAutocache
             '+setFramework:':
                 exclude: true
+            '+setMinimumFreeMemoryPercentage:.*':
+                name: setMinimumFreeMemoryPercentage
 
 protocols:
     AppodealBannerDelegate: # DONE
@@ -70,6 +82,15 @@ protocols:
     AppodealNonSkippableVideoDelegate: {} # DONE
 
     AppodealSkippableVideoDelegate: {} # DONE
+
+    AppodealNativeAdDelegate: {} # DONE
+
+    AppodealRequestDelegate:
+        methods:
+            '.+':
+                trim_after_first_colon: true
+
+    APDReward: {}
 
 functions:
     'AppodealAvailableUnitSizes':

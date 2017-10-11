@@ -52,10 +52,14 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @NotImplemented("interstitialDidLoadAd")
+    public void interstitialDidLoadAd() {}
     @NotImplemented("interstitialDidLoadAdisPrecache:")
     public void interstitialDidLoadAd(boolean precache) {}
     @NotImplemented("interstitialDidFailToLoadAd")
     public void interstitialDidFailToLoadAd() {}
+    @NotImplemented("interstitialDidFailToPresent")
+    public void interstitialDidFailToPresent() {}
     @NotImplemented("interstitialWillPresent")
     public void interstitialWillPresent() {}
     @NotImplemented("interstitialDidDismiss")

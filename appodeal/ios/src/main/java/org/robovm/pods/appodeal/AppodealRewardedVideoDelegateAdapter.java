@@ -56,6 +56,8 @@ import org.robovm.apple.storekit.*;
     public void rewardedVideoDidLoadAd() {}
     @NotImplemented("rewardedVideoDidFailToLoadAd")
     public void rewardedVideoDidFailToLoadAd() {}
+    @NotImplemented("rewardedVideoDidFailToPresent")
+    public void rewardedVideoDidFailToPresent() {}
     @NotImplemented("rewardedVideoDidPresent")
     public void rewardedVideoDidPresent() {}
     @NotImplemented("rewardedVideoWillDismiss")

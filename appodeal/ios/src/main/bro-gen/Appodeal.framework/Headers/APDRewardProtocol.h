@@ -2,14 +2,16 @@
 //  APDRewardProtocol.h
 //  Appodeal
 //
-//  Copyright © 2016 Appodeal, Inc. All rights reserved.
+//  AppodealSDK version 2.1.4-Release
+//
+//  Copyright © 2017 Appodeal, Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 
 /*!
- *  Declaration of appodeal reward protocol object
+ *  Declaration of Appodeal reward protocol object
  */
 @protocol APDReward <NSObject>
 

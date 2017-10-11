@@ -50,10 +50,14 @@ import org.robovm.apple.storekit.*;
     
     /*</properties>*/
     /*<methods>*/
+    @Method(selector = "interstitialDidLoadAd")
+    void interstitialDidLoadAd();
     @Method(selector = "interstitialDidLoadAdisPrecache:")
     void interstitialDidLoadAd(boolean precache);
     @Method(selector = "interstitialDidFailToLoadAd")
     void interstitialDidFailToLoadAd();
+    @Method(selector = "interstitialDidFailToPresent")
+    void interstitialDidFailToPresent();
     @Method(selector = "interstitialWillPresent")
     void interstitialWillPresent();
     @Method(selector = "interstitialDidDismiss")

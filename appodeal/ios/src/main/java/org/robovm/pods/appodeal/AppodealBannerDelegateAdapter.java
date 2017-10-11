@@ -54,6 +54,8 @@ import org.robovm.apple.storekit.*;
     /*<methods>*/
     @NotImplemented("bannerDidLoadAdIsPrecache:")
     public void bannerDidLoadAd(boolean precache) {}
+    @NotImplemented("bannerDidLoadAd")
+    public void bannerDidLoadAd() {}
     @NotImplemented("bannerDidRefresh")
     public void bannerDidRefresh() {}
     @NotImplemented("bannerDidFailToLoadAd")

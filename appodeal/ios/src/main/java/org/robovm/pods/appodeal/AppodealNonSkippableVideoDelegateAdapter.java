@@ -58,6 +58,8 @@ import org.robovm.apple.storekit.*;
     public void nonSkippableVideoDidFailToLoadAd() {}
     @NotImplemented("nonSkippableVideoDidPresent")
     public void nonSkippableVideoDidPresent() {}
+    @NotImplemented("nonSkippableVideoDidFailToPresent")
+    public void nonSkippableVideoDidFailToPresent() {}
     @NotImplemented("nonSkippableVideoWillDismiss")
     public void nonSkippableVideoWillDismiss() {}
     @NotImplemented("nonSkippableVideoDidFinish")

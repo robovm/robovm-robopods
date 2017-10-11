@@ -55,12 +55,24 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "disableNetworkForAdType:name:")
+    public static native void disableNetworkForAdType(AppodealAdType adType, String networkName);
+    @Method(selector = "disableLocationPermissionCheck")
+    public static native void disableLocationPermissionCheck();
     @Method(selector = "setLocationTracking:")
     public static native void setLocationTracking(boolean enabled);
     @Method(selector = "setAutocache:types:")
     public static native void setAutocache(boolean autocache, AppodealAdType types);
+    @Method(selector = "isAutocacheEnabled:")
+    public static native boolean isAutocacheEnabled(AppodealAdType types);
     @Method(selector = "initializeWithApiKey:types:")
     public static native void initialize(String apiKey, AppodealAdType types);
+    @Method(selector = "isInitalized")
+    public static native boolean isInitalized();
+    @Method(selector = "setLogLevel:")
+    public static native void setLogLevel(APDLogLevel logLevel);
+    @Method(selector = "setPluginVersion:")
+    public static native void setPluginVersion(String pluginVersion);
     @Method(selector = "setInterstitialDelegate:")
     public static native void setInterstitialDelegate(AppodealInterstitialDelegate interstitialDelegate);
     @Method(selector = "setBannerDelegate:")
@@ -71,18 +83,36 @@ import org.robovm.apple.storekit.*;
     public static native void setRewardedVideoDelegate(AppodealRewardedVideoDelegate rewardedVideoDelegate);
     @Method(selector = "setNonSkippableVideoDelegate:")
     public static native void setNonSkippableVideoDelegate(AppodealNonSkippableVideoDelegate nonSkippableVideoDelegate);
+    @Method(selector = "setNativeAdDelegate:")
+    public static native void setNativeAdDelegate(AppodealNativeAdDelegate nativeAdDelegate);
+    @Method(selector = "setRequestDelegate:")
+    public static native void setRequestDelegate(AppodealRequestDelegate requestDelegate);
     @Method(selector = "banner")
     public static native UIView banner();
+    @Method(selector = "showAd:rootViewController:")
+    public static native boolean showAd(AppodealShowStyle style, UIViewController rootViewController);
+    @Method(selector = "showAd:forPlacement:rootViewController:")
+    public static native boolean showAd(AppodealShowStyle style, String placement, UIViewController rootViewController);
+    @Method(selector = "canShowAd:forPlacement:")
+    public static native boolean canShowAd(AppodealShowStyle style, String placement);
+    @Method(selector = "rewardForPlacement:")
+    public static native APDReward rewardForPlacement(String placement);
     @Method(selector = "cacheAd:")
     public static native void cacheAd(AppodealAdType type);
+    @Method(selector = "cacheAd:forPlacement:")
+    public static native void cacheAd(AppodealAdType type, String placement);
     @Method(selector = "hideBanner")
     public static native void hideBanner();
     @Method(selector = "setDebugEnabled:")
     public static native void setDebugEnabled(boolean debugEnabled);
     @Method(selector = "setTestingEnabled:")
     public static native void setTestingEnabled(boolean testingEnabled);
+    @Method(selector = "getUUID")
+    public static native String getUUID();
     @Method(selector = "getVersion")
     public static native String getVersion();
+    @Method(selector = "isReadyForShowWithStyle:")
+    public static native boolean isReadyForShow(AppodealShowStyle showStyle);
     @Method(selector = "setCustomRule:")
     public static native void setCustomRule(NSDictionary<?, ?> customRule);
     @Method(selector = "confirmUsage:")
@@ -93,6 +123,20 @@ import org.robovm.apple.storekit.*;
     public static native void setBannerBackgroundVisible(boolean bannerBackgroundVisible);
     @Method(selector = "setBannerAnimationEnabled:")
     public static native void setBannerAnimationEnabled(boolean bannerAnimationEnabled);
+    @Method(selector = "loadNaitveAd:capacity:")
+    public static native void loadNativeAd(APDNativeAdType type, @MachineSizedSInt long capacity);
+    @Method(selector = "getNativeAdsOfCount:")
+    public static native NSArray<?> getNativeAdsOfCount(@MachineSizedSInt long count);
+    @Method(selector = "availableNativeAdsCount")
+    public static native @MachineSizedSInt long availableNativeAdsCount();
+    @Method(selector = "disableUserData:")
+    public static native void disableUserData(String networkName);
+    @Method(selector = "setMinimumFreeMemoryPercentage:forAdType:")
+    public static native void setMinimumFreeMemoryPercentage(@MachineSizedUInt long percentage, AppodealAdType type);
+    @Method(selector = "setMinimumFreeMemoryPercentage:observeSystemWarnings:forAdType:")
+    public static native void setMinimumFreeMemoryPercentage(@MachineSizedUInt long percentage, boolean observeSystemWarnings, AppodealAdType type);
+    @Method(selector = "setChildDirectedTreatment:")
+    public static native void setChildDirectedTreatment(boolean childDirectedTreatment);
     @Method(selector = "setUserId:")
     public static native void setUserId(String userId);
     @Method(selector = "setUserEmail:")
@@ -114,16 +158,4 @@ import org.robovm.apple.storekit.*;
     @Method(selector = "setUserInterests:")
     public static native void setUserInterests(String interests);
     /*</methods>*/
-
-    //TODO make it generated by bro-gen
-    @Method(selector = "showAd:rootViewController:")
-    public static native boolean showAd(AppodealShowStyle style, UIViewController rootViewController);
-
-    //TODO make it generated by bro-gen
-    @Method(selector = "showAd:forPlacement:rootViewController:")
-    public static native boolean showAd(AppodealShowStyle style, String placement, UIViewController rootViewController);
-
-    //TODO make it generated by bro-gen
-    @Method(selector = "isReadyForShowWithStyle:")
-    public static native boolean isReadyForShow(AppodealShowStyle style);
 }
