@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.mobidevelop.robovm</groupId>
-    <version>2.2.2-SNAPSHOT</version>
+    <version>2.2.2</version>
     <artifactId>robopods-parent</artifactId>
     <name>RoboPods Parent</name>
     <packaging>pom</packaging>
@@ -32,7 +32,7 @@
         <url>https://github.com/MobiDevelop/robovm-robopods</url>
         <connection>scm:git:git://github.com/mobidevelop/robovm-robopods.git</connection>
         <developerConnection>scm:git:git@github.com:mobidevelop/robovm-robopods.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>robopods-parent-2.2.2</tag>
     </scm>
 
     <issueManagement>
