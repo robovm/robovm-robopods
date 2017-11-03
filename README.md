@@ -94,7 +94,7 @@ To prevent compatibility issues make sure that you use the same version for the 
 
 The current stable version is:
 
-> 2.2.1
+> 2.2.2
 
 If you want to use the latest and greatest of every RoboPod, use the latest snapshot version for your dependencies:
 
