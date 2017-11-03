@@ -26,7 +26,7 @@ In your project's root `build.gradle` file add the following at the top of the `
 
 ```gradle
 buildscript {
-   project.ext.robopodsVersion = "2.2.1"
+   project.ext.robopodsVersion = "2.2.2"
 }
 ```
 
