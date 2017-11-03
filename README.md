@@ -45,7 +45,7 @@ In your project's root `pom.xml` file add the following property:
 
 ```maven
 <properties>
-   <robopods.version>2.2.1</robopods.version>
+   <robopods.version>2.2.2</robopods.version>
 </properties>
 ```
 
@@ -98,7 +98,7 @@ The current stable version is:
 
 If you want to use the latest and greatest of every RoboPod, use the latest snapshot version for your dependencies:
 
-> 2.2.2-SNAPSHOT
+> 2.2.3-SNAPSHOT
 
 
 ## List of RoboPods
