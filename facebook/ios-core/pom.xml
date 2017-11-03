@@ -3,7 +3,7 @@
     <parent>
         <groupId>com.mobidevelop.robovm</groupId>
         <artifactId>robopods-facebook-parent</artifactId>
-        <version>2.2.2</version>
+        <version>2.2.3-SNAPSHOT</version>
     </parent>
     <artifactId>robopods-facebook-ios-core</artifactId>
     <name>RoboPods Facebook iOS - CoreKit</name>
