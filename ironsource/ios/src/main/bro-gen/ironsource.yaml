@@ -1,0 +1,130 @@
+package: org.robovm.pods.ironsource
+include: [foundation, uikit]
+framework: IronSource
+clang_args: ['-x', 'objective-c']
+headers:
+    - IronSource.h
+typedefs: {}
+
+enums:
+    ISGender: {prefix: IRONSOURCE_USER_}
+    LogLevelValues: {prefix: IS_LOG_}
+    LogTagValue: {prefix: TAG_}
+    ISBannerSize: {prefix: IS_AD_SIZE_}
+
+
+
+classes:
+    ISBannerView: {}
+    ISConfigurations: {}
+    ISEventsReporting: {}
+    ISIntegrationHelper: {}
+    ISPlacementInfo:
+        methods:
+            '-initWithPlacement:reward:rewardAmount:':
+                #trim_after_first_colon: true
+                name: init
+    ISSegment:
+        methods:
+            '-setCustomValue:forKey:':
+                #trim_after_first_colon: true
+                name: setCustomValueForKey
+    ISSupersonicAdsConfiguration: {}
+    IronSource:
+        methods:
+            '+initWithAppKey:':
+                #trim_after_first_colon: true
+                name: init
+            '+initWithAppKey:adUnits:':
+                #trim_after_first_colon: true
+                name: init
+            '+initISDemandOnly:adUnits:':
+                #trim_after_first_colon: true
+                name: initISDemandOnly
+            '+showRewardedVideoWithViewController:placement:':
+                #trim_after_first_colon: true
+                name: showRewardedVideo
+            '+showISDemandOnlyRewardedVideo:instanceId:':
+                #trim_after_first_colon: true
+                name: showISDemandOnlyRewardedVideo
+            '+showISDemandOnlyRewardedVideo:placement:instanceId:':
+                #trim_after_first_colon: true
+                name: showISDemandOnlyRewardedVideo
+            '+showInterstitialWithViewController:':
+                #trim_after_first_colon: true
+                name: showInterstitial
+            '+showInterstitialWithViewController:placement:':
+                #trim_after_first_colon: true
+                name: showInterstitial
+            '+showISDemandOnlyInterstitial:instanceId:':
+                #trim_after_first_colon: true
+                name: showISDemandOnlyInterstitial
+            '+showISDemandOnlyInterstitial:placement:instanceId:':
+                #trim_after_first_colon: true
+                name: showISDemandOnlyInterstitial
+            '+showOfferwallWithViewController:placement:':
+                #trim_after_first_colon: true
+                name: showOfferwall
+            '+loadBannerWithViewController:size:':
+                #trim_after_first_colon: true
+                name: loadBanner
+            '+loadBannerWithViewController:size:placement:':
+                #trim_after_first_colon: true
+                name: loadBanner
+
+
+
+protocols:
+    ISBannerDelegate: {}
+    ISDemandOnlyInterstitialDelegate:
+        methods:
+            '-interstitialDidFailToLoadWithError:instanceId:':
+                #trim_after_first_colon: true
+                name: interstitialDidFailToLoad
+            '-interstitialDidFailToShowWithError:instanceId:':
+                #trim_after_first_colon: true
+                name: interstitialDidFailToShow
+    ISDemandOnlyRewardedVideoDelegate:
+        methods:
+            '-rewardedVideoHasChangedAvailability:instanceId:':
+                #trim_after_first_colon: true
+                name: rewardedVideoHasChangedAvailability
+            '-didReceiveRewardForPlacement:instanceId:':
+                #trim_after_first_colon: true
+                name: didReceiveRewardForPlacement
+            '-rewardedVideoDidFailToShowWithError:instanceId:':
+                #trim_after_first_colon: true
+                name: rewardedVideoDidFailToShow
+            '-didClickRewardedVideo:instanceId:':
+                #trim_after_first_colon: true
+                name: didClickRewardedVideo
+    ISInterstitialDelegate: {}
+    ISLogDelegate:
+        methods:
+            '-sendLog:level:tag:':
+                #trim_after_first_colon: true
+                name: sendLog
+    ISOfferwallDelegate: {}
+    ISRewardedInterstitialDelegate: {}
+    ISRewardedVideoDelegate: {}
+    ISSegmentDelegate: {}
+
+
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (IS.*):
+        class: FIXME
+        name: 'Function__#{g[0]}'
+
+values:
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    k?(IS.*):
+        class: FIXME
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (IS_.*):
+        class: IronSource
+        name: '#{g[0]}'

@@ -120,5 +120,6 @@ This is the list of currently available RoboPods. Click them to get more informa
 | [Google Play Game Services](google-play-games/)| Start integrating popular gaming features in your mobile games and web games by using the Google Play games services APIs. |
 | [Google SignIn](google-signin/)               | Get users into your apps quickly and securely, using a registration system they already use and trust—their Google account. |
 | [Heyzap](heyzap/)                             | The mobile ad network Heyzap runs multiple premium networks under one integration so you can dynamically test ad networks against each other and visualize their combined performance. |
+| [IronSource](ironsource/)                     | IronSource is a mobile ads network and mediation platform. |
 | [Parse](parse/)                               | Focus on creating a great user experience and stop worrying about server maintenance and complex infrastructure. |
 | [Reachability](reachability/)                 | Monitor network reachability. |
