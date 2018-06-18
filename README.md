@@ -122,3 +122,8 @@ This is the list of currently available RoboPods. Click them to get more informa
 | [Heyzap](heyzap/)                             | The mobile ad network Heyzap runs multiple premium networks under one integration so you can dynamically test ad networks against each other and visualize their combined performance. |
 | [Parse](parse/)                               | Focus on creating a great user experience and stop worrying about server maintenance and complex infrastructure. |
 | [Reachability](reachability/)                 | Monitor network reachability. |
+
+
+## Creating/Updating RoboPods
+
+Java bindings are generated semi-automatically with a Ruby script configured via a .yaml file [This tutorial] (https://dkimitsa.github.io/2017/10/19/bro-gen-tutorial/) explains how to create (and update) a RoboPod from scratch.
