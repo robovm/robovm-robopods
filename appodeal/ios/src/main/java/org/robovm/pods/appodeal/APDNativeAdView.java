@@ -38,7 +38,7 @@ import org.robovm.apple.storekit.*;
 
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ interface /*<name>*/AppodealNonSkippableVideoDelegate/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ interface /*<name>*/APDNativeAdView/*</name>*/ 
     /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
     /*<ptr>*/
@@ -50,26 +50,22 @@ import org.robovm.apple.storekit.*;
     
     /*</properties>*/
     /*<methods>*/
-    @Method(selector = "nonSkippableVideoDidLoadAd")
-    void nonSkippableVideoDidLoadAd();
-    @Method(selector = "nonSkippableVideoDidLoadAdIsPrecache:")
-    void nonSkippableVideoDidLoadAdIsPrecache(boolean precache);
-    @Method(selector = "nonSkippableVideoDidFailToLoadAd")
-    void nonSkippableVideoDidFailToLoadAd();
-    @Method(selector = "nonSkippableVideoDidExpired")
-    void nonSkippableVideoDidExpired();
-    @Method(selector = "nonSkippableVideoDidPresent")
-    void nonSkippableVideoDidPresent();
-    @Method(selector = "nonSkippableVideoDidFailToPresent")
-    void nonSkippableVideoDidFailToPresent();
-    @Method(selector = "nonSkippableVideoDidFailToPresentWithError:")
-    void nonSkippableVideoDidFailToPresentWithError(NSError error);
-    @Method(selector = "nonSkippableVideoWillDismiss")
-    void nonSkippableVideoWillDismiss();
-    @Method(selector = "nonSkippableVideoWillDismissAndWasFullyWatched:")
-    void nonSkippableVideoWillDismissAndWasFullyWatched(boolean wasFullyWatched);
-    @Method(selector = "nonSkippableVideoDidFinish")
-    void nonSkippableVideoDidFinish();
+    @Method(selector = "titleLabel")
+    UILabel titleLabel();
+    @Method(selector = "callToActionLabel")
+    UILabel callToActionLabel();
+    @Method(selector = "descriptionLabel")
+    UILabel descriptionLabel();
+    @Method(selector = "iconView")
+    UIImageView iconView();
+    @Method(selector = "mediaContainerView")
+    UIView mediaContainerView();
+    @Method(selector = "contentRatingLabel")
+    UILabel contentRatingLabel();
+    @Method(selector = "adChoicesView")
+    UIView adChoicesView();
+    @Method(selector = "setRating:")
+    void setRating(NSNumber rating);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

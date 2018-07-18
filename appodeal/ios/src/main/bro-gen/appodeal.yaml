@@ -8,6 +8,7 @@ typedefs: {}
 enums:
     APDLogLevel: {}
     APDNativeAdType: {}
+    APDNativeResourceAutocacheMask: {}
     AppodealAdType: {}
     AppodealShowStyle: {}
     AppodealUserGender: {}
@@ -62,6 +63,7 @@ classes:
                 exclude: true
             '+setMinimumFreeMemoryPercentage:.*':
                 name: setMinimumFreeMemoryPercentage
+    APDNativeAdSettings: {} # DONE
 
 protocols:
     AppodealBannerDelegate: # DONE
@@ -91,6 +93,8 @@ protocols:
                 trim_after_first_colon: true
 
     APDReward: {}
+
+    APDNativeAdView: {} # DONE
 
 functions:
     'AppodealAvailableUnitSizes':

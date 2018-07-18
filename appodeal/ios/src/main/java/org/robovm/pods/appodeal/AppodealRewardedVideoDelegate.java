@@ -52,18 +52,24 @@ import org.robovm.apple.storekit.*;
     /*<methods>*/
     @Method(selector = "rewardedVideoDidLoadAd")
     void rewardedVideoDidLoadAd();
+    @Method(selector = "rewardedVideoDidLoadAdIsPrecache:")
+    void rewardedVideoDidLoadAdIsPrecache(boolean precache);
     @Method(selector = "rewardedVideoDidFailToLoadAd")
     void rewardedVideoDidFailToLoadAd();
+    @Method(selector = "rewardedVideoDidExpired")
+    void rewardedVideoDidExpired();
     @Method(selector = "rewardedVideoDidFailToPresent")
     void rewardedVideoDidFailToPresent();
+    @Method(selector = "rewardedVideoDidFailToPresentWithError:")
+    void rewardedVideoDidFailToPresentWithError(NSError error);
     @Method(selector = "rewardedVideoDidPresent")
     void rewardedVideoDidPresent();
     @Method(selector = "rewardedVideoWillDismiss")
     void rewardedVideoWillDismiss();
+    @Method(selector = "rewardedVideoWillDismissAndWasFullyWatched:")
+    void rewardedVideoWillDismissAndWasFullyWatched(boolean wasFullyWatched);
     @Method(selector = "rewardedVideoDidFinish:name:")
     void rewardedVideoDidFinish(@MachineSizedUInt long rewardAmount, String rewardName);
-    @Method(selector = "rewardedVideoDidClick")
-    void rewardedVideoDidClick();
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

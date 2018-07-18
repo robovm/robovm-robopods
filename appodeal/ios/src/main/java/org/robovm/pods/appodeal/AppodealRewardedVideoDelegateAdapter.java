@@ -54,17 +54,23 @@ import org.robovm.apple.storekit.*;
     /*<methods>*/
     @NotImplemented("rewardedVideoDidLoadAd")
     public void rewardedVideoDidLoadAd() {}
+    @NotImplemented("rewardedVideoDidLoadAdIsPrecache:")
+    public void rewardedVideoDidLoadAdIsPrecache(boolean precache) {}
     @NotImplemented("rewardedVideoDidFailToLoadAd")
     public void rewardedVideoDidFailToLoadAd() {}
+    @NotImplemented("rewardedVideoDidExpired")
+    public void rewardedVideoDidExpired() {}
     @NotImplemented("rewardedVideoDidFailToPresent")
     public void rewardedVideoDidFailToPresent() {}
+    @NotImplemented("rewardedVideoDidFailToPresentWithError:")
+    public void rewardedVideoDidFailToPresentWithError(NSError error) {}
     @NotImplemented("rewardedVideoDidPresent")
     public void rewardedVideoDidPresent() {}
     @NotImplemented("rewardedVideoWillDismiss")
     public void rewardedVideoWillDismiss() {}
+    @NotImplemented("rewardedVideoWillDismissAndWasFullyWatched:")
+    public void rewardedVideoWillDismissAndWasFullyWatched(boolean wasFullyWatched) {}
     @NotImplemented("rewardedVideoDidFinish:name:")
     public void rewardedVideoDidFinish(@MachineSizedUInt long rewardAmount, String rewardName) {}
-    @NotImplemented("rewardedVideoDidClick")
-    public void rewardedVideoDidClick() {}
     /*</methods>*/
 }

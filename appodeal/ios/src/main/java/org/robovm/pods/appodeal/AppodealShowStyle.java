@@ -42,8 +42,6 @@ public final class /*<name>*/AppodealShowStyle/*</name>*/ extends Bits</*<name>*
     /*<values>*/
     public static final AppodealShowStyle None = new AppodealShowStyle(0L);
     public static final AppodealShowStyle Interstitial = new AppodealShowStyle(1L);
-    public static final AppodealShowStyle SkippableVideo = new AppodealShowStyle(1L);
-    public static final AppodealShowStyle VideoOrInterstitial = new AppodealShowStyle(1L);
     public static final AppodealShowStyle BannerTop = new AppodealShowStyle(4L);
     public static final AppodealShowStyle BannerBottom = new AppodealShowStyle(8L);
     public static final AppodealShowStyle RewardedVideo = new AppodealShowStyle(16L);

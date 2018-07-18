@@ -37,9 +37,9 @@ import org.robovm.apple.storekit.*;
 /*<javadoc>*/
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/AppodealNonSkippableVideoDelegateAdapter/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/APDNativeAdViewAdapter/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements AppodealNonSkippableVideoDelegate/*</implements>*/ {
+    /*<implements>*/implements APDNativeAdView/*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/
@@ -52,25 +52,21 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @NotImplemented("nonSkippableVideoDidLoadAd")
-    public void nonSkippableVideoDidLoadAd() {}
-    @NotImplemented("nonSkippableVideoDidLoadAdIsPrecache:")
-    public void nonSkippableVideoDidLoadAdIsPrecache(boolean precache) {}
-    @NotImplemented("nonSkippableVideoDidFailToLoadAd")
-    public void nonSkippableVideoDidFailToLoadAd() {}
-    @NotImplemented("nonSkippableVideoDidExpired")
-    public void nonSkippableVideoDidExpired() {}
-    @NotImplemented("nonSkippableVideoDidPresent")
-    public void nonSkippableVideoDidPresent() {}
-    @NotImplemented("nonSkippableVideoDidFailToPresent")
-    public void nonSkippableVideoDidFailToPresent() {}
-    @NotImplemented("nonSkippableVideoDidFailToPresentWithError:")
-    public void nonSkippableVideoDidFailToPresentWithError(NSError error) {}
-    @NotImplemented("nonSkippableVideoWillDismiss")
-    public void nonSkippableVideoWillDismiss() {}
-    @NotImplemented("nonSkippableVideoWillDismissAndWasFullyWatched:")
-    public void nonSkippableVideoWillDismissAndWasFullyWatched(boolean wasFullyWatched) {}
-    @NotImplemented("nonSkippableVideoDidFinish")
-    public void nonSkippableVideoDidFinish() {}
+    @NotImplemented("titleLabel")
+    public UILabel titleLabel() { return null; }
+    @NotImplemented("callToActionLabel")
+    public UILabel callToActionLabel() { return null; }
+    @NotImplemented("descriptionLabel")
+    public UILabel descriptionLabel() { return null; }
+    @NotImplemented("iconView")
+    public UIImageView iconView() { return null; }
+    @NotImplemented("mediaContainerView")
+    public UIView mediaContainerView() { return null; }
+    @NotImplemented("contentRatingLabel")
+    public UILabel contentRatingLabel() { return null; }
+    @NotImplemented("adChoicesView")
+    public UIView adChoicesView() { return null; }
+    @NotImplemented("setRating:")
+    public void setRating(NSNumber rating) {}
     /*</methods>*/
 }
