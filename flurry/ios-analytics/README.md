@@ -92,6 +92,9 @@ Flurry.enableCrashReporting();
 Flurry.startSession("API_KEY");
 ```
 
+You also need to configure Robovm to report uncaught exceptions as crashes. Call org.robovm.apple.foundation.NSException#registerDefaultJavaUncaughtExceptionHandler in com.badlogic.gdx.backends.iosrobovm.IOSApplication.Delegate#didFinishLaunching.
+
+
 __Note:__ You can only have one (1!) crash reporting service in your app! If you use multiple crash reporters no crashes will be reported!
 
 ##### Having trouble?
