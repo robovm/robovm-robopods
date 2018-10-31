@@ -1,0 +1,6 @@
+<config>    
+    <frameworks>
+        <framework>CoreGraphics</framework>
+        <framework>CoreLocation</framework>
+    </frameworks>
+</config>
