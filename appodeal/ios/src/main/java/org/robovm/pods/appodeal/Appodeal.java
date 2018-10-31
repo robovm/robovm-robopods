@@ -55,30 +55,44 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "registeredNetworkNames")
+    public static native NSArray<?> registeredNetworkNames();
+    @Method(selector = "disableNetworks:")
+    public static native void disableNetworks(NSArray<?> networks);
+    @Method(selector = "disableNetworks:forAdType:")
+    public static native void disableNetworks$forAdType$(NSArray<?> networks, AppodealAdType adType);
+    @Method(selector = "disableNetwork:")
+    public static native void disableNetwork(String networkName);
     @Method(selector = "disableNetworkForAdType:name:")
     public static native void disableNetworkForAdType(AppodealAdType adType, String networkName);
-    @Method(selector = "disableLocationPermissionCheck")
-    public static native void disableLocationPermissionCheck();
+    @Method(selector = "predictedEcpmForAdType:")
+    public static native double predictedEcpmForAdType(AppodealAdType type);
     @Method(selector = "setLocationTracking:")
     public static native void setLocationTracking(boolean enabled);
     @Method(selector = "setAutocache:types:")
     public static native void setAutocache(boolean autocache, AppodealAdType types);
     @Method(selector = "isAutocacheEnabled:")
     public static native boolean isAutocacheEnabled(AppodealAdType types);
+    @Method(selector = "initializeWithApiKey:types:hasConsent:")
+    public static native void initialize(String apiKey, AppodealAdType types, boolean consent);
     @Method(selector = "initializeWithApiKey:types:")
     public static native void initialize(String apiKey, AppodealAdType types);
+    @Method(selector = "setTriggerPrecacheCallbacks:")
+    public static native void setTriggerPrecacheCallbacks(boolean shouldTrigger);
     @Method(selector = "isInitalized")
     public static native boolean isInitalized();
+    @Method(selector = "isInitalizedForAdType:")
+    public static native boolean isInitalizedForAdType(AppodealAdType type);
     @Method(selector = "setLogLevel:")
     public static native void setLogLevel(APDLogLevel logLevel);
     @Method(selector = "setPluginVersion:")
     public static native void setPluginVersion(String pluginVersion);
+    @Method(selector = "setExtras:")
+    public static native void setExtras(NSDictionary<?, ?> extras);
     @Method(selector = "setInterstitialDelegate:")
     public static native void setInterstitialDelegate(AppodealInterstitialDelegate interstitialDelegate);
     @Method(selector = "setBannerDelegate:")
     public static native void setBannerDelegate(AppodealBannerDelegate bannerDelegate);
-    @Method(selector = "setSkippableVideoDelegate:")
-    public static native void setSkippableVideoDelegate(AppodealSkippableVideoDelegate videoDelegate);
     @Method(selector = "setRewardedVideoDelegate:")
     public static native void setRewardedVideoDelegate(AppodealRewardedVideoDelegate rewardedVideoDelegate);
     @Method(selector = "setNonSkippableVideoDelegate:")
@@ -95,26 +109,28 @@ import org.robovm.apple.storekit.*;
     public static native boolean showAd(AppodealShowStyle style, String placement, UIViewController rootViewController);
     @Method(selector = "canShowAd:forPlacement:")
     public static native boolean canShowAd(AppodealShowStyle style, String placement);
+    @Method(selector = "canShow:forPlacement:")
+    public static native boolean canShow$forPlacement$(AppodealAdType type, String placement);
     @Method(selector = "rewardForPlacement:")
     public static native APDReward rewardForPlacement(String placement);
     @Method(selector = "cacheAd:")
     public static native void cacheAd(AppodealAdType type);
-    @Method(selector = "cacheAd:forPlacement:")
-    public static native void cacheAd(AppodealAdType type, String placement);
     @Method(selector = "hideBanner")
     public static native void hideBanner();
     @Method(selector = "setDebugEnabled:")
     public static native void setDebugEnabled(boolean debugEnabled);
     @Method(selector = "setTestingEnabled:")
     public static native void setTestingEnabled(boolean testingEnabled);
-    @Method(selector = "getUUID")
-    public static native String getUUID();
+    @Method(selector = "trackInAppPurchase:currency:")
+    public static native void trackInAppPurchase$currency$(NSNumber amount, String currency);
     @Method(selector = "getVersion")
     public static native String getVersion();
     @Method(selector = "isReadyForShowWithStyle:")
     public static native boolean isReadyForShow(AppodealShowStyle showStyle);
-    @Method(selector = "setCustomRule:")
-    public static native void setCustomRule(NSDictionary<?, ?> customRule);
+    @Method(selector = "isPrecacheAd:")
+    public static native boolean isPrecacheAd(AppodealAdType adType);
+    @Method(selector = "setSegmentFilter:")
+    public static native void setSegmentFilter(NSDictionary<?, ?> segmentFilter);
     @Method(selector = "confirmUsage:")
     public static native void confirmUsage(AppodealAdType adTypes);
     @Method(selector = "setSmartBannersEnabled:")
@@ -123,6 +139,8 @@ import org.robovm.apple.storekit.*;
     public static native void setBannerBackgroundVisible(boolean bannerBackgroundVisible);
     @Method(selector = "setBannerAnimationEnabled:")
     public static native void setBannerAnimationEnabled(boolean bannerAnimationEnabled);
+    @Method(selector = "setNativeAdSettings:")
+    public static native void setNativeAdSettings(APDNativeAdSettings settings);
     @Method(selector = "loadNaitveAd:capacity:")
     public static native void loadNativeAd(APDNativeAdType type, @MachineSizedSInt long capacity);
     @Method(selector = "getNativeAdsOfCount:")
@@ -131,8 +149,6 @@ import org.robovm.apple.storekit.*;
     public static native @MachineSizedSInt long availableNativeAdsCount();
     @Method(selector = "disableUserData:")
     public static native void disableUserData(String networkName);
-    @Method(selector = "setMinimumFreeMemoryPercentage:forAdType:")
-    public static native void setMinimumFreeMemoryPercentage(@MachineSizedUInt long percentage, AppodealAdType type);
     @Method(selector = "setMinimumFreeMemoryPercentage:observeSystemWarnings:forAdType:")
     public static native void setMinimumFreeMemoryPercentage(@MachineSizedUInt long percentage, boolean observeSystemWarnings, AppodealAdType type);
     @Method(selector = "setChildDirectedTreatment:")

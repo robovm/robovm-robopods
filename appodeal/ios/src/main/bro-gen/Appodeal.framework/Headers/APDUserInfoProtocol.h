@@ -2,9 +2,9 @@
 //  APDUserInfoProtocol.h
 //  Appodeal
 //
-//  AppodealSDK version 2.1.4-Release
+//  AppodealSDK version 2.4.4.2-Beta
 //
-//  Copyright © 2017 Appodeal, Inc. All rights reserved.
+//  Copyright © 2018 Appodeal, Inc. All rights reserved.
 //
 
 

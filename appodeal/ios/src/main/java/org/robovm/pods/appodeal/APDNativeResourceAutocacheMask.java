@@ -38,15 +38,11 @@ import org.robovm.apple.storekit.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Marshaler(Bits.AsMachineSizedIntMarshaler.class)/*</annotations>*/
-public final class /*<name>*/AppodealAdType/*</name>*/ extends Bits</*<name>*/AppodealAdType/*</name>*/> {
+public final class /*<name>*/APDNativeResourceAutocacheMask/*</name>*/ extends Bits</*<name>*/APDNativeResourceAutocacheMask/*</name>*/> {
     /*<values>*/
-    public static final AppodealAdType None = new AppodealAdType(0L);
-    public static final AppodealAdType Interstitial = new AppodealAdType(1L);
-    public static final AppodealAdType Banner = new AppodealAdType(4L);
-    public static final AppodealAdType NativeAd = new AppodealAdType(8L);
-    public static final AppodealAdType RewardedVideo = new AppodealAdType(16L);
-    public static final AppodealAdType MREC = new AppodealAdType(32L);
-    public static final AppodealAdType NonSkippableVideo = new AppodealAdType(64L);
+    public static final APDNativeResourceAutocacheMask None = new APDNativeResourceAutocacheMask(0L);
+    public static final APDNativeResourceAutocacheMask Icon = new APDNativeResourceAutocacheMask(1L);
+    public static final APDNativeResourceAutocacheMask Media = new APDNativeResourceAutocacheMask(2L);
     /*</values>*/
 
     /*<bind>*/
@@ -54,17 +50,17 @@ public final class /*<name>*/AppodealAdType/*</name>*/ extends Bits</*<name>*/Ap
     /*<constants>*//*</constants>*/
     /*<methods>*//*</methods>*/
 
-    private static final /*<name>*/AppodealAdType/*</name>*/[] values = _values(/*<name>*/AppodealAdType/*</name>*/.class);
+    private static final /*<name>*/APDNativeResourceAutocacheMask/*</name>*/[] values = _values(/*<name>*/APDNativeResourceAutocacheMask/*</name>*/.class);
 
-    public /*<name>*/AppodealAdType/*</name>*/(long value) { super(value); }
-    private /*<name>*/AppodealAdType/*</name>*/(long value, long mask) { super(value, mask); }
-    protected /*<name>*/AppodealAdType/*</name>*/ wrap(long value, long mask) {
-        return new /*<name>*/AppodealAdType/*</name>*/(value, mask);
+    public /*<name>*/APDNativeResourceAutocacheMask/*</name>*/(long value) { super(value); }
+    private /*<name>*/APDNativeResourceAutocacheMask/*</name>*/(long value, long mask) { super(value, mask); }
+    protected /*<name>*/APDNativeResourceAutocacheMask/*</name>*/ wrap(long value, long mask) {
+        return new /*<name>*/APDNativeResourceAutocacheMask/*</name>*/(value, mask);
     }
-    protected /*<name>*/AppodealAdType/*</name>*/[] _values() {
+    protected /*<name>*/APDNativeResourceAutocacheMask/*</name>*/[] _values() {
         return values;
     }
-    public static /*<name>*/AppodealAdType/*</name>*/[] values() {
+    public static /*<name>*/APDNativeResourceAutocacheMask/*</name>*/[] values() {
         return values.clone();
     }
 }

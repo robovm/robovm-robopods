@@ -58,6 +58,8 @@ import org.robovm.apple.storekit.*;
     void bannerDidRefresh();
     @Method(selector = "bannerDidFailToLoadAd")
     void bannerDidFailToLoadAd();
+    @Method(selector = "bannerDidExpired")
+    void bannerDidExpired();
     @Method(selector = "bannerDidClick")
     void bannerDidClick();
     @Method(selector = "bannerDidShow")

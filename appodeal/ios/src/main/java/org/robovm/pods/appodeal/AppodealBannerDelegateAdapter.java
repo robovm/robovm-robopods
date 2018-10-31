@@ -60,6 +60,8 @@ import org.robovm.apple.storekit.*;
     public void bannerDidRefresh() {}
     @NotImplemented("bannerDidFailToLoadAd")
     public void bannerDidFailToLoadAd() {}
+    @NotImplemented("bannerDidExpired")
+    public void bannerDidExpired() {}
     @NotImplemented("bannerDidClick")
     public void bannerDidClick() {}
     @NotImplemented("bannerDidShow")

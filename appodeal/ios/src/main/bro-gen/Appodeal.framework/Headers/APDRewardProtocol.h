@@ -2,9 +2,9 @@
 //  APDRewardProtocol.h
 //  Appodeal
 //
-//  AppodealSDK version 2.1.4-Release
+//  AppodealSDK version 2.4.4.2-Beta
 //
-//  Copyright © 2017 Appodeal, Inc. All rights reserved.
+//  Copyright © 2018 Appodeal, Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -18,7 +18,7 @@
 /*!
  *  App currency name. For example @"Coins", @"Stars"
  */
-@property (copy,   nonatomic, readonly) NSString *currencyName;
+@property (copy,   nonatomic, readonly, nullable) NSString *currencyName;
 
 /*!
  *  App currency amount

@@ -2,9 +2,9 @@
 //  Appodeal.h
 //  Appodeal
 //
-//  AppodealSDK version 2.1.4-Release
+//  AppodealSDK version 2.4.4.2-Beta
 //
-//  Copyright (c) 2017 Appodeal, Inc. All rights reserved.
+//  Copyright (c) 2018 Appodeal, Inc. All rights reserved.
 //
 
 
@@ -13,23 +13,21 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import <Appodeal/AppodealBannerView.h>
 #import <Appodeal/APDDefines.h>
 #import <Appodeal/APDSdk.h>
 
 #import <Appodeal/APDInterstitialAd.h>
 #import <Appodeal/APDRewardProtocol.h>
-#import <Appodeal/APDSkippableVideo.h>
 #import <Appodeal/APDRewardedVideo.h>
 
 #import <Appodeal/APDMRECView.h>
 #import <Appodeal/APDBannerView.h>
 
 #import <Appodeal/APDNativeAdLoader.h>
+#import <Appodeal/APDNativeAdViewProtocol.h>
 #import <Appodeal/APDNativeAdQueue.h>
 #import <Appodeal/APDNativeAd.h>
 #import <Appodeal/APDImage.h>
-#import <Appodeal/APDMediaView.h>
 
 #ifdef ADVANCED_INTEGRATION
 #import <Appodeal/AppodealRequestDelegateProtocol.h>
@@ -39,10 +37,52 @@
  */
 @interface Appodeal : NSObject
 
-+ (instancetype)alloc NS_UNAVAILABLE;
-- (instancetype)init NS_UNAVAILABLE;
-+ (instancetype)new NS_UNAVAILABLE;
++ (instancetype _Nonnull)alloc NS_UNAVAILABLE;
+- (instancetype _Nonnull)init NS_UNAVAILABLE;
++ (instancetype _Nonnull)new NS_UNAVAILABLE;
 
+/*!
+ *  return all registred networks name
+ *  @discussion Objective-C
+ *  @code [Appodeal registeredNetworkNames]; @endcode
+ *  @discussion Swift
+ *  @code Appodeal.registeredNetworkNames() @endcode
+ */
++ (NSArray <NSString *>*_Nonnull)registeredNetworkNames;
+
+/*!
+ *  To disable a networks use this method
+ *  @warning Use method before initialization!
+ *  @discussion Objective-C
+ *  @code [Appodeal disableNetworks:@[@"YOUR_NETWORK_NAME"]]; @endcode
+ *  @discussion Swift
+ *  @code Appodeal.disableNetwork(["YOUR_NETWORK_NAME"]) @endcode
+ *  @param networks    Array of Networks name
+ */
++ (void)disableNetworks:(NSArray <NSString *>* _Nullable)networks;
+
+/*!
+ *  To disable a networks of type use this method
+ *  @warning Use method before initialization!
+ *  @discussion Objective-C
+ *  @code [Appodeal disableNetworks:@[@"YOUR_NETWORK_NAME"] forAdType:AppodealAdType]; @endcode
+ *  @discussion Swift
+ *  @code Appodeal.disableNetwork(["YOUR_NETWORK_NAME"], adType:AppodealAdType) @endcode
+ *  @param networks    Array of Networks name
+ *  @param adType      AppodealAdTypeInterstitial, AppodealAdTypeBanner, AppodealAdTypeNativeAd, AppodealAdTypeRewardedVideo, AppodealAdTypeMREC, AppodealAdTypeNonSkippableVideo
+ */
++ (void)disableNetworks:(NSArray <NSString *>* _Nullable)networks forAdType:(AppodealAdType)adType;
+
+/*!
+ *  To disable a network use this method
+ *  @warning Use method before initialization!
+ *  @discussion Objective-C
+ *  @code [Appodeal disableNetwork:@"YOUR_NETWORK_NAME"]; @endcode
+ *  @discussion Swift
+ *  @code Appodeal.disableNetwork("YOUR_NETWORK_NAME") @endcode
+ *  @param networkName Network name to disable
+ */
++ (void)disableNetwork:(nonnull NSString *)networkName;
 /*!
  *  To disable a network use this method
  *  @warning Use method before initialization!
@@ -53,16 +93,15 @@
  *  @param adType      AppodealAdTypeInterstitial, AppodealAdTypeBanner, AppodealAdTypeNativeAd, AppodealAdTypeRewardedVideo, AppodealAdTypeMREC, AppodealAdTypeNonSkippableVideo
  *  @param networkName Use network name
  */
-+ (void)disableNetworkForAdType:(AppodealAdType)adType name:(NSString *)networkName __attribute__((deprecated("Now you can delete network in segments settings on Appodeal Dashboard")));
++ (void)disableNetworkForAdType:(AppodealAdType)adType name:(nonnull NSString *)networkName;
 
-/*!
- *  @discussion To disable location check, use this method (deprecated), use setLocationTracking:
- *  @discussion Objective-C
- *  @code [Appodeal disableLocationPermissionCheck]; @endcode
- *  @discussion Swift
- *  @code Appodeal.disableLocationPermissionCheck() @endcode
+/**
+ Get predicted eCPM for type
+
+ @param type AppodealAdTypeInterstitial, AppodealAdTypeBanner, AppodealAdTypeNativeAd, AppodealAdTypeRewardedVideo, AppodealAdTypeNonSkippableVideo
+ @return predicated ecpm
  */
-+ (void)disableLocationPermissionCheck __attribute__((deprecated("use method setLocationTracking:")));
++ (double)predictedEcpmForAdType:(AppodealAdType)type;
 
 /*!
  *  @discussion To disable location check, use this method
@@ -79,7 +118,7 @@
  *  @discussion Enable/disable autocache
  *  @discussion Use method before initialization!
  *  @discussion After initializing the SDK, start caching ads of those types that were enabled as autocache
- *  Default autocache enabled for AppodealAdTypeInterstitial, AppodealAdTypeRewardedVideo or AppodealAdTypeNonSkippableVideo
+ *  Default autocache enabled for AppodealAdTypeInterstitial, AppodealAdTypeBanner, AppodealAdTypeRewardedVideo or AppodealAdTypeNonSkippableVideo
  *  Also you can do something like this to disable autocache:
  *  @discussion Objective-C
  *  @code
@@ -109,6 +148,21 @@
  *  @discussion Initialize method. To initialize Appodeal with several types you
  *  @discussion can do something like this:
  *  @discussion Objective-C
+ *  @code [Appodeal initializeWithApiKey:YOUR_API_KEY types: AppodealAdTypeInterstitial | AppodealAdTypeRewardedVideo hasConsent:YES]; @endcode
+ *  @discussion Swift
+ *  @code
+ let adTypes: AppodealAdType = [.banner, .interstitial]
+ Appodeal.initialize(withApiKey: "API_KEY", types: adTypes, hasConsent: true) @endcode
+ *  @param apiKey Your api key from Appodeal Dashboard
+ *  @param types  Appodeal ad type
+ *  @param consent User has given consent to the processing of personal data relating to him or her. https://www.eugdpr.org/
+ */
++ (void)initializeWithApiKey:(nonnull NSString *)apiKey types:(AppodealAdType)types hasConsent:(BOOL)consent;
+/*!
+ *  @discussion Initialize method. To initialize Appodeal with several types you
+ *  user consent on personal data processing assumes to be true
+ *  @discussion can do something like this:
+ *  @discussion Objective-C
  *  @code [Appodeal initializeWithApiKey:YOUR_API_KEY types: AppodealAdTypeInterstitial | AppodealAdTypeRewardedVideo]; @endcode
  *  @discussion Swift
  *  @code
@@ -117,9 +171,19 @@
  *  @param apiKey Your api key from Appodeal Dashboard
  *  @param types  Appodeal ad type
  */
-+ (void)initializeWithApiKey:(NSString *)apiKey types:(AppodealAdType)types;
++ (void)initializeWithApiKey:(nonnull NSString *)apiKey types:(AppodealAdType)types;
 
 + (void)deinitialize NS_UNAVAILABLE;
+
+/*!
+ *  @discussion Disable calls of precache callbacks
+ *  @discussion Objective-C
+ *  @code [Appodeal setTriggerPrecacheCallbacks:YES]; @endcode
+ *  @discussion Swift
+ *  @code Appodeal.setTriggerPrecacheCallbacks(true) @endcode
+ *  @param shouldTrigger Bolean flag indicates that precache callbacks are disabled or not
+ */
++ (void)setTriggerPrecacheCallbacks:(BOOL)shouldTrigger;
 
 /*!
  *  @discussion Get that SDK initialized
@@ -130,8 +194,19 @@
  *  @code Appodeal.isInitalized() @endcode
  *  @return YES if sdk initialized or NO if not
  */
-+ (BOOL)isInitalized;
++ (BOOL)isInitalized __attribute__((deprecated("Use +isInitalizedForAdType: instead")));
 
+/*!
+ *  @discussion Get that SDK initialized
+ *  @discussion Use method after initialization!
+ *  @discussion Objective-C
+ *  @code [Appodeal isInitalizedForAdType:AppodealAdTypeInterstitial]; @endcode
+ *  @discussion Swift
+ *  @code isInitalizedForAdType(.Interstitial) @endcode
+ *  @param type Type you want to check on initialisation. 
+ *  @return YES if sdk initialized or NO if not. In this method used strict compare!
+ */
++ (BOOL)isInitalizedForAdType:(AppodealAdType)type;
 /*!
  *  Appodeal supports multiple log levels for internal logging,
  *  and ONLY one (VERBOSE) log level for third party ad networks.
@@ -160,7 +235,13 @@
  *  @code Appodeal.setPluginVersion("1.0.0") @endcode
  *  @param pluginVersion -  NSString value, default nil
  */
-+ (void)setPluginVersion:(NSString *)pluginVersion;
++ (void)setPluginVersion:(nonnull NSString *)pluginVersion;
+
+/**
+ *  @discussion Set custom extra data for sdk
+ *  @param extras NSDictionary with NSString key and JSON encodable object
+ */
++ (void)setExtras:(nullable NSDictionary <NSString *, id> *)extras;
 
 /*!
  *  @discussion Set interstitial delegate to get callbacks
@@ -171,7 +252,7 @@
  *  @code Appodeal.setInterstitialDelegate(self) @endcode
  *  @param interstitialDelegate Object that implement AppodealInterstitialDelegate protocol
  */
-+ (void)setInterstitialDelegate:(id<AppodealInterstitialDelegate>)interstitialDelegate;
++ (void)setInterstitialDelegate:(nullable id<AppodealInterstitialDelegate>)interstitialDelegate;
 
 /*!
  *  @discussion Set banner delegate to get callbacks
@@ -182,18 +263,7 @@
  *  @code Appodeal.setBannerDelegate(self) @endcode
  *  @param bannerDelegate Object that implements AppodealBannerDelegate protocol
  */
-+ (void)setBannerDelegate:(id<AppodealBannerDelegate>)bannerDelegate;
-
-/*!
- *  @discussion Set skippable video delegate to get callbacks
- *  @discussion Use method before or after initialization!
- *  @discussion Objective-C
- *  @code [Appodeal setSkippableVideoDelegate:self]; @endcode
- *  @discussion Swift
- *  @code Appodeal.setSkippableVideoDelegate(self) @endcode
- *  @param videoDelegate Object that implements AppodealSkippableVideoDelegate protocol
- */
-+ (void)setSkippableVideoDelegate:(id<AppodealSkippableVideoDelegate>)videoDelegate __attribute__((deprecated("use Interstitial")));
++ (void)setBannerDelegate:(nullable id<AppodealBannerDelegate>)bannerDelegate;
 
 /*!
  *  @discussion Set rewarded video delegate to get callbacks
@@ -204,7 +274,7 @@
  *  @code Appodeal.setRewardedVideoDelegate(self) @endcode
  *  @param rewardedVideoDelegate Object that implements AppodealRewardedVideoDelegate protocol
  */
-+ (void)setRewardedVideoDelegate:(id<AppodealRewardedVideoDelegate>)rewardedVideoDelegate;
++ (void)setRewardedVideoDelegate:(nullable id<AppodealRewardedVideoDelegate>)rewardedVideoDelegate;
 
 /*!
  *  @discussion Set non skippable video delegate to get callbacks
@@ -215,7 +285,7 @@
  *  @code Appodeal.setNonSkippableVideoDelegate(self) @endcode
  *  @param nonSkippableVideoDelegate Object that implements AppodealNonSkippableVideoDelegate protocol
  */
-+ (void)setNonSkippableVideoDelegate:(id<AppodealNonSkippableVideoDelegate>)nonSkippableVideoDelegate;
++ (void)setNonSkippableVideoDelegate:(nullable id<AppodealNonSkippableVideoDelegate>)nonSkippableVideoDelegate;
 
 /*!
  *  @discussion Set native ad delegate to get callbacks
@@ -226,10 +296,10 @@
  *  @code Appodeal.setNativeAdDelegate(self) @endcode
  *  @param nativeAdDelegate Object that implements AppodealNonSkippableVideoDelegate protocol
  */
-+ (void)setNativeAdDelegate:(id<AppodealNativeAdDelegate>)nativeAdDelegate;
++ (void)setNativeAdDelegate:(nullable id<AppodealNativeAdDelegate>)nativeAdDelegate;
 
 #ifdef ADVANCED_INTEGRATION
-+ (void)setRequestDelegate:(id<AppodealRequestDelegate>)requestDelegate;
++ (void)setRequestDelegate:(nullable id<AppodealRequestDelegate>)requestDelegate;
 #endif
 
 /*!
@@ -245,7 +315,7 @@
  *
  *  @return View that contains banner ad
  */
-+ (UIView *)banner;
++ (nullable UIView *)banner;
 
 /*!
  *  @discussion If an ad of this type is ready, the ad shows at once. But if not, an ad starts caching and shows after caching, if it has time to within 3 seconds.
@@ -261,7 +331,7 @@
  *
  *  @return YES if possible to show or NO if not
  */
-+ (BOOL)showAd:(AppodealShowStyle)style rootViewController:(UIViewController *)rootViewController;
++ (BOOL)showAd:(AppodealShowStyle)style rootViewController:(nonnull UIViewController *)rootViewController;
 
 /*!
  *  @discussion - @sa + (BOOL)showAd:(AppodealShowStyle)style rootViewController:(UIViewController *)rootViewController;
@@ -278,7 +348,7 @@
  *
  *  @return YES if possible to show or NO if not
  */
-+ (BOOL)showAd:(AppodealShowStyle)style forPlacement:(NSString *)placement rootViewController:(UIViewController *)rootViewController;
++ (BOOL)showAd:(AppodealShowStyle)style forPlacement:(nonnull NSString *)placement rootViewController:(nonnull UIViewController *)rootViewController;
 
 /*!
  @discussion Checker for ad is ready and can be shown by current placement
@@ -294,12 +364,28 @@
  *
  *  @return YES if possible to show or NO if not
  */
-+ (BOOL)canShowAd:(AppodealShowStyle)style forPlacement:(NSString *)placement;
++ (BOOL)canShowAd:(AppodealShowStyle)style forPlacement:(nonnull NSString *)placement __attribute__((deprecated("Method deprecated! Use canShow:forPlacement: with adType")));
+
+/*!
+ @discussion Checker for ad is ready and can be shown by current placement
+ *
+ *  @discussion Objective-C
+ *  @code [Appodeal canShow:AppodealAdTypeInterstitial forPlacement:MY_PLACEMENT]; @endcode
+ *
+ *  @discussion Swift
+ *  @code Appodeal.canShowAd(AppodealShowStyle.Interstitial, forPlacement:MY_PLACEMENT) @endcode
+ *
+ *  @param type               AppodealAdTypeInterstitial, AppodealAdTypeRewardedVideo, AppodealAdTypeBanner, etc
+ *  @param placement          String placement name from dashboard
+ *
+ *  @return YES if possible to show or NO if not
+ */
++ (BOOL)canShow:(AppodealAdType)type forPlacement:(nonnull NSString *)placement;
 
 /*!
  *  @discussion Return reward object currencyName as NSString, and amount as NSUInteger
  */
-+ (id<APDReward>)rewardForPlacement:(NSString *)placement;
++ (nonnull id<APDReward>)rewardForPlacement:(nonnull NSString *)placement;
 
 /*!
  *  @discussion Start caching an ad for type; if autocache is disabled,
@@ -315,22 +401,6 @@
  *  @param type AppodealAdTypeInterstitial, AppodealAdTypeBanner, AppodealAdTypeNativeAd, AppodealAdTypeRewardedVideo, AppodealAdTypeMREC, AppodealAdTypeNonSkippableVideo
  */
 + (void)cacheAd:(AppodealAdType)type;
-
-/*!
- *  @discussion Start caching ad for type if autocache is disabled
- *  start load for default placement
- *  @discussion Ad will not be shown after load
- *
- *  @discussion Objective-C
- *  @code [Appodeal cacheAd:AppodealAdTypeInterstitial forPlacement: @"YOUR_PLACEMENT"]; @endcode
- *
- *  @discussion Swift
- *  @code Appodeal.cacheAd(AppodealAdType.Interstitial, for: "YOUR_PLACEMENT") @endcode
- *
- *  @param type AppodealAdTypeInterstitial, AppodealAdTypeBanner, AppodealAdTypeNativeAd, AppodealAdTypeRewardedVideo, AppodealAdTypeMREC, AppodealAdTypeNonSkippableVideo
- *  @param placement String placement that you configure in Appodeal dashboard
- */
-+ (void)cacheAd:(AppodealAdType)type forPlacement:(NSString *)placement;
 
 /*!
  *  @discussion Hide banner if on screen
@@ -355,7 +425,7 @@
  *
  *  @param debugEnabled Bolean flag
  */
-+ (void)setDebugEnabled:(BOOL)debugEnabled;
++ (void)setDebugEnabled:(BOOL)debugEnabled __attribute__((deprecated("Method deprecated!")));
 
 /*!
  *  @discussion Enable testing mode.
@@ -372,31 +442,14 @@
  */
 + (void)setTestingEnabled:(BOOL)testingEnabled;
 
-
 /*!
- *  @discussion return current UUID for tracking/targeting ad
+ *  In-app purchase tracking.
+ *  Call this method after user makes an in-app purchase
  *
- *  @discussion Objective-C
- *  @code [Appodeal getUUID]; @endcode
- *
- *  @discussion Swift
- *  @code Appodeal.getUUID() @endcode
- *
+ *  @param amount   Amount of in-app purchase, for example @0.99
+ *  @param currency In-app purchase currency, for example @"USD"
  */
-+ (NSString *)getUUID;
-
-/*!
- *  @discussion Reset UUID for tracking/targeting ad
- *  @discussion Use method before initialization!
- *
- *  @discussion Objective-C
- *  @code [Appodeal resetUUID]; @endcode
- *
- *  @discussion Swift
- *  @code Appodeal.resetUUID() @endcode
- *
- */
-+ (void)resetUUID NS_UNAVAILABLE;
++ (void)trackInAppPurchase:(nonnull NSNumber *)amount currency:(nonnull NSString *)currency;
 
 /*!
  *  Get current SDK version
@@ -409,7 +462,7 @@
  *
  *  @return Current SDK version
  */
-+ (NSString *)getVersion;
++ (nonnull NSString *)getVersion;
 
 /*!
  *  @discussion Check that ad is ready to show
@@ -427,6 +480,21 @@
 + (BOOL)isReadyForShowWithStyle:(AppodealShowStyle)showStyle;
 
 /*!
+ *  @discussion Check that ad is precache ad or not
+ *
+ *  @discussion Objective-C
+ *  @code [Appodeal isPrecacheAd:AppodealAdTypeInterstitial]; @endcode
+ *
+ *  @discussion Swift
+ *  @code Appodeal.isPrecacheAd(.Interstitial) @endcode
+ *
+ *  @param adType one of supported ad type. Not pass mask that contains several types!
+ *
+ *  @return YES if loaded ad is precache or NO if ad not loaded or loaded simple ad
+ */
++ (BOOL)isPrecacheAd:(AppodealAdType)adType;
+
+/*!
  *  @discussion You can set custom rule by using this method.
  *  Configure rules for segments in <b>Appodeal Dashboard</b>.
  *  @discussion For example, you want to create a segment of users who complete 20 or more levels
@@ -436,13 +504,13 @@
  *  @discussion Objective-C
  *  @code
         NSDictionary * customRule = {@"completedLevels" : CURRENT_NUMBER_OF_COMPLETED_LEVELS};
-        [[APDSdk sharedSdk] setCustomRule: customRule];
+        [[APDSdk sharedSdk] setSegmentFilter: segmentFilter];
  *  @endcode
  *
  *  @discussion Swift
  *  @code
         let customRule = ["completedLevels" : CURRENT_NUMBER_OF_COMPLETED_LEVELS]
-        APDSdk .sharedSdk().setCustomRule(customRule)
+        APDSdk .sharedSdk().setSegmentFilter(segmentFilter)
  *  @endcode
  *
  *  Call this method any time you want, segments change dynamically
@@ -450,9 +518,9 @@
  *  @discussion And then CURRENT_NUMBER_OF_COMPLETED_LEVELS become 10 or greater
  *  Your segments settings become available
  *
- *  @param customRule NSDictionary instance with keys that are similar to keys that you turn on in Appodeal Dashboard's Segment settings block and values of similar types
+ *  @param segmentFilter NSDictionary instance with keys that are similar to keys that you turn on in Appodeal Dashboard's Segment settings block and values of similar types
  */
-+ (void)setCustomRule:(NSDictionary *)customRule;
++ (void)setSegmentFilter:(nonnull NSDictionary *)segmentFilter;
 
 /*!
  *  @discussion -
@@ -465,7 +533,7 @@
  *
  *  @param adTypes AppodealAdTypeInterstitial, AppodealAdTypeSkippableVideo, AppodealAdTypeBanner, AppodealAdTypeNativeAd, AppodealAdTypeRewardedVideo, AppodealAdTypeMREC, AppodealAdTypeNonSkippableVideo
  */
-+ (void)confirmUsage:(AppodealAdType)adTypes;
++ (void)confirmUsage:(AppodealAdType)adTypes __attribute__((deprecated("Method deprecated!")));
 
 /*!
  *  @discussion Autoresized banner support. Default set to YES;
@@ -509,6 +577,14 @@
  */
 + (void)setBannerAnimationEnabled:(BOOL)bannerAnimationEnabled;
 
+
+/**
+ *  @discussion Set native ad settings, where you can specify
+ *  type of native ad, ad view class for rendering, etc
+ *  @param settings Settings for native ad
+ */
++ (void)setNativeAdSettings:(nonnull APDNativeAdSettings *)settings;
+
 /*!
  *  @discussion Start loading native ads of count that
  *  you specified. If Appodeal SDK already contains ads,
@@ -526,13 +602,13 @@
  *  @param type Type of native ad. Identified in APDNativeAdType enum;
  *  @param capacity Desired count of stored in cache native ads. Maximum value is 11;
  */
-+ (void)loadNaitveAd:(APDNativeAdType)type capacity:(NSInteger)capacity;
++ (void)loadNaitveAd:(APDNativeAdType)type capacity:(NSInteger)capacity __attribute__((deprecated("Method deprecated! Use cacheAd: instead")));
 
 /*!
  *  @discussion Get current available ads
  *  @param count - Desired count of native ads. Real returned array count can be less that this parameter
  */
-+ (NSArray *)getNativeAdsOfCount:(NSInteger)count;
++ (nonnull NSArray *)getNativeAdsOfCount:(NSInteger)count;
 
 /*!
  *  @discussion Get current available ads count
@@ -543,16 +619,7 @@
  *  @discussion disable user data for adNetwork name
  *  @param networkName - adNetwork name as NSString @"NETWORK_NAME"
  */
-+ (void)disableUserData:(NSString *)networkName;
-/*!
- *  @discussion Enable memory monitoring for ad type. If current memory consumption is higher than required, all cachied ad objects will be released
- *  @warning loaded ad will return and not be shown
- *
- *  @param percentage Minimum percent of RAM free is from 1 to 100. If NSNotFound memory monitor is inactive
- *  @param type Type of ad to use
- */
-+ (void)setMinimumFreeMemoryPercentage:(NSUInteger)percentage
-                             forAdType:(AppodealAdType)type __attribute__((deprecated("Use -setMinimumFreeMemoryPercentage:observeSystemWarnings:forAdType: instead")));
++ (void)disableUserData:(nonnull NSString *)networkName __attribute__((deprecated("Method deprecated!")));
 
 /*!
  *  @discussion Enable memory monitoring for ad type. If current memory consumption is higher than required, all cachied ad objects will be released
@@ -573,6 +640,27 @@
  */
 + (void)setChildDirectedTreatment:(BOOL)childDirectedTreatment;
 
+/**
+ Pause all curent sdk work. All mediation task will invalidate asap and your get
+ callbacks on fail to load. If SDK currently has loaded ad - it will
+ be release and sdk fire expire events. Also autocache will be disabled.
+ Call this method to reduce RAM and CPU
+ usage in high load placec in your app.
+ */
++ (void)pause NS_UNAVAILABLE;
+    
+/**
+ Resume SDK work after pause. Autocache state turn back.
+ */
++ (void)resume NS_UNAVAILABLE;
+    
+/**
+ Release any loaded resiurces, that depended in sdk work.
+ @warning SDK work can recover only in next app session
+ */
++ (void)stop NS_UNAVAILABLE;
+
+    
 @end
 
 /*!
@@ -591,7 +679,7 @@
  *
  *  @param userId Set userId as string
  */
-+ (void)setUserId:(NSString *)userId;
++ (void)setUserId:(nonnull NSString *)userId;
 
 /*!
  *  @discussion User email setter
@@ -604,7 +692,7 @@
  *
  *  @param email Set userEmail as string
  */
-+ (void)setUserEmail:(NSString *)email;
++ (void)setUserEmail:(nonnull NSString *)email;
 
 /*!
  *  @discussion User birthday setter
@@ -617,7 +705,7 @@
  *
  *  @param birthday Set userBirthday as NSDate
  */
-+ (void)setUserBirthday:(NSDate *)birthday;
++ (void)setUserBirthday:(nonnull NSDate *)birthday;
 
 /*!
  *  @discussion User age setter
@@ -708,6 +796,6 @@
  *
  *  @param interests Set user interests as string
  */
-+ (void)setUserInterests:(NSString *)interests;
++ (void)setUserInterests:(nonnull NSString *)interests;
 
 @end
