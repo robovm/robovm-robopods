@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -54,6 +54,14 @@ import org.robovm.apple.storekit.*;
     public native String getTemplateID();
     @Property(selector = "availableAssetKeys")
     public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getAvailableAssetKeys();
+    @Property(selector = "videoController")
+    public native GADVideoController getVideoController();
+    @Property(selector = "mediaView")
+    public native GADMediaView getMediaView();
+    @Property(selector = "customClickHandler")
+    public native @Block VoidBlock1<String> getCustomClickHandler();
+    @Property(selector = "setCustomClickHandler:")
+    public native void setCustomClickHandler(@Block VoidBlock1<String> v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -61,9 +69,11 @@ import org.robovm.apple.storekit.*;
     public native GADNativeAdImage getImage(String key);
     @Method(selector = "stringForKey:")
     public native String getString(String key);
-    @Method(selector = "performClickOnAssetWithKey:customClickHandler:")
-    public native void performClickOnAsset(String assetKey, @Block Runnable customClickHandler);
+    @Method(selector = "performClickOnAssetWithKey:")
+    public native void performClickOnAssetWithKey(String assetKey);
     @Method(selector = "recordImpression")
     public native void recordImpression();
+    @Method(selector = "performClickOnAssetWithKey:customClickHandler:")
+    public native void performClickOnAsset(String assetKey, @Block Runnable customClickHandler);
     /*</methods>*/
 }

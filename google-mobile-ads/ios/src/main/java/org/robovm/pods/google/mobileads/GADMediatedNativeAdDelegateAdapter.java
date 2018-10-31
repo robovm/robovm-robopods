@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -34,7 +34,6 @@ import org.robovm.apple.storekit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/GADMediatedNativeAdDelegateAdapter/*</name>*/ 
@@ -52,13 +51,15 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @NotImplemented("mediatedNativeAd:didRenderInView:viewController:")
-    public void didRenderInView(GADMediatedNativeAd mediatedNativeAd, UIView view, UIViewController viewController) {}
+    @NotImplemented("mediatedNativeAd:didRenderInView:clickableAssetViews:nonclickableAssetViews:viewController:")
+    public void didRenderInView(GADMediatedNativeAd mediatedNativeAd, UIView view, NSDictionary<NSString, UIView> clickableAssetViews, NSDictionary<NSString, UIView> nonclickableAssetViews, UIViewController viewController) {}
     @NotImplemented("mediatedNativeAdDidRecordImpression:")
     public void didRecordImpression(GADMediatedNativeAd mediatedNativeAd) {}
     @NotImplemented("mediatedNativeAd:didRecordClickOnAssetWithName:view:viewController:")
     public void didRecordClickOnAsset(GADMediatedNativeAd mediatedNativeAd, String assetName, UIView view, UIViewController viewController) {}
     @NotImplemented("mediatedNativeAd:didUntrackView:")
     public void didUntrackView(GADMediatedNativeAd mediatedNativeAd, UIView view) {}
+    @NotImplemented("mediatedNativeAd:didRenderInView:viewController:")
+    public void didRenderInView(GADMediatedNativeAd mediatedNativeAd, UIView view, UIViewController viewController) {}
     /*</methods>*/
 }

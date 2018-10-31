@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -34,7 +34,6 @@ import org.robovm.apple.storekit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/GADMediatedNativeContentAdAdapter/*</name>*/ 
@@ -64,5 +63,11 @@ import org.robovm.apple.storekit.*;
     public String getCallToAction() { return null; }
     @NotImplemented("advertiser")
     public String getAdvertiser() { return null; }
+    @NotImplemented("adChoicesView")
+    public UIView adChoicesView() { return null; }
+    @NotImplemented("mediaView")
+    public UIView mediaView() { return null; }
+    @NotImplemented("hasVideoContent")
+    public boolean hasVideoContent() { return false; }
     /*</methods>*/
 }

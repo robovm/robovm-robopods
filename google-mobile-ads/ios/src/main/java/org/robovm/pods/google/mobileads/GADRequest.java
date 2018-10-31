@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -54,14 +54,6 @@ import org.robovm.apple.storekit.*;
     public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getTestDevices();
     @Property(selector = "setTestDevices:")
     public native void setTestDevices(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> v);
-    @Property(selector = "gender")
-    public native GADGender getGender();
-    @Property(selector = "setGender:")
-    public native void setGender(GADGender v);
-    @Property(selector = "birthday")
-    public native NSDate getBirthday();
-    @Property(selector = "setBirthday:")
-    public native void setBirthday(NSDate v);
     @Property(selector = "keywords")
     public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getKeywords();
     @Property(selector = "setKeywords:")
@@ -74,6 +66,14 @@ import org.robovm.apple.storekit.*;
     public native String getRequestAgent();
     @Property(selector = "setRequestAgent:")
     public native void setRequestAgent(String v);
+    @Property(selector = "gender")
+    public native GADGender getGender();
+    @Property(selector = "setGender:")
+    public native void setGender(GADGender v);
+    @Property(selector = "birthday")
+    public native NSDate getBirthday();
+    @Property(selector = "setBirthday:")
+    public native void setBirthday(NSDate v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

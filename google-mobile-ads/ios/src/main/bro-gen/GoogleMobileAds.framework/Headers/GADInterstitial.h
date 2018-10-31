@@ -34,10 +34,6 @@ GAD_ASSUME_NONNULL_BEGIN
 /// Optional delegate object that receives state change notifications from this GADInterstitalAd.
 @property(nonatomic, weak, GAD_NULLABLE) id<GADInterstitialDelegate> delegate;
 
-/// Optional delegate object that receives in-app purchase notifications from this ad. Required for
-/// the custom in-app purchase flow, but ignored when using the default in-app purchase flow.
-@property(nonatomic, weak, GAD_NULLABLE) id<GADInAppPurchaseDelegate> inAppPurchaseDelegate;
-
 #pragma mark Making an Ad Request
 
 /// Makes an interstitial ad request. Additional targeting options can be supplied with a request
@@ -60,8 +56,8 @@ GAD_ASSUME_NONNULL_BEGIN
 
 /// Returns the ad network class name that fetched the current ad. Returns nil while the latest ad
 /// request is in progress or if the latest ad request failed. For both standard and mediated Google
-/// AdMob ads, this method returns @"GADMAdapterGoogleAdMobAds". For ads fetched via mediation
-/// custom events, this method returns @"GADMAdapterCustomEvents".
+/// AdMob ads, this property returns @"GADMAdapterGoogleAdMobAds". For ads fetched via mediation
+/// custom events, this property returns @"GADMAdapterCustomEvents".
 @property(nonatomic, readonly, copy, GAD_NULLABLE) NSString *adNetworkClassName;
 
 /// Presents the interstitial ad which takes over the entire screen until the user dismisses it.
@@ -75,6 +71,10 @@ GAD_ASSUME_NONNULL_BEGIN
 - (void)presentFromRootViewController:(UIViewController *)rootViewController;
 
 #pragma mark Deprecated
+
+/// Deprecated delegate. GADInAppPurchase has been deprecated.
+@property(nonatomic, weak, GAD_NULLABLE)
+    id<GADInAppPurchaseDelegate> inAppPurchaseDelegate GAD_DEPRECATED_ATTRIBUTE;
 
 /// Deprecated intializer. Use initWithAdUnitID: instead.
 - (instancetype)init GAD_DEPRECATED_MSG_ATTRIBUTE("Use initWithAdUnitID:.");

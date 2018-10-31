@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -34,33 +34,33 @@ import org.robovm.apple.storekit.*;
 /*</imports>*/
 
 /*<javadoc>*/
+
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL)/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/GADError/*</name>*/ 
-    extends /*<extends>*/NSError/*</extends>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/GADAudioVideoManager/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    protected GADError(SkipInit skipInit) {
-        super(skipInit);
-    }
-    
-    /*<ptr>*/
-    /*</ptr>*/
-    /*<bind>*/static { Bro.bind(GADError.class); }/*</bind>*/
+    /*<ptr>*/public static class GADAudioVideoManagerPtr extends Ptr<GADAudioVideoManager, GADAudioVideoManagerPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(GADAudioVideoManager.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*//*</constructors>*/
-    /*<properties>*//*</properties>*/
+    /*<constructors>*/
+    public GADAudioVideoManager() {}
+    protected GADAudioVideoManager(Handle h, long handle) { super(h, handle); }
+    protected GADAudioVideoManager(SkipInit skipInit) { super(skipInit); }
+    /*</constructors>*/
+    /*<properties>*/
+    @Property(selector = "delegate")
+    public native GADAudioVideoManagerDelegate getDelegate();
+    @Property(selector = "setDelegate:", strongRef = true)
+    public native void setDelegate(GADAudioVideoManagerDelegate v);
+    @Property(selector = "audioSessionIsApplicationManaged")
+    public native boolean isAudioSessionIsApplicationManaged();
+    @Property(selector = "setAudioSessionIsApplicationManaged:")
+    public native void setAudioSessionIsApplicationManaged(boolean v);
+    /*</properties>*/
     /*<members>*//*</members>*/
-    @Override
-    public GADErrorCode getErrorCode() {
-        try {
-            return GADErrorCode.valueOf(getCode());
-        } catch (IllegalArgumentException e) {
-            return null;
-        }
-    }
     /*<methods>*/
-    @GlobalValue(symbol="kGADErrorDomain", optional=true)
-    public static native String getClassDomain();
+    
     /*</methods>*/
 }

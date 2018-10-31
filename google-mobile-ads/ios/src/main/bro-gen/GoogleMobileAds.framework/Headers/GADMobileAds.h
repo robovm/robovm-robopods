@@ -7,6 +7,12 @@
 
 #import <Foundation/Foundation.h>
 
+#import <GoogleMobileAds/GADAudioVideoManager.h>
+#import <GoogleMobileAds/GoogleMobileAdsDefines.h>
+
+GAD_ASSUME_NONNULL_BEGIN
+
+/// Google Mobile Ads SDK settings.
 @interface GADMobileAds : NSObject
 
 /// Returns the shared GADMobileAds instance.
@@ -36,6 +42,9 @@
 /// muting). Defaults to NO.
 @property(nonatomic, assign) BOOL applicationMuted;
 
+/// Manages the Google Mobile Ads SDK's audio and video settings.
+@property(nonatomic, readonly, strong) GADAudioVideoManager *audioVideoManager;
+
 /// Returns YES if the current SDK version is at least |major|.|minor|.|patch|. This method can be
 /// used by libraries that depend on a specific minimum version of the Google Mobile Ads SDK to warn
 /// developers if they have an incompatible version.
@@ -46,3 +55,5 @@
 - (BOOL)isSDKVersionAtLeastMajor:(NSInteger)major minor:(NSInteger)minor patch:(NSInteger)patch;
 
 @end
+
+GAD_ASSUME_NONNULL_END

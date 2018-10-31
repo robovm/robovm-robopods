@@ -54,6 +54,14 @@ import org.robovm.apple.storekit.*;
     public native boolean isStartMuted();
     @Property(selector = "setStartMuted:")
     public native void setStartMuted(boolean v);
+    @Property(selector = "customControlsRequested")
+    public native boolean isCustomControlsRequested();
+    @Property(selector = "setCustomControlsRequested:")
+    public native void setCustomControlsRequested(boolean v);
+    @Property(selector = "clickToExpandRequested")
+    public native boolean isClickToExpandRequested();
+    @Property(selector = "setClickToExpandRequested:")
+    public native void setClickToExpandRequested(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

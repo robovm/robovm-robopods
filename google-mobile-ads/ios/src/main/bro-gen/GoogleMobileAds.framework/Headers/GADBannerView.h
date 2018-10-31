@@ -20,19 +20,16 @@ GAD_ASSUME_NONNULL_BEGIN
 /// The view that displays banner ads. A minimum implementation to get an ad from within a
 /// UIViewController class is:
 ///
-///   \code
+///   <pre>
 ///   // Create and setup the ad view, specifying the size and origin at {0, 0}.
 ///   GADBannerView *adView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
 ///   adView.rootViewController = self;
 ///   adView.adUnitID = @"ID created when registering your app";
-///
 ///   // Place the ad view onto the screen.
 ///   [self.view addSubview:adView];
-///
 ///   // Request an ad without any additional targeting information.
 ///   [adView loadRequest:[GADRequest request]];
-///   \endcode
-///
+///   </pre>
 @interface GADBannerView : UIView
 
 #pragma mark Initialization
@@ -69,11 +66,6 @@ GAD_ASSUME_NONNULL_BEGIN
 /// Typically this is a UIViewController.
 @property(nonatomic, weak, GAD_NULLABLE) IBOutlet id<GADBannerViewDelegate> delegate;
 
-/// Optional delegate object that receives in-app purchase notifications from this ad. Required for
-/// the custom in-app purchase flow, but ignored when using the default in-app purchase flow.
-@property(nonatomic, weak, GAD_NULLABLE)
-    IBOutlet id<GADInAppPurchaseDelegate> inAppPurchaseDelegate;
-
 /// Optional delegate that is notified when creatives cause the banner to change size.
 @property(nonatomic, weak, GAD_NULLABLE) IBOutlet id<GADAdSizeDelegate> adSizeDelegate;
 
@@ -90,8 +82,8 @@ GAD_ASSUME_NONNULL_BEGIN
 
 /// The ad network class name that fetched the current ad. Returns nil while the latest ad request
 /// is in progress or if the latest ad request failed. For both standard and mediated Google AdMob
-/// ads, this method returns @"GADMAdapterGoogleAdMobAds". For ads fetched via mediation custom
-/// events, this method returns @"GADMAdapterCustomEvents".
+/// ads, this property returns @"GADMAdapterGoogleAdMobAds". For ads fetched via mediation custom
+/// events, this property returns @"GADMAdapterCustomEvents".
 @property(nonatomic, readonly, copy, GAD_NULLABLE) NSString *adNetworkClassName;
 
 #pragma mark Deprecated
@@ -99,6 +91,10 @@ GAD_ASSUME_NONNULL_BEGIN
 /// Indicates if the currently displayed ad (or most recent failure) was a result of auto refreshing
 /// as specified on server. This property is set to NO after each loadRequest: method.
 @property(nonatomic, readonly, assign) BOOL hasAutoRefreshed GAD_DEPRECATED_ATTRIBUTE;
+
+/// Deprecated delegate. GADInAppPurchase has been deprecated.
+@property(nonatomic, weak, GAD_NULLABLE)
+    IBOutlet id<GADInAppPurchaseDelegate> inAppPurchaseDelegate GAD_DEPRECATED_ATTRIBUTE;
 
 /// The mediated ad network's underlying ad view. You may use this property to read the ad's actual
 /// size and adjust this banner view's frame origin. However, modifying the banner view's frame size

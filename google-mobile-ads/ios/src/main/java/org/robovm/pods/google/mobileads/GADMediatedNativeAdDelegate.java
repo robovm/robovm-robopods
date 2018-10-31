@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -49,14 +49,16 @@ import org.robovm.apple.storekit.*;
     
     /*</properties>*/
     /*<methods>*/
-    @Method(selector = "mediatedNativeAd:didRenderInView:viewController:")
-    void didRenderInView(GADMediatedNativeAd mediatedNativeAd, UIView view, UIViewController viewController);
+    @Method(selector = "mediatedNativeAd:didRenderInView:clickableAssetViews:nonclickableAssetViews:viewController:")
+    void didRenderInView(GADMediatedNativeAd mediatedNativeAd, UIView view, NSDictionary<NSString, UIView> clickableAssetViews, NSDictionary<NSString, UIView> nonclickableAssetViews, UIViewController viewController);
     @Method(selector = "mediatedNativeAdDidRecordImpression:")
     void didRecordImpression(GADMediatedNativeAd mediatedNativeAd);
     @Method(selector = "mediatedNativeAd:didRecordClickOnAssetWithName:view:viewController:")
     void didRecordClickOnAsset(GADMediatedNativeAd mediatedNativeAd, String assetName, UIView view, UIViewController viewController);
     @Method(selector = "mediatedNativeAd:didUntrackView:")
     void didUntrackView(GADMediatedNativeAd mediatedNativeAd, UIView view);
+    @Method(selector = "mediatedNativeAd:didRenderInView:viewController:")
+    void didRenderInView(GADMediatedNativeAd mediatedNativeAd, UIView view, UIViewController viewController);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

@@ -49,8 +49,16 @@ import org.robovm.apple.storekit.*;
     
     /*</properties>*/
     /*<methods>*/
+    @Method(selector = "videoControllerDidPlayVideo:")
+    void videoControllerDidPlayVideo(GADVideoController videoController);
+    @Method(selector = "videoControllerDidPauseVideo:")
+    void videoControllerDidPauseVideo(GADVideoController videoController);
     @Method(selector = "videoControllerDidEndVideoPlayback:")
     void didEndVideoPlayback(GADVideoController videoController);
+    @Method(selector = "videoControllerDidMuteVideo:")
+    void videoControllerDidMuteVideo(GADVideoController videoController);
+    @Method(selector = "videoControllerDidUnmuteVideo:")
+    void videoControllerDidUnmuteVideo(GADVideoController videoController);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

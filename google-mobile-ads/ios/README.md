@@ -111,7 +111,6 @@ You can specify various user information for better ad targeting and enable test
 GADRequest request = new GADRequest();
 // Display test ads on the simulator.
 request.setTestDevices(Arrays.asList(GADRequest.getSimulatorID()));
-request.setGender(GADGender.Male);
 
 ...
 ```

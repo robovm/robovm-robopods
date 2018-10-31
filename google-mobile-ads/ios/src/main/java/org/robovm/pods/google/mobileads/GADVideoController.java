@@ -57,9 +57,19 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "setMute:")
+    public native void setMute(boolean mute);
+    @Method(selector = "play")
+    public native void play();
+    @Method(selector = "pause")
+    public native void pause();
     @Method(selector = "hasVideoContent")
     public native boolean hasVideoContent();
     @Method(selector = "aspectRatio")
     public native double getAspectRatio();
+    @Method(selector = "customControlsEnabled")
+    public native boolean customControlsEnabled();
+    @Method(selector = "clickToExpandEnabled")
+    public native boolean clickToExpandEnabled();
     /*</methods>*/
 }

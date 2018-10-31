@@ -6,16 +6,16 @@ headers: [GoogleMobileAds.h]
 typedefs:
     
 enums:
-    GADInAppPurchaseStatus: {}
-    GADNativeAdImageAdLoaderOptionsOrientation: {}
+    GADAdChoicesPosition: {}
+    GADErrorCode: {nserror: true, prefix: kGADError}
     GADGender: {}
-    GADErrorCode: {}
+    GADInAppPurchaseStatus: {}
+    GADMBannerAnimationType: {prefix: kGADMBannerAnimationType}
+    GADNativeAdImageAdLoaderOptionsOrientation: {}
     GADSearchBorderType: {}
     GADSearchCallButtonColor: {}
         
 classes:
-    GADError: # DONE
-        extends: NSError
 
     DFPBannerView: # DONE
         properties:
@@ -31,6 +31,7 @@ classes:
                 exclude: true # deprecated
             '-resize:':
                 trim_after_first_colon: true
+    DFPBannerViewOptions: {}
     DFPCustomRenderedAd: # DONE
         methods:
             '-finishedRenderingAdView:':
@@ -44,6 +45,7 @@ classes:
         methods:
             '+updateCorrelator':
                 exclude: true # deprecated
+    GADAdChoicesView: {}
     GADAdLoader: # DONE
         methods:
             '-initWithAdUnitID:rootViewController:adTypes:options:':
@@ -62,6 +64,7 @@ classes:
             '-initWithRewardType:rewardAmount:':
                 name: init
     GADAdSize: {} # DONE
+    GADAudioVideoManager: {}
     GADBannerView: # DONE
         properties:
             '(hasAutoRefreshed|mediatedAdView)':
@@ -89,6 +92,12 @@ classes:
             'userKeywords':
                 type: List<String>
                 marshaler: NSArray.AsStringListMarshaler
+    GADDebugOptionsViewController: {}
+    GADDynamicHeightSearchRequest:
+        methods:
+            '-setAdvancedOptionValue:forKey:':
+                #trim_after_first_colon: true
+                name: setAdvancedOption
     GADExtras: {} # DONE
     GADDefaultInAppPurchase: # DONE
         methods:
@@ -125,6 +134,7 @@ classes:
                 name: didDismissScreen
             '+mediatedNativeAdWillLeaveApplication:':
                 name: willLeaveApplication
+    GADMediatedUnifiedNativeAdNotificationSource: {}
     GADMediaView: {} # DONE
     GADMobileAds: # DONE
         methods:
@@ -134,7 +144,9 @@ classes:
                 name: isSDKVersionAtLeast
             '+configureWithApplicationID:':
                 name: configure
+    GADMultipleAdsAdLoaderOptions: {}
     GADNativeAd: {} # DONE
+    GADNativeAdViewAdOptions: {}
     GADNativeAdImage: # DONE
         methods:
             '-init.*':
@@ -147,8 +159,24 @@ classes:
         properties:
             'images':
                 type: NSArray<GADNativeAdImage>
+        methods:
+            '-registerAdView:assetViews:':
+                #trim_after_first_colon: true
+                name: registerAdView
+            '-registerAdView:clickableAssetViews:nonclickableAssetViews:':
+                #trim_after_first_colon: true
+                name: registerAdView
+
     GADNativeAppInstallAdView: {} # DONE
     GADNativeContentAd: # DONE
+        methods:
+            '-registerAdView:assetViews:':
+                #trim_after_first_colon: true
+                name: registerAdView
+            '-registerAdView:clickableAssetViews:nonclickableAssetViews:':
+                #trim_after_first_colon: true
+                name: registerAdView
+        
         properties:
             'images':
                 type: NSArray<GADNativeAdImage>
@@ -165,6 +193,11 @@ classes:
                 name: getString
             '-performClickOnAssetWithKey:customClickHandler:':
                 name: performClickOnAsset
+    GADNativeExpressAdView:
+        methods:
+            '-initWithAdSize:origin:':
+                #trim_after_first_colon: true
+                name: init
     GADRewardBasedVideoAd: # DONE
         methods:
             '-loadRequest:withAdUnitID:':
@@ -212,6 +245,12 @@ classes:
         methods:
             '-setBackgroundGradientFrom:toColor:':
                 name: setBackgroundGradient
+    GADUnifiedNativeAd:
+        methods:
+            '-registerAdView:clickableAssetViews:nonclickableAssetViews:':
+                #trim_after_first_colon: true
+                name: registerAdView
+    GADUnifiedNativeAdView: {}
     GADVideoController: # DONE
         methods:
             '-aspectRatio':
@@ -219,6 +258,12 @@ classes:
     GADVideoOptions: {} # DONE
 
 protocols:
+    DFPBannerAdLoaderDelegate:
+        methods:
+            '-adLoader:didReceiveDFPBannerView:':
+                #trim_after_first_colon: true
+                name: didReceive
+
     DFPCustomRenderedBannerViewDelegate: # DONE
         methods:
             '-bannerView:didReceiveCustomRenderedAd:':
@@ -227,10 +272,6 @@ protocols:
         methods:
             '-interstitial:didReceiveCustomRenderedAd:':
                 name: didReceiveCustomRenderedAd
-    GADAdDelegate: # DONE
-        methods:
-            '-ad:shouldChangeAudioSessionToCategory:':
-                name: shouldChangeAudioSessionToCategory
     GADAdLoaderDelegate: # DONE
         methods:
             '-adLoader:didFailToReceiveAdWithError:':
@@ -246,6 +287,7 @@ protocols:
                 name: didReceiveBannerAppEvent
             '-interstitial:didReceiveAppEvent:withInfo:':
                 name: didReceiveInterstitialAppEvent
+    GADAudioVideoManagerDelegate: {}
     GADBannerViewDelegate: # DONE
         methods:
             '-adViewDidReceiveAd:':
@@ -316,10 +358,14 @@ protocols:
                         marshaler: GADAdLoaderAdType.AsListMarshaler
     GADCustomEventNativeAdDelegate: # DONE
         methods:
+            '-customEventNativeAd:didReceiveMediatedUnifiedNativeAd:':
+                #trim_after_first_colon: true
+                name: didReceiveMediatedUnifiedNativeAd
             '-customEventNativeAd:didReceiveMediatedNativeAd:':
                 name: didReceiveMediatedNativeAd
             '-customEventNativeAd:didFailToLoadWithError:':
                 name: didFailToLoad
+    GADDebugOptionsViewControllerDelegate: {}
     GADDefaultInAppPurchaseDelegate: # DONE
         methods:
             '-userDidPayForPurchase:':
@@ -346,6 +392,34 @@ protocols:
                 name: willLeaveApplication
             '-interstitialDidFailToPresentScreen:':
                 name: didFailToPresentScreen
+    GADMAdNetworkAdapter:
+        methods:
+            '-getNativeAdWithAdTypes:options:':
+                #trim_after_first_colon: true
+                name: getNativeAd
+    GADMAdNetworkConnector:
+        methods:
+            '-adapter:didFailAd:':
+                #trim_after_first_colon: true
+                name: didFailAd
+            '-adapter:didReceiveAdView:':
+                #trim_after_first_colon: true
+                name: didReceiveAdView
+            '-adapter:didReceiveMediatedNativeAd:':
+                #trim_after_first_colon: true
+                name: didReceiveMediatedNativeAd
+            '-adapter:didReceiveMediatedUnifiedNativeAd:':
+                #trim_after_first_colon: true
+                name: didReceiveMediatedUnifiedNativeAd
+            '-adapter:didReceiveInterstitial:':
+                #trim_after_first_colon: true
+                name: didReceiveInterstitial
+            '-adapter:clickDidOccurInBanner:':
+                #trim_after_first_colon: true
+                name: clickDidOccurInBanner
+            '-adapter:didFailInterstitial:':
+                #trim_after_first_colon: true
+                name: didFailInterstitial
     GADMediatedNativeAd: # DONE
         methods:
             '-mediatedNativeAdDelegate':
@@ -355,6 +429,9 @@ protocols:
     GADMediatedNativeAdDelegate: # DONE
         methods:
             '-mediatedNativeAd:didRenderInView:viewController:':
+                name: didRenderInView
+            '-mediatedNativeAd:didRenderInView:clickableAssetViews:nonclickableAssetViews:viewController:':
+                #trim_after_first_colon: true
                 name: didRenderInView
             '-mediatedNativeAdDidRecordImpression:':
                 name: didRecordImpression
@@ -376,6 +453,31 @@ protocols:
             '-images':
                 property: true
                 return_type: NSArray<GADNativeAdImage>
+    GADMediatedUnifiedNativeAd:
+        methods:
+            '-didRenderInView:clickableAssetViews:nonclickableAssetViews:viewController:':
+                #trim_after_first_colon: true
+                name: didRenderInView
+            '-didRecordClickOnAssetWithName:view:viewController:':
+                #trim_after_first_colon: true
+                name: didRecordClickOnAsset
+    GADMediationAdRequest: {}
+    GADMRewardBasedVideoAdNetworkAdapter:
+        methods:
+            '-initWithRewardBasedVideoAdNetworkConnector:credentials:':
+                #trim_after_first_colon: true
+                name: init
+    GADMRewardBasedVideoAdNetworkConnector:
+        methods:
+            '-adapter:didFailToSetUpRewardBasedVideoAdWithError:':
+                #trim_after_first_colon: true
+                name: didFailToSetUpRewardBasedVideoAd
+            '-adapter:didRewardUserWithReward:':
+                #trim_after_first_colon: true
+                name: adidRewardUser
+            '-adapter:didFailToLoadRewardBasedVideoAdwithError:':
+                #trim_after_first_colon: true
+                name: didFailToLoadRewardBasedVideoAd
     GADNativeAdDelegate: # DONE
         methods:
             '-nativeAdWillPresentScreen:':
@@ -402,6 +504,11 @@ protocols:
                 return_marshaler: NSArray.AsStringListMarshaler
             '-adLoader:didReceiveNativeCustomTemplateAd:':
                 name: didReceiveNativeCustomTemplateAd
+    GADNativeExpressAdViewDelegate:
+        methods:
+            '-nativeExpressAdView:didFailToReceiveAdWithError:':
+                #trim_after_first_colon: true
+                name: didFailToReceiveAd
     GADRewardBasedVideoAdDelegate: # DONE
         methods:
             '-rewardBasedVideoAdDidReceiveAd:':
@@ -418,6 +525,17 @@ protocols:
                 name: didRewardUser
             '-rewardBasedVideoAd:didFailToLoadWithError:':
                 name: didFailToLoad
+    GADUnifiedNativeAdDelegate: {}
+    GADUnifiedNativeAdLoaderDelegate:
+        methods:
+            '-adLoader:didReceiveUnifiedNativeAd:':
+                #trim_after_first_colon: true
+                name: didReceiveUnifiedNativeAd
+    GADUnifiedNativeAdUnconfirmedClickDelegate:
+        methods:
+            '-nativeAd:didReceiveUnconfirmedClickOnAssetID:':
+                #trim_after_first_colon: true
+                name: didReceiveUnconfirmedClick
     GADVideoControllerDelegate: # DONE
         methods:
             '-videoControllerDidEndVideoPlayback:':
@@ -459,16 +577,16 @@ functions:
         visibility: protected
 
     # Make sure we don't miss any functions if new ones are introduced in a later version
-    (k?GAD.*):
-        class: GoogleMobileAds
+    (GAD.*):
+        class: FIXME
         name: 'Function__#{g[0]}'
-    (k?DFP.*):
-        class: GoogleMobileAds
+    (DFP.*):
+        class: FIXME
         name: 'Function__#{g[0]}'
 
 values:
     kGADErrorDomain:
-        class: GADError
+        class: GADErrorCode
         name: getClassDomain
 
     # DFPRequest
@@ -493,22 +611,47 @@ values:
         class: GADRequest
         name: 'get#{g[0]}'
         type: String
+
+    # GADNativeContentAdAssetID
+    GADNativeContent(.*)Asset:
+        enum: GADNativeContentAdAssetID
+        name: '#{g[0]}'
+        type: NSString
+
+    # GADNativeAppInstallAssetID
+    GADNativeAppInstall(.*)Asset:
+        enum: GADNativeAppInstallAssetID
+        name: '#{g[0]}'
+        type: NSString
+
+    # GADUnifiedNativeAssetIdentifier
+    GADUnifiedNative(.*)Asset:
+        enum: GADUnifiedNativeAssetIdentifier
+        name: '#{g[0]}'
+        type: NSString
         
     GADCustomEventParametersServer: 
 
+    GADNativeCustomTemplateAdMediaViewKey:
+
     # Make sure we don't miss any values if new ones are introduced in a later version
     (k?GAD.*):
-        class: GoogleMobileAds
+        class: FIXME
         name: 'Value__#{g[0]}'
     (k?DFP.*):
-        class: GoogleMobileAds
+        class: FIXME
         name: 'Value__#{g[0]}'
 
 constants:
+
+    kGADMAdapterClassNamePrefix:
+        class: GADMAdNetworkAdapter
+        name: 'GADMAdapterClassNamePrefix'
+
     # Make sure we don't miss any constants if new ones are introduced in a later version
     (k?GAD.*):
-        class: GoogleMobileAds
+        class: FIXME
         name: 'Constant__#{g[0]}'
     (k?DFP.*):
-        class: GoogleMobileAds
+        class: FIXME
         name: 'Constant__#{g[0]}'

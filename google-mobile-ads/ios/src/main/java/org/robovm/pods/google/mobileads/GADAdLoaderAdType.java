@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -93,9 +93,11 @@ import org.robovm.apple.storekit.*;
     public static final GADAdLoaderAdType NativeAppInstall = new GADAdLoaderAdType("NativeAppInstall");
     public static final GADAdLoaderAdType NativeContent = new GADAdLoaderAdType("NativeContent");
     public static final GADAdLoaderAdType NativeCustomTemplate = new GADAdLoaderAdType("NativeCustomTemplate");
+    public static final GADAdLoaderAdType DFPBanner = new GADAdLoaderAdType("DFPBanner");
+    public static final GADAdLoaderAdType UnifiedNative = new GADAdLoaderAdType("UnifiedNative");
     /*</constants>*/
     
-    private static /*<name>*/GADAdLoaderAdType/*</name>*/[] values = new /*<name>*/GADAdLoaderAdType/*</name>*/[] {/*<value_list>*/NativeAppInstall, NativeContent, NativeCustomTemplate/*</value_list>*/};
+    private static /*<name>*/GADAdLoaderAdType/*</name>*/[] values = new /*<name>*/GADAdLoaderAdType/*</name>*/[] {/*<value_list>*/NativeAppInstall, NativeContent, NativeCustomTemplate, DFPBanner, UnifiedNative/*</value_list>*/};
     
     /*<name>*/GADAdLoaderAdType/*</name>*/ (String getterName) {
         super(Values.class, getterName);
@@ -124,6 +126,10 @@ import org.robovm.apple.storekit.*;
         public static native NSString NativeContent();
         @GlobalValue(symbol="kGADAdLoaderAdTypeNativeCustomTemplate", optional=true)
         public static native NSString NativeCustomTemplate();
+        @GlobalValue(symbol="kGADAdLoaderAdTypeDFPBanner", optional=true)
+        public static native NSString DFPBanner();
+        @GlobalValue(symbol="kGADAdLoaderAdTypeUnifiedNative", optional=true)
+        public static native NSString UnifiedNative();
         /*</values>*/
     }
 }
