@@ -1,0 +1,28 @@
+<config>
+    <libs>
+        <lib>z</lib>
+        <lib>xml2</lib>
+    </libs>    
+    <frameworks>        
+        <framework>IronSource</framework>
+        
+        <framework>AdSupport</framework>
+        <framework>CoreGraphics</framework>
+        <framework>CoreLocation</framework>
+        <framework>CoreTelephony</framework>
+        <framework>MediaPlayer</framework>
+        <framework>MessageUI</framework>
+        <framework>MobileCoreServices</framework>
+        <framework>QuartzCore</framework>
+        <framework>Security</framework>
+        <framework>StoreKit</framework>
+        <framework>SystemConfiguration</framework>
+        <framework>AVFoundation</framework>
+        <framework>CoreMedia</framework>
+        <framework>CFNetwork</framework>
+        <framework>CoreVideo</framework>
+        <framework>Foundation</framework>
+        <framework>WebKit</framework>
+        <framework>AudioToolbox</framework>
+    </frameworks>
+</config>

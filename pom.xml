@@ -190,6 +190,7 @@
         <module>google-play-games</module>
         <module>google-signin</module>
         <module>heyzap</module>
+        <module>ironsource</module>
         <module>parse</module>
         <module>reachability</module>
     </modules>
