@@ -52,7 +52,7 @@ import org.robovm.apple.foundation.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "logEventWithName:parameters:")
-    public static native void logEventWithName(String name, NSDictionary<?, ?> parameters);
+    public static native void logEventWithName(String name, NSDictionary<NSString, ?> parameters);
     @Method(selector = "setUserPropertyString:forName:")
     public static native void setUserPropertyString(String value, String name);
     @Method(selector = "setUserID:")
@@ -61,5 +61,7 @@ import org.robovm.apple.foundation.*;
     public static native void setScreenName(String screenName, String screenClassOverride);
     @Method(selector = "appInstanceID")
     public static native String appInstanceID();
+    @Method(selector = "resetAnalyticsData")
+    public static native void resetAnalyticsData();
     /*</methods>*/
 }

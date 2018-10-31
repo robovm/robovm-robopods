@@ -48,14 +48,12 @@ import org.robovm.apple.foundation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @NotImplemented("messaging:didRefreshRegistrationToken:")
-    public void didRefreshRegistrationToken(FIRMessaging messaging, String fcmToken) {}
+    @NotImplemented("messaging:didReceiveRegistrationToken:")
+    public void didReceiveRegistrationToken(FIRMessaging messaging, String fcmToken) {}
     /**
      * @since Available in iOS 10.0 and later.
      */
     @NotImplemented("messaging:didReceiveMessage:")
     public void didReceiveMessage(FIRMessaging messaging, FIRMessagingRemoteMessage remoteMessage) {}
-    @NotImplemented("applicationReceivedRemoteMessage:")
-    public void applicationReceivedRemoteMessage(FIRMessagingRemoteMessage remoteMessage) {}
     /*</methods>*/
 }

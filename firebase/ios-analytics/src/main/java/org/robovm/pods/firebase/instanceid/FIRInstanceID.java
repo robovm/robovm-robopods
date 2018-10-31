@@ -51,8 +51,8 @@ import org.robovm.apple.foundation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "setAPNSToken:type:")
-    public native void setAPNSToken(NSData token, FIRInstanceIDAPNSTokenType type);
+    @Method(selector = "instanceIDWithHandler:")
+    public native void instanceIDWithHandler(@Block VoidBlock2<FIRInstanceIDResult, NSError> handler);
     @Method(selector = "token")
     public native String token();
     @Method(selector = "tokenWithAuthorizedEntity:scope:options:handler:")

@@ -45,8 +45,6 @@ import org.robovm.apple.foundation.*;
     public FIROptions() {}
     protected FIROptions(Handle h, long handle) { super(h, handle); }
     protected FIROptions(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithGoogleAppID:bundleID:GCMSenderID:APIKey:clientID:trackingID:androidClientID:databaseURL:storageBucket:deepLinkURLScheme:")
-    public FIROptions(String googleAppID, String bundleID, String GCMSenderID, String APIKey, String clientID, String trackingID, String androidClientID, String databaseURL, String storageBucket, String deepLinkURLScheme) { super((SkipInit) null); initObject(initWithGoogleAppID(googleAppID, bundleID, GCMSenderID, APIKey, clientID, trackingID, androidClientID, databaseURL, storageBucket, deepLinkURLScheme)); }
     @Method(selector = "initWithContentsOfFile:")
     public FIROptions(String plistPath) { super((SkipInit) null); initObject(initWithContentsOfFile(plistPath)); }
     @Method(selector = "initWithGoogleAppID:GCMSenderID:")
@@ -100,8 +98,6 @@ import org.robovm.apple.foundation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithGoogleAppID:bundleID:GCMSenderID:APIKey:clientID:trackingID:androidClientID:databaseURL:storageBucket:deepLinkURLScheme:")
-    protected native @Pointer long initWithGoogleAppID(String googleAppID, String bundleID, String GCMSenderID, String APIKey, String clientID, String trackingID, String androidClientID, String databaseURL, String storageBucket, String deepLinkURLScheme);
     @Method(selector = "initWithContentsOfFile:")
     protected native @Pointer long initWithContentsOfFile(String plistPath);
     @Method(selector = "initWithGoogleAppID:GCMSenderID:")

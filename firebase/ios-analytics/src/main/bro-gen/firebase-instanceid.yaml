@@ -13,3 +13,4 @@ classes:
         methods:
             '.+':
                 trim_after_first_colon: true
+    FIRInstanceIDResult: {}

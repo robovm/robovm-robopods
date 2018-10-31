@@ -2,19 +2,20 @@
     <libs>
         <lib>sqlite3</lib>
         <lib>z</lib>
-        <lib>c++</lib>
     </libs>
     <frameworks>
+	    <framework>FIRAnalyticsConnector</framework>
         <framework>FirebaseAnalytics</framework>
         <framework>FirebaseCore</framework>
         <framework>FirebaseCoreDiagnostics</framework>
-        <framework>FirebaseInstanceID</framework>
-        <framework>FirebaseNanoPB</framework>
-        <framework>GoogleToolboxForMac</framework>
+        <framework>GoogleAppMeasurement</framework>
+        <framework>GoogleUtilities</framework>
         <framework>nanopb</framework>
 
+		<framework>Security</framework>
         <framework>StoreKit</framework>
         <framework>SystemConfiguration</framework>
+		<framework>UIKit</framework>
     </frameworks>
     <exportedSymbols>
         <symbol>FIR*</symbol>

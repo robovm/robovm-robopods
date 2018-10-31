@@ -47,10 +47,16 @@ import org.robovm.apple.foundation.*;
     protected FIRApp(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
+    @Property(selector = "allApps")
+    public static native NSDictionary<NSString, FIRApp> getAllApps();
     @Property(selector = "name")
     public native String getName();
     @Property(selector = "options")
     public native FIROptions getOptions();
+    @Property(selector = "isDataCollectionDefaultEnabled")
+    public native boolean isDataCollectionDefaultEnabled();
+    @Property(selector = "setDataCollectionDefaultEnabled:")
+    public native void setDataCollectionDefaultEnabled(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -66,7 +72,5 @@ import org.robovm.apple.foundation.*;
     public static native FIRApp defaultApp();
     @Method(selector = "appNamed:")
     public static native FIRApp app(String name);
-    @Method(selector = "allApps")
-    public static native NSDictionary<?, ?> allApps();
     /*</methods>*/
 }

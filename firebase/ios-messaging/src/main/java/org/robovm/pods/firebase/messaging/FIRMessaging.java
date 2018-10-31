@@ -51,20 +51,24 @@ import org.robovm.apple.foundation.*;
     public native FIRMessagingDelegate getDelegate();
     @Property(selector = "setDelegate:", strongRef = true)
     public native void setDelegate(FIRMessagingDelegate v);
-    @Property(selector = "remoteMessageDelegate")
-    public native FIRMessagingDelegate getRemoteMessageDelegate();
-    @Property(selector = "setRemoteMessageDelegate:", strongRef = true)
-    public native void setRemoteMessageDelegate(FIRMessagingDelegate v);
     @Property(selector = "shouldEstablishDirectChannel")
     public native boolean shouldEstablishDirectChannel();
     @Property(selector = "setShouldEstablishDirectChannel:")
     public native void setShouldEstablishDirectChannel(boolean v);
     @Property(selector = "isDirectChannelEstablished")
     public native boolean isDirectChannelEstablished();
+    @Property(selector = "useMessagingDelegateForDirectChannel")
+    public native boolean isUseMessagingDelegateForDirectChannel();
+    @Property(selector = "setUseMessagingDelegateForDirectChannel:")
+    public native void setUseMessagingDelegateForDirectChannel(boolean v);
     @Property(selector = "APNSToken")
     public native NSData getAPNSToken();
     @Property(selector = "setAPNSToken:")
     public native void setAPNSToken(NSData v);
+    @Property(selector = "isAutoInitEnabled")
+    public native boolean isAutoInitEnabled();
+    @Property(selector = "setAutoInitEnabled:")
+    public native void setAutoInitEnabled(boolean v);
     @Property(selector = "FCMToken")
     public native String getFCMToken();
     /*</properties>*/
@@ -82,8 +86,12 @@ import org.robovm.apple.foundation.*;
     public native void disconnect();
     @Method(selector = "subscribeToTopic:")
     public native void subscribeToTopic(String topic);
+    @Method(selector = "subscribeToTopic:completion:")
+    public native void subscribeToTopic(String topic, @Block VoidBlock1<NSError> completion);
     @Method(selector = "unsubscribeFromTopic:")
     public native void unsubscribeFromTopic(String topic);
+    @Method(selector = "unsubscribeFromTopic:completion:")
+    public native void unsubscribeFromTopic(String topic, @Block VoidBlock1<NSError> completion);
     @Method(selector = "sendMessage:to:withMessageID:timeToLive:")
     public native void sendMessage(NSDictionary<?, ?> message, String receiver, String messageID, long ttl);
     @Method(selector = "appDidReceiveMessage:")

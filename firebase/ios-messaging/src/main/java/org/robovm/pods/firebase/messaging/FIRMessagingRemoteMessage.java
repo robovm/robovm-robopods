@@ -47,6 +47,8 @@ import org.robovm.apple.foundation.*;
     protected FIRMessagingRemoteMessage(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
+    @Property(selector = "messageID")
+    public native String getMessageID();
     @Property(selector = "appData")
     public native NSDictionary<?, ?> getAppData();
     /*</properties>*/
