@@ -16,7 +16,6 @@
 @property (nonatomic, strong)   NSString            *appKey;
 @property (nonatomic, strong)   NSString            *mediationSegment;
 @property (nonatomic, strong)   NSString            *segmentId;
-@property (nonatomic, strong)   NSString            *connectionType;
 @property (nonatomic, strong)   NSDictionary        *customSegmentParams;
 @property (nonatomic, strong)   ISSegment           *segment;
 @property (nonatomic, strong)   NSDictionary        *rewardedVideoCustomParameters;
@@ -38,7 +37,8 @@
 @property (nonatomic, strong)   NSString            *categorizeType;
 @property (nonatomic, strong)   NSDictionary        *rvServerParams;
 @property (nonatomic, assign)   NSInteger           consent;
-
+@property (nonatomic, strong)   NSDictionary        *batchGenricParams;
+@property (nonatomic, strong)   NSDictionary        *eventGenricParams;
 
 /*!
  @deprecated This method has been deprecated and will be removed in a future version

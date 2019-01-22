@@ -12,13 +12,14 @@
 
 @interface ISProductSettings : NSObject
 
-@property (readonly, strong) NSArray         *placements;
-@property (readonly, assign) NSUInteger      maxNumOfAdaptersToLoadOnStart;
-@property (readonly, assign) double          adapterTimeOutInSeconds;
-@property (readonly, strong) NSString        *algo;
-@property (nonatomic, copy)  NSString        *backFillProviderName;
-@property (nonatomic, copy)  NSString        *premiumProviderName;
-@property (assign)          NSInteger        bannerInterval;
+@property (readonly, strong)    NSArray         *placements;
+@property (readonly, assign)    NSUInteger      maxNumOfAdaptersToLoadOnStart;
+@property (readonly, assign)    double          adapterTimeOutInSeconds;
+@property (readonly, strong)    NSString        *algo;
+@property (nonatomic, copy)     NSString        *backFillProviderName;
+@property (nonatomic, copy)     NSString        *premiumProviderName;
+@property (assign)              NSInteger       bannerInterval;
+@property (assign)              NSInteger       loadRVInterval;
 
 - (instancetype)initWithplacements:(NSArray *)placements
      maxNumOfAdaptersToLoadOnStart:(NSUInteger)maxAdapters

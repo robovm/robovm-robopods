@@ -29,6 +29,7 @@ import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -52,7 +53,7 @@ import org.robovm.apple.uikit.*;
     @NotImplemented("bannerDidLoad:")
     public void bannerDidLoad(ISBannerView bannerView) {}
     @NotImplemented("bannerDidFailToLoadWithError:")
-    public void bannerDidFailToLoadWithError(NSError error) {}
+    public void bannerDidFailToLoad(NSError error) {}
     @NotImplemented("didClickBanner")
     public void didClickBanner() {}
     @NotImplemented("bannerWillPresentScreen")

@@ -29,6 +29,7 @@ import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -54,7 +55,7 @@ import org.robovm.apple.uikit.*;
     @NotImplemented("didReceiveRewardForPlacement:")
     public void didReceiveRewardForPlacement(ISPlacementInfo placementInfo) {}
     @NotImplemented("rewardedVideoDidFailToShowWithError:")
-    public void rewardedVideoDidFailToShowWithError(NSError error) {}
+    public void rewardedVideoDidFailToShow(NSError error) {}
     @NotImplemented("rewardedVideoDidOpen")
     public void rewardedVideoDidOpen() {}
     @NotImplemented("rewardedVideoDidClose")

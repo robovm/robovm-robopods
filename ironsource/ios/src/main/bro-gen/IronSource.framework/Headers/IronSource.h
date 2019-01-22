@@ -2,6 +2,8 @@
 //  Copyright © 2017 IronSource. All rights reserved.
 //
 
+static NSString * const MEDIATION_SDK_VERSION     = @"6.8.1";
+
 #ifndef IRONSOURCE_H
 #define IRONSOURCE_H
 
@@ -24,6 +26,7 @@
 #import "ISSegmentDelegate.h"
 #import "ISDemandOnlyRewardedVideoDelegate.h"
 #import "ISDemandOnlyInterstitialDelegate.h"
+#import "ISBannerSize.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -32,13 +35,6 @@ NS_ASSUME_NONNULL_BEGIN
 #define IS_OFFERWALL @"offerwall"
 #define IS_BANNER @"banner"
 
-typedef NS_ENUM(NSUInteger, ISBannerSize) {
-    IS_AD_SIZE_BANNER = 0,
-    IS_AD_SIZE_LARGE_BANNER = 1,
-    IS_AD_SIZE_RECTANGLE_BANNER = 2,
-    IS_AD_SIZE_TABLET_BANNER __deprecated_enum_msg("Use IS_AD_SIZE_LARGE_BANNER") = 3,
-    IS_AD_SIZE_SMART = 4
-};
 
 @interface IronSource : NSObject
 
@@ -49,6 +45,7 @@ typedef NS_ENUM(NSUInteger, ISBannerSize) {
  @return NSString representing the current IronSource SDK version.
  */
 + (NSString *)sdkVersion;
+
 
 /**
  @abstact Sets a numeric representation of the current user's age.
@@ -410,32 +407,34 @@ typedef NS_ENUM(NSUInteger, ISBannerSize) {
  @abstract Loads a banner using the default placement.
  @discussion This method will load banner ads of the requested size from the underlying ad networks according to their priority.
  
- The size should contain ISBannerSize value that represent the required banner ad size:
-
- IS_AD_SIZE_BANNER, IS_AD_SIZE_LARGE_BANNER, IS_AD_SIZE_RECTANGLE_BANNER
+ The size should contain ISBannerSize value that represent the required banner ad size.
+ e.g. [IronSource loadBannerWithViewController:self size:ISBannerSize_BANNER];
  
- e.g: [IronSource loadBannerWithViewController:self size:IS_AD_SIZE_BANNER];
+ Custom banner size:
+ ISBannerSize* bannerSize = [[ISBannerSize alloc] initWithWidth:320 andHeight:50];
+ [IronSource loadBannerWithViewController:self size:bannerSize];
  
  @param viewController The UIViewController to display the banner within.
- @param size required banner ad size
+ @param size The required banner ad size
  */
-+ (void)loadBannerWithViewController:(UIViewController *)viewController size:(ISBannerSize)size;
++ (void)loadBannerWithViewController:(UIViewController *)viewController size:(ISBannerSize *)size;
 
 /**
  @abstract Loads a banner using the provided placement name.
  @discussion This method will load banner ads of the requested size from the underlying ad networks according to their priority.
  
- The size should contain ISBannerSize value that represent the required banner ad size:
+ The size should contain ISBannerSize value that represent the required banner ad size.
+ e.g. [IronSource loadBannerWithViewController:self size:ISBannerSize_BANNER placement:@"your_placement_name"];
  
- IS_AD_SIZE_BANNER, IS_AD_SIZE_LARGE_BANNER, IS_AD_SIZE_RECTANGLE_BANNER
- 
- e.g: [IronSource loadBannerWithViewController:self size:IS_AD_SIZE_BANNER placement:"your_placement_name"];
+ Custom banner size:
+ ISBannerSize* bannerSize = [[ISBannerSize alloc] initWithWidth:320 andHeight:50];
+ [IronSource loadBannerWithViewController:self size:bannerSize placement:@"your_placement_name"];
  
  @param viewController The UIViewController to display the banner within.
- @param size required banner ad size
- @param placementName The placement name as was defined in the platform. If nil is passed, a default placement will be used.
+ @param size The required banner ad size
+ @param placementName The placement name as was defined in the platform. If nil is passed, the default placement will be used.
  */
-+ (void)loadBannerWithViewController:(UIViewController *)viewController size:(ISBannerSize)size placement:(nullable NSString *)placementName;
++ (void)loadBannerWithViewController:(UIViewController *)viewController size:(ISBannerSize *)size placement:(nullable NSString *)placementName;
 
 /**
  @abstract Removes the banner from memory.

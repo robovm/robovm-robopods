@@ -29,6 +29,7 @@ import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -54,12 +55,12 @@ import org.robovm.apple.uikit.*;
     @NotImplemented("offerwallDidShow")
     public void offerwallDidShow() {}
     @NotImplemented("offerwallDidFailToShowWithError:")
-    public void offerwallDidFailToShowWithError(NSError error) {}
+    public void offerwallDidFailToShow(NSError error) {}
     @NotImplemented("offerwallDidClose")
     public void offerwallDidClose() {}
     @NotImplemented("didReceiveOfferwallCredits:")
     public boolean didReceiveOfferwallCredits(NSDictionary<?, ?> creditInfo) { return false; }
     @NotImplemented("didFailToReceiveOfferwallCreditsWithError:")
-    public void didFailToReceiveOfferwallCreditsWithError(NSError error) {}
+    public void didFailToReceiveOfferwallCredits(NSError error) {}
     /*</methods>*/
 }

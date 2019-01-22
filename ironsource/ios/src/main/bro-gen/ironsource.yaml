@@ -6,15 +6,22 @@ headers:
     - IronSource.h
 typedefs: {}
 
+
 enums:
     ISGender: {prefix: IRONSOURCE_USER_}
     LogLevelValues: {prefix: IS_LOG_}
     LogTagValue: {prefix: TAG_}
-    ISBannerSize: {prefix: IS_AD_SIZE_}
 
 
 
 classes:
+    ISBannerSize:
+        methods:
+            '-initWithWidth:andHeight:':
+                #trim_after_first_colon: true
+                name: init
+            '-initWithDescription:':
+                name: init
     ISBannerView: {}
     ISConfigurations: {}
     ISEventsReporting: {}
@@ -41,6 +48,8 @@ classes:
             '+initISDemandOnly:adUnits:':
                 #trim_after_first_colon: true
                 name: initISDemandOnly
+            '+showRewardedVideoWithViewController:':
+                name: showRewardedVideo
             '+showRewardedVideoWithViewController:placement:':
                 #trim_after_first_colon: true
                 name: showRewardedVideo
@@ -62,6 +71,8 @@ classes:
             '+showISDemandOnlyInterstitial:placement:instanceId:':
                 #trim_after_first_colon: true
                 name: showISDemandOnlyInterstitial
+            '+showOfferwallWithViewController:':
+                name: showOfferwall
             '+showOfferwallWithViewController:placement:':
                 #trim_after_first_colon: true
                 name: showOfferwall
@@ -75,7 +86,10 @@ classes:
 
 
 protocols:
-    ISBannerDelegate: {}
+    ISBannerDelegate:
+        methods:
+            '-bannerDidFailToLoadWithError:':
+                name: bannerDidFailToLoad
     ISDemandOnlyInterstitialDelegate:
         methods:
             '-interstitialDidFailToLoadWithError:instanceId:':
@@ -98,15 +112,28 @@ protocols:
             '-didClickRewardedVideo:instanceId:':
                 #trim_after_first_colon: true
                 name: didClickRewardedVideo
-    ISInterstitialDelegate: {}
+    ISInterstitialDelegate:
+        methods:
+            '-interstitialDidFailToLoadWithError:':
+                name: interstitialDidFailToLoad
+            '-interstitialDidFailToShowWithError:':
+                name: interstitialDidFailToShow
     ISLogDelegate:
         methods:
             '-sendLog:level:tag:':
                 #trim_after_first_colon: true
                 name: sendLog
-    ISOfferwallDelegate: {}
+    ISOfferwallDelegate:
+        methods:
+            '-offerwallDidFailToShowWithError:':
+                name: offerwallDidFailToShow
+            '-didFailToReceiveOfferwallCreditsWithError:':
+                name: didFailToReceiveOfferwallCredits
     ISRewardedInterstitialDelegate: {}
-    ISRewardedVideoDelegate: {}
+    ISRewardedVideoDelegate:
+        methods:
+            '-rewardedVideoDidFailToShowWithError:':
+                name: rewardedVideoDidFailToShow
     ISSegmentDelegate: {}
 
 
@@ -124,7 +151,10 @@ values:
         name: 'Value__#{g[0]}'
 
 constants:
-    # Make sure we don't miss any constants if new ones are introduced in a later version
     (IS_.*):
         class: IronSource
         name: '#{g[0]}'
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (IS.*):
+        class: FIXME
+        name: 'Constants__#{g[0]}'

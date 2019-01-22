@@ -29,6 +29,7 @@ import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -52,13 +53,13 @@ import org.robovm.apple.uikit.*;
     @Method(selector = "offerwallDidShow")
     void offerwallDidShow();
     @Method(selector = "offerwallDidFailToShowWithError:")
-    void offerwallDidFailToShowWithError(NSError error);
+    void offerwallDidFailToShow(NSError error);
     @Method(selector = "offerwallDidClose")
     void offerwallDidClose();
     @Method(selector = "didReceiveOfferwallCredits:")
     boolean didReceiveOfferwallCredits(NSDictionary<?, ?> creditInfo);
     @Method(selector = "didFailToReceiveOfferwallCreditsWithError:")
-    void didFailToReceiveOfferwallCreditsWithError(NSError error);
+    void didFailToReceiveOfferwallCredits(NSError error);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

@@ -29,6 +29,7 @@ import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -52,7 +53,7 @@ import org.robovm.apple.uikit.*;
     @NotImplemented("interstitialDidLoad")
     public void interstitialDidLoad() {}
     @NotImplemented("interstitialDidFailToLoadWithError:")
-    public void interstitialDidFailToLoadWithError(NSError error) {}
+    public void interstitialDidFailToLoad(NSError error) {}
     @NotImplemented("interstitialDidOpen")
     public void interstitialDidOpen() {}
     @NotImplemented("interstitialDidClose")
@@ -60,7 +61,7 @@ import org.robovm.apple.uikit.*;
     @NotImplemented("interstitialDidShow")
     public void interstitialDidShow() {}
     @NotImplemented("interstitialDidFailToShowWithError:")
-    public void interstitialDidFailToShowWithError(NSError error) {}
+    public void interstitialDidFailToShow(NSError error) {}
     @NotImplemented("didClickInterstitial")
     public void didClickInterstitial() {}
     /*</methods>*/

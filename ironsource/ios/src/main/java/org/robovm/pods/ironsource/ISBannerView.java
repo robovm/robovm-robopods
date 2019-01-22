@@ -29,6 +29,7 @@ import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -46,6 +47,10 @@ import org.robovm.apple.uikit.*;
     public ISBannerView() {}
     protected ISBannerView(Handle h, long handle) { super(h, handle); }
     protected ISBannerView(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithFrame:")
+    public ISBannerView(@ByVal CGRect frame) { super(frame); }
+    @Method(selector = "initWithCoder:")
+    public ISBannerView(NSCoder decoder) { super(decoder); }
     /*</constructors>*/
     /*<properties>*/
     

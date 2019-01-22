@@ -29,6 +29,7 @@ import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -64,10 +65,6 @@ import org.robovm.apple.uikit.*;
     public native String getSegmentId();
     @Property(selector = "setSegmentId:")
     public native void setSegmentId(String v);
-    @Property(selector = "connectionType")
-    public native String getConnectionType();
-    @Property(selector = "setConnectionType:")
-    public native void setConnectionType(String v);
     @Property(selector = "customSegmentParams")
     public native NSDictionary<?, ?> getCustomSegmentParams();
     @Property(selector = "setCustomSegmentParams:")
@@ -152,6 +149,14 @@ import org.robovm.apple.uikit.*;
     public native @MachineSizedSInt long getConsent();
     @Property(selector = "setConsent:")
     public native void setConsent(@MachineSizedSInt long v);
+    @Property(selector = "batchGenricParams")
+    public native NSDictionary<?, ?> getBatchGenricParams();
+    @Property(selector = "setBatchGenricParams:")
+    public native void setBatchGenricParams(NSDictionary<?, ?> v);
+    @Property(selector = "eventGenricParams")
+    public native NSDictionary<?, ?> getEventGenricParams();
+    @Property(selector = "setEventGenricParams:")
+    public native void setEventGenricParams(NSDictionary<?, ?> v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

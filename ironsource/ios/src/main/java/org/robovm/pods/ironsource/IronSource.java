@@ -29,6 +29,7 @@ import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -90,7 +91,7 @@ import org.robovm.apple.uikit.*;
     @Method(selector = "setRewardedVideoDelegate:")
     public static native void setRewardedVideoDelegate(ISRewardedVideoDelegate delegate);
     @Method(selector = "showRewardedVideoWithViewController:")
-    public static native void showRewardedVideoWithViewController(UIViewController viewController);
+    public static native void showRewardedVideo(UIViewController viewController);
     @Method(selector = "showRewardedVideoWithViewController:placement:")
     public static native void showRewardedVideo(UIViewController viewController, String placementName);
     @Method(selector = "hasRewardedVideo")
@@ -138,7 +139,7 @@ import org.robovm.apple.uikit.*;
     @Method(selector = "setOfferwallDelegate:")
     public static native void setOfferwallDelegate(ISOfferwallDelegate delegate);
     @Method(selector = "showOfferwallWithViewController:")
-    public static native void showOfferwallWithViewController(UIViewController viewController);
+    public static native void showOfferwall(UIViewController viewController);
     @Method(selector = "showOfferwallWithViewController:placement:")
     public static native void showOfferwall(UIViewController viewController, String placementName);
     @Method(selector = "offerwallCredits")
