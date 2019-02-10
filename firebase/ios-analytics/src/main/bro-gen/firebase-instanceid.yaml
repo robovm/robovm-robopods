@@ -11,6 +11,16 @@ enums:
 classes:
     FIRInstanceID:
         methods:
-            '.+':
-                trim_after_first_colon: true
+            '-instanceIDWithHandler:':
+                name: instanceID
+            '-getIDWithHandler:':
+                name: getID
+            '-deleteIDWithHandler:':
+                name: deleteID
+            '-tokenWithAuthorizedEntity:scope:options:handler:':
+                #trim_after_first_colon: true
+                name: token
+            '-deleteTokenWithAuthorizedEntity:scope:handler:':
+                #trim_after_first_colon: true
+                name: deleteToken
     FIRInstanceIDResult: {}

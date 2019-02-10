@@ -46,9 +46,9 @@ import org.robovm.apple.foundation.*;
     protected FIROptions(Handle h, long handle) { super(h, handle); }
     protected FIROptions(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithContentsOfFile:")
-    public FIROptions(String plistPath) { super((SkipInit) null); initObject(initWithContentsOfFile(plistPath)); }
+    public FIROptions(String plistPath) { super((SkipInit) null); initObject(init(plistPath)); }
     @Method(selector = "initWithGoogleAppID:GCMSenderID:")
-    public FIROptions(String googleAppID, String GCMSenderID) { super((SkipInit) null); initObject(initWithGoogleAppID(googleAppID, GCMSenderID)); }
+    public FIROptions(String googleAppID, String GCMSenderID) { super((SkipInit) null); initObject(init(googleAppID, GCMSenderID)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "APIKey")
@@ -99,9 +99,9 @@ import org.robovm.apple.foundation.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "initWithContentsOfFile:")
-    protected native @Pointer long initWithContentsOfFile(String plistPath);
+    protected native @Pointer long init(String plistPath);
     @Method(selector = "initWithGoogleAppID:GCMSenderID:")
-    protected native @Pointer long initWithGoogleAppID(String googleAppID, String GCMSenderID);
+    protected native @Pointer long init(String googleAppID, String GCMSenderID);
     @Method(selector = "defaultOptions")
     public static native FIROptions defaultOptions();
     /*</methods>*/

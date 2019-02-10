@@ -7,12 +7,31 @@ headers: [FirebaseMessaging.h]
 enums:
     FIRMessagingAPNSTokenType: {}
     FIRMessagingMessageStatus: {}
+    FIRMessagingError: {}
 
 classes:
     FIRMessaging:
         methods:
-            '.+':
-                trim_after_first_colon: true
+            '-connectWithCompletion:':
+                name: connect
+            '-setAPNSToken:type:':
+                #trim_after_first_colon: true
+                name: setAPNSToken
+            '-retrieveFCMTokenForSenderID:completion:':
+                #trim_after_first_colon: true
+                name: retrieveFCMTokenForSenderID
+            '-deleteFCMTokenForSenderID:completion:':
+                #trim_after_first_colon: true
+                name: deleteFCMTokenForSenderID
+            '-subscribeToTopic:completion:':
+                #trim_after_first_colon: true
+                name: subscribeToTopic
+            '-unsubscribeFromTopic:completion:':
+                #trim_after_first_colon: true
+                name: unsubscribeFromTopic
+            '-sendMessage:to:withMessageID:timeToLive:':
+                #trim_after_first_colon: true
+                name: sendMessage$to$withMessageID
     FIRMessagingRemoteMessage: {}
     FIRMessagingMessageInfo: {}
 

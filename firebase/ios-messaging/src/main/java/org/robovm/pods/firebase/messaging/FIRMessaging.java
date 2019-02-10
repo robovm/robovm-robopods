@@ -77,11 +77,11 @@ import org.robovm.apple.foundation.*;
     @Method(selector = "setAPNSToken:type:")
     public native void setAPNSToken(NSData apnsToken, FIRMessagingAPNSTokenType type);
     @Method(selector = "retrieveFCMTokenForSenderID:completion:")
-    public native void retrieveFCMTokenForSenderID(String senderID, @Block VoidBlock2<String, NSError> completion);
+    public native void retrieveFCMTokenForSenderID(String senderID, @Block VoidBlock2<NSString, NSError> completion);
     @Method(selector = "deleteFCMTokenForSenderID:completion:")
     public native void deleteFCMTokenForSenderID(String senderID, @Block VoidBlock1<NSError> completion);
     @Method(selector = "connectWithCompletion:")
-    public native void connectWithCompletion(@Block VoidBlock1<NSError> handler);
+    public native void connect(@Block VoidBlock1<NSError> handler);
     @Method(selector = "disconnect")
     public native void disconnect();
     @Method(selector = "subscribeToTopic:")
@@ -93,7 +93,7 @@ import org.robovm.apple.foundation.*;
     @Method(selector = "unsubscribeFromTopic:completion:")
     public native void unsubscribeFromTopic(String topic, @Block VoidBlock1<NSError> completion);
     @Method(selector = "sendMessage:to:withMessageID:timeToLive:")
-    public native void sendMessage(NSDictionary<?, ?> message, String receiver, String messageID, long ttl);
+    public native void sendMessage$to$withMessageID(NSDictionary<?, ?> message, String receiver, String messageID, long ttl);
     @Method(selector = "appDidReceiveMessage:")
     public native FIRMessagingMessageInfo appDidReceiveMessage(NSDictionary<?, ?> message);
     @Method(selector = "messaging")

@@ -4,18 +4,10 @@
         <lib>z</lib>
     </libs>
     <frameworks>
-	    <framework>FIRAnalyticsConnector</framework>
-        <framework>FirebaseAnalytics</framework>
-        <framework>FirebaseCore</framework>
-        <framework>FirebaseCoreDiagnostics</framework>
-        <framework>GoogleAppMeasurement</framework>
-        <framework>GoogleUtilities</framework>
-        <framework>nanopb</framework>
-
-		<framework>Security</framework>
+        <framework>Security</framework>
         <framework>StoreKit</framework>
         <framework>SystemConfiguration</framework>
-		<framework>UIKit</framework>
+        <framework>UIKit</framework>
     </frameworks>
     <exportedSymbols>
         <symbol>FIR*</symbol>

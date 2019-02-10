@@ -52,7 +52,7 @@ import org.robovm.apple.foundation.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "logEventWithName:parameters:")
-    public static native void logEventWithName(String name, NSDictionary<NSString, ?> parameters);
+    public static native void logEvent(String name, NSDictionary<NSString, ?> parameters);
     @Method(selector = "setUserPropertyString:forName:")
     public static native void setUserPropertyString(String value, String name);
     @Method(selector = "setUserID:")

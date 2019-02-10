@@ -4,6 +4,26 @@ Firebase Cloud Messaging for iOS is a service that allows you to send data from 
 
 ## Install Instructions
 
+1. Firebase is a large library (+500MB) divided in sub modules, each of them including several frameworks.
+Download ZIP with frameworks from here: [Link](https://firebase.google.com/docs/ios/setup#frameworks)
+2. Go into 'Messaging' subdirectory and copy all of the frameworks into the libs folder inside your RoboVM project.
+4. Add the following to your `robovm.xml`
+```
+<config>
+    ...
+    <frameworkPaths>
+        <path>libs</path>
+    </frameworkPaths>
+    <frameworks>
+        <framework>FirebaseMessaging</framework>
+        <framework>Protobuf</framework>
+    </frameworks>
+</config>
+```
+5. Do the same for 'Analytics' module. Follow Analytics Install Instructions [Link](https://github.com/MobiVM/robovm-robopods/tree/master/firebase/ios-analytics)
+
+
+
 ### Gradle
 
 Add the following dependency to your `build.gradle`:
@@ -26,19 +46,6 @@ Add the following dependency to your `pom.xml`:
    <version>${robopods.version}</version>
 </dependency>
 ```
-
-## Code Examples
-
-### SDK setup
-
-Before you can do anything with Firebase, you have to setup the SDK.
-
-#### Download frameworks
-Download ZIP with frameworks from here: [Link](https://firebase.google.com/docs/ios/setup#frameworks)
-
-1. Unzip
-2. Go into 'Analytics' subdirectory and copy all of the frameworks into the libs folder inside your RoboVM project.
-2. Go into 'Messaging' subdirectory and copy all of the frameworks into the libs folder inside your RoboVM project.
 
 #### Configure project
 

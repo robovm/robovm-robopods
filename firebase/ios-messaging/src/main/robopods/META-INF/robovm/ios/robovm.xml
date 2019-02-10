@@ -5,7 +5,6 @@
     <frameworks>
         <framework>FirebaseMessaging</framework>
         <framework>Protobuf</framework>
-        
         <framework>AddressBook</framework>
         <framework>SystemConfiguration</framework>
     </frameworks>

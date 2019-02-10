@@ -7,5 +7,13 @@ headers: [FIRAnalytics.h]
 classes:
     FIRAnalytics:
         methods:
-            '.+':
-                trim_after_first_colon: true
+            '+logEventWithName:parameters:':
+                #trim_after_first_colon: true
+                name: logEvent
+            '+setUserPropertyString:forName:':
+                #trim_after_first_colon: true
+                name: setUserPropertyString
+            '+setScreenName:screenClass:':
+                #trim_after_first_colon: true
+                name: setScreenName
+ 

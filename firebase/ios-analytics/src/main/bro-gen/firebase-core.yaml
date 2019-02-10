@@ -15,6 +15,9 @@ classes:
                 trim_after_first_colon: true
     FIROptions:
         methods:
-            '.*':
-                trim_after_first_colon: true
+            '-initWithContentsOfFile:':
+                name: init
+            '-initWithGoogleAppID:GCMSenderID:':
+                #trim_after_first_colon: true
+                name: init
 
