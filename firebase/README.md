@@ -4,10 +4,10 @@ Firebase gives you functionality like analytics, databases, messaging and crash 
 
 ## Available RoboPods
 
-| Platform                          | Version  | Description                                         |
-|-----------------------------------|----------|-----------------------------------------------------|
-| [ios-analytics](ios-analytics/)   | 5.11.0   | Firebase iOS Analytics              |
-| [ios-messaging](ios-messaging/)   | 5.11.0    | Firebase iOS Messaging             |
+| Platform                          | Version  | Description                         |
+|-----------------------------------|----------|-------------------------------------|
+| [ios-analytics](ios-analytics/)   | 5.16.0   | Firebase iOS Analytics              |
+| [ios-messaging](ios-messaging/)   | 5.16.0   | Firebase iOS Messaging              |
 
 ## Official website
 
