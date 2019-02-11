@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,6 +30,8 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.dispatch.*;
+import org.robovm.apple.webkit.*;
 import org.robovm.pods.bolts.*;
 /*</imports>*/
 
@@ -56,6 +58,8 @@ import org.robovm.pods.bolts.*;
     /*<methods>*/
     @Method(selector = "application:openURL:sourceApplication:annotation:")
     public native boolean openURL(UIApplication application, NSURL url, String sourceApplication, ObjCProtocol annotation);
+    @Method(selector = "application:openURL:options:")
+    public native boolean openURL(UIApplication application, NSURL url, NSDictionary<NSString, ?> options);
     @Method(selector = "application:didFinishLaunchingWithOptions:")
     public native boolean didFinishLaunching(UIApplication application, UIApplicationLaunchOptions launchOptions);
     @Method(selector = "sharedInstance")

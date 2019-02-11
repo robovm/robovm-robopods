@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,6 +30,8 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coremedia.*;
+import org.robovm.apple.dispatch.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -37,7 +39,7 @@ import org.robovm.apple.coregraphics.*;
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FBNativeAdView/*</name>*/ 
-    extends /*<extends>*/UIView/*</extends>*/ 
+    extends /*<extends>*/FBNativeAdBaseView/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
     /*<ptr>*/public static class FBNativeAdViewPtr extends Ptr<FBNativeAdView, FBNativeAdViewPtr> {}/*</ptr>*/
@@ -49,14 +51,14 @@ import org.robovm.apple.coregraphics.*;
     protected FBNativeAdView(SkipInit skipInit) { super(skipInit); }
     public FBNativeAdView(FBNativeAd nativeAd, FBNativeAdViewType type) { super((Handle) null, create(nativeAd, type)); retain(getHandle()); }
     public FBNativeAdView(FBNativeAd nativeAd, FBNativeAdViewType type, FBNativeAdViewAttributes attributes) { super((Handle) null, create(nativeAd, type, attributes)); retain(getHandle()); }
+    @Method(selector = "initWithFrame:")
+    public FBNativeAdView(@ByVal CGRect frame) { super(frame); }
+    @Method(selector = "initWithCoder:")
+    public FBNativeAdView(NSCoder decoder) { super(decoder); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "type")
     public native FBNativeAdViewType getType();
-    @Property(selector = "viewController")
-    public native UIViewController getViewController();
-    @Property(selector = "setViewController:", strongRef = true)
-    public native void setViewController(UIViewController v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

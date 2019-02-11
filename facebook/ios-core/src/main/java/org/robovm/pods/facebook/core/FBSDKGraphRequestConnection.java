@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,6 +30,8 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.dispatch.*;
+import org.robovm.apple.webkit.*;
 import org.robovm.pods.bolts.*;
 /*</imports>*/
 
@@ -65,8 +67,12 @@ import org.robovm.pods.bolts.*;
     /*<methods>*/
     @Method(selector = "addRequest:completionHandler:")
     public native void addRequest(FBSDKGraphRequest request, @Block VoidBlock3<FBSDKGraphRequestConnection, NSObject, NSError> handler);
+    @Method(selector = "addRequest:batchEntryName:completionHandler:")
+    public native void addRequest(FBSDKGraphRequest request, String name, @Block VoidBlock3<FBSDKGraphRequestConnection, NSObject, NSError> handler);
     @Method(selector = "addRequest:completionHandler:batchEntryName:")
     public native void addRequest(FBSDKGraphRequest request, @Block VoidBlock3<FBSDKGraphRequestConnection, NSObject, NSError> handler, String name);
+    @Method(selector = "addRequest:batchParameters:completionHandler:")
+    public native void addRequest(FBSDKGraphRequest request, NSDictionary<NSString, ?> batchParameters, @Block VoidBlock3<FBSDKGraphRequestConnection, NSObject, NSError> handler);
     @Method(selector = "addRequest:completionHandler:batchParameters:")
     public native void addRequest(FBSDKGraphRequest request, @Block VoidBlock3<FBSDKGraphRequestConnection, NSObject, NSError> handler, NSDictionary<?, ?> batchParameters);
     @Method(selector = "cancel")
@@ -75,6 +81,8 @@ import org.robovm.pods.bolts.*;
     public native void start();
     @Method(selector = "setDelegateQueue:")
     public native void setDelegateQueue(NSOperationQueue queue);
+    @Method(selector = "overrideGraphAPIVersion:")
+    public native void overrideGraphAPIVersion(String version);
     @Method(selector = "overrideVersionPartWith:")
     public native void overrideVersionPart(String version);
     @Method(selector = "setDefaultConnectionTimeout:")

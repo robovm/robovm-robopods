@@ -30,6 +30,8 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coremedia.*;
+import org.robovm.apple.dispatch.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -47,8 +49,12 @@ import org.robovm.apple.coregraphics.*;
     public FBNativeAdCollectionViewCellProvider() {}
     protected FBNativeAdCollectionViewCellProvider(Handle h, long handle) { super(h, handle); }
     protected FBNativeAdCollectionViewCellProvider(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithManager:forType:")
     public FBNativeAdCollectionViewCellProvider(FBNativeAdsManager manager, FBNativeAdViewType type) { super((SkipInit) null); initObject(init(manager, type)); }
+    @Method(selector = "initWithManager:forType:forAttributes:")
     public FBNativeAdCollectionViewCellProvider(FBNativeAdsManager manager, FBNativeAdViewType type, FBNativeAdViewAttributes attributes) { super((SkipInit) null); initObject(init(manager, type, attributes)); }
+    @Method(selector = "initWithManager:")
+    public FBNativeAdCollectionViewCellProvider(FBNativeAdsManager manager) { super(manager); }
     /*</constructors>*/
     /*<properties>*/
     

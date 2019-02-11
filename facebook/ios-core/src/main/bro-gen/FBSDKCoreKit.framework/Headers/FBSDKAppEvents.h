@@ -18,137 +18,298 @@
 
 #import <Foundation/Foundation.h>
 
-#import "FBSDKMacros.h"
+#if !TARGET_OS_TV
+#import <WebKit/WebKit.h>
+#endif
+
+#import <FBSDKCoreKit/FBSDKGraphRequestConnection.h>
 
 @class FBSDKAccessToken;
 @class FBSDKGraphRequest;
 
-/*! @abstract NSNotificationCenter name indicating a result of a failed log flush attempt. The posted object will be an NSError instance. */
-FBSDK_EXTERN NSString *const FBSDKAppEventsLoggingResultNotification;
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
 
-/*! @abstract optional plist key ("FacebookLoggingOverrideAppID") for setting `loggingOverrideAppID` */
-FBSDK_EXTERN NSString *const FBSDKAppEventsOverrideAppIDBundleKey;
+/**  NSNotificationCenter name indicating a result of a failed log flush attempt. The posted object will be an NSError instance. */
+FOUNDATION_EXPORT NSNotificationName const FBSDKAppEventsLoggingResultNotification;
 
-/*!
+#else
 
- @typedef NS_ENUM (NSUInteger, FBSDKAppEventsFlushBehavior)
+/**  NSNotificationCenter name indicating a result of a failed log flush attempt. The posted object will be an NSError instance. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventsLoggingResultNotification;
 
- @abstract Specifies when `FBSDKAppEvents` sends log events to the server.
+#endif
+
+/**  optional plist key ("FacebookLoggingOverrideAppID") for setting `loggingOverrideAppID` */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventsOverrideAppIDBundleKey;
+
+/**
+
+ NS_ENUM (NSUInteger, FBSDKAppEventsFlushBehavior)
+
+  Specifies when `FBSDKAppEvents` sends log events to the server.
 
  */
 typedef NS_ENUM(NSUInteger, FBSDKAppEventsFlushBehavior)
 {
 
-  /*! Flush automatically: periodically (once a minute or every 100 logged events) and always at app reactivation. */
+  /** Flush automatically: periodically (once a minute or every 100 logged events) and always at app reactivation. */
   FBSDKAppEventsFlushBehaviorAuto = 0,
 
-  /*! Only flush when the `flush` method is called. When an app is moved to background/terminated, the
+  /** Only flush when the `flush` method is called. When an app is moved to background/terminated, the
    events are persisted and re-established at activation, but they will only be written with an
    explicit call to `flush`. */
   FBSDKAppEventsFlushBehaviorExplicitOnly,
 
 };
 
-/*!
+/**
+  NS_ENUM(NSUInteger, FBSDKProductAvailability)
+    Specifies product availability for Product Catalog product item update
+ */
+typedef NS_ENUM(NSUInteger, FBSDKProductAvailability)
+{
+  /**
+   * Item ships immediately
+   */
+  FBSDKProductAvailabilityInStock = 0,
+  /**
+   * No plan to restock
+   */
+  FBSDKProductAvailabilityOutOfStock,
+  /**
+   * Available in future
+   */
+  FBSDKProductAvailabilityPreOrder,
+  /**
+   * Ships in 1-2 weeks
+   */
+  FBSDKProductAvailabilityAvailableForOrder,
+  /**
+   * Discontinued
+   */
+  FBSDKProductAvailabilityDiscontinued,
+};
+
+/**
+ NS_ENUM(NSUInteger, FBSDKProductCondition)
+ Specifies product condition for Product Catalog product item update
+ */
+typedef NS_ENUM(NSUInteger, FBSDKProductCondition)
+{
+  FBSDKProductConditionNew = 0,
+  FBSDKProductConditionRefurbished,
+  FBSDKProductConditionUsed,
+};
+
+/**
  @methodgroup Predefined event names for logging events common to many apps.  Logging occurs through the `logEvent` family of methods on `FBSDKAppEvents`.
  Common event parameters are provided in the `FBSDKAppEventsParameterNames*` constants.
  */
 
-/*! Log this event when the user has achieved a level in the app. */
-FBSDK_EXTERN NSString *const FBSDKAppEventNameAchievedLevel;
+/** Log this event when the user has achieved a level in the app. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameAchievedLevel;
 
-/*! Log this event when the user has entered their payment info. */
-FBSDK_EXTERN NSString *const FBSDKAppEventNameAddedPaymentInfo;
+/** Log this event when the user has entered their payment info. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameAddedPaymentInfo;
 
-/*! Log this event when the user has added an item to their cart.  The valueToSum passed to logEvent should be the item's price. */
-FBSDK_EXTERN NSString *const FBSDKAppEventNameAddedToCart;
+/** Log this event when the user has added an item to their cart.  The valueToSum passed to logEvent should be the item's price. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameAddedToCart;
 
-/*! Log this event when the user has added an item to their wishlist.  The valueToSum passed to logEvent should be the item's price. */
-FBSDK_EXTERN NSString *const FBSDKAppEventNameAddedToWishlist;
+/** Log this event when the user has added an item to their wishlist.  The valueToSum passed to logEvent should be the item's price. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameAddedToWishlist;
 
-/*! Log this event when a user has completed registration with the app. */
-FBSDK_EXTERN NSString *const FBSDKAppEventNameCompletedRegistration;
+/** Log this event when a user has completed registration with the app. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameCompletedRegistration;
 
-/*! Log this event when the user has completed a tutorial in the app. */
-FBSDK_EXTERN NSString *const FBSDKAppEventNameCompletedTutorial;
+/** Log this event when the user has completed a tutorial in the app. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameCompletedTutorial;
 
-/*! Log this event when the user has entered the checkout process.  The valueToSum passed to logEvent should be the total price in the cart. */
-FBSDK_EXTERN NSString *const FBSDKAppEventNameInitiatedCheckout;
+/** Log this event when the user has entered the checkout process.  The valueToSum passed to logEvent should be the total price in the cart. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameInitiatedCheckout;
 
-/*! Log this event when the user has rated an item in the app.  The valueToSum passed to logEvent should be the numeric rating. */
-FBSDK_EXTERN NSString *const FBSDKAppEventNameRated;
+/** Log this event when the user has rated an item in the app.  The valueToSum passed to logEvent should be the numeric rating. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameRated;
 
-/*! Log this event when a user has performed a search within the app. */
-FBSDK_EXTERN NSString *const FBSDKAppEventNameSearched;
+/** Log this event when a user has performed a search within the app. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameSearched;
 
-/*! Log this event when the user has spent app credits.  The valueToSum passed to logEvent should be the number of credits spent. */
-FBSDK_EXTERN NSString *const FBSDKAppEventNameSpentCredits;
+/** Log this event when the user has spent app credits.  The valueToSum passed to logEvent should be the number of credits spent. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameSpentCredits;
 
-/*! Log this event when the user has unlocked an achievement in the app. */
-FBSDK_EXTERN NSString *const FBSDKAppEventNameUnlockedAchievement;
+/** Log this event when the user has unlocked an achievement in the app. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameUnlockedAchievement;
 
-/*! Log this event when a user has viewed a form of content in the app. */
-FBSDK_EXTERN NSString *const FBSDKAppEventNameViewedContent;
+/** Log this event when a user has viewed a form of content in the app. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameViewedContent;
 
-/*!
+/** A telephone/SMS, email, chat or other type of contact between a customer and your business. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameContact;
+
+/** The customization of products through a configuration tool or other application your business owns. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameCustomizeProduct;
+
+/** The donation of funds to your organization or cause. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameDonate;
+
+/** When a person finds one of your locations via web or application, with an intention to visit (example: find product at a local store). */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameFindLocation;
+
+/** The booking of an appointment to visit one of your locations. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameSchedule;
+
+/** The start of a free trial of a product or service you offer (example: trial subscription). */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameStartTrial;
+
+/** The submission of an application for a product, service or program you offer (example: credit card, educational program or job). */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameSubmitApplication;
+
+/** The start of a paid subscription for a product or service you offer. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameSubscribe;
+
+/** Log this event when the user views an ad. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameAdImpression;
+
+/** Log this event when the user clicks an ad. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventNameAdClick;
+
+/**
  @methodgroup Predefined event name parameters for common additional information to accompany events logged through the `logEvent` family
  of methods on `FBSDKAppEvents`.  Common event names are provided in the `FBAppEventName*` constants.
  */
 
-/*! Parameter key used to specify an ID for the specific piece of content being logged about.  Could be an EAN, article identifier, etc., depending on the nature of the app. */
-FBSDK_EXTERN NSString *const FBSDKAppEventParameterNameContentID;
+ /**
+  * Parameter key used to specify data for the one or more pieces of content being logged about.
+  * Data should be a JSON encoded string.
+  * Example:
+  * "[{\"id\": \"1234\", \"quantity\": 2, \"item_price\": 5.99}, {\"id\": \"5678\", \"quantity\": 1, \"item_price\": 9.99}]"
+  */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterNameContent;
 
-/*! Parameter key used to specify a generic content type/family for the logged event, e.g. "music", "photo", "video".  Options to use will vary based upon what the app is all about. */
-FBSDK_EXTERN NSString *const FBSDKAppEventParameterNameContentType;
+/** Parameter key used to specify an ID for the specific piece of content being logged about.  Could be an EAN, article identifier, etc., depending on the nature of the app. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterNameContentID;
 
-/*! Parameter key used to specify currency used with logged event.  E.g. "USD", "EUR", "GBP".  See ISO-4217 for specific values.  One reference for these is <http://en.wikipedia.org/wiki/ISO_4217>. */
-FBSDK_EXTERN NSString *const FBSDKAppEventParameterNameCurrency;
+/** Parameter key used to specify a generic content type/family for the logged event, e.g. "music", "photo", "video".  Options to use will vary based upon what the app is all about. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterNameContentType;
 
-/*! Parameter key used to specify a description appropriate to the event being logged.  E.g., the name of the achievement unlocked in the `FBAppEventNameAchievementUnlocked` event. */
-FBSDK_EXTERN NSString *const FBSDKAppEventParameterNameDescription;
+/** Parameter key used to specify currency used with logged event.  E.g. "USD", "EUR", "GBP".  See ISO-4217 for specific values.  One reference for these is <http://en.wikipedia.org/wiki/ISO_4217>. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterNameCurrency;
 
-/*! Parameter key used to specify the level achieved in a `FBAppEventNameAchieved` event. */
-FBSDK_EXTERN NSString *const FBSDKAppEventParameterNameLevel;
+/** Parameter key used to specify a description appropriate to the event being logged.  E.g., the name of the achievement unlocked in the `FBAppEventNameAchievementUnlocked` event. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterNameDescription;
 
-/*! Parameter key used to specify the maximum rating available for the `FBAppEventNameRate` event.  E.g., "5" or "10". */
-FBSDK_EXTERN NSString *const FBSDKAppEventParameterNameMaxRatingValue;
+/** Parameter key used to specify the level achieved in a `FBAppEventNameAchieved` event. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterNameLevel;
 
-/*! Parameter key used to specify how many items are being processed for an `FBAppEventNameInitiatedCheckout` or `FBAppEventNamePurchased` event. */
-FBSDK_EXTERN NSString *const FBSDKAppEventParameterNameNumItems;
+/** Parameter key used to specify the maximum rating available for the `FBAppEventNameRate` event.  E.g., "5" or "10". */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterNameMaxRatingValue;
 
-/*! Parameter key used to specify whether payment info is available for the `FBAppEventNameInitiatedCheckout` event.  `FBSDKAppEventParameterValueYes` and `FBSDKAppEventParameterValueNo` are good canonical values to use for this parameter. */
-FBSDK_EXTERN NSString *const FBSDKAppEventParameterNamePaymentInfoAvailable;
+/** Parameter key used to specify how many items are being processed for an `FBAppEventNameInitiatedCheckout` or `FBAppEventNamePurchased` event. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterNameNumItems;
 
-/*! Parameter key used to specify method user has used to register for the app, e.g., "Facebook", "email", "Twitter", etc */
-FBSDK_EXTERN NSString *const FBSDKAppEventParameterNameRegistrationMethod;
+/** Parameter key used to specify whether payment info is available for the `FBAppEventNameInitiatedCheckout` event.  `FBSDKAppEventParameterValueYes` and `FBSDKAppEventParameterValueNo` are good canonical values to use for this parameter. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterNamePaymentInfoAvailable;
 
-/*! Parameter key used to specify the string provided by the user for a search operation. */
-FBSDK_EXTERN NSString *const FBSDKAppEventParameterNameSearchString;
+/** Parameter key used to specify method user has used to register for the app, e.g., "Facebook", "email", "Twitter", etc */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterNameRegistrationMethod;
 
-/*! Parameter key used to specify whether the activity being logged about was successful or not.  `FBSDKAppEventParameterValueYes` and `FBSDKAppEventParameterValueNo` are good canonical values to use for this parameter. */
-FBSDK_EXTERN NSString *const FBSDKAppEventParameterNameSuccess;
+/** Parameter key used to specify the string provided by the user for a search operation. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterNameSearchString;
+
+/** Parameter key used to specify whether the activity being logged about was successful or not.  `FBSDKAppEventParameterValueYes` and `FBSDKAppEventParameterValueNo` are good canonical values to use for this parameter. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterNameSuccess;
+
+/**
+ @methodgroup Predefined event name parameters for common additional information to accompany events logged through the `logProductItem` method on `FBSDKAppEvents`.
+ */
+
+/** Parameter key used to specify the product item's custom label 0. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterProductCustomLabel0;
+
+/** Parameter key used to specify the product item's custom label 1. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterProductCustomLabel1;
+
+/** Parameter key used to specify the product item's custom label 2. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterProductCustomLabel2;
+
+/** Parameter key used to specify the product item's custom label 3. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterProductCustomLabel3;
+
+/** Parameter key used to specify the product item's custom label 4. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterProductCustomLabel4;
+
+/** Parameter key used to specify the product item's AppLink app URL for iOS. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterProductAppLinkIOSUrl;
+
+/** Parameter key used to specify the product item's AppLink app ID for iOS App Store. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterProductAppLinkIOSAppStoreID;
+
+/** Parameter key used to specify the product item's AppLink app name for iOS. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterProductAppLinkIOSAppName;
+
+/** Parameter key used to specify the product item's AppLink app URL for iPhone. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterProductAppLinkIPhoneUrl;
+
+/** Parameter key used to specify the product item's AppLink app ID for iPhone App Store. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterProductAppLinkIPhoneAppStoreID;
+
+/** Parameter key used to specify the product item's AppLink app name for iPhone. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterProductAppLinkIPhoneAppName;
+
+/** Parameter key used to specify the product item's AppLink app URL for iPad. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterProductAppLinkIPadUrl;
+
+/** Parameter key used to specify the product item's AppLink app ID for iPad App Store. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterProductAppLinkIPadAppStoreID;
+
+/** Parameter key used to specify the product item's AppLink app name for iPad. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterProductAppLinkIPadAppName;
+
+/** Parameter key used to specify the product item's AppLink app URL for Android. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterProductAppLinkAndroidUrl;
+
+/** Parameter key used to specify the product item's AppLink fully-qualified package name for intent generation. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterProductAppLinkAndroidPackage;
+
+/** Parameter key used to specify the product item's AppLink app name for Android. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterProductAppLinkAndroidAppName;
+
+/** Parameter key used to specify the product item's AppLink app URL for Windows Phone. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterProductAppLinkWindowsPhoneUrl;
+
+/** Parameter key used to specify the product item's AppLink app ID, as a GUID, for App Store. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterProductAppLinkWindowsPhoneAppID;
+
+/** Parameter key used to specify the product item's AppLink app name for Windows Phone. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterProductAppLinkWindowsPhoneAppName;
 
 /*
  @methodgroup Predefined values to assign to event parameters that accompany events logged through the `logEvent` family
  of methods on `FBSDKAppEvents`.  Common event parameters are provided in the `FBSDKAppEventParameterName*` constants.
  */
 
-/*! Yes-valued parameter value to be used with parameter keys that need a Yes/No value */
-FBSDK_EXTERN NSString *const FBSDKAppEventParameterValueYes;
+/** Yes-valued parameter value to be used with parameter keys that need a Yes/No value */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterValueYes;
 
-/*! No-valued parameter value to be used with parameter keys that need a Yes/No value */
-FBSDK_EXTERN NSString *const FBSDKAppEventParameterValueNo;
+/** No-valued parameter value to be used with parameter keys that need a Yes/No value */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterValueNo;
+
+/** Parameter key used to specify the type of ad in an FBSDKAppEventNameAdImpression
+ * or FBSDKAppEventNameAdClick event.
+ * E.g. "banner", "interstitial", "rewarded_video", "native" */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterNameAdType;
+
+/** Parameter key used to specify the unique ID for all events within a subscription
+ * in an FBSDKAppEventNameSubscribe or FBSDKAppEventNameStartTrial event. */
+FOUNDATION_EXPORT NSString *const FBSDKAppEventParameterNameOrderID;
+
+/**
 
 
-/*!
-
- @class FBSDKAppEvents
-
- @abstract
- Client-side event logging for specialized application analytics available through Facebook App Insights
+  Client-side event logging for specialized application analytics available through Facebook App Insights
  and for use with Facebook Ads conversion tracking and optimization.
 
- @discussion
+
+
  The `FBSDKAppEvents` static class has a few related roles:
 
  + Logging predefined and application-defined events to Facebook App Insights with a
@@ -196,10 +357,9 @@ FBSDK_EXTERN NSString *const FBSDKAppEventParameterValueNo;
  * Basic event logging
  */
 
-/*!
+/**
 
- @abstract
- Log an event with just an eventName.
+  Log an event with just an eventName.
 
  @param eventName   The name of the event to record.  Limitations on number of events and name length
  are given in the `FBSDKAppEvents` documentation.
@@ -207,10 +367,9 @@ FBSDK_EXTERN NSString *const FBSDKAppEventParameterValueNo;
  */
 + (void)logEvent:(NSString *)eventName;
 
-/*!
+/**
 
- @abstract
- Log an event with an eventName and a numeric value to be aggregated with other events of this name.
+  Log an event with an eventName and a numeric value to be aggregated with other events of this name.
 
  @param eventName   The name of the event to record.  Limitations on number of events and name length
  are given in the `FBSDKAppEvents` documentation.  Common event names are provided in `FBAppEventName*` constants.
@@ -222,10 +381,9 @@ FBSDK_EXTERN NSString *const FBSDKAppEventParameterValueNo;
       valueToSum:(double)valueToSum;
 
 
-/*!
+/**
 
- @abstract
- Log an event with an eventName and a set of key/value pairs in the parameters dictionary.
+  Log an event with an eventName and a set of key/value pairs in the parameters dictionary.
  Parameter limitations are described above.
 
  @param eventName   The name of the event to record.  Limitations on number of events and name construction
@@ -239,10 +397,9 @@ FBSDK_EXTERN NSString *const FBSDKAppEventParameterValueNo;
 + (void)logEvent:(NSString *)eventName
       parameters:(NSDictionary *)parameters;
 
-/*!
+/**
 
- @abstract
- Log an event with an eventName, a numeric value to be aggregated with other events of this name,
+  Log an event with an eventName, a numeric value to be aggregated with other events of this name,
  and a set of key/value pairs in the parameters dictionary.
 
  @param eventName   The name of the event to record.  Limitations on number of events and name construction
@@ -262,10 +419,9 @@ FBSDK_EXTERN NSString *const FBSDKAppEventParameterValueNo;
       parameters:(NSDictionary *)parameters;
 
 
-/*!
+/**
 
- @abstract
- Log an event with an eventName, a numeric value to be aggregated with other events of this name,
+  Log an event with an eventName, a numeric value to be aggregated with other events of this name,
  and a set of key/value pairs in the parameters dictionary.  Providing session lets the developer
  target a particular <FBSession>.  If nil is provided, then `[FBSession activeSession]` will be used.
 
@@ -292,10 +448,9 @@ FBSDK_EXTERN NSString *const FBSDKAppEventParameterValueNo;
  * Purchase logging
  */
 
-/*!
+/**
 
- @abstract
- Log a purchase of the specified amount, in the specified currency.
+  Log a purchase of the specified amount, in the specified currency.
 
  @param purchaseAmount    Purchase amount to be logged, as expressed in the specified currency.  This value
  will be rounded to the thousandths place (e.g., 12.34567 becomes 12.346).
@@ -303,17 +458,17 @@ FBSDK_EXTERN NSString *const FBSDKAppEventParameterValueNo;
  @param currency          Currency, is denoted as, e.g. "USD", "EUR", "GBP".  See ISO-4217 for
  specific values.  One reference for these is <http://en.wikipedia.org/wiki/ISO_4217>.
 
- @discussion              This event immediately triggers a flush of the `FBSDKAppEvents` event queue, unless the `flushBehavior` is set
+
+              This event immediately triggers a flush of the `FBSDKAppEvents` event queue, unless the `flushBehavior` is set
  to `FBSDKAppEventsFlushBehaviorExplicitOnly`.
 
  */
 + (void)logPurchase:(double)purchaseAmount
            currency:(NSString *)currency;
 
-/*!
+/**
 
- @abstract
- Log a purchase of the specified amount, in the specified currency, also providing a set of
+  Log a purchase of the specified amount, in the specified currency, also providing a set of
  additional characteristics describing the purchase.
 
  @param purchaseAmount  Purchase amount to be logged, as expressed in the specified currency.This value
@@ -327,7 +482,8 @@ FBSDK_EXTERN NSString *const FBSDKAppEventParameterValueNo;
  parameters and name construction are given in the `FBSDKAppEvents` documentation.  Commonly used parameter names
  are provided in `FBSDKAppEventParameterName*` constants.
 
- @discussion              This event immediately triggers a flush of the `FBSDKAppEvents` event queue, unless the `flushBehavior` is set
+
+              This event immediately triggers a flush of the `FBSDKAppEvents` event queue, unless the `flushBehavior` is set
  to `FBSDKAppEventsFlushBehaviorExplicitOnly`.
 
  */
@@ -335,10 +491,9 @@ FBSDK_EXTERN NSString *const FBSDKAppEventParameterValueNo;
            currency:(NSString *)currency
          parameters:(NSDictionary *)parameters;
 
-/*!
+/**
 
- @abstract
- Log a purchase of the specified amount, in the specified currency, also providing a set of
+  Log a purchase of the specified amount, in the specified currency, also providing a set of
  additional characteristics describing the purchase, as well as an <FBSession> to log to.
 
  @param purchaseAmount  Purchase amount to be logged, as expressed in the specified currency.This value
@@ -354,7 +509,8 @@ FBSDK_EXTERN NSString *const FBSDKAppEventParameterValueNo;
 
  @param accessToken  The optional access token to log the event as.
 
- @discussion            This event immediately triggers a flush of the `FBSDKAppEvents` event queue, unless the `flushBehavior` is set
+
+            This event immediately triggers a flush of the `FBSDKAppEvents` event queue, unless the `flushBehavior` is set
  to `FBSDKAppEventsFlushBehaviorExplicitOnly`.
 
  */
@@ -368,33 +524,74 @@ FBSDK_EXTERN NSString *const FBSDKAppEventParameterValueNo;
  * Push Notifications Logging
  */
 
-/*!
- @abstract
- Log an app event that tracks that the application was open via Push Notification.
+/**
+  Log an app event that tracks that the application was open via Push Notification.
 
  @param payload Notification payload received via `UIApplicationDelegate`.
  */
 + (void)logPushNotificationOpen:(NSDictionary *)payload;
 
-/*!
- @abstract
- Log an app event that tracks that a custom action was taken from a push notification.
+/**
+  Log an app event that tracks that a custom action was taken from a push notification.
 
  @param payload Notification payload received via `UIApplicationDelegate`.
  @param action  Name of the action that was taken.
  */
 + (void)logPushNotificationOpen:(NSDictionary *)payload action:(NSString *)action;
 
-/*!
+/**
+  Uploads product catalog product item as an app event
+  @param itemID            Unique ID for the item. Can be a variant for a product.
+                           Max size is 100.
+  @param availability      If item is in stock. Accepted values are:
+                              in stock - Item ships immediately
+                              out of stock - No plan to restock
+                              preorder - Available in future
+                              available for order - Ships in 1-2 weeks
+                              discontinued - Discontinued
+  @param condition         Product condition: new, refurbished or used.
+  @param description       Short text describing product. Max size is 5000.
+  @param imageLink         Link to item image used in ad.
+  @param link              Link to merchant's site where someone can buy the item.
+  @param title             Title of item.
+  @param priceAmount       Amount of purchase, in the currency specified by the 'currency'
+                           parameter. This value will be rounded to the thousandths place
+                           (e.g., 12.34567 becomes 12.346).
+  @param currency          Currency used to specify the amount.
+                           E.g. "USD", "EUR", "GBP".  See ISO-4217 for specific values. One reference for these is <http://en.wikipedia.org/wiki/ISO_4217>
+  @param gtin              Global Trade Item Number including UPC, EAN, JAN and ISBN
+  @param mpn               Unique manufacture ID for product
+  @param brand             Name of the brand
+                           Note: Either gtin, mpn or brand is required.
+  @param parameters        Optional fields for deep link specification.
+ */
++ (void)logProductItem:(NSString *)itemID
+          availability:(FBSDKProductAvailability)availability
+             condition:(FBSDKProductCondition)condition
+           description:(NSString *)description
+             imageLink:(NSString *)imageLink
+                  link:(NSString *)link
+                 title:(NSString *)title
+           priceAmount:(double)priceAmount
+              currency:(NSString *)currency
+                  gtin:(NSString *)gtin
+                   mpn:(NSString *)mpn
+                 brand:(NSString *)brand
+            parameters:(NSDictionary *)parameters;
 
- @abstract
- Notifies the events system that the app has launched and, when appropriate, logs an "activated app" event.  Should typically be placed in the
+/**
+
+  Notifies the events system that the app has launched and, when appropriate, logs an "activated app" event.
+ This function is called automatically from FBSDKApplicationDelegate applicationDidBecomeActive, unless
+ one overrides 'FacebookAutoLogAppEventsEnabled' key to false in the project info plist file.
+ In case 'FacebookAutoLogAppEventsEnabled' is set to false, then it should typically be placed in the
  app delegates' `applicationDidBecomeActive:` method.
 
  This method also takes care of logging the event indicating the first time this app has been launched, which, among other things, is used to
  track user acquisition and app install ads conversions.
 
- @discussion
+
+
  `activateApp` will not log an event on every app launch, since launches happen every time the app is backgrounded and then foregrounded.
  "activated app" events will be logged when the app has not been active for more than 60 seconds.  This method also causes a "deactivated app"
  event to be logged when sessions are "completed", and these events are logged with the session length, with an indication of how much
@@ -404,45 +601,54 @@ FBSDK_EXTERN NSString *const FBSDKAppEventParameterValueNo;
 + (void)activateApp;
 
 /*
- * Push Notifications Registration
+ * Push Notifications Registration and Uninstall Tracking
  */
 
-/*!
- @abstract
- Sets a device token to register the current application installation for push notifications.
+/**
+  Sets and sends device token to register the current application for push notifications.
 
- @discussion
- Sets a device token from `NSData` representation that you get from `UIApplicationDelegate.-application:didRegisterForRemoteNotificationsWithDeviceToken:`.
+
+
+ Sets and sends a device token from `NSData` representation that you get from `UIApplicationDelegate.-application:didRegisterForRemoteNotificationsWithDeviceToken:`.
 
  @param deviceToken Device token data.
  */
 + (void)setPushNotificationsDeviceToken:(NSData *)deviceToken;
 
+/**
+ Sets and sends device token string to register the current application for push notifications.
+
+
+
+ Sets and sends a device token string
+
+ @param deviceTokenString Device token string.
+ */
++ (void)setPushNotificationsDeviceTokenString:(NSString *)deviceTokenString;
+
 /*
  * Control over event batching/flushing
  */
 
-/*!
+/**
 
- @abstract
- Get the current event flushing behavior specifying when events are sent back to Facebook servers.
+  Get the current event flushing behavior specifying when events are sent back to Facebook servers.
  */
 + (FBSDKAppEventsFlushBehavior)flushBehavior;
 
-/*!
+/**
 
- @abstract
- Set the current event flushing behavior specifying when events are sent back to Facebook servers.
+  Set the current event flushing behavior specifying when events are sent back to Facebook servers.
 
  @param flushBehavior   The desired `FBSDKAppEventsFlushBehavior` to be used.
  */
 + (void)setFlushBehavior:(FBSDKAppEventsFlushBehavior)flushBehavior;
 
-/*!
- @abstract
- Set the 'override' App ID for App Event logging.
+/**
+  Set the 'override' App ID for App Event logging.
 
- @discussion
+
+
  In some cases, apps want to use one Facebook App ID for login and social presence and another
  for App Event logging.  (An example is if multiple apps from the same company share an app ID for login, but
  want distinct logging.)  By default, this value is `nil`, and defers to the `FBSDKAppEventsOverrideAppIDBundleKey`
@@ -455,33 +661,32 @@ FBSDK_EXTERN NSString *const FBSDKAppEventParameterValueNo;
  */
 + (void)setLoggingOverrideAppID:(NSString *)appID;
 
-/*!
- @abstract
- Get the 'override' App ID for App Event logging.
+/**
+  Get the 'override' App ID for App Event logging.
 
- @see setLoggingOverrideAppID:
+
+@see setLoggingOverrideAppID:
 
  */
 + (NSString *)loggingOverrideAppID;
 
 
-/*!
- @abstract
- Explicitly kick off flushing of events to Facebook.  This is an asynchronous method, but it does initiate an immediate
+/**
+  Explicitly kick off flushing of events to Facebook.  This is an asynchronous method, but it does initiate an immediate
  kick off.  Server failures will be reported through the NotificationCenter with notification ID `FBSDKAppEventsLoggingResultNotification`.
  */
 + (void)flush;
 
-/*!
- @abstract
- Creates a request representing the Graph API call to retrieve a Custom Audience "third party ID" for the app's Facebook user.
+/**
+  Creates a request representing the Graph API call to retrieve a Custom Audience "third party ID" for the app's Facebook user.
  Callers will send this ID back to their own servers, collect up a set to create a Facebook Custom Audience with,
  and then use the resultant Custom Audience to target ads.
 
  @param accessToken The access token to use to establish the user's identity for users logged into Facebook through this app.
  If `nil`, then the `[FBSDKAccessToken currentAccessToken]` is used.
 
- @discussion
+
+
  The JSON in the request's response will include an "custom_audience_third_party_id" key/value pair, with the value being the ID retrieved.
  This ID is an encrypted encoding of the Facebook user's ID and the invoking Facebook app ID.
  Multiple calls with the same user will return different IDs, thus these IDs cannot be used to correlate behavior
@@ -496,4 +701,122 @@ FBSDK_EXTERN NSString *const FBSDKAppEventParameterValueNo;
  via the `[FBSDKSettings limitEventAndDataUsage]` flag, or a specific Facebook user cannot be identified.
  */
 + (FBSDKGraphRequest *)requestForCustomAudienceThirdPartyIDWithAccessToken:(FBSDKAccessToken *)accessToken;
+
+/*
+  Sets a custom user ID to associate with all app events.
+
+ The userID is persisted until it is cleared by passing nil.
+ */
++ (void)setUserID:(NSString *)userID;
+
+/*
+ Clears the custom user ID to associate with all app events.
+ */
++ (void)clearUserID;
+
+/*
+  Returns the set custom user ID.
+ */
++ (NSString *)userID;
+
+/*
+  Sets custom user data to associate with all app events. All user data are hashed
+  and used to match Facebook user from this instance of an application.
+
+  The user data will be persisted between application instances.
+
+  @param userData user data to identify the user. User data should be formated as
+  a NSDictionary of data type name and value.
+  Supported data types and names are:
+                   Email: em
+                   First Name: fn
+                   Last Name: ln
+                   Phone: ph
+                   Date of Birth: db
+                   Gender: ge
+                   City: ct
+                   State: st
+                   Zip: zp
+                   Country: country
+ */
++ (void)setUserData:(NSDictionary *)userData
+  DEPRECATED_MSG_ATTRIBUTE("Renamed `setUserEmail:firstName: ...`");
+
+/*
+  Sets custom user data to associate with all app events. All user data are hashed
+  and used to match Facebook user from this instance of an application.
+
+  The user data will be persisted between application instances.
+
+ @param email user's email
+ @param firstName user's first name
+ @param lastName user's last name
+ @param phone user's phone
+ @param dateOfBirth user's date of birth
+ @param gender user's gender
+ @param city user's city
+ @param state user's state
+ @param zip user's zip
+ @param country user's country
+ */
++ (void)setUserEmail:(NSString *)email
+           firstName:(NSString *)firstName
+            lastName:(NSString *)lastName
+               phone:(NSString *)phone
+         dateOfBirth:(NSString *)dateOfBirth
+              gender:(NSString *)gender
+                city:(NSString *)city
+               state:(NSString *)state
+                 zip:(NSString *)zip
+             country:(NSString *)country;
+/*
+  Returns the set user data else nil
+*/
++ (NSString *)getUserData;
+
+/*
+  Clears the current user data
+*/
++ (void)clearUserData;
+
+/*
+  Sends a request to update the properties for the current user, set by `setUserID:`
+
+ You must call `FBSDKAppEvents setUserID:` before making this call.
+ @param properties the custom user properties
+ @param handler the optional completion handler
+ */
++ (void)updateUserProperties:(NSDictionary *)properties handler:(FBSDKGraphRequestHandler)handler;
+
+#if !TARGET_OS_TV
+/*
+  Intended to be used as part of a hybrid webapp.
+ If you call this method, the FB SDK will inject a new JavaScript object into your webview.
+ If the FB Pixel is used within the webview, and references the app ID of this app,
+ then it will detect the presence of this injected JavaScript object
+ and pass Pixel events back to the FB SDK for logging using the AppEvents framework.
+
+ @param webView The webview to augment with the additional JavaScript behaviour
+ */
++ (void)augmentHybridWKWebView:(WKWebView *)webView;
+#endif
+
+/*
+ * Unity helper functions
+ */
+
+/**
+
+ Set if the Unity is already initialized
+
+ @param isUnityInit   whether Unity is initialized.
+
+ */
++ (void)setIsUnityInit:(BOOL)isUnityInit;
+
+/*
+ Send event binding to Unity
+ */
++ (void)sendEventBindingsToUnity;
+
 @end

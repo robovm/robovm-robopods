@@ -1,4 +1,4 @@
-// Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
+// Copyright 2004-present Facebook. All Rights Reserved.
 //
 // You are hereby granted a non-exclusive, worldwide, royalty-free license to use,
 // copy, modify, and distribute this software in source code or binary form for use
@@ -19,36 +19,30 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "FBAdDefines.h"
-#import "FBNativeAd.h"
-#import "FBNativeAdTableViewAdProvider.h"
-#import "FBNativeAdView.h"
-#import "FBNativeAdsManager.h"
+#import <FBAudienceNetwork/FBAdDefines.h>
+#import <FBAudienceNetwork/FBNativeAd.h>
+#import <FBAudienceNetwork/FBNativeAdTableViewAdProvider.h>
+#import <FBAudienceNetwork/FBNativeAdView.h>
+#import <FBAudienceNetwork/FBNativeAdsManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-/*!
- @class FBNativeAdTableViewCellProvider
-
- @abstract Class which assists in putting FBNativeAdViews into UITableViews. This class manages the creation of UITableViewCells which host native ad views. Functionality is provided to create UITableCellViews as needed for a given indexPath as well as computing the height of the cells.
+/**
+  Class which assists in putting FBNativeAdViews into UITableViews. This class manages the creation of UITableViewCells which host native ad views. Functionality is provided to create UITableCellViews as needed for a given indexPath as well as computing the height of the cells.
  */
 FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED
 @interface FBNativeAdTableViewCellProvider : FBNativeAdTableViewAdProvider<UITableViewDataSource>
 
-/*!
- @method
-
- @abstract Method to create a FBNativeAdTableViewCellProvider.
+/**
+  Method to create a FBNativeAdTableViewCellProvider.
 
  @param manager The naitve ad manager consumed by this provider
  @param type The type of this native ad template. For more information, consult FBNativeAdViewType.
  */
 - (instancetype)initWithManager:(FBNativeAdsManager *)manager forType:(FBNativeAdViewType)type;
 
-/*!
- @method
-
- @abstract Method to create a FBNativeAdTableViewCellProvider.
+/**
+  Method to create a FBNativeAdTableViewCellProvider.
 
  @param manager The naitve ad manager consumed by this provider
  @param type The type of this native ad template. For more information, consult FBNativeAdViewType.
@@ -56,24 +50,18 @@ FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED
  */
 - (instancetype)initWithManager:(FBNativeAdsManager *)manager forType:(FBNativeAdViewType)type forAttributes:(FBNativeAdViewAttributes *)attributes NS_DESIGNATED_INITIALIZER;
 
-/*!
- @method
-
- @abstract Helper method for implementors of UITableViewDataSource who would like to host native ad UITableViewCells in their table view.
+/**
+  Helper method for implementors of UITableViewDataSource who would like to host native ad UITableViewCells in their table view.
  */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 
-/*!
- @method
-
- @abstract Helper method for implementors of UITableViewDelegate who would like to host native ad UITableViewCells in their table view.
+/**
+  Helper method for implementors of UITableViewDelegate who would like to host native ad UITableViewCells in their table view.
  */
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 
-/*!
- @method
-
- @abstract Helper method for implementors of UITableViewDelegate who would like to host native ad UITableViewCells in their table view.
+/**
+  Helper method for implementors of UITableViewDelegate who would like to host native ad UITableViewCells in their table view.
  */
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath;
 

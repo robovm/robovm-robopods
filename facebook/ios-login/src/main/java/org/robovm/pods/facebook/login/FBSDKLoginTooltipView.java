@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -49,6 +49,12 @@ import org.robovm.pods.facebook.core.*;
     public FBSDKLoginTooltipView() {}
     protected FBSDKLoginTooltipView(Handle h, long handle) { super(h, handle); }
     protected FBSDKLoginTooltipView(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithTagline:message:colorStyle:")
+    public FBSDKLoginTooltipView(String tagline, String message, FBSDKTooltipColorStyle colorStyle) { super(tagline, message, colorStyle); }
+    @Method(selector = "initWithFrame:")
+    public FBSDKLoginTooltipView(@ByVal CGRect frame) { super(frame); }
+    @Method(selector = "initWithCoder:")
+    public FBSDKLoginTooltipView(NSCoder decoder) { super(decoder); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "delegate")

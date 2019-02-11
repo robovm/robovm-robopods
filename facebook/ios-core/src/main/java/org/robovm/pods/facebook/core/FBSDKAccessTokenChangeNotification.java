@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,6 +30,8 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.dispatch.*;
+import org.robovm.apple.webkit.*;
 import org.robovm.pods.bolts.*;
 /*</imports>*/
 
@@ -105,8 +107,8 @@ import org.robovm.pods.bolts.*;
     
 
     public boolean didChangeUserID() {
-        if (has(Keys.DidChangeUserID())) {
-            NSNumber val = (NSNumber) get(Keys.DidChangeUserID());
+        if (has(Keys.DidChangeUserIDKey())) {
+            NSNumber val = (NSNumber) get(Keys.DidChangeUserIDKey());
             return val.booleanValue();
         }
         return false;
@@ -131,8 +133,8 @@ import org.robovm.pods.bolts.*;
     @Library(Library.INTERNAL)
     public static class Keys {
         static { Bro.bind(Keys.class); }
-        @GlobalValue(symbol="FBSDKAccessTokenDidChangeUserID", optional=true)
-        public static native NSString DidChangeUserID();
+        @GlobalValue(symbol="FBSDKAccessTokenDidChangeUserIDKey", optional=true)
+        public static native NSString DidChangeUserIDKey();
         @GlobalValue(symbol="FBSDKAccessTokenChangeOldKey", optional=true)
         public static native NSString ChangeOld();
         @GlobalValue(symbol="FBSDKAccessTokenChangeNewKey", optional=true)

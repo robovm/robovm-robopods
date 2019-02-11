@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,6 +30,8 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coremedia.*;
+import org.robovm.apple.dispatch.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -47,6 +49,7 @@ import org.robovm.apple.coregraphics.*;
     public FBInterstitialAd() {}
     protected FBInterstitialAd(Handle h, long handle) { super(h, handle); }
     protected FBInterstitialAd(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithPlacementID:")
     public FBInterstitialAd(String placementID) { super((SkipInit) null); initObject(init(placementID)); }
     /*</constructors>*/
     /*<properties>*/
@@ -56,6 +59,10 @@ import org.robovm.apple.coregraphics.*;
     public native FBInterstitialAdDelegate getDelegate();
     @Property(selector = "setDelegate:", strongRef = true)
     public native void setDelegate(FBInterstitialAdDelegate v);
+    @Property(selector = "extraHint")
+    public native FBAdExtraHint getExtraHint();
+    @Property(selector = "setExtraHint:")
+    public native void setExtraHint(FBAdExtraHint v);
     @Property(selector = "isAdValid")
     public native boolean isAdValid();
     /*</properties>*/
@@ -65,6 +72,8 @@ import org.robovm.apple.coregraphics.*;
     protected native @Pointer long init(String placementID);
     @Method(selector = "loadAd")
     public native void loadAd();
+    @Method(selector = "loadAdWithBidPayload:")
+    public native void loadAd(String bidPayload);
     @Method(selector = "showAdFromRootViewController:")
     public native boolean showAd(UIViewController rootViewController);
     /*</methods>*/

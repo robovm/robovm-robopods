@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,6 +30,8 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coremedia.*;
+import org.robovm.apple.dispatch.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -47,25 +49,34 @@ import org.robovm.apple.coregraphics.*;
     public FBMediaView() {}
     protected FBMediaView(Handle h, long handle) { super(h, handle); }
     protected FBMediaView(SkipInit skipInit) { super(skipInit); }
-    public FBMediaView(FBNativeAd nativeAd) { super((SkipInit) null); initObject(init(nativeAd)); }
+    @Method(selector = "initWithFrame:")
+    public FBMediaView(@ByVal CGRect frame) { super(frame); }
+    @Method(selector = "initWithCoder:")
+    public FBMediaView(NSCoder decoder) { super(decoder); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "delegate")
     public native FBMediaViewDelegate getDelegate();
     @Property(selector = "setDelegate:", strongRef = true)
     public native void setDelegate(FBMediaViewDelegate v);
-    @Property(selector = "nativeAd")
-    public native FBNativeAd getNativeAd();
-    @Property(selector = "setNativeAd:")
-    public native void setNativeAd(FBNativeAd v);
+    @Property(selector = "videoRenderer")
+    public native FBMediaViewVideoRenderer getVideoRenderer();
+    @Property(selector = "setVideoRenderer:")
+    public native void setVideoRenderer(FBMediaViewVideoRenderer v);
+    @Property(selector = "volume")
+    public native float getVolume();
     @Property(selector = "isAutoplayEnabled")
     public native boolean isAutoplayEnabled();
-    @Property(selector = "setAutoplayEnabled:")
-    public native void setAutoplayEnabled(boolean v);
+    @Property(selector = "aspectRatio")
+    public native @MachineSizedFloat double getAspectRatio();
+    @Property(selector = "nativeAdViewTag")
+    public native FBNativeAdViewTag getNativeAdViewTag();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithNativeAd:")
-    protected native @Pointer long init(FBNativeAd nativeAd);
+    @Method(selector = "applyNaturalWidth")
+    public native void applyNaturalWidth();
+    @Method(selector = "applyNaturalHeight")
+    public native void applyNaturalHeight();
     /*</methods>*/
 }

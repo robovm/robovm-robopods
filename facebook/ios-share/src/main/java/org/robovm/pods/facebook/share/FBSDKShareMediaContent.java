@@ -29,6 +29,8 @@ import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.photos.*;
 import org.robovm.pods.facebook.core.*;
 /*</imports>*/
 
@@ -47,6 +49,8 @@ import org.robovm.pods.facebook.core.*;
     public FBSDKShareMediaContent() {}
     protected FBSDKShareMediaContent(Handle h, long handle) { super(h, handle); }
     protected FBSDKShareMediaContent(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithCoder:")
+    public FBSDKShareMediaContent(NSCoder decoder) { super((SkipInit) null); initObject(init(decoder)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "media")
@@ -73,10 +77,28 @@ import org.robovm.pods.facebook.core.*;
     public native String getRef();
     @Property(selector = "setRef:")
     public native void setRef(String v);
+    @Property(selector = "pageID")
+    public native String getPageID();
+    @Property(selector = "setPageID:")
+    public native void setPageID(String v);
+    @Property(selector = "shareUUID")
+    public native String getShareUUID();
+    @Property(selector = "supportsSecureCoding")
+    public static native boolean supportsSecureCoding();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "isEqualToShareMediaContent:")
     public native boolean equalsTo(FBSDKShareMediaContent content);
+    @Method(selector = "addParameters:bridgeOptions:")
+    public native NSDictionary<NSString, ?> addParameters(NSDictionary<NSString, ?> existingParameters, FBSDKShareBridgeOptions bridgeOptions);
+    @Method(selector = "addToParameters:bridgeOptions:")
+    public native void addToParameters(NSMutableDictionary<NSString, ?> parameters, FBSDKShareBridgeOptions bridgeOptions);
+    @Method(selector = "validateWithOptions:error:")
+    public native boolean validate(FBSDKShareBridgeOptions bridgeOptions, NSError.NSErrorPtr errorRef);
+    @Method(selector = "encodeWithCoder:")
+    public native void encode(NSCoder coder);
+    @Method(selector = "initWithCoder:")
+    protected native @Pointer long init(NSCoder decoder);
     /*</methods>*/
 }

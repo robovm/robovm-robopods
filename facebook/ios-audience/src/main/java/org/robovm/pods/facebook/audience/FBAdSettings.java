@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,6 +30,8 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coremedia.*;
+import org.robovm.apple.dispatch.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -49,16 +51,37 @@ import org.robovm.apple.coregraphics.*;
     protected FBAdSettings(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "isBackgroundVideoPlaybackAllowed")
+    public static native boolean isBackgroundVideoPlaybackAllowed();
+    @Property(selector = "setBackgroundVideoPlaybackAllowed:")
+    public static native void setBackgroundVideoPlaybackAllowed(boolean v);
+    @Property(selector = "testAdType")
+    public static native FBAdTestAdType getTestAdType();
+    @Property(selector = "setTestAdType:")
+    public static native void setTestAdType(FBAdTestAdType v);
+    @Property(selector = "loggingDelegate")
+    public static native FBAdLoggingDelegate getLoggingDelegate();
+    @Property(selector = "setLoggingDelegate:", strongRef = true)
+    public static native void setLoggingDelegate(FBAdLoggingDelegate v);
+    @Property(selector = "bidderToken")
+    public static native String getBidderToken();
+    @Property(selector = "routingToken")
+    public static native String getRoutingToken();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "isTestMode")
+    public static native boolean isTestMode();
+    @Method(selector = "testDeviceHash")
+    public static native String testDeviceHash();
     @Method(selector = "addTestDevice:")
     public static native void addTestDevice(String deviceHash);
     @Method(selector = "addTestDevices:")
     public static native void addTestDevices(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> devicesHash);
     @Method(selector = "clearTestDevices")
     public static native void clearTestDevices();
+    @Method(selector = "clearTestDevice:")
+    public static native void clearTestDevice(String deviceHash);
     @Method(selector = "setIsChildDirected:")
     public static native void setIsChildDirected(boolean isChildDirected);
     @Method(selector = "setMediationService:")
@@ -71,5 +94,9 @@ import org.robovm.apple.coregraphics.*;
     public static native FBAdLogLevel getLogLevel();
     @Method(selector = "setLogLevel:")
     public static native void setLogLevel(FBAdLogLevel level);
+    @Method(selector = "mediaViewRenderingMethod")
+    public static native FBMediaViewRenderingMethod mediaViewRenderingMethod();
+    @Method(selector = "setMediaViewRenderingMethod:")
+    public static native void setMediaViewRenderingMethod(FBMediaViewRenderingMethod mediaViewRenderingMethod);
     /*</methods>*/
 }

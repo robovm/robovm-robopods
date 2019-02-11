@@ -1,6 +1,6 @@
 package: org.robovm.pods.facebook.share
 framework: FBSDKShareKit
-include: [foundation, uikit, ../../../../ios-core/src/main/bro-gen/facebook-corekit.yaml]
+include: [foundation, uikit, coregraphics, photos, ../../../../ios-core/src/main/bro-gen/facebook-corekit.yaml]
 clang_args: ['-x', 'objective-c']
 headers: [FBSDKShareKit.h]
 typedefs:
@@ -14,13 +14,16 @@ enums:
     FBSDKLikeControlHorizontalAlignment: {}
     FBSDKLikeControlStyle: {}
     FBSDKLikeObjectType: {}
-    FBSDKShareErrorCode: {suffix: ErrorCode}
+    # deprecated
+    FBSDKShareErrorCode: {exclude: true}
     FBSDKShareDialogMode: {}
+    FBSDKShareBridgeOptions: {}
+    FBSDKShareError: {}
+    FBSDKShareMessengerGenericTemplateImageAspectRatio: {}
+    FBSDKShareMessengerMediaTemplateMediaType: {}
+    FBSDKShareMessengerURLActionButtonWebviewHeightRatio: {}
 
 classes:
-    FBSDKShareError:
-        extends: NSError
-
     FBSDKAppGroupContent: # DONE
         methods:
             '-isEqualToAppGroupContent:':
@@ -70,14 +73,16 @@ classes:
             '+hashtagWithString:':
                 name: create
                 constructor: true
-    FBSDKLikeButton: {} # DONE
+    FBSDKLikeButton:
+        extends: FBSDKButton
     FBSDKLikeControl: {} # DONE
     FBSDKMessageDialog: # DONE
         methods:
             '+showWithContent:delegate:':
                 name: show0
                 visibility: private
-    FBSDKSendButton: {} # DONE
+    FBSDKSendButton:
+        extends: FBSDKButton
     FBSDKShareAPI: # DONE
         properties:
             'createObjectsWithClientToken':
@@ -88,7 +93,8 @@ classes:
             '+shareWithContent:delegate:':
                 name: share0
                 visibility: private
-    FBSDKShareButton: {} # DONE
+    FBSDKShareButton:
+        extends: FBSDKButton
     FBSDKShareDialog: # DONE
         methods:
             '+showFromViewController:withContent:delegate:':
@@ -131,6 +137,9 @@ classes:
             '+photoWithImageURL:userGenerated:':
                 name: create
                 constructor: true
+            '+photoWithPhotoAsset:userGenerated:':
+                name: create
+                constructor: true
     FBSDKSharePhotoContent: # DONE
         properties:
             'photos':
@@ -145,10 +154,57 @@ classes:
             '+videoWithVideoURL.*':
                 name: create
                 constructor: true
+            '+videoWithData:':
+                name: create
+                constructor: true
+            '+videoWithData:previewPhoto:':
+                name: create
+                constructor: true
+            '+videoWithVideoAsset:':
+                name: create
+                constructor: true
+            '+videoWithVideoAsset:previewPhoto:':
+                name: create
+                constructor: true
     FBSDKShareVideoContent: # DONE
         methods:
             '-isEqualToShareVideoContent:':
                 name: equalsTo
+    FBSDKAppGroupAddDialog:
+        methods:
+            '-validateWithError:':
+                name: validate
+            '+showWithContent:delegate:':
+                name: show
+    FBSDKAppGroupJoinDialog:
+        methods:
+            '-validateWithError:':
+                name: validate
+            '+showWithGroupID:delegate:':
+                name: show
+    FBSDKCameraEffectArguments:
+        methods:
+            '-setString:forKey:':
+                name: set
+            '-setArray:forKey:':
+                name: set
+    FBSDKCameraEffectTextures:
+        methods:
+            '-setImage:forKey:':
+                name: set
+    FBSDKShareCameraEffectContent: {}
+    FBSDKShareMessengerGenericTemplateContent: {}
+    FBSDKShareMessengerGenericTemplateElement: {}
+    FBSDKShareMessengerMediaTemplateContent:
+        methods:
+            '-initWithAttachmentID:':
+                name: init
+                constructor: true
+            '-initWithMediaURL:':
+                name: init
+                constructor: true
+    FBSDKShareMessengerOpenGraphMusicTemplateContent: {}
+    FBSDKShareMessengerURLActionButton: {}
 
 protocols:
     FBSDKAppInviteDialogDelegate: # DONE
@@ -223,6 +279,29 @@ protocols:
             'peopleIDs':
                 type: List<String>
                 marshaler: NSArray.AsStringListMarshaler
+        methods:
+            '-addParameters:bridgeOptions:':
+                name: addParameters
+            '-addToParameters:bridgeOptions:':
+                name: addToParameters
+    FBSDKAppGroupAddDialogDelegate:
+        methods:
+            '-appGroupAddDialog:didCompleteWithResults:':
+                name: didComplete
+            '-appGroupAddDialog:didFailWithError:':
+                name: didFai
+    FBSDKAppGroupJoinDialogDelegate:
+        methods:
+            '-appGroupJoinDialog:didCompleteWithResults:':
+                name: didComplete
+            '-appGroupJoinDialog:didFailWithError:':
+                name: didFail
+    FBSDKShareMessengerActionButton: {}
+    FBSDKSharingScheme: {}
+    FBSDKSharingValidation:
+        methods:
+            '-validateWithOptions:error:':
+                name: validate
 
 functions:
     NSStringFromFBSDKAppGroupPrivacy:

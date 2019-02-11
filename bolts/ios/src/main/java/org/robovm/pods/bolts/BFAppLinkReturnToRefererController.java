@@ -30,6 +30,7 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.dispatch.*;
+import org.robovm.apple.coregraphics.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -47,6 +48,7 @@ import org.robovm.apple.dispatch.*;
     public BFAppLinkReturnToRefererController() {}
     protected BFAppLinkReturnToRefererController(Handle h, long handle) { super(h, handle); }
     protected BFAppLinkReturnToRefererController(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initForDisplayAboveNavController:")
     public BFAppLinkReturnToRefererController(UINavigationController navController) { super((SkipInit) null); initObject(init(navController)); }
     /*</constructors>*/
     /*<properties>*/

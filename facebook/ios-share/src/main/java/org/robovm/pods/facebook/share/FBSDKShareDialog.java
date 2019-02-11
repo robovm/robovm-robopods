@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -29,6 +29,8 @@ import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.photos.*;
 import org.robovm.pods.facebook.core.*;
 /*</imports>*/
 
@@ -57,6 +59,8 @@ import org.robovm.pods.facebook.core.*;
     public native FBSDKShareDialogMode getMode();
     @Property(selector = "setMode:")
     public native void setMode(FBSDKShareDialogMode v);
+    @Property(selector = "canShow")
+    public native boolean canShow();
     @Property(selector = "delegate")
     public native FBSDKSharingDelegate getDelegate();
     @Property(selector = "setDelegate:", strongRef = true)
@@ -71,26 +75,9 @@ import org.robovm.pods.facebook.core.*;
     public native void setShouldFailOnDataError(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
-    public boolean validate() throws NSErrorException {
-        NSError.NSErrorPtr ptr = new NSError.NSErrorPtr();
-        boolean result = validate(ptr);
-        if (ptr.get() != null) { throw new NSErrorException(ptr.get()); }
-        return result;
-     }
-    @Method(selector = "validateWithError:")
-    private native boolean validate(NSError.NSErrorPtr errorRef);
-    
-    private static FBSDKSharingDelegate delegate;
-    
-    public static FBSDKShareDialog show(UIViewController viewController, FBSDKSharingContent content, FBSDKSharingDelegate delegate) {
-        FBSDKShareDialog.delegate = delegate;
-        return show0(viewController, content, delegate);
-    }
     /*<methods>*/
     @Method(selector = "showFromViewController:withContent:delegate:")
     private static native FBSDKShareDialog show0(UIViewController viewController, FBSDKSharingContent content, FBSDKSharingDelegate delegate);
-    @Method(selector = "canShow")
-    public native boolean canShow();
     @Method(selector = "show")
     public native boolean show();
     /*</methods>*/

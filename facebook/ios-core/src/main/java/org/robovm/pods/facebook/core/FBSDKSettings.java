@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,6 +30,8 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.dispatch.*;
+import org.robovm.apple.webkit.*;
 import org.robovm.pods.bolts.*;
 /*</imports>*/
 
@@ -45,12 +47,15 @@ import org.robovm.pods.bolts.*;
     /*<bind>*/static { ObjCRuntime.bind(FBSDKSettings.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public FBSDKSettings() {}
+    protected FBSDKSettings() {}
     protected FBSDKSettings(Handle h, long handle) { super(h, handle); }
     protected FBSDKSettings(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "loggingBehaviors")
+    public static native NSSet<NSString> getLoggingBehaviors();
+    @Property(selector = "setLoggingBehaviors:")
+    public static native void setLoggingBehaviors(NSSet<NSString> v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -80,6 +85,18 @@ import org.robovm.pods.bolts.*;
     public static native @MachineSizedFloat double getJPEGCompressionQuality();
     @Method(selector = "setJPEGCompressionQuality:")
     public static native void setJPEGCompressionQuality(@MachineSizedFloat double JPEGCompressionQuality);
+    @Method(selector = "autoLogAppEventsEnabled")
+    public static native NSNumber autoLogAppEventsEnabled();
+    @Method(selector = "setAutoLogAppEventsEnabled:")
+    public static native void setAutoLogAppEventsEnabled(NSNumber AutoLogAppEventsEnabled);
+    @Method(selector = "codelessDebugLogEnabled")
+    public static native NSNumber codelessDebugLogEnabled();
+    @Method(selector = "setCodelessDebugLogEnabled:")
+    public static native void setCodelessDebugLogEnabled(NSNumber CodelessDebugLogEnabled);
+    @Method(selector = "advertiserIDCollectionEnabled")
+    public static native NSNumber advertiserIDCollectionEnabled();
+    @Method(selector = "setAdvertiserIDCollectionEnabled:")
+    public static native void setAdvertiserIDCollectionEnabled(NSNumber AdvertiserIDCollectionEnabled);
     @Method(selector = "limitEventAndDataUsage")
     public static native boolean limitsEventAndDataUsage();
     @Method(selector = "setLimitEventAndDataUsage:")
@@ -87,9 +104,9 @@ import org.robovm.pods.bolts.*;
     @Method(selector = "sdkVersion")
     public static native String getSdkVersion();
     @Method(selector = "loggingBehavior")
-    public static native @org.robovm.rt.bro.annotation.Marshaler(FBSDKLoggingBehavior.AsSetMarshaler.class) Set<FBSDKLoggingBehavior> getLoggingBehavior();
+    public static native NSSet<?> getLoggingBehavior();
     @Method(selector = "setLoggingBehavior:")
-    public static native void setLoggingBehavior(@org.robovm.rt.bro.annotation.Marshaler(FBSDKLoggingBehavior.AsSetMarshaler.class) Set<FBSDKLoggingBehavior> loggingBehavior);
+    public static native void setLoggingBehavior(NSSet<?> loggingBehavior);
     @Method(selector = "enableLoggingBehavior:")
     public static native void enableLoggingBehavior(FBSDKLoggingBehavior loggingBehavior);
     @Method(selector = "disableLoggingBehavior:")
@@ -98,5 +115,9 @@ import org.robovm.pods.bolts.*;
     public static native void setLegacyUserDefaultTokenInformationKeyName(String tokenInformationKeyName);
     @Method(selector = "legacyUserDefaultTokenInformationKeyName")
     public static native String getLegacyUserDefaultTokenInformationKeyName();
+    @Method(selector = "setGraphAPIVersion:")
+    public static native void setGraphAPIVersion(String version);
+    @Method(selector = "graphAPIVersion")
+    public static native String graphAPIVersion();
     /*</methods>*/
 }

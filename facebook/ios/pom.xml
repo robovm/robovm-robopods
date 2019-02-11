@@ -51,16 +51,6 @@
         </dependency>
         <dependency>
             <groupId>com.mobidevelop.robovm</groupId>
-            <artifactId>robopods-facebook-ios-messenger</artifactId>
-            <version>${robopods.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.mobidevelop.robovm</groupId>
-            <artifactId>robopods-facebook-ios-notifications</artifactId>
-            <version>${robopods.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.mobidevelop.robovm</groupId>
             <artifactId>robopods-facebook-ios-share</artifactId>
             <version>${robopods.version}</version>
         </dependency>

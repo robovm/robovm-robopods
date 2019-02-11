@@ -1,6 +1,6 @@
 package: org.robovm.pods.bolts
 framework: Bolts
-include: [foundation, uikit, dispatch]
+include: [foundation, uikit, dispatch, coregraphics]
 clang_args: ['-x', 'objective-c']
 headers: [Bolts.h]
 typedefs:

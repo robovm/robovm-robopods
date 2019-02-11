@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,6 +30,8 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.dispatch.*;
+import org.robovm.apple.webkit.*;
 import org.robovm.pods.bolts.*;
 /*</imports>*/
 
@@ -41,17 +43,6 @@ import org.robovm.pods.bolts.*;
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    public static class Notifications {
-        public static NSObject observeLoggingResult(final VoidBlock1<NSError> block) {
-            return NSNotificationCenter.getDefaultCenter().addObserver(LoggingResultNotification(), null, NSOperationQueue.getMainQueue(), new VoidBlock1<NSNotification>() {
-                @Override
-                public void invoke(NSNotification a) {
-                    block.invoke((NSError)a.getObject());
-                }
-            });
-        }
-    }
-    
     /*<ptr>*/public static class FBSDKAppEventsPtr extends Ptr<FBSDKAppEvents, FBSDKAppEventsPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(FBSDKAppEvents.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
@@ -64,77 +55,6 @@ import org.robovm.pods.bolts.*;
     
     /*</properties>*/
     /*<members>*//*</members>*/
-    
-    /* Convenience methods */
-    public static void logEvent(FBSDKAppEventName eventName) {
-        logEvent(eventName.value().toString());
-    }
-    public static void logEvent(FBSDKAppEventName eventName, double valueToSum) {
-        logEvent(eventName.value().toString(), valueToSum);
-    }
-    public static void logEvent(FBSDKAppEventName eventName, NSDictionary<NSString, NSObject> parameters) {
-        logEvent(eventName.value().toString(), parameters);
-    }
-    public static void logEvent(FBSDKAppEventName eventName, Object... parameters) {
-        logEvent(eventName.value().toString(), getDictionaryForParameters(parameters));
-    }
-    public static void logEvent(FBSDKAppEventName eventName, double valueToSum, NSDictionary<NSString, NSObject> parameters) {
-        logEvent(eventName.value().toString(), valueToSum, parameters);
-    }
-    public static void logEvent(FBSDKAppEventName eventName, double valueToSum, Object... parameters) {
-        logEvent(eventName.value().toString(), valueToSum, getDictionaryForParameters(parameters));
-    }
-    public static void logEvent(FBSDKAppEventName eventName, double valueToSum, FBSDKAccessToken accessToken, NSDictionary<NSString, NSObject> parameters) {
-        logEvent(eventName.value().toString(), NSNumber.valueOf(valueToSum), parameters, accessToken);
-    }
-    public static void logEvent(FBSDKAppEventName eventName, double valueToSum, FBSDKAccessToken accessToken, Object... parameters) {
-        logEvent(eventName.value().toString(), NSNumber.valueOf(valueToSum), getDictionaryForParameters(parameters), accessToken);
-    }
-    public static void logPurchase(double purchaseAmount, String currency, Object... parameters) {
-        logPurchase(purchaseAmount, currency, getDictionaryForParameters(parameters));
-    }
-    public static void logPurchase(double purchaseAmount, String currency, FBSDKAccessToken accessToken, Object... parameters) {
-        logPurchase(purchaseAmount, currency, getDictionaryForParameters(parameters), accessToken);
-    }
-    
-    public static void logEvent(String eventName, Object...parameters) {
-        logEvent(eventName,  getDictionaryForParameters(parameters));
-    }
-    public static void logEvent(String eventName, double valueToSum, Object...parameters) {
-        logEvent(eventName, valueToSum, getDictionaryForParameters(parameters));
-    }
-    public static void logEvent(String eventName, NSNumber valueToSum, FBSDKAccessToken accessToken, Object...parameters) {
-        logEvent(eventName, valueToSum, accessToken, getDictionaryForParameters(parameters));
-    }
-    
-    private static NSDictionary<NSString, NSObject> getDictionaryForParameters(Object...parameters) {
-        NSDictionary<NSString, NSObject> dict = new NSMutableDictionary<>();
-        for (int i = 0; i < parameters.length; i += 2) {
-            NSString key = null;
-            Object keyObj = parameters[i];
-            if (keyObj instanceof String) {
-                key = new NSString((String)keyObj);
-            } else if (keyObj instanceof NSString) {
-                key = (NSString)keyObj;
-            } else {
-               key = new NSString(String.valueOf(keyObj));
-            }
-            NSObject value = null;
-            Object valueObj = parameters[i + 1];
-            if (valueObj instanceof String) {
-                value = new NSString((String)valueObj);
-            } else if (valueObj instanceof Number) {
-                value = NSNumber.valueOf((Number)valueObj);
-            } else if (valueObj instanceof NSObject) {
-                value = (NSObject)valueObj;
-            } else {
-                value = new NSString(String.valueOf(valueObj));
-            }
-            dict.put(key, value);
-        }
-        return dict;
-    }
-    
     /*<methods>*/
     @GlobalValue(symbol="FBSDKAppEventsLoggingResultNotification", optional=true)
     public static native NSString LoggingResultNotification();
@@ -161,10 +81,14 @@ import org.robovm.pods.bolts.*;
     public static native void logPushNotificationOpen(UIRemoteNotification payload);
     @Method(selector = "logPushNotificationOpen:action:")
     public static native void logPushNotificationOpen(UIRemoteNotification payload, String action);
+    @Method(selector = "logProductItem:availability:condition:description:imageLink:link:title:priceAmount:currency:gtin:mpn:brand:parameters:")
+    public static native void logProductItem(String itemID, FBSDKProductAvailability availability, FBSDKProductCondition condition, String description, String imageLink, String link, String title, double priceAmount, String currency, String gtin, String mpn, String brand, NSDictionary<?, ?> parameters);
     @Method(selector = "activateApp")
     public static native void activateApp();
     @Method(selector = "setPushNotificationsDeviceToken:")
     public static native void setPushNotificationsDeviceToken(NSData deviceToken);
+    @Method(selector = "setPushNotificationsDeviceTokenString:")
+    public static native void setPushNotificationsDeviceTokenString(String deviceTokenString);
     @Method(selector = "flushBehavior")
     public static native FBSDKAppEventsFlushBehavior getFlushBehavior();
     @Method(selector = "setFlushBehavior:")
@@ -177,5 +101,27 @@ import org.robovm.pods.bolts.*;
     public static native void flush();
     @Method(selector = "requestForCustomAudienceThirdPartyIDWithAccessToken:")
     public static native FBSDKGraphRequest requestForCustomAudienceThirdPartyID(FBSDKAccessToken accessToken);
+    @Method(selector = "setUserID:")
+    public static native void setUserID(String userID);
+    @Method(selector = "clearUserID")
+    public static native void clearUserID();
+    @Method(selector = "userID")
+    public static native String userID();
+    @Method(selector = "setUserData:")
+    public static native void setUserData(NSDictionary<?, ?> userData);
+    @Method(selector = "setUserEmail:firstName:lastName:phone:dateOfBirth:gender:city:state:zip:country:")
+    public static native void setUserData(String email, String firstName, String lastName, String phone, String dateOfBirth, String gender, String city, String state, String zip, String country);
+    @Method(selector = "getUserData")
+    public static native String getUserData();
+    @Method(selector = "clearUserData")
+    public static native void clearUserData();
+    @Method(selector = "updateUserProperties:handler:")
+    public static native void updateUserProperties(NSDictionary<?, ?> properties, @Block VoidBlock3<FBSDKGraphRequestConnection, NSObject, NSError> handler);
+    @Method(selector = "augmentHybridWKWebView:")
+    public static native void augmentHybridWKWebView(WKWebView webView);
+    @Method(selector = "setIsUnityInit:")
+    public static native void setIsUnityInit(boolean isUnityInit);
+    @Method(selector = "sendEventBindingsToUnity")
+    public static native void sendEventBindingsToUnity();
     /*</methods>*/
 }

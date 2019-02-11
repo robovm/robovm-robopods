@@ -1,27 +1,29 @@
 package: org.robovm.pods.facebook.core
 framework: FBSDKCoreKit
-include: [foundation, uikit, coregraphics, ../../../../../bolts/ios/src/main/bro-gen/bolts.yaml]
+include: [foundation, uikit, coregraphics, dispatch, webkit, ../../../../../bolts/ios/src/main/bro-gen/bolts.yaml]
 clang_args: ['-x', 'objective-c']
 headers: [FBSDKCoreKit.h, FBSDKButton.h]
 typedefs:
     FBSDKGraphRequestHandler: '@Block VoidBlock3<FBSDKGraphRequestConnection, NSObject, NSError>'
     FBSDKDeferredAppLinkHandler: '@Block VoidBlock2<NSURL, NSError>'
-    FBSDKGraphRequestHandler: '@Block VoidBlock3<FBSDKGraphRequestConnection, NSObject, NSError>'
     FBSDKTestUsersManagerRetrieveTestAccountTokensHandler: '@Block VoidBlock2<NSArray<FBSDKAccessToken>, NSError>'
     FBSDKTestUsersManagerRemoveTestAccountHandler: '@Block VoidBlock1<NSError>'
     'void (^)(FBSDKProfile *, NSError *)': '@Block VoidBlock2<FBSDKProfile, NSError>'
-    
+    OS_dispatch_source: DispatchSource
+
 enums:
     FBSDKAppEventsFlushBehavior: {}
     FBSDKErrorCode: {suffix: ErrorCode}
     FBSDKGraphRequestErrorCategory: {}
     FBSDKProfilePictureMode: {}
+    FBSDKProductAvailability: {}
+    FBSDKProductCondition: {}
+    FBSDKError: {}
+    FBSDKGraphRequestError: {}
+    FBSDKAppLinkNavigationType: {}
+    FBSDKIncludeStatusBarInSize: {}
         
 classes:
-    FBSDKError:
-        extends: NSError
-        annotations: ['@StronglyLinked']
-
     FBSDKAccessToken: # DONE
         properties:
             'declinedPermissions':
@@ -40,6 +42,8 @@ classes:
                     declinedPermissions:
                         type: Set<String>
                         marshaler: NSSet.AsStringSetMarshaler
+            '-initWithTokenString:permissions:declinedPermissions:appID:userID:expirationDate:refreshDate:dataAccessExpirationDate:':
+                name: init
             '-hasGranted:':
                 trim_after_first_colon: true
             '-isEqualToAccessToken:':
@@ -73,6 +77,12 @@ classes:
                 parameters:
                     payload:
                         type: UIRemoteNotification
+            '+logProductItem:availability:condition:description:imageLink:link:title:priceAmount:currency:gtin:mpn:brand:parameters:':
+                name: logProductItem
+            '+setUserEmail:firstName:lastName:phone:dateOfBirth:gender:city:state:zip:country:':
+                name: setUserData
+            '+updateUserProperties:handler:':
+                name: updateUserProperties
     FBSDKApplicationDelegate: # DONE
         methods:
             '-application:openURL:sourceApplication:annotation:':
@@ -80,6 +90,8 @@ classes:
                 parameters:
                     annotation:
                         type: ObjCProtocol
+            '-application:openURL:options:':
+                name: openURL
             '-application:didFinishLaunchingWithOptions:':
                 name: didFinishLaunching
                 parameters:
@@ -95,6 +107,10 @@ classes:
                 parameters:
                     urls:
                         type: NSArray<NSURL>
+            '-appLinksFromURLs:handler:':
+                name: getAppLinksFromURLs
+            '-appLinkFromURL:handler:':
+                name: getAppLinkFromURL
             '+resolver':
                 exclude: true
     FBSDKAppLinkUtility: # DONE
@@ -135,6 +151,8 @@ classes:
                 name: init
             '-imageURLForPictureMode:size:':
                 name: getImageURL
+            '-imagePathForPictureMode:size:':
+                name: getImagePath
             '-isEqualToProfile:':
                 name: equalsTo
             '+currentProfile':
@@ -164,13 +182,14 @@ classes:
                 property: true
             '+loggingBehavior':
                 property: true
-                return_type: Set<FBSDKLoggingBehavior>
-                return_marshaler: FBSDKLoggingBehavior.AsSetMarshaler
-            '+setLoggingBehavior:':
-                parameters:
-                    loggingBehavior:
-                        type: Set<FBSDKLoggingBehavior>
-                        marshaler: FBSDKLoggingBehavior.AsSetMarshaler
+#                return_type: Set<FBSDKLoggingBehavior>
+#                return_marshaler: FBSDKLoggingBehavior.AsSetMarshaler
+            '+setLoggingBehavior:': {}
+#                name: setLoggingBehavior
+#                parameters:
+#                    loggingBehavior:
+#                        type: Set<FBSDKLoggingBehavior>
+#                        marshaler: FBSDKLoggingBehavior.AsSetMarshaler
             '+(enableLoggingBehavior:|disableLoggingBehavior:)':
                 trim_after_first_colon: true
                 parameters:
@@ -209,6 +228,44 @@ classes:
                 name: urlDecode
             '+URLEncode:':
                 name: urlEncode
+            '+startGCDTimerWithInterval:block:':
+                name: startGCDTimer
+    FBSDKAppLink:
+        skip_def_constructor: true
+        methods:
+            '+appLinkWithSourceURL:targets:webURL:':
+                name: init
+                constructor: true
+    FBSDKAppLinkNavigation:
+        methods:
+            '+navigationWithAppLink:extras:appLinkData:':
+                name: create
+            '+callbackAppLinkDataForAppWithName:url:':
+                name: callbackAppLinkData
+            '+resolveAppLink:handler:':
+                name: resolve
+            '+resolveAppLink:resolver:handler:':
+                name: resolve
+            '+navigateToAppLink:error:':
+                name: navigate
+            '+navigateToURL:handler:':
+                name: navigate
+            '+navigateToURL:resolver:handler:':
+                name: navigate
+    FBSDKAppLinkReturnToRefererController: {}
+    FBSDKAppLinkReturnToRefererView: {}
+    FBSDKAppLinkTarget:
+        methods:
+            '+appLinkTargetWithURL:appStoreId:appName:':
+                name: create
+    FBSDKMeasurementEvent: {}
+    FBSDKURL:
+        methods:
+            '+URLWithURL:':
+                name: URLWithURL
+            '+URLWithInboundURL:sourceApplication:':
+                name: URLWithInboundURL
+    FBSDKWebViewAppLinkResolver: {}
 
 protocols:
     FBSDKErrorRecoveryAttempting: # DONE
@@ -235,6 +292,22 @@ protocols:
                 name: didFail
             '-requestConnection:didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:':
                 name: didSendBodyData
+    FBSDKAppLinkResolving:
+        methods:
+            '-appLinkFromURL:handler:':
+                name: getAppLinkFromURL
+    FBSDKAppLinkReturnToRefererControllerDelegate:
+        methods:
+            '-returnToRefererController:willNavigateToAppLink:':
+                name: returnToRefererController
+            '-returnToRefererController:didNavigateToAppLink:type:':
+                name: returnToRefererController
+    FBSDKAppLinkReturnToRefererViewDelegate:
+        methods:
+            '-returnToRefererViewDidTapInsideLink:link:':
+                name: returnToRefererViewDidTapInsideLink
+    FBSDKCopying: {}
+    FBSDKMutableCopying: {}
 
 functions:
     # Make sure we don't miss any functions if new ones are introduced in a later version
@@ -246,17 +319,16 @@ values:
     FBSDKErrorDomain:
         class: FBSDKError
         name: getClassDomain
-    FBSDKError(.*)Key:
+    FBSDKError(.+)Key:
         enum: FBSDKErrorUserInfoKey
         name: '#{g[0]}'
         type: NSString
         extends: NSErrorUserInfoKey
-    FBSDKGraphRequestError(.*)Key:
-        enum: FBSDKGraphRequestErrorUserInfoKey
-        name: '#{g[0]}'
-        type: NSString
-        extends: NSErrorUserInfoKey
+    FBSDKGraphRequestErrorCategoryKey:
+        exclude: true # deprecated
     FBSDKGraphRequestError(GraphErrorCode|GraphErrorSubcode):
+        exclude: true # deprecated
+    FBSDKGraphRequestError(.+)Key:
         enum: FBSDKGraphRequestErrorUserInfoKey
         name: '#{g[0]}'
         type: NSString
@@ -267,13 +339,16 @@ values:
         class: FBSDKAccessToken
         name: '#{g[0]}'
         type: NSString
-    FBSDKAccessToken(DidChangeUserID|ChangeOld|ChangeNew).*:
+    FBSDKAccessTokenDidChangeUserID:
+        exclude: true # deprecated
+    FBSDKAccessToken(DidChangeUserIDKey|ChangeOld|ChangeNew).*:
         dictionary: FBSDKAccessTokenChangeNotification
         name: '#{g[0]}'
         type: NSString
         mutable: false
         methods:
-            DidChangeUserID:
+            DidChangeUserIDKey:
+                name: DidChangeUserID
                 type: boolean
             ChangeOld:
                 name: oldToken

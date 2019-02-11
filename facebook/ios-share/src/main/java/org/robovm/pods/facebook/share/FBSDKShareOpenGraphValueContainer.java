@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -29,6 +29,8 @@ import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.photos.*;
 import org.robovm.pods.facebook.core.*;
 /*</imports>*/
 
@@ -47,29 +49,14 @@ import org.robovm.pods.facebook.core.*;
     public FBSDKShareOpenGraphValueContainer() {}
     protected FBSDKShareOpenGraphValueContainer(Handle h, long handle) { super(h, handle); }
     protected FBSDKShareOpenGraphValueContainer(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithCoder:")
+    public FBSDKShareOpenGraphValueContainer(NSCoder decoder) { super((SkipInit) null); initObject(init(decoder)); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "supportsSecureCoding")
+    public static native boolean supportsSecureCoding();
     /*</properties>*/
     /*<members>*//*</members>*/
-    public void putArray(String key, NSArray<?> array) {
-        setArray0(array, key);
-    }
-    public void putNumber(String key, NSNumber number) {
-        setNumber0(number, key);
-    }
-    public void putObject(String key, FBSDKShareOpenGraphObject object) {
-        setObject0(object, key);
-    }
-    public void putPhoto(String key, FBSDKSharePhoto photo) {
-        setPhoto0(photo, key);
-    }
-    public void putString(String key, String string) {
-        setString0(string, key);
-    }
-    public void putURL(String key, NSURL URL) {
-        setURL0(URL, key);
-    }
     /*<methods>*/
     @Method(selector = "arrayForKey:")
     public native NSArray<?> getArray(String key);
@@ -95,17 +82,9 @@ import org.robovm.pods.facebook.core.*;
     public native String getString(String key);
     @Method(selector = "URLForKey:")
     public native NSURL getURL(String key);
+    @Method(selector = "encodeWithCoder:")
+    public native void encode(NSCoder coder);
+    @Method(selector = "initWithCoder:")
+    protected native @Pointer long init(NSCoder decoder);
     /*</methods>*/
-    @Method(selector = "setArray:forKey:")
-    private native void setArray0(NSArray<?> array, String key);
-    @Method(selector = "setNumber:forKey:")
-    private native void setNumber0(NSNumber number, String key);
-    @Method(selector = "setObject:forKey:")
-    private native void setObject0(FBSDKShareOpenGraphObject object, String key);
-    @Method(selector = "setPhoto:forKey:")
-    private native void setPhoto0(FBSDKSharePhoto photo, String key);
-    @Method(selector = "setString:forKey:")
-    private native void setString0(String string, String key);
-    @Method(selector = "setURL:forKey:")
-    private native void setURL0(NSURL URL, String key);
 }

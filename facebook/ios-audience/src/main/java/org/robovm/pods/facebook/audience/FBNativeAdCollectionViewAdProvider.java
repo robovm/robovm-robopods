@@ -30,6 +30,8 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coremedia.*;
+import org.robovm.apple.dispatch.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -47,6 +49,7 @@ import org.robovm.apple.coregraphics.*;
     public FBNativeAdCollectionViewAdProvider() {}
     protected FBNativeAdCollectionViewAdProvider(Handle h, long handle) { super(h, handle); }
     protected FBNativeAdCollectionViewAdProvider(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithManager:")
     public FBNativeAdCollectionViewAdProvider(FBNativeAdsManager manager) { super((SkipInit) null); initObject(init(manager)); }
     /*</constructors>*/
     /*<properties>*/
@@ -54,6 +57,10 @@ import org.robovm.apple.coregraphics.*;
     public native FBNativeAdDelegate getDelegate();
     @Property(selector = "setDelegate:", strongRef = true)
     public native void setDelegate(FBNativeAdDelegate v);
+    @Property(selector = "extraHint")
+    public native FBAdExtraHint getExtraHint();
+    @Property(selector = "setExtraHint:")
+    public native void setExtraHint(FBAdExtraHint v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

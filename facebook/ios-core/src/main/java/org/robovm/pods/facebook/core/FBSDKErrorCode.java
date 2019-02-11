@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,15 +30,16 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.dispatch.*;
+import org.robovm.apple.webkit.*;
 import org.robovm.pods.bolts.*;
 /*</imports>*/
 
 /*<javadoc>*/
 
 /*</javadoc>*/
-@ForceLinkClass(FBSDKError.class)
 /*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
-public enum /*<name>*/FBSDKErrorCode/*</name>*/ implements NSErrorCode {
+public enum /*<name>*/FBSDKErrorCode/*</name>*/ implements ValuedEnum {
     /*<values>*/
     Reserved(0L),
     Encryption(1L),
@@ -52,7 +53,8 @@ public enum /*<name>*/FBSDKErrorCode/*</name>*/ implements NSErrorCode {
     DialogUnavailable(9L),
     AccessTokenRequired(10L),
     AppVersionUnsupported(11L),
-    BrowserUnavailable(12L);
+    BrowserUnavailable(12L),
+    BrowswerUnavailable(12L);
     /*</values>*/
 
     /*<bind>*/
@@ -63,7 +65,6 @@ public enum /*<name>*/FBSDKErrorCode/*</name>*/ implements NSErrorCode {
     private final long n;
 
     private /*<name>*/FBSDKErrorCode/*</name>*/(long n) { this.n = n; }
-    @Override
     public long value() { return n; }
     public static /*<name>*/FBSDKErrorCode/*</name>*/ valueOf(long n) {
         for (/*<name>*/FBSDKErrorCode/*</name>*/ v : values()) {

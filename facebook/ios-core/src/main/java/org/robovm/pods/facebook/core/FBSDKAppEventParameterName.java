@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,6 +30,8 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.dispatch.*;
+import org.robovm.apple.webkit.*;
 import org.robovm.pods.bolts.*;
 /*</imports>*/
 
@@ -90,6 +92,7 @@ import org.robovm.pods.bolts.*;
     /*</marshalers>*/
 
     /*<constants>*/
+    public static final FBSDKAppEventParameterName Content = new FBSDKAppEventParameterName("Content");
     public static final FBSDKAppEventParameterName ContentID = new FBSDKAppEventParameterName("ContentID");
     public static final FBSDKAppEventParameterName ContentType = new FBSDKAppEventParameterName("ContentType");
     public static final FBSDKAppEventParameterName Currency = new FBSDKAppEventParameterName("Currency");
@@ -101,9 +104,11 @@ import org.robovm.pods.bolts.*;
     public static final FBSDKAppEventParameterName RegistrationMethod = new FBSDKAppEventParameterName("RegistrationMethod");
     public static final FBSDKAppEventParameterName SearchString = new FBSDKAppEventParameterName("SearchString");
     public static final FBSDKAppEventParameterName Success = new FBSDKAppEventParameterName("Success");
+    public static final FBSDKAppEventParameterName AdType = new FBSDKAppEventParameterName("AdType");
+    public static final FBSDKAppEventParameterName OrderID = new FBSDKAppEventParameterName("OrderID");
     /*</constants>*/
     
-    private static /*<name>*/FBSDKAppEventParameterName/*</name>*/[] values = new /*<name>*/FBSDKAppEventParameterName/*</name>*/[] {/*<value_list>*/ContentID, ContentType, Currency, Description, Level, MaxRatingValue, NumItems, PaymentInfoAvailable, RegistrationMethod, SearchString, Success/*</value_list>*/};
+    private static /*<name>*/FBSDKAppEventParameterName/*</name>*/[] values = new /*<name>*/FBSDKAppEventParameterName/*</name>*/[] {/*<value_list>*/Content, ContentID, ContentType, Currency, Description, Level, MaxRatingValue, NumItems, PaymentInfoAvailable, RegistrationMethod, SearchString, Success, AdType, OrderID/*</value_list>*/};
     
     /*<name>*/FBSDKAppEventParameterName/*</name>*/ (String getterName) {
         super(Values.class, getterName);
@@ -126,6 +131,8 @@ import org.robovm.pods.bolts.*;
     	static { Bro.bind(Values.class); }
 
         /*<values>*/
+        @GlobalValue(symbol="FBSDKAppEventParameterNameContent", optional=true)
+        public static native NSString Content();
         @GlobalValue(symbol="FBSDKAppEventParameterNameContentID", optional=true)
         public static native NSString ContentID();
         @GlobalValue(symbol="FBSDKAppEventParameterNameContentType", optional=true)
@@ -148,6 +155,10 @@ import org.robovm.pods.bolts.*;
         public static native NSString SearchString();
         @GlobalValue(symbol="FBSDKAppEventParameterNameSuccess", optional=true)
         public static native NSString Success();
+        @GlobalValue(symbol="FBSDKAppEventParameterNameAdType", optional=true)
+        public static native NSString AdType();
+        @GlobalValue(symbol="FBSDKAppEventParameterNameOrderID", optional=true)
+        public static native NSString OrderID();
         /*</values>*/
     }
 }

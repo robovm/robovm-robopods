@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,6 +30,8 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.dispatch.*;
+import org.robovm.apple.webkit.*;
 import org.robovm.pods.bolts.*;
 /*</imports>*/
 
@@ -102,9 +104,19 @@ import org.robovm.pods.bolts.*;
     public static final FBSDKAppEventName SpentCredits = new FBSDKAppEventName("SpentCredits");
     public static final FBSDKAppEventName UnlockedAchievement = new FBSDKAppEventName("UnlockedAchievement");
     public static final FBSDKAppEventName ViewedContent = new FBSDKAppEventName("ViewedContent");
+    public static final FBSDKAppEventName Contact = new FBSDKAppEventName("Contact");
+    public static final FBSDKAppEventName CustomizeProduct = new FBSDKAppEventName("CustomizeProduct");
+    public static final FBSDKAppEventName Donate = new FBSDKAppEventName("Donate");
+    public static final FBSDKAppEventName FindLocation = new FBSDKAppEventName("FindLocation");
+    public static final FBSDKAppEventName Schedule = new FBSDKAppEventName("Schedule");
+    public static final FBSDKAppEventName StartTrial = new FBSDKAppEventName("StartTrial");
+    public static final FBSDKAppEventName SubmitApplication = new FBSDKAppEventName("SubmitApplication");
+    public static final FBSDKAppEventName Subscribe = new FBSDKAppEventName("Subscribe");
+    public static final FBSDKAppEventName AdImpression = new FBSDKAppEventName("AdImpression");
+    public static final FBSDKAppEventName AdClick = new FBSDKAppEventName("AdClick");
     /*</constants>*/
     
-    private static /*<name>*/FBSDKAppEventName/*</name>*/[] values = new /*<name>*/FBSDKAppEventName/*</name>*/[] {/*<value_list>*/AchievedLevel, AddedPaymentInfo, AddedToCart, AddedToWishlist, CompletedRegistration, CompletedTutorial, InitiatedCheckout, Rated, Searched, SpentCredits, UnlockedAchievement, ViewedContent/*</value_list>*/};
+    private static /*<name>*/FBSDKAppEventName/*</name>*/[] values = new /*<name>*/FBSDKAppEventName/*</name>*/[] {/*<value_list>*/AchievedLevel, AddedPaymentInfo, AddedToCart, AddedToWishlist, CompletedRegistration, CompletedTutorial, InitiatedCheckout, Rated, Searched, SpentCredits, UnlockedAchievement, ViewedContent, Contact, CustomizeProduct, Donate, FindLocation, Schedule, StartTrial, SubmitApplication, Subscribe, AdImpression, AdClick/*</value_list>*/};
     
     /*<name>*/FBSDKAppEventName/*</name>*/ (String getterName) {
         super(Values.class, getterName);
@@ -151,6 +163,26 @@ import org.robovm.pods.bolts.*;
         public static native NSString UnlockedAchievement();
         @GlobalValue(symbol="FBSDKAppEventNameViewedContent", optional=true)
         public static native NSString ViewedContent();
+        @GlobalValue(symbol="FBSDKAppEventNameContact", optional=true)
+        public static native NSString Contact();
+        @GlobalValue(symbol="FBSDKAppEventNameCustomizeProduct", optional=true)
+        public static native NSString CustomizeProduct();
+        @GlobalValue(symbol="FBSDKAppEventNameDonate", optional=true)
+        public static native NSString Donate();
+        @GlobalValue(symbol="FBSDKAppEventNameFindLocation", optional=true)
+        public static native NSString FindLocation();
+        @GlobalValue(symbol="FBSDKAppEventNameSchedule", optional=true)
+        public static native NSString Schedule();
+        @GlobalValue(symbol="FBSDKAppEventNameStartTrial", optional=true)
+        public static native NSString StartTrial();
+        @GlobalValue(symbol="FBSDKAppEventNameSubmitApplication", optional=true)
+        public static native NSString SubmitApplication();
+        @GlobalValue(symbol="FBSDKAppEventNameSubscribe", optional=true)
+        public static native NSString Subscribe();
+        @GlobalValue(symbol="FBSDKAppEventNameAdImpression", optional=true)
+        public static native NSString AdImpression();
+        @GlobalValue(symbol="FBSDKAppEventNameAdClick", optional=true)
+        public static native NSString AdClick();
         /*</values>*/
     }
 }

@@ -30,19 +30,18 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coremedia.*;
+import org.robovm.apple.dispatch.*;
 /*</imports>*/
 
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Marshaler(Bits.AsMachineSizedIntMarshaler.class)/*</annotations>*/
-public final class /*<name>*/FBNativeAdsCachePolicy/*</name>*/ extends Bits</*<name>*/FBNativeAdsCachePolicy/*</name>*/> {
+/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
+public enum /*<name>*/FBNativeAdsCachePolicy/*</name>*/ implements ValuedEnum {
     /*<values>*/
-    public static final FBNativeAdsCachePolicy None = new FBNativeAdsCachePolicy(1L);
-    public static final FBNativeAdsCachePolicy Icon = new FBNativeAdsCachePolicy(2L);
-    public static final FBNativeAdsCachePolicy CoverImage = new FBNativeAdsCachePolicy(4L);
-    public static final FBNativeAdsCachePolicy Video = new FBNativeAdsCachePolicy(8L);
-    public static final FBNativeAdsCachePolicy All = new FBNativeAdsCachePolicy(14L);
+    None(0L),
+    All(1L);
     /*</values>*/
 
     /*<bind>*/
@@ -50,17 +49,17 @@ public final class /*<name>*/FBNativeAdsCachePolicy/*</name>*/ extends Bits</*<n
     /*<constants>*//*</constants>*/
     /*<methods>*//*</methods>*/
 
-    private static final /*<name>*/FBNativeAdsCachePolicy/*</name>*/[] values = _values(/*<name>*/FBNativeAdsCachePolicy/*</name>*/.class);
+    private final long n;
 
-    public /*<name>*/FBNativeAdsCachePolicy/*</name>*/(long value) { super(value); }
-    private /*<name>*/FBNativeAdsCachePolicy/*</name>*/(long value, long mask) { super(value, mask); }
-    protected /*<name>*/FBNativeAdsCachePolicy/*</name>*/ wrap(long value, long mask) {
-        return new /*<name>*/FBNativeAdsCachePolicy/*</name>*/(value, mask);
-    }
-    protected /*<name>*/FBNativeAdsCachePolicy/*</name>*/[] _values() {
-        return values;
-    }
-    public static /*<name>*/FBNativeAdsCachePolicy/*</name>*/[] values() {
-        return values.clone();
+    private /*<name>*/FBNativeAdsCachePolicy/*</name>*/(long n) { this.n = n; }
+    public long value() { return n; }
+    public static /*<name>*/FBNativeAdsCachePolicy/*</name>*/ valueOf(long n) {
+        for (/*<name>*/FBNativeAdsCachePolicy/*</name>*/ v : values()) {
+            if (v.n == n) {
+                return v;
+            }
+        }
+        throw new IllegalArgumentException("No constant with value " + n + " found in " 
+            + /*<name>*/FBNativeAdsCachePolicy/*</name>*/.class.getName());
     }
 }

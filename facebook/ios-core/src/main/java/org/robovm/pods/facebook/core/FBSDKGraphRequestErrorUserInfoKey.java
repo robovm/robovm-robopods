@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,6 +30,8 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.dispatch.*;
+import org.robovm.apple.webkit.*;
 import org.robovm.pods.bolts.*;
 /*</imports>*/
 
@@ -90,14 +92,13 @@ import org.robovm.pods.bolts.*;
     /*</marshalers>*/
 
     /*<constants>*/
-    public static final FBSDKGraphRequestErrorUserInfoKey Category = new FBSDKGraphRequestErrorUserInfoKey("Category");
     public static final FBSDKGraphRequestErrorUserInfoKey GraphErrorCode = new FBSDKGraphRequestErrorUserInfoKey("GraphErrorCode");
     public static final FBSDKGraphRequestErrorUserInfoKey GraphErrorSubcode = new FBSDKGraphRequestErrorUserInfoKey("GraphErrorSubcode");
     public static final FBSDKGraphRequestErrorUserInfoKey HTTPStatusCode = new FBSDKGraphRequestErrorUserInfoKey("HTTPStatusCode");
     public static final FBSDKGraphRequestErrorUserInfoKey ParsedJSONResponse = new FBSDKGraphRequestErrorUserInfoKey("ParsedJSONResponse");
     /*</constants>*/
     
-    private static /*<name>*/FBSDKGraphRequestErrorUserInfoKey/*</name>*/[] values = new /*<name>*/FBSDKGraphRequestErrorUserInfoKey/*</name>*/[] {/*<value_list>*/Category, GraphErrorCode, GraphErrorSubcode, HTTPStatusCode, ParsedJSONResponse/*</value_list>*/};
+    private static /*<name>*/FBSDKGraphRequestErrorUserInfoKey/*</name>*/[] values = new /*<name>*/FBSDKGraphRequestErrorUserInfoKey/*</name>*/[] {/*<value_list>*/GraphErrorCode, GraphErrorSubcode, HTTPStatusCode, ParsedJSONResponse/*</value_list>*/};
     
     /*<name>*/FBSDKGraphRequestErrorUserInfoKey/*</name>*/ (String getterName) {
         super(Values.class, getterName);
@@ -120,11 +121,9 @@ import org.robovm.pods.bolts.*;
     	static { Bro.bind(Values.class); }
 
         /*<values>*/
-        @GlobalValue(symbol="FBSDKGraphRequestErrorCategoryKey", optional=true)
-        public static native NSString Category();
-        @GlobalValue(symbol="FBSDKGraphRequestErrorGraphErrorCode", optional=true)
+        @GlobalValue(symbol="FBSDKGraphRequestErrorGraphErrorCodeKey", optional=true)
         public static native NSString GraphErrorCode();
-        @GlobalValue(symbol="FBSDKGraphRequestErrorGraphErrorSubcode", optional=true)
+        @GlobalValue(symbol="FBSDKGraphRequestErrorGraphErrorSubcodeKey", optional=true)
         public static native NSString GraphErrorSubcode();
         @GlobalValue(symbol="FBSDKGraphRequestErrorHTTPStatusCodeKey", optional=true)
         public static native NSString HTTPStatusCode();

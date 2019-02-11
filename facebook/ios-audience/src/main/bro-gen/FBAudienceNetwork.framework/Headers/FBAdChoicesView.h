@@ -1,4 +1,4 @@
-// Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
+// Copyright 2004-present Facebook. All Rights Reserved.
 //
 // You are hereby granted a non-exclusive, worldwide, royalty-free license to use,
 // copy, modify, and distribute this software in source code or binary form for use
@@ -18,151 +18,107 @@
 
 #import <UIKit/UIKit.h>
 
-#import "FBAdDefines.h"
+#import <FBAudienceNetwork/FBAdDefines.h>
+#import <FBAudienceNetwork/UIView+FBNativeAdViewTag.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class FBAdImage;
-@class FBNativeAd;
+@class FBNativeAdBase;
 @class FBNativeAdViewAttributes;
 
-/*!
- @class FBAdChoicesView
-
- @abstract
- FBAdChoicesView offers a simple way to display a sponsored or AdChoices icon.
+/**
+  FBAdChoicesView offers a simple way to display a sponsored or AdChoices icon.
  */
 FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED
 @interface FBAdChoicesView : UIView
 
-/*!
- @property
- @abstract Access to the text label contained in this view.
+/**
+  Access to the text label contained in this view.
  */
 @property (nonatomic, weak, readonly, nullable) UILabel *label;
 
-/*!
- @property
- @abstract Determines whether the background mask is shown, or a transparent mask is used.
+/**
+  Determines whether the background mask is shown, or a transparent mask is used.
  */
 @property (nonatomic, assign, getter=isBackgroundShown) BOOL backgroundShown;
 
-/*!
- @property
- @abstract Determines whether the view can be expanded upon being tapped, or defaults to fullsize. Defaults to NO.
+/**
+  Determines whether the view can be expanded upon being tapped, or defaults to fullsize. Defaults to NO.
  */
 @property (nonatomic, assign, readonly, getter=isExpandable) BOOL expandable;
 
-/*
- @property
- @abstract The native ad that provides AdChoices info, such as the image url, and click url. Setting this updates the nativeAd.
+/**
+  The native ad that provides AdChoices info, such as the image url, and click url. Setting this updates the nativeAd.
  */
-@property (nonatomic, weak, readwrite, nullable) FBNativeAd *nativeAd;
+@property (nonatomic, weak, readwrite, nullable) FBNativeAdBase *nativeAd;
 
-/*
- @property
- @abstract Affects background mask rendering. Setting this property updates the rendering.
+/**
+  Affects background mask rendering. Setting this property updates the rendering.
  */
 @property (nonatomic, assign, readwrite) UIRectCorner corner;
 
-/*
- @property
- @abstract The view controller to present the ad choices info from. If nil, the top view controller is used.
+/**
+ Affects background mask rendering. Setting this property updates the rendering.
  */
-@property (nonatomic, weak, readwrite, nullable) UIViewController *viewController;
+@property (nonatomic, assign, readwrite) UIEdgeInsets insets;
 
-/*!
- @method
+/**
+  The view controller to present the ad choices info from. If nil, the top view controller is used.
+ */
+@property (nonatomic, weak, readwrite, null_resettable) UIViewController *rootViewController;
 
- @abstract
- Initialize this view with a given native ad. Configuration is pulled from the native ad.
+/**
+ The tag for AdChoices view. It always returns FBNativeAdViewTagChoicesIcon.
+ */
+@property (nonatomic, assign, readonly) FBNativeAdViewTag nativeAdViewTag;
+
+/**
+  Initialize this view with a given native ad. Configuration is pulled from the native ad.
 
  @param nativeAd The native ad to initialize with.
  */
-- (instancetype)initWithNativeAd:(FBNativeAd *)nativeAd;
+- (instancetype)initWithNativeAd:(FBNativeAdBase *)nativeAd;
 
-/*!
- @method
-
- @abstract
- Initialize this view with a given native ad. Configuration is pulled from the native ad.
+/**
+  Initialize this view with a given native ad. Configuration is pulled from the native ad.
 
  @param nativeAd The native ad to initialize with.
  @param expandable Controls whether view defaults to expanded or not, see property documentation
  */
-- (instancetype)initWithNativeAd:(FBNativeAd *)nativeAd
+- (instancetype)initWithNativeAd:(FBNativeAdBase *)nativeAd
                       expandable:(BOOL)expandable;
 
-/*!
- @method
+/**
+ Initialize this view with a given native ad. Configuration is pulled from the native ad.
 
- @abstract
- Initialize this view with explicit parameters.
-
- @param viewController View controller to present the AdChoices webview from.
- @param adChoicesIcon Native ad AdChoices icon.
- @param adChoicesLinkURL Native ad AdChoices link URL.
- @param attributes Attributes to configure look and feel.
- */
-- (instancetype)initWithViewController:(nullable UIViewController *)viewController
-                         adChoicesIcon:(FBAdImage *)adChoicesIcon
-                      adChoicesLinkURL:(NSURL *)adChoicesLinkURL
-                            attributes:(nullable FBNativeAdViewAttributes *)attributes;
-
-/*!
- @method
-
- @abstract
- Initialize this view with explicit parameters.
-
- @param viewController View controller to present the AdChoices webview from.
- @param adChoicesIcon Native ad AdChoices icon.
- @param adChoicesLinkURL Native ad AdChoices link URL.
- @param attributes Attributes to configure look and feel.
+ @param nativeAd The native ad to initialize with.
  @param expandable Controls whether view defaults to expanded or not, see property documentation
- */
-- (instancetype)initWithViewController:(nullable UIViewController *)viewController
-                         adChoicesIcon:(FBAdImage *)adChoicesIcon
-                      adChoicesLinkURL:(NSURL *)adChoicesLinkURL
-                            attributes:(nullable FBNativeAdViewAttributes *)attributes
-                            expandable:(BOOL)expandable;
-
-/*!
- @method
-
- @abstract
- Initialize this view with explicit parameters.
-
- @param viewController View controller to present the AdChoices webview from.
- @param adChoicesIcon Native ad AdChoices icon.
- @param adChoicesLinkURL Native ad AdChoices link URL.
- @param adChoicesText Native ad AdChoices label.
  @param attributes Attributes to configure look and feel.
- @param expandable Controls whether view defaults to expanded or not, see property documentation
  */
-- (instancetype)initWithViewController:(nullable UIViewController *)viewController
-                         adChoicesIcon:(FBAdImage *)adChoicesIcon
-                      adChoicesLinkURL:(NSURL *)adChoicesLinkURL
-                         adChoicesText:(nullable NSString*)adChoicesText
-                            attributes:(nullable FBNativeAdViewAttributes *)attributes
-                            expandable:(BOOL)expandable NS_DESIGNATED_INITIALIZER;
-/*!
- @method
+- (instancetype)initWithNativeAd:(FBNativeAdBase *)nativeAd
+                      expandable:(BOOL)expandable
+                      attributes:(nullable FBNativeAdViewAttributes *)attributes;
 
- @abstract
- Using the superview, this updates the frame of this view, positioning the icon in the top right corner by default.
+/**
+  Using the superview, this updates the frame of this view, positioning the icon in the top right corner by default.
  */
 - (void)updateFrameFromSuperview;
 
-/*!
- @method
-
- @abstract
- Using the superview, this updates the frame of this view, positioning the icon in the corner specified. UIRectCornerAllCorners not supported.
+/**
+  Using the superview, this updates the frame of this view, positioning the icon in the corner specified. UIRectCornerAllCorners not supported.
 
  @param corner The corner to display this view from.
  */
 - (void)updateFrameFromSuperview:(UIRectCorner)corner;
+
+/**
+  Using the superview, this updates the frame of this view, positioning the icon in the corner specified. UIRectCornerAllCorners not supported.
+
+ @param corner The corner to display this view from.
+ @param insets Insets to take into account when positioning the view. Only respective insets are applied to corners.
+ */
+- (void)updateFrameFromSuperview:(UIRectCorner)corner insets:(UIEdgeInsets)insets;
 
 @end
 

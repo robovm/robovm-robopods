@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,6 +30,8 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coremedia.*;
+import org.robovm.apple.dispatch.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -47,11 +49,16 @@ import org.robovm.apple.coregraphics.*;
     public FBAdChoicesView() {}
     protected FBAdChoicesView(Handle h, long handle) { super(h, handle); }
     protected FBAdChoicesView(SkipInit skipInit) { super(skipInit); }
-    public FBAdChoicesView(FBNativeAd nativeAd) { super((SkipInit) null); initObject(init(nativeAd)); }
-    public FBAdChoicesView(FBNativeAd nativeAd, boolean expandable) { super((SkipInit) null); initObject(init(nativeAd, expandable)); }
-    public FBAdChoicesView(UIViewController viewController, FBAdImage adChoicesIcon, NSURL adChoicesLinkURL, FBNativeAdViewAttributes attributes) { super((SkipInit) null); initObject(init(viewController, adChoicesIcon, adChoicesLinkURL, attributes)); }
-    public FBAdChoicesView(UIViewController viewController, FBAdImage adChoicesIcon, NSURL adChoicesLinkURL, FBNativeAdViewAttributes attributes, boolean expandable) { super((SkipInit) null); initObject(init(viewController, adChoicesIcon, adChoicesLinkURL, attributes, expandable)); }
-    public FBAdChoicesView(UIViewController viewController, FBAdImage adChoicesIcon, NSURL adChoicesLinkURL, String adChoicesText, FBNativeAdViewAttributes attributes, boolean expandable) { super((SkipInit) null); initObject(init(viewController, adChoicesIcon, adChoicesLinkURL, adChoicesText, attributes, expandable)); }
+    @Method(selector = "initWithNativeAd:")
+    public FBAdChoicesView(FBNativeAdBase nativeAd) { super((SkipInit) null); initObject(init(nativeAd)); }
+    @Method(selector = "initWithNativeAd:expandable:")
+    public FBAdChoicesView(FBNativeAdBase nativeAd, boolean expandable) { super((SkipInit) null); initObject(init(nativeAd, expandable)); }
+    @Method(selector = "initWithNativeAd:expandable:attributes:")
+    public FBAdChoicesView(FBNativeAdBase nativeAd, boolean expandable, FBNativeAdViewAttributes attributes) { super((SkipInit) null); initObject(init(nativeAd, expandable, attributes)); }
+    @Method(selector = "initWithFrame:")
+    public FBAdChoicesView(@ByVal CGRect frame) { super(frame); }
+    @Method(selector = "initWithCoder:")
+    public FBAdChoicesView(NSCoder decoder) { super(decoder); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "label")
@@ -63,33 +70,37 @@ import org.robovm.apple.coregraphics.*;
     @Property(selector = "isExpandable")
     public native boolean isExpandable();
     @Property(selector = "nativeAd")
-    public native FBNativeAd getNativeAd();
+    public native FBNativeAdBase getNativeAd();
     @Property(selector = "setNativeAd:", strongRef = true)
-    public native void setNativeAd(FBNativeAd v);
+    public native void setNativeAd(FBNativeAdBase v);
     @Property(selector = "corner")
     public native UIRectCorner getCorner();
     @Property(selector = "setCorner:")
     public native void setCorner(UIRectCorner v);
-    @Property(selector = "viewController")
-    public native UIViewController getViewController();
-    @Property(selector = "setViewController:", strongRef = true)
-    public native void setViewController(UIViewController v);
+    @Property(selector = "insets")
+    public native @ByVal UIEdgeInsets getInsets();
+    @Property(selector = "setInsets:")
+    public native void setInsets(@ByVal UIEdgeInsets v);
+    @Property(selector = "rootViewController")
+    public native UIViewController getRootViewController();
+    @Property(selector = "setRootViewController:", strongRef = true)
+    public native void setRootViewController(UIViewController v);
+    @Property(selector = "nativeAdViewTag")
+    public native FBNativeAdViewTag getNativeAdViewTag();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "initWithNativeAd:")
-    protected native @Pointer long init(FBNativeAd nativeAd);
+    protected native @Pointer long init(FBNativeAdBase nativeAd);
     @Method(selector = "initWithNativeAd:expandable:")
-    protected native @Pointer long init(FBNativeAd nativeAd, boolean expandable);
-    @Method(selector = "initWithViewController:adChoicesIcon:adChoicesLinkURL:attributes:")
-    protected native @Pointer long init(UIViewController viewController, FBAdImage adChoicesIcon, NSURL adChoicesLinkURL, FBNativeAdViewAttributes attributes);
-    @Method(selector = "initWithViewController:adChoicesIcon:adChoicesLinkURL:attributes:expandable:")
-    protected native @Pointer long init(UIViewController viewController, FBAdImage adChoicesIcon, NSURL adChoicesLinkURL, FBNativeAdViewAttributes attributes, boolean expandable);
-    @Method(selector = "initWithViewController:adChoicesIcon:adChoicesLinkURL:adChoicesText:attributes:expandable:")
-    protected native @Pointer long init(UIViewController viewController, FBAdImage adChoicesIcon, NSURL adChoicesLinkURL, String adChoicesText, FBNativeAdViewAttributes attributes, boolean expandable);
+    protected native @Pointer long init(FBNativeAdBase nativeAd, boolean expandable);
+    @Method(selector = "initWithNativeAd:expandable:attributes:")
+    protected native @Pointer long init(FBNativeAdBase nativeAd, boolean expandable, FBNativeAdViewAttributes attributes);
     @Method(selector = "updateFrameFromSuperview")
     public native void updateFrameFromSuperview();
     @Method(selector = "updateFrameFromSuperview:")
     public native void updateFrameFromSuperview(UIRectCorner corner);
+    @Method(selector = "updateFrameFromSuperview:insets:")
+    public native void updateFrameFromSuperview(UIRectCorner corner, @ByVal UIEdgeInsets insets);
     /*</methods>*/
 }

@@ -30,6 +30,7 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.dispatch.*;
+import org.robovm.apple.coregraphics.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -58,16 +59,12 @@ import org.robovm.apple.dispatch.*;
     public native void setResult(NSObject result);
     @Method(selector = "setError:")
     public native void setError(NSError error);
-    @Method(selector = "setException:")
-    public native void setException(NSException exception);
     @Method(selector = "cancel")
     public native void cancel();
     @Method(selector = "trySetResult:")
     public native boolean trySetResult(NSObject result);
     @Method(selector = "trySetError:")
     public native boolean trySetError(NSError error);
-    @Method(selector = "trySetException:")
-    public native boolean trySetException(NSException exception);
     @Method(selector = "trySetCancelled")
     public native boolean trySetCancelled();
     /*</methods>*/
