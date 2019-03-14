@@ -109,7 +109,6 @@ This is the list of currently available RoboPods. Click them to get more informa
 |-----------------------------------------------|-----------------------------------------------------------------------------------|
 | [RoboPods Plugins](plugins/)                  | The RoboPods Plugins are cross-platform libraries that abstract platform specific functionality to a common API. Whether you want to add in-app-purchases, display dialogs, or just store some preferences in your app; our Plugins got you covered! |
 | [Bolts](bolts/)                               | This RoboPod is mainly used to make the Facebook and Parse RoboPods functional. Bolts is a collection of low-level libraries designed to make developing mobile apps easier. |
-| [Chartboost](chartboost/)                     | Chartboost is a mobile ads network for games. |
 | [Fabric](fabric/)                             | Twitter's Mobile Development Platform |
 | [Facebook](facebook/)                         | Build, grow, and monetize your app with Facebook. The Facebook SDK allows you to natively integrate Facebook into your app. |
 | [Firebase](firebase/)                         | Firebase Analytics and Firebase Messaging bindings. |
@@ -119,7 +118,6 @@ This is the list of currently available RoboPods. Click them to get more informa
 | [Google Mobile Ads](google-mobile-ads/)       | AdMob is a mobile ads network. Gain insights about your users, drive more in-app purchases, and maximize your ad revenue. |
 | [Google Play Game Services](google-play-games/)| Start integrating popular gaming features in your mobile games and web games by using the Google Play games services APIs. |
 | [Google SignIn](google-signin/)               | Get users into your apps quickly and securely, using a registration system they already use and trust—their Google account. |
-| [Heyzap](heyzap/)                             | The mobile ad network Heyzap runs multiple premium networks under one integration so you can dynamically test ad networks against each other and visualize their combined performance. |
 | [IronSource](ironsource/)                     | IronSource is a mobile ads network and mediation platform. |
 | [Parse](parse/)                               | Focus on creating a great user experience and stop worrying about server maintenance and complex infrastructure. |
 | [Reachability](reachability/)                 | Monitor network reachability. |
