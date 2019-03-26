@@ -116,7 +116,6 @@ This is the list of currently available RoboPods. Click them to get more informa
 | [Google Analytics](google-analytics/)                | Collect, configure, and analyze your data to reach the right audience. |
 | [Google APIs](google-apis/)                          | Google APIs is used by several Google services such as Google Analytics to configure them in a single configuration file. |
 | [Google Mobile Ads](google-mobile-ads/)              | AdMob is a mobile ads network. Gain insights about your users, drive more in-app purchases, and maximize your ad revenue. |
-| [Google Play Game Services](google-play-games/)      | Start integrating popular gaming features in your mobile games and web games by using the Google Play games services APIs. |
 | [Google SignIn](google-signin/)                      | Get users into your apps quickly and securely, using a registration system they already use and trust—their Google account. |
 | [Google Personalized Ad Consent](google-ad-consent/) | Obtain consent to serve personlized ads with AdMob from users within the EU. |
 | [IronSource](ironsource/)                            | IronSource is a mobile ads network and mediation platform. |
