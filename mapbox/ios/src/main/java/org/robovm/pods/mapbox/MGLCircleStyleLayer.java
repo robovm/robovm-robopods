@@ -47,7 +47,7 @@ import org.robovm.apple.coreanimation.*;
     /*<bind>*/static { ObjCRuntime.bind(MGLCircleStyleLayer.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MGLCircleStyleLayer() {}
+    protected MGLCircleStyleLayer() {}
     protected MGLCircleStyleLayer(Handle h, long handle) { super(h, handle); }
     protected MGLCircleStyleLayer(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithIdentifier:source:")

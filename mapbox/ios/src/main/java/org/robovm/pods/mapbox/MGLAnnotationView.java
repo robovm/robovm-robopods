@@ -51,9 +51,13 @@ import org.robovm.apple.coreanimation.*;
     protected MGLAnnotationView(Handle h, long handle) { super(h, handle); }
     protected MGLAnnotationView(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithReuseIdentifier:")
-    public MGLAnnotationView(String reuseIdentifier) { super((SkipInit) null); initObject(initWithReuseIdentifier(reuseIdentifier)); }
+    public MGLAnnotationView(String reuseIdentifier) { super((SkipInit) null); initObject(init(reuseIdentifier)); }
     @Method(selector = "initWithAnnotation:reuseIdentifier:")
     public MGLAnnotationView(MGLAnnotation annotation, String reuseIdentifier) { super((SkipInit) null); initObject(init(annotation, reuseIdentifier)); }
+    @Method(selector = "initWithFrame:")
+    public MGLAnnotationView(@ByVal CGRect frame) { super(frame); }
+    @Method(selector = "initWithCoder:")
+    public MGLAnnotationView(NSCoder decoder) { super(decoder); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "annotation")
@@ -94,7 +98,7 @@ import org.robovm.apple.coreanimation.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "initWithReuseIdentifier:")
-    protected native @Pointer long initWithReuseIdentifier(String reuseIdentifier);
+    protected native @Pointer long init(String reuseIdentifier);
     @Method(selector = "initWithAnnotation:reuseIdentifier:")
     protected native @Pointer long init(MGLAnnotation annotation, String reuseIdentifier);
     @Method(selector = "prepareForReuse")

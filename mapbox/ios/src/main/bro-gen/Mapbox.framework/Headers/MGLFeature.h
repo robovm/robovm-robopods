@@ -6,6 +6,7 @@
 #import "MGLPointAnnotation.h"
 #import "MGLPointCollection.h"
 #import "MGLShapeCollection.h"
+#import "MGLCluster.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -172,11 +173,39 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 /**
- An `MGLPointFeature` object associates a point shape with an optional
+ An `MGLEmptyFeature` object associates an empty shape with an optional
  identifier and attributes.
  */
 MGL_EXPORT
+@interface MGLEmptyFeature : MGLShape <MGLFeature>
+@end
+
+/**
+ An `MGLPointFeature` object associates a point shape with an optional
+ identifier and attributes.
+ 
+ #### Related examples
+ See the <a href="https://docs.mapbox.com/ios/maps/examples/runtime-multiple-annotations/">
+ Dynamically style interactive points</a> example to learn how to initialize
+ `MGLPointFeature` objects and add them to your map.
+ */
+MGL_EXPORT
 @interface MGLPointFeature : MGLPointAnnotation <MGLFeature>
+@end
+
+/**
+ An `MGLPointFeatureCluster` object associates a point shape (with an optional
+ identifier and attributes) and represents a point cluster.
+ 
+ @see `MGLCluster`
+ 
+ #### Related examples
+ See the <a href="https://docs.mapbox.com/ios/maps/examples/clustering/">
+ Clustering point data</a> example to learn how to initialize
+ clusters and add them to your map.
+ */
+MGL_EXPORT
+@interface MGLPointFeatureCluster : MGLPointFeature <MGLCluster>
 @end
 
 /**
@@ -186,6 +215,11 @@ MGL_EXPORT
  A polyline feature is known as a
  <a href="https://tools.ietf.org/html/rfc7946#section-3.1.4">LineString</a>
  feature in GeoJSON.
+ 
+ #### Related examples
+ See the <a href="https://docs.mapbox.com/ios/maps/examples/line-geojson/">
+ Add a line annotation from GeoJSON</a> example to learn how to initialize an
+ `MGLPolylineFeature` and add it to an `MGLMapView` object.
  */
 MGL_EXPORT
 @interface MGLPolylineFeature : MGLPolyline <MGLFeature>
@@ -248,6 +282,11 @@ MGL_EXPORT
  A shape collection feature is known as a
  <a href="https://tools.ietf.org/html/rfc7946#section-3.3">feature collection</a>
  in GeoJSON.
+ 
+ #### Related examples
+ See the <a href="https://docs.mapbox.com/ios/maps/examples/shape-collection/">
+ Add multiple shapes from a single shape source</a> example to learn how to
+ add shape data to your map using an `MGLShapeCollectionFeature` object.
  */
 MGL_EXPORT
 @interface MGLShapeCollectionFeature : MGLShapeCollection <MGLFeature>

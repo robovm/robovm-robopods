@@ -49,7 +49,12 @@ import org.robovm.apple.coreanimation.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*//*</constructors>*/
     /*<properties>*/
-    
+    @NotImplemented("styleURL")
+    public NSURL getStyleURL() { return null; }
+    @NotImplemented("includesIdeographicGlyphs")
+    public boolean includesIdeographicGlyphs() { return false; }
+    @NotImplemented("setIncludesIdeographicGlyphs:")
+    public void setIncludesIdeographicGlyphs(boolean v) {}
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

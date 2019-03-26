@@ -54,6 +54,8 @@ import org.robovm.apple.coreanimation.*;
     public MGLMapView(@ByVal CGRect frame) { super((SkipInit) null); initObject(init(frame)); }
     @Method(selector = "initWithFrame:styleURL:")
     public MGLMapView(@ByVal CGRect frame, NSURL styleURL) { super((SkipInit) null); initObject(init(frame, styleURL)); }
+    @Method(selector = "initWithCoder:")
+    public MGLMapView(NSCoder decoder) { super(decoder); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "delegate")
@@ -78,6 +80,14 @@ import org.robovm.apple.coreanimation.*;
     public native UIImageView getLogoView();
     @Property(selector = "attributionButton")
     public native UIButton getAttributionButton();
+    @Property(selector = "preferredFramesPerSecond")
+    public native @MachineSizedSInt long getPreferredFramesPerSecond();
+    @Property(selector = "setPreferredFramesPerSecond:")
+    public native void setPreferredFramesPerSecond(@MachineSizedSInt long v);
+    @Property(selector = "locationManager")
+    public native MGLLocationManager getLocationManager();
+    @Property(selector = "setLocationManager:")
+    public native void setLocationManager(MGLLocationManager v);
     @Property(selector = "showsUserLocation")
     public native boolean showsUserLocation();
     @Property(selector = "setShowsUserLocation:")
@@ -208,11 +218,17 @@ import org.robovm.apple.coreanimation.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @GlobalValue(symbol="MGLMapViewDecelerationRateNormal", optional=true)
-    public static native @MachineSizedFloat double Normal();
+    public static native @MachineSizedFloat double DecelerationRateNormal();
     @GlobalValue(symbol="MGLMapViewDecelerationRateFast", optional=true)
-    public static native @MachineSizedFloat double Fast();
+    public static native @MachineSizedFloat double DecelerationRateFast();
     @GlobalValue(symbol="MGLMapViewDecelerationRateImmediate", optional=true)
-    public static native @MachineSizedFloat double Immediate();
+    public static native @MachineSizedFloat double DecelerationRateImmediate();
+    @GlobalValue(symbol="MGLMapViewPreferredFramesPerSecondDefault", optional=true)
+    public static native @MachineSizedSInt long PreferredFramesPerSecondDefault();
+    @GlobalValue(symbol="MGLMapViewPreferredFramesPerSecondLowPower", optional=true)
+    public static native @MachineSizedSInt long PreferredFramesPerSecondLowPower();
+    @GlobalValue(symbol="MGLMapViewPreferredFramesPerSecondMaximum", optional=true)
+    public static native @MachineSizedSInt long PreferredFramesPerSecondMaximum();
     
     @Method(selector = "initWithFrame:")
     protected native @Pointer long init(@ByVal CGRect frame);
@@ -226,6 +242,10 @@ import org.robovm.apple.coreanimation.*;
     public native void setUserTrackingMode(MGLUserTrackingMode mode, boolean animated);
     @Method(selector = "setUserLocationVerticalAlignment:animated:")
     public native void setUserLocationVerticalAlignment(MGLAnnotationVerticalAlignment alignment, boolean animated);
+    @Method(selector = "updateUserLocationAnnotationView")
+    public native void updateUserLocationAnnotationView();
+    @Method(selector = "updateUserLocationAnnotationViewAnimatedWithDuration:")
+    public native void updateUserLocationAnnotationViewAnimated(double duration);
     @Method(selector = "setTargetCoordinate:animated:")
     public native void setTargetCoordinate(@ByVal CLLocationCoordinate2D targetCoordinate, boolean animated);
     @Method(selector = "setCenterCoordinate:animated:")
@@ -274,6 +294,10 @@ import org.robovm.apple.coreanimation.*;
     public native MGLMapCamera cameraThatFitsCoordinateBounds(@ByVal MGLCoordinateBounds bounds);
     @Method(selector = "cameraThatFitsCoordinateBounds:edgePadding:")
     public native MGLMapCamera cameraThatFitsCoordinateBounds(@ByVal MGLCoordinateBounds bounds, @ByVal UIEdgeInsets insets);
+    @Method(selector = "camera:fittingCoordinateBounds:edgePadding:")
+    public native MGLMapCamera camera(MGLMapCamera camera, @ByVal MGLCoordinateBounds bounds, @ByVal UIEdgeInsets insets);
+    @Method(selector = "camera:fittingShape:edgePadding:")
+    public native MGLMapCamera camera(MGLMapCamera camera, MGLShape shape, @ByVal UIEdgeInsets insets);
     @Method(selector = "cameraThatFitsShape:direction:edgePadding:")
     public native MGLMapCamera cameraThatFitsShape(MGLShape shape, double direction, @ByVal UIEdgeInsets insets);
     @Method(selector = "anchorPointForGesture:")
@@ -308,6 +332,8 @@ import org.robovm.apple.coreanimation.*;
     public native NSArray<?> visibleAnnotationsInRect(@ByVal CGRect rect);
     @Method(selector = "selectAnnotation:animated:")
     public native void selectAnnotation(MGLAnnotation annotation, boolean animated);
+    @Method(selector = "selectAnnotation:moveIntoView:animateSelection:")
+    public native void selectAnnotation(MGLAnnotation annotation, boolean moveIntoView, boolean animateSelection);
     @Method(selector = "deselectAnnotation:animated:")
     public native void deselectAnnotation(MGLAnnotation annotation, boolean animated);
     @Method(selector = "addOverlay:")

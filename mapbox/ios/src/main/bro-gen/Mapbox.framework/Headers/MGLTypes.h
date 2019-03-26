@@ -23,15 +23,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#ifndef NS_STRING_ENUM
-    #define NS_STRING_ENUM
-    #define NS_EXTENSIBLE_STRING_ENUM
-    typedef NSString *NSErrorDomain;
-    typedef NSString *NSNotificationName;
-#endif
+typedef NSString *MGLExceptionName NS_TYPED_EXTENSIBLE_ENUM;
+
+/**
+ :nodoc: Generic exceptions used across multiple disparate classes. Exceptions
+ that are unique to a class or class-cluster should be defined in those headers.
+ */
+FOUNDATION_EXTERN MGL_EXPORT MGLExceptionName const MGLAbstractClassException;
 
 /** Indicates an error occurred in the Mapbox SDK. */
-extern MGL_EXPORT NSErrorDomain const MGLErrorDomain;
+FOUNDATION_EXTERN MGL_EXPORT NSErrorDomain const MGLErrorDomain;
 
 /** Error constants for the Mapbox SDK. */
 typedef NS_ENUM(NSInteger, MGLErrorCode) {
@@ -49,6 +50,10 @@ typedef NS_ENUM(NSInteger, MGLErrorCode) {
     MGLErrorCodeLoadStyleFailed = 5,
     /** An error occurred while snapshotting the map. */
     MGLErrorCodeSnapshotFailed = 6,
+    /** Source is in use and cannot be removed */
+    MGLErrorCodeSourceIsInUseCannotRemove = 7,
+    /** Source is in use and cannot be removed */
+    MGLErrorCodeSourceIdentifierMismatch = 8
 };
 
 /** Options for enabling debugging features in an `MGLMapView` instance. */
@@ -89,8 +94,12 @@ typedef struct __attribute__((objc_boxable)) MGLTransition {
     /**
      The amount of time in seconds to wait before beginning the animation.
      */
-    NSTimeInterval delay;
+    NSTimeInterval delay; 
 } MGLTransition;
+
+NS_INLINE NSString *MGLStringFromMGLTransition(MGLTransition transition) {
+    return [NSString stringWithFormat:@"transition { duration: %f, delay: %f }", transition.duration, transition.delay];
+}
 
 /**
  Creates a new `MGLTransition` from the given duration and delay.

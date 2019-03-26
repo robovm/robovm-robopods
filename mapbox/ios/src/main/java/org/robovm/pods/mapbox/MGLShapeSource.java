@@ -47,7 +47,7 @@ import org.robovm.apple.coreanimation.*;
     /*<bind>*/static { ObjCRuntime.bind(MGLShapeSource.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MGLShapeSource() {}
+    protected MGLShapeSource() {}
     protected MGLShapeSource(Handle h, long handle) { super(h, handle); }
     protected MGLShapeSource(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithIdentifier:URL:options:")
@@ -56,6 +56,8 @@ import org.robovm.apple.coreanimation.*;
     public MGLShapeSource(String identifier, MGLShape shape, NSDictionary<MGLShapeSource.Option, ?> options) { super((SkipInit) null); initObject(init(identifier, shape, options)); }
     @Method(selector = "initWithIdentifier:shapes:options:")
     public MGLShapeSource(String identifier, NSArray<MGLShape> shapes, NSDictionary<MGLShapeSource.Option, ?> options) { super((SkipInit) null); initObject(initShapes(identifier, shapes, options)); }
+    @Method(selector = "initWithIdentifier:")
+    public MGLShapeSource(String identifier) { super(identifier); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "shape")
@@ -83,6 +85,8 @@ import org.robovm.apple.coreanimation.*;
     public static native Option Buffer();
     @GlobalValue(symbol="MGLShapeSourceOptionSimplificationTolerance", optional=true)
     public static native Option SimplificationTolerance();
+    @GlobalValue(symbol="MGLShapeSourceOptionLineDistanceMetrics", optional=true)
+    public static native Option LineDistanceMetrics();
     @GlobalValue(symbol="MGLShapeSourceOptionWrapsCoordinates", optional=true)
     public static native Option WrapsCoordinates();
     @GlobalValue(symbol="MGLShapeSourceOptionClipsCoordinates", optional=true)
@@ -96,6 +100,12 @@ import org.robovm.apple.coreanimation.*;
     protected native @Pointer long initShapes(String identifier, NSArray<MGLShape> shapes, NSDictionary<MGLShapeSource.Option, ?> options);
     @Method(selector = "featuresMatchingPredicate:")
     public native NSArray<?> featuresMatchingPredicate(NSPredicate predicate);
+    @Method(selector = "leavesOfCluster:offset:limit:")
+    public native NSArray<?> leaves(MGLPointFeatureCluster cluster, @MachineSizedUInt long offset, @MachineSizedUInt long limit);
+    @Method(selector = "childrenOfCluster:")
+    public native NSArray<?> childrenOfCluster(MGLPointFeatureCluster cluster);
+    @Method(selector = "zoomLevelForExpandingCluster:")
+    public native double zoomLevelForExpandingCluster(MGLPointFeatureCluster cluster);
     /*</methods>*/
 
     public abstract static class Option extends NSObject {

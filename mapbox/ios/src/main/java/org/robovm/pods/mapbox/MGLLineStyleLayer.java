@@ -47,7 +47,7 @@ import org.robovm.apple.coreanimation.*;
     /*<bind>*/static { ObjCRuntime.bind(MGLLineStyleLayer.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MGLLineStyleLayer() {}
+    protected MGLLineStyleLayer() {}
     protected MGLLineStyleLayer(Handle h, long handle) { super(h, handle); }
     protected MGLLineStyleLayer(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithIdentifier:source:")
@@ -102,6 +102,10 @@ import org.robovm.apple.coreanimation.*;
     public native @ByVal MGLTransition getLineGapWidthTransition();
     @Property(selector = "setLineGapWidthTransition:")
     public native void setLineGapWidthTransition(@ByVal MGLTransition v);
+    @Property(selector = "lineGradient")
+    public native NSExpression getLineGradient();
+    @Property(selector = "setLineGradient:")
+    public native void setLineGradient(NSExpression v);
     @Property(selector = "lineOffset")
     public native NSExpression getLineOffset();
     @Property(selector = "setLineOffset:")

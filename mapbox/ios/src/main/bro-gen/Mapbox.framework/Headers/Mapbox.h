@@ -1,8 +1,3 @@
-#import <GLKit/GLKit.h>
-#import <ImageIO/ImageIO.h>
-#import <MobileCoreServices/MobileCoreServices.h>
-#import <QuartzCore/QuartzCore.h>
-#import <SystemConfiguration/SystemConfiguration.h>
 #import <Foundation/Foundation.h>
 
 #import "MGLFoundation.h"
@@ -19,6 +14,7 @@ FOUNDATION_EXPORT MGL_EXPORT const unsigned char MapboxVersionString[];
 #import "MGLAnnotationImage.h"
 #import "MGLCalloutView.h"
 #import "MGLClockDirectionFormatter.h"
+#import "MGLCluster.h"
 #import "MGLCompassDirectionFormatter.h"
 #import "MGLCoordinateFormatter.h"
 #import "MGLDistanceFormatter.h"
@@ -62,6 +58,7 @@ FOUNDATION_EXPORT MGL_EXPORT const unsigned char MapboxVersionString[];
 #import "MGLRasterTileSource.h"
 #import "MGLRasterDEMSource.h"
 #import "MGLImageSource.h"
+#import "MGLShapeOfflineRegion.h"
 #import "MGLTilePyramidOfflineRegion.h"
 #import "MGLTypes.h"
 #import "MGLUserLocation.h"
@@ -72,3 +69,6 @@ FOUNDATION_EXPORT MGL_EXPORT const unsigned char MapboxVersionString[];
 #import "MGLMapSnapshotter.h"
 #import "NSExpression+MGLAdditions.h"
 #import "NSPredicate+MGLAdditions.h"
+#import "MGLLocationManager.h"
+#import "MGLLoggingConfiguration.h"
+#import "MGLNetworkConfiguration.h"

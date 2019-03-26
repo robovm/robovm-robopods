@@ -47,7 +47,7 @@ import org.robovm.apple.coreanimation.*;
     /*<bind>*/static { ObjCRuntime.bind(MGLHillshadeStyleLayer.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MGLHillshadeStyleLayer() {}
+    protected MGLHillshadeStyleLayer() {}
     protected MGLHillshadeStyleLayer(Handle h, long handle) { super(h, handle); }
     protected MGLHillshadeStyleLayer(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithIdentifier:source:")

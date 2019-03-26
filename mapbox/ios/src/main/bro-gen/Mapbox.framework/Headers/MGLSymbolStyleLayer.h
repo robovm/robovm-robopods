@@ -83,8 +83,8 @@ typedef NS_ENUM(NSUInteger, MGLIconPitchAlignment) {
 typedef NS_ENUM(NSUInteger, MGLIconRotationAlignment) {
     /**
      When `symbolPlacement` is set to `MGLSymbolPlacementPoint`, aligns icons
-     east-west. When `symbolPlacement` is set to `MGLSymbolPlacementLine`,
-     aligns icon x-axes with the line.
+     east-west. When `symbolPlacement` is set to `MGLSymbolPlacementLine` or
+     `MGLSymbolPlacementLineCenter`, aligns icon x-axes with the line.
      */
     MGLIconRotationAlignmentMap,
     /**
@@ -95,8 +95,8 @@ typedef NS_ENUM(NSUInteger, MGLIconRotationAlignment) {
     /**
      When `symbolPlacement` is set to `MGLSymbolPlacementPoint`, this is
      equivalent to `MGLIconRotationAlignmentViewport`. When `symbolPlacement` is
-     set to `MGLSymbolPlacementLine`, this is equivalent to
-     `MGLIconRotationAlignmentMap`.
+     set to `MGLSymbolPlacementLine` or `MGLSymbolPlacementLineCenter`, this is
+     equivalent to `MGLIconRotationAlignmentMap`.
      */
     MGLIconRotationAlignmentAuto,
 };
@@ -142,6 +142,32 @@ typedef NS_ENUM(NSUInteger, MGLSymbolPlacement) {
      `LineString` and `Polygon` geometries.
      */
     MGLSymbolPlacementLine,
+    /**
+     The label is placed at the center of the line of the geometry. Can only be
+     used on `LineString` and `Polygon` geometries. Note that a single feature
+     in a vector tile may contain multiple line geometries.
+     */
+    MGLSymbolPlacementLineCenter,
+};
+
+/**
+ Controls the order in which overlapping symbols in the same layer are rendered
+
+ Values of this type are used in the `MGLSymbolStyleLayer.symbolZOrder`
+ property.
+ */
+typedef NS_ENUM(NSUInteger, MGLSymbolZOrder) {
+    /**
+     Specify this z order if symbols’ appearance relies on lower features
+     overlapping higher features. For example, symbols with a pin-like
+     appearance would require this z order.
+     */
+    MGLSymbolZOrderViewportY,
+    /**
+     Specify this z order if the order in which features appear in the source is
+     significant.
+     */
+    MGLSymbolZOrderSource,
 };
 
 /**
@@ -242,8 +268,8 @@ typedef NS_ENUM(NSUInteger, MGLTextPitchAlignment) {
 typedef NS_ENUM(NSUInteger, MGLTextRotationAlignment) {
     /**
      When `symbolPlacement` is set to `MGLSymbolPlacementPoint`, aligns text
-     east-west. When `symbolPlacement` is set to `MGLSymbolPlacementLine`,
-     aligns text x-axes with the line.
+     east-west. When `symbolPlacement` is set to `MGLSymbolPlacementLine` or
+     `MGLSymbolPlacementLineCenter`, aligns text x-axes with the line.
      */
     MGLTextRotationAlignmentMap,
     /**
@@ -254,8 +280,8 @@ typedef NS_ENUM(NSUInteger, MGLTextRotationAlignment) {
     /**
      When `symbolPlacement` is set to `MGLSymbolPlacementPoint`, this is
      equivalent to `MGLTextRotationAlignmentViewport`. When `symbolPlacement` is
-     set to `MGLSymbolPlacementLine`, this is equivalent to
-     `MGLTextRotationAlignmentMap`.
+     set to `MGLSymbolPlacementLine` or `MGLSymbolPlacementLineCenter`, this is
+     equivalent to `MGLTextRotationAlignmentMap`.
      */
     MGLTextRotationAlignmentAuto,
 };
@@ -329,6 +355,14 @@ typedef NS_ENUM(NSUInteger, MGLTextTranslationAnchor) {
  otherwise, find it using the `MGLStyle.layers` property. You can also create a
  new symbol style layer and add it to the style using a method such as
  `-[MGLStyle addLayer:]`.
+
+ #### Related examples
+ See the <a
+ href="https://docs.mapbox.com/ios/maps/examples/runtime-multiple-annotations/">Dynamically
+ style interactive points</a> and <a
+ href="https://docs.mapbox.com/ios/maps/examples/clustering-with-images/">Use
+ images to cluster point data</a> examples learn how to style data on your map
+ using this layer.
 
  ### Example
 
@@ -483,6 +517,12 @@ MGL_EXPORT
  * Variable assignments and references to assigned variables
  * Interpolation and step functions applied to the `$zoomLevel` variable and/or
  feature attributes
+
+ #### Related examples
+ See the <a
+ href="https://docs.mapbox.com/ios/maps/examples/clustering-with-images/">Use
+ images to cluster point data</a> example to learn how to dynamically set your
+ icons with an expression.
  */
 @property (nonatomic, null_resettable) NSExpression *iconImageName;
 
@@ -653,12 +693,13 @@ MGL_EXPORT
  * Constant `MGLIconRotationAlignment` values
  * Any of the following constant string values:
    * `map`: When `symbol-placement` is set to `point`, aligns icons east-west.
- When `symbol-placement` is set to `line`, aligns icon x-axes with the line.
+ When `symbol-placement` is set to `line` or `line-center`, aligns icon x-axes
+ with the line.
    * `viewport`: Produces icons whose x-axes are aligned with the x-axis of the
  viewport, regardless of the value of `symbol-placement`.
    * `auto`: When `symbol-placement` is set to `point`, this is equivalent to
- `viewport`. When `symbol-placement` is set to `line`, this is equivalent to
- `map`.
+ `viewport`. When `symbol-placement` is set to `line` or `line-center`, this is
+ equivalent to `map`.
  * Predefined functions, including mathematical and string operators
  * Conditional expressions
  * Variable assignments and references to assigned variables
@@ -795,8 +836,9 @@ MGL_EXPORT
  
  This property is only applied to the style if `iconImageName` is non-`nil`, and
  `iconRotationAlignment` is set to an expression that evaluates to `map`, and
- `symbolPlacement` is set to an expression that evaluates to `line`. Otherwise,
- it is ignored.
+ `symbolPlacement` is set to an expression that evaluates to either
+ `MGLSymbolPlacementLine` or `MGLSymbolPlacementLineCenter`. Otherwise, it is
+ ignored.
  
  This attribute corresponds to the <a
  href="https://www.mapbox.com/mapbox-gl-style-spec/#layout-symbol-icon-keep-upright"><code>icon-keep-upright</code></a>
@@ -828,8 +870,9 @@ MGL_EXPORT
  
  This property is only applied to the style if `text` is non-`nil`, and
  `textRotationAlignment` is set to an expression that evaluates to `map`, and
- `symbolPlacement` is set to an expression that evaluates to `line`. Otherwise,
- it is ignored.
+ `symbolPlacement` is set to an expression that evaluates to either
+ `MGLSymbolPlacementLine` or `MGLSymbolPlacementLineCenter`. Otherwise, it is
+ ignored.
  
  This attribute corresponds to the <a
  href="https://www.mapbox.com/mapbox-gl-style-spec/#layout-symbol-text-keep-upright"><code>text-keep-upright</code></a>
@@ -861,8 +904,9 @@ MGL_EXPORT
  `45`. Set this property to `nil` to reset it to the default value.
  
  This property is only applied to the style if `text` is non-`nil`, and
- `symbolPlacement` is set to an expression that evaluates to `line`. Otherwise,
- it is ignored.
+ `symbolPlacement` is set to an expression that evaluates to either
+ `MGLSymbolPlacementLine` or `MGLSymbolPlacementLineCenter`. Otherwise, it is
+ ignored.
  
  This attribute corresponds to the <a
  href="https://www.mapbox.com/mapbox-gl-style-spec/#layout-symbol-text-max-angle"><code>text-max-angle</code></a>
@@ -956,6 +1000,9 @@ MGL_EXPORT
    * `point`: The label is placed at the point where the geometry is located.
    * `line`: The label is placed along the line of the geometry. Can only be
  used on `LineString` and `Polygon` geometries.
+   * `line-center`: The label is placed at the center of the line of the
+ geometry. Can only be used on `LineString` and `Polygon` geometries. Note that
+ a single feature in a vector tile may contain multiple line geometries.
  * Predefined functions, including mathematical and string operators
  * Conditional expressions
  * Variable assignments and references to assigned variables
@@ -992,6 +1039,32 @@ MGL_EXPORT
 @property (nonatomic, null_resettable) NSExpression *symbolSpacing;
 
 /**
+ Controls the order in which overlapping symbols in the same layer are rendered
+ 
+ The default value of this property is an expression that evaluates to
+ `viewport-y`. Set this property to `nil` to reset it to the default value.
+ 
+ You can set this property to an expression containing any of the following:
+ 
+ * Constant `MGLSymbolZOrder` values
+ * Any of the following constant string values:
+   * `viewport-y`: Specify this z order if symbols’ appearance relies on lower
+ features overlapping higher features. For example, symbols with a pin-like
+ appearance would require this z order.
+   * `source`: Specify this z order if the order in which features appear in the
+ source is significant.
+ * Predefined functions, including mathematical and string operators
+ * Conditional expressions
+ * Variable assignments and references to assigned variables
+ * Step functions applied to the `$zoomLevel` variable
+ 
+ This property does not support applying interpolation functions to the
+ `$zoomLevel` variable or applying interpolation or step functions to feature
+ attributes.
+ */
+@property (nonatomic, null_resettable) NSExpression *symbolZOrder;
+
+/**
  Value to use for a text label.
  
  Within a constant string value, a feature attribute name enclosed in curly
@@ -1014,6 +1087,13 @@ MGL_EXPORT
  * Variable assignments and references to assigned variables
  * Interpolation and step functions applied to the `$zoomLevel` variable and/or
  feature attributes
+
+ #### Related examples
+ See the <a href="https://docs.mapbox.com/ios/maps/examples/clustering/">Cluster
+ point data</a> and <a
+ href="https://docs.mapbox.com/ios/maps/examples/clustering-with-images/">Use
+ images to cluster point data</a> to learn how to use an expression to set this
+ attribute to the number of markers within a cluster.
  */
 @property (nonatomic, null_resettable) NSExpression *text;
 
@@ -1427,12 +1507,13 @@ MGL_EXPORT
  * Constant `MGLTextRotationAlignment` values
  * Any of the following constant string values:
    * `map`: When `symbol-placement` is set to `point`, aligns text east-west.
- When `symbol-placement` is set to `line`, aligns text x-axes with the line.
+ When `symbol-placement` is set to `line` or `line-center`, aligns text x-axes
+ with the line.
    * `viewport`: Produces glyphs whose x-axes are aligned with the x-axis of the
  viewport, regardless of the value of `symbol-placement`.
    * `auto`: When `symbol-placement` is set to `point`, this is equivalent to
- `viewport`. When `symbol-placement` is set to `line`, this is equivalent to
- `map`.
+ `viewport`. When `symbol-placement` is set to `line` or `line-center`, this is
+ equivalent to `map`.
  * Predefined functions, including mathematical and string operators
  * Conditional expressions
  * Variable assignments and references to assigned variables
@@ -2125,6 +2206,19 @@ MGL_EXPORT
  The `MGLSymbolPlacement` enumeration representation of the value.
  */
 @property (readonly) MGLSymbolPlacement MGLSymbolPlacementValue;
+
+/**
+ Creates a new value object containing the given `MGLSymbolZOrder` enumeration.
+
+ @param symbolZOrder The value for the new object.
+ @return A new value object that contains the enumeration value.
+ */
++ (instancetype)valueWithMGLSymbolZOrder:(MGLSymbolZOrder)symbolZOrder;
+
+/**
+ The `MGLSymbolZOrder` enumeration representation of the value.
+ */
+@property (readonly) MGLSymbolZOrder MGLSymbolZOrderValue;
 
 /**
  Creates a new value object containing the given `MGLTextAnchor` enumeration.

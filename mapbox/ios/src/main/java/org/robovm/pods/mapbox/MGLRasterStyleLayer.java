@@ -47,7 +47,7 @@ import org.robovm.apple.coreanimation.*;
     /*<bind>*/static { ObjCRuntime.bind(MGLRasterStyleLayer.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MGLRasterStyleLayer() {}
+    protected MGLRasterStyleLayer() {}
     protected MGLRasterStyleLayer(Handle h, long handle) { super(h, handle); }
     protected MGLRasterStyleLayer(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithIdentifier:source:")
@@ -98,6 +98,10 @@ import org.robovm.apple.coreanimation.*;
     public native @ByVal MGLTransition getRasterOpacityTransition();
     @Property(selector = "setRasterOpacityTransition:")
     public native void setRasterOpacityTransition(@ByVal MGLTransition v);
+    @Property(selector = "rasterResamplingMode")
+    public native NSExpression getRasterResamplingMode();
+    @Property(selector = "setRasterResamplingMode:")
+    public native void setRasterResamplingMode(NSExpression v);
     @Property(selector = "rasterSaturation")
     public native NSExpression getRasterSaturation();
     @Property(selector = "setRasterSaturation:")

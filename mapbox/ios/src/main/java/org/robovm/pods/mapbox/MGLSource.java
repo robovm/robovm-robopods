@@ -51,7 +51,7 @@ import org.robovm.apple.coreanimation.*;
     protected MGLSource(Handle h, long handle) { super(h, handle); }
     protected MGLSource(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithIdentifier:")
-    public MGLSource(String identifier) { super((SkipInit) null); initObject(initWithIdentifier(identifier)); }
+    public MGLSource(String identifier) { super((SkipInit) null); initObject(init(identifier)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "identifier")
@@ -62,6 +62,6 @@ import org.robovm.apple.coreanimation.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "initWithIdentifier:")
-    protected native @Pointer long initWithIdentifier(String identifier);
+    protected native @Pointer long init(String identifier);
     /*</methods>*/
 }

@@ -47,13 +47,15 @@ import org.robovm.apple.coreanimation.*;
     /*<bind>*/static { ObjCRuntime.bind(MGLComputedShapeSource.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MGLComputedShapeSource() {}
+    protected MGLComputedShapeSource() {}
     protected MGLComputedShapeSource(Handle h, long handle) { super(h, handle); }
     protected MGLComputedShapeSource(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithIdentifier:options:")
     public MGLComputedShapeSource(String identifier, NSDictionary<NSString, ?> options) { super((SkipInit) null); initObject(init(identifier, options)); }
     @Method(selector = "initWithIdentifier:dataSource:options:")
     public MGLComputedShapeSource(String identifier, MGLComputedShapeSourceDataSource dataSource, NSDictionary<NSString, ?> options) { super((SkipInit) null); initObject(init(identifier, dataSource, options)); }
+    @Method(selector = "initWithIdentifier:")
+    public MGLComputedShapeSource(String identifier) { super(identifier); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "dataSource")

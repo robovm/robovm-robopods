@@ -70,6 +70,10 @@ import org.robovm.apple.coreanimation.*;
     public native double getAltitude();
     @Property(selector = "setAltitude:")
     public native void setAltitude(double v);
+    @Property(selector = "viewingDistance")
+    public native double getViewingDistance();
+    @Property(selector = "setViewingDistance:")
+    public native void setViewingDistance(double v);
     @Property(selector = "supportsSecureCoding")
     public static native boolean supportsSecureCoding();
     /*</properties>*/
@@ -81,8 +85,12 @@ import org.robovm.apple.coreanimation.*;
     public static native MGLMapCamera camera();
     @Method(selector = "cameraLookingAtCenterCoordinate:fromEyeCoordinate:eyeAltitude:")
     public static native MGLMapCamera cameraLookingAtCenterCoordinate(@ByVal CLLocationCoordinate2D centerCoordinate, @ByVal CLLocationCoordinate2D eyeCoordinate, double eyeAltitude);
+    @Method(selector = "cameraLookingAtCenterCoordinate:acrossDistance:pitch:heading:")
+    public static native MGLMapCamera cameraLookingAtCenterCoordinatAcrossDistance(@ByVal CLLocationCoordinate2D centerCoordinate, double distance, @MachineSizedFloat double pitch, double heading);
+    @Method(selector = "cameraLookingAtCenterCoordinate:altitude:pitch:heading:")
+    public static native MGLMapCamera cameraLookingAtCenterCoordinate(@ByVal CLLocationCoordinate2D centerCoordinate, double altitude, @MachineSizedFloat double pitch, double heading);
     @Method(selector = "cameraLookingAtCenterCoordinate:fromDistance:pitch:heading:")
-    public static native MGLMapCamera cameraLookingAtCenterCoordinate(@ByVal CLLocationCoordinate2D centerCoordinate, double distance, @MachineSizedFloat double pitch, double heading);
+    public static native MGLMapCamera cameraLookingAtCenterCoordinateFromDistance(@ByVal CLLocationCoordinate2D centerCoordinate, double distance, @MachineSizedFloat double pitch, double heading);
     @Method(selector = "encodeWithCoder:")
     public native void encode(NSCoder coder);
     @Method(selector = "initWithCoder:")

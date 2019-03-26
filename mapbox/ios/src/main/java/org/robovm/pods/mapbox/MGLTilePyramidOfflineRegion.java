@@ -56,14 +56,18 @@ import org.robovm.apple.coreanimation.*;
     public MGLTilePyramidOfflineRegion(NSCoder decoder) { super((SkipInit) null); initObject(init(decoder)); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "styleURL")
-    public native NSURL getStyleURL();
     @Property(selector = "bounds")
     public native @ByVal MGLCoordinateBounds getBounds();
     @Property(selector = "minimumZoomLevel")
     public native double getMinimumZoomLevel();
     @Property(selector = "maximumZoomLevel")
     public native double getMaximumZoomLevel();
+    @Property(selector = "styleURL")
+    public native NSURL getStyleURL();
+    @Property(selector = "includesIdeographicGlyphs")
+    public native boolean includesIdeographicGlyphs();
+    @Property(selector = "setIncludesIdeographicGlyphs:")
+    public native void setIncludesIdeographicGlyphs(boolean v);
     @Property(selector = "supportsSecureCoding")
     public static native boolean supportsSecureCoding();
     /*</properties>*/

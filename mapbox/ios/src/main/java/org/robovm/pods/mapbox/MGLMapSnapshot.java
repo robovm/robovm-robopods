@@ -59,5 +59,7 @@ import org.robovm.apple.coreanimation.*;
     /*<methods>*/
     @Method(selector = "pointForCoordinate:")
     public native @ByVal CGPoint pointForCoordinate(@ByVal CLLocationCoordinate2D coordinate);
+    @Method(selector = "coordinateForPoint:")
+    public native @ByVal CLLocationCoordinate2D coordinateForPoint(@ByVal CGPoint point);
     /*</methods>*/
 }

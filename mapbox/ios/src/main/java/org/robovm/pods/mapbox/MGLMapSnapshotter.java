@@ -47,11 +47,11 @@ import org.robovm.apple.coreanimation.*;
     /*<bind>*/static { ObjCRuntime.bind(MGLMapSnapshotter.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MGLMapSnapshotter() {}
+    protected MGLMapSnapshotter() {}
     protected MGLMapSnapshotter(Handle h, long handle) { super(h, handle); }
     protected MGLMapSnapshotter(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithOptions:")
-    public MGLMapSnapshotter(MGLMapSnapshotOptions options) { super((SkipInit) null); initObject(initWithOptions(options)); }
+    public MGLMapSnapshotter(MGLMapSnapshotOptions options) { super((SkipInit) null); initObject(init(options)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "options")
@@ -64,7 +64,7 @@ import org.robovm.apple.coreanimation.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "initWithOptions:")
-    protected native @Pointer long initWithOptions(MGLMapSnapshotOptions options);
+    protected native @Pointer long init(MGLMapSnapshotOptions options);
     @Method(selector = "startWithCompletionHandler:")
     public native void start(@Block VoidBlock2<MGLMapSnapshot, NSError> completionHandler);
     @Method(selector = "startWithQueue:completionHandler:")

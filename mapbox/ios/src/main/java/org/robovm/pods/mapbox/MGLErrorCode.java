@@ -47,7 +47,9 @@ public enum /*<name>*/MGLErrorCode/*</name>*/ implements ValuedEnum {
     MGLErrorCodeConnectionFailed(3L),
     MGLErrorCodeParseStyleFailed(4L),
     MGLErrorCodeLoadStyleFailed(5L),
-    MGLErrorCodeSnapshotFailed(6L);
+    MGLErrorCodeSnapshotFailed(6L),
+    MGLErrorCodeSourceIsInUseCannotRemove(7L),
+    MGLErrorCodeSourceIdentifierMismatch(8L);
     /*</values>*/
 
     /*<bind>*/static { Bro.bind(MGLErrorCode.class); }/*</bind>*/

@@ -50,6 +50,34 @@ import org.robovm.apple.coreanimation.*;
     /*<properties>*//*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @GlobalValue(symbol="MGLClusterIdentifierInvalid", optional=true)
+    public static native @MachineSizedUInt long MGLClusterIdentifierInvalid();
+    @GlobalValue(symbol="MGLAbstractClassException", optional=true)
+    public static native String AbstractClassException();
+    @GlobalValue(symbol="MGLMissingLocationServicesUsageDescriptionException", optional=true)
+    public static native String MissingLocationServicesUsageDescriptionException();
+    @GlobalValue(symbol="MGLUserLocationAnnotationTypeException", optional=true)
+    public static native String UserLocationAnnotationTypeException();
+    @GlobalValue(symbol="MGLResourceNotFoundException", optional=true)
+    public static native String ResourceNotFoundException();
+    @GlobalValue(symbol="MGLInvalidOfflinePackException", optional=true)
+    public static native String InvalidOfflinePackException();
+    @GlobalValue(symbol="MGLUnsupportedRegionTypeException", optional=true)
+    public static native String UnsupportedRegionTypeException();
+    @GlobalValue(symbol="MGLInvalidStyleLayerException", optional=true)
+    public static native String InvalidStyleLayerException();
+    @GlobalValue(symbol="MGLInvalidStyleURLException", optional=true)
+    public static native String InvalidStyleURLException();
+    @GlobalValue(symbol="MGLRedundantLayerException", optional=true)
+    public static native String RedundantLayerException();
+    @GlobalValue(symbol="MGLRedundantLayerIdentifierException", optional=true)
+    public static native String RedundantLayerIdentifierException();
+    @GlobalValue(symbol="MGLRedundantSourceException", optional=true)
+    public static native String RedundantSourceException();
+    @GlobalValue(symbol="MGLRedundantSourceIdentifierException", optional=true)
+    public static native String RedundantSourceIdentifierException();
+    @GlobalValue(symbol="MGLInvalidDatasourceException", optional=true)
+    public static native String InvalidDatasourceException();
     @GlobalValue(symbol="MGLExpressionInterpolationModeLinear", optional=true)
     public static native String MGLExpressionInterpolationModeLinear();
     @GlobalValue(symbol="MGLExpressionInterpolationModeExponential", optional=true)

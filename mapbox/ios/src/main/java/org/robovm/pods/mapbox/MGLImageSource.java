@@ -47,13 +47,15 @@ import org.robovm.apple.coreanimation.*;
     /*<bind>*/static { ObjCRuntime.bind(MGLImageSource.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MGLImageSource() {}
+    protected MGLImageSource() {}
     protected MGLImageSource(Handle h, long handle) { super(h, handle); }
     protected MGLImageSource(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithIdentifier:coordinateQuad:URL:")
     public MGLImageSource(String identifier, @ByVal MGLCoordinateQuad coordinateQuad, NSURL url) { super((SkipInit) null); initObject(init(identifier, coordinateQuad, url)); }
     @Method(selector = "initWithIdentifier:coordinateQuad:image:")
     public MGLImageSource(String identifier, @ByVal MGLCoordinateQuad coordinateQuad, UIImage image) { super((SkipInit) null); initObject(init(identifier, coordinateQuad, image)); }
+    @Method(selector = "initWithIdentifier:")
+    public MGLImageSource(String identifier) { super(identifier); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "URL")

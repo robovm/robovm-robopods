@@ -36,21 +36,30 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
+
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL)/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/MGLCoordinate/*</name>*/ 
-    extends /*<extends>*/CocoaUtility/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ interface /*<name>*/MGLLocationManagerDelegate/*</name>*/ 
+    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/
-    /*<bind>*/static { Bro.bind(MGLCoordinate.class); }/*</bind>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*//*</constructors>*/
-    /*<properties>*//*</properties>*/
-    /*<members>*//*</members>*/
+    /*<properties>*/
+    
+    /*</properties>*/
     /*<methods>*/
-    @GlobalValue(symbol="MGLCoordinateSpanZero", optional=true)
-    public static native @ByVal MGLCoordinateSpan getSpanZero();
+    @Method(selector = "locationManager:didUpdateLocations:")
+    void didUpdateLocations(MGLLocationManager manager, NSArray<CLLocation> locations);
+    @Method(selector = "locationManager:didUpdateHeading:")
+    void didUpdateHeading(MGLLocationManager manager, CLHeading newHeading);
+    @Method(selector = "locationManagerShouldDisplayHeadingCalibration:")
+    boolean locationManagerShouldDisplayHeadingCalibration(MGLLocationManager manager);
+    @Method(selector = "locationManager:didFailWithError:")
+    void didFailWithError(MGLLocationManager manager, NSError error);
     /*</methods>*/
+    /*<adapter>*/
+    /*</adapter>*/
 }

@@ -13,7 +13,7 @@
  with the `MGLRasterDEMSource` class and is ignored when creating an
  `MGLRasterTileSource` or `MGLVectorTileSource` object.
  */
-extern MGL_EXPORT const MGLTileSourceOption MGLTileSourceOptionDEMEncoding;
+FOUNDATION_EXTERN MGL_EXPORT const MGLTileSourceOption MGLTileSourceOptionDEMEncoding;
 
 /**
  `MGLRasterDEMSource` is a map content source that supplies rasterized
@@ -34,7 +34,7 @@ extern MGL_EXPORT const MGLTileSourceOption MGLTileSourceOptionDEMEncoding;
  `-[MGLStyle addSource:]` and `-[MGLStyle sourceWithIdentifier:]`.
  
  Currently, raster DEM sources only support the format used by
- <a href="https://www.mapbox.com/help/access-elevation-data/#mapbox-terrain-rgb">Mapbox Terrain-RGB</a>.
+ <a href="https://docs.mapbox.com/help/troubleshooting/access-elevation-data/#mapbox-terrain-rgb">Mapbox Terrain-RGB</a>.
 
  ### Example
 

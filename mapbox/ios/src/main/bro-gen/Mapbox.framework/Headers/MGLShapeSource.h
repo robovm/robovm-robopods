@@ -5,6 +5,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol MGLFeature;
+@class MGLPointFeature;
+@class MGLPointFeatureCluster;
 @class MGLShape;
 
 /**
@@ -23,8 +25,11 @@ typedef NSString *MGLShapeSourceOption NS_STRING_ENUM;
  
  This option only affects point features within an `MGLShapeSource` object; it
  is ignored when creating an `MGLComputedShapeSource` object.
+
+ #### Related examples
+ See the <a href="https://docs.mapbox.com/ios/maps/examples/clustering/">Cluster point data</a> and <a href="https://docs.mapbox.com/ios/maps/examples/clustering-with-images/">Use images to cluster point data</a> examples to learn how to cluster point data with this `MGLShapeSourceOption`.
  */
-extern MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionClustered;
+FOUNDATION_EXTERN MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionClustered;
 
 /**
  An `NSNumber` object containing an integer; specifies the radius of each
@@ -34,7 +39,7 @@ extern MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionClustered;
  This option only affects point features within an `MGLShapeSource` object; it
  is ignored when creating an `MGLComputedShapeSource` object.
  */
-extern MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionClusterRadius;
+FOUNDATION_EXTERN MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionClusterRadius;
 
 /**
  An `NSNumber` object containing an integer; specifies the maximum zoom level at
@@ -49,7 +54,7 @@ extern MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionClusterRadius;
  This option only affects point features within an `MGLShapeSource` object; it
  is ignored when creating an `MGLComputedShapeSource` object.
  */
-extern MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionMaximumZoomLevelForClustering;
+FOUNDATION_EXTERN MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionMaximumZoomLevelForClustering;
 
 /**
  An `NSNumber` object containing an integer; specifies the minimum zoom level at
@@ -59,7 +64,7 @@ extern MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionMaximumZoomLeve
  <a href="https://www.mapbox.com/mapbox-gl-style-spec/#sources-geojson-minzoom"><code>minzoom</code></a>
  source property in the Mapbox Style Specification.
  */
-extern MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionMinimumZoomLevel;
+FOUNDATION_EXTERN MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionMinimumZoomLevel;
 
 /**
  An `NSNumber` object containing an integer; specifies the maximum zoom level at
@@ -70,7 +75,7 @@ extern MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionMinimumZoomLeve
  <a href="https://www.mapbox.com/mapbox-gl-style-spec/#sources-geojson-maxzoom"><code>maxzoom</code></a>
  source property in the Mapbox Style Specification.
  */
-extern MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionMaximumZoomLevel;
+FOUNDATION_EXTERN MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionMaximumZoomLevel;
 
 /**
  An `NSNumber` object containing an integer; specifies the size of the tile
@@ -82,7 +87,7 @@ extern MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionMaximumZoomLeve
  <a href="https://www.mapbox.com/mapbox-gl-style-spec/#sources-geojson-buffer"><code>buffer</code></a>
  source property in the Mapbox Style Specification.
  */
-extern MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionBuffer;
+FOUNDATION_EXTERN MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionBuffer;
 
 /**
  An `NSNumber` object containing a double; specifies the Douglas-Peucker
@@ -93,7 +98,19 @@ extern MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionBuffer;
  <a href="https://www.mapbox.com/mapbox-gl-style-spec/#sources-geojson-tolerance"><code>tolerance</code></a>
  source property in the Mapbox Style Specification.
  */
-extern MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionSimplificationTolerance;
+FOUNDATION_EXTERN MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionSimplificationTolerance;
+
+/**
+ An `NSNumber` object containing a Boolean enabling or disabling calculating line distance metrics. 
+ 
+ Set this property to `YES` in order for the `MGLLineStyleLayer.lineGradient` property to have its intended effect.
+ The default value is `NO`.
+ 
+ This option corresponds to the
+ <a href="https://www.mapbox.com/mapbox-gl-js/style-spec/#sources-geojson-lineMetrics"><code>lineMetrics</code></a>
+ source property in the Mapbox Style Specification.
+ */
+FOUNDATION_EXTERN MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionLineDistanceMetrics;
 
 /**
  `MGLShapeSource` is a map content source that supplies vector shapes to be
@@ -130,6 +147,9 @@ extern MGL_EXPORT const MGLShapeSourceOption MGLShapeSourceOptionSimplificationT
  let source = MGLShapeSource(identifier: "lines", features: [polyline], options: nil)
  mapView.style?.addSource(source)
  ```
+ 
+ #### Related examples
+ See the <a href="https://docs.mapbox.com/ios/maps/examples/clustering/">Cluster point data</a>, <a href="https://docs.mapbox.com/ios/maps/examples/clustering-with-images/">Use images to cluster point data</a>, and <a href="https://docs.mapbox.com/ios/maps/examples/live-data/">Add live data</a> examples to learn how to add data to your map using this `MGLSource` object.
  */
 MGL_EXPORT
 @interface MGLShapeSource : MGLSource
@@ -153,6 +173,11 @@ MGL_EXPORT
     current application’s resource bundle.
  @param options An `NSDictionary` of options for this source.
  @return An initialized shape source.
+ 
+ #### Related examples
+ See the <a href="https://docs.mapbox.com/ios/maps/examples/live-data/">
+ Add live data</a> example to learn how to add live data to your map by
+ updating the an `MGLShapeSource` object's `URL` property.
  */
 - (instancetype)initWithIdentifier:(NSString *)identifier URL:(NSURL *)url options:(nullable NSDictionary<MGLShapeSourceOption, id> *)options NS_DESIGNATED_INITIALIZER;
 
@@ -182,6 +207,11 @@ MGL_EXPORT
  @param shape A concrete subclass of `MGLShape`
  @param options An `NSDictionary` of options for this source.
  @return An initialized shape source.
+ 
+ #### Related examples
+ See the <a href="https://docs.mapbox.com/ios/maps/examples/runtime-animate-line/">
+ Animate a line</a> example to learn how to animate line data by continously
+ updating an `MGLShapeSource`'s `shape` attribute.
  */
 - (instancetype)initWithIdentifier:(NSString *)identifier shape:(nullable MGLShape *)shape options:(nullable NSDictionary<MGLShapeSourceOption, id> *)options NS_DESIGNATED_INITIALIZER;
 
@@ -292,6 +322,46 @@ MGL_EXPORT
     represent features in the source that match the predicate.
  */
 - (NSArray<id <MGLFeature>> *)featuresMatchingPredicate:(nullable NSPredicate *)predicate;
+
+/**
+ Returns an array of map features that are the leaves of the specified cluster.
+ ("Leaves" are the original points that belong to the cluster.)
+ 
+ This method supports pagination; you supply an offset (number of features to skip)
+ and a maximum number of features to return.
+ 
+ @param cluster An object of type `MGLPointFeatureCluster` (that conforms to the `MGLCluster` protocol).
+ @param offset Number of features to skip.
+ @param limit The maximum number of features to return
+ 
+ @return An array of objects that conform to the `MGLFeature` protocol.
+ */
+- (NSArray<id <MGLFeature>> *)leavesOfCluster:(MGLPointFeatureCluster *)cluster offset:(NSUInteger)offset limit:(NSUInteger)limit;
+
+/**
+ Returns an array of map features that are the immediate children of the specified
+ cluster *on the next zoom level*. The may include features that also conform to
+ the `MGLCluster` protocol (currently only objects of type `MGLPointFeatureCluster`).
+ 
+ @param cluster An object of type `MGLPointFeatureCluster` (that conforms to the `MGLCluster` protocol).
+ 
+ @return An array of objects that conform to the `MGLFeature` protocol.
+ 
+ @note The returned array may contain the `cluster` that was passed in, if the next
+    zoom level doesn't match the zoom level for expanding that cluster. See
+    `-[MGLShapeSource zoomLevelForExpandingCluster:]`.
+ */
+- (NSArray<id<MGLFeature>> *)childrenOfCluster:(MGLPointFeatureCluster *)cluster;
+
+/**
+ Returns the zoom level at which the given cluster expands.
+ 
+ @param cluster An object of type `MGLPointFeatureCluster` (that conforms to the `MGLCluster` protocol).
+ 
+ @return Zoom level. This should be >= 0; any negative return value should be
+    considered an error.
+ */
+- (double)zoomLevelForExpandingCluster:(MGLPointFeatureCluster *)cluster;
 
 @end
 

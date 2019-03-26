@@ -42,7 +42,8 @@ import org.robovm.apple.coreanimation.*;
 public enum /*<name>*/MGLSymbolPlacement/*</name>*/ implements ValuedEnum {
     /*<values>*/
     Point(0L),
-    Line(1L);
+    Line(1L),
+    LineCenter(2L);
     /*</values>*/
 
     /*<bind>*/

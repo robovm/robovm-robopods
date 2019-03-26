@@ -9,20 +9,28 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  An offline region defined by a style URL, geographic coordinate bounds, and
  range of zoom levels.
+ 
+ To minimize the resources required by an irregularly shaped offline region,
+ use the MGLShapeOfflineRegion class instead.
+ 
+ ### Example
+ ```swift
+ let northeast = CLLocationCoordinate2D(latitude: 40.989329, longitude: -102.062592)
+ let southwest = CLLocationCoordinate2D(latitude: 36.986207, longitude: -109.049896)
+ let bbox = MGLCoordinateBounds(sw: southwest, ne: northeast)
+ 
+ let region = MGLTilePyramidOfflineRegion(styleURL: MGLStyle.lightStyleURL, bounds: bbox, fromZoomLevel: 11, toZoomLevel: 14)
+ let context = "Tile Pyramid Region".data(using: .utf8)
+ MGLOfflineStorage.shared.addPack(for: region, withContext: context!)
+ ```
+  
+ #### Related examples
+ See the <a href="https://docs.mapbox.com/ios/maps/examples/offline-pack/">
+ Download an offline map</a> example to learn how to define an offline region
+ to be downloaded to a user's device.
  */
 MGL_EXPORT
 @interface MGLTilePyramidOfflineRegion : NSObject <MGLOfflineRegion, NSSecureCoding, NSCopying>
-
-/**
- URL of the style whose resources are required for offline viewing.
-
- In addition to the JSON stylesheet, different styles may require different font
- glyphs, sprite sheets, and other resources.
-
- The URL may be a full HTTP or HTTPS URL or a Mapbox URL indicating the style’s
- map ID (`mapbox://styles/{user}/{style}`).
- */
-@property (nonatomic, readonly) NSURL *styleURL;
 
 /**
  The coordinate bounds for the geographic region covered by the downloaded

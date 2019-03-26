@@ -18,7 +18,7 @@ typedef NSString *MGLExpressionInterpolationMode NS_TYPED_ENUM;
  <a href="https://www.mapbox.com/mapbox-gl-js/style-spec/#expressions-interpolate"><code>interpolate</code></a>
  expression operator in the Mapbox Style Specification.
  */
-extern MGL_EXPORT const MGLExpressionInterpolationMode MGLExpressionInterpolationModeLinear;
+FOUNDATION_EXTERN MGL_EXPORT const MGLExpressionInterpolationMode MGLExpressionInterpolationModeLinear;
 
 /**
  An `NSString` identifying the `expotential` interpolation type in an `NSExpression`.
@@ -27,7 +27,7 @@ extern MGL_EXPORT const MGLExpressionInterpolationMode MGLExpressionInterpolatio
  <a href="https://www.mapbox.com/mapbox-gl-js/style-spec/#expressions-interpolate"><code>interpolate</code></a>
  expression operator in the Mapbox Style Specification.
  */
-extern MGL_EXPORT const MGLExpressionInterpolationMode MGLExpressionInterpolationModeExponential;
+FOUNDATION_EXTERN MGL_EXPORT const MGLExpressionInterpolationMode MGLExpressionInterpolationModeExponential;
 
 /**
  An `NSString` identifying the `cubic-bezier` interpolation type in an `NSExpression`.
@@ -36,7 +36,7 @@ extern MGL_EXPORT const MGLExpressionInterpolationMode MGLExpressionInterpolatio
  <a href="https://www.mapbox.com/mapbox-gl-js/style-spec/#expressions-interpolate"><code>interpolate</code></a>
  expression operator in the Mapbox Style Specification.
  */
-extern MGL_EXPORT const MGLExpressionInterpolationMode MGLExpressionInterpolationModeCubicBezier;
+FOUNDATION_EXTERN MGL_EXPORT const MGLExpressionInterpolationMode MGLExpressionInterpolationModeCubicBezier;
 
 /**
  Methods for creating expressions that use Mapbox-specific functionality and for
@@ -60,6 +60,13 @@ extern MGL_EXPORT const MGLExpressionInterpolationMode MGLExpressionInterpolatio
  expression operator in the Mapbox Style Specification.
  */
 @property (class, nonatomic, readonly) NSExpression *heatmapDensityVariableExpression;
+
+/**
+ `NSExpression` variable that corresponds to the
+ <a href="https://www.mapbox.com/mapbox-gl-js/style-spec/#expressions-line-progress"><code>line-progress</code></a>
+ expression operator in the Mapbox Style Specification.
+ */
+@property (class, nonatomic, readonly) NSExpression *lineProgressVariableExpression;
 
 /**
  `NSExpression` variable that corresponds to the
@@ -105,6 +112,13 @@ extern MGL_EXPORT const MGLExpressionInterpolationMode MGLExpressionInterpolatio
  @param steppingExpression The stepping expression.
  @param minimumExpression The expression which could be a constant or function expression.
  @param stops The stops must be an `NSDictionary` constant `NSExpression`.
+ 
+ #### Related examples
+ See the <a href="https://docs.mapbox.com/ios/maps/examples/dds-circle-layer/">
+ Data-driven circles</a>, <a href="https://docs.mapbox.com/ios/maps/examples/clustering/">
+ Cluster point data</a>, and <a href="https://docs.mapbox.com/ios/maps/examples/clustering-with-images/">
+ Use images to cluster point data</a> examples to learn how to use this
+ expression to style a map layer based on an attribute value.
  */
 + (instancetype)mgl_expressionForSteppingExpression:(nonnull NSExpression*)steppingExpression fromExpression:(nonnull NSExpression *)minimumExpression stops:(nonnull NSExpression*)stops NS_SWIFT_NAME(init(forMGLStepping:from:stops:));
 
@@ -118,6 +132,11 @@ extern MGL_EXPORT const MGLExpressionInterpolationMode MGLExpressionInterpolatio
  `MGLExpressionInterpolationModeCubicBezier`.
  @param parameters The parameters expression.
  @param stops The stops expression.
+ 
+ #### Related examples
+ See the <a href="https://docs.mapbox.com/ios/maps/examples/heatmap-example/">
+ Create a heatmap layer</a> example to learn how to style an `MGLHeatmapStyleLayer`
+ based on zoom level and point density with this expression.
  */
 + (instancetype)mgl_expressionForInterpolatingExpression:(nonnull NSExpression*)inputExpression withCurveType:(nonnull MGLExpressionInterpolationMode)curveType parameters:(nullable NSExpression *)parameters stops:(nonnull NSExpression*)stops NS_SWIFT_NAME(init(forMGLInterpolating:curveType:parameters:stops:));
 
@@ -185,7 +204,7 @@ extern MGL_EXPORT const MGLExpressionInterpolationMode MGLExpressionInterpolatio
  
  This method assumes the receiver refers to the feature attributes that are
  available in vector tiles supplied by the
- <a href="https://www.mapbox.com/vector-tiles/mapbox-streets-v7/#overview">Mapbox Streets source</a>.
+ <a href="https://www.mapbox.com/vector-tiles/mapbox-streets-v8/#overview">Mapbox Streets source</a>.
  On iOS, the user can set the system’s preferred language in Settings, General
  Settings, Language & Region. On macOS, the user can set the system’s preferred
  language in the Language & Region pane of System Preferences.

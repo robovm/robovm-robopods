@@ -81,6 +81,8 @@ import org.robovm.apple.coreanimation.*;
     void mapViewWillStartRenderingFrame(MGLMapView mapView);
     @Method(selector = "mapViewDidFinishRenderingFrame:fullyRendered:")
     void didFinishRenderingFrame(MGLMapView mapView, boolean fullyRendered);
+    @Method(selector = "mapViewDidBecomeIdle:")
+    void mapViewDidBecomeIdle(MGLMapView mapView);
     @Method(selector = "mapView:didFinishLoadingStyle:")
     void didFinishLoadingStyle(MGLMapView mapView, MGLStyle style);
     @Method(selector = "mapViewWillStartLocatingUser:")
@@ -93,6 +95,8 @@ import org.robovm.apple.coreanimation.*;
     void didFailToLocateUser(MGLMapView mapView, NSError error);
     @Method(selector = "mapView:didChangeUserTrackingMode:animated:")
     void didChangeUserTrackingMode(MGLMapView mapView, MGLUserTrackingMode mode, boolean animated);
+    @Method(selector = "mapViewUserLocationAnchorPoint:")
+    @ByVal CGPoint mapViewUserLocationAnchorPoint(MGLMapView mapView);
     @Method(selector = "mapView:imageForAnnotation:")
     MGLAnnotationImage imageForAnnotation(MGLMapView mapView, MGLAnnotation annotation);
     @Method(selector = "mapView:alphaForShapeAnnotation:")
@@ -107,6 +111,8 @@ import org.robovm.apple.coreanimation.*;
     MGLAnnotationView viewForAnnotation(MGLMapView mapView, MGLAnnotation annotation);
     @Method(selector = "mapView:didAddAnnotationViews:")
     void didAddAnnotationViews(MGLMapView mapView, NSArray<MGLAnnotationView> annotationViews);
+    @Method(selector = "mapView:shapeAnnotationIsEnabled:")
+    boolean shapeAnnotationIsEnabled(MGLMapView mapView, MGLShape annotation);
     @Method(selector = "mapView:didSelectAnnotation:")
     void didSelectAnnotation(MGLMapView mapView, MGLAnnotation annotation);
     @Method(selector = "mapView:didDeselectAnnotation:")

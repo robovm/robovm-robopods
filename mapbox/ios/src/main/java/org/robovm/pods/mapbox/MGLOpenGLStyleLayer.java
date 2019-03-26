@@ -47,11 +47,11 @@ import org.robovm.apple.coreanimation.*;
     /*<bind>*/static { ObjCRuntime.bind(MGLOpenGLStyleLayer.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MGLOpenGLStyleLayer() {}
+    protected MGLOpenGLStyleLayer() {}
     protected MGLOpenGLStyleLayer(Handle h, long handle) { super(h, handle); }
     protected MGLOpenGLStyleLayer(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithIdentifier:")
-    public MGLOpenGLStyleLayer(String identifier) { super((SkipInit) null); initObject(initWithIdentifier(identifier)); }
+    public MGLOpenGLStyleLayer(String identifier) { super((SkipInit) null); initObject(init(identifier)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "style")
@@ -60,7 +60,7 @@ import org.robovm.apple.coreanimation.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "initWithIdentifier:")
-    protected native @Pointer long initWithIdentifier(String identifier);
+    protected native @Pointer long init(String identifier);
     @Method(selector = "didMoveToMapView:")
     public native void didMoveToMapView(MGLMapView mapView);
     @Method(selector = "willMoveFromMapView:")

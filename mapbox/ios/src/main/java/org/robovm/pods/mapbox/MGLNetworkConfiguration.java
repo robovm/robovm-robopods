@@ -39,32 +39,28 @@ import org.robovm.apple.coreanimation.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/MGLVectorSource/*</name>*/ 
-    extends /*<extends>*/MGLTileSource/*</extends>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/MGLNetworkConfiguration/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class MGLVectorSourcePtr extends Ptr<MGLVectorSource, MGLVectorSourcePtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(MGLVectorSource.class); }/*</bind>*/
+    /*<ptr>*/public static class MGLNetworkConfigurationPtr extends Ptr<MGLNetworkConfiguration, MGLNetworkConfigurationPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(MGLNetworkConfiguration.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MGLVectorSource() {}
-    protected MGLVectorSource(Handle h, long handle) { super(h, handle); }
-    protected MGLVectorSource(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithIdentifier:configurationURL:")
-    public MGLVectorSource(String identifier, NSURL configurationURL) { super((SkipInit) null); initObject(init(identifier, configurationURL)); }
-    @Method(selector = "initWithIdentifier:tileURLTemplates:options:")
-    public MGLVectorSource(String identifier, NSArray<NSString> tileURLTemplates, NSDictionary<MGLTileSource.Option, ?> options) { super((SkipInit) null); initObject(init(identifier, tileURLTemplates, options)); }
+    public MGLNetworkConfiguration() {}
+    protected MGLNetworkConfiguration(Handle h, long handle) { super(h, handle); }
+    protected MGLNetworkConfiguration(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "sharedManager")
+    public static native MGLNetworkConfiguration getSharedManager();
+    @Property(selector = "sessionConfiguration")
+    public native NSURLSessionConfiguration getSessionConfiguration();
+    @Property(selector = "setSessionConfiguration:")
+    public native void setSessionConfiguration(NSURLSessionConfiguration v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithIdentifier:configurationURL:")
-    protected native @Pointer long init(String identifier, NSURL configurationURL);
-    @Method(selector = "initWithIdentifier:tileURLTemplates:options:")
-    protected native @Pointer long init(String identifier, NSArray<NSString> tileURLTemplates, NSDictionary<MGLTileSource.Option, ?> options);
-    @Method(selector = "featuresInSourceLayersWithIdentifiers:predicate:")
-    public native NSArray<?> features(NSSet<NSString> sourceLayerIdentifiers, NSPredicate predicate);
+    
     /*</methods>*/
 }

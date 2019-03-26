@@ -74,6 +74,10 @@ import org.robovm.apple.coreanimation.*;
     public native @ByVal MGLTransition getTransition();
     @Property(selector = "setTransition:")
     public native void setTransition(@ByVal MGLTransition v);
+    @Property(selector = "performsPlacementTransitions")
+    public native boolean performsPlacementTransitions();
+    @Property(selector = "setPerformsPlacementTransitions:")
+    public native void setPerformsPlacementTransitions(boolean v);
     @Property(selector = "layers")
     public native NSArray<MGLStyleLayer> getLayers();
     @Property(selector = "setLayers:")
@@ -91,6 +95,8 @@ import org.robovm.apple.coreanimation.*;
     public native void addSource(MGLSource source);
     @Method(selector = "removeSource:")
     public native void removeSource(MGLSource source);
+    @Method(selector = "removeSource:error:")
+    public native boolean remove(MGLSource source, NSError.NSErrorPtr outError);
     @Method(selector = "layerWithIdentifier:")
     public native MGLStyleLayer layer(String identifier);
     @Method(selector = "addLayer:")

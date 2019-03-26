@@ -74,13 +74,21 @@ import org.robovm.apple.coreanimation.*;
     @GlobalValue(symbol="MGLOfflinePackUserInfoKeyMaximumCount", optional=true)
     public static native String UserInfoKeyMaximumCount();
     
+    @Method(selector = "addContentsOfFile:withCompletionHandler:")
+    public native void addContents(String filePath, @Block VoidBlock3<NSURL, NSArray<MGLOfflinePack>, NSError> completion);
+    @Method(selector = "addContentsOfURL:withCompletionHandler:")
+    public native void addContents(NSURL fileURL, @Block VoidBlock3<NSURL, NSArray<MGLOfflinePack>, NSError> completion);
     @Method(selector = "addPackForRegion:withContext:completionHandler:")
-    public native void addPackForRegion(MGLOfflineRegion region, NSData context, @Block VoidBlock2<MGLOfflinePack, NSError> completion);
+    public native void addPack(MGLOfflineRegion region, NSData context, @Block VoidBlock2<MGLOfflinePack, NSError> completion);
     @Method(selector = "removePack:withCompletionHandler:")
     public native void removePack(MGLOfflinePack pack, @Block VoidBlock1<NSError> completion);
     @Method(selector = "reloadPacks")
     public native void reloadPacks();
     @Method(selector = "setMaximumAllowedMapboxTiles:")
     public native void setMaximumAllowedMapboxTiles(long maximumCount);
+    @Method(selector = "preloadData:forURL:modificationDate:expirationDate:eTag:mustRevalidate:")
+    public native void preloadData(NSData data, NSURL url, NSDate modified, NSDate expires, String eTag, boolean mustRevalidate);
+    @Method(selector = "putResourceWithUrl:data:modified:expires:etag:mustRevalidate:")
+    public native void putResource(NSURL url, NSData data, NSDate modified, NSDate expires, String etag, boolean mustRevalidate);
     /*</methods>*/
 }

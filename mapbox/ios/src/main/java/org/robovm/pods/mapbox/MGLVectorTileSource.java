@@ -47,13 +47,15 @@ import org.robovm.apple.coreanimation.*;
     /*<bind>*/static { ObjCRuntime.bind(MGLVectorTileSource.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MGLVectorTileSource() {}
+    protected MGLVectorTileSource() {}
     protected MGLVectorTileSource(Handle h, long handle) { super(h, handle); }
     protected MGLVectorTileSource(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithIdentifier:configurationURL:")
     public MGLVectorTileSource(String identifier, NSURL configurationURL) { super((SkipInit) null); initObject(init(identifier, configurationURL)); }
     @Method(selector = "initWithIdentifier:tileURLTemplates:options:")
     public MGLVectorTileSource(String identifier, NSArray<NSString> tileURLTemplates, NSDictionary<NSString, ?> options) { super((SkipInit) null); initObject(init(identifier, tileURLTemplates, options)); }
+    @Method(selector = "initWithIdentifier:")
+    public MGLVectorTileSource(String identifier) { super(identifier); }
     /*</constructors>*/
     /*<properties>*/
     

@@ -47,11 +47,11 @@ import org.robovm.apple.coreanimation.*;
     /*<bind>*/static { ObjCRuntime.bind(MGLBackgroundStyleLayer.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MGLBackgroundStyleLayer() {}
+    protected MGLBackgroundStyleLayer() {}
     protected MGLBackgroundStyleLayer(Handle h, long handle) { super(h, handle); }
     protected MGLBackgroundStyleLayer(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithIdentifier:")
-    public MGLBackgroundStyleLayer(String identifier) { super((SkipInit) null); initObject(initWithIdentifier(identifier)); }
+    public MGLBackgroundStyleLayer(String identifier) { super((SkipInit) null); initObject(init(identifier)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "backgroundColor")
@@ -82,6 +82,6 @@ import org.robovm.apple.coreanimation.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "initWithIdentifier:")
-    protected native @Pointer long initWithIdentifier(String identifier);
+    protected native @Pointer long init(String identifier);
     /*</methods>*/
 }

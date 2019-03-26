@@ -47,7 +47,7 @@ import org.robovm.apple.coreanimation.*;
     /*<bind>*/static { ObjCRuntime.bind(MGLHeatmapStyleLayer.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MGLHeatmapStyleLayer() {}
+    protected MGLHeatmapStyleLayer() {}
     protected MGLHeatmapStyleLayer(Handle h, long handle) { super(h, handle); }
     protected MGLHeatmapStyleLayer(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithIdentifier:source:")

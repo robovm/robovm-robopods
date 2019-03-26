@@ -47,7 +47,7 @@ import org.robovm.apple.coreanimation.*;
     /*<bind>*/static { ObjCRuntime.bind(MGLFillStyleLayer.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MGLFillStyleLayer() {}
+    protected MGLFillStyleLayer() {}
     protected MGLFillStyleLayer(Handle h, long handle) { super(h, handle); }
     protected MGLFillStyleLayer(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithIdentifier:source:")

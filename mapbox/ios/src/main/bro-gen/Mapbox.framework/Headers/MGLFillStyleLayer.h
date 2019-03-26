@@ -39,6 +39,15 @@ typedef NS_ENUM(NSUInteger, MGLFillTranslationAnchor) {
  new fill style layer and add it to the style using a method such as
  `-[MGLStyle addLayer:]`.
 
+ #### Related examples
+ See the <a
+ href="https://docs.mapbox.com/ios/maps/examples/select-layer/">Select a feature
+ within a layer</a> example to learn how to use a `TERNARY` expression to modify
+ the `fillOpacity` of an `MGLFillStyleLayer` object. See the <a
+ href="https://docs.mapbox.com/ios/maps/examples/fill-pattern/">Add a pattern to
+ a polygon</a> example to learn how to use an image to add pattern to the
+ features styled by a `MGLFillStyleLayer`.
+
  ### Example
 
  ```swift
@@ -227,11 +236,8 @@ MGL_EXPORT
  * Predefined functions, including mathematical and string operators
  * Conditional expressions
  * Variable assignments and references to assigned variables
- * Step functions applied to the `$zoomLevel` variable
- 
- This property does not support applying interpolation functions to the
- `$zoomLevel` variable or applying interpolation or step functions to feature
- attributes.
+ * Interpolation and step functions applied to the `$zoomLevel` variable and/or
+ feature attributes
  */
 @property (nonatomic, null_resettable) NSExpression *fillPattern;
 

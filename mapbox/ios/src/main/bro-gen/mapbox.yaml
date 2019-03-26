@@ -45,8 +45,19 @@ enums:
     MGLMatrix4: {}
     MGLHillshadeIlluminationAnchor: {}
     MGLDEMEncoding: {}
+    MGLSymbolZOrder: {}
+    MGLRasterResamplingMode: {}
+    MGLLoggingLevel: {}
 
 classes:
+    MGLShapeOfflineRegion:
+        methods:
+            '-initWithStyleURL:shape:fromZoomLevel:toZoomLevel:':
+                name: initWithStyleURL
+    MGLEmptyFeature: {}
+    MGLLoggingConfiguration: {}
+    MGLNetworkConfiguration: {}
+    MGLPointFeatureCluster: {}
     MGLMapPoint: {} #struct
     MGLMatrix4: {}  #struct
     MGLCoordinateBounds: {}
@@ -65,6 +76,8 @@ classes:
         methods:
             '-initWithAnnotation:reuseIdentifier:':
                 name: init
+            '-initWithReuseIdentifier:':
+                name: init
             '-setSelected:animated:':
                 name: setSelected
             '-setDragState:animated:':
@@ -78,7 +91,10 @@ classes:
             '-titleWithStyle:':
                 name: title
 
-    MGLBackgroundStyleLayer: {}
+    MGLBackgroundStyleLayer:
+        methods:
+            '-initWithIdentifier:':
+                name: init
     MGLCameraStyleFunction:
         methods:
             '+functionWithInterpolationMode:stops:options:':
@@ -171,6 +187,10 @@ classes:
             '+cameraLookingAtCenterCoordinate:fromEyeCoordinate:eyeAltitude:':
                 name: cameraLookingAtCenterCoordinate
             '+cameraLookingAtCenterCoordinate:fromDistance:pitch:heading:':
+                name: cameraLookingAtCenterCoordinateFromDistance
+            '+cameraLookingAtCenterCoordinate:acrossDistance:pitch:heading:':
+                name: cameraLookingAtCenterCoordinatAcrossDistance
+            '+cameraLookingAtCenterCoordinate:altitude:pitch:heading:':
                 name: cameraLookingAtCenterCoordinate
     MGLMapSnapshot: {}
     MGLMapSnapshotOptions:
@@ -183,8 +203,18 @@ classes:
                 name: start
             '-startWithCompletionHandler:':
                 name: start
+            '-initWithOptions:':
+                name: init
     MGLMapView:
         methods:
+            '-updateUserLocationAnnotationViewAnimatedWithDuration:':
+                name: updateUserLocationAnnotationViewAnimated
+            '-camera:fittingCoordinateBounds:edgePadding:':
+                name: camera
+            '-camera:fittingShape:edgePadding:':
+                name: camera
+            '-selectAnnotation:moveIntoView:animateSelection:':
+                name: selectAnnotation
             '-initWithFrame:':
                 name: init
             '-initWithFrame:styleURL:':
@@ -310,13 +340,23 @@ classes:
     MGLOfflineStorage:
         methods:
             '-addPackForRegion:withContext:completionHandler:':
-                name: addPackForRegion
+                name: addPack
             '-removePack:withCompletionHandler:':
                 name: removePack
+            '-addContentsOfFile:withCompletionHandler:':
+                name: addContents
+            '-addContentsOfURL:withCompletionHandler:':
+                name: addContents
+            '-preloadData:forURL:modificationDate:expirationDate:eTag:mustRevalidate:':
+                name: preloadData
+            '-putResourceWithUrl:data:modified:expires:etag:mustRevalidate:':
+                name: putResource
     MGLOpenGLStyleLayer:
         methods:
             '-drawInMapView:withContext:':
                 name: drawInMapView
+            '-initWithIdentifier:':
+                name: init
     MGLPointAnnotation: {}
     MGLPointCollection:
         methods:
@@ -345,7 +385,7 @@ classes:
                 visibility: protected
 
     MGLPolylineFeature: {}
-    MGLRasterSource:
+    MGLRasterTileSource:
         methods:
             '-initWithIdentifier:configurationURL:':
                 name: init
@@ -399,6 +439,8 @@ classes:
 
     MGLShapeSource:
         methods:
+            '-leavesOfCluster:offset:limit:':
+                name: leaves
             '-initWithIdentifier:URL:options:':
                 name: init
                 parameters:
@@ -448,7 +490,10 @@ classes:
                     options:
                         name: options
                         type: NSDictionary<MGLShapeSource.Option, ?>
-    MGLSource: {}
+    MGLSource:
+        methods:
+            '-initWithIdentifier:':
+                name: init
 
     MGLSourceStyleFunction:
         methods:
@@ -471,6 +516,8 @@ classes:
 
     MGLStyle:
         methods:
+            '-removeSource:error:':
+                name: remove
             '-insertLayer:atIndex:':
                 name: insertLayer
             '-insertLayer:belowLayer:':
@@ -626,7 +673,7 @@ classes:
     MGLTileSource: {}
     MGLUserLocation: {}
     MGLUserLocationAnnotationView: {}
-    MGLVectorSource:
+    MGLVectorTileSource:
         methods:
             '-initWithIdentifier:configurationURL:':
                 name: init
@@ -698,6 +745,16 @@ classes:
 
 
 protocols:
+    MGLCluster: {}
+    MGLLocationManager: {}
+    MGLLocationManagerDelegate:
+        methods:
+            '-locationManager:didUpdateLocations:':
+                name: didUpdateLocations
+            '-locationManager:didUpdateHeading:':
+                name: didUpdateHeading
+            '-locationManager:didFailWithError:':
+                name: didFailWithError
     MGLOverlay: {}
     MGLAnnotation: {}
     MGLCalloutView:
@@ -708,6 +765,8 @@ protocols:
     MGLFeature: {}
     MGLMapViewDelegate:
         methods:
+            '-mapView:shapeAnnotationIsEnabled:':
+                name: shapeAnnotationIsEnabled
             '-mapView:shouldChangeFromCamera:toCamera:':
                 name: shouldChange
             '-mapView:shouldChangeFromCamera:toCamera:reason:':
@@ -792,7 +851,13 @@ protocols:
 
 
 functions:
+    MGLAltitudeForZoomLevel:
+        class: MGLGeometry
+        name: 'AltitudeForZoomLevel'
 
+    MGLZoomLevelForAltitude:
+        class: MGLGeometry
+        name: 'ZoomLevelForAltitude'
     
     MGLMapPointForCoordinate:
         class: MGLMapPoint
@@ -809,7 +874,7 @@ values:
         name: getClassDomain
 
     MGLCoordinateSpanZero:
-        class: MGLCoordinate
+        class: MGLGeometry
         name: getSpanZero
 
     MGLErrorDomain:
@@ -818,11 +883,11 @@ values:
 
     MGLMapViewDecelerationRate(.*):
         class: MGLMapView
-        name: '#{g[0]}'
+        name: 'DecelerationRate#{g[0]}'
 
-    MGLMapViewDecelerationRate(.*):
+    MGLMapViewPreferredFrames(.*):
         class: MGLMapView
-        name: '#{g[0]}'
+        name: 'PreferredFrames#{g[0]}'
 
     MGLOfflinePack(.*)Notification:
         class: MGLOfflinePack
@@ -861,6 +926,16 @@ values:
     MGLExpressionInterpolationModeCubicBezier:
         class: Mapbox
         name: 'MGLExpressionInterpolationModeCubicBezier'
+
+    MGLCluster(.*):
+        class: Mapbox
+        name: 'MGLCluster#{g[0]}'
+
+    MGL(.*)Exception:
+        class: Mapbox
+        type: String    
+        name: '#{g[0]}Exception'
+
 
     # Make sure we don't miss any values if new ones are introduced in a later version
     k?(MGL.*):

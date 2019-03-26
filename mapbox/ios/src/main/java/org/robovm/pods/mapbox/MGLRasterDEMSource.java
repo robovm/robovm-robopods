@@ -47,9 +47,17 @@ import org.robovm.apple.coreanimation.*;
     /*<bind>*/static { ObjCRuntime.bind(MGLRasterDEMSource.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MGLRasterDEMSource() {}
+    protected MGLRasterDEMSource() {}
     protected MGLRasterDEMSource(Handle h, long handle) { super(h, handle); }
     protected MGLRasterDEMSource(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithIdentifier:configurationURL:")
+    public MGLRasterDEMSource(String identifier, NSURL configurationURL) { super(identifier, configurationURL); }
+    @Method(selector = "initWithIdentifier:configurationURL:tileSize:")
+    public MGLRasterDEMSource(String identifier, NSURL configurationURL, @MachineSizedFloat double tileSize) { super(identifier, configurationURL, tileSize); }
+    @Method(selector = "initWithIdentifier:tileURLTemplates:options:")
+    public MGLRasterDEMSource(String identifier, NSArray<NSString> tileURLTemplates, NSDictionary<NSString, ?> options) { super(identifier, tileURLTemplates, options); }
+    @Method(selector = "initWithIdentifier:")
+    public MGLRasterDEMSource(String identifier) { super(identifier); }
     /*</constructors>*/
     /*<properties>*/
     

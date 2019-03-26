@@ -47,7 +47,7 @@ import org.robovm.apple.coreanimation.*;
     /*<bind>*/static { ObjCRuntime.bind(MGLRasterTileSource.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MGLRasterTileSource() {}
+    protected MGLRasterTileSource() {}
     protected MGLRasterTileSource(Handle h, long handle) { super(h, handle); }
     protected MGLRasterTileSource(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithIdentifier:configurationURL:")
@@ -56,6 +56,8 @@ import org.robovm.apple.coreanimation.*;
     public MGLRasterTileSource(String identifier, NSURL configurationURL, @MachineSizedFloat double tileSize) { super((SkipInit) null); initObject(init(identifier, configurationURL, tileSize)); }
     @Method(selector = "initWithIdentifier:tileURLTemplates:options:")
     public MGLRasterTileSource(String identifier, NSArray<NSString> tileURLTemplates, NSDictionary<NSString, ?> options) { super((SkipInit) null); initObject(init(identifier, tileURLTemplates, options)); }
+    @Method(selector = "initWithIdentifier:")
+    public MGLRasterTileSource(String identifier) { super(identifier); }
     /*</constructors>*/
     /*<properties>*/
     

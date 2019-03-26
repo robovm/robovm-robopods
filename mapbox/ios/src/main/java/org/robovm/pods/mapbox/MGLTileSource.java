@@ -47,9 +47,11 @@ import org.robovm.apple.coreanimation.*;
     /*<bind>*/static { ObjCRuntime.bind(MGLTileSource.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MGLTileSource() {}
+    protected MGLTileSource() {}
     protected MGLTileSource(Handle h, long handle) { super(h, handle); }
     protected MGLTileSource(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithIdentifier:")
+    public MGLTileSource(String identifier) { super(identifier); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "configurationURL")
@@ -71,10 +73,10 @@ import org.robovm.apple.coreanimation.*;
     public static native Option AttributionInfos();
     @GlobalValue(symbol="MGLTileSourceOptionTileCoordinateSystem", optional=true)
     public static native Option TileCoordinateSystem();
-    @GlobalValue(symbol="MGLTileSourceOptionDEMEncoding", optional=true)
-    public static native Option DEMEncoding();
     @GlobalValue(symbol="MGLTileSourceOptionTileSize", optional=true)
     public static native Option TileSize();
+    @GlobalValue(symbol="MGLTileSourceOptionDEMEncoding", optional=true)
+    public static native Option DEMEncoding();
     
     
     /*</methods>*/

@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-#import <CoreGraphics/CGBase.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 #import "MGLFoundation.h"
 
@@ -64,7 +64,7 @@ NS_INLINE BOOL MGLCoordinateSpanEqualToCoordinateSpan(MGLCoordinateSpan span1, M
 }
 
 /** An area of zero width and zero height. */
-extern MGL_EXPORT const MGLCoordinateSpan MGLCoordinateSpanZero;
+FOUNDATION_EXTERN MGL_EXPORT const MGLCoordinateSpan MGLCoordinateSpanZero;
 
 /** A rectangular area as measured on a two-dimensional map projection. */
 typedef struct __attribute__((objc_boxable)) MGLCoordinateBounds {
@@ -146,7 +146,15 @@ NS_INLINE BOOL MGLCoordinateBoundsIntersectsCoordinateBounds(MGLCoordinateBounds
             bounds1.sw.longitude < bounds2.ne.longitude);
 }
 
-/** Returns `YES` if the coordinate is within the coordinate bounds. */
+/**
+ Returns `YES` if the coordinate is within the coordinate bounds.
+ 
+ #### Related examples
+ See the <a href="https://docs.mapbox.com/ios/maps/examples/constraining-gestures/">
+ Restrict map panning to an area</a> example to learn how to use
+ `MGLCoordinateInCoordinateBounds` to determine if a point is within, or
+ intersects, a given bounding box.
+ */
 NS_INLINE BOOL MGLCoordinateInCoordinateBounds(CLLocationCoordinate2D coordinate, MGLCoordinateBounds bounds) {
     return (coordinate.latitude  >= bounds.sw.latitude  &&
             coordinate.latitude  <= bounds.ne.latitude  &&
@@ -211,6 +219,25 @@ NS_INLINE CLLocationDegrees MGLDegreesFromRadians(CGFloat radians) {
 }
 
 /** Returns Mercator projection of a WGS84 coordinate at the specified zoom level. */
-extern MGL_EXPORT MGLMapPoint MGLMapPointForCoordinate(CLLocationCoordinate2D coordinate, double zoomLevel);
+FOUNDATION_EXTERN MGL_EXPORT MGLMapPoint MGLMapPointForCoordinate(CLLocationCoordinate2D coordinate, double zoomLevel);
+
+
+/** Converts a map zoom level to a camera altitude.
+ 
+ @param zoomLevel The zoom level to convert.
+ @param pitch The camera pitch, measured in degrees.
+ @param latitude The latitude of the point at the center of the viewport.
+ @param size The size of the viewport.
+ @return An altitude measured in meters. */
+FOUNDATION_EXTERN MGL_EXPORT CLLocationDistance MGLAltitudeForZoomLevel(double zoomLevel, CGFloat pitch, CLLocationDegrees latitude, CGSize size);
+
+/** Converts a camera altitude to a map zoom level.
+ 
+ @param altitude The altitude to convert, measured in meters.
+ @param pitch The camera pitch, measured in degrees.
+ @param latitude The latitude of the point at the center of the viewport.
+ @param size The size of the viewport.
+ @return A zero-based zoom level. */
+FOUNDATION_EXTERN MGL_EXPORT double MGLZoomLevelForAltitude(CLLocationDistance altitude, CGFloat pitch, CLLocationDegrees latitude, CGSize size);
 
 NS_ASSUME_NONNULL_END

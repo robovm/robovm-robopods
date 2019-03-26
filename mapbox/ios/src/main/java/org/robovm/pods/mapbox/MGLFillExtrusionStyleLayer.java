@@ -47,7 +47,7 @@ import org.robovm.apple.coreanimation.*;
     /*<bind>*/static { ObjCRuntime.bind(MGLFillExtrusionStyleLayer.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MGLFillExtrusionStyleLayer() {}
+    protected MGLFillExtrusionStyleLayer() {}
     protected MGLFillExtrusionStyleLayer(Handle h, long handle) { super(h, handle); }
     protected MGLFillExtrusionStyleLayer(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithIdentifier:source:")
@@ -70,6 +70,10 @@ import org.robovm.apple.coreanimation.*;
     public native @ByVal MGLTransition getFillExtrusionColorTransition();
     @Property(selector = "setFillExtrusionColorTransition:")
     public native void setFillExtrusionColorTransition(@ByVal MGLTransition v);
+    @Property(selector = "fillExtrusionHasVerticalGradient")
+    public native NSExpression getFillExtrusionHasVerticalGradient();
+    @Property(selector = "setFillExtrusionHasVerticalGradient:")
+    public native void setFillExtrusionHasVerticalGradient(NSExpression v);
     @Property(selector = "fillExtrusionHeight")
     public native NSExpression getFillExtrusionHeight();
     @Property(selector = "setFillExtrusionHeight:")

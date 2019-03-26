@@ -47,7 +47,7 @@ import org.robovm.apple.coreanimation.*;
     /*<bind>*/static { ObjCRuntime.bind(MGLVectorStyleLayer.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MGLVectorStyleLayer() {}
+    protected MGLVectorStyleLayer() {}
     protected MGLVectorStyleLayer(Handle h, long handle) { super(h, handle); }
     protected MGLVectorStyleLayer(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/

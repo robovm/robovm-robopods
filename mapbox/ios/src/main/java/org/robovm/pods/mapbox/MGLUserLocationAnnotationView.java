@@ -50,6 +50,14 @@ import org.robovm.apple.coreanimation.*;
     public MGLUserLocationAnnotationView() {}
     protected MGLUserLocationAnnotationView(Handle h, long handle) { super(h, handle); }
     protected MGLUserLocationAnnotationView(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithReuseIdentifier:")
+    public MGLUserLocationAnnotationView(String reuseIdentifier) { super(reuseIdentifier); }
+    @Method(selector = "initWithAnnotation:reuseIdentifier:")
+    public MGLUserLocationAnnotationView(MGLAnnotation annotation, String reuseIdentifier) { super(annotation, reuseIdentifier); }
+    @Method(selector = "initWithFrame:")
+    public MGLUserLocationAnnotationView(@ByVal CGRect frame) { super(frame); }
+    @Method(selector = "initWithCoder:")
+    public MGLUserLocationAnnotationView(NSCoder decoder) { super(decoder); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "mapView")

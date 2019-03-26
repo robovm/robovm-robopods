@@ -47,7 +47,7 @@ import org.robovm.apple.coreanimation.*;
     /*<bind>*/static { ObjCRuntime.bind(MGLSymbolStyleLayer.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public MGLSymbolStyleLayer() {}
+    protected MGLSymbolStyleLayer() {}
     protected MGLSymbolStyleLayer(Handle h, long handle) { super(h, handle); }
     protected MGLSymbolStyleLayer(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithIdentifier:source:")
@@ -134,6 +134,10 @@ import org.robovm.apple.coreanimation.*;
     public native NSExpression getSymbolSpacing();
     @Property(selector = "setSymbolSpacing:")
     public native void setSymbolSpacing(NSExpression v);
+    @Property(selector = "symbolZOrder")
+    public native NSExpression getSymbolZOrder();
+    @Property(selector = "setSymbolZOrder:")
+    public native void setSymbolZOrder(NSExpression v);
     @Property(selector = "text")
     public native NSExpression getText();
     @Property(selector = "setText:")

@@ -83,6 +83,8 @@ import org.robovm.apple.coreanimation.*;
     public void mapViewWillStartRenderingFrame(MGLMapView mapView) {}
     @NotImplemented("mapViewDidFinishRenderingFrame:fullyRendered:")
     public void didFinishRenderingFrame(MGLMapView mapView, boolean fullyRendered) {}
+    @NotImplemented("mapViewDidBecomeIdle:")
+    public void mapViewDidBecomeIdle(MGLMapView mapView) {}
     @NotImplemented("mapView:didFinishLoadingStyle:")
     public void didFinishLoadingStyle(MGLMapView mapView, MGLStyle style) {}
     @NotImplemented("mapViewWillStartLocatingUser:")
@@ -95,6 +97,8 @@ import org.robovm.apple.coreanimation.*;
     public void didFailToLocateUser(MGLMapView mapView, NSError error) {}
     @NotImplemented("mapView:didChangeUserTrackingMode:animated:")
     public void didChangeUserTrackingMode(MGLMapView mapView, MGLUserTrackingMode mode, boolean animated) {}
+    @NotImplemented("mapViewUserLocationAnchorPoint:")
+    public @ByVal CGPoint mapViewUserLocationAnchorPoint(MGLMapView mapView) { return null; }
     @NotImplemented("mapView:imageForAnnotation:")
     public MGLAnnotationImage imageForAnnotation(MGLMapView mapView, MGLAnnotation annotation) { return null; }
     @NotImplemented("mapView:alphaForShapeAnnotation:")
@@ -109,6 +113,8 @@ import org.robovm.apple.coreanimation.*;
     public MGLAnnotationView viewForAnnotation(MGLMapView mapView, MGLAnnotation annotation) { return null; }
     @NotImplemented("mapView:didAddAnnotationViews:")
     public void didAddAnnotationViews(MGLMapView mapView, NSArray<MGLAnnotationView> annotationViews) {}
+    @NotImplemented("mapView:shapeAnnotationIsEnabled:")
+    public boolean shapeAnnotationIsEnabled(MGLMapView mapView, MGLShape annotation) { return false; }
     @NotImplemented("mapView:didSelectAnnotation:")
     public void didSelectAnnotation(MGLMapView mapView, MGLAnnotation annotation) {}
     @NotImplemented("mapView:didDeselectAnnotation:")
