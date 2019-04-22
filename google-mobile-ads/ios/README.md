@@ -10,7 +10,7 @@
 This RoboPod requires you to download and add the native 3rd party framework manually:
 
 1. Download the SDK from https://developers.google.com/admob/ios/download
-2. Put the `GoogleMobileAds.framework` folder in your iOS project's `libs/` folder
+2. Put the `GoogleMobileAds.framework, GoogleAppMeasurement.framework, GoogleUtilities.framework, nanopb.framework` folder in your iOS project's `libs/` folder
 3. Add the following to your `robovm.xml`
 
 ```
@@ -21,8 +21,18 @@ This RoboPod requires you to download and add the native 3rd party framework man
     </frameworkPaths>
     <frameworks>
         <framework>GoogleMobileAds</framework>
+        <framework>GoogleAppMeasurement</framework>
+        <framework>GoogleUtilities</framework>
+        <framework>nanopb</framework>
     </frameworks>
 </config>
+```
+
+4. Add the following to your `Info.plist.xml` in your `ios` project:
+
+```
+<key>GADApplicationIdentifier</key>
+<string>ca-app-pub-3940256099942544~1458002511</string>
 ```
 
 ### Gradle
