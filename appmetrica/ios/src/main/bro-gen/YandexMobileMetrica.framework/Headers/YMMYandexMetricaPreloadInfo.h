@@ -1,12 +1,9 @@
 /*
- *  YMMYandexMetricaPreloadInfo.h
- *
- * This file is a part of the AppMetrica
- *
- * Version for iOS © 2016 YANDEX
- *
+ * Version for iOS
+ * © 2012–2019 YANDEX
  * You may not use this file except in compliance with the License.
- * You may obtain a copy of the License at http://legal.yandex.com/metrica_termsofuse/
+ * You may obtain a copy of the License at
+ * https://yandex.com/legal/appmetrica_sdk_agreement/
  */
 
 #import <Foundation/Foundation.h>
@@ -15,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface YMMYandexMetricaPreloadInfo : NSObject <NSCopying>
 
-- (nullable instancetype)init NS_UNAVAILABLE;
+- (instancetype)init __attribute__((unavailable("initWithTrackingIdentifier: must be used instead.")));
 
 /** Initialize Preload info with specific publisher and tracking identifiers.
  If case of invalid identifiers constructor returns nil in release and raises an exception in debug

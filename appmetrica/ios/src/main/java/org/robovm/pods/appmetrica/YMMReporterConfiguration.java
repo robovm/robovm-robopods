@@ -36,27 +36,33 @@ import org.robovm.apple.dispatch.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/YMMYandexMetricaPreloadInfo/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/YMMReporterConfiguration/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class YMMYandexMetricaPreloadInfoPtr extends Ptr<YMMYandexMetricaPreloadInfo, YMMYandexMetricaPreloadInfoPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(YMMYandexMetricaPreloadInfo.class); }/*</bind>*/
+    /*<ptr>*/public static class YMMReporterConfigurationPtr extends Ptr<YMMReporterConfiguration, YMMReporterConfigurationPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(YMMReporterConfiguration.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected YMMYandexMetricaPreloadInfo(Handle h, long handle) { super(h, handle); }
-    protected YMMYandexMetricaPreloadInfo(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithTrackingIdentifier:")
-    public YMMYandexMetricaPreloadInfo(String trackingID) { super((SkipInit) null); initObject(initWithTrackingIdentifier(trackingID)); }
+    protected YMMReporterConfiguration() {}
+    protected YMMReporterConfiguration(Handle h, long handle) { super(h, handle); }
+    protected YMMReporterConfiguration(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithApiKey:")
+    public YMMReporterConfiguration(String apiKey) { super((SkipInit) null); initObject(initWithApiKey(apiKey)); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "apiKey")
+    public native String getApiKey();
+    @Property(selector = "statisticsSending")
+    public native boolean isStatisticsSending();
+    @Property(selector = "sessionTimeout")
+    public native @MachineSizedUInt long getSessionTimeout();
+    @Property(selector = "logs")
+    public native boolean isLogs();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithTrackingIdentifier:")
-    protected native @Pointer long initWithTrackingIdentifier(String trackingID);
-    @Method(selector = "setAdditionalInfo:forKey:")
-    public native void setAdditionalInfo(String info, String key);
+    @Method(selector = "initWithApiKey:")
+    protected native @Pointer long initWithApiKey(String apiKey);
     /*</methods>*/
 }

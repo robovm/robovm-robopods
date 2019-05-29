@@ -6,7 +6,7 @@
 This RoboPod requires you to download and add the native 3rd party framework manually:
 
 1. Download the SDK for iOS from https://tech.yandex.com/metrica-mobile-sdk/doc/mobile-sdk-dg/tasks/ios-quickstart-docpage/
-2. Put the `YandexMobileMetrica.framework` folder in your iOS project's `libs/` folder
+2. Put the `YandexMobileMetrica.framework` and (optionally) YandexMobileMetricaCrashes.framework into your iOS project's `libs/` folder
 3. Add the following to your `robovm.xml`
 
 ```
@@ -17,6 +17,8 @@ This RoboPod requires you to download and add the native 3rd party framework man
     </frameworkPaths>
     <frameworks>
         <framework>YandexMobileMetrica.framework</framework>
+        <!-- In case you need crash reporting enabled -->
+        <framework>YandexMobileMetricaCrashes.framework</framework>
     </frameworks>
 </config>
 ```
@@ -58,7 +60,7 @@ Add the following code to your application's entry point:
 String apiKey = "<YOU API KEY>";
 YMMYandexMetricaConfiguration configuration = new YMMYandexMetricaConfiguration(apiKey);
 configuration.setSessionTimeout(60); // set session timeout in seconds
-configuration.setReportCrashesEnabled(true);
+configuration.setCrashReporting(true); // also, don't forget to copy YandexMobileMetricaCrashes.framework
 YMMYandexMetrica.activate(configuration);
 
 // if you would like to report crashes, happened in you java code, then don't forget to register default handler:

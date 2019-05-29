@@ -36,27 +36,34 @@ import org.robovm.apple.dispatch.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/YMMYandexMetricaPreloadInfo/*</name>*/ 
-    extends /*<extends>*/NSObject/*</extends>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/YMMMutableReporterConfiguration/*</name>*/ 
+    extends /*<extends>*/YMMReporterConfiguration/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class YMMYandexMetricaPreloadInfoPtr extends Ptr<YMMYandexMetricaPreloadInfo, YMMYandexMetricaPreloadInfoPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(YMMYandexMetricaPreloadInfo.class); }/*</bind>*/
+    /*<ptr>*/public static class YMMMutableReporterConfigurationPtr extends Ptr<YMMMutableReporterConfiguration, YMMMutableReporterConfigurationPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(YMMMutableReporterConfiguration.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected YMMYandexMetricaPreloadInfo(Handle h, long handle) { super(h, handle); }
-    protected YMMYandexMetricaPreloadInfo(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithTrackingIdentifier:")
-    public YMMYandexMetricaPreloadInfo(String trackingID) { super((SkipInit) null); initObject(initWithTrackingIdentifier(trackingID)); }
+    protected YMMMutableReporterConfiguration() {}
+    protected YMMMutableReporterConfiguration(Handle h, long handle) { super(h, handle); }
+    protected YMMMutableReporterConfiguration(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "statisticsSending")
+    public native boolean isStatisticsSending();
+    @Property(selector = "setStatisticsSending:")
+    public native void setStatisticsSending(boolean v);
+    @Property(selector = "sessionTimeout")
+    public native @MachineSizedUInt long getSessionTimeout();
+    @Property(selector = "setSessionTimeout:")
+    public native void setSessionTimeout(@MachineSizedUInt long v);
+    @Property(selector = "logs")
+    public native boolean isLogs();
+    @Property(selector = "setLogs:")
+    public native void setLogs(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithTrackingIdentifier:")
-    protected native @Pointer long initWithTrackingIdentifier(String trackingID);
-    @Method(selector = "setAdditionalInfo:forKey:")
-    public native void setAdditionalInfo(String info, String key);
+    
     /*</methods>*/
 }

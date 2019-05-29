@@ -29,6 +29,7 @@ import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.corelocation.*;
+import org.robovm.apple.dispatch.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -52,8 +53,6 @@ import org.robovm.apple.corelocation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "activateWithApiKey:")
-    public static native void activate(String apiKey);
     @Method(selector = "activateWithConfiguration:")
     public static native void activate(YMMYandexMetricaConfiguration configuration);
     @Method(selector = "reportEvent:onFailure:")
@@ -62,22 +61,32 @@ import org.robovm.apple.corelocation.*;
     public static native void reportEvent(String message, NSDictionary<?, ?> params, @Block VoidBlock1<NSError> onFailure);
     @Method(selector = "reportError:exception:onFailure:")
     public static native void reportError(String message, NSException exception, @Block VoidBlock1<NSError> onFailure);
-    @Method(selector = "setTrackLocationEnabled:")
-    public static native void setTrackLocationEnabled(boolean enabled);
+    @Method(selector = "reportUserProfile:onFailure:")
+    public static native void reportUserProfile(YMMUserProfile userProfile, @Block VoidBlock1<NSError> onFailure);
+    @Method(selector = "reportRevenue:onFailure:")
+    public static native void reportRevenue(YMMRevenueInfo revenueInfo, @Block VoidBlock1<NSError> onFailure);
+    @Method(selector = "setUserProfileID:")
+    public static native void setUserProfileID(String userProfileID);
+    @Method(selector = "setStatisticsSending:")
+    public static native void setStatisticsSending(boolean enabled);
+    @Method(selector = "setLocationTracking:")
+    public static native void setLocationTracking(boolean enabled);
     @Method(selector = "setLocation:")
     public static native void setLocation(CLLocation location);
-    @Method(selector = "setSessionTimeout:")
-    public static native void setSessionTimeout(@MachineSizedUInt long sessionTimeoutSeconds);
-    @Method(selector = "setReportCrashesEnabled:")
-    public static native void setReportCrashesEnabled(boolean enabled);
-    @Method(selector = "setCustomAppVersion:")
-    public static native void setCustomAppVersion(String appVersion);
-    @Method(selector = "setLoggingEnabled:")
-    public static native void setLoggingEnabled(boolean isEnabled);
-    @Method(selector = "setEnvironmentValue:forKey:")
-    public static native void setEnvironmentValue(String value, String key);
     @Method(selector = "libraryVersion")
     public static native String libraryVersion();
+    @Method(selector = "requestAppMetricaDeviceIDWithCompletionQueue:completionBlock:")
+    public static native void requestAppMetricaDeviceId(DispatchQueue queue, @Block VoidBlock2<String, NSError> block);
+    @Method(selector = "handleOpenURL:")
+    public static native boolean handleOpenURL(NSURL url);
+    @Method(selector = "activateReporterWithConfiguration:")
+    public static native void activateReporter(YMMReporterConfiguration configuration);
+    @Method(selector = "reporterForApiKey:")
+    public static native YMMYandexMetricaReporting reporterForApiKey(String apiKey);
+    @Method(selector = "reportReferralUrl:")
+    public static native void reportReferralUrl(NSURL url);
+    @Method(selector = "sendEventsBuffer")
+    public static native void sendEventsBuffer();
     /*</methods>*/
 
     /** Wraps java's throwable into NSException and reports it */

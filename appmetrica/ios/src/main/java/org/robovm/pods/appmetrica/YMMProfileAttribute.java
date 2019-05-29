@@ -36,27 +36,38 @@ import org.robovm.apple.dispatch.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/YMMYandexMetricaPreloadInfo/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/YMMProfileAttribute/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class YMMYandexMetricaPreloadInfoPtr extends Ptr<YMMYandexMetricaPreloadInfo, YMMYandexMetricaPreloadInfoPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(YMMYandexMetricaPreloadInfo.class); }/*</bind>*/
+    /*<ptr>*/public static class YMMProfileAttributePtr extends Ptr<YMMProfileAttribute, YMMProfileAttributePtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(YMMProfileAttribute.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected YMMYandexMetricaPreloadInfo(Handle h, long handle) { super(h, handle); }
-    protected YMMYandexMetricaPreloadInfo(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithTrackingIdentifier:")
-    public YMMYandexMetricaPreloadInfo(String trackingID) { super((SkipInit) null); initObject(initWithTrackingIdentifier(trackingID)); }
+    public YMMProfileAttribute() {}
+    protected YMMProfileAttribute(Handle h, long handle) { super(h, handle); }
+    protected YMMProfileAttribute(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithTrackingIdentifier:")
-    protected native @Pointer long initWithTrackingIdentifier(String trackingID);
-    @Method(selector = "setAdditionalInfo:forKey:")
-    public native void setAdditionalInfo(String info, String key);
+    @Method(selector = "name")
+    public static native YMMNameAttribute name();
+    @Method(selector = "gender")
+    public static native YMMGenderAttribute gender();
+    @Method(selector = "birthDate")
+    public static native YMMBirthDateAttribute birthDate();
+    @Method(selector = "notificationsEnabled")
+    public static native YMMNotificationsEnabledAttribute notificationsEnabled();
+    @Method(selector = "customString:")
+    public static native YMMCustomStringAttribute customString(String name);
+    @Method(selector = "customNumber:")
+    public static native YMMCustomNumberAttribute customNumber(String name);
+    @Method(selector = "customCounter:")
+    public static native YMMCustomCounterAttribute customCounter(String name);
+    @Method(selector = "customBool:")
+    public static native YMMCustomBoolAttribute customBool(String name);
     /*</methods>*/
 }

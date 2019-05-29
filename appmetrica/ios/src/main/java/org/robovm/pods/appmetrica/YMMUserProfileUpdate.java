@@ -35,32 +35,24 @@ import org.robovm.apple.dispatch.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
-public enum /*<name>*/YMMYandexMetricaEventErrorCode/*</name>*/ implements ValuedEnum {
-    /*<values>*/
-    InitializationError(1000L),
-    InvalidName(1001L),
-    JsonSerializationError(1002L),
-    InvalidRevenueInfo(1003L),
-    EmptyUserProfile(1004L);
-    /*</values>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/YMMUserProfileUpdate/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*//*</implements>*/ {
 
-    /*<bind>*/
-    /*</bind>*/
+    /*<ptr>*/public static class YMMUserProfileUpdatePtr extends Ptr<YMMUserProfileUpdate, YMMUserProfileUpdatePtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(YMMUserProfileUpdate.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<methods>*//*</methods>*/
-
-    private final long n;
-
-    private /*<name>*/YMMYandexMetricaEventErrorCode/*</name>*/(long n) { this.n = n; }
-    public long value() { return n; }
-    public static /*<name>*/YMMYandexMetricaEventErrorCode/*</name>*/ valueOf(long n) {
-        for (/*<name>*/YMMYandexMetricaEventErrorCode/*</name>*/ v : values()) {
-            if (v.n == n) {
-                return v;
-            }
-        }
-        throw new IllegalArgumentException("No constant with value " + n + " found in " 
-            + /*<name>*/YMMYandexMetricaEventErrorCode/*</name>*/.class.getName());
-    }
+    /*<constructors>*/
+    public YMMUserProfileUpdate() {}
+    protected YMMUserProfileUpdate(Handle h, long handle) { super(h, handle); }
+    protected YMMUserProfileUpdate(SkipInit skipInit) { super(skipInit); }
+    /*</constructors>*/
+    /*<properties>*/
+    
+    /*</properties>*/
+    /*<members>*//*</members>*/
+    /*<methods>*/
+    
+    /*</methods>*/
 }

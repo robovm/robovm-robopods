@@ -1,12 +1,9 @@
 /*
- *  YMMYandexMetricaConfiguration.h
- *
- * This file is a part of the AppMetrica
- *
- * Version for iOS © 2016 YANDEX
- *
+ * Version for iOS
+ * © 2012–2019 YANDEX
  * You may not use this file except in compliance with the License.
- * You may obtain a copy of the License at http://legal.yandex.com/metrica_termsofuse/
+ * You may obtain a copy of the License at
+ * https://yandex.com/legal/appmetrica_sdk_agreement/
  */
 
 #import <Foundation/Foundation.h>
@@ -27,21 +24,36 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nullable instancetype)initWithApiKey:(NSString *)apiKey;
 
-- (nullable instancetype)init __attribute__((unavailable("initWithApiKey: must be used instead.")));
+- (instancetype)init __attribute__((unavailable("initWithApiKey: must be used instead.")));
 
 /** Get Application key used to initialize the configuration.
  */
 @property (nonatomic, copy, readonly) NSString *apiKey;
 
-/**
- Enable/disable location reporting to AppMetrica.
+/** Whether first activation of AppMetrica should be considered as app update or new app install.
+ If this option is enabled the first call of +[YMMYandexMetrica activateWithApiKey:] or
+ +[YMMYandexMetrica activateWithConfiguration:] will be considered as an application update.
+
+ By default this option is disabled.
+ */
+@property (nonatomic, assign) BOOL handleFirstActivationAsUpdate;
+
+/** A boolean value indicating whether statistics sending to the AppMetrica server is enabled.
+
+ @note Disabling this option also turns off data sending from the reporters that initialized for different apiKey.
+
+ By default, the statistics sending is enabled.
+ */
+@property (nonatomic, assign) BOOL statisticsSending;
+
+/** Enable/disable location reporting to AppMetrica.
  If enabled and location set via setLocation: method - that location would be used.
  If enabled and location is not set via setLocation,
  but application has appropriate permission - CLLocationManager would be used to acquire location data.
 
  Enabled by default.
  */
-@property (nonatomic, assign) BOOL trackLocationEnabled;
+@property (nonatomic, assign) BOOL locationTracking;
 
 /** Set/get location to AppMetrica
  To enable AppMetrica to use this location trackLocationEnabled should be 'YES'
@@ -63,19 +75,19 @@ NS_ASSUME_NONNULL_BEGIN
  Enabled by default.
  To disable crash tracking, set the parameter value to false.
  */
-@property (nonatomic, assign) BOOL reportCrashesEnabled;
+@property (nonatomic, assign) BOOL crashReporting;
 
 /** Set/get the arbitrary application version for AppMetrica to report.
 
  By default, the application version is set in the app configuration file Info.plist (CFBundleShortVersionString).
  */
-@property (nonatomic, copy, nullable) NSString *customAppVersion;
+@property (nonatomic, copy, nullable) NSString *appVersion;
 
 /** Enable/disable logging.
 
  By default logging is disabled.
  */
-@property (nonatomic, assign) BOOL loggingEnabled;
+@property (nonatomic, assign) BOOL logs;
 
 /** Set/get preload info, which is used for tracking preload installs.
  Additional info could be https://appmetrica.yandex.com

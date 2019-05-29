@@ -36,27 +36,27 @@ import org.robovm.apple.dispatch.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/YMMYandexMetricaPreloadInfo/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/YMMUserProfile/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class YMMYandexMetricaPreloadInfoPtr extends Ptr<YMMYandexMetricaPreloadInfo, YMMYandexMetricaPreloadInfoPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(YMMYandexMetricaPreloadInfo.class); }/*</bind>*/
+    /*<ptr>*/public static class YMMUserProfilePtr extends Ptr<YMMUserProfile, YMMUserProfilePtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(YMMUserProfile.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected YMMYandexMetricaPreloadInfo(Handle h, long handle) { super(h, handle); }
-    protected YMMYandexMetricaPreloadInfo(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithTrackingIdentifier:")
-    public YMMYandexMetricaPreloadInfo(String trackingID) { super((SkipInit) null); initObject(initWithTrackingIdentifier(trackingID)); }
+    public YMMUserProfile() {}
+    protected YMMUserProfile(Handle h, long handle) { super(h, handle); }
+    protected YMMUserProfile(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithUpdates:")
+    public YMMUserProfile(NSArray<YMMUserProfileUpdate> updates) { super((SkipInit) null); initObject(initWithUpdates(updates)); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "updates")
+    public native NSArray<YMMUserProfileUpdate> getUpdates();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithTrackingIdentifier:")
-    protected native @Pointer long initWithTrackingIdentifier(String trackingID);
-    @Method(selector = "setAdditionalInfo:forKey:")
-    public native void setAdditionalInfo(String info, String key);
+    @Method(selector = "initWithUpdates:")
+    protected native @Pointer long initWithUpdates(NSArray<YMMUserProfileUpdate> updates);
     /*</methods>*/
 }

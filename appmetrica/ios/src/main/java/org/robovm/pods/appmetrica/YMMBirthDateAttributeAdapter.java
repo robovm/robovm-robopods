@@ -33,30 +33,34 @@ import org.robovm.apple.dispatch.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/YMMYandexMetricaPreloadInfo/*</name>*/ 
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/YMMBirthDateAttributeAdapter/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+    /*<implements>*/implements YMMBirthDateAttribute/*</implements>*/ {
 
-    /*<ptr>*/public static class YMMYandexMetricaPreloadInfoPtr extends Ptr<YMMYandexMetricaPreloadInfo, YMMYandexMetricaPreloadInfoPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(YMMYandexMetricaPreloadInfo.class); }/*</bind>*/
+    /*<ptr>*/
+    /*</ptr>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*/
-    protected YMMYandexMetricaPreloadInfo(Handle h, long handle) { super(h, handle); }
-    protected YMMYandexMetricaPreloadInfo(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithTrackingIdentifier:")
-    public YMMYandexMetricaPreloadInfo(String trackingID) { super((SkipInit) null); initObject(initWithTrackingIdentifier(trackingID)); }
-    /*</constructors>*/
+    /*<constructors>*//*</constructors>*/
     /*<properties>*/
     
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithTrackingIdentifier:")
-    protected native @Pointer long initWithTrackingIdentifier(String trackingID);
-    @Method(selector = "setAdditionalInfo:forKey:")
-    public native void setAdditionalInfo(String info, String key);
+    @NotImplemented("withAge:")
+    public YMMUserProfileUpdate withAge(@MachineSizedUInt long value) { return null; }
+    @NotImplemented("withYear:")
+    public YMMUserProfileUpdate withYear(@MachineSizedUInt long year) { return null; }
+    @NotImplemented("withYear:month:")
+    public YMMUserProfileUpdate with(@MachineSizedUInt long year, @MachineSizedUInt long month) { return null; }
+    @NotImplemented("withYear:month:day:")
+    public YMMUserProfileUpdate with(@MachineSizedUInt long year, @MachineSizedUInt long month, @MachineSizedUInt long day) { return null; }
+    @NotImplemented("withDateComponents:")
+    public YMMUserProfileUpdate withDateComponents(NSDateComponents dateComponents) { return null; }
+    @NotImplemented("withValueReset")
+    public YMMUserProfileUpdate withValueReset() { return null; }
     /*</methods>*/
 }

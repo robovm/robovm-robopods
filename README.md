@@ -108,6 +108,7 @@ This is the list of currently available RoboPods. Click them to get more informa
 | Name                                                 | Description                                                                       |
 |------------------------------------------------------|-----------------------------------------------------------------------------------|
 | [RoboPods Plugins](plugins/)                         | The RoboPods Plugins are cross-platform libraries that abstract platform specific functionality to a common API. Whether you want to add in-app-purchases, display dialogs, or just store some preferences in your app; our Plugins got you covered! |
+| [Appodeal](appodeal/)                                | The mobile ad network Appodeal runs multiple premium networks under one integration. |
 | [Bolts](bolts/)                                      | This RoboPod is mainly used to make the Facebook and Parse RoboPods functional. Bolts is a collection of low-level libraries designed to make developing mobile apps easier. |
 | [Fabric](fabric/)                                    | Twitter's Mobile Development Platform |
 | [Facebook](facebook/)                                | Build, grow, and monetize your app with Facebook. The Facebook SDK allows you to natively integrate Facebook into your app. |
@@ -119,8 +120,10 @@ This is the list of currently available RoboPods. Click them to get more informa
 | [Google SignIn](google-signin/)                      | Get users into your apps quickly and securely, using a registration system they already use and trust—their Google account. |
 | [Google Personalized Ad Consent](google-ad-consent/) | Obtain consent to serve personlized ads with AdMob from users within the EU. |
 | [IronSource](ironsource/)                            | IronSource is a mobile ads network and mediation platform. |
+| [Mapbox](mapbox/)                                    | The Mapbox SDK provides vector-based mapping. |
 | [Parse](parse/)                                      | Focus on creating a great user experience and stop worrying about server maintenance and complex infrastructure. |
 | [Reachability](reachability/)                        | Monitor network reachability. |
+| [Yandex AppMetrica](appmterica/)                     | AppMetrica is a set of libraries for gathering statistics on mobile app usage. |
 
 ## Creating/Updating RoboPods
 

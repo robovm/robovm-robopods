@@ -5,8 +5,6 @@
         <lib>c++</lib>
     </libs>    
     <frameworks>        
-        <framework>YandexMobileMetrica</framework>
-
         <framework>SystemConfiguration</framework>
         <framework>UIKit</framework>
         <framework>Foundation</framework>

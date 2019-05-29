@@ -35,14 +35,12 @@ import org.robovm.apple.dispatch.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
-public enum /*<name>*/YMMYandexMetricaEventErrorCode/*</name>*/ implements ValuedEnum {
+/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedUIntMarshaler.class)/*</annotations>*/
+public enum /*<name>*/YMMGenderType/*</name>*/ implements ValuedEnum {
     /*<values>*/
-    InitializationError(1000L),
-    InvalidName(1001L),
-    JsonSerializationError(1002L),
-    InvalidRevenueInfo(1003L),
-    EmptyUserProfile(1004L);
+    Male(0L),
+    Female(1L),
+    Other(2L);
     /*</values>*/
 
     /*<bind>*/
@@ -52,15 +50,15 @@ public enum /*<name>*/YMMYandexMetricaEventErrorCode/*</name>*/ implements Value
 
     private final long n;
 
-    private /*<name>*/YMMYandexMetricaEventErrorCode/*</name>*/(long n) { this.n = n; }
+    private /*<name>*/YMMGenderType/*</name>*/(long n) { this.n = n; }
     public long value() { return n; }
-    public static /*<name>*/YMMYandexMetricaEventErrorCode/*</name>*/ valueOf(long n) {
-        for (/*<name>*/YMMYandexMetricaEventErrorCode/*</name>*/ v : values()) {
+    public static /*<name>*/YMMGenderType/*</name>*/ valueOf(long n) {
+        for (/*<name>*/YMMGenderType/*</name>*/ v : values()) {
             if (v.n == n) {
                 return v;
             }
         }
         throw new IllegalArgumentException("No constant with value " + n + " found in " 
-            + /*<name>*/YMMYandexMetricaEventErrorCode/*</name>*/.class.getName());
+            + /*<name>*/YMMGenderType/*</name>*/.class.getName());
     }
 }

@@ -1,47 +1,107 @@
 package: org.robovm.pods.appmetrica
 framework: YandexMobileMetrica
-include: [foundation, corelocation]
+include: [foundation, corelocation, dispatch]
 clang_args: ['-x', 'objective-c']
-headers: [YMMYandexMetrica.h, YMMYandexMetricaConfiguration.h]
+headers: [YandexMobileMetrica.h, YMMYandexMetrica.h, YMMReporterConfiguration.h]
+
 typedefs:
     'void (^)(NSError * _Nullable)': '@Block VoidBlock1<NSError>'
-        
+    'YMMAppMetricaDeviceIDRetrievingBlock': '@Block VoidBlock2<String, NSError>'
+
 classes:
-    YMMYandexMetrica: # DONE
+    YMMYandexMetrica:
         methods:
-            '+activateWithApiKey:':
-                name: activate
             '+activateWithConfiguration:':
                 name: activate
             '+reportEvent:.*':
                 trim_after_first_colon: true
             '+reportError:.*':
                 trim_after_first_colon: true
-            '+setSessionTimeout':
-            '+setReportCrashesEnabled':
-            '+setLoggingEnabled':
-            '+setEnvironmentValue:.*':
+            '+reportUserProfile:.*':
                 trim_after_first_colon: true
-            '+startWithAPIKey:.*':
-                exclude: true
-    YMMYandexMetricaConfiguration: # DONE
+            '+reportRevenue:.*':
+                trim_after_first_colon: true
+            '+setUserProfileID:':
+            '+setStatisticsSending:':
+            '+setLocationTracking:':
+            '+setLocation:':
+            '+libraryVersion':
+            '+requestAppMetricaDeviceIDWithCompletionQueue:.*':
+                name: requestAppMetricaDeviceId
+            '+handleOpenURL:':
+            '+activateReporterWithConfiguration:.*':
+                name: activateReporter
+            '+reporterForApiKey:':
+            '+reportReferralUrl:':
+            '+sendEventsBuffer':
+    YMMYandexMetricaConfiguration:
         skip_def_constructor: true
         methods:
             '-initWithApiKey:':
                 name: init
         properties:
             'apiKey':
-            'trackLocationEnabled':
+            'handleFirstActivationAsUpdate':
+            'statisticsSending':
+            'locationTracking':
+            'location':
             'sessionTimeout':
-            'reportCrashesEnabled':
-            'customAppVersion':
-            'loggingEnabled':
-    YMMYandexMetricaPreloadInfo: # TODO investigate why no methods
-        extends: NSObject
+            'crashReporting':
+            'appVersion':
+            'logs':
+            'preloadInfo':
+    YMMYandexMetricaPreloadInfo:
         skip_def_constructor: true
         methods:
+            '-initWithTrackingIdentifier:':
             '-setAdditionalInfo:.+':
                 trim_after_first_colon: true
+    YMMProfileAttribute:
+        properties:
+            'name':
+            'gender':
+            'birthDate':
+            'notificationsEnabled':
+    YMMMutableReporterConfiguration: {}
+    YMMMutableRevenueInfo: {}
+    YMMMutableUserProfile: {}
+    YMMReporterConfiguration: {}
+    YMMRevenueInfo:
+        methods:
+            '-initWithPrice:currency:':
+                name: initWithPrice
+            '-initWithPrice:currency:quantity:productID:transactionID:receiptData:payload:':
+                name: initWithPrice
+    YMMUserProfile: {}
+    YMMUserProfileUpdate: {}
+
+protocols:
+    YMMNameAttribute: {}
+    YMMGenderAttribute: {}
+    YMMNotificationsEnabledAttribute: {}
+    YMMCustomStringAttribute: {}
+    YMMCustomNumberAttribute: {}
+    YMMCustomCounterAttribute: {}
+    YMMCustomBoolAttribute: {}
+    YMMBirthDateAttribute:
+        methods:
+            '-withYear:month:':
+                name: with
+            '-withYear:month:day:':
+                name: with
+    YMMYandexMetricaReporting:
+        methods:
+            '-reportEvent:onFailure:':
+                name: reportEvent
+            '-reportEvent:parameters:onFailure:':
+                name: reportEvent
+            '-reportError:exception:onFailure:':
+                name: reportError
+            '-reportUserProfile:onFailure:':
+                name: reportUserProfile
+            '-reportRevenue:onFailure:':
+                name: reportRevenue
+
 enums:
     YMMYandexMetricaEventErrorCode: {}
-
+    YMMGenderType: {}

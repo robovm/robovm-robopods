@@ -18,7 +18,7 @@ The SDK lets you track the following data:
 
 | Platform            | Version |
 |---------------------|---------|
-| [iOS](ios/)         | 2.6.2   |
+| [iOS](ios/)         | 3.6.0   |
 |                     |         |
 
 ## Official website

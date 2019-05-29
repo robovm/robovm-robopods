@@ -29,6 +29,7 @@ import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.corelocation.*;
+import org.robovm.apple.dispatch.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -45,15 +46,24 @@ import org.robovm.apple.corelocation.*;
     /*<constructors>*/
     protected YMMYandexMetricaConfiguration(Handle h, long handle) { super(h, handle); }
     protected YMMYandexMetricaConfiguration(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithApiKey:")
     public YMMYandexMetricaConfiguration(String apiKey) { super((SkipInit) null); initObject(init(apiKey)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "apiKey")
     public native String getApiKey();
-    @Property(selector = "trackLocationEnabled")
-    public native boolean isTrackLocationEnabled();
-    @Property(selector = "setTrackLocationEnabled:")
-    public native void setTrackLocationEnabled(boolean v);
+    @Property(selector = "handleFirstActivationAsUpdate")
+    public native boolean isHandleFirstActivationAsUpdate();
+    @Property(selector = "setHandleFirstActivationAsUpdate:")
+    public native void setHandleFirstActivationAsUpdate(boolean v);
+    @Property(selector = "statisticsSending")
+    public native boolean isStatisticsSending();
+    @Property(selector = "setStatisticsSending:")
+    public native void setStatisticsSending(boolean v);
+    @Property(selector = "locationTracking")
+    public native boolean isLocationTracking();
+    @Property(selector = "setLocationTracking:")
+    public native void setLocationTracking(boolean v);
     @Property(selector = "location")
     public native CLLocation getLocation();
     @Property(selector = "setLocation:")
@@ -62,18 +72,18 @@ import org.robovm.apple.corelocation.*;
     public native @MachineSizedUInt long getSessionTimeout();
     @Property(selector = "setSessionTimeout:")
     public native void setSessionTimeout(@MachineSizedUInt long v);
-    @Property(selector = "reportCrashesEnabled")
-    public native boolean isReportCrashesEnabled();
-    @Property(selector = "setReportCrashesEnabled:")
-    public native void setReportCrashesEnabled(boolean v);
-    @Property(selector = "customAppVersion")
-    public native String getCustomAppVersion();
-    @Property(selector = "setCustomAppVersion:")
-    public native void setCustomAppVersion(String v);
-    @Property(selector = "loggingEnabled")
-    public native boolean isLoggingEnabled();
-    @Property(selector = "setLoggingEnabled:")
-    public native void setLoggingEnabled(boolean v);
+    @Property(selector = "crashReporting")
+    public native boolean isCrashReporting();
+    @Property(selector = "setCrashReporting:")
+    public native void setCrashReporting(boolean v);
+    @Property(selector = "appVersion")
+    public native String getAppVersion();
+    @Property(selector = "setAppVersion:")
+    public native void setAppVersion(String v);
+    @Property(selector = "logs")
+    public native boolean isLogs();
+    @Property(selector = "setLogs:")
+    public native void setLogs(boolean v);
     @Property(selector = "preloadInfo")
     public native YMMYandexMetricaPreloadInfo getPreloadInfo();
     @Property(selector = "setPreloadInfo:")
