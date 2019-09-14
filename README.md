@@ -125,6 +125,24 @@ This is the list of currently available RoboPods. Click them to get more informa
 | [Reachability](reachability/)                        | Monitor network reachability. |
 | [Yandex AppMetrica](appmterica/)                     | AppMetrica is a set of libraries for gathering statistics on mobile app usage. |
 
+## AltPods
+
+You can find additional RoboPods on [Demyan Kimitsa AltPods repository](https://github.com/dkimitsa/robovm-robopods).
+
+This is the list of currently available AltPods.
+
+| Name                               | Description                                                                            |
+|------------------------------------|----------------------------------------------------------------------------------------|
+| [AppLovinSDK](https://github.com/dkimitsa/robovm-robopods/tree/alt/applovinsdk/)        | An advertisement mediator SDK |
+| [BranchMetrics](https://github.com/dkimitsa/robovm-robopods/tree/alt/branchmetrics/)    | The Branch Metrics iOS SDK for deferred and contextual mobile deep linking|
+| [Charts](https://github.com/dkimitsa/robovm-robopods/tree/alt/charts/)                  | Beautiful charts for iOS/tvOS/OSX! The Apple side of the crossplatform MPAndroidChart. |
+| [Firebase](https://github.com/dkimitsa/robovm-robopods/tree/alt/firebase/)              | Firebase (analytics, databases) |
+| [HelpShift](https://github.com/dkimitsa/robovm-robopods/tree/alt/helpshift/)            | Deliver a superior customer service experience at a lower cost with Helpshift’s AI-powered messaging platform.|
+| [Lottie](https://github.com/dkimitsa/robovm-robopods/tree/alt/lottie/)                  | An iOS library to natively render After Effects vector animations                      |
+| [OneSignal](https://github.com/dkimitsa/robovm-robopods/tree/alt/onesignal/)            | OneSignal is a free push notification service for mobile apps                          |
+| [Pollfish](https://github.com/dkimitsa/robovm-robopods/tree/alt/pollfish/)              | Simple Surveys |
+| [SAMKeychain](https://github.com/dkimitsa/robovm-robopods/tree/alt/samkeychain/)        | SAMKeychain is a simple wrapper for accessing accounts, getting passwords, setting passwords, and deleting passwords using the system Keychain on Mac OS X and iOS|
+
 ## Creating/Updating RoboPods
 
 Java bindings are generated semi-automatically with a Ruby script configured via a .yaml file [This tutorial] (https://dkimitsa.github.io/2017/10/19/bro-gen-tutorial/) explains how to create (and update) a RoboPod from scratch.
