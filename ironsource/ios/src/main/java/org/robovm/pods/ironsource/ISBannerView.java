@@ -50,7 +50,7 @@ import org.robovm.apple.coregraphics.*;
     @Method(selector = "initWithFrame:")
     public ISBannerView(@ByVal CGRect frame) { super(frame); }
     @Method(selector = "initWithCoder:")
-    public ISBannerView(NSCoder decoder) { super(decoder); }
+    public ISBannerView(NSCoder coder) { super(coder); }
     /*</constructors>*/
     /*<properties>*/
     

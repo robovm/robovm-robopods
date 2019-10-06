@@ -149,6 +149,10 @@ import org.robovm.apple.coregraphics.*;
     public native @MachineSizedSInt long getConsent();
     @Property(selector = "setConsent:")
     public native void setConsent(@MachineSizedSInt long v);
+    @Property(selector = "didSetConsent")
+    public native boolean didSetConsent();
+    @Property(selector = "setDidSetConsent:")
+    public native void setDidSetConsent(boolean v);
     @Property(selector = "batchGenricParams")
     public native NSDictionary<?, ?> getBatchGenricParams();
     @Property(selector = "setBatchGenricParams:")
@@ -160,6 +164,10 @@ import org.robovm.apple.coregraphics.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    /**
+     * @deprecated As of version 6.5.2, use class method: getConfigurations
+     */
+    @Deprecated
     @Method(selector = "configurations")
     public static native ISConfigurations configurations();
     @Method(selector = "getConfigurations")

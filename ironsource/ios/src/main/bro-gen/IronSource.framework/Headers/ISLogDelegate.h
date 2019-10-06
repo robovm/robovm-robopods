@@ -16,7 +16,7 @@ typedef enum LogLevelValues
     IS_LOG_ERROR = 3,
     IS_LOG_CRITICAL = 4,
     
-} LogLevel;
+} ISLogLevel;
 
 typedef enum LogTagValue
 {
@@ -35,7 +35,7 @@ typedef enum LogTagValue
 
 @required
 
-- (void)sendLog:(NSString *)log level:(LogLevel)level tag:(LogTag)tag;
+- (void)sendLog:(NSString *)log level:(ISLogLevel)level tag:(LogTag)tag;
 
 @end
 

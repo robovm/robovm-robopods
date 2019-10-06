@@ -7,7 +7,7 @@ The mobile ad network IronSource is both an ad network and a mediation platform 
 
 | Platform            | Version   |
 |---------------------|-----------|
-| [iOS](ios/)         | 6.8.1     |
+| [iOS](ios/)         | 6.8.7     |
 |                     |           |
 
 ## Official website

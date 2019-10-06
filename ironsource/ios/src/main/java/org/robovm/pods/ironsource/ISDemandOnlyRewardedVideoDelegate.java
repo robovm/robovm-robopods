@@ -48,18 +48,20 @@ import org.robovm.apple.coregraphics.*;
     
     /*</properties>*/
     /*<methods>*/
-    @Method(selector = "rewardedVideoHasChangedAvailability:instanceId:")
-    void rewardedVideoHasChangedAvailability(boolean available, String instanceId);
-    @Method(selector = "didReceiveRewardForPlacement:instanceId:")
-    void didReceiveRewardForPlacement(ISPlacementInfo placementInfo, String instanceId);
-    @Method(selector = "rewardedVideoDidFailToShowWithError:instanceId:")
-    void rewardedVideoDidFailToShow(NSError error, String instanceId);
+    @Method(selector = "rewardedVideoDidLoad:")
+    void rewardedVideoDidLoad(String instanceId);
+    @Method(selector = "rewardedVideoDidFailToLoadWithError:instanceId:")
+    void rewardedVideoDidFailToLoad(NSError error, String instanceId);
     @Method(selector = "rewardedVideoDidOpen:")
     void rewardedVideoDidOpen(String instanceId);
     @Method(selector = "rewardedVideoDidClose:")
     void rewardedVideoDidClose(String instanceId);
-    @Method(selector = "didClickRewardedVideo:instanceId:")
-    void didClickRewardedVideo(ISPlacementInfo placementInfo, String instanceId);
+    @Method(selector = "rewardedVideoDidFailToShowWithError:instanceId:")
+    void rewardedVideoDidFailToShow(NSError error, String instanceId);
+    @Method(selector = "rewardedVideoDidClick:")
+    void rewardedVideoDidClick(String instanceId);
+    @Method(selector = "rewardedVideoAdRewarded:")
+    void rewardedVideoAdRewarded(String instanceId);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

@@ -106,10 +106,10 @@ import org.robovm.apple.coregraphics.*;
     public static native void clearRewardedVideoServerParameters();
     @Method(selector = "setISDemandOnlyRewardedVideoDelegate:")
     public static native void setISDemandOnlyRewardedVideoDelegate(ISDemandOnlyRewardedVideoDelegate delegate);
+    @Method(selector = "loadISDemandOnlyRewardedVideo:")
+    public static native void loadISDemandOnlyRewardedVideo(String instanceId);
     @Method(selector = "showISDemandOnlyRewardedVideo:instanceId:")
     public static native void showISDemandOnlyRewardedVideo(UIViewController viewController, String instanceId);
-    @Method(selector = "showISDemandOnlyRewardedVideo:placement:instanceId:")
-    public static native void showISDemandOnlyRewardedVideo(UIViewController viewController, String placementName, String instanceId);
     @Method(selector = "hasISDemandOnlyRewardedVideo:")
     public static native boolean hasISDemandOnlyRewardedVideo(String instanceId);
     @Method(selector = "setInterstitialDelegate:")
@@ -132,8 +132,6 @@ import org.robovm.apple.coregraphics.*;
     public static native void loadISDemandOnlyInterstitial(String instanceId);
     @Method(selector = "showISDemandOnlyInterstitial:instanceId:")
     public static native void showISDemandOnlyInterstitial(UIViewController viewController, String instanceId);
-    @Method(selector = "showISDemandOnlyInterstitial:placement:instanceId:")
-    public static native void showISDemandOnlyInterstitial(UIViewController viewController, String placementName, String instanceId);
     @Method(selector = "hasISDemandOnlyInterstitial:")
     public static native boolean hasISDemandOnlyInterstitial(String instanceId);
     @Method(selector = "setOfferwallDelegate:")

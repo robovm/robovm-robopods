@@ -1,5 +1,5 @@
 package: org.robovm.pods.ironsource
-include: [foundation, uikit]
+include: [foundation, uikit, coregraphics]
 framework: IronSource
 clang_args: ['-x', 'objective-c']
 headers:
@@ -11,6 +11,7 @@ enums:
     ISGender: {prefix: IRONSOURCE_USER_}
     LogLevelValues: {prefix: IS_LOG_}
     LogTagValue: {prefix: TAG_}
+    DebugLevel: {}
 
 
 
@@ -106,6 +107,9 @@ protocols:
             '-didReceiveRewardForPlacement:instanceId:':
                 #trim_after_first_colon: true
                 name: didReceiveRewardForPlacement
+            '-rewardedVideoDidFailToLoadWithError:instanceId:':
+                #trim_after_first_colon: true
+                name: rewardedVideoDidFailToLoad
             '-rewardedVideoDidFailToShowWithError:instanceId:':
                 #trim_after_first_colon: true
                 name: rewardedVideoDidFailToShow

@@ -56,8 +56,6 @@ import org.robovm.apple.coregraphics.*;
     void interstitialDidOpen(String instanceId);
     @Method(selector = "interstitialDidClose:")
     void interstitialDidClose(String instanceId);
-    @Method(selector = "interstitialDidShow:")
-    void interstitialDidShow(String instanceId);
     @Method(selector = "interstitialDidFailToShowWithError:instanceId:")
     void interstitialDidFailToShow(NSError error, String instanceId);
     @Method(selector = "didClickInterstitial:")

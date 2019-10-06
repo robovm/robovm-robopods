@@ -35,26 +35,31 @@ import org.robovm.apple.coregraphics.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/ISEventsReporting/*</name>*/ 
-    extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
+public enum /*<name>*/DebugLevel/*</name>*/ implements ValuedEnum {
+    /*<values>*/
+    None(0L),
+    Error(1L),
+    Info(2L),
+    Verbose(3L);
+    /*</values>*/
 
-    /*<ptr>*/public static class ISEventsReportingPtr extends Ptr<ISEventsReporting, ISEventsReportingPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(ISEventsReporting.class); }/*</bind>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*/
-    public ISEventsReporting() {}
-    protected ISEventsReporting(Handle h, long handle) { super(h, handle); }
-    protected ISEventsReporting(SkipInit skipInit) { super(skipInit); }
-    /*</constructors>*/
-    /*<properties>*/
-    
-    /*</properties>*/
-    /*<members>*//*</members>*/
-    /*<methods>*/
-    @Deprecated
-    @Method(selector = "reportAppStarted")
-    public static native void reportAppStarted();
-    /*</methods>*/
+    /*<methods>*//*</methods>*/
+
+    private final long n;
+
+    private /*<name>*/DebugLevel/*</name>*/(long n) { this.n = n; }
+    public long value() { return n; }
+    public static /*<name>*/DebugLevel/*</name>*/ valueOf(long n) {
+        for (/*<name>*/DebugLevel/*</name>*/ v : values()) {
+            if (v.n == n) {
+                return v;
+            }
+        }
+        throw new IllegalArgumentException("No constant with value " + n + " found in " 
+            + /*<name>*/DebugLevel/*</name>*/.class.getName());
+    }
 }

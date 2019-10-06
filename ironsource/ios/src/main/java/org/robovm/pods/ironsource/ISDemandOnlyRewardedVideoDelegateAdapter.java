@@ -50,17 +50,19 @@ import org.robovm.apple.coregraphics.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @NotImplemented("rewardedVideoHasChangedAvailability:instanceId:")
-    public void rewardedVideoHasChangedAvailability(boolean available, String instanceId) {}
-    @NotImplemented("didReceiveRewardForPlacement:instanceId:")
-    public void didReceiveRewardForPlacement(ISPlacementInfo placementInfo, String instanceId) {}
-    @NotImplemented("rewardedVideoDidFailToShowWithError:instanceId:")
-    public void rewardedVideoDidFailToShow(NSError error, String instanceId) {}
+    @NotImplemented("rewardedVideoDidLoad:")
+    public void rewardedVideoDidLoad(String instanceId) {}
+    @NotImplemented("rewardedVideoDidFailToLoadWithError:instanceId:")
+    public void rewardedVideoDidFailToLoad(NSError error, String instanceId) {}
     @NotImplemented("rewardedVideoDidOpen:")
     public void rewardedVideoDidOpen(String instanceId) {}
     @NotImplemented("rewardedVideoDidClose:")
     public void rewardedVideoDidClose(String instanceId) {}
-    @NotImplemented("didClickRewardedVideo:instanceId:")
-    public void didClickRewardedVideo(ISPlacementInfo placementInfo, String instanceId) {}
+    @NotImplemented("rewardedVideoDidFailToShowWithError:instanceId:")
+    public void rewardedVideoDidFailToShow(NSError error, String instanceId) {}
+    @NotImplemented("rewardedVideoDidClick:")
+    public void rewardedVideoDidClick(String instanceId) {}
+    @NotImplemented("rewardedVideoAdRewarded:")
+    public void rewardedVideoAdRewarded(String instanceId) {}
     /*</methods>*/
 }

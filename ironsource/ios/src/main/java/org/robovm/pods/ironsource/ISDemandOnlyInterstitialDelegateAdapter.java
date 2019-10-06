@@ -58,8 +58,6 @@ import org.robovm.apple.coregraphics.*;
     public void interstitialDidOpen(String instanceId) {}
     @NotImplemented("interstitialDidClose:")
     public void interstitialDidClose(String instanceId) {}
-    @NotImplemented("interstitialDidShow:")
-    public void interstitialDidShow(String instanceId) {}
     @NotImplemented("interstitialDidFailToShowWithError:instanceId:")
     public void interstitialDidFailToShow(NSError error, String instanceId) {}
     @NotImplemented("didClickInterstitial:")
