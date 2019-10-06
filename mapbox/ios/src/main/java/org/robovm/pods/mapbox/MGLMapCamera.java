@@ -89,6 +89,11 @@ import org.robovm.apple.coreanimation.*;
     public static native MGLMapCamera cameraLookingAtCenterCoordinatAcrossDistance(@ByVal CLLocationCoordinate2D centerCoordinate, double distance, @MachineSizedFloat double pitch, double heading);
     @Method(selector = "cameraLookingAtCenterCoordinate:altitude:pitch:heading:")
     public static native MGLMapCamera cameraLookingAtCenterCoordinate(@ByVal CLLocationCoordinate2D centerCoordinate, double altitude, @MachineSizedFloat double pitch, double heading);
+    /**
+     * @deprecated Use -cameraLookingAtCenterCoordinate:acrossDistance:pitch:heading: 
+                          or -cameraLookingAtCenterCoordinate:altitude:pitch:heading:.
+     */
+    @Deprecated
     @Method(selector = "cameraLookingAtCenterCoordinate:fromDistance:pitch:heading:")
     public static native MGLMapCamera cameraLookingAtCenterCoordinateFromDistance(@ByVal CLLocationCoordinate2D centerCoordinate, double distance, @MachineSizedFloat double pitch, double heading);
     @Method(selector = "encodeWithCoder:")

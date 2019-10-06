@@ -82,12 +82,26 @@ import org.robovm.apple.coreanimation.*;
     public native void addPack(MGLOfflineRegion region, NSData context, @Block VoidBlock2<MGLOfflinePack, NSError> completion);
     @Method(selector = "removePack:withCompletionHandler:")
     public native void removePack(MGLOfflinePack pack, @Block VoidBlock1<NSError> completion);
+    @Method(selector = "invalidatePack:withCompletionHandler:")
+    public native void invalidatePack(MGLOfflinePack pack, @Block VoidBlock1<NSError> completion);
     @Method(selector = "reloadPacks")
     public native void reloadPacks();
     @Method(selector = "setMaximumAllowedMapboxTiles:")
     public native void setMaximumAllowedMapboxTiles(long maximumCount);
+    @Method(selector = "setMaximumAmbientCacheSize:withCompletionHandler:")
+    public native void setMaximumAmbientCacheSize(@MachineSizedUInt long cacheSize, @Block VoidBlock1<NSError> completion);
+    @Method(selector = "invalidateAmbientCacheWithCompletionHandler:")
+    public native void invalidateAmbientCacheWithCompletionHandler(@Block VoidBlock1<NSError> completion);
+    @Method(selector = "clearAmbientCacheWithCompletionHandler:")
+    public native void clearAmbientCacheWithCompletionHandler(@Block VoidBlock1<NSError> completion);
+    @Method(selector = "resetDatabaseWithCompletionHandler:")
+    public native void resetDatabaseWithCompletionHandler(@Block VoidBlock1<NSError> completion);
     @Method(selector = "preloadData:forURL:modificationDate:expirationDate:eTag:mustRevalidate:")
     public native void preloadData(NSData data, NSURL url, NSDate modified, NSDate expires, String eTag, boolean mustRevalidate);
+    /**
+     * @deprecated Use `-preloadData:forURL:modificationDate:expirationDate:eTag:mustRevalidate:` instead
+     */
+    @Deprecated
     @Method(selector = "putResourceWithUrl:data:modified:expires:etag:mustRevalidate:")
     public native void putResource(NSURL url, NSData data, NSDate modified, NSDate expires, String etag, boolean mustRevalidate);
     /*</methods>*/

@@ -48,12 +48,15 @@ enums:
     MGLSymbolZOrder: {}
     MGLRasterResamplingMode: {}
     MGLLoggingLevel: {}
+    MGLOrnamentVisibility: {}
+    MGLOrnamentPosition: {}
+    MGLMetricType: {}
 
 classes:
     MGLShapeOfflineRegion:
         methods:
             '-initWithStyleURL:shape:fromZoomLevel:toZoomLevel:':
-                name: initWithStyleURL
+                name: init
     MGLEmptyFeature: {}
     MGLLoggingConfiguration: {}
     MGLNetworkConfiguration: {}
@@ -125,6 +128,7 @@ classes:
         methods:
             '-getObjectValue:forString:errorDescription:':
                 name: getObjectValue
+    MGLCompassButton: {}
     MGLCompositeStyleFunction:
         methods:
             '+functionWithInterpolationMode:stops:attributeName:options:':
@@ -207,6 +211,20 @@ classes:
                 name: init
     MGLMapView:
         methods:
+            '-setUserTrackingMode:animated:completionHandler:':
+                name: setUserTrackingMode
+            '-setTargetCoordinate:animated:completionHandler:':
+                name: setTargetCoordinate
+            '-setVisibleCoordinateBounds:edgePadding:animated:completionHandler:':
+                name: setVisibleCoordinateBounds
+            '-showAnnotations:edgePadding:animated:completionHandler:':
+                name: showAnnotations
+            '-setContentInset:animated:completionHandler:':
+                name: setContentInset
+            '-selectAnnotation:animated:completionHandler:':
+                name: selectAnnotation
+            '-selectAnnotation:moveIntoView:animateSelection:completionHandler:':
+                name: selectAnnotation
             '-updateUserLocationAnnotationViewAnimatedWithDuration:':
                 name: updateUserLocationAnnotationViewAnimated
             '-camera:fittingCoordinateBounds:edgePadding:':
@@ -296,6 +314,16 @@ classes:
             '-visibleFeaturesInRect:inStyleLayersWithIdentifiers:predicate:':
                 name: visibleFeatures
 
+    MGLAttributedExpression:
+        methods:
+            '-initWithExpression:':
+                name: init
+            '-initWithExpression:attributes:':
+                name: init
+            '+attributedExpression:fontNames:fontScale:':
+                name: attributedExpression
+            '+attributedExpression:attributes:':
+                name: attributedExpression
     MGLMultiPoint:
         properties:
             'coordinates':
@@ -339,6 +367,16 @@ classes:
     MGLOfflinePack: {}
     MGLOfflineStorage:
         methods:
+            '-invalidatePack:withCompletionHandler:':
+                name: invalidatePack
+            '-setMaximumAmbientCacheSize:withCompletionHandler:':
+                name: setMaximumAmbientCacheSize
+            '-invalidateAmbientCacheWithCompletionHandler:':
+                name: invalidateAmbientCacheWithCompletionHandler
+            '-clearAmbientCacheWithCompletionHandler:':
+                name: clearAmbientCacheWithCompletionHandler
+            '-resetDatabaseWithCompletionHandler:':
+                name: resetDatabaseWithCompletionHandler
             '-addPackForRegion:withContext:completionHandler:':
                 name: addPack
             '-removePack:withCompletionHandler:':
@@ -357,6 +395,10 @@ classes:
                 name: drawInMapView
             '-initWithIdentifier:':
                 name: init
+        properties:
+            context:
+                read_only: true
+                type: NSObject
     MGLPointAnnotation: {}
     MGLPointCollection:
         methods:
@@ -696,55 +738,53 @@ classes:
     MGLComputedShapeSource:
         methods:
             '-initWithIdentifier:options:':
-                #trim_after_first_colon: true
                 name: init
             '-initWithIdentifier:dataSource:options:':
-                #trim_after_first_colon: true
                 name: init
             '-invalidateTileAtX:y:zoomLevel:':
-                #trim_after_first_colon: true
                 name: invalidateTile
             '-setFeatures:inTileAtX:y:zoomLevel:':
-                #trim_after_first_colon: true
                 name: setFeatures
     MGLHeatmapStyleLayer:
         methods:
             '-initWithIdentifier:source:':
-                #trim_after_first_colon: true
                 name: init
     MGLHillshadeStyleLayer:
         methods:
             '-initWithIdentifier:source:':
-                #trim_after_first_colon: true
                 name: init
     MGLRasterDEMSource: {}
     MGLRasterTileSource:
         methods:
             '-initWithIdentifier:configurationURL:':
-                #trim_after_first_colon: true
                 name: init
             '-initWithIdentifier:configurationURL:tileSize:':
-                #trim_after_first_colon: true
                 name: init
             '-initWithIdentifier:tileURLTemplates:options:':
-                #trim_after_first_colon: true
                 name: init
+
     MGLVectorTileSource:
         methods:
             '-initWithIdentifier:configurationURL:':
-                #trim_after_first_colon: true
                 name: init
             '-initWithIdentifier:tileURLTemplates:options:':
-                #trim_after_first_colon: true
                 name: init
             '-featuresInSourceLayersWithIdentifiers:predicate:':
-                #trim_after_first_colon: true
                 name: featuresInSourceLayers
 
-
+    MGLMetricsManager:
+        methods:
+            '-pushMetric:withAttributes:':
+                name: pushMetric
 
 
 protocols:
+    MGLMetricsManagerDelegate:
+        methods:
+            '-metricsManager:shouldHandleMetric:':
+                name: shouldHandleMetric
+            '-metricsManager:didCollectMetric:withAttributes:':
+                name: didCollectMetric
     MGLCluster: {}
     MGLLocationManager: {}
     MGLLocationManagerDelegate:
@@ -765,6 +805,10 @@ protocols:
     MGLFeature: {}
     MGLMapViewDelegate:
         methods:
+            '-mapView:didFailToLoadImage:':
+                name: didFailToLoadImage
+            '-mapView:shouldRemoveStyleImage:':
+                name: shouldRemoveStyleImage
             '-mapView:shapeAnnotationIsEnabled:':
                 name: shapeAnnotationIsEnabled
             '-mapView:shouldChangeFromCamera:toCamera:':
@@ -838,15 +882,12 @@ protocols:
     MGLComputedShapeSourceDataSource:
         methods:
             '-featuresInTileAtX:y:zoomLevel:':
-                #trim_after_first_colon: true
                 name: featuresInTileAt
             '-featuresInCoordinateBounds:zoomLevel:':
-                #trim_after_first_colon: true
                 name: featuresInCoordinateBounds
     MGLCalloutView:
         methods:
             '-presentCalloutFromRect:inView:constrainedToRect:animated:':
-                #trim_after_first_colon: true
                 name: presentCalloutFrom
 
 
@@ -862,6 +903,11 @@ functions:
     MGLMapPointForCoordinate:
         class: MGLMapPoint
         name: 'forCoordinate'
+
+    
+    MGLStringFromMetricType:
+        class: MGLMetricsManager
+        name: 'stringFromMetricType'
 
     # Make sure we don't miss any functions if new ones are introduced in a later version
     (MGL.*):
@@ -915,6 +961,18 @@ values:
         type: Option
         name: '#{g[0]}'
 
+    MGLFontNamesAttribute:
+        class: Mapbox
+        name: 'MGLFontNamesAttribute'
+
+    MGLFontScaleAttribute:
+        class: Mapbox
+        name: 'MGLFontScaleAttribute'
+
+    MGLFontColorAttribute:
+        class: Mapbox
+        name: 'MGLFontColorAttribute'
+
     MGLExpressionInterpolationModeLinear:
         class: Mapbox
         name: 'MGLExpressionInterpolationModeLinear'
@@ -943,8 +1001,9 @@ values:
         name: 'Value__#{g[0]}'
 
 constants:
-    MGLOfflinePack(.*)UserInfoKey:
-        exclude: true
+    MGL_LOGGING_ENABLE_DEBUG:
+        class: Mapbox
+        name: 'LOGGING_ENABLE_DEBUG'
 
     kCFNotFound:
         exclude: true

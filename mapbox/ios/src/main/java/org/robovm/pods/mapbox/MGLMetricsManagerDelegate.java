@@ -38,32 +38,24 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
-public enum /*<name>*/MGLLoggingLevel/*</name>*/ implements ValuedEnum {
-    /*<values>*/
-    None(0L),
-    Info(1L),
-    Debug(2L),
-    Error(3L),
-    Fault(4L);
-    /*</values>*/
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ interface /*<name>*/MGLMetricsManagerDelegate/*</name>*/ 
+    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
+    /*<ptr>*/
+    /*</ptr>*/
     /*<bind>*/
     /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<methods>*//*</methods>*/
-
-    private final long n;
-
-    private /*<name>*/MGLLoggingLevel/*</name>*/(long n) { this.n = n; }
-    public long value() { return n; }
-    public static /*<name>*/MGLLoggingLevel/*</name>*/ valueOf(long n) {
-        for (/*<name>*/MGLLoggingLevel/*</name>*/ v : values()) {
-            if (v.n == n) {
-                return v;
-            }
-        }
-        throw new IllegalArgumentException("No constant with value " + n + " found in " 
-            + /*<name>*/MGLLoggingLevel/*</name>*/.class.getName());
-    }
+    /*<properties>*/
+    
+    /*</properties>*/
+    /*<methods>*/
+    @Method(selector = "metricsManager:shouldHandleMetric:")
+    boolean shouldHandleMetric(MGLMetricsManager metricsManager, MGLMetricType metricType);
+    @Method(selector = "metricsManager:didCollectMetric:withAttributes:")
+    void didCollectMetric(MGLMetricsManager metricsManager, MGLMetricType metricType, NSDictionary<?, ?> attributes);
+    /*</methods>*/
+    /*<adapter>*/
+    /*</adapter>*/
 }

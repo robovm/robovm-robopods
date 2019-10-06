@@ -41,8 +41,9 @@ import org.robovm.apple.coreanimation.*;
 /*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedUIntMarshaler.class)/*</annotations>*/
 public enum /*<name>*/MGLSymbolZOrder/*</name>*/ implements ValuedEnum {
     /*<values>*/
-    ViewportY(0L),
-    Source(1L);
+    Auto(0L),
+    ViewportY(1L),
+    Source(2L);
     /*</values>*/
 
     /*<bind>*/

@@ -48,18 +48,6 @@ import org.robovm.apple.coreanimation.*;
     /*</bind>*/
     /*<constants>*//*</constants>*/
     /*<properties>*/
-    @Property(selector = "distanceFilter")
-    double getDistanceFilter();
-    @Property(selector = "setDistanceFilter:")
-    void setDistanceFilter(double v);
-    @Property(selector = "desiredAccuracy")
-    double getDesiredAccuracy();
-    @Property(selector = "setDesiredAccuracy:")
-    void setDesiredAccuracy(double v);
-    @Property(selector = "activityType")
-    CLActivityType getActivityType();
-    @Property(selector = "setActivityType:")
-    void setActivityType(CLActivityType v);
     @Property(selector = "delegate")
     MGLLocationManagerDelegate getDelegate();
     @Property(selector = "setDelegate:", strongRef = true)
@@ -72,6 +60,18 @@ import org.robovm.apple.coreanimation.*;
     void setHeadingOrientation(CLDeviceOrientation v);
     /*</properties>*/
     /*<methods>*/
+    @Method(selector = "distanceFilter")
+    double distanceFilter();
+    @Method(selector = "setDistanceFilter:")
+    void setDistanceFilter(double distanceFilter);
+    @Method(selector = "desiredAccuracy")
+    double desiredAccuracy();
+    @Method(selector = "setDesiredAccuracy:")
+    void setDesiredAccuracy(double desiredAccuracy);
+    @Method(selector = "activityType")
+    CLActivityType activityType();
+    @Method(selector = "setActivityType:")
+    void setActivityType(CLActivityType activityType);
     @Method(selector = "requestAlwaysAuthorization")
     void requestAlwaysAuthorization();
     @Method(selector = "requestWhenInUseAuthorization")

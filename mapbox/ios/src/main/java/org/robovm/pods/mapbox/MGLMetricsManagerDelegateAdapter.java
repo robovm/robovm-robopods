@@ -36,34 +36,26 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
-/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
-public enum /*<name>*/MGLLoggingLevel/*</name>*/ implements ValuedEnum {
-    /*<values>*/
-    None(0L),
-    Info(1L),
-    Debug(2L),
-    Error(3L),
-    Fault(4L);
-    /*</values>*/
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/MGLMetricsManagerDelegateAdapter/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*/implements MGLMetricsManagerDelegate/*</implements>*/ {
 
+    /*<ptr>*/
+    /*</ptr>*/
     /*<bind>*/
     /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<methods>*//*</methods>*/
-
-    private final long n;
-
-    private /*<name>*/MGLLoggingLevel/*</name>*/(long n) { this.n = n; }
-    public long value() { return n; }
-    public static /*<name>*/MGLLoggingLevel/*</name>*/ valueOf(long n) {
-        for (/*<name>*/MGLLoggingLevel/*</name>*/ v : values()) {
-            if (v.n == n) {
-                return v;
-            }
-        }
-        throw new IllegalArgumentException("No constant with value " + n + " found in " 
-            + /*<name>*/MGLLoggingLevel/*</name>*/.class.getName());
-    }
+    /*<constructors>*//*</constructors>*/
+    /*<properties>*/
+    
+    /*</properties>*/
+    /*<members>*//*</members>*/
+    /*<methods>*/
+    @NotImplemented("metricsManager:shouldHandleMetric:")
+    public boolean shouldHandleMetric(MGLMetricsManager metricsManager, MGLMetricType metricType) { return false; }
+    @NotImplemented("metricsManager:didCollectMetric:withAttributes:")
+    public void didCollectMetric(MGLMetricsManager metricsManager, MGLMetricType metricType, NSDictionary<?, ?> attributes) {}
+    /*</methods>*/
 }

@@ -41,9 +41,10 @@ import org.robovm.apple.coreanimation.*;
 /*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedUIntMarshaler.class)/*</annotations>*/
 public enum /*<name>*/MGLTextJustification/*</name>*/ implements ValuedEnum {
     /*<values>*/
-    Left(0L),
-    Center(1L),
-    Right(2L);
+    Auto(0L),
+    Left(1L),
+    Center(2L),
+    Right(3L);
     /*</values>*/
 
     /*<bind>*/

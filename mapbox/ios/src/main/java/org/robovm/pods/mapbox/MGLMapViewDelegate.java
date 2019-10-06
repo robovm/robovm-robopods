@@ -85,6 +85,10 @@ import org.robovm.apple.coreanimation.*;
     void mapViewDidBecomeIdle(MGLMapView mapView);
     @Method(selector = "mapView:didFinishLoadingStyle:")
     void didFinishLoadingStyle(MGLMapView mapView, MGLStyle style);
+    @Method(selector = "mapView:didFailToLoadImage:")
+    UIImage didFailToLoadImage(MGLMapView mapView, String imageName);
+    @Method(selector = "mapView:shouldRemoveStyleImage:")
+    boolean shouldRemoveStyleImage(MGLMapView mapView, String imageName);
     @Method(selector = "mapViewWillStartLocatingUser:")
     void mapViewWillStartLocatingUser(MGLMapView mapView);
     @Method(selector = "mapViewDidStopLocatingUser:")

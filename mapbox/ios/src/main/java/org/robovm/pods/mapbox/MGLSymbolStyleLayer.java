@@ -130,6 +130,10 @@ import org.robovm.apple.coreanimation.*;
     public native NSExpression getSymbolPlacement();
     @Property(selector = "setSymbolPlacement:")
     public native void setSymbolPlacement(NSExpression v);
+    @Property(selector = "symbolSortKey")
+    public native NSExpression getSymbolSortKey();
+    @Property(selector = "setSymbolSortKey:")
+    public native void setSymbolSortKey(NSExpression v);
     @Property(selector = "symbolSpacing")
     public native NSExpression getSymbolSpacing();
     @Property(selector = "setSymbolSpacing:")
@@ -190,6 +194,10 @@ import org.robovm.apple.coreanimation.*;
     public native NSExpression getTextPitchAlignment();
     @Property(selector = "setTextPitchAlignment:")
     public native void setTextPitchAlignment(NSExpression v);
+    @Property(selector = "textRadialOffset")
+    public native NSExpression getTextRadialOffset();
+    @Property(selector = "setTextRadialOffset:")
+    public native void setTextRadialOffset(NSExpression v);
     @Property(selector = "textRotation")
     public native NSExpression getTextRotation();
     @Property(selector = "setTextRotation:")
@@ -202,6 +210,10 @@ import org.robovm.apple.coreanimation.*;
     public native NSExpression getTextTransform();
     @Property(selector = "setTextTransform:")
     public native void setTextTransform(NSExpression v);
+    @Property(selector = "textVariableAnchor")
+    public native NSExpression getTextVariableAnchor();
+    @Property(selector = "setTextVariableAnchor:")
+    public native void setTextVariableAnchor(NSExpression v);
     @Property(selector = "iconColor")
     public native NSExpression getIconColor();
     @Property(selector = "setIconColor:")

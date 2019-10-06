@@ -6,7 +6,7 @@ The Mapbox SDK provides vector-based mapping.
 
 | Platform    | Version |
 |-------------|---------|
-| [iOS](ios/) | 4.9.0   |
+| [iOS](ios/) | 5.2.0   |
 |             |         |
 
 ## Official website

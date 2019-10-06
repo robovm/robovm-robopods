@@ -66,10 +66,10 @@ NS_ASSUME_NONNULL_BEGIN
  gesture is recognized. If this method returns `NO`, the map view’s camera
  continues to be this camera.
  @param newCamera The expected camera after the gesture completes. If this
- method returns `YES`, this camera becomes the map view’s camera.
+ method returns `YES`, the viewport of the map will transition to the new camera. Note that the new camera cannot be modified.
  @param reason The reason for the camera change.
  @return A Boolean value indicating whether the map view should stay at
- `oldCamera` or change to `newCamera`.
+ `oldCamera` or transition to `newCamera`.
 
  @note If this method is implemented `-mapView:shouldChangeFromCamera:toCamera:` will not be called.
  */
@@ -274,6 +274,22 @@ NS_ASSUME_NONNULL_BEGIN
  ensure a map's style has loaded before modifying it at runtime.
  */
 - (void)mapView:(MGLMapView *)mapView didFinishLoadingStyle:(MGLStyle *)style;
+
+- (nullable UIImage *)mapView:(MGLMapView *)mapView didFailToLoadImage:(NSString *)imageName;
+
+/**
+ Asks the delegate whether the map view should evict cached images.
+ 
+ This method is called in two scenarios: when the cumulative size of unused images
+ exceeds the cache size or when the last tile that includes the image is removed from
+ memory.
+ 
+ @param mapView The map view that is evicting the image.
+ @param imageName The image name that is going to be removed.
+ @return A Boolean value indicating whether the map view should evict
+ the cached image.
+ */
+- (BOOL)mapView:(MGLMapView *)mapView shouldRemoveStyleImage:(NSString *)imageName;
 
 #pragma mark Tracking User Location
 

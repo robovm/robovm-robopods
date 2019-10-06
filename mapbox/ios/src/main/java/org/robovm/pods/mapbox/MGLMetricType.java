@@ -38,14 +38,10 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
-public enum /*<name>*/MGLLoggingLevel/*</name>*/ implements ValuedEnum {
+/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedUIntMarshaler.class)/*</annotations>*/
+public enum /*<name>*/MGLMetricType/*</name>*/ implements ValuedEnum {
     /*<values>*/
-    None(0L),
-    Info(1L),
-    Debug(2L),
-    Error(3L),
-    Fault(4L);
+    Performance(0L);
     /*</values>*/
 
     /*<bind>*/
@@ -55,15 +51,15 @@ public enum /*<name>*/MGLLoggingLevel/*</name>*/ implements ValuedEnum {
 
     private final long n;
 
-    private /*<name>*/MGLLoggingLevel/*</name>*/(long n) { this.n = n; }
+    private /*<name>*/MGLMetricType/*</name>*/(long n) { this.n = n; }
     public long value() { return n; }
-    public static /*<name>*/MGLLoggingLevel/*</name>*/ valueOf(long n) {
-        for (/*<name>*/MGLLoggingLevel/*</name>*/ v : values()) {
+    public static /*<name>*/MGLMetricType/*</name>*/ valueOf(long n) {
+        for (/*<name>*/MGLMetricType/*</name>*/ v : values()) {
             if (v.n == n) {
                 return v;
             }
         }
         throw new IllegalArgumentException("No constant with value " + n + " found in " 
-            + /*<name>*/MGLLoggingLevel/*</name>*/.class.getName());
+            + /*<name>*/MGLMetricType/*</name>*/.class.getName());
     }
 }

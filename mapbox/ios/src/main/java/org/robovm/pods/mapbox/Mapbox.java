@@ -45,7 +45,9 @@ import org.robovm.apple.coreanimation.*;
     /*<ptr>*/
     /*</ptr>*/
     /*<bind>*/static { Bro.bind(Mapbox.class); }/*</bind>*/
-    /*<constants>*//*</constants>*/
+    /*<constants>*/
+    public static final int LOGGING_ENABLE_DEBUG = 1;
+    /*</constants>*/
     /*<constructors>*//*</constructors>*/
     /*<properties>*//*</properties>*/
     /*<members>*//*</members>*/
@@ -58,8 +60,6 @@ import org.robovm.apple.coreanimation.*;
     public static native String MissingLocationServicesUsageDescriptionException();
     @GlobalValue(symbol="MGLUserLocationAnnotationTypeException", optional=true)
     public static native String UserLocationAnnotationTypeException();
-    @GlobalValue(symbol="MGLResourceNotFoundException", optional=true)
-    public static native String ResourceNotFoundException();
     @GlobalValue(symbol="MGLInvalidOfflinePackException", optional=true)
     public static native String InvalidOfflinePackException();
     @GlobalValue(symbol="MGLUnsupportedRegionTypeException", optional=true)
@@ -84,5 +84,11 @@ import org.robovm.apple.coreanimation.*;
     public static native String MGLExpressionInterpolationModeExponential();
     @GlobalValue(symbol="MGLExpressionInterpolationModeCubicBezier", optional=true)
     public static native String MGLExpressionInterpolationModeCubicBezier();
+    @GlobalValue(symbol="MGLFontNamesAttribute", optional=true)
+    public static native String MGLFontNamesAttribute();
+    @GlobalValue(symbol="MGLFontScaleAttribute", optional=true)
+    public static native String MGLFontScaleAttribute();
+    @GlobalValue(symbol="MGLFontColorAttribute", optional=true)
+    public static native String MGLFontColorAttribute();
     /*</methods>*/
 }

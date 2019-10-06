@@ -18,8 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
  The `object` is the `MGLOfflinePack` object whose progress changed. The
  `userInfo` dictionary contains the pack’s current state in the
- `MGLOfflinePackStateUserInfoKey` key and details about the pack’s current
- progress in the `MGLOfflinePackProgressUserInfoKey` key. You may also consult
+ `MGLOfflinePackUserInfoKeyState` key and details about the pack’s current
+ progress in the `MGLOfflinePackUserInfoKeyProgress` key. You may also consult
  the `MGLOfflinePack.state` and `MGLOfflinePack.progress` properties, which
  provide the same values.
 
@@ -43,7 +43,7 @@ FOUNDATION_EXTERN MGL_EXPORT const NSNotificationName MGLOfflinePackProgressChan
 
  The `object` is the `MGLOfflinePack` object that encountered the error. The
  `userInfo` dictionary contains the error object in the
- `MGLOfflinePackErrorUserInfoKey` key.
+ `MGLOfflinePackUserInfoKeyError` key.
  */
 FOUNDATION_EXTERN MGL_EXPORT const NSNotificationName MGLOfflinePackErrorNotification;
 
@@ -53,12 +53,11 @@ FOUNDATION_EXTERN MGL_EXPORT const NSNotificationName MGLOfflinePackErrorNotific
 
  The `object` is the `MGLOfflinePack` object that reached the tile limit in the
  course of downloading. The `userInfo` dictionary contains the tile limit in the
- `MGLOfflinePackMaximumCountUserInfoKey` key.
+ `MGLOfflinePackUserInfoKeyMaximumCount` key.
 
  Once this limit is reached, no instance of `MGLOfflinePack` can download
  additional tiles from Mapbox APIs until already downloaded tiles are removed by
  calling the `-[MGLOfflineStorage removePack:withCompletionHandler:]` method.
- Contact your Mapbox sales representative to have the limit raised.
  */
 FOUNDATION_EXTERN MGL_EXPORT const NSNotificationName MGLOfflinePackMaximumMapboxTilesReachedNotification;
 
@@ -75,8 +74,6 @@ typedef NSString *MGLOfflinePackUserInfoKey NS_EXTENSIBLE_STRING_ENUM;
  */
 FOUNDATION_EXTERN MGL_EXPORT const MGLOfflinePackUserInfoKey MGLOfflinePackUserInfoKeyState;
 
-FOUNDATION_EXTERN MGL_EXPORT NSString * const MGLOfflinePackStateUserInfoKey __attribute__((unavailable("Use MGLOfflinePackUserInfoKeyState")));
-
 /**
  The key for an `NSValue` object that indicates an offline pack’s current
  progress. This key is used in the `userInfo` dictionary of an
@@ -86,8 +83,6 @@ FOUNDATION_EXTERN MGL_EXPORT NSString * const MGLOfflinePackStateUserInfoKey __a
  */
 FOUNDATION_EXTERN MGL_EXPORT const MGLOfflinePackUserInfoKey MGLOfflinePackUserInfoKeyProgress;
 
-FOUNDATION_EXTERN MGL_EXPORT NSString * const MGLOfflinePackProgressUserInfoKey __attribute__((unavailable("Use MGLOfflinePackUserInfoKeyProgress")));
-
 /**
  The key for an `NSError` object that is encountered in the course of
  downloading an offline pack. This key is used in the `userInfo` dictionary of
@@ -95,8 +90,6 @@ FOUNDATION_EXTERN MGL_EXPORT NSString * const MGLOfflinePackProgressUserInfoKey 
  `MGLErrorDomain`. See `MGLErrorCode` for possible error codes.
  */
 FOUNDATION_EXTERN MGL_EXPORT const MGLOfflinePackUserInfoKey MGLOfflinePackUserInfoKeyError;
-
-FOUNDATION_EXTERN MGL_EXPORT NSString * const MGLOfflinePackErrorUserInfoKey __attribute__((unavailable("Use MGLOfflinePackUserInfoKeyError")));
 
 /**
  The key for an `NSNumber` object that indicates the maximum number of
@@ -107,8 +100,6 @@ FOUNDATION_EXTERN MGL_EXPORT NSString * const MGLOfflinePackErrorUserInfoKey __a
  limit.
  */
 FOUNDATION_EXTERN MGL_EXPORT const MGLOfflinePackUserInfoKey MGLOfflinePackUserInfoKeyMaximumCount;
-
-FOUNDATION_EXTERN MGL_EXPORT NSString * const MGLOfflinePackMaximumCountUserInfoKey __attribute__((unavailable("Use MGLOfflinePackUserInfoKeyMaximumCount")));
 
 FOUNDATION_EXTERN MGL_EXPORT MGLExceptionName const MGLUnsupportedRegionTypeException;
 
@@ -179,9 +170,9 @@ typedef NS_ENUM(NSUInteger, MGLResourceKind) {
 
 /**
  MGLOfflineStorage implements a singleton (shared object) that manages offline
- packs. All of this class’s instance methods are asynchronous, reflecting the
- fact that offline resources are stored in a database. The shared object
- maintains a canonical collection of offline packs in its `packs` property.
+ packs and ambient caching. All of this class’s instance methods are asynchronous,
+ reflecting the fact that offline resources are stored in a database. The shared
+ object maintains a canonical collection of offline packs in its `packs` property.
  
  #### Related examples
  See the <a href="https://docs.mapbox.com/ios/maps/examples/offline-pack/">
@@ -312,6 +303,21 @@ MGL_EXPORT
 - (void)removePack:(MGLOfflinePack *)pack withCompletionHandler:(nullable MGLOfflinePackRemovalCompletionHandler)completion;
 
 /**
+ Invalidates the specified offline pack. This method checks that the tiles
+ in the specified offline pack match those from the server. Local tiles that
+ do not match the latest version on the server are updated.
+ 
+ This is more efficient than deleting the offline pack and downloading it
+ again. If the data stored locally matches that on the server, new data will
+ not be downloaded.
+ 
+ @param pack The offline pack to be invalidated.
+ @param completion The completion handler to call once the pack has been
+ removed. This handler is executed asynchronously on the main queue.
+ */
+
+- (void)invalidatePack:(MGLOfflinePack *)pack withCompletionHandler:(void (^)(NSError * _Nullable))completion;
+/**
  Forcibly, asynchronously reloads the `packs` property. At some point after this
  method is called, the pointer values of the `MGLOfflinePack` objects in the
  `packs` property change, even if the underlying data for these packs has not
@@ -337,7 +343,6 @@ MGL_EXPORT
 
  @note The <a href="https://www.mapbox.com/tos/">Mapbox Terms of Service</a>
     prohibits changing or bypassing this limit without permission from Mapbox.
-    Contact your Mapbox sales representative to have the limit raised.
  */
 - (void)setMaximumAllowedMapboxTiles:(uint64_t)maximumCount;
 
@@ -348,6 +353,72 @@ MGL_EXPORT
  as part of an offline pack or due to caching during normal use of `MGLMapView`.
  */
 @property (nonatomic, readonly) unsigned long long countOfBytesCompleted;
+
+
+#pragma mark - Managing Ambient Cache
+
+/**
+ Sets the maximum ambient cache size in bytes. The default maximum cache
+ size is 50 MB. To disable ambient caching, set the maximum ambient cache size
+ to `0`. Setting the maximum ambient cache size does not impact the maximum size
+ of offline packs.
+ 
+ While this method does not limit the space available to offline packs,
+ data in offline packs count towards this limit. If the maximum ambient
+ cache size is set to 30 MB and 20 MB of offline packs are downloaded,
+ there may be only 10 MB reserved for the ambient cache.
+ 
+ This method should be called before the map and map style have been loaded.
+ 
+ This method is potentially expensive, as the database will trim cached data
+ in order to prevent the ambient cache from being larger than the
+ specified amount.
+ 
+ @param cacheSize The maximum size in bytes for the ambient cache.
+ @param completion The completion handler to call once the maximum ambient cache size
+ has been set. This handler is executed synchronously on the main queue.
+ */
+
+- (void)setMaximumAmbientCacheSize:(NSUInteger)cacheSize withCompletionHandler:(void (^)(NSError *_Nullable error))completion;
+
+/**
+ Invalidates the ambient cache. This method checks that the tiles in the
+ ambient cache match those from the server. If the local tiles do not match
+ those on the server, they are re-downloaded.
+ 
+ This is recommended over clearing the cache or resetting the database
+ because valid local tiles will not be downloaded again.
+ 
+ Resources shared with offline packs will not be affected by this method.
+ 
+ @param completion The completion handler to call once the ambient cache has
+ been revalidated. This handler is executed asynchronously on the main queue.
+ */
+
+- (void)invalidateAmbientCacheWithCompletionHandler:(void (^)(NSError *_Nullable error))completion;
+
+/**
+ Clears the ambient cache by deleting resources. This method does not
+ affect resources shared with offline regions.
+ 
+ @param completion The completion handler to call once resources from
+ the ambient cache have been cleared. This handler is executed
+ asynchronously on the main queue.
+ */
+
+- (void)clearAmbientCacheWithCompletionHandler:(void (^)(NSError *_Nullable error))completion;
+
+/**
+ Deletes the existing database, which includes both the ambient cache and offline packs,
+ then reinitializes it.
+ 
+ You typically do not need to call this method.
+ 
+ @param completion The completion handler to call once the pack has database has
+ been reset. This handler is executed asynchronously on the main queue.
+ */
+
+- (void)resetDatabaseWithCompletionHandler:(void (^)(NSError *_Nullable error))completion;
 
 /*
  Inserts the provided resource into the ambient cache.
@@ -371,7 +442,7 @@ MGL_EXPORT
  */
 - (void)preloadData:(NSData *)data forURL:(NSURL *)url modificationDate:(nullable NSDate *)modified expirationDate:(nullable NSDate *)expires eTag:(nullable NSString *)eTag mustRevalidate:(BOOL)mustRevalidate NS_SWIFT_NAME(preload(_:for:modifiedOn:expiresOn:eTag:mustRevalidate:));
 
-- (void)putResourceWithUrl:(NSURL *)url data:(NSData *)data modified:(nullable NSDate *)modified expires:(nullable NSDate *)expires etag:(nullable NSString *)etag mustRevalidate:(BOOL)mustRevalidate __attribute__((deprecated("Use -preloadData:forURL:modificationDate:expirationDate:eTag:mustRevalidate:.")));
+- (void)putResourceWithUrl:(NSURL *)url data:(NSData *)data modified:(nullable NSDate *)modified expires:(nullable NSDate *)expires etag:(nullable NSString *)etag mustRevalidate:(BOOL)mustRevalidate __attribute__((deprecated("", "-preloadData:forURL:modificationDate:expirationDate:eTag:mustRevalidate:")));
 
 @end
 

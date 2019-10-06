@@ -74,16 +74,52 @@ import org.robovm.apple.coreanimation.*;
     public native void setShowsScale(boolean v);
     @Property(selector = "scaleBar")
     public native UIView getScaleBar();
+    @Property(selector = "scaleBarPosition")
+    public native MGLOrnamentPosition getScaleBarPosition();
+    @Property(selector = "setScaleBarPosition:")
+    public native void setScaleBarPosition(MGLOrnamentPosition v);
+    @Property(selector = "scaleBarMargins")
+    public native @ByVal CGPoint getScaleBarMargins();
+    @Property(selector = "setScaleBarMargins:")
+    public native void setScaleBarMargins(@ByVal CGPoint v);
     @Property(selector = "compassView")
-    public native UIImageView getCompassView();
+    public native MGLCompassButton getCompassView();
+    @Property(selector = "compassViewPosition")
+    public native MGLOrnamentPosition getCompassViewPosition();
+    @Property(selector = "setCompassViewPosition:")
+    public native void setCompassViewPosition(MGLOrnamentPosition v);
+    @Property(selector = "compassViewMargins")
+    public native @ByVal CGPoint getCompassViewMargins();
+    @Property(selector = "setCompassViewMargins:")
+    public native void setCompassViewMargins(@ByVal CGPoint v);
     @Property(selector = "logoView")
     public native UIImageView getLogoView();
+    @Property(selector = "logoViewPosition")
+    public native MGLOrnamentPosition getLogoViewPosition();
+    @Property(selector = "setLogoViewPosition:")
+    public native void setLogoViewPosition(MGLOrnamentPosition v);
+    @Property(selector = "logoViewMargins")
+    public native @ByVal CGPoint getLogoViewMargins();
+    @Property(selector = "setLogoViewMargins:")
+    public native void setLogoViewMargins(@ByVal CGPoint v);
     @Property(selector = "attributionButton")
     public native UIButton getAttributionButton();
+    @Property(selector = "attributionButtonPosition")
+    public native MGLOrnamentPosition getAttributionButtonPosition();
+    @Property(selector = "setAttributionButtonPosition:")
+    public native void setAttributionButtonPosition(MGLOrnamentPosition v);
+    @Property(selector = "attributionButtonMargins")
+    public native @ByVal CGPoint getAttributionButtonMargins();
+    @Property(selector = "setAttributionButtonMargins:")
+    public native void setAttributionButtonMargins(@ByVal CGPoint v);
     @Property(selector = "preferredFramesPerSecond")
     public native @MachineSizedSInt long getPreferredFramesPerSecond();
     @Property(selector = "setPreferredFramesPerSecond:")
     public native void setPreferredFramesPerSecond(@MachineSizedSInt long v);
+    @Property(selector = "prefetchesTiles")
+    public native boolean isPrefetchesTiles();
+    @Property(selector = "setPrefetchesTiles:")
+    public native void setPrefetchesTiles(boolean v);
     @Property(selector = "locationManager")
     public native MGLLocationManager getLocationManager();
     @Property(selector = "setLocationManager:")
@@ -100,8 +136,16 @@ import org.robovm.apple.coreanimation.*;
     public native MGLUserTrackingMode getUserTrackingMode();
     @Property(selector = "setUserTrackingMode:")
     public native void setUserTrackingMode(MGLUserTrackingMode v);
+    /**
+     * @deprecated Use `-[MGLMapViewDelegate mapViewUserLocationAnchorPoint:]` instead.
+     */
+    @Deprecated
     @Property(selector = "userLocationVerticalAlignment")
     public native MGLAnnotationVerticalAlignment getUserLocationVerticalAlignment();
+    /**
+     * @deprecated Use `-[MGLMapViewDelegate mapViewUserLocationAnchorPoint:]` instead.
+     */
+    @Deprecated
     @Property(selector = "setUserLocationVerticalAlignment:")
     public native void setUserLocationVerticalAlignment(MGLAnnotationVerticalAlignment v);
     @Property(selector = "showsUserHeadingIndicator")
@@ -238,16 +282,32 @@ import org.robovm.apple.coreanimation.*;
     public native void reloadStyle(NSObject sender);
     @Method(selector = "showAttribution:")
     public native void showAttribution(NSObject sender);
+    /**
+     * @deprecated Use `-setUserTrackingMode:animated:completionHandler:` instead.
+     */
+    @Deprecated
     @Method(selector = "setUserTrackingMode:animated:")
     public native void setUserTrackingMode(MGLUserTrackingMode mode, boolean animated);
+    @Method(selector = "setUserTrackingMode:animated:completionHandler:")
+    public native void setUserTrackingMode(MGLUserTrackingMode mode, boolean animated, @Block Runnable completion);
+    /**
+     * @deprecated Use `-[MGLMapViewDelegate mapViewUserLocationAnchorPoint:]` instead.
+     */
+    @Deprecated
     @Method(selector = "setUserLocationVerticalAlignment:animated:")
     public native void setUserLocationVerticalAlignment(MGLAnnotationVerticalAlignment alignment, boolean animated);
     @Method(selector = "updateUserLocationAnnotationView")
     public native void updateUserLocationAnnotationView();
     @Method(selector = "updateUserLocationAnnotationViewAnimatedWithDuration:")
     public native void updateUserLocationAnnotationViewAnimated(double duration);
+    /**
+     * @deprecated Use `-setTargetCoordinate:animated:completionHandler:` instead.
+     */
+    @Deprecated
     @Method(selector = "setTargetCoordinate:animated:")
     public native void setTargetCoordinate(@ByVal CLLocationCoordinate2D targetCoordinate, boolean animated);
+    @Method(selector = "setTargetCoordinate:animated:completionHandler:")
+    public native void setTargetCoordinate(@ByVal CLLocationCoordinate2D targetCoordinate, boolean animated, @Block Runnable completion);
     @Method(selector = "setCenterCoordinate:animated:")
     public native void setCenterCoordinate(@ByVal CLLocationCoordinate2D coordinate, boolean animated);
     @Method(selector = "setCenterCoordinate:zoomLevel:animated:")
@@ -266,16 +326,28 @@ import org.robovm.apple.coreanimation.*;
     public native void resetPosition();
     @Method(selector = "setVisibleCoordinateBounds:animated:")
     public native void setVisibleCoordinateBounds(@ByVal MGLCoordinateBounds bounds, boolean animated);
+    /**
+     * @deprecated Use `-setVisibleCoordinateBounds:edgePadding:animated:completionHandler:` instead.
+     */
+    @Deprecated
     @Method(selector = "setVisibleCoordinateBounds:edgePadding:animated:")
     public native void setVisibleCoordinateBounds(@ByVal MGLCoordinateBounds bounds, @ByVal UIEdgeInsets insets, boolean animated);
+    @Method(selector = "setVisibleCoordinateBounds:edgePadding:animated:completionHandler:")
+    public native void setVisibleCoordinateBounds(@ByVal MGLCoordinateBounds bounds, @ByVal UIEdgeInsets insets, boolean animated, @Block Runnable completion);
     @Method(selector = "setVisibleCoordinates:count:edgePadding:animated:")
     protected native void nativeSetVisibleCoordinates(CLLocationCoordinate2D coordinates, @MachineSizedUInt long count, @ByVal UIEdgeInsets insets, boolean animated);
     @Method(selector = "setVisibleCoordinates:count:edgePadding:direction:duration:animationTimingFunction:completionHandler:")
     protected native void nativeSetVisibleCoordinates(CLLocationCoordinate2D coordinates, @MachineSizedUInt long count, @ByVal UIEdgeInsets insets, double direction, double duration, CAMediaTimingFunction function, @Block Runnable completion);
     @Method(selector = "showAnnotations:animated:")
     public native void showAnnotations(NSArray<?> annotations, boolean animated);
+    /**
+     * @deprecated Use `-showAnnotations:edgePadding:animated:completionHandler:` instead.
+     */
+    @Deprecated
     @Method(selector = "showAnnotations:edgePadding:animated:")
     public native void showAnnotations(NSArray<?> annotations, @ByVal UIEdgeInsets insets, boolean animated);
+    @Method(selector = "showAnnotations:edgePadding:animated:completionHandler:")
+    public native void showAnnotations(NSArray<?> annotations, @ByVal UIEdgeInsets insets, boolean animated, @Block Runnable completion);
     @Method(selector = "setCamera:animated:")
     public native void setCamera(MGLMapCamera camera, boolean animated);
     @Method(selector = "setCamera:withDuration:animationTimingFunction:")
@@ -302,8 +374,14 @@ import org.robovm.apple.coreanimation.*;
     public native MGLMapCamera cameraThatFitsShape(MGLShape shape, double direction, @ByVal UIEdgeInsets insets);
     @Method(selector = "anchorPointForGesture:")
     public native @ByVal CGPoint anchorPointForGesture(UIGestureRecognizer gesture);
+    /**
+     * @deprecated Use `-setContentInset:animated:completionHandler:` instead.
+     */
+    @Deprecated
     @Method(selector = "setContentInset:animated:")
     public native void setContentInset(@ByVal UIEdgeInsets contentInset, boolean animated);
+    @Method(selector = "setContentInset:animated:completionHandler:")
+    public native void setContentInset(@ByVal UIEdgeInsets contentInset, boolean animated, @Block Runnable completion);
     @Method(selector = "convertPoint:toCoordinateFromView:")
     public native @ByVal CLLocationCoordinate2D convertPoint(@ByVal CGPoint point, UIView view);
     @Method(selector = "convertCoordinate:toPointToView:")
@@ -330,10 +408,16 @@ import org.robovm.apple.coreanimation.*;
     public native MGLAnnotationView dequeueReusableAnnotationView(String identifier);
     @Method(selector = "visibleAnnotationsInRect:")
     public native NSArray<?> visibleAnnotationsInRect(@ByVal CGRect rect);
+    /**
+     * @deprecated Use `-selectAnnotation:animated:completionHandler:` instead.
+     */
+    @Deprecated
     @Method(selector = "selectAnnotation:animated:")
     public native void selectAnnotation(MGLAnnotation annotation, boolean animated);
-    @Method(selector = "selectAnnotation:moveIntoView:animateSelection:")
-    public native void selectAnnotation(MGLAnnotation annotation, boolean moveIntoView, boolean animateSelection);
+    @Method(selector = "selectAnnotation:animated:completionHandler:")
+    public native void selectAnnotation(MGLAnnotation annotation, boolean animated, @Block Runnable completion);
+    @Method(selector = "selectAnnotation:moveIntoView:animateSelection:completionHandler:")
+    public native void selectAnnotation(MGLAnnotation annotation, boolean moveIntoView, boolean animateSelection, @Block Runnable completion);
     @Method(selector = "deselectAnnotation:animated:")
     public native void deselectAnnotation(MGLAnnotation annotation, boolean animated);
     @Method(selector = "addOverlay:")

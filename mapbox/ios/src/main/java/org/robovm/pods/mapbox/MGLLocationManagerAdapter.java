@@ -49,18 +49,6 @@ import org.robovm.apple.coreanimation.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*//*</constructors>*/
     /*<properties>*/
-    @NotImplemented("distanceFilter")
-    public double getDistanceFilter() { return 0; }
-    @NotImplemented("setDistanceFilter:")
-    public void setDistanceFilter(double v) {}
-    @NotImplemented("desiredAccuracy")
-    public double getDesiredAccuracy() { return 0; }
-    @NotImplemented("setDesiredAccuracy:")
-    public void setDesiredAccuracy(double v) {}
-    @NotImplemented("activityType")
-    public CLActivityType getActivityType() { return null; }
-    @NotImplemented("setActivityType:")
-    public void setActivityType(CLActivityType v) {}
     @NotImplemented("delegate")
     public MGLLocationManagerDelegate getDelegate() { return null; }
     @NotImplemented("setDelegate:")
@@ -74,6 +62,18 @@ import org.robovm.apple.coreanimation.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @NotImplemented("distanceFilter")
+    public double distanceFilter() { return 0; }
+    @NotImplemented("setDistanceFilter:")
+    public void setDistanceFilter(double distanceFilter) {}
+    @NotImplemented("desiredAccuracy")
+    public double desiredAccuracy() { return 0; }
+    @NotImplemented("setDesiredAccuracy:")
+    public void setDesiredAccuracy(double desiredAccuracy) {}
+    @NotImplemented("activityType")
+    public CLActivityType activityType() { return null; }
+    @NotImplemented("setActivityType:")
+    public void setActivityType(CLActivityType activityType) {}
     @NotImplemented("requestAlwaysAuthorization")
     public void requestAlwaysAuthorization() {}
     @NotImplemented("requestWhenInUseAuthorization")

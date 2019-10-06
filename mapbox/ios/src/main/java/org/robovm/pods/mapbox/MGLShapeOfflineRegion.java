@@ -51,7 +51,7 @@ import org.robovm.apple.coreanimation.*;
     protected MGLShapeOfflineRegion(Handle h, long handle) { super(h, handle); }
     protected MGLShapeOfflineRegion(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithStyleURL:shape:fromZoomLevel:toZoomLevel:")
-    public MGLShapeOfflineRegion(NSURL styleURL, MGLShape shape, double minimumZoomLevel, double maximumZoomLevel) { super((SkipInit) null); initObject(initWithStyleURL(styleURL, shape, minimumZoomLevel, maximumZoomLevel)); }
+    public MGLShapeOfflineRegion(NSURL styleURL, MGLShape shape, double minimumZoomLevel, double maximumZoomLevel) { super((SkipInit) null); initObject(init(styleURL, shape, minimumZoomLevel, maximumZoomLevel)); }
     @Method(selector = "initWithCoder:")
     public MGLShapeOfflineRegion(NSCoder decoder) { super((SkipInit) null); initObject(init(decoder)); }
     /*</constructors>*/
@@ -74,7 +74,7 @@ import org.robovm.apple.coreanimation.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "initWithStyleURL:shape:fromZoomLevel:toZoomLevel:")
-    protected native @Pointer long initWithStyleURL(NSURL styleURL, MGLShape shape, double minimumZoomLevel, double maximumZoomLevel);
+    protected native @Pointer long init(NSURL styleURL, MGLShape shape, double minimumZoomLevel, double maximumZoomLevel);
     @Method(selector = "encodeWithCoder:")
     public native void encode(NSCoder coder);
     @Method(selector = "initWithCoder:")

@@ -87,6 +87,10 @@ import org.robovm.apple.coreanimation.*;
     public void mapViewDidBecomeIdle(MGLMapView mapView) {}
     @NotImplemented("mapView:didFinishLoadingStyle:")
     public void didFinishLoadingStyle(MGLMapView mapView, MGLStyle style) {}
+    @NotImplemented("mapView:didFailToLoadImage:")
+    public UIImage didFailToLoadImage(MGLMapView mapView, String imageName) { return null; }
+    @NotImplemented("mapView:shouldRemoveStyleImage:")
+    public boolean shouldRemoveStyleImage(MGLMapView mapView, String imageName) { return false; }
     @NotImplemented("mapViewWillStartLocatingUser:")
     public void mapViewWillStartLocatingUser(MGLMapView mapView) {}
     @NotImplemented("mapViewDidStopLocatingUser:")

@@ -38,14 +38,13 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
-public enum /*<name>*/MGLLoggingLevel/*</name>*/ implements ValuedEnum {
+/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedUIntMarshaler.class)/*</annotations>*/
+public enum /*<name>*/MGLOrnamentPosition/*</name>*/ implements ValuedEnum {
     /*<values>*/
-    None(0L),
-    Info(1L),
-    Debug(2L),
-    Error(3L),
-    Fault(4L);
+    TopLeft(0L),
+    TopRight(1L),
+    BottomLeft(2L),
+    BottomRight(3L);
     /*</values>*/
 
     /*<bind>*/
@@ -55,15 +54,15 @@ public enum /*<name>*/MGLLoggingLevel/*</name>*/ implements ValuedEnum {
 
     private final long n;
 
-    private /*<name>*/MGLLoggingLevel/*</name>*/(long n) { this.n = n; }
+    private /*<name>*/MGLOrnamentPosition/*</name>*/(long n) { this.n = n; }
     public long value() { return n; }
-    public static /*<name>*/MGLLoggingLevel/*</name>*/ valueOf(long n) {
-        for (/*<name>*/MGLLoggingLevel/*</name>*/ v : values()) {
+    public static /*<name>*/MGLOrnamentPosition/*</name>*/ valueOf(long n) {
+        for (/*<name>*/MGLOrnamentPosition/*</name>*/ v : values()) {
             if (v.n == n) {
                 return v;
             }
         }
         throw new IllegalArgumentException("No constant with value " + n + " found in " 
-            + /*<name>*/MGLLoggingLevel/*</name>*/.class.getName());
+            + /*<name>*/MGLOrnamentPosition/*</name>*/.class.getName());
     }
 }

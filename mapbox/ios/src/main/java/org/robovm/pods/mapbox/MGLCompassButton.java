@@ -39,37 +39,37 @@ import org.robovm.apple.coreanimation.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/MGLOpenGLStyleLayer/*</name>*/ 
-    extends /*<extends>*/MGLStyleLayer/*</extends>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/MGLCompassButton/*</name>*/ 
+    extends /*<extends>*/UIImageView/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class MGLOpenGLStyleLayerPtr extends Ptr<MGLOpenGLStyleLayer, MGLOpenGLStyleLayerPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(MGLOpenGLStyleLayer.class); }/*</bind>*/
+    /*<ptr>*/public static class MGLCompassButtonPtr extends Ptr<MGLCompassButton, MGLCompassButtonPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(MGLCompassButton.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected MGLOpenGLStyleLayer() {}
-    protected MGLOpenGLStyleLayer(Handle h, long handle) { super(h, handle); }
-    protected MGLOpenGLStyleLayer(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithIdentifier:")
-    public MGLOpenGLStyleLayer(String identifier) { super((SkipInit) null); initObject(init(identifier)); }
+    public MGLCompassButton() {}
+    protected MGLCompassButton(Handle h, long handle) { super(h, handle); }
+    protected MGLCompassButton(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithImage:")
+    public MGLCompassButton(UIImage image) { super(image); }
+    /**
+     * @since Available in iOS 3.0 and later.
+     */
+    @Method(selector = "initWithImage:highlightedImage:")
+    public MGLCompassButton(UIImage image, UIImage highlightedImage) { super(image, highlightedImage); }
+    @Method(selector = "initWithFrame:")
+    public MGLCompassButton(@ByVal CGRect frame) { super(frame); }
+    @Method(selector = "initWithCoder:")
+    public MGLCompassButton(NSCoder decoder) { super(decoder); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "style")
-    public native MGLStyle getStyle();
-    @Property(selector = "context")
-    public native NSObject getContext();
+    @Property(selector = "compassVisibility")
+    public native MGLOrnamentVisibility getCompassVisibility();
+    @Property(selector = "setCompassVisibility:")
+    public native void setCompassVisibility(MGLOrnamentVisibility v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "initWithIdentifier:")
-    protected native @Pointer long init(String identifier);
-    @Method(selector = "didMoveToMapView:")
-    public native void didMoveToMapView(MGLMapView mapView);
-    @Method(selector = "willMoveFromMapView:")
-    public native void willMoveFromMapView(MGLMapView mapView);
-    @Method(selector = "drawInMapView:withContext:")
-    public native void drawInMapView(MGLMapView mapView, @ByVal MGLStyleLayerDrawingContext context);
-    @Method(selector = "setNeedsDisplay")
-    public native void setNeedsDisplay();
+    
     /*</methods>*/
 }
