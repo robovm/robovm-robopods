@@ -76,6 +76,8 @@ import org.robovm.apple.coreanimation.*;
     public static native String RedundantSourceException();
     @GlobalValue(symbol="MGLRedundantSourceIdentifierException", optional=true)
     public static native String RedundantSourceIdentifierException();
+    @GlobalValue(symbol="MGLInvalidStyleSourceException", optional=true)
+    public static native String InvalidStyleSourceException();
     @GlobalValue(symbol="MGLInvalidDatasourceException", optional=true)
     public static native String InvalidDatasourceException();
     @GlobalValue(symbol="MGLExpressionInterpolationModeLinear", optional=true)

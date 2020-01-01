@@ -38,34 +38,25 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
-public enum /*<name>*/MGLLoggingLevel/*</name>*/ implements ValuedEnum {
-    /*<values>*/
-    None(0L),
-    Fault(1L),
-    Error(2L),
-    Warning(3L),
-    Info(4L),
-    Debug(5L),
-    Verbose(6L);
-    /*</values>*/
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/MGLMapSnapshotOverlay/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*//*</implements>*/ {
 
-    /*<bind>*/
-    /*</bind>*/
+    /*<ptr>*/public static class MGLMapSnapshotOverlayPtr extends Ptr<MGLMapSnapshotOverlay, MGLMapSnapshotOverlayPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(MGLMapSnapshotOverlay.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<methods>*//*</methods>*/
-
-    private final long n;
-
-    private /*<name>*/MGLLoggingLevel/*</name>*/(long n) { this.n = n; }
-    public long value() { return n; }
-    public static /*<name>*/MGLLoggingLevel/*</name>*/ valueOf(long n) {
-        for (/*<name>*/MGLLoggingLevel/*</name>*/ v : values()) {
-            if (v.n == n) {
-                return v;
-            }
-        }
-        throw new IllegalArgumentException("No constant with value " + n + " found in " 
-            + /*<name>*/MGLLoggingLevel/*</name>*/.class.getName());
-    }
+    /*<constructors>*/
+    public MGLMapSnapshotOverlay() {}
+    protected MGLMapSnapshotOverlay(Handle h, long handle) { super(h, handle); }
+    protected MGLMapSnapshotOverlay(SkipInit skipInit) { super(skipInit); }
+    /*</constructors>*/
+    /*<properties>*/
+    @Property(selector = "context")
+    public native CGContext getContext();
+    /*</properties>*/
+    /*<members>*//*</members>*/
+    /*<methods>*/
+    
+    /*</methods>*/
 }

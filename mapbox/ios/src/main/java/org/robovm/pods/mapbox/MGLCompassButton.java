@@ -52,15 +52,12 @@ import org.robovm.apple.coreanimation.*;
     protected MGLCompassButton(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithImage:")
     public MGLCompassButton(UIImage image) { super(image); }
-    /**
-     * @since Available in iOS 3.0 and later.
-     */
     @Method(selector = "initWithImage:highlightedImage:")
     public MGLCompassButton(UIImage image, UIImage highlightedImage) { super(image, highlightedImage); }
     @Method(selector = "initWithFrame:")
     public MGLCompassButton(@ByVal CGRect frame) { super(frame); }
     @Method(selector = "initWithCoder:")
-    public MGLCompassButton(NSCoder decoder) { super(decoder); }
+    public MGLCompassButton(NSCoder coder) { super(coder); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "compassVisibility")

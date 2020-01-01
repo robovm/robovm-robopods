@@ -9,6 +9,7 @@ typedefs:
     MGLShapeSourceOption: NSString
 
 enums:
+    MGLTextWritingMode: {}
     MGLErrorCode: {nsError: true, prefix: kMGLError}
     MGLAnnotationViewDragState: {}
     MGLMapDebugMaskOptions: {prefix: MGLMapDebug}
@@ -57,6 +58,7 @@ classes:
         methods:
             '-initWithStyleURL:shape:fromZoomLevel:toZoomLevel:':
                 name: init
+    MGLMapSnapshotOverlay: {}
     MGLEmptyFeature: {}
     MGLLoggingConfiguration: {}
     MGLNetworkConfiguration: {}
@@ -203,6 +205,8 @@ classes:
                 name: init
     MGLMapSnapshotter:
         methods:
+            '-startWithOverlayHandler:completionHandler:':
+                name: start
             '-startWithQueue:completionHandler:':
                 name: start
             '-startWithCompletionHandler:':

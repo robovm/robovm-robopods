@@ -53,7 +53,7 @@ import org.robovm.apple.coreanimation.*;
     @Method(selector = "initWithStyleURL:shape:fromZoomLevel:toZoomLevel:")
     public MGLShapeOfflineRegion(NSURL styleURL, MGLShape shape, double minimumZoomLevel, double maximumZoomLevel) { super((SkipInit) null); initObject(init(styleURL, shape, minimumZoomLevel, maximumZoomLevel)); }
     @Method(selector = "initWithCoder:")
-    public MGLShapeOfflineRegion(NSCoder decoder) { super((SkipInit) null); initObject(init(decoder)); }
+    public MGLShapeOfflineRegion(NSCoder coder) { super((SkipInit) null); initObject(init(coder)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "shape")
@@ -78,6 +78,6 @@ import org.robovm.apple.coreanimation.*;
     @Method(selector = "encodeWithCoder:")
     public native void encode(NSCoder coder);
     @Method(selector = "initWithCoder:")
-    protected native @Pointer long init(NSCoder decoder);
+    protected native @Pointer long init(NSCoder coder);
     /*</methods>*/
 }

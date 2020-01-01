@@ -69,6 +69,8 @@ import org.robovm.apple.coreanimation.*;
     public native void start(@Block VoidBlock2<MGLMapSnapshot, NSError> completionHandler);
     @Method(selector = "startWithQueue:completionHandler:")
     public native void start(DispatchQueue queue, @Block VoidBlock2<MGLMapSnapshot, NSError> completionHandler);
+    @Method(selector = "startWithOverlayHandler:completionHandler:")
+    public native void start(@Block VoidBlock1<MGLMapSnapshotOverlay> overlayHandler, @Block VoidBlock2<MGLMapSnapshot, NSError> completionHandler);
     @Method(selector = "cancel")
     public native void cancel();
     /*</methods>*/

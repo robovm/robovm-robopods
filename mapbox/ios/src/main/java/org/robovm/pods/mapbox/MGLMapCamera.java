@@ -51,7 +51,7 @@ import org.robovm.apple.coreanimation.*;
     protected MGLMapCamera(Handle h, long handle) { super(h, handle); }
     protected MGLMapCamera(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithCoder:")
-    public MGLMapCamera(NSCoder decoder) { super((SkipInit) null); initObject(init(decoder)); }
+    public MGLMapCamera(NSCoder coder) { super((SkipInit) null); initObject(init(coder)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "centerCoordinate")
@@ -99,6 +99,6 @@ import org.robovm.apple.coreanimation.*;
     @Method(selector = "encodeWithCoder:")
     public native void encode(NSCoder coder);
     @Method(selector = "initWithCoder:")
-    protected native @Pointer long init(NSCoder decoder);
+    protected native @Pointer long init(NSCoder coder);
     /*</methods>*/
 }

@@ -57,7 +57,7 @@ import org.robovm.apple.coreanimation.*;
     @Method(selector = "initWithFrame:")
     public MGLAnnotationView(@ByVal CGRect frame) { super(frame); }
     @Method(selector = "initWithCoder:")
-    public MGLAnnotationView(NSCoder decoder) { super(decoder); }
+    public MGLAnnotationView(NSCoder coder) { super(coder); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "annotation")

@@ -55,7 +55,7 @@ import org.robovm.apple.coreanimation.*;
     @Method(selector = "initWithFrame:styleURL:")
     public MGLMapView(@ByVal CGRect frame, NSURL styleURL) { super((SkipInit) null); initObject(init(frame, styleURL)); }
     @Method(selector = "initWithCoder:")
-    public MGLMapView(NSCoder decoder) { super(decoder); }
+    public MGLMapView(NSCoder coder) { super(coder); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "delegate")

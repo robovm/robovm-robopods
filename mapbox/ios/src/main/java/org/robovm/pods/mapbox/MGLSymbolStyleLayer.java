@@ -214,6 +214,10 @@ import org.robovm.apple.coreanimation.*;
     public native NSExpression getTextVariableAnchor();
     @Property(selector = "setTextVariableAnchor:")
     public native void setTextVariableAnchor(NSExpression v);
+    @Property(selector = "textWritingModes")
+    public native NSExpression getTextWritingModes();
+    @Property(selector = "setTextWritingModes:")
+    public native void setTextWritingModes(NSExpression v);
     @Property(selector = "iconColor")
     public native NSExpression getIconColor();
     @Property(selector = "setIconColor:")

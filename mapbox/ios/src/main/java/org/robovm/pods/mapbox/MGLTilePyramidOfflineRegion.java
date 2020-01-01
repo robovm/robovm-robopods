@@ -53,7 +53,7 @@ import org.robovm.apple.coreanimation.*;
     @Method(selector = "initWithStyleURL:bounds:fromZoomLevel:toZoomLevel:")
     public MGLTilePyramidOfflineRegion(NSURL styleURL, @ByVal MGLCoordinateBounds bounds, double minimumZoomLevel, double maximumZoomLevel) { super((SkipInit) null); initObject(init(styleURL, bounds, minimumZoomLevel, maximumZoomLevel)); }
     @Method(selector = "initWithCoder:")
-    public MGLTilePyramidOfflineRegion(NSCoder decoder) { super((SkipInit) null); initObject(init(decoder)); }
+    public MGLTilePyramidOfflineRegion(NSCoder coder) { super((SkipInit) null); initObject(init(coder)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "bounds")
@@ -78,6 +78,6 @@ import org.robovm.apple.coreanimation.*;
     @Method(selector = "encodeWithCoder:")
     public native void encode(NSCoder coder);
     @Method(selector = "initWithCoder:")
-    protected native @Pointer long init(NSCoder decoder);
+    protected native @Pointer long init(NSCoder coder);
     /*</methods>*/
 }

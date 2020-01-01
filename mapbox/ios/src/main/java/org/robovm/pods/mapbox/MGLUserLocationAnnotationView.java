@@ -57,7 +57,7 @@ import org.robovm.apple.coreanimation.*;
     @Method(selector = "initWithFrame:")
     public MGLUserLocationAnnotationView(@ByVal CGRect frame) { super(frame); }
     @Method(selector = "initWithCoder:")
-    public MGLUserLocationAnnotationView(NSCoder decoder) { super(decoder); }
+    public MGLUserLocationAnnotationView(NSCoder coder) { super(coder); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "mapView")
