@@ -52,8 +52,8 @@ Add the following dependency to your `pom.xml`:
 
 ### SDK setup
 
-- [Update your Info.plist] (https://developers.google.com/admob/ios/quick-start#update_your_infoplist)
-- [Initialize the SDK] (https://developers.google.com/admob/ios/quick-start#initialize_mobile_ads).
+- [Update your Info.plist](https://developers.google.com/admob/ios/quick-start#update_your_infoplist)
+- [Initialize the SDK](https://developers.google.com/admob/ios/quick-start#initialize_mobile_ads).
 
 #### Disable crash reporting
 
