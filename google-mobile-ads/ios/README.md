@@ -1,9 +1,5 @@
 # Google Mobile Ads iOS (a.k.a. Admob)
 
-## Sample app
-
-[Link](https://github.com/robovm/robovm-samples/tree/master/robopods/google-mobile-ads/ios)
-
 ## Install Instructions
 
 ### 3rd party native framework
