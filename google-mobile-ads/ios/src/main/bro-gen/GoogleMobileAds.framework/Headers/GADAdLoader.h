@@ -6,15 +6,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-
 #import <GoogleMobileAds/GADAdLoaderAdTypes.h>
 #import <GoogleMobileAds/GADAdLoaderDelegate.h>
 #import <GoogleMobileAds/GADRequest.h>
 #import <GoogleMobileAds/GADRequestError.h>
 #import <GoogleMobileAds/GoogleMobileAdsDefines.h>
+#import <UIKit/UIKit.h>
 
-GAD_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 /// Ad loader options base class. See each ad type's header for available GADAdLoaderOptions
 /// subclasses.
@@ -26,7 +25,7 @@ GAD_ASSUME_NONNULL_BEGIN
 
 /// Object notified when an ad request succeeds or fails. Must conform to requested ad types'
 /// delegate protocols.
-@property(nonatomic, weak, GAD_NULLABLE) id<GADAdLoaderDelegate> delegate;
+@property(nonatomic, weak, nullable) id<GADAdLoaderDelegate> delegate;
 
 /// The ad loader's ad unit ID.
 @property(nonatomic, readonly) NSString *adUnitID;
@@ -38,16 +37,16 @@ GAD_ASSUME_NONNULL_BEGIN
 ///
 /// @param rootViewController The root view controller is used to present ad click actions.
 /// @param adTypes An array of ad types. See GADAdLoaderAdTypes.h for available ad types.
-/// @param options An array of GADAdLoaderOptions objects to configure how ads are loaded, or nil to
-/// use default options. See each ad type's header for available GADAdLoaderOptions subclasses.
+/// @param options An array of GADAdLoaderOptions objects to configure how ads are loaded, or nil
+/// to use default options. See each ad type's header for available GADAdLoaderOptions subclasses.
 - (instancetype)initWithAdUnitID:(NSString *)adUnitID
-              rootViewController:(UIViewController *GAD_NULLABLE_TYPE)rootViewController
+              rootViewController:(nullable UIViewController *)rootViewController
                          adTypes:(NSArray<GADAdLoaderAdType> *)adTypes
-                         options:(NSArray<GADAdLoaderOptions *> *GAD_NULLABLE_TYPE)options;
+                         options:(nullable NSArray<GADAdLoaderOptions *> *)options;
 
 /// Loads the ad and informs the delegate of the outcome.
-- (void)loadRequest:(GADRequest *GAD_NULLABLE_TYPE)request;
+- (void)loadRequest:(nullable GADRequest *)request;
 
 @end
 
-GAD_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

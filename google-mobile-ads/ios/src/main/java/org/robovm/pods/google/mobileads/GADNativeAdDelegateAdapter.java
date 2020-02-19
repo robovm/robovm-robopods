@@ -56,12 +56,12 @@ import org.robovm.apple.storekit.*;
     @NotImplemented("nativeAdDidRecordClick:")
     public void nativeAdDidRecordClick(GADNativeAd nativeAd) {}
     @NotImplemented("nativeAdWillPresentScreen:")
-    public void willPresentScreen(GADNativeAd nativeAd) {}
+    public void nativeAdWillPresentScreen(GADNativeAd nativeAd) {}
     @NotImplemented("nativeAdWillDismissScreen:")
-    public void willDismissScreen(GADNativeAd nativeAd) {}
+    public void nativeAdWillDismissScreen(GADNativeAd nativeAd) {}
     @NotImplemented("nativeAdDidDismissScreen:")
-    public void didDismissScreen(GADNativeAd nativeAd) {}
+    public void nativeAdDidDismissScreen(GADNativeAd nativeAd) {}
     @NotImplemented("nativeAdWillLeaveApplication:")
-    public void willLeaveApplication(GADNativeAd nativeAd) {}
+    public void nativeAdWillLeaveApplication(GADNativeAd nativeAd) {}
     /*</methods>*/
 }

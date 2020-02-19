@@ -210,6 +210,6 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "setAdvancedOptionValue:forKey:")
-    public native void setAdvancedOption(NSObject value, String key);
+    public native void setAdvancedOptionValue(NSObject value, String key);
     /*</methods>*/
 }

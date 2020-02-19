@@ -8,16 +8,13 @@
         <framework>CFNetwork</framework>
         <framework>CoreGraphics</framework>
         <framework>CoreMedia</framework>
-        <framework>CoreMotion</framework>
         <framework>CoreTelephony</framework>
         <framework>CoreVideo</framework>
         <framework>Foundation</framework>
-        <framework>GLKit</framework>
         <framework>JavaScriptCore</framework>
         <framework>MediaPlayer</framework>
         <framework>MessageUI</framework>
         <framework>MobileCoreServices</framework>
-        <framework>OpenGLES</framework>
         <framework>QuartzCore</framework>
         <framework>SafariServices</framework>
         <framework>Security</framework>
@@ -27,8 +24,8 @@
         <framework>WebKit</framework>
     </frameworks>
     <libs>
-        <lib>libs/libGGLAdMob.a</lib>
         <lib>z</lib>
+        <lib>sqlite3</lib>
     </libs>
     <unhideSymbols>
         <symbol>kGADErrorDomain</symbol>
@@ -36,6 +33,8 @@
         <symbol>kGADAdLoaderAdTypeNativeAppInstall</symbol>
         <symbol>kGADAdLoaderAdTypeNativeContent</symbol>
         <symbol>kGADAdLoaderAdTypeNativeCustomTemplate</symbol>
+        <symbol>kGADAdLoaderAdTypeDFPBanner</symbol>
+        <symbol>kGADAdLoaderAdTypeUnifiedNative</symbol>
         <symbol>kGADAdSizeBanner</symbol>
         <symbol>kGADAdSizeLargeBanner</symbol>
         <symbol>kGADAdSizeMediumRectangle</symbol>
@@ -44,6 +43,7 @@
         <symbol>kGADAdSizeSkyscraper</symbol>
         <symbol>kGADAdSizeSmartBannerPortrait</symbol>
         <symbol>kGADAdSizeSmartBannerLandscape</symbol>
+        <symbol>kGADAdSizeFluid</symbol>
         <symbol>kGADAdSizeInvalid</symbol>
         <symbol>GADAdSizeFromCGSize</symbol>
         <symbol>GADAdSizeFullWidthPortraitWithHeight</symbol>
@@ -51,6 +51,7 @@
         <symbol>GADAdSizeEqualToSize</symbol>
         <symbol>CGSizeFromGADAdSize</symbol>
         <symbol>IsGADAdSizeValid</symbol>
+        <symbol>GADAdSizeIsFluid</symbol>
         <symbol>NSStringFromGADAdSize</symbol>
         <symbol>NSValueFromGADAdSize</symbol>
         <symbol>GADAdSizeFromNSValue</symbol>

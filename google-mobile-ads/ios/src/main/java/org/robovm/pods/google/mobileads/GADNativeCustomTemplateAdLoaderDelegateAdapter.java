@@ -52,7 +52,7 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("nativeCustomTemplateIDsForAdLoader:")
-    public @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getNativeCustomTemplateIDs(GADAdLoader adLoader) { return null; }
+    public NSArray<NSString> nativeCustomTemplateIDsForAdLoader(GADAdLoader adLoader) { return null; }
     @NotImplemented("adLoader:didReceiveNativeCustomTemplateAd:")
     public void didReceiveNativeCustomTemplateAd(GADAdLoader adLoader, GADNativeCustomTemplateAd nativeCustomTemplateAd) {}
     /*</methods>*/

@@ -5,15 +5,14 @@
 //  Copyright 2015 Google Inc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 #import <GoogleMobileAds/GADAdSize.h>
 #import <GoogleMobileAds/GADNativeExpressAdViewDelegate.h>
 #import <GoogleMobileAds/GADRequest.h>
 #import <GoogleMobileAds/GADVideoController.h>
 #import <GoogleMobileAds/GoogleMobileAdsDefines.h>
+#import <UIKit/UIKit.h>
 
-GAD_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 /// The view that displays native ads. A minimum implementation to get an ad from within a
 /// UIViewController class is:
@@ -36,11 +35,11 @@ GAD_DEPRECATED_ATTRIBUTE
 
 /// Returns an initialized GADNativeExpressAdView instance set to |adSize| and positioned at
 /// |origin| relative to its superview bounds. Returns nil if |adSize| is an invalid ad size.
-- (instancetype GAD_NULLABLE_TYPE)initWithAdSize:(GADAdSize)adSize origin:(CGPoint)origin;
+- (nullable instancetype)initWithAdSize:(GADAdSize)adSize origin:(CGPoint)origin;
 
-/// Returns an initialized GADNativeExpressAdView instance set to |adSize| and positioned at the top
-/// left of its superview. Returns nil if |adSize| is an invalid ad size.
-- (instancetype GAD_NULLABLE_TYPE)initWithAdSize:(GADAdSize)adSize;
+/// Returns an initialized GADNativeExpressAdView instance set to |adSize| and positioned at the
+/// top left of its superview. Returns nil if |adSize| is an invalid ad size.
+- (nullable instancetype)initWithAdSize:(GADAdSize)adSize;
 
 /// Video controller for controlling video rendered by this native express ad view.
 @property(nonatomic, strong, readonly) GADVideoController *videoController;
@@ -52,11 +51,11 @@ GAD_DEPRECATED_ATTRIBUTE
 /// important for targeting and statistics.
 ///
 /// Example AdMob ad unit ID: @"ca-app-pub-0123456789012345/0123456789"
-@property(nonatomic, copy, GAD_NULLABLE) IBInspectable NSString *adUnitID;
+@property(nonatomic, copy, nullable) IBInspectable NSString *adUnitID;
 
 /// Required reference to the current root view controller. For example, the root view controller in
 /// a tab-based application would be the UITabViewController.
-@property(nonatomic, weak, GAD_NULLABLE) IBOutlet UIViewController *rootViewController;
+@property(nonatomic, weak, nullable) IBOutlet UIViewController *rootViewController;
 
 /// Required to set this native ad view to a proper size. Never create your own GADAdSize directly.
 /// Use one of the predefined standard ad sizes (such as kGADAdSizeBanner), or create one using the
@@ -67,7 +66,7 @@ GAD_DEPRECATED_ATTRIBUTE
 
 /// Optional delegate object that receives state change notifications from this
 /// GADNativeExpressAdView. Typically this is a UIViewController.
-@property(nonatomic, weak, GAD_NULLABLE) IBOutlet id<GADNativeExpressAdViewDelegate> delegate;
+@property(nonatomic, weak, nullable) IBOutlet id<GADNativeExpressAdViewDelegate> delegate;
 
 /// A Boolean value that determines whether autoloading of ads in the receiver is enabled. If
 /// enabled, you do not need to call the loadRequest: method to load ads.
@@ -82,16 +81,16 @@ GAD_DEPRECATED_ATTRIBUTE
 #pragma mark - Making an Ad Request
 
 /// Makes an ad request. The request object supplies targeting information.
-- (void)loadRequest:(GADRequest *GAD_NULLABLE_TYPE)request;
+- (void)loadRequest:(nullable GADRequest *)request;
 
 #pragma mark - Mediation
 
 /// The name of the ad network adapter class that fetched the current ad. Returns nil while the
 /// latest ad request is in progress or if the latest ad request failed. For both standard and
-/// mediated Google AdMob ads, this method returns @"GADMAdapterGoogleAdMobAds". For ads fetched via
-/// mediation custom events, this method returns @"GADMAdapterCustomEvents".
-@property(nonatomic, readonly, weak, GAD_NULLABLE) NSString *adNetworkClassName;
+/// mediated Google AdMob ads, this method returns @"GADMAdapterGoogleAdMobAds". For ads fetched
+/// via mediation custom events, this method returns @"GADMAdapterCustomEvents".
+@property(nonatomic, readonly, weak, nullable) NSString *adNetworkClassName;
 
 @end
 
-GAD_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

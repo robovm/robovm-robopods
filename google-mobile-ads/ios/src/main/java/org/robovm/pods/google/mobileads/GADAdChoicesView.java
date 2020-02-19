@@ -48,6 +48,10 @@ import org.robovm.apple.storekit.*;
     public GADAdChoicesView() {}
     protected GADAdChoicesView(Handle h, long handle) { super(h, handle); }
     protected GADAdChoicesView(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithFrame:")
+    public GADAdChoicesView(@ByVal CGRect frame) { super(frame); }
+    @Method(selector = "initWithCoder:")
+    public GADAdChoicesView(NSCoder decoder) { super(decoder); }
     /*</constructors>*/
     /*<properties>*/
     

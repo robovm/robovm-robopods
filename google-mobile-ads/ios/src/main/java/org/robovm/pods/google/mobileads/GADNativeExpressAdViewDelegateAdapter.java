@@ -54,7 +54,7 @@ import org.robovm.apple.storekit.*;
     @NotImplemented("nativeExpressAdViewDidReceiveAd:")
     public void nativeExpressAdViewDidReceiveAd(GADNativeExpressAdView nativeExpressAdView) {}
     @NotImplemented("nativeExpressAdView:didFailToReceiveAdWithError:")
-    public void didFailToReceiveAd(GADNativeExpressAdView nativeExpressAdView, GADRequestError error) {}
+    public void nativeExpressAdViewDidFailToReceiveAd(GADNativeExpressAdView nativeExpressAdView, GADRequestError error) {}
     @NotImplemented("nativeExpressAdViewWillPresentScreen:")
     public void nativeExpressAdViewWillPresentScreen(GADNativeExpressAdView nativeExpressAdView) {}
     @NotImplemented("nativeExpressAdViewWillDismissScreen:")

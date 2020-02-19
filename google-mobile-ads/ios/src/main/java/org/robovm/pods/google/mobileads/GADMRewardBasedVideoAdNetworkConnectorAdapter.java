@@ -68,7 +68,7 @@ import org.robovm.apple.storekit.*;
     @NotImplemented("adapterDidCloseRewardBasedVideoAd:")
     public void adapterDidCloseRewardBasedVideoAd(GADMRewardBasedVideoAdNetworkAdapter rewardBasedVideoAdAdapter) {}
     @NotImplemented("adapter:didRewardUserWithReward:")
-    public void adidRewardUser(GADMRewardBasedVideoAdNetworkAdapter rewardBasedVideoAd, GADAdReward reward) {}
+    public void didRewardUser(GADMRewardBasedVideoAdNetworkAdapter rewardBasedVideoAd, GADAdReward reward) {}
     @NotImplemented("adapterWillLeaveApplication:")
     public void adapterWillLeaveApplication(GADMRewardBasedVideoAdNetworkAdapter rewardBasedVideoAdAdapter) {}
     @NotImplemented("adapter:didFailToLoadRewardBasedVideoAdwithError:")

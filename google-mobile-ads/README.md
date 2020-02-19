@@ -6,7 +6,7 @@ AdMob is a mobile ads network. Gain insights about your users, drive more in-app
 
 | Platform    | Version |
 |-------------|---------|
-| [iOS](ios/) | 7.31.0  |
+| [iOS](ios/) | 7.42.2  |
 |             |         |
 
 ## Official website

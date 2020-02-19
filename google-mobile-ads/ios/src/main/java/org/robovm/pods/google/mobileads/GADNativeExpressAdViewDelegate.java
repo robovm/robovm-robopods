@@ -52,7 +52,7 @@ import org.robovm.apple.storekit.*;
     @Method(selector = "nativeExpressAdViewDidReceiveAd:")
     void nativeExpressAdViewDidReceiveAd(GADNativeExpressAdView nativeExpressAdView);
     @Method(selector = "nativeExpressAdView:didFailToReceiveAdWithError:")
-    void didFailToReceiveAd(GADNativeExpressAdView nativeExpressAdView, GADRequestError error);
+    void nativeExpressAdViewDidFailToReceiveAd(GADNativeExpressAdView nativeExpressAdView, GADRequestError error);
     @Method(selector = "nativeExpressAdViewWillPresentScreen:")
     void nativeExpressAdViewWillPresentScreen(GADNativeExpressAdView nativeExpressAdView);
     @Method(selector = "nativeExpressAdViewWillDismissScreen:")

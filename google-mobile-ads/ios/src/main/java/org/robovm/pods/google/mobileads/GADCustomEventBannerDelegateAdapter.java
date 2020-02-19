@@ -53,18 +53,20 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("customEventBanner:didReceiveAd:")
-    public void didReceiveAd(GADCustomEventBanner customEvent, UIView view) {}
+    public void customEventBannerDidReceiveAd(GADCustomEventBanner customEvent, UIView view) {}
     @NotImplemented("customEventBanner:didFailAd:")
-    public void didFail(GADCustomEventBanner customEvent, NSError error) {}
+    public void customEventBannerDidFailAd(GADCustomEventBanner customEvent, NSError error) {}
     @NotImplemented("customEventBannerWasClicked:")
-    public void wasClicked(GADCustomEventBanner customEvent) {}
+    public void customEventBannerWasClicked(GADCustomEventBanner customEvent) {}
     @NotImplemented("customEventBannerWillPresentModal:")
-    public void willPresentModal(GADCustomEventBanner customEvent) {}
+    public void customEventBannerWillPresentModal(GADCustomEventBanner customEvent) {}
     @NotImplemented("customEventBannerWillDismissModal:")
-    public void willDismissModal(GADCustomEventBanner customEvent) {}
+    public void customEventBannerWillDismissModal(GADCustomEventBanner customEvent) {}
     @NotImplemented("customEventBannerDidDismissModal:")
-    public void didDismissModal(GADCustomEventBanner customEvent) {}
+    public void customEventBannerDidDismissModal(GADCustomEventBanner customEvent) {}
     @NotImplemented("customEventBannerWillLeaveApplication:")
-    public void willLeaveApplication(GADCustomEventBanner customEvent) {}
+    public void customEventBannerWillLeaveApplication(GADCustomEventBanner customEvent) {}
+    @NotImplemented("customEventBanner:clickDidOccurInAd:")
+    public void customEventBannerClickDidOccurInAd(GADCustomEventBanner customEvent, UIView view) {}
     /*</methods>*/
 }

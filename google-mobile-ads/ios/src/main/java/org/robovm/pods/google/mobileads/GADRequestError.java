@@ -47,6 +47,8 @@ import org.robovm.apple.storekit.*;
     /*<constructors>*/
     protected GADRequestError(Handle h, long handle) { super(h, handle); }
     protected GADRequestError(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithDomain:code:userInfo:")
+    public GADRequestError(String domain, @MachineSizedSInt long code, NSErrorUserInfo dict) { super(domain, code, dict); }
     /*</constructors>*/
     /*<properties>*/
     

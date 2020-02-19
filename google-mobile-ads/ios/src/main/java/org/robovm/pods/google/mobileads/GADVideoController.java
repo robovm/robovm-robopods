@@ -63,10 +63,12 @@ import org.robovm.apple.storekit.*;
     public native void play();
     @Method(selector = "pause")
     public native void pause();
+    @Method(selector = "stop")
+    public native void stop();
     @Method(selector = "hasVideoContent")
     public native boolean hasVideoContent();
     @Method(selector = "aspectRatio")
-    public native double getAspectRatio();
+    public native double aspectRatio();
     @Method(selector = "customControlsEnabled")
     public native boolean customControlsEnabled();
     @Method(selector = "clickToExpandEnabled")

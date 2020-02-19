@@ -48,6 +48,10 @@ import org.robovm.apple.storekit.*;
     public GADUnifiedNativeAdView() {}
     protected GADUnifiedNativeAdView(Handle h, long handle) { super(h, handle); }
     protected GADUnifiedNativeAdView(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithFrame:")
+    public GADUnifiedNativeAdView(@ByVal CGRect frame) { super(frame); }
+    @Method(selector = "initWithCoder:")
+    public GADUnifiedNativeAdView(NSCoder decoder) { super(decoder); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "nativeAd")

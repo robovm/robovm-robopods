@@ -52,7 +52,8 @@ public enum /*<name>*/GADErrorCode/*</name>*/ implements NSErrorCode {
     MediationInvalidAdSize(10L),
     InternalError(11L),
     InvalidArgument(12L),
-    ReceivedInvalidResponse(13L);
+    ReceivedInvalidResponse(13L),
+    RewardedAdAlreadyUsed(14L);
     /*</values>*/
 
     /*<bind>*/static { Bro.bind(GADErrorCode.class); }/*</bind>*/

@@ -48,6 +48,10 @@ import org.robovm.apple.storekit.*;
     public GADNativeAppInstallAdView() {}
     protected GADNativeAppInstallAdView(Handle h, long handle) { super(h, handle); }
     protected GADNativeAppInstallAdView(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithFrame:")
+    public GADNativeAppInstallAdView(@ByVal CGRect frame) { super(frame); }
+    @Method(selector = "initWithCoder:")
+    public GADNativeAppInstallAdView(NSCoder decoder) { super(decoder); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "nativeAppInstallAd")

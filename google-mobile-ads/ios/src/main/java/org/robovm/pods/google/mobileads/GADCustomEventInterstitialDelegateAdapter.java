@@ -52,18 +52,20 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("customEventInterstitialDidReceiveAd:")
-    public void didReceiveAd(GADCustomEventInterstitial customEvent) {}
+    public void customEventInterstitialDidReceiveAd(GADCustomEventInterstitial customEvent) {}
     @NotImplemented("customEventInterstitial:didFailAd:")
-    public void didFail(GADCustomEventInterstitial customEvent, NSError error) {}
+    public void customEventInterstitialDidFailAd(GADCustomEventInterstitial customEvent, NSError error) {}
     @NotImplemented("customEventInterstitialWasClicked:")
-    public void wasClicked(GADCustomEventInterstitial customEvent) {}
+    public void customEventInterstitialWasClicked(GADCustomEventInterstitial customEvent) {}
     @NotImplemented("customEventInterstitialWillPresent:")
-    public void willPresent(GADCustomEventInterstitial customEvent) {}
+    public void customEventInterstitialWillPresent(GADCustomEventInterstitial customEvent) {}
     @NotImplemented("customEventInterstitialWillDismiss:")
-    public void willDismiss(GADCustomEventInterstitial customEvent) {}
+    public void customEventInterstitialWillDismiss(GADCustomEventInterstitial customEvent) {}
     @NotImplemented("customEventInterstitialDidDismiss:")
-    public void didDismiss(GADCustomEventInterstitial customEvent) {}
+    public void customEventInterstitialDidDismiss(GADCustomEventInterstitial customEvent) {}
     @NotImplemented("customEventInterstitialWillLeaveApplication:")
-    public void willLeaveApplication(GADCustomEventInterstitial customEvent) {}
+    public void customEventInterstitialWillLeaveApplication(GADCustomEventInterstitial customEvent) {}
+    @NotImplemented("customEventInterstitial:didReceiveAd:")
+    public void customEventInterstitialDidReceiveAd(GADCustomEventInterstitial customEvent, NSObject ad) {}
     /*</methods>*/
 }

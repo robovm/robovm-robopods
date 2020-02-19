@@ -61,6 +61,10 @@ import org.robovm.apple.storekit.*;
     public GADAdNetworkExtras networkExtras() { return null; }
     @NotImplemented("childDirectedTreatment")
     public NSNumber childDirectedTreatment() { return null; }
+    @NotImplemented("maxAdContentRating")
+    public String maxAdContentRating() { return null; }
+    @NotImplemented("underAgeOfConsent")
+    public NSNumber underAgeOfConsent() { return null; }
     @NotImplemented("userHasLocation")
     public boolean userHasLocation() { return false; }
     @NotImplemented("userLatitude")

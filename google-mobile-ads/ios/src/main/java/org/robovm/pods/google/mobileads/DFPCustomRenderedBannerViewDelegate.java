@@ -50,7 +50,7 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<methods>*/
     @Method(selector = "bannerView:didReceiveCustomRenderedAd:")
-    void didReceiveCustomRenderedAd(DFPBannerView bannerView, DFPCustomRenderedAd customRenderedAd);
+    void bannerDidReceiveCustomRenderedAd(DFPBannerView bannerView, DFPCustomRenderedAd customRenderedAd);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

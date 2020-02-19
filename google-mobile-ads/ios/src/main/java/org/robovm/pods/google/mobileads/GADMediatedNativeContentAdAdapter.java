@@ -52,17 +52,17 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("headline")
-    public String getHeadline() { return null; }
+    public String headline() { return null; }
     @NotImplemented("body")
-    public String getBody() { return null; }
+    public String body() { return null; }
     @NotImplemented("images")
-    public NSArray<GADNativeAdImage> getImages() { return null; }
+    public NSArray<GADNativeAdImage> images() { return null; }
     @NotImplemented("logo")
-    public GADNativeAdImage getLogo() { return null; }
+    public GADNativeAdImage logo() { return null; }
     @NotImplemented("callToAction")
-    public String getCallToAction() { return null; }
+    public String callToAction() { return null; }
     @NotImplemented("advertiser")
-    public String getAdvertiser() { return null; }
+    public String advertiser() { return null; }
     @NotImplemented("adChoicesView")
     public UIView adChoicesView() { return null; }
     @NotImplemented("mediaView")

@@ -52,7 +52,7 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("nativeAd:didReceiveUnconfirmedClickOnAssetID:")
-    public void didReceiveUnconfirmedClick(GADUnifiedNativeAd nativeAd, String assetID) {}
+    public void didReceiveUnconfirmedClickOnAssetID(GADUnifiedNativeAd nativeAd, String assetID) {}
     @NotImplemented("nativeAdDidCancelUnconfirmedClick:")
     public void nativeAdDidCancelUnconfirmedClick(GADUnifiedNativeAd nativeAd) {}
     /*</methods>*/

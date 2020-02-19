@@ -52,14 +52,14 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("mediatedNativeAd:didRenderInView:clickableAssetViews:nonclickableAssetViews:viewController:")
-    public void didRenderInView(GADMediatedNativeAd mediatedNativeAd, UIView view, NSDictionary<NSString, UIView> clickableAssetViews, NSDictionary<NSString, UIView> nonclickableAssetViews, UIViewController viewController) {}
+    public void mediatedNativeAdDidRenderInView(GADMediatedNativeAd mediatedNativeAd, UIView view, NSDictionary<NSString, UIView> clickableAssetViews, NSDictionary<NSString, UIView> nonclickableAssetViews, UIViewController viewController) {}
     @NotImplemented("mediatedNativeAdDidRecordImpression:")
-    public void didRecordImpression(GADMediatedNativeAd mediatedNativeAd) {}
+    public void mediatedNativeAdDidRecordImpression(GADMediatedNativeAd mediatedNativeAd) {}
     @NotImplemented("mediatedNativeAd:didRecordClickOnAssetWithName:view:viewController:")
-    public void didRecordClickOnAsset(GADMediatedNativeAd mediatedNativeAd, String assetName, UIView view, UIViewController viewController) {}
+    public void mediatedNativeAdDidRecordClickOnAsset(GADMediatedNativeAd mediatedNativeAd, String assetName, UIView view, UIViewController viewController) {}
     @NotImplemented("mediatedNativeAd:didUntrackView:")
-    public void didUntrackView(GADMediatedNativeAd mediatedNativeAd, UIView view) {}
+    public void mediatedNativeAdDidUntrackView(GADMediatedNativeAd mediatedNativeAd, UIView view) {}
     @NotImplemented("mediatedNativeAd:didRenderInView:viewController:")
-    public void didRenderInView(GADMediatedNativeAd mediatedNativeAd, UIView view, UIViewController viewController) {}
+    public void mediatedNativeAdDidRenderInView(GADMediatedNativeAd mediatedNativeAd, UIView view, UIViewController viewController) {}
     /*</methods>*/
 }

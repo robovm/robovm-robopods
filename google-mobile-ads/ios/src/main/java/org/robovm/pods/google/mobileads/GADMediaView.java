@@ -48,9 +48,16 @@ import org.robovm.apple.storekit.*;
     public GADMediaView() {}
     protected GADMediaView(Handle h, long handle) { super(h, handle); }
     protected GADMediaView(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithFrame:")
+    public GADMediaView(@ByVal CGRect frame) { super(frame); }
+    @Method(selector = "initWithCoder:")
+    public GADMediaView(NSCoder decoder) { super(decoder); }
     /*</constructors>*/
     /*<properties>*/
-    
+    @Property(selector = "mediaContent")
+    public native GADMediaContent getMediaContent();
+    @Property(selector = "setMediaContent:")
+    public native void setMediaContent(GADMediaContent v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

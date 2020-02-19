@@ -6,17 +6,16 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import <GoogleMobileAds/GADCustomEventRequest.h>
 #import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 
-GAD_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @protocol GADCustomEventNativeAdDelegate;
 
 /// Native ad custom event protocol. Your native ad custom event handler class must conform to this
 /// protocol.
-@protocol GADCustomEventNativeAd<NSObject>
+@protocol GADCustomEventNativeAd <NSObject>
 
 /// Called when the custom event is scheduled to be executed.
 ///
@@ -33,26 +32,26 @@ GAD_ASSUME_NONNULL_BEGIN
                              options:(NSArray *)options
                   rootViewController:(UIViewController *)rootViewController;
 
-/// Indicates if the custom event handles user clicks. Return YES if the custom event should handle
-/// user clicks. In this case, the Google Mobile Ads SDK doesn't track user clicks and the custom
-/// event must notify the Google Mobile Ads SDK of clicks using
+/// Indicates whether the custom event handles user clicks. Return YES if the custom event should
+/// handle user clicks. In this case, the Google Mobile Ads SDK doesn't track user clicks and the
+/// custom event must notify the Google Mobile Ads SDK of clicks using
 /// +[GADMediatedNativeAdNotificationSource mediatedNativeAdDidRecordClick:]. Return NO if the
 /// custom event doesn't handles user clicks. In this case, the Google Mobile Ads SDK tracks user
 /// clicks itself and the custom event is notified of user clicks via -[GADMediatedNativeAdDelegate
 /// mediatedNativeAd:didRecordClickOnAssetWithName:view:viewController:].
 - (BOOL)handlesUserClicks;
 
-/// Indicates if the custom event handles user impressions tracking. If this method returns YES, the
-/// Google Mobile Ads SDK will not track user impressions and the custom event must notify the
-/// Google Mobile Ads SDK of impressions using +[GADMediatedNativeAdNotificationSource
-/// mediatedNativeAdDidRecordImpression:]. If this method returns NO,
-/// the Google Mobile Ads SDK tracks user impressions and notifies the custom event of impressions
-/// using -[GADMediatedNativeAdDelegate mediatedNativeAdDidRecordImpression:].
+/// Indicates whether the custom event handles user impressions tracking. If this method returns
+/// YES, the Google Mobile Ads SDK will not track user impressions and the custom event must notify
+/// the Google Mobile Ads SDK of impressions using +[GADMediatedNativeAdNotificationSource
+/// mediatedNativeAdDidRecordImpression:]. If this method returns NO, the Google Mobile Ads SDK
+/// tracks user impressions and notifies the custom event of impressions using
+/// -[GADMediatedNativeAdDelegate mediatedNativeAdDidRecordImpression:].
 - (BOOL)handlesUserImpressions;
 
 /// Delegate object used for receiving custom native ad load request progress.
-@property(nonatomic, weak, GAD_NULLABLE) id<GADCustomEventNativeAdDelegate> delegate;
+@property(nonatomic, weak, nullable) id<GADCustomEventNativeAdDelegate> delegate;
 
 @end
 
-GAD_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

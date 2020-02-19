@@ -6,10 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 
-GAD_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @protocol GADCustomEventInterstitial;
 
@@ -19,7 +18,7 @@ GAD_ASSUME_NONNULL_BEGIN
 /// (several seconds) after the SDK called the requestInterstitialAdWithParameter: method of your
 /// custom event, the mediation SDK will consider the request timed out, and move on to the next ad
 /// network.
-@protocol GADCustomEventInterstitialDelegate<NSObject>
+@protocol GADCustomEventInterstitialDelegate <NSObject>
 
 /// Your Custom Event object must call this when it receives or creates an interstitial ad.
 - (void)customEventInterstitialDidReceiveAd:(id<GADCustomEventInterstitial>)customEvent;
@@ -28,7 +27,7 @@ GAD_ASSUME_NONNULL_BEGIN
 /// any error object sent from the ad network's SDK, or an NSError describing the error. Pass nil if
 /// not available.
 - (void)customEventInterstitial:(id<GADCustomEventInterstitial>)customEvent
-                      didFailAd:(NSError *GAD_NULLABLE_TYPE)error;
+                      didFailAd:(nullable NSError *)error;
 
 /// Your Custom Event object should call this when the user touches or "clicks" the ad to initiate
 /// an action. When the SDK receives this callback, it reports the click back to the mediation
@@ -59,4 +58,4 @@ GAD_ASSUME_NONNULL_BEGIN
 
 @end
 
-GAD_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

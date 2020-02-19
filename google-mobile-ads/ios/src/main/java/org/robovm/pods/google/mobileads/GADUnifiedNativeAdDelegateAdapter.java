@@ -63,5 +63,7 @@ import org.robovm.apple.storekit.*;
     public void nativeAdDidDismissScreen(GADUnifiedNativeAd nativeAd) {}
     @NotImplemented("nativeAdWillLeaveApplication:")
     public void nativeAdWillLeaveApplication(GADUnifiedNativeAd nativeAd) {}
+    @NotImplemented("nativeAdIsMuted:")
+    public void nativeAdIsMuted(GADUnifiedNativeAd nativeAd) {}
     /*</methods>*/
 }

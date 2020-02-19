@@ -48,6 +48,10 @@ import org.robovm.apple.storekit.*;
     public GADDebugOptionsViewController() {}
     protected GADDebugOptionsViewController(Handle h, long handle) { super(h, handle); }
     protected GADDebugOptionsViewController(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithNibName:bundle:")
+    public GADDebugOptionsViewController(String nibNameOrNil, NSBundle nibBundleOrNil) { super(nibNameOrNil, nibBundleOrNil); }
+    @Method(selector = "initWithCoder:")
+    public GADDebugOptionsViewController(NSCoder decoder) { super(decoder); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "delegate")
@@ -58,6 +62,6 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "debugOptionsViewControllerWithAdUnitID:")
-    public static native GADDebugOptionsViewController debugOptionsViewControllerWithAdUnitID(String adUnitID);
+    public static native GADDebugOptionsViewController debugOptionsViewController(String adUnitID);
     /*</methods>*/
 }

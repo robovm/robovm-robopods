@@ -52,10 +52,10 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("customEventNativeAd:didReceiveMediatedNativeAd:")
-    public void didReceiveMediatedNativeAd(GADCustomEventNativeAd customEventNativeAd, GADMediatedNativeAd mediatedNativeAd) {}
+    public void customEventNativeAdDidReceiveMediatedNativeAd(GADCustomEventNativeAd customEventNativeAd, GADMediatedNativeAd mediatedNativeAd) {}
     @NotImplemented("customEventNativeAd:didFailToLoadWithError:")
-    public void didFailToLoad(GADCustomEventNativeAd customEventNativeAd, NSError error) {}
+    public void customEventNativeAdDidFailToLoad(GADCustomEventNativeAd customEventNativeAd, NSError error) {}
     @NotImplemented("customEventNativeAd:didReceiveMediatedUnifiedNativeAd:")
-    public void didReceiveMediatedUnifiedNativeAd(GADCustomEventNativeAd customEventNativeAd, GADMediatedUnifiedNativeAd mediatedUnifiedNativeAd) {}
+    public void customEventNativeAdDidReceiveMediatedUnifiedNativeAd(GADCustomEventNativeAd customEventNativeAd, GADMediatedUnifiedNativeAd mediatedUnifiedNativeAd) {}
     /*</methods>*/
 }

@@ -6,11 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 #import <UIKit/UIKit.h>
 
-#import <GoogleMobileAds/GoogleMobileAdsDefines.h>
-
-GAD_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @protocol GADCustomEventBanner;
 
@@ -19,7 +18,7 @@ GAD_ASSUME_NONNULL_BEGIN
 /// Otherwise, if enough time passed (several seconds) after the SDK called the requestBannerAd:
 /// method of your custom event, the mediation SDK will consider the request timed out, and move on
 /// to the next ad network.
-@protocol GADCustomEventBannerDelegate<NSObject>
+@protocol GADCustomEventBannerDelegate <NSObject>
 
 /// Your Custom Event object must call this when it receives or creates an ad view.
 - (void)customEventBanner:(id<GADCustomEventBanner>)customEvent didReceiveAd:(UIView *)view;
@@ -27,8 +26,7 @@ GAD_ASSUME_NONNULL_BEGIN
 /// Your Custom Event object must call this when it fails to receive or create the ad view. Pass
 /// along any error object sent from the ad network's SDK, or an NSError describing the error. Pass
 /// nil if not available.
-- (void)customEventBanner:(id<GADCustomEventBanner>)customEvent
-                didFailAd:(NSError *GAD_NULLABLE_TYPE)error;
+- (void)customEventBanner:(id<GADCustomEventBanner>)customEvent didFailAd:(nullable NSError *)error;
 
 /// Your Custom Event object should call this when the user touches or "clicks" the ad to initiate
 /// an action. When the SDK receives this callback, it reports the click back to the mediation
@@ -65,4 +63,4 @@ GAD_ASSUME_NONNULL_BEGIN
 
 @end
 
-GAD_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

@@ -51,9 +51,9 @@ import org.robovm.apple.storekit.*;
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "disableImageLoading")
-    public native boolean isImageLoadingDisabled();
+    public native boolean isDisableImageLoading();
     @Property(selector = "setDisableImageLoading:")
-    public native void setImageLoadingDisabled(boolean v);
+    public native void setDisableImageLoading(boolean v);
     @Property(selector = "shouldRequestMultipleImages")
     public native boolean shouldRequestMultipleImages();
     @Property(selector = "setShouldRequestMultipleImages:")

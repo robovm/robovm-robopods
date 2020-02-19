@@ -52,6 +52,6 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("interstitial:didReceiveCustomRenderedAd:")
-    public void didReceiveCustomRenderedAd(DFPInterstitial interstitial, DFPCustomRenderedAd customRenderedAd) {}
+    public void interstitialDidReceiveCustomRenderedAd(DFPInterstitial interstitial, DFPCustomRenderedAd customRenderedAd) {}
     /*</methods>*/
 }

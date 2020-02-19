@@ -48,6 +48,14 @@ import org.robovm.apple.storekit.*;
     public GADSearchBannerView() {}
     protected GADSearchBannerView(Handle h, long handle) { super(h, handle); }
     protected GADSearchBannerView(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithAdSize:origin:")
+    public GADSearchBannerView(@ByVal GADAdSize adSize, @ByVal CGPoint origin) { super(adSize, origin); }
+    @Method(selector = "initWithAdSize:")
+    public GADSearchBannerView(@ByVal GADAdSize adSize) { super(adSize); }
+    @Method(selector = "initWithFrame:")
+    public GADSearchBannerView(@ByVal CGRect frame) { super(frame); }
+    @Method(selector = "initWithCoder:")
+    public GADSearchBannerView(NSCoder decoder) { super(decoder); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "adSizeDelegate")

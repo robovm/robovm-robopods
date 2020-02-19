@@ -52,8 +52,8 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("mediatedNativeAdDelegate")
-    public GADMediatedNativeAdDelegate getMediatedNativeAdDelegate() { return null; }
+    public GADMediatedNativeAdDelegate mediatedNativeAdDelegate() { return null; }
     @NotImplemented("extraAssets")
-    public NSDictionary<?, ?> getExtraAssets() { return null; }
+    public NSDictionary<?, ?> extraAssets() { return null; }
     /*</methods>*/
 }

@@ -51,19 +51,21 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<methods>*/
     @Method(selector = "customEventBanner:didReceiveAd:")
-    void didReceiveAd(GADCustomEventBanner customEvent, UIView view);
+    void customEventBannerDidReceiveAd(GADCustomEventBanner customEvent, UIView view);
     @Method(selector = "customEventBanner:didFailAd:")
-    void didFail(GADCustomEventBanner customEvent, NSError error);
+    void customEventBannerDidFailAd(GADCustomEventBanner customEvent, NSError error);
     @Method(selector = "customEventBannerWasClicked:")
-    void wasClicked(GADCustomEventBanner customEvent);
+    void customEventBannerWasClicked(GADCustomEventBanner customEvent);
     @Method(selector = "customEventBannerWillPresentModal:")
-    void willPresentModal(GADCustomEventBanner customEvent);
+    void customEventBannerWillPresentModal(GADCustomEventBanner customEvent);
     @Method(selector = "customEventBannerWillDismissModal:")
-    void willDismissModal(GADCustomEventBanner customEvent);
+    void customEventBannerWillDismissModal(GADCustomEventBanner customEvent);
     @Method(selector = "customEventBannerDidDismissModal:")
-    void didDismissModal(GADCustomEventBanner customEvent);
+    void customEventBannerDidDismissModal(GADCustomEventBanner customEvent);
     @Method(selector = "customEventBannerWillLeaveApplication:")
-    void willLeaveApplication(GADCustomEventBanner customEvent);
+    void customEventBannerWillLeaveApplication(GADCustomEventBanner customEvent);
+    @Method(selector = "customEventBanner:clickDidOccurInAd:")
+    void customEventBannerClickDidOccurInAd(GADCustomEventBanner customEvent, UIView view);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

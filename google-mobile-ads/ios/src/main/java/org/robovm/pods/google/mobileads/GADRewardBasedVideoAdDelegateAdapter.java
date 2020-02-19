@@ -56,16 +56,18 @@ import org.robovm.apple.storekit.*;
     @NotImplemented("rewardBasedVideoAd:didFailToLoadWithError:")
     public void didFailToLoad(GADRewardBasedVideoAd rewardBasedVideoAd, NSError error) {}
     @NotImplemented("rewardBasedVideoAdDidReceiveAd:")
-    public void didReceiveAd(GADRewardBasedVideoAd rewardBasedVideoAd) {}
+    public void rewardBasedVideoAdDidReceiveAd(GADRewardBasedVideoAd rewardBasedVideoAd) {}
     @NotImplemented("rewardBasedVideoAdDidOpen:")
-    public void didOpen(GADRewardBasedVideoAd rewardBasedVideoAd) {}
+    public void rewardBasedVideoAdDidOpen(GADRewardBasedVideoAd rewardBasedVideoAd) {}
     @NotImplemented("rewardBasedVideoAdDidStartPlaying:")
-    public void didStartPlaying(GADRewardBasedVideoAd rewardBasedVideoAd) {}
+    public void rewardBasedVideoAdDidStartPlaying(GADRewardBasedVideoAd rewardBasedVideoAd) {}
     @NotImplemented("rewardBasedVideoAdDidCompletePlaying:")
     public void rewardBasedVideoAdDidCompletePlaying(GADRewardBasedVideoAd rewardBasedVideoAd) {}
     @NotImplemented("rewardBasedVideoAdDidClose:")
-    public void didClose(GADRewardBasedVideoAd rewardBasedVideoAd) {}
+    public void rewardBasedVideoAdDidClose(GADRewardBasedVideoAd rewardBasedVideoAd) {}
     @NotImplemented("rewardBasedVideoAdWillLeaveApplication:")
-    public void willLeaveApplication(GADRewardBasedVideoAd rewardBasedVideoAd) {}
+    public void rewardBasedVideoAdWillLeaveApplication(GADRewardBasedVideoAd rewardBasedVideoAd) {}
+    @NotImplemented("rewardBasedVideoAdMetadataDidChange:")
+    public void rewardBasedVideoAdMetadataDidChange(GADRewardBasedVideoAd rewardBasedVideoAd) {}
     /*</methods>*/
 }

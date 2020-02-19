@@ -82,20 +82,34 @@ import org.robovm.apple.storekit.*;
     public native NSDictionary<NSString, ?> getExtraAssets();
     @Property(selector = "adNetworkClassName")
     public native String getAdNetworkClassName();
+    @Property(selector = "isCustomMuteThisAdAvailable")
+    public native boolean isCustomMuteThisAdAvailable();
+    @Property(selector = "muteThisAdReasons")
+    public native NSArray<GADMuteThisAdReason> getMuteThisAdReasons();
+    @Property(selector = "mediaContent")
+    public native GADMediaContent getMediaContent();
     @Property(selector = "unconfirmedClickDelegate")
     public native GADUnifiedNativeAdUnconfirmedClickDelegate getUnconfirmedClickDelegate();
     @Property(selector = "setUnconfirmedClickDelegate:", strongRef = true)
     public native void setUnconfirmedClickDelegate(GADUnifiedNativeAdUnconfirmedClickDelegate v);
+    @Property(selector = "isCustomClickGestureEnabled")
+    public native boolean isCustomClickGestureEnabled();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "registerAdView:clickableAssetViews:nonclickableAssetViews:")
-    public native void registerAdView(UIView adView, NSDictionary<?, ?> clickableAssetViews, NSDictionary<?, ?> nonclickableAssetViews);
+    public native void registerAdView(UIView adView, NSDictionary<NSString, UIView> clickableAssetViews, NSDictionary<NSString, UIView> nonclickableAssetViews);
     @Method(selector = "unregisterAdView")
     public native void unregisterAdView();
+    @Method(selector = "muteThisAdWithReason:")
+    public native void muteThisAd(GADMuteThisAdReason reason);
     @Method(selector = "registerClickConfirmingView:")
     public native void registerClickConfirmingView(UIView view);
     @Method(selector = "cancelUnconfirmedClick")
     public native void cancelUnconfirmedClick();
+    @Method(selector = "enableCustomClickGestures")
+    public native void enableCustomClickGestures();
+    @Method(selector = "recordCustomClickGesture")
+    public native void recordCustomClickGesture();
     /*</methods>*/
 }

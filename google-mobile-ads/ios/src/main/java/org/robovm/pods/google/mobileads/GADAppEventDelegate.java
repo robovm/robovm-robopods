@@ -50,9 +50,9 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<methods>*/
     @Method(selector = "adView:didReceiveAppEvent:withInfo:")
-    void didReceiveBannerAppEvent(GADBannerView banner, String name, String info);
+    void didReceiveAppEvent(GADBannerView banner, String name, String info);
     @Method(selector = "interstitial:didReceiveAppEvent:withInfo:")
-    void didReceiveInterstitialAppEvent(GADInterstitial interstitial, String name, String info);
+    void interstitialDidReceiveAppEvent(GADInterstitial interstitial, String name, String info);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

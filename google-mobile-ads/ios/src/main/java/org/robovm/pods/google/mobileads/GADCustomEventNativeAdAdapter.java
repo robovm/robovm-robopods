@@ -55,7 +55,7 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("requestNativeAdWithParameter:request:adTypes:options:rootViewController:")
-    public void requestNativeAd(String serverParameter, GADCustomEventRequest request, @org.robovm.rt.bro.annotation.Marshaler(GADAdLoaderAdType.AsListMarshaler.class) List<GADAdLoaderAdType> adTypes, NSArray<?> options, UIViewController rootViewController) {}
+    public void requestNativeAd(String serverParameter, GADCustomEventRequest request, NSArray<?> adTypes, NSArray<?> options, UIViewController rootViewController) {}
     @NotImplemented("handlesUserClicks")
     public boolean handlesUserClicks() { return false; }
     @NotImplemented("handlesUserImpressions")

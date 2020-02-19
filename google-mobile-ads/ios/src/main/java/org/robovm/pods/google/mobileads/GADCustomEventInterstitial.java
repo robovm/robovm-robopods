@@ -55,7 +55,7 @@ import org.robovm.apple.storekit.*;
     @Method(selector = "requestInterstitialAdWithParameter:label:request:")
     void requestInterstitialAd(String serverParameter, String serverLabel, GADCustomEventRequest request);
     @Method(selector = "presentFromRootViewController:")
-    void present(UIViewController rootViewController);
+    void presentFromRootViewController(UIViewController rootViewController);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

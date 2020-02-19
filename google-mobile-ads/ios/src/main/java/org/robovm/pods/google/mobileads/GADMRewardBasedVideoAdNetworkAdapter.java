@@ -54,11 +54,11 @@ import org.robovm.apple.storekit.*;
     @Method(selector = "requestRewardBasedVideoAd")
     void requestRewardBasedVideoAd();
     @Method(selector = "presentRewardBasedVideoAdWithRootViewController:")
-    void presentRewardBasedVideoAdWithRootViewController(UIViewController viewController);
+    void presentRewardBasedVideoAd(UIViewController viewController);
     @Method(selector = "stopBeingDelegate")
     void stopBeingDelegate();
     @Method(selector = "setUpWithUserID:")
-    void setUpWithUserID(String userID);
+    void setUp(String userID);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

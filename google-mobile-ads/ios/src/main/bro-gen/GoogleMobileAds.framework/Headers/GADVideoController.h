@@ -6,11 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 #import <UIKit/UIKit.h>
 
-#import <GoogleMobileAds/GoogleMobileAdsDefines.h>
-
-GAD_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @protocol GADVideoControllerDelegate;
 
@@ -21,7 +20,7 @@ GAD_ASSUME_NONNULL_BEGIN
 @interface GADVideoController : NSObject
 
 /// Delegate for receiving video notifications.
-@property(nonatomic, weak, GAD_NULLABLE) id<GADVideoControllerDelegate> delegate;
+@property(nonatomic, weak, nullable) id<GADVideoControllerDelegate> delegate;
 
 /// Mute or unmute video. Set to YES to mute the video. Set to NO to allow the video to play sound.
 - (void)setMute:(BOOL)mute;
@@ -32,17 +31,22 @@ GAD_ASSUME_NONNULL_BEGIN
 /// Pause the video. Doesn't do anything if the video is already paused.
 - (void)pause;
 
+/// Stops the video and displays the video's first frame. Call -play to resume playback at the start
+/// of the video. Contact your account manager to enable this feature.
+- (void)stop;
+
 /// Returns a Boolean indicating if the receiver has video content.
 - (BOOL)hasVideoContent;
 
 /// Returns the video's aspect ratio (width/height) or 0 if no video is present.
 - (double)aspectRatio;
 
-/// Indicates if video custom controls (i.e. play/pause/mute/unmute) are enabled.
+/// Indicates whether video custom controls (i.e. play/pause/mute/unmute) are enabled.
 - (BOOL)customControlsEnabled;
 
-/// Indicates if video click to expand behavior is enabled.
+/// Indicates whether video click to expand behavior is enabled.
 - (BOOL)clickToExpandEnabled;
+
 @end
 
-GAD_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

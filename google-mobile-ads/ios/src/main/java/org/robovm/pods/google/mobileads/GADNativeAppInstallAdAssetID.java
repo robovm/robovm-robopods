@@ -36,25 +36,25 @@ import org.robovm.apple.storekit.*;
 /*<javadoc>*/
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @StronglyLinked/*</annotations>*/
-@Marshaler(/*<name>*/GADNativeAppInstallAssetID/*</name>*/.Marshaler.class)
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/GADNativeAppInstallAssetID/*</name>*/ 
+@Marshaler(/*<name>*/GADNativeAppInstallAdAssetID/*</name>*/.Marshaler.class)
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/GADNativeAppInstallAdAssetID/*</name>*/ 
     extends /*<extends>*/GlobalValueEnumeration<NSString>/*</extends>*/
     /*<implements>*//*</implements>*/ {
 
-    static { Bro.bind(/*<name>*/GADNativeAppInstallAssetID/*</name>*/.class); }
+    static { Bro.bind(/*<name>*/GADNativeAppInstallAdAssetID/*</name>*/.class); }
 
     /*<marshalers>*/
     public static class Marshaler {
         @MarshalsPointer
-        public static GADNativeAppInstallAssetID toObject(Class<GADNativeAppInstallAssetID> cls, long handle, long flags) {
+        public static GADNativeAppInstallAdAssetID toObject(Class<GADNativeAppInstallAdAssetID> cls, long handle, long flags) {
             NSString o = (NSString) NSObject.Marshaler.toObject(NSString.class, handle, flags);
             if (o == null) {
                 return null;
             }
-            return GADNativeAppInstallAssetID.valueOf(o);
+            return GADNativeAppInstallAdAssetID.valueOf(o);
         }
         @MarshalsPointer
-        public static long toNative(GADNativeAppInstallAssetID o, long flags) {
+        public static long toNative(GADNativeAppInstallAdAssetID o, long flags) {
             if (o == null) {
                 return 0L;
             }
@@ -64,24 +64,24 @@ import org.robovm.apple.storekit.*;
     public static class AsListMarshaler {
         @SuppressWarnings("unchecked")
         @MarshalsPointer
-        public static List<GADNativeAppInstallAssetID> toObject(Class<? extends NSObject> cls, long handle, long flags) {
+        public static List<GADNativeAppInstallAdAssetID> toObject(Class<? extends NSObject> cls, long handle, long flags) {
             NSArray<NSString> o = (NSArray<NSString>) NSObject.Marshaler.toObject(NSArray.class, handle, flags);
             if (o == null) {
                 return null;
             }
-            List<GADNativeAppInstallAssetID> list = new ArrayList<>();
+            List<GADNativeAppInstallAdAssetID> list = new ArrayList<>();
             for (int i = 0; i < o.size(); i++) {
-                list.add(GADNativeAppInstallAssetID.valueOf(o.get(i)));
+                list.add(GADNativeAppInstallAdAssetID.valueOf(o.get(i)));
             }
             return list;
         }
         @MarshalsPointer
-        public static long toNative(List<GADNativeAppInstallAssetID> l, long flags) {
+        public static long toNative(List<GADNativeAppInstallAdAssetID> l, long flags) {
             if (l == null) {
                 return 0L;
             }
             NSArray<NSString> array = new NSMutableArray<>();
-            for (GADNativeAppInstallAssetID o : l) {
+            for (GADNativeAppInstallAdAssetID o : l) {
                 array.add(o.value());
             }
             return NSObject.Marshaler.toNative(array, flags);
@@ -90,35 +90,35 @@ import org.robovm.apple.storekit.*;
     /*</marshalers>*/
 
     /*<constants>*/
-    public static final GADNativeAppInstallAssetID Headline = new GADNativeAppInstallAssetID("Headline");
-    public static final GADNativeAppInstallAssetID CallToAction = new GADNativeAppInstallAssetID("CallToAction");
-    public static final GADNativeAppInstallAssetID Icon = new GADNativeAppInstallAssetID("Icon");
-    public static final GADNativeAppInstallAssetID Body = new GADNativeAppInstallAssetID("Body");
-    public static final GADNativeAppInstallAssetID Store = new GADNativeAppInstallAssetID("Store");
-    public static final GADNativeAppInstallAssetID Price = new GADNativeAppInstallAssetID("Price");
-    public static final GADNativeAppInstallAssetID Image = new GADNativeAppInstallAssetID("Image");
-    public static final GADNativeAppInstallAssetID StarRating = new GADNativeAppInstallAssetID("StarRating");
-    public static final GADNativeAppInstallAssetID AttributionIcon = new GADNativeAppInstallAssetID("AttributionIcon");
-    public static final GADNativeAppInstallAssetID AttributionText = new GADNativeAppInstallAssetID("AttributionText");
-    public static final GADNativeAppInstallAssetID MediaView = new GADNativeAppInstallAssetID("MediaView");
-    public static final GADNativeAppInstallAssetID AdChoicesView = new GADNativeAppInstallAssetID("AdChoicesView");
-    public static final GADNativeAppInstallAssetID Background = new GADNativeAppInstallAssetID("Background");
+    public static final GADNativeAppInstallAdAssetID Headline = new GADNativeAppInstallAdAssetID("Headline");
+    public static final GADNativeAppInstallAdAssetID CallToAction = new GADNativeAppInstallAdAssetID("CallToAction");
+    public static final GADNativeAppInstallAdAssetID Icon = new GADNativeAppInstallAdAssetID("Icon");
+    public static final GADNativeAppInstallAdAssetID Body = new GADNativeAppInstallAdAssetID("Body");
+    public static final GADNativeAppInstallAdAssetID Store = new GADNativeAppInstallAdAssetID("Store");
+    public static final GADNativeAppInstallAdAssetID Price = new GADNativeAppInstallAdAssetID("Price");
+    public static final GADNativeAppInstallAdAssetID Image = new GADNativeAppInstallAdAssetID("Image");
+    public static final GADNativeAppInstallAdAssetID StarRating = new GADNativeAppInstallAdAssetID("StarRating");
+    public static final GADNativeAppInstallAdAssetID AttributionIcon = new GADNativeAppInstallAdAssetID("AttributionIcon");
+    public static final GADNativeAppInstallAdAssetID AttributionText = new GADNativeAppInstallAdAssetID("AttributionText");
+    public static final GADNativeAppInstallAdAssetID MediaView = new GADNativeAppInstallAdAssetID("MediaView");
+    public static final GADNativeAppInstallAdAssetID AdChoicesView = new GADNativeAppInstallAdAssetID("AdChoicesView");
+    public static final GADNativeAppInstallAdAssetID Background = new GADNativeAppInstallAdAssetID("Background");
     /*</constants>*/
     
-    private static /*<name>*/GADNativeAppInstallAssetID/*</name>*/[] values = new /*<name>*/GADNativeAppInstallAssetID/*</name>*/[] {/*<value_list>*/Headline, CallToAction, Icon, Body, Store, Price, Image, StarRating, AttributionIcon, AttributionText, MediaView, AdChoicesView, Background/*</value_list>*/};
+    private static /*<name>*/GADNativeAppInstallAdAssetID/*</name>*/[] values = new /*<name>*/GADNativeAppInstallAdAssetID/*</name>*/[] {/*<value_list>*/Headline, CallToAction, Icon, Body, Store, Price, Image, StarRating, AttributionIcon, AttributionText, MediaView, AdChoicesView, Background/*</value_list>*/};
     
-    /*<name>*/GADNativeAppInstallAssetID/*</name>*/ (String getterName) {
+    /*<name>*/GADNativeAppInstallAdAssetID/*</name>*/ (String getterName) {
         super(Values.class, getterName);
     }
     
-    public static /*<name>*/GADNativeAppInstallAssetID/*</name>*/ valueOf(/*<type>*/NSString/*</type>*/ value) {
-        for (/*<name>*/GADNativeAppInstallAssetID/*</name>*/ v : values) {
+    public static /*<name>*/GADNativeAppInstallAdAssetID/*</name>*/ valueOf(/*<type>*/NSString/*</type>*/ value) {
+        for (/*<name>*/GADNativeAppInstallAdAssetID/*</name>*/ v : values) {
             if (v.value().equals(value)) {
                 return v;
             }
         }
         throw new IllegalArgumentException("No constant with value " + value + " found in " 
-            + /*<name>*/GADNativeAppInstallAssetID/*</name>*/.class.getName());
+            + /*<name>*/GADNativeAppInstallAdAssetID/*</name>*/.class.getName());
     }
     
     /*<methods>*//*</methods>*/

@@ -55,17 +55,17 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "mediatedNativeAdDidRecordImpression:")
-    public static native void didRecordImpression(GADMediatedNativeAd mediatedNativeAd);
+    public static native void mediatedNativeAdDidRecordImpression(GADMediatedNativeAd mediatedNativeAd);
     @Method(selector = "mediatedNativeAdDidRecordClick:")
-    public static native void didRecordClick(GADMediatedNativeAd mediatedNativeAd);
+    public static native void mediatedNativeAdDidRecordClick(GADMediatedNativeAd mediatedNativeAd);
     @Method(selector = "mediatedNativeAdWillPresentScreen:")
-    public static native void willPresentScreen(GADMediatedNativeAd mediatedNativeAd);
+    public static native void mediatedNativeAdWillPresentScreen(GADMediatedNativeAd mediatedNativeAd);
     @Method(selector = "mediatedNativeAdWillDismissScreen:")
-    public static native void willDismissScreen(GADMediatedNativeAd mediatedNativeAd);
+    public static native void mediatedNativeAdWillDismissScreen(GADMediatedNativeAd mediatedNativeAd);
     @Method(selector = "mediatedNativeAdDidDismissScreen:")
-    public static native void didDismissScreen(GADMediatedNativeAd mediatedNativeAd);
+    public static native void mediatedNativeAdDidDismissScreen(GADMediatedNativeAd mediatedNativeAd);
     @Method(selector = "mediatedNativeAdWillLeaveApplication:")
-    public static native void willLeaveApplication(GADMediatedNativeAd mediatedNativeAd);
+    public static native void mediatedNativeAdWillLeaveApplication(GADMediatedNativeAd mediatedNativeAd);
     @Method(selector = "mediatedNativeAdDidPlayVideo:")
     public static native void mediatedNativeAdDidPlayVideo(GADMediatedNativeAd mediatedNativeAd);
     @Method(selector = "mediatedNativeAdDidPauseVideo:")

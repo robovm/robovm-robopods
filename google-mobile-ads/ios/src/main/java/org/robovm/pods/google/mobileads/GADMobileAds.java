@@ -60,18 +60,24 @@ import org.robovm.apple.storekit.*;
     public native void setApplicationMuted(boolean v);
     @Property(selector = "audioVideoManager")
     public native GADAudioVideoManager getAudioVideoManager();
+    @Property(selector = "requestConfiguration")
+    public native GADRequestConfiguration getRequestConfiguration();
+    @Property(selector = "initializationStatus")
+    public native GADInitializationStatus getInitializationStatus();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "isSDKVersionAtLeastMajor:minor:patch:")
     public native boolean isSDKVersionAtLeast(@MachineSizedSInt long major, @MachineSizedSInt long minor, @MachineSizedSInt long patch);
+    @Method(selector = "startWithCompletionHandler:")
+    public native void start(@Block VoidBlock1<GADInitializationStatus> completionHandler);
     @Method(selector = "sharedInstance")
-    public static native GADMobileAds getSharedInstance();
-    @Method(selector = "configureWithApplicationID:")
-    public static native void configure(String applicationID);
+    public static native GADMobileAds sharedInstance();
     @Method(selector = "disableAutomatedInAppPurchaseReporting")
     public static native void disableAutomatedInAppPurchaseReporting();
     @Method(selector = "disableSDKCrashReporting")
     public static native void disableSDKCrashReporting();
+    @Method(selector = "configureWithApplicationID:")
+    public static native void configure(String applicationID);
     /*</methods>*/
 }

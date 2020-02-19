@@ -52,7 +52,7 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("getBannerWithSize:")
-    public void getBannerWithSize(@ByVal GADAdSize adSize) {}
+    public void getBanner(@ByVal GADAdSize adSize) {}
     @NotImplemented("getInterstitial")
     public void getInterstitial() {}
     @NotImplemented("stopBeingDelegate")
@@ -60,7 +60,7 @@ import org.robovm.apple.storekit.*;
     @NotImplemented("presentInterstitialFromRootViewController:")
     public void presentInterstitialFromRootViewController(UIViewController rootViewController) {}
     @NotImplemented("getNativeAdWithAdTypes:options:")
-    public void getNativeAd(NSArray<?> adTypes, NSArray<?> options) {}
+    public void getNativeAd(NSArray<NSString> adTypes, NSArray<GADAdLoaderOptions> options) {}
     @NotImplemented("handlesUserClicks")
     public boolean handlesUserClicks() { return false; }
     @NotImplemented("handlesUserImpressions")

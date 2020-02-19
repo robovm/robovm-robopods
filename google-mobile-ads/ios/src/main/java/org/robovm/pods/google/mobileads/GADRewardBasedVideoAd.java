@@ -62,14 +62,20 @@ import org.robovm.apple.storekit.*;
     public native String getUserIdentifier();
     @Property(selector = "setUserIdentifier:")
     public native void setUserIdentifier(String v);
+    @Property(selector = "customRewardString")
+    public native String getCustomRewardString();
+    @Property(selector = "setCustomRewardString:")
+    public native void setCustomRewardString(String v);
+    @Property(selector = "adMetadata")
+    public native NSDictionary<NSString, ?> getAdMetadata();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "loadRequest:withAdUnitID:")
     public native void loadRequest(GADRequest request, String adUnitID);
     @Method(selector = "presentFromRootViewController:")
-    public native void present(UIViewController viewController);
+    public native void presentFromRootViewController(UIViewController viewController);
     @Method(selector = "sharedInstance")
-    public static native GADRewardBasedVideoAd getSharedInstance();
+    public static native GADRewardBasedVideoAd sharedInstance();
     /*</methods>*/
 }

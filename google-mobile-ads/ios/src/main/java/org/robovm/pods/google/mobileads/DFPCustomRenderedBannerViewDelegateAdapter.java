@@ -52,6 +52,6 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("bannerView:didReceiveCustomRenderedAd:")
-    public void didReceiveCustomRenderedAd(DFPBannerView bannerView, DFPCustomRenderedAd customRenderedAd) {}
+    public void bannerDidReceiveCustomRenderedAd(DFPBannerView bannerView, DFPCustomRenderedAd customRenderedAd) {}
     /*</methods>*/
 }

@@ -52,21 +52,21 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("headline")
-    public String getHeadline() { return null; }
+    public String headline() { return null; }
     @NotImplemented("images")
-    public NSArray<GADNativeAdImage> getImages() { return null; }
+    public NSArray<GADNativeAdImage> images() { return null; }
     @NotImplemented("body")
-    public String getBody() { return null; }
+    public String body() { return null; }
     @NotImplemented("icon")
-    public GADNativeAdImage getIcon() { return null; }
+    public GADNativeAdImage icon() { return null; }
     @NotImplemented("callToAction")
-    public String getCallToAction() { return null; }
+    public String callToAction() { return null; }
     @NotImplemented("starRating")
-    public NSDecimalNumber getStarRating() { return null; }
+    public NSDecimalNumber starRating() { return null; }
     @NotImplemented("store")
-    public String getStore() { return null; }
+    public String store() { return null; }
     @NotImplemented("price")
-    public String getPrice() { return null; }
+    public String price() { return null; }
     @NotImplemented("adChoicesView")
     public UIView adChoicesView() { return null; }
     @NotImplemented("mediaView")

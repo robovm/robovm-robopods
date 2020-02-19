@@ -56,10 +56,10 @@ import org.robovm.apple.storekit.*;
     @NotImplemented("requestRewardBasedVideoAd")
     public void requestRewardBasedVideoAd() {}
     @NotImplemented("presentRewardBasedVideoAdWithRootViewController:")
-    public void presentRewardBasedVideoAdWithRootViewController(UIViewController viewController) {}
+    public void presentRewardBasedVideoAd(UIViewController viewController) {}
     @NotImplemented("stopBeingDelegate")
     public void stopBeingDelegate() {}
     @NotImplemented("setUpWithUserID:")
-    public void setUpWithUserID(String userID) {}
+    public void setUp(String userID) {}
     /*</methods>*/
 }

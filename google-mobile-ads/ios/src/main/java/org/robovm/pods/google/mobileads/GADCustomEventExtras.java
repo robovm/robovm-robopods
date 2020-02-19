@@ -55,12 +55,12 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "setExtras:forLabel:")
-    private native void setExtras0(NSDictionary<?, ?> extras, String label);
+    public native void setExtras(NSDictionary<?, ?> extras, String label);
     @Method(selector = "extrasForLabel:")
-    public native NSDictionary<?, ?> getExtras(String label);
+    public native NSDictionary<?, ?> extrasForLabel(String label);
     @Method(selector = "removeAllExtras")
     public native void removeAllExtras();
     @Method(selector = "allExtras")
-    public native NSDictionary<?, ?> getAllExtras();
+    public native NSDictionary<?, ?> allExtras();
     /*</methods>*/
 }

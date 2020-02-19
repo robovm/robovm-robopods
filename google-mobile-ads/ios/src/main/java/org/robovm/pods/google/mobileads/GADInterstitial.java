@@ -54,6 +54,8 @@ import org.robovm.apple.storekit.*;
     /*<properties>*/
     @Property(selector = "adUnitID")
     public native String getAdUnitID();
+    @Property(selector = "setAdUnitID:")
+    public native void setAdUnitID(String v);
     @Property(selector = "delegate")
     public native GADInterstitialDelegate getDelegate();
     @Property(selector = "setDelegate:", strongRef = true)
@@ -76,6 +78,6 @@ import org.robovm.apple.storekit.*;
     @Method(selector = "loadRequest:")
     public native void loadRequest(GADRequest request);
     @Method(selector = "presentFromRootViewController:")
-    public native void present(UIViewController rootViewController);
+    public native void presentFromRootViewController(UIViewController rootViewController);
     /*</methods>*/
 }

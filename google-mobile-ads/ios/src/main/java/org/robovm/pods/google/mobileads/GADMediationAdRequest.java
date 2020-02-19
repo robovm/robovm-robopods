@@ -59,6 +59,10 @@ import org.robovm.apple.storekit.*;
     GADAdNetworkExtras networkExtras();
     @Method(selector = "childDirectedTreatment")
     NSNumber childDirectedTreatment();
+    @Method(selector = "maxAdContentRating")
+    String maxAdContentRating();
+    @Method(selector = "underAgeOfConsent")
+    NSNumber underAgeOfConsent();
     @Method(selector = "userHasLocation")
     boolean userHasLocation();
     @Method(selector = "userLatitude")

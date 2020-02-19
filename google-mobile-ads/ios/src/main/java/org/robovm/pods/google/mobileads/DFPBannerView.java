@@ -48,6 +48,14 @@ import org.robovm.apple.storekit.*;
     public DFPBannerView() {}
     protected DFPBannerView(Handle h, long handle) { super(h, handle); }
     protected DFPBannerView(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithAdSize:origin:")
+    public DFPBannerView(@ByVal GADAdSize adSize, @ByVal CGPoint origin) { super(adSize, origin); }
+    @Method(selector = "initWithAdSize:")
+    public DFPBannerView(@ByVal GADAdSize adSize) { super(adSize); }
+    @Method(selector = "initWithFrame:")
+    public DFPBannerView(@ByVal CGRect frame) { super(frame); }
+    @Method(selector = "initWithCoder:")
+    public DFPBannerView(NSCoder decoder) { super(decoder); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "adUnitID")
@@ -63,17 +71,17 @@ import org.robovm.apple.storekit.*;
     @Property(selector = "setAdSizeDelegate:", strongRef = true)
     public native void setAdSizeDelegate(GADAdSizeDelegate v);
     @Property(selector = "validAdSizes")
-    private native NSArray<NSValue> getValidAdSizes0();
+    public native NSArray<NSValue> getValidAdSizes();
     @Property(selector = "setValidAdSizes:")
-    private native void setValidAdSizes0(NSArray<NSValue> v);
+    public native void setValidAdSizes(NSArray<NSValue> v);
     @Property(selector = "correlator")
     public native GADCorrelator getCorrelator();
     @Property(selector = "setCorrelator:")
     public native void setCorrelator(GADCorrelator v);
     @Property(selector = "enableManualImpressions")
-    public native boolean areManualImpressionsEnabled();
+    public native boolean isEnableManualImpressions();
     @Property(selector = "setEnableManualImpressions:")
-    public native void setManualImpressionsEnabled(boolean v);
+    public native void setEnableManualImpressions(boolean v);
     @Property(selector = "customRenderedBannerViewDelegate")
     public native DFPCustomRenderedBannerViewDelegate getCustomRenderedBannerViewDelegate();
     @Property(selector = "setCustomRenderedBannerViewDelegate:", strongRef = true)
@@ -88,6 +96,6 @@ import org.robovm.apple.storekit.*;
     @Method(selector = "resize:")
     public native void resize(@ByVal GADAdSize size);
     @Method(selector = "setAdOptions:")
-    public native void setAdOptions(NSArray<?> adOptions);
+    public native void setAdOptions(NSArray<GADAdLoaderOptions> adOptions);
     /*</methods>*/
 }

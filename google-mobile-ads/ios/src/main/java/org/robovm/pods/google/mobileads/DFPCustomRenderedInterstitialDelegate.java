@@ -50,7 +50,7 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<methods>*/
     @Method(selector = "interstitial:didReceiveCustomRenderedAd:")
-    void didReceiveCustomRenderedAd(DFPInterstitial interstitial, DFPCustomRenderedAd customRenderedAd);
+    void interstitialDidReceiveCustomRenderedAd(DFPInterstitial interstitial, DFPCustomRenderedAd customRenderedAd);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

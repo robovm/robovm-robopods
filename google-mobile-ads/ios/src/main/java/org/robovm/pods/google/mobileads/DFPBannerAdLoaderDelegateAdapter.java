@@ -54,6 +54,6 @@ import org.robovm.apple.storekit.*;
     @NotImplemented("validBannerSizesForAdLoader:")
     public NSArray<NSValue> validBannerSizesForAdLoader(GADAdLoader adLoader) { return null; }
     @NotImplemented("adLoader:didReceiveDFPBannerView:")
-    public void didReceive(GADAdLoader adLoader, DFPBannerView bannerView) {}
+    public void didReceiveDFPBannerView(GADAdLoader adLoader, DFPBannerView bannerView) {}
     /*</methods>*/
 }

@@ -9,31 +9,26 @@
 #import <GoogleMobileAds/GADAppEventDelegate.h>
 #import <GoogleMobileAds/GADCorrelator.h>
 #import <GoogleMobileAds/GADInterstitial.h>
-#import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 
-GAD_ASSUME_NONNULL_BEGIN
-
-/// DoubleClick For Publishers interstitial ad, a full-screen advertisement shown at natural
+/// Google Ad Manager interstitial ad, a full-screen advertisement shown at natural
 /// transition points in your application such as between game levels or news stories.
 @interface DFPInterstitial : GADInterstitial
 
-/// Required value created on the DFP website. Create a new ad unit for every unique placement of an
-/// ad in your application. Set this to the ID assigned for this placement. Ad units are important
-/// for targeting and stats.
+/// Initializes an interstitial with an ad unit created on the Ad Manager website. Create a new ad
+/// unit for every unique placement of an ad in your application. Set this to the ID assigned for
+/// this placement. Ad units are important for targeting and statistics.
 ///
-/// Example DFP ad unit ID: @"/6499/example/interstitial"
-@property(nonatomic, readonly, copy) NSString *adUnitID;
+/// Example Ad Manager ad unit ID: @"/6499/example/interstitial"
+- (nonnull instancetype)initWithAdUnitID:(nonnull NSString *)adUnitID NS_DESIGNATED_INITIALIZER;
 
 /// Correlator object for correlating this object to other ad objects.
-@property(nonatomic, strong, GAD_NULLABLE) GADCorrelator *correlator;
+@property(nonatomic, strong, nullable) GADCorrelator *correlator;
 
 /// Optional delegate that is notified when creatives send app events.
-@property(nonatomic, weak, GAD_NULLABLE) id<GADAppEventDelegate> appEventDelegate;
+@property(nonatomic, weak, nullable) id<GADAppEventDelegate> appEventDelegate;
 
 /// Optional delegate object for custom rendered ads.
-@property(nonatomic, weak, GAD_NULLABLE)
-    id<DFPCustomRenderedInterstitialDelegate> customRenderedInterstitialDelegate;
+@property(nonatomic, weak, nullable) id<DFPCustomRenderedInterstitialDelegate>
+    customRenderedInterstitialDelegate;
 
 @end
-
-GAD_ASSUME_NONNULL_END

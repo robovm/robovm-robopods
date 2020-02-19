@@ -50,9 +50,9 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<methods>*/
     @Method(selector = "mediatedNativeAdDelegate")
-    GADMediatedNativeAdDelegate getMediatedNativeAdDelegate();
+    GADMediatedNativeAdDelegate mediatedNativeAdDelegate();
     @Method(selector = "extraAssets")
-    NSDictionary<?, ?> getExtraAssets();
+    NSDictionary<?, ?> extraAssets();
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

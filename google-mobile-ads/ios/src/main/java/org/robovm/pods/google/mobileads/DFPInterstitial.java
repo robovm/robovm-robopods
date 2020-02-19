@@ -48,10 +48,10 @@ import org.robovm.apple.storekit.*;
     public DFPInterstitial() {}
     protected DFPInterstitial(Handle h, long handle) { super(h, handle); }
     protected DFPInterstitial(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithAdUnitID:")
+    public DFPInterstitial(String adUnitID) { super((SkipInit) null); initObject(init(adUnitID)); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "adUnitID")
-    public native String getAdUnitID();
     @Property(selector = "correlator")
     public native GADCorrelator getCorrelator();
     @Property(selector = "setCorrelator:")
@@ -67,6 +67,7 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    
+    @Method(selector = "initWithAdUnitID:")
+    protected native @Pointer long init(String adUnitID);
     /*</methods>*/
 }

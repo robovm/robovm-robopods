@@ -6,12 +6,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 
-GAD_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
-typedef NSString *GADAdLoaderAdType GAD_STRING_ENUM;
+typedef NSString *GADAdLoaderAdType NS_STRING_ENUM;
 
 /// Use with GADAdLoader to request native app install ads. To receive ads, the ad loader's delegate
 /// must conform to the GADNativeAppInstallAdLoaderDelegate protocol. See GADNativeAppInstallAd.h.
@@ -30,12 +29,12 @@ GAD_EXTERN GADAdLoaderAdType const kGADAdLoaderAdTypeNativeContent;
 /// GADNativeCustomTemplateAd.h.
 GAD_EXTERN GADAdLoaderAdType const kGADAdLoaderAdTypeNativeCustomTemplate;
 
-/// Use with GADAdLoader to request DFP banner ads. To receive ads, the ad loader's delegate must
-/// conform to the DFPBannerAdLoaderDelegate protocol. See DFPBannerView.h.
+/// Use with GADAdLoader to request Google Ad Manager banner ads. To receive ads, the ad loader's
+/// delegate must conform to the DFPBannerAdLoaderDelegate protocol. See DFPBannerView.h.
 GAD_EXTERN GADAdLoaderAdType const kGADAdLoaderAdTypeDFPBanner;
 
 /// Use with GADAdLoader to request native ads. To receive ads, the ad loader's delegate must
 /// conform to the GADUnifiedNativeAdLoaderDelegate protocol. See GADUnifiedNativeAd.h.
 GAD_EXTERN GADAdLoaderAdType const kGADAdLoaderAdTypeUnifiedNative;
 
-GAD_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

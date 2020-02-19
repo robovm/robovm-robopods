@@ -51,7 +51,7 @@ import org.robovm.apple.storekit.*;
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "userHasLocation")
-    public native boolean hasUserLocation();
+    public native boolean isUserHasLocation();
     @Property(selector = "userLatitude")
     public native @MachineSizedFloat double getUserLatitude();
     @Property(selector = "userLongitude")
@@ -61,7 +61,7 @@ import org.robovm.apple.storekit.*;
     @Property(selector = "userLocationDescription")
     public native String getUserLocationDescription();
     @Property(selector = "userKeywords")
-    public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getUserKeywords();
+    public native NSArray<?> getUserKeywords();
     @Property(selector = "additionalParameters")
     public native NSDictionary<?, ?> getAdditionalParameters();
     @Property(selector = "isTesting")

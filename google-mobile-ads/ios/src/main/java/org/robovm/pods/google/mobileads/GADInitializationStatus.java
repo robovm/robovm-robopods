@@ -1,19 +1,19 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.robovm.pods.google;
+package org.robovm.pods.google.mobileads;
 
 /*<imports>*/
 import java.io.*;
@@ -28,37 +28,30 @@ import org.robovm.rt.bro.*;
 import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
-import org.robovm.pods.google.*;
-import org.robovm.pods.google.mobileads.*;
+import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.storekit.*;
 /*</imports>*/
 
 /*<javadoc>*/
+
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL)/*</annotations>*/
-/*<visibility>*//*</visibility>*/ class /*<name>*/GGLContextAdMobExtensions/*</name>*/ 
-    extends /*<extends>*/NSExtensions/*</extends>*/ 
+/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/GADInitializationStatus/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/
-    /*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(GGLContextAdMobExtensions.class); }/*</bind>*/
+    /*<ptr>*/public static class GADInitializationStatusPtr extends Ptr<GADInitializationStatus, GADInitializationStatusPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(GADInitializationStatus.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    private GGLContextAdMobExtensions() {}
+    public GADInitializationStatus() {}
+    protected GADInitializationStatus(Handle h, long handle) { super(h, handle); }
+    protected GADInitializationStatus(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "adUnitIDForBannerTest")
-    public static native String getAdUnitIDForBannerTest(GGLContext thiz);
-    @Property(selector = "adUnitIDForInterstitialTest")
-    public static native String getAdUnitIDForInterstitialTest(GGLContext thiz);
-    @Property(selector = "bannerView")
-    public static native GADBannerView getBannerView(GGLContext thiz);
-    @Property(selector = "setBannerView:")
-    public static native void setBannerView(GGLContext thiz, GADBannerView v);
-    @Property(selector = "interstitialView")
-    public static native GADInterstitial getInterstitialView(GGLContext thiz);
-    @Property(selector = "setInterstitialView:")
-    public static native void setInterstitialView(GGLContext thiz, GADInterstitial v);
+    @Property(selector = "adapterStatusesByClassName")
+    public native NSDictionary<NSString, GADAdapterStatus> getAdapterStatusesByClassName();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

@@ -52,8 +52,8 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("adView:didReceiveAppEvent:withInfo:")
-    public void didReceiveBannerAppEvent(GADBannerView banner, String name, String info) {}
+    public void didReceiveAppEvent(GADBannerView banner, String name, String info) {}
     @NotImplemented("interstitial:didReceiveAppEvent:withInfo:")
-    public void didReceiveInterstitialAppEvent(GADInterstitial interstitial, String name, String info) {}
+    public void interstitialDidReceiveAppEvent(GADInterstitial interstitial, String name, String info) {}
     /*</methods>*/
 }

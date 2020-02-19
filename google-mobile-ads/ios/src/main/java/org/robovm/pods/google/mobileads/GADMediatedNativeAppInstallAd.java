@@ -50,21 +50,21 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<methods>*/
     @Method(selector = "headline")
-    String getHeadline();
+    String headline();
     @Method(selector = "images")
-    NSArray<GADNativeAdImage> getImages();
+    NSArray<GADNativeAdImage> images();
     @Method(selector = "body")
-    String getBody();
+    String body();
     @Method(selector = "icon")
-    GADNativeAdImage getIcon();
+    GADNativeAdImage icon();
     @Method(selector = "callToAction")
-    String getCallToAction();
+    String callToAction();
     @Method(selector = "starRating")
-    NSDecimalNumber getStarRating();
+    NSDecimalNumber starRating();
     @Method(selector = "store")
-    String getStore();
+    String store();
     @Method(selector = "price")
-    String getPrice();
+    String price();
     @Method(selector = "adChoicesView")
     UIView adChoicesView();
     @Method(selector = "mediaView")

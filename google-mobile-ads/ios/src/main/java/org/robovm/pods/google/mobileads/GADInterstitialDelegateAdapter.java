@@ -52,18 +52,18 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("interstitialDidReceiveAd:")
-    public void didReceiveAd(GADInterstitial ad) {}
+    public void interstitialDidReceiveAd(GADInterstitial ad) {}
     @NotImplemented("interstitial:didFailToReceiveAdWithError:")
-    public void didFailToReceiveAd(GADInterstitial ad, GADRequestError error) {}
+    public void interstitialDidFailToReceiveAd(GADInterstitial ad, GADRequestError error) {}
     @NotImplemented("interstitialWillPresentScreen:")
-    public void willPresentScreen(GADInterstitial ad) {}
+    public void interstitialWillPresentScreen(GADInterstitial ad) {}
     @NotImplemented("interstitialDidFailToPresentScreen:")
-    public void didFailToPresentScreen(GADInterstitial ad) {}
+    public void interstitialDidFailToPresentScreen(GADInterstitial ad) {}
     @NotImplemented("interstitialWillDismissScreen:")
-    public void willDismissScreen(GADInterstitial ad) {}
+    public void interstitialWillDismissScreen(GADInterstitial ad) {}
     @NotImplemented("interstitialDidDismissScreen:")
-    public void didDismissScreen(GADInterstitial ad) {}
+    public void interstitialDidDismissScreen(GADInterstitial ad) {}
     @NotImplemented("interstitialWillLeaveApplication:")
-    public void willLeaveApplication(GADInterstitial ad) {}
+    public void interstitialWillLeaveApplication(GADInterstitial ad) {}
     /*</methods>*/
 }

@@ -3,292 +3,217 @@ framework: GoogleMobileAds
 include: [foundation, uikit, coregraphics, storekit]
 clang_args: ['-x', 'objective-c']
 headers: [GoogleMobileAds.h]
-typedefs:
-    
-enums:
-    GADAdChoicesPosition: {}
-    GADErrorCode: {nserror: true, prefix: kGADError}
-    GADGender: {}
-    GADInAppPurchaseStatus: {}
-    GADMBannerAnimationType: {prefix: kGADMBannerAnimationType}
-    GADNativeAdImageAdLoaderOptionsOrientation: {}
-    GADSearchBorderType: {}
-    GADSearchCallButtonColor: {}
-        
-classes:
 
-    DFPBannerView: # DONE
-        properties:
-            'validAdSizes':
-                name: validAdSizes0
-                type: NSArray<NSValue>
-                visibility: private
-            'enableManualImpressions':
-                getter: areManualImpressionsEnabled
-                setter: setManualImpressionsEnabled
+
+enums:
+    GADAdFormat: {}
+    GADAdapterInitializationState: {}
+    GADErrorCode: {nserror: true, prefix: kGADError}
+    GADGender: {prefix: kGADGender}
+    GADInAppPurchaseStatus: {prefix: kGADInAppPurchaseStatus}
+    GADNativeAdImageAdLoaderOptionsOrientation: {}
+    GADAdChoicesPosition: {}
+    GADSearchBorderType: {prefix: kGADSearchBorderType}
+    GADSearchCallButtonColor: {prefix: kGADSearchCallButton}
+    GADMBannerAnimationType: {prefix: kGADMBannerAnimationType}
+
+
+classes:
+    DFPBannerView:
         methods:
             '-setValidAdSizesWithSizes:':
                 exclude: true # deprecated
-            '-resize:':
-                trim_after_first_colon: true
     DFPBannerViewOptions: {}
-    DFPCustomRenderedAd: # DONE
+    DFPCustomRenderedAd: {}
+    DFPInterstitial:
         methods:
-            '-finishedRenderingAdView:':
-                trim_after_first_colon: true
-    DFPInterstitial: {} # DONE
-    DFPRequest: # DONE
-        properties:
-            'categoryExclusions':
-                type: List<String>
-                marshaler: NSArray.AsStringListMarshaler
-        methods:
-            '+updateCorrelator':
-                exclude: true # deprecated
+                # -- methods available in super, don't config if super is configured --
+            '-initWithAdUnitID:':
+                name: init
+    DFPRequest: {}
     GADAdChoicesView: {}
-    GADAdLoader: # DONE
+    GADAdLoader:
         methods:
             '-initWithAdUnitID:rootViewController:adTypes:options:':
                 name: init
-                parameters:
-                    adTypes:
-                        type: List<GADAdLoaderAdType>
-                        marshaler: GADAdLoaderAdType.AsListMarshaler
-                    options:
-                        type: NSArray<GADAdLoaderOptions>
-            '-loadRequest:':
-                trim_after_first_colon: true
-    GADAdLoaderOptions: {} # DONE
-    GADAdReward: # DONE
+    GADAdLoaderOptions: {}
+    GADNativeAdImage:
+        methods:
+            '-initWithImage:':
+                name: init
+            '-initWithURL:scale:':
+                name: init
+    GADAdReward:
         methods:
             '-initWithRewardType:rewardAmount:':
                 name: init
-    GADAdSize: {} # DONE
+    GADAdSize: {}
+    GADAdapterStatus: {}
     GADAudioVideoManager: {}
-    GADBannerView: # DONE
-        properties:
-            '(hasAutoRefreshed|mediatedAdView)':
-                exclude: true # deprecated
+    GADBannerView:
         methods:
-            '-init.*':
+            '-initWithAdSize:origin:':
                 name: init
-            '-loadRequest:':
-                trim_after_first_colon: true
-    GADCorrelator: {} # DONE
-    GADCorrelatorAdLoaderOptions: {} # DONE
-    GADCustomEventExtras: # DONE
+            '-initWithAdSize:':
+                name: init
+    GADCorrelator: {}
+    GADCorrelatorAdLoaderOptions: {}
+    GADCustomEventExtras:
         methods:
             '-setExtras:forLabel:':
-                name: setExtras0
-                visibility: private # changed params order
-            '-extrasForLabel:':
-                name: getExtras
-            '-allExtras':
-                property: true
-    GADCustomEventRequest: # DONE
-        properties:
-            'userHasLocation':
-                name: hasUserLocation
-            'userKeywords':
-                type: List<String>
-                marshaler: NSArray.AsStringListMarshaler
-    GADDebugOptionsViewController: {}
-    GADDynamicHeightSearchRequest:
+                name: setExtras
+    GADCustomEventRequest: {}
+    GADDebugOptionsViewController:
         methods:
-            '-setAdvancedOptionValue:forKey:':
-                #trim_after_first_colon: true
-                name: setAdvancedOption
-    GADExtras: {} # DONE
-    GADDefaultInAppPurchase: # DONE
+            '+debugOptionsViewControllerWithAdUnitID:':
+                name: debugOptionsViewController
+    GADDefaultInAppPurchase:
         methods:
             '+enableDefaultPurchaseFlowWithDelegate:':
                 name: enableDefaultPurchaseFlow
-    GADInAppPurchase: # DONE
+    GADDynamicHeightSearchRequest:
         methods:
-            '-reportPurchaseStatus:':
-                trim_after_first_colon: true
-    GADInterstitial: # DONE
-        properties:
-            'adUnitID':
-                readonly: true
+            '-setAdvancedOptionValue:forKey:':
+                name: setAdvancedOptionValue
+    GADExtras: {}
+    GADInAppPurchase: {}
+    GADInitializationStatus: {}
+    GADInterstitial:
         methods:
-            '-setAdUnitID:':
-                exclude: true # deprecated
             '-initWithAdUnitID:':
                 name: init
-            '-loadRequest:':
-                trim_after_first_colon: true
-            '-presentFromRootViewController:':
-                name: present
-    GADMediatedNativeAdNotificationSource: # DONE
-        methods:
-            '+mediatedNativeAdDidRecordImpression:':
-                name: didRecordImpression
-            '+mediatedNativeAdDidRecordClick:':
-                name: didRecordClick
-            '+mediatedNativeAdWillPresentScreen:':
-                name: willPresentScreen
-            '+mediatedNativeAdWillDismissScreen:':
-                name: willDismissScreen
-            '+mediatedNativeAdDidDismissScreen:':
-                name: didDismissScreen
-            '+mediatedNativeAdWillLeaveApplication:':
-                name: willLeaveApplication
+    GADMediaContent: {}
+    GADMediaView: {}
+    GADMediatedNativeAdNotificationSource: {}
     GADMediatedUnifiedNativeAdNotificationSource: {}
-    GADMediaView: {} # DONE
-    GADMobileAds: # DONE
+    GADMediationAdConfiguration: {}
+    GADMediationBannerAdConfiguration: {}
+    GADMediationCredentials: {}
+    GADMediationInterstitialAdConfiguration: {}
+    GADMediationNativeAdConfiguration: {}
+    GADMediationRewardedAdConfiguration: {}
+    GADMediationServerConfiguration: {}
+    GADMobileAds:
         methods:
-            '+sharedInstance':
-                property: true
             '-isSDKVersionAtLeastMajor:minor:patch:':
                 name: isSDKVersionAtLeast
+            '-startWithCompletionHandler:':
+                name: start
             '+configureWithApplicationID:':
                 name: configure
     GADMultipleAdsAdLoaderOptions: {}
-    GADNativeAd: {} # DONE
-    GADNativeAdViewAdOptions: {}
-    GADNativeAdImage: # DONE
+    GADMuteThisAdReason: {}
+    GADNativeAd: {}
+    GADNativeAdImage:
         methods:
-            '-init.*':
+            '-initWithImage:':
                 name: init
-    GADNativeAdImageAdLoaderOptions: # DONE
-        properties:
-            'disableImageLoading':
-                name: imageLoadingDisabled
-    GADNativeAppInstallAd: # DONE
-        properties:
-            'images':
-                type: NSArray<GADNativeAdImage>
+            '-initWithURL:scale:':
+                name: init
+    GADNativeAdImageAdLoaderOptions: {}
+    GADNativeAdViewAdOptions: {}
+    GADNativeAppInstallAd:
         methods:
             '-registerAdView:assetViews:':
-                #trim_after_first_colon: true
                 name: registerAdView
             '-registerAdView:clickableAssetViews:nonclickableAssetViews:':
-                #trim_after_first_colon: true
                 name: registerAdView
-
-    GADNativeAppInstallAdView: {} # DONE
-    GADNativeContentAd: # DONE
+    GADNativeAppInstallAdView: {}
+    GADNativeContentAd:
         methods:
             '-registerAdView:assetViews:':
-                #trim_after_first_colon: true
                 name: registerAdView
             '-registerAdView:clickableAssetViews:nonclickableAssetViews:':
-                #trim_after_first_colon: true
                 name: registerAdView
-        
-        properties:
-            'images':
-                type: NSArray<GADNativeAdImage>
-    GADNativeContentAdView: {} # DONE
-    GADNativeCustomTemplateAd: # DONE
-        properties:
-            'availableAssetKeys':
-                type: List<String>
-                marshaler: NSArray.AsStringListMarshaler
+    GADNativeContentAdView: {}
+    GADNativeCustomTemplateAd:
         methods:
-            '-imageForKey:':
-                name: getImage
-            '-stringForKey:':
-                name: getString
+            '-performClickOnAssetWithKey:':
+                name: performClickOnAsset
             '-performClickOnAssetWithKey:customClickHandler:':
                 name: performClickOnAsset
     GADNativeExpressAdView:
         methods:
             '-initWithAdSize:origin:':
-                #trim_after_first_colon: true
                 name: init
-    GADRewardBasedVideoAd: # DONE
-        methods:
-            '-loadRequest:withAdUnitID:':
-                trim_after_first_colon: true
-            '-presentFromRootViewController:':
-                name: present
-            '+sharedInstance':
-                property: true
-    GADRequest: # DONE
-        skip_def_constructor: true
+            '-initWithAdSize:':
+                name: init
+    GADNativeMuteThisAdLoaderOptions: {}
+    GADRTBRequestParameters: {}
+    GADRequest:
         properties:
             '(testDevices|keywords)':
                 type: List<String>
                 marshaler: NSArray.AsStringListMarshaler
         methods:
-            '-setBirthdayWithMonth:day:year:':
-                exclude: true
-            '-registerAdNetworkExtras:':
-                trim_after_first_colon: true
-            '-adNetworkExtrasFor:':
-                name: getAdNetworkExtras
-                parameters:
-                    aClass:
-                        type: 'Class<? extends GADAdNetworkExtras>'
-            '-removeAdNetworkExtrasFor:':
-                name: removeAdNetworkExtras
-                parameters:
-                    aClass:
-                        type: 'Class<? extends GADAdNetworkExtras>'
             '-setLocationWithLatitude:longitude:accuracy:':
                 name: setLocation
+            '-setBirthdayWithMonth:day:year:':
+                name: setBirthday
             '-setLocationWithDescription:':
-                exclude: true # deprecated
-            '-tagForChildDirectedTreatment:':
-                trim_after_first_colon: true
-            '+request':
-                name: create
-                constructor: true
-            '+sdkVersion':
-                property: true
-    GADRequestError: # DONE
-        skip_def_constructor: true
-    GADSearchBannerView: {} # DONE
-    GADSearchRequest: # DONE
+                name: setLocation
+    GADRequestConfiguration: {}
+    GADRequestError: {skip_def_constructor: true}
+    GADRewardBasedVideoAd:
+        methods:
+            '-loadRequest:withAdUnitID:':
+                name: loadRequest
+    GADRewardedAd:
+        methods:
+            '-initWithAdUnitID:':
+                name: init
+            '-loadRequest:completionHandler:':
+                name: loadRequest
+            '-presentFromRootViewController:delegate:':
+                name: presentFromRootViewController
+    GADSearchBannerView: {}
+    GADSearchRequest:
         methods:
             '-setBackgroundGradientFrom:toColor:':
                 name: setBackgroundGradient
+    GADServerSideVerificationOptions: {}
     GADUnifiedNativeAd:
         methods:
             '-registerAdView:clickableAssetViews:nonclickableAssetViews:':
-                #trim_after_first_colon: true
                 name: registerAdView
+            '-muteThisAdWithReason:':
+                name: muteThisAd
     GADUnifiedNativeAdView: {}
-    GADVideoController: # DONE
-        methods:
-            '-aspectRatio':
-                property: true
-    GADVideoOptions: {} # DONE
+    GADVersionNumber: {}
+    GADVideoController: {}
+    GADVideoOptions: {}
+
 
 protocols:
     DFPBannerAdLoaderDelegate:
         methods:
             '-adLoader:didReceiveDFPBannerView:':
-                #trim_after_first_colon: true
-                name: didReceive
-
-    DFPCustomRenderedBannerViewDelegate: # DONE
+                name: didReceiveDFPBannerView
+    DFPCustomRenderedBannerViewDelegate:
         methods:
             '-bannerView:didReceiveCustomRenderedAd:':
-                name: didReceiveCustomRenderedAd
-    DFPCustomRenderedInterstitialDelegate: # DONE
+                name: bannerDidReceiveCustomRenderedAd
+    DFPCustomRenderedInterstitialDelegate:
         methods:
             '-interstitial:didReceiveCustomRenderedAd:':
-                name: didReceiveCustomRenderedAd
-    GADAdLoaderDelegate: # DONE
+                name: interstitialDidReceiveCustomRenderedAd
+    GADAdLoaderDelegate:
         methods:
             '-adLoader:didFailToReceiveAdWithError:':
                 name: didFailToReceiveAd
-    GADAdNetworkExtras: {} # DONE
-    GADAdSizeDelegate: # DONE
+    GADAdNetworkExtras: {}
+    GADAdSizeDelegate:
         methods:
             '-adView:willChangeAdSizeTo:':
                 name: willChangeAdSize
-    GADAppEventDelegate: # DONE
+    GADAppEventDelegate:
         methods:
             '-adView:didReceiveAppEvent:withInfo:':
-                name: didReceiveBannerAppEvent
+                name: didReceiveAppEvent
             '-interstitial:didReceiveAppEvent:withInfo:':
-                name: didReceiveInterstitialAppEvent
+                name: interstitialDidReceiveAppEvent
     GADAudioVideoManagerDelegate: {}
-    GADBannerViewDelegate: # DONE
+    GADBannerViewDelegate:
         methods:
             '-adViewDidReceiveAd:':
                 name: didReceiveAd
@@ -302,247 +227,194 @@ protocols:
                 name: didDismissScreen
             '-adViewWillLeaveApplication:':
                 name: willLeaveApplication
-    GADCustomEventBanner: # DONE
+    GADCustomEventBanner:
         methods:
             '-requestBannerAd:parameter:label:request:':
                 name: requestBannerAd
-    GADCustomEventBannerDelegate: # DONE
+    GADCustomEventBannerDelegate:
         methods:
-            '-customEventBanner:clickDidOccurInAd:':
-                exclude: true # deprecated
             '-customEventBanner:didReceiveAd:':
-                name: didReceiveAd
+                name: customEventBannerDidReceiveAd
             '-customEventBanner:didFailAd:':
-                name: didFail
-            '-customEventBannerWasClicked:':
-                name: wasClicked
-            '-customEventBannerWillPresentModal:':
-                name: willPresentModal
-            '-customEventBannerWillDismissModal:':
-                name: willDismissModal
-            '-customEventBannerDidDismissModal:':
-                name: didDismissModal
-            '-customEventBannerWillLeaveApplication:':
-                name: willLeaveApplication
-    GADCustomEventInterstitial: # DONE
+                name: customEventBannerDidFailAd
+            '-customEventBanner:clickDidOccurInAd:':
+                name: customEventBannerClickDidOccurInAd
+    GADCustomEventInterstitial:
         methods:
             '-requestInterstitialAdWithParameter:label:request:':
                 name: requestInterstitialAd
-            '-presentFromRootViewController:':
-                name: present
-    GADCustomEventInterstitialDelegate: # DONE
+    GADCustomEventInterstitialDelegate:
         methods:
-            '-customEventInterstitial:didReceiveAd:':
-                exclude: true # deprecated
-            '-customEventInterstitialDidReceiveAd:':
-                name: didReceiveAd
             '-customEventInterstitial:didFailAd:':
-                name: didFail
-            '-customEventInterstitialWasClicked:':
-                name: wasClicked
-            '-customEventInterstitialWillPresent:':
-                name: willPresent
-            '-customEventInterstitialWillDismiss:':
-                name: willDismiss
-            '-customEventInterstitialDidDismiss:':
-                name: didDismiss
-            '-customEventInterstitialWillLeaveApplication:':
-                name: willLeaveApplication
-    GADCustomEventNativeAd: # DONE
+                name: customEventInterstitialDidFailAd
+            '-customEventInterstitial:didReceiveAd:':
+                name: customEventInterstitialDidReceiveAd
+    GADCustomEventNativeAd:
         methods:
             '-requestNativeAdWithParameter:request:adTypes:options:rootViewController:':
                 name: requestNativeAd
-                parameters:
-                    adTypes:
-                        type: List<GADAdLoaderAdType>
-                        marshaler: GADAdLoaderAdType.AsListMarshaler
-    GADCustomEventNativeAdDelegate: # DONE
+    GADCustomEventNativeAdDelegate:
         methods:
-            '-customEventNativeAd:didReceiveMediatedUnifiedNativeAd:':
-                #trim_after_first_colon: true
-                name: didReceiveMediatedUnifiedNativeAd
             '-customEventNativeAd:didReceiveMediatedNativeAd:':
-                name: didReceiveMediatedNativeAd
+                name: customEventNativeAdDidReceiveMediatedNativeAd
             '-customEventNativeAd:didFailToLoadWithError:':
-                name: didFailToLoad
+                name: customEventNativeAdDidFailToLoad
+            '-customEventNativeAd:didReceiveMediatedUnifiedNativeAd:':
+                name: customEventNativeAdDidReceiveMediatedUnifiedNativeAd
     GADDebugOptionsViewControllerDelegate: {}
-    GADDefaultInAppPurchaseDelegate: # DONE
+    GADDefaultInAppPurchaseDelegate:
         methods:
-            '-userDidPayForPurchase:':
-                trim_after_first_colon: true
             '-shouldStartPurchaseForProductID:quantity:':
                 name: shouldStartPurchase
-    GADInAppPurchaseDelegate: # DONE
+    GADInAppPurchaseDelegate: {}
+    GADInterstitialDelegate:
         methods:
-            '-didReceiveInAppPurchase:':
-                trim_after_first_colon: true
-    GADInterstitialDelegate: # DONE
-        methods:
-            '-interstitialDidReceiveAd:':
-                name: didReceiveAd
             '-interstitial:didFailToReceiveAdWithError:':
-                name: didFailToReceiveAd
-            '-interstitialWillPresentScreen:':
-                name: willPresentScreen
-            '-interstitialWillDismissScreen:':
-                name: willDismissScreen
-            '-interstitialDidDismissScreen:':
-                name: didDismissScreen
-            '-interstitialWillLeaveApplication:':
-                name: willLeaveApplication
-            '-interstitialDidFailToPresentScreen:':
-                name: didFailToPresentScreen
+                name: interstitialDidFailToReceiveAd
     GADMAdNetworkAdapter:
         methods:
+            '-initWithGADMAdNetworkConnector:':
+                name: init
+            '-getBannerWithSize:':
+                name: getBanner
             '-getNativeAdWithAdTypes:options:':
-                #trim_after_first_colon: true
                 name: getNativeAd
     GADMAdNetworkConnector:
         methods:
             '-adapter:didFailAd:':
-                #trim_after_first_colon: true
                 name: didFailAd
             '-adapter:didReceiveAdView:':
-                #trim_after_first_colon: true
                 name: didReceiveAdView
             '-adapter:didReceiveMediatedNativeAd:':
-                #trim_after_first_colon: true
                 name: didReceiveMediatedNativeAd
             '-adapter:didReceiveMediatedUnifiedNativeAd:':
-                #trim_after_first_colon: true
                 name: didReceiveMediatedUnifiedNativeAd
             '-adapter:didReceiveInterstitial:':
-                #trim_after_first_colon: true
                 name: didReceiveInterstitial
             '-adapter:clickDidOccurInBanner:':
-                #trim_after_first_colon: true
                 name: clickDidOccurInBanner
             '-adapter:didFailInterstitial:':
-                #trim_after_first_colon: true
                 name: didFailInterstitial
-    GADMediatedNativeAd: # DONE
-        methods:
-            '-mediatedNativeAdDelegate':
-                property: true
-            '-extraAssets':
-                property: true
-    GADMediatedNativeAdDelegate: # DONE
-        methods:
-            '-mediatedNativeAd:didRenderInView:viewController:':
-                name: didRenderInView
-            '-mediatedNativeAd:didRenderInView:clickableAssetViews:nonclickableAssetViews:viewController:':
-                #trim_after_first_colon: true
-                name: didRenderInView
-            '-mediatedNativeAdDidRecordImpression:':
-                name: didRecordImpression
-            '-mediatedNativeAd:didRecordClickOnAssetWithName:view:viewController:':
-                name: didRecordClickOnAsset
-            '-mediatedNativeAd:didUntrackView:':
-                name: didUntrackView
-    GADMediatedNativeAppInstallAd: # DONE
-        methods:
-            '-(headline|body|icon|callToAction|starRating|store|price)':
-                property: true
-            '-images':
-                property: true
-                return_type: NSArray<GADNativeAdImage>
-    GADMediatedNativeContentAd: # DONE
-        methods:
-            '-(headline|body|logo|callToAction|advertiser)':
-                property: true
-            '-images':
-                property: true
-                return_type: NSArray<GADNativeAdImage>
-    GADMediatedUnifiedNativeAd:
-        methods:
-            '-didRenderInView:clickableAssetViews:nonclickableAssetViews:viewController:':
-                #trim_after_first_colon: true
-                name: didRenderInView
-            '-didRecordClickOnAssetWithName:view:viewController:':
-                #trim_after_first_colon: true
-                name: didRecordClickOnAsset
-    GADMediationAdRequest: {}
     GADMRewardBasedVideoAdNetworkAdapter:
         methods:
-            '-initWithRewardBasedVideoAdNetworkConnector:credentials:':
-                #trim_after_first_colon: true
+            '-initWithRewardBasedVideoAdNetworkConnector:':
                 name: init
+            '-presentRewardBasedVideoAdWithRootViewController:':
+                name: presentRewardBasedVideoAd
+            '-initWithRewardBasedVideoAdNetworkConnector:credentials:':
+                name: init
+            '-initWithGADMAdNetworkConnector:':
+                name: init
+            '-setUpWithUserID:':
+                name: setUp
     GADMRewardBasedVideoAdNetworkConnector:
         methods:
             '-adapter:didFailToSetUpRewardBasedVideoAdWithError:':
-                #trim_after_first_colon: true
                 name: didFailToSetUpRewardBasedVideoAd
             '-adapter:didRewardUserWithReward:':
-                #trim_after_first_colon: true
-                name: adidRewardUser
+                name: didRewardUser
             '-adapter:didFailToLoadRewardBasedVideoAdwithError:':
-                #trim_after_first_colon: true
                 name: didFailToLoadRewardBasedVideoAd
-    GADNativeAdDelegate: # DONE
+    GADMediatedNativeAd: {}
+    GADMediatedNativeAdDelegate:
         methods:
-            '-nativeAdWillPresentScreen:':
-                name: willPresentScreen
-            '-nativeAdWillDismissScreen:':
-                name: willDismissScreen
-            '-nativeAdDidDismissScreen:':
-                name: didDismissScreen
-            '-nativeAdWillLeaveApplication:':
-                name: willLeaveApplication
-    GADNativeAppInstallAdLoaderDelegate: # DONE
+            '-mediatedNativeAd:didRenderInView:clickableAssetViews:nonclickableAssetViews:viewController:':
+                name: mediatedNativeAdDidRenderInView
+            '-mediatedNativeAd:didRecordClickOnAssetWithName:view:viewController:':
+                name: mediatedNativeAdDidRecordClickOnAsset
+            '-mediatedNativeAd:didUntrackView:':
+                name: mediatedNativeAdDidUntrackView
+            '-mediatedNativeAd:didRenderInView:viewController:':
+                name: mediatedNativeAdDidRenderInView
+    GADMediatedNativeAppInstallAd: {}
+    GADMediatedNativeContentAd: {}
+    GADMediatedUnifiedNativeAd:
+        methods:
+            '-didRenderInView:clickableAssetViews:nonclickableAssetViews:viewController:':
+                name: didRenderInView
+            '-didRecordClickOnAssetWithName:view:viewController:':
+                name: didRecordClickOnAsset
+    GADMediationAd: {}
+    GADMediationAdEventDelegate:
+        methods:
+            '-didFailToPresentWithError:':
+                name: didFailToPresent
+    GADMediationAdRequest: {}
+    GADMediationAdapter:
+        methods:
+            '-loadBannerForAdConfiguration:completionHandler:':
+                name: loadBanner
+            '-loadInterstitialForAdConfiguration:completionHandler:':
+                name: loadInterstitial
+            '-loadNativeAdForAdConfiguration:completionHandler:':
+                name: loadNativeAd
+            '-loadRewardedAdForAdConfiguration:completionHandler:':
+                name: loadRewardedAd
+            '+setUpWithConfiguration:completionHandler:':
+                name: setUp
+    GADMediationBannerAd: {}
+    GADMediationBannerAdEventDelegate: {}
+    GADMediationInterstitialAd: {}
+    GADMediationInterstitialAdEventDelegate: {}
+    GADMediationNativeAd: {}
+    GADMediationNativeAdEventDelegate: {}
+    GADMediationRewardedAd: {}
+    GADMediationRewardedAdEventDelegate:
+        methods:
+            '-didRewardUserWithReward:':
+                name: didRewardUser
+    GADNativeAdDelegate: {}
+    GADNativeAppInstallAdLoaderDelegate:
         methods:
             '-adLoader:didReceiveNativeAppInstallAd:':
                 name: didReceiveNativeAppInstallAd
-    GADNativeContentAdLoaderDelegate: # DONE
+    GADNativeContentAdLoaderDelegate:
         methods:
             '-adLoader:didReceiveNativeContentAd:':
                 name: didReceiveNativeContentAd
-    GADNativeCustomTemplateAdLoaderDelegate: # DONE
+    GADNativeCustomTemplateAdLoaderDelegate:
         methods:
-            '-nativeCustomTemplateIDsForAdLoader:':
-                name: getNativeCustomTemplateIDs
-                return_type: List<String>
-                return_marshaler: NSArray.AsStringListMarshaler
             '-adLoader:didReceiveNativeCustomTemplateAd:':
                 name: didReceiveNativeCustomTemplateAd
     GADNativeExpressAdViewDelegate:
         methods:
             '-nativeExpressAdView:didFailToReceiveAdWithError:':
-                #trim_after_first_colon: true
-                name: didFailToReceiveAd
-    GADRewardBasedVideoAdDelegate: # DONE
+                name: nativeExpressAdViewDidFailToReceiveAd
+    GADRTBAdapter:
         methods:
-            '-rewardBasedVideoAdDidReceiveAd:':
-                name: didReceiveAd
-            '-rewardBasedVideoAdDidOpen:':
-                name: didOpen
-            '-rewardBasedVideoAdDidStartPlaying:':
-                name: didStartPlaying
-            '-rewardBasedVideoAdDidClose:':
-                name: didClose
-            '-rewardBasedVideoAdWillLeaveApplication:':
-                name: willLeaveApplication
+            '-collectSignalsForRequestParameters:completionHandler:':
+                name: collectSignals
+    GADRewardBasedVideoAdDelegate:
+        methods:
             '-rewardBasedVideoAd:didRewardUserWithReward:':
                 name: didRewardUser
             '-rewardBasedVideoAd:didFailToLoadWithError:':
                 name: didFailToLoad
+    GADRewardedAdDelegate:
+        methods:
+            '-rewardedAd:userDidEarnReward:':
+                name: didEarnReward
+            '-rewardedAd:didFailToPresentWithError:':
+                name: didFailToPresent
+    GADRewardedAdMetadataDelegate: {}
     GADUnifiedNativeAdDelegate: {}
     GADUnifiedNativeAdLoaderDelegate:
         methods:
             '-adLoader:didReceiveUnifiedNativeAd:':
-                #trim_after_first_colon: true
                 name: didReceiveUnifiedNativeAd
     GADUnifiedNativeAdUnconfirmedClickDelegate:
         methods:
             '-nativeAd:didReceiveUnconfirmedClickOnAssetID:':
-                #trim_after_first_colon: true
-                name: didReceiveUnconfirmedClick
-    GADVideoControllerDelegate: # DONE
+                name: didReceiveUnconfirmedClickOnAssetID
+    GADVideoControllerDelegate:
         methods:
             '-videoControllerDidEndVideoPlayback:':
                 name: didEndVideoPlayback
 
+     
 functions:
-    # GADAdSize
+
+# GADAdSize
     GADAdSizeFromCGSize:
         class: GADAdSize
         name: create
@@ -575,7 +447,10 @@ functions:
         class: GADAdSize
         name: fromValue
         visibility: protected
-
+    GADClosestValidSizeForAdSizes:
+        exclude: true # TODO
+        class: GADAdSize
+        name: getClosestValidSizeForAdSizes
     # Make sure we don't miss any functions if new ones are introduced in a later version
     (GAD.*):
         class: FIXME
@@ -588,59 +463,54 @@ values:
     kGADErrorDomain:
         class: GADErrorCode
         name: getClassDomain
+    GADMaxAdContentRating(.*):
+        class: GADRequestConfiguration
+        name: 'getMaxAdContentRating#{g[0]}'
+    GADUnifiedNative(.*)Asset:
+        class: GADNativeCustomTemplateAd
+        name: 'getUnifiedNative#{g[0]}Asset'
+    GADNativeCustomTemplateAdMediaViewKey:
+        class: GADNativeCustomTemplateAd
+        name: 'getUnifiedCustomTemplateId'
+    GADCustomEventParametersServer:
+        class: GADCustomEventParameters
+        name: 'getCustomEventParameterServer'
 
-    # DFPRequest
-    kDFP(SimulatorID):
-        class: DFPRequest
-        name: 'get#{g[0]}'
-        type: String
-
-    # GADAdLoader
-    kGADAdLoaderAdType(.*):
-        enum: GADAdLoaderAdType
-        name: '#{g[0]}'
-        type: NSString
-
-    # GADAdSize
-    kGADAdSize(.*):
-        class: GADAdSize
-        name: '#{g[0]}'
-
-    # GADRequest
-    kGAD(SimulatorID):
+    kGADSimulatorID:
         class: GADRequest
-        name: 'get#{g[0]}'
+        name: getSimulatorID
+        type: String
+    kDFPSimulatorID:
+        class: DFPRequest
+        name: getSimulatorID
         type: String
 
-    # GADNativeContentAdAssetID
     GADNativeContent(.*)Asset:
         enum: GADNativeContentAdAssetID
         name: '#{g[0]}'
         type: NSString
 
-    # GADNativeAppInstallAssetID
     GADNativeAppInstall(.*)Asset:
-        enum: GADNativeAppInstallAssetID
+        enum: GADNativeAppInstallAdAssetID
         name: '#{g[0]}'
         type: NSString
 
-    # GADUnifiedNativeAssetIdentifier
-    GADUnifiedNative(.*)Asset:
-        enum: GADUnifiedNativeAssetIdentifier
+    kGADAdSize(.*):
+        class: GADAdSize
         name: '#{g[0]}'
-        type: NSString
-        
-    GADCustomEventParametersServer: 
 
-    GADNativeCustomTemplateAdMediaViewKey:
-
-    # Make sure we don't miss any values if new ones are introduced in a later version
+    kGADAdLoaderAdType(.*):
+        class: GADAdLoaderAdTypes
+        name: '#{g[0]}'
+   # Make sure we don't miss any values if new ones are introduced in a later version
     (k?GAD.*):
         class: FIXME
         name: 'Value__#{g[0]}'
     (k?DFP.*):
         class: FIXME
         name: 'Value__#{g[0]}'
+
+
 
 constants:
 

@@ -72,10 +72,12 @@ import org.robovm.apple.storekit.*;
     UIView getMediaView();
     @Property(selector = "hasVideoContent")
     boolean hasVideoContent();
+    @Property(selector = "mediaContentAspectRatio")
+    @MachineSizedFloat double getMediaContentAspectRatio();
     /*</properties>*/
     /*<methods>*/
     @Method(selector = "didRenderInView:clickableAssetViews:nonclickableAssetViews:viewController:")
-    void didRenderInView(UIView view, NSDictionary<?, ?> clickableAssetViews, NSDictionary<?, ?> nonclickableAssetViews, UIViewController viewController);
+    void didRenderInView(UIView view, NSDictionary<NSString, UIView> clickableAssetViews, NSDictionary<NSString, UIView> nonclickableAssetViews, UIViewController viewController);
     @Method(selector = "didRecordImpression")
     void didRecordImpression();
     @Method(selector = "didRecordClickOnAssetWithName:view:viewController:")

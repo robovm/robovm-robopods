@@ -50,15 +50,15 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<methods>*/
     @Method(selector = "mediatedNativeAd:didRenderInView:clickableAssetViews:nonclickableAssetViews:viewController:")
-    void didRenderInView(GADMediatedNativeAd mediatedNativeAd, UIView view, NSDictionary<NSString, UIView> clickableAssetViews, NSDictionary<NSString, UIView> nonclickableAssetViews, UIViewController viewController);
+    void mediatedNativeAdDidRenderInView(GADMediatedNativeAd mediatedNativeAd, UIView view, NSDictionary<NSString, UIView> clickableAssetViews, NSDictionary<NSString, UIView> nonclickableAssetViews, UIViewController viewController);
     @Method(selector = "mediatedNativeAdDidRecordImpression:")
-    void didRecordImpression(GADMediatedNativeAd mediatedNativeAd);
+    void mediatedNativeAdDidRecordImpression(GADMediatedNativeAd mediatedNativeAd);
     @Method(selector = "mediatedNativeAd:didRecordClickOnAssetWithName:view:viewController:")
-    void didRecordClickOnAsset(GADMediatedNativeAd mediatedNativeAd, String assetName, UIView view, UIViewController viewController);
+    void mediatedNativeAdDidRecordClickOnAsset(GADMediatedNativeAd mediatedNativeAd, String assetName, UIView view, UIViewController viewController);
     @Method(selector = "mediatedNativeAd:didUntrackView:")
-    void didUntrackView(GADMediatedNativeAd mediatedNativeAd, UIView view);
+    void mediatedNativeAdDidUntrackView(GADMediatedNativeAd mediatedNativeAd, UIView view);
     @Method(selector = "mediatedNativeAd:didRenderInView:viewController:")
-    void didRenderInView(GADMediatedNativeAd mediatedNativeAd, UIView view, UIViewController viewController);
+    void mediatedNativeAdDidRenderInView(GADMediatedNativeAd mediatedNativeAd, UIView view, UIViewController viewController);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

@@ -55,9 +55,9 @@ import org.robovm.apple.storekit.*;
     @Property(selector = "setPublisherProvidedID:")
     public native void setPublisherProvidedID(String v);
     @Property(selector = "categoryExclusions")
-    public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getCategoryExclusions();
+    public native NSArray<?> getCategoryExclusions();
     @Property(selector = "setCategoryExclusions:")
-    public native void setCategoryExclusions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> v);
+    public native void setCategoryExclusions(NSArray<?> v);
     @Property(selector = "customTargeting")
     public native NSDictionary<?, ?> getCustomTargeting();
     @Property(selector = "setCustomTargeting:")
@@ -68,6 +68,7 @@ import org.robovm.apple.storekit.*;
     @GlobalValue(symbol="kDFPSimulatorID", optional=true)
     public static native String getSimulatorID();
     
-    
+    @Method(selector = "updateCorrelator")
+    public static native void updateCorrelator();
     /*</methods>*/
 }

@@ -6,19 +6,18 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 
 @class GADUnifiedNativeAd;
 
-GAD_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 /// Identifies native ad assets.
-@protocol GADUnifiedNativeAdDelegate<NSObject>
+@protocol GADUnifiedNativeAdDelegate <NSObject>
 
 @optional
 
-#pragma mark Ad Lifecycle Events
+#pragma mark - Ad Lifecycle Events
 
 /// Called when an impression is recorded for an ad. Only called for Google ads and is not supported
 /// for mediated ads.
@@ -28,7 +27,7 @@ GAD_ASSUME_NONNULL_BEGIN
 /// mediated ads.
 - (void)nativeAdDidRecordClick:(GADUnifiedNativeAd *)nativeAd;
 
-#pragma mark Click-Time Lifecycle Notifications
+#pragma mark - Click-Time Lifecycle Notifications
 
 /// Called before presenting the user a full screen view in response to an ad action. Use this
 /// opportunity to stop animations, time sensitive interactions, etc.
@@ -52,6 +51,12 @@ GAD_ASSUME_NONNULL_BEGIN
 /// methods, like applicationDidEnterBackground:, will be called immediately before this.
 - (void)nativeAdWillLeaveApplication:(GADUnifiedNativeAd *)nativeAd;
 
+#pragma mark - Mute This Ad
+
+/// Used for Mute This Ad feature. Called after the native ad is muted. Only called for Google ads
+/// and is not supported for mediated ads.
+- (void)nativeAdIsMuted:(nonnull GADUnifiedNativeAd *)nativeAd;
+
 @end
 
-GAD_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

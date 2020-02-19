@@ -52,6 +52,10 @@ import org.robovm.apple.storekit.*;
     public GADBannerView(@ByVal GADAdSize adSize, @ByVal CGPoint origin) { super((SkipInit) null); initObject(init(adSize, origin)); }
     @Method(selector = "initWithAdSize:")
     public GADBannerView(@ByVal GADAdSize adSize) { super((SkipInit) null); initObject(init(adSize)); }
+    @Method(selector = "initWithFrame:")
+    public GADBannerView(@ByVal CGRect frame) { super(frame); }
+    @Method(selector = "initWithCoder:")
+    public GADBannerView(NSCoder decoder) { super(decoder); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "adUnitID")
@@ -80,10 +84,14 @@ import org.robovm.apple.storekit.*;
     public native void setAutoloadEnabled(boolean v);
     @Property(selector = "adNetworkClassName")
     public native String getAdNetworkClassName();
+    @Property(selector = "hasAutoRefreshed")
+    public native boolean hasAutoRefreshed();
     @Property(selector = "inAppPurchaseDelegate")
     public native GADInAppPurchaseDelegate getInAppPurchaseDelegate();
     @Property(selector = "setInAppPurchaseDelegate:", strongRef = true)
     public native void setInAppPurchaseDelegate(GADInAppPurchaseDelegate v);
+    @Property(selector = "mediatedAdView")
+    public native UIView getMediatedAdView();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

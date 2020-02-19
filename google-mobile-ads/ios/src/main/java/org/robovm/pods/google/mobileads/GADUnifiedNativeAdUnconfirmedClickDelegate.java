@@ -50,7 +50,7 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<methods>*/
     @Method(selector = "nativeAd:didReceiveUnconfirmedClickOnAssetID:")
-    void didReceiveUnconfirmedClick(GADUnifiedNativeAd nativeAd, String assetID);
+    void didReceiveUnconfirmedClickOnAssetID(GADUnifiedNativeAd nativeAd, String assetID);
     @Method(selector = "nativeAdDidCancelUnconfirmedClick:")
     void nativeAdDidCancelUnconfirmedClick(GADUnifiedNativeAd nativeAd);
     /*</methods>*/

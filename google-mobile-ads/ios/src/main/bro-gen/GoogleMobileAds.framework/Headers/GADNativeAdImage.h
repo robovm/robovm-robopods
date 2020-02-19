@@ -6,24 +6,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 #import <UIKit/UIKit.h>
 
-#import <GoogleMobileAds/GoogleMobileAdsDefines.h>
-
-GAD_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 /// Native ad image.
 @interface GADNativeAdImage : NSObject
 
 /// The image. If image autoloading is disabled, this property will be nil.
-@property(nonatomic, readonly, strong, GAD_NULLABLE) UIImage *image;
+@property(nonatomic, readonly, strong, nullable) UIImage *image;
 
 /// The image's URL.
-@property(nonatomic, readonly, copy) NSURL *imageURL;
+@property(nonatomic, readonly, copy, nullable) NSURL *imageURL;
 
 /// The image's scale.
 @property(nonatomic, readonly, assign) CGFloat scale;
 
 @end
 
-GAD_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

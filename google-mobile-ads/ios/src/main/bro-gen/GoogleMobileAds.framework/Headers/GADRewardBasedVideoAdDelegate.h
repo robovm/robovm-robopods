@@ -6,16 +6,16 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import <GoogleMobileAds/GADAdReward.h>
-#import <GoogleMobileAds/GADRewardBasedVideoAd.h>
 #import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 
-GAD_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
+
+@class GADRewardBasedVideoAd;
 
 /// Delegate for receiving state change messages from a GADRewardBasedVideoAd such as ad requests
 /// succeeding/failing.
-@protocol GADRewardBasedVideoAdDelegate<NSObject>
+@protocol GADRewardBasedVideoAdDelegate <NSObject>
 
 @required
 
@@ -47,6 +47,10 @@ GAD_ASSUME_NONNULL_BEGIN
 /// Tells the delegate that the reward based video ad will leave the application.
 - (void)rewardBasedVideoAdWillLeaveApplication:(GADRewardBasedVideoAd *)rewardBasedVideoAd;
 
+/// Tells the delegate that the reward based video ad's metadata changed. Called when an ad loads,
+/// and when a loaded ad's metadata changes.
+- (void)rewardBasedVideoAdMetadataDidChange:(GADRewardBasedVideoAd *)rewardBasedVideoAd;
+
 @end
 
-GAD_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

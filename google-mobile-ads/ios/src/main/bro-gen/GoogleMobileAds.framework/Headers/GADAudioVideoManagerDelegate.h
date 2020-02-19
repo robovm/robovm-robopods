@@ -9,9 +9,10 @@
 
 @class GADAudioVideoManager;
 
-GAD_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
-@protocol GADAudioVideoManagerDelegate<NSObject>
+/// A set of methods to inform the delegate of audio video manager events.
+@protocol GADAudioVideoManagerDelegate <NSObject>
 
 @optional
 
@@ -36,4 +37,4 @@ GAD_ASSUME_NONNULL_BEGIN
 
 @end
 
-GAD_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

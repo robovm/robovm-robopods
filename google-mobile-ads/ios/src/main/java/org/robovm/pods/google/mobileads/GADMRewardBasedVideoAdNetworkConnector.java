@@ -66,7 +66,7 @@ import org.robovm.apple.storekit.*;
     @Method(selector = "adapterDidCloseRewardBasedVideoAd:")
     void adapterDidCloseRewardBasedVideoAd(GADMRewardBasedVideoAdNetworkAdapter rewardBasedVideoAdAdapter);
     @Method(selector = "adapter:didRewardUserWithReward:")
-    void adidRewardUser(GADMRewardBasedVideoAdNetworkAdapter rewardBasedVideoAd, GADAdReward reward);
+    void didRewardUser(GADMRewardBasedVideoAdNetworkAdapter rewardBasedVideoAd, GADAdReward reward);
     @Method(selector = "adapterWillLeaveApplication:")
     void adapterWillLeaveApplication(GADMRewardBasedVideoAdNetworkAdapter rewardBasedVideoAdAdapter);
     @Method(selector = "adapter:didFailToLoadRewardBasedVideoAdwithError:")

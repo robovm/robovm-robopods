@@ -73,11 +73,13 @@ import org.robovm.apple.storekit.*;
     public UIView getMediaView() { return null; }
     @NotImplemented("hasVideoContent")
     public boolean hasVideoContent() { return false; }
+    @NotImplemented("mediaContentAspectRatio")
+    public @MachineSizedFloat double getMediaContentAspectRatio() { return 0; }
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("didRenderInView:clickableAssetViews:nonclickableAssetViews:viewController:")
-    public void didRenderInView(UIView view, NSDictionary<?, ?> clickableAssetViews, NSDictionary<?, ?> nonclickableAssetViews, UIViewController viewController) {}
+    public void didRenderInView(UIView view, NSDictionary<NSString, UIView> clickableAssetViews, NSDictionary<NSString, UIView> nonclickableAssetViews, UIViewController viewController) {}
     @NotImplemented("didRecordImpression")
     public void didRecordImpression() {}
     @NotImplemented("didRecordClickOnAssetWithName:view:viewController:")

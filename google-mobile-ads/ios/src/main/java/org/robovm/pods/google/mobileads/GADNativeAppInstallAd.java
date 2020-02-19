@@ -72,9 +72,9 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "registerAdView:assetViews:")
-    public native void registerAdView(UIView adView, NSDictionary<?, ?> assetViews);
+    public native void registerAdView(UIView adView, NSDictionary<NSString, UIView> assetViews);
     @Method(selector = "registerAdView:clickableAssetViews:nonclickableAssetViews:")
-    public native void registerAdView(UIView adView, NSDictionary<?, ?> clickableAssetViews, NSDictionary<?, ?> nonclickableAssetViews);
+    public native void registerAdView(UIView adView, NSDictionary<NSString, UIView> clickableAssetViews, NSDictionary<NSString, UIView> nonclickableAssetViews);
     @Method(selector = "unregisterAdView")
     public native void unregisterAdView();
     /*</methods>*/

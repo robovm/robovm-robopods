@@ -50,11 +50,11 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<methods>*/
     @Method(selector = "customEventNativeAd:didReceiveMediatedNativeAd:")
-    void didReceiveMediatedNativeAd(GADCustomEventNativeAd customEventNativeAd, GADMediatedNativeAd mediatedNativeAd);
+    void customEventNativeAdDidReceiveMediatedNativeAd(GADCustomEventNativeAd customEventNativeAd, GADMediatedNativeAd mediatedNativeAd);
     @Method(selector = "customEventNativeAd:didFailToLoadWithError:")
-    void didFailToLoad(GADCustomEventNativeAd customEventNativeAd, NSError error);
+    void customEventNativeAdDidFailToLoad(GADCustomEventNativeAd customEventNativeAd, NSError error);
     @Method(selector = "customEventNativeAd:didReceiveMediatedUnifiedNativeAd:")
-    void didReceiveMediatedUnifiedNativeAd(GADCustomEventNativeAd customEventNativeAd, GADMediatedUnifiedNativeAd mediatedUnifiedNativeAd);
+    void customEventNativeAdDidReceiveMediatedUnifiedNativeAd(GADCustomEventNativeAd customEventNativeAd, GADMediatedUnifiedNativeAd mediatedUnifiedNativeAd);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

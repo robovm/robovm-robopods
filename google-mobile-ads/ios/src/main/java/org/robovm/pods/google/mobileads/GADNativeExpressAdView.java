@@ -51,7 +51,11 @@ import org.robovm.apple.storekit.*;
     @Method(selector = "initWithAdSize:origin:")
     public GADNativeExpressAdView(@ByVal GADAdSize adSize, @ByVal CGPoint origin) { super((SkipInit) null); initObject(init(adSize, origin)); }
     @Method(selector = "initWithAdSize:")
-    public GADNativeExpressAdView(@ByVal GADAdSize adSize) { super((SkipInit) null); initObject(initWithAdSize(adSize)); }
+    public GADNativeExpressAdView(@ByVal GADAdSize adSize) { super((SkipInit) null); initObject(init(adSize)); }
+    @Method(selector = "initWithFrame:")
+    public GADNativeExpressAdView(@ByVal CGRect frame) { super(frame); }
+    @Method(selector = "initWithCoder:")
+    public GADNativeExpressAdView(NSCoder decoder) { super(decoder); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "videoController")
@@ -84,7 +88,7 @@ import org.robovm.apple.storekit.*;
     @Method(selector = "initWithAdSize:origin:")
     protected native @Pointer long init(@ByVal GADAdSize adSize, @ByVal CGPoint origin);
     @Method(selector = "initWithAdSize:")
-    protected native @Pointer long initWithAdSize(@ByVal GADAdSize adSize);
+    protected native @Pointer long init(@ByVal GADAdSize adSize);
     @Method(selector = "setAdOptions:")
     public native void setAdOptions(NSArray<?> adOptions);
     @Method(selector = "loadRequest:")

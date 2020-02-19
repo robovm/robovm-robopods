@@ -50,19 +50,19 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<methods>*/
     @Method(selector = "interstitialDidReceiveAd:")
-    void didReceiveAd(GADInterstitial ad);
+    void interstitialDidReceiveAd(GADInterstitial ad);
     @Method(selector = "interstitial:didFailToReceiveAdWithError:")
-    void didFailToReceiveAd(GADInterstitial ad, GADRequestError error);
+    void interstitialDidFailToReceiveAd(GADInterstitial ad, GADRequestError error);
     @Method(selector = "interstitialWillPresentScreen:")
-    void willPresentScreen(GADInterstitial ad);
+    void interstitialWillPresentScreen(GADInterstitial ad);
     @Method(selector = "interstitialDidFailToPresentScreen:")
-    void didFailToPresentScreen(GADInterstitial ad);
+    void interstitialDidFailToPresentScreen(GADInterstitial ad);
     @Method(selector = "interstitialWillDismissScreen:")
-    void willDismissScreen(GADInterstitial ad);
+    void interstitialWillDismissScreen(GADInterstitial ad);
     @Method(selector = "interstitialDidDismissScreen:")
-    void didDismissScreen(GADInterstitial ad);
+    void interstitialDidDismissScreen(GADInterstitial ad);
     @Method(selector = "interstitialWillLeaveApplication:")
-    void willLeaveApplication(GADInterstitial ad);
+    void interstitialWillLeaveApplication(GADInterstitial ad);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/
