@@ -111,7 +111,6 @@ This is the list of currently available RoboPods. Click them to get more informa
 | [Appodeal](appodeal/)                                | The mobile ad network Appodeal runs multiple premium networks under one integration. |
 | [AppsFlyer](appsflyer/)                                | AppsFlyer mobile attribution & marketing analytics platform. |
 | [Bolts](bolts/)                                      | This RoboPod is mainly used to make the Facebook and Parse RoboPods functional. Bolts is a collection of low-level libraries designed to make developing mobile apps easier. |
-| [Fabric](fabric/)                                    | Twitter's Mobile Development Platform |
 | [Facebook](facebook/)                                | Build, grow, and monetize your app with Facebook. The Facebook SDK allows you to natively integrate Facebook into your app. |
 | [Firebase](firebase/)                                | Firebase Analytics and Firebase Messaging bindings. |
 | [Flurry](flurry/)                                    | Measure, track and analyze app performance, user acquisition and activity with Flurry Analytics. |

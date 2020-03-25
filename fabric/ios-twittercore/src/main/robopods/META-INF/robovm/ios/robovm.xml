@@ -1,7 +1,0 @@
-<config>
-    <frameworks>
-        <framework>AddressBook</framework>
-        <framework>CoreData</framework>
-        <framework>UIKit</framework>
-    </frameworks>
-</config>
