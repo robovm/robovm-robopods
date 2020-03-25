@@ -142,6 +142,7 @@ This is the list of currently available AltPods.
 | [OneSignal](https://github.com/dkimitsa/robovm-robopods/tree/alt/onesignal/)            | OneSignal is a free push notification service for mobile apps                          |
 | [Pollfish](https://github.com/dkimitsa/robovm-robopods/tree/alt/pollfish/)              | Simple Surveys |
 | [SAMKeychain](https://github.com/dkimitsa/robovm-robopods/tree/alt/samkeychain/)        | SAMKeychain is a simple wrapper for accessing accounts, getting passwords, setting passwords, and deleting passwords using the system Keychain on Mac OS X and iOS|
+| [Facebook](https://github.com/dkimitsa/robovm-robopods/tree/alt/facebook/)              | Used to integrate the Facebook Platform with your iOS & tvOS apps                       |
 
 ## Creating/Updating RoboPods
 
