@@ -178,6 +178,7 @@
 
         <module>appmetrica</module>
         <module>appodeal</module>
+        <module>appsflyer</module>
         <module>bolts</module>
         <module>fabric</module>
         <module>facebook</module>

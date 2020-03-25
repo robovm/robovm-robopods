@@ -109,6 +109,7 @@ This is the list of currently available RoboPods. Click them to get more informa
 |------------------------------------------------------|-----------------------------------------------------------------------------------|
 | [RoboPods Plugins](plugins/)                         | The RoboPods Plugins are cross-platform libraries that abstract platform specific functionality to a common API. Whether you want to add in-app-purchases, display dialogs, or just store some preferences in your app; our Plugins got you covered! |
 | [Appodeal](appodeal/)                                | The mobile ad network Appodeal runs multiple premium networks under one integration. |
+| [AppsFlyer](appsflyer/)                                | AppsFlyer mobile attribution & marketing analytics platform. |
 | [Bolts](bolts/)                                      | This RoboPod is mainly used to make the Facebook and Parse RoboPods functional. Bolts is a collection of low-level libraries designed to make developing mobile apps easier. |
 | [Fabric](fabric/)                                    | Twitter's Mobile Development Platform |
 | [Facebook](facebook/)                                | Build, grow, and monetize your app with Facebook. The Facebook SDK allows you to natively integrate Facebook into your app. |

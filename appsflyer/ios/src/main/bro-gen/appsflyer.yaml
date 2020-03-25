@@ -1,0 +1,79 @@
+package: org.robovm.pods.appsflyer
+framework: AppsFlyerLib
+include: [foundation]
+clang_args: ['-x', 'objective-c']
+headers: [AppsFlyerTracker.h]
+
+enums:
+    EmailCryptType: {}
+
+
+classes:
+    AppsFlyerCrossPromotionHelper:
+        methods:
+            '+trackCrossPromoteImpression:campaign:':
+                #trim_after_first_colon: true
+                name: trackCrossPromoteImpression
+            '+trackAndOpenStore:campaign:paramters:openStore:':
+                #trim_after_first_colon: true
+                name: trackAndOpenStore
+    AppsFlyerLinkGenerator:
+        methods:
+            '-addParameterValue:forKey:':
+                #trim_after_first_colon: true
+                name: addParameterValue
+    AppsFlyerShareInviteHelper:
+        methods:
+            '+generateInviteUrlWithLinkGenerator:completionHandler:':
+                #trim_after_first_colon: true
+                name: generateInviteUrl
+            '+trackInvite:parameters:':
+                #trim_after_first_colon: true
+                name: trackInvite
+    AppsFlyerTracker:
+        methods:
+            '-setUserEmails:withCryptType:':
+                #trim_after_first_colon: true
+                name: setUserEmails
+            '-trackEvent:withValue:':
+                #trim_after_first_colon: true
+                name: trackEvent
+            '-trackEvent:withValues:':
+                #trim_after_first_colon: true
+                name: trackEvent
+            '-validateAndTrackInAppPurchase:price:currency:transactionId:additionalParameters:success:failure:':
+                #trim_after_first_colon: true
+                name: validateAndTrackInAppPurchase
+            '-trackLocation:latitude:':
+                #trim_after_first_colon: true
+                name: trackLocation
+            '-loadConversionDataWithDelegate:':
+                name: loadConversionData
+            '-handleOpenURL:sourceApplication:':
+                #trim_after_first_colon: true
+                name: handleOpenURL
+            '-handleOpenURL:sourceApplication:withAnnotation:':
+                #trim_after_first_colon: true
+                name: handleOpenURL
+            '-handleOpenUrl:options:':
+                #trim_after_first_colon: true
+                name: handleOpenUrl
+            '-continueUserActivity:restorationHandler:':
+                #trim_after_first_colon: true
+                name: continueUserActivity
+            '-remoteDebuggingCallWithData:':
+                name: remoteDebuggingCall
+            '-setHost:withHostPrefix:':
+                #trim_after_first_colon: true
+                name: setHost
+            '-enableFacebookDeferredApplinksWithClass:':
+                name: enableFacebookDeferredApplinks
+            '-trackAppLaunchWithCompletionHandler:':
+                name: trackAppLaunch
+            '-trackEventWithEventName:eventValues:completionHandler:':
+                #trim_after_first_colon: true
+                name: trackEvent
+
+
+protocols:
+    AppsFlyerTrackerDelegate: {}
