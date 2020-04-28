@@ -26,7 +26,7 @@ In your project's root `build.gradle` file add the following at the top of the `
 
 ```gradle
 buildscript {
-   project.ext.robopodsVersion = "2.2.2"
+   project.ext.robopodsVersion = "2.2.3"
 }
 ```
 
@@ -45,7 +45,7 @@ In your project's root `pom.xml` file add the following property:
 
 ```maven
 <properties>
-   <robopods.version>2.2.2</robopods.version>
+   <robopods.version>2.2.3</robopods.version>
 </properties>
 ```
 
@@ -94,7 +94,7 @@ To prevent compatibility issues make sure that you use the same version for the 
 
 The current stable version is:
 
-> 2.2.2
+> 2.2.3
 
 If you want to use the latest and greatest of every RoboPod, use the latest snapshot version for your dependencies:
 
