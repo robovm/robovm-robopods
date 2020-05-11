@@ -98,7 +98,7 @@ The current stable version is:
 
 If you want to use the latest and greatest of every RoboPod, use the latest snapshot version for your dependencies:
 
-> 2.2.3-SNAPSHOT
+> 2.2.4-SNAPSHOT
 
 
 ## List of RoboPods
