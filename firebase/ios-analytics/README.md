@@ -63,8 +63,10 @@ In your `AppDelegate` add the following calls to `didFinishLaunching(...)`:
 ```Java
 @Override
 public boolean didFinishLaunching(UIApplication application, UIApplicationLaunchOptions launchOptions) {
+    boolean didFinishLaunching = super.didFinishLaunching(application,
+                launchOptions);    
     FIRApp.configure()
-    return true;
+    return didFinishLaunching;
 }
 ```
 
