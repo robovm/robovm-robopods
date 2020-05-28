@@ -90,8 +90,7 @@ import org.robovm.apple.coreanimation.*;
     @Method(selector = "cameraLookingAtCenterCoordinate:altitude:pitch:heading:")
     public static native MGLMapCamera cameraLookingAtCenterCoordinate(@ByVal CLLocationCoordinate2D centerCoordinate, double altitude, @MachineSizedFloat double pitch, double heading);
     /**
-     * @deprecated Use -cameraLookingAtCenterCoordinate:acrossDistance:pitch:heading: 
-                          or -cameraLookingAtCenterCoordinate:altitude:pitch:heading:.
+     * @deprecated Use -cameraLookingAtCenterCoordinate:acrossDistance:pitch:heading: or -cameraLookingAtCenterCoordinate:altitude:pitch:heading:.
      */
     @Deprecated
     @Method(selector = "cameraLookingAtCenterCoordinate:fromDistance:pitch:heading:")

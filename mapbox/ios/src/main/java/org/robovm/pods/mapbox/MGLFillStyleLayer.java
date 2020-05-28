@@ -54,6 +54,10 @@ import org.robovm.apple.coreanimation.*;
     public MGLFillStyleLayer(String identifier, MGLSource source) { super((SkipInit) null); initObject(init(identifier, source)); }
     /*</constructors>*/
     /*<properties>*/
+    @Property(selector = "fillSortKey")
+    public native NSExpression getFillSortKey();
+    @Property(selector = "setFillSortKey:")
+    public native void setFillSortKey(NSExpression v);
     @Property(selector = "isFillAntialiased")
     public native NSExpression getFillAntialiased();
     @Property(selector = "setFillAntialiased:")

@@ -70,6 +70,8 @@ import org.robovm.apple.coreanimation.*;
     @GlobalValue(symbol="MGLOfflinePackMaximumMapboxTilesReachedNotification", optional=true)
     public static native String MaximumMapboxTilesReached();
     
+    @Method(selector = "setContext:completionHandler:")
+    public native void setContext(NSData context, @Block VoidBlock1<NSError> completion);
     @Method(selector = "resume")
     public native void resume();
     @Method(selector = "suspend")

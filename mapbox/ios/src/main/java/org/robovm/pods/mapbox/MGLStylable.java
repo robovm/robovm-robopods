@@ -38,28 +38,22 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/MGLMapSnapshotOverlay/*</name>*/ 
-    extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ interface /*<name>*/MGLStylable/*</name>*/ 
+    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
-    /*<ptr>*/public static class MGLMapSnapshotOverlayPtr extends Ptr<MGLMapSnapshotOverlay, MGLMapSnapshotOverlayPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(MGLMapSnapshotOverlay.class); }/*</bind>*/
+    /*<ptr>*/
+    /*</ptr>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*/
-    public MGLMapSnapshotOverlay() {}
-    protected MGLMapSnapshotOverlay(Handle h, long handle) { super(h, handle); }
-    protected MGLMapSnapshotOverlay(SkipInit skipInit) { super(skipInit); }
-    /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "context")
-    public native CGContext getContext();
+    @Property(selector = "style")
+    MGLStyle getStyle();
     /*</properties>*/
-    /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "pointForCoordinate:")
-    public native @ByVal CGPoint pointForCoordinate(@ByVal CLLocationCoordinate2D coordinate);
-    @Method(selector = "coordinateForPoint:")
-    public native @ByVal CLLocationCoordinate2D coordinateForPoint(@ByVal CGPoint point);
+    
     /*</methods>*/
+    /*<adapter>*/
+    /*</adapter>*/
 }

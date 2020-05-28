@@ -52,6 +52,10 @@ import org.robovm.apple.coreanimation.*;
     protected MGLNetworkConfiguration(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
+    @Property(selector = "delegate")
+    public native MGLNetworkConfigurationDelegate getDelegate();
+    @Property(selector = "setDelegate:", strongRef = true)
+    public native void setDelegate(MGLNetworkConfigurationDelegate v);
     @Property(selector = "sharedManager")
     public static native MGLNetworkConfiguration getSharedManager();
     @Property(selector = "sessionConfiguration")

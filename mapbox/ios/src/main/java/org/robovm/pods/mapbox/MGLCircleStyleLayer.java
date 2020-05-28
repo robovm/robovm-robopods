@@ -54,6 +54,10 @@ import org.robovm.apple.coreanimation.*;
     public MGLCircleStyleLayer(String identifier, MGLSource source) { super((SkipInit) null); initObject(init(identifier, source)); }
     /*</constructors>*/
     /*<properties>*/
+    @Property(selector = "circleSortKey")
+    public native NSExpression getCircleSortKey();
+    @Property(selector = "setCircleSortKey:")
+    public native void setCircleSortKey(NSExpression v);
     @Property(selector = "circleBlur")
     public native NSExpression getCircleBlur();
     @Property(selector = "setCircleBlur:")

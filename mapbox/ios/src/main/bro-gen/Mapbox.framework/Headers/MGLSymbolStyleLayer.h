@@ -102,7 +102,9 @@ typedef NS_ENUM(NSUInteger, MGLIconRotationAlignment) {
 };
 
 /**
- Scales the icon to fit around the associated text.
+ The directions in which the icon stretches to fit around the text. If the icon
+ image is a resizable image, the resizable areas may be stretched, while the cap
+ insets are always drawn at the original scale.
 
  Values of this type are used in the `MGLSymbolStyleLayer.iconTextFit`
  property.
@@ -776,7 +778,9 @@ MGL_EXPORT
 @property (nonatomic, null_resettable) NSExpression *iconSize __attribute__((unavailable("Use iconScale instead.")));
 
 /**
- Scales the icon to fit around the associated text.
+ The directions in which the icon stretches to fit around the text. If the icon
+ image is a resizable image, the resizable areas may be stretched, while the cap
+ insets are always drawn at the original scale.
  
  The default value of this property is an expression that evaluates to `none`.
  Set this property to `nil` to reset it to the default value.
@@ -991,10 +995,15 @@ MGL_EXPORT
 @property (nonatomic, null_resettable) NSExpression *textMaxWidth __attribute__((unavailable("Use maximumTextWidth instead.")));
 
 /**
- If true, the symbols will not cross tile edges to avoid mutual collisions.
- Recommended in layers that don't have enough padding in the vector tile to
- prevent collisions, or if it is a point symbol layer placed after a line symbol
- layer.
+ Whether symbols in this layer avoid colliding with symbols in adjacent tiles.
+ 
+ If this property is set to `true`, symbols in this layer avoid crossing the
+ edge of a tile. You should set this property to `true` if the backing vector
+ tiles don’t have enough padding to prevent collisions, or if this layer’s
+ `symbolPlacement` property is set to `MGLSymbolPlacementPoint` but this layer
+ is above a symbol layer whose `symbolPlacement` property is set to
+ `MGLSymbolPlacementLine`. You do not need to enable this property to prevent
+ clipped labels at tile boundaries.
  
  The default value of this property is an expression that evaluates to `NO`. Set
  this property to `nil` to reset it to the default value.
@@ -1048,10 +1057,12 @@ MGL_EXPORT
 @property (nonatomic, null_resettable) NSExpression *symbolPlacement;
 
 /**
- Sorts features in ascending order based on this value. Features with a higher
- sort key will appear above features with a lower sort key when they overlap.
- Features with a lower sort key will have priority over other features when
- doing placement.
+ Sorts features in ascending order based on this value. Features with lower sort
+ keys are drawn and placed first.  When `iconAllowsOverlap` or
+ `textAllowsOverlap` is `false`, features with a lower sort key will have
+ priority during placement. When `iconAllowsOverlap` or `textAllowsOverlap` is
+ set to `YES`, features with a higher sort key will overlap over features with a
+ lower sort key.
  
  You can set this property to an expression containing any of the following:
  
@@ -1221,15 +1232,12 @@ MGL_EXPORT
 /**
  An array of font face names used to display the text.
  
- Each font name must be included in the `{fontstack}` portion of the JSON
- stylesheet’s <a
- href="https://www.mapbox.com/mapbox-gl-style-spec/#glyphs"><code>glyphs</code></a>
- property. You can register a custom font when designing the style in Mapbox
- Studio. Fonts installed on the system are not used.
- 
  The first font named in the array is applied to the text. For each character in
  the text, if the first font lacks a glyph for the character, the next font is
  applied as a fallback, and so on.
+ 
+ See the “[Customizing Fonts](../customizing-fonts.html)” guide for details on
+ how this SDK chooses and renders fonts based on the value of this property.
  
  The default value of this property is an expression that evaluates to the array
  `Open Sans Regular`, `Arial Unicode MS Regular`. Set this property to `nil` to
@@ -1629,7 +1637,7 @@ MGL_EXPORT
 
 /**
  To increase the chance of placing high-priority labels on the map, you can
- provide an array of `textAnchor` locations: the render will attempt to place
+ provide an array of `textAnchor` locations: the renderer will attempt to place
  the label at each location, in order, before moving onto the next label. Use
  `textJustify: auto` to choose justification based on anchor position. To apply
  an offset, use the `textRadialOffset` or the two-dimensional `textOffset`.

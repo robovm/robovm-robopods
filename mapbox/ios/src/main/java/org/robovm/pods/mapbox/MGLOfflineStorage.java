@@ -58,6 +58,10 @@ import org.robovm.apple.coreanimation.*;
     public native MGLOfflineStorageDelegate getDelegate();
     @Property(selector = "setDelegate:", strongRef = true)
     public native void setDelegate(MGLOfflineStorageDelegate v);
+    @Property(selector = "databasePath")
+    public native String getDatabasePath();
+    @Property(selector = "databaseURL")
+    public native NSURL getDatabaseURL();
     @Property(selector = "packs")
     public native NSArray<MGLOfflinePack> getPacks();
     @Property(selector = "countOfBytesCompleted")
@@ -99,10 +103,12 @@ import org.robovm.apple.coreanimation.*;
     @Method(selector = "preloadData:forURL:modificationDate:expirationDate:eTag:mustRevalidate:")
     public native void preloadData(NSData data, NSURL url, NSDate modified, NSDate expires, String eTag, boolean mustRevalidate);
     /**
-     * @deprecated Use `-preloadData:forURL:modificationDate:expirationDate:eTag:mustRevalidate:` instead
+     * @deprecated Use -preloadData:forURL:modificationDate:expirationDate:eTag:mustRevalidate:
      */
     @Deprecated
     @Method(selector = "putResourceWithUrl:data:modified:expires:etag:mustRevalidate:")
     public native void putResource(NSURL url, NSData data, NSDate modified, NSDate expires, String etag, boolean mustRevalidate);
+    @Method(selector = "preloadData:forURL:modificationDate:expirationDate:eTag:mustRevalidate:completionHandler:")
+    public native void preloadData(NSData data, NSURL url, NSDate modified, NSDate expires, String eTag, boolean mustRevalidate, @Block VoidBlock2<NSURL, NSError> completion);
     /*</methods>*/
 }

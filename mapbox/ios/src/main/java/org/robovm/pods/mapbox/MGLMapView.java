@@ -41,7 +41,7 @@ import org.robovm.apple.coreanimation.*;
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/MGLMapView/*</name>*/ 
     extends /*<extends>*/UIView/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+    /*<implements>*/implements MGLStylable/*</implements>*/ {
 
     /*<ptr>*/public static class MGLMapViewPtr extends Ptr<MGLMapView, MGLMapViewPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(MGLMapView.class); }/*</bind>*/
@@ -68,6 +68,10 @@ import org.robovm.apple.coreanimation.*;
     public native NSURL getStyleURL();
     @Property(selector = "setStyleURL:")
     public native void setStyleURL(NSURL v);
+    @Property(selector = "automaticallyAdjustsContentInset")
+    public native boolean automaticallyAdjustsContentInset();
+    @Property(selector = "setAutomaticallyAdjustsContentInset:")
+    public native void setAutomaticallyAdjustsContentInset(boolean v);
     @Property(selector = "showsScale")
     public native boolean showsScale();
     @Property(selector = "setShowsScale:")
@@ -168,6 +172,10 @@ import org.robovm.apple.coreanimation.*;
     public native boolean isScrollEnabled();
     @Property(selector = "setScrollEnabled:")
     public native void setScrollEnabled(boolean v);
+    @Property(selector = "panScrollingMode")
+    public native MGLPanScrollingMode getPanScrollingMode();
+    @Property(selector = "setPanScrollingMode:")
+    public native void setPanScrollingMode(MGLPanScrollingMode v);
     @Property(selector = "isRotateEnabled")
     public native boolean isRotateEnabled();
     @Property(selector = "setRotateEnabled:")
@@ -204,6 +212,14 @@ import org.robovm.apple.coreanimation.*;
     public native double getDirection();
     @Property(selector = "setDirection:")
     public native void setDirection(double v);
+    @Property(selector = "minimumPitch")
+    public native @MachineSizedFloat double getMinimumPitch();
+    @Property(selector = "setMinimumPitch:")
+    public native void setMinimumPitch(@MachineSizedFloat double v);
+    @Property(selector = "maximumPitch")
+    public native @MachineSizedFloat double getMaximumPitch();
+    @Property(selector = "setMaximumPitch:")
+    public native void setMaximumPitch(@MachineSizedFloat double v);
     @Property(selector = "visibleCoordinateBounds")
     public native @ByVal MGLCoordinateBounds getVisibleCoordinateBounds();
     @Property(selector = "setVisibleCoordinateBounds:")

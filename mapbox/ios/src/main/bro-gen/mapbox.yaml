@@ -9,6 +9,7 @@ typedefs:
     MGLShapeSourceOption: NSString
 
 enums:
+    MGLPanScrollingMode: {}
     MGLTextWritingMode: {}
     MGLErrorCode: {nsError: true, prefix: kMGLError}
     MGLAnnotationViewDragState: {}
@@ -54,6 +55,11 @@ enums:
     MGLMetricType: {}
 
 classes:
+    MGLOfflinePack:
+        methods:
+            '-setContext:completionHandler:':
+                name: setContext
+
     MGLShapeOfflineRegion:
         methods:
             '-initWithStyleURL:shape:fromZoomLevel:toZoomLevel:':
@@ -368,9 +374,10 @@ classes:
                 name: multiPolyline
 
     MGLMultiPolylineFeature: {}
-    MGLOfflinePack: {}
     MGLOfflineStorage:
         methods:
+            '-preloadData:forURL:modificationDate:expirationDate:eTag:mustRevalidate:completionHandler:':
+                name: preloadData
             '-invalidatePack:withCompletionHandler:':
                 name: invalidatePack
             '-setMaximumAmbientCacheSize:withCompletionHandler:':
@@ -783,6 +790,17 @@ classes:
 
 
 protocols:
+    MGLMapSnapshotterDelegate:
+        methods:
+            '-mapSnapshotterDidFail:withError:':
+                name: didFail
+            '-mapSnapshotter:didFinishLoadingStyle:':
+                name: didFinishLoadingStyle
+            '-mapSnapshotter:didFailLoadingImageNamed:':
+                name: didFailLoadingImageNamed
+    MGLNetworkConfigurationDelegate: {}
+    MGLStylable: {}
+
     MGLMetricsManagerDelegate:
         methods:
             '-metricsManager:shouldHandleMetric:':

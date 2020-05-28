@@ -41,7 +41,7 @@ import org.robovm.apple.coreanimation.*;
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/MGLMapSnapshotter/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+    /*<implements>*/implements MGLStylable/*</implements>*/ {
 
     /*<ptr>*/public static class MGLMapSnapshotterPtr extends Ptr<MGLMapSnapshotter, MGLMapSnapshotterPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(MGLMapSnapshotter.class); }/*</bind>*/
@@ -60,6 +60,12 @@ import org.robovm.apple.coreanimation.*;
     public native void setOptions(MGLMapSnapshotOptions v);
     @Property(selector = "isLoading")
     public native boolean isLoading();
+    @Property(selector = "delegate")
+    public native MGLMapSnapshotterDelegate getDelegate();
+    @Property(selector = "setDelegate:", strongRef = true)
+    public native void setDelegate(MGLMapSnapshotterDelegate v);
+    @Property(selector = "style")
+    public native MGLStyle getStyle();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

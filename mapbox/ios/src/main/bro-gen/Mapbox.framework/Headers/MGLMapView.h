@@ -5,6 +5,7 @@
 #import "MGLGeometry.h"
 #import "MGLMapCamera.h"
 #import "MGLTypes.h"
+#import "MGLStyle.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 @class MGLPolyline;
 @class MGLPolygon;
 @class MGLShape;
-@class MGLStyle;
 
 @protocol MGLMapViewDelegate;
 @protocol MGLAnnotation;
@@ -105,6 +105,15 @@ typedef NS_ENUM(NSUInteger, MGLUserTrackingMode) {
     MGLUserTrackingModeFollowWithCourse,
 };
 
+typedef NS_ENUM(NSUInteger, MGLPanScrollingMode) {
+    /** The map allows the user to only scroll horizontally. */
+    MGLPanScrollingModeHorizontal               = 0,
+    /** The map allows the user to only scroll vertically. */
+    MGLPanScrollingModeVertical,
+    /** The map allows the user to scroll both horizontally and vertically. */
+    MGLPanScrollingModeDefault
+};
+
 /** Options for `MGLMapView.preferredFramesPerSecond`. */
 typedef NSInteger MGLMapViewPreferredFramesPerSecond NS_TYPED_EXTENSIBLE_ENUM;
 
@@ -179,7 +188,7 @@ FOUNDATION_EXTERN MGL_EXPORT MGLExceptionName const MGLUserLocationAnnotationTyp
  Simple map view</a> example to learn how to initialize a basic `MGLMapView`.
  */
 MGL_EXPORT
-@interface MGLMapView : UIView
+@interface MGLMapView : UIView <MGLStylable>
 
 #pragma mark Creating Instances
 
@@ -287,6 +296,17 @@ MGL_EXPORT
 - (IBAction)reloadStyle:(nullable id)sender;
 
 /**
+ A boolean value that indicates if whether the map view should automatically
+ adjust its content insets.
+ 
+ When this property is set to `YES` the map automatically updates its
+ `contentInset` property to account for any area not covered by navigation bars,
+ tab bars, toolbars, and other ancestors that obscure the map view.
+ 
+ */
+@property (assign) BOOL automaticallyAdjustsContentInset;
+
+/**
  A Boolean value indicating whether the map may display scale information.
 
  The scale bar may not be shown at all zoom levels. The scale bar becomes visible
@@ -335,12 +355,12 @@ MGL_EXPORT
 @property (nonatomic, assign) CGPoint compassViewMargins;
 
 /**
- The Mapbox logo, positioned in the lower-left corner.
+ The Mapbox wordmark, positioned in the lower-left corner.
 
  @note The Mapbox terms of service, which governs the use of Mapbox-hosted
     vector tiles and styles,
     <a href="https://docs.mapbox.com/help/how-mapbox-works/attribution/">requires</a> most Mapbox
-    customers to display the Mapbox logo. If this applies to you, do not
+    customers to display the Mapbox wordmark. If this applies to you, do not
     hide this view or change its contents.
  */
 @property (nonatomic, readonly) UIImageView *logoView;
@@ -679,6 +699,20 @@ MGL_EXPORT
 @property(nonatomic, getter=isScrollEnabled) BOOL scrollEnabled;
 
 /**
+ The scrolling mode the user is allowed to use to interact with the map.
+
+`MGLPanScrollingModeHorizontal` only allows the user to scroll horizontally on the map,
+ restricting a user's ability to scroll vertically.
+`MGLPanScrollingModeVertical` only allows the user to scroll vertically on the map,
+ restricting a user's ability to scroll horizontally.
+ `MGLPanScrollingModeDefault` allows the user to scroll both horizontally and vertically
+ on the map.
+
+ By default, this property is set to `MGLPanScrollingModeDefault`.
+ */
+@property (nonatomic, assign) MGLPanScrollingMode panScrollingMode;
+
+/**
  A Boolean value that determines whether the user may rotate the map,
  changing the direction.
 
@@ -890,6 +924,29 @@ MGL_EXPORT
  coordinate or zoom level.
  */
 - (void)setDirection:(CLLocationDirection)direction animated:(BOOL)animated;
+
+/**
+ The minimum pitch of the map’s camera toward the horizon measured in degrees.
+
+ If the value of this property is greater than that of the `maximumPitch`
+ property, the behavior is undefined. The pitch may not be less than 0
+ regardless of this property.
+
+ The default value of this property is 0 degrees, allowing the map to appear
+ two-dimensional.
+ */
+@property (nonatomic) CGFloat minimumPitch;
+
+/**
+ The maximum pitch of the map’s camera toward the horizon measured in degrees.
+
+ If the value of this property is smaller than that of the `minimumPitch`
+ property, the behavior is undefined. The pitch may not exceed 60 degrees
+ regardless of this property.
+
+ The default value of this property is 60 degrees.
+ */
+@property (nonatomic) CGFloat maximumPitch;
 
 /**
  Resets the map rotation to a northern heading — a `direction` of `0` degrees.
@@ -1308,10 +1365,13 @@ MGL_EXPORT
  view’s frame. Otherwise, those properties are inset, excluding part of the
  frame from the viewport. For instance, if the only the top edge is inset, the
  map center is effectively shifted downward.
-
+ 
  When the map view’s superview is an instance of `UIViewController` whose
  `automaticallyAdjustsScrollViewInsets` property is `YES`, the value of this
  property may be overridden at any time.
+ 
+ The usage of `automaticallyAdjustsScrollViewInsets` has been deprecated
+ use the map view’s property `MGLMapView.automaticallyAdjustsContentInset`instead.
 
  Changing the value of this property updates the map view immediately. If you
  want to animate the change, use the `-setContentInset:animated:completionHandler:`
@@ -1332,6 +1392,9 @@ MGL_EXPORT
  When the map view’s superview is an instance of `UIViewController` whose
  `automaticallyAdjustsScrollViewInsets` property is `YES`, the value of this
  property may be overridden at any time.
+ 
+ The usage of `automaticallyAdjustsScrollViewInsets` has been deprecated
+ use the map view’s property `MGLMapView.automaticallyAdjustsContentInset`instead.
  
  To specify a completion handler to execute after the animation finishes, use
  the `-setContentInset:animated:completionHandler:` method.
@@ -1357,6 +1420,9 @@ MGL_EXPORT
  When the map view’s superview is an instance of `UIViewController` whose
  `automaticallyAdjustsScrollViewInsets` property is `YES`, the value of this
  property may be overridden at any time.
+ 
+ The usage of `automaticallyAdjustsScrollViewInsets` has been deprecated
+ use the map view’s property `MGLMapView.automaticallyAdjustsContentInset`instead.
 
  @param contentInset The new values to inset the content by.
  @param animated Specify `YES` if you want the map view to animate the change to

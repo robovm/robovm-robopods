@@ -75,6 +75,8 @@ import org.robovm.apple.coreanimation.*;
     public static native Option Clustered();
     @GlobalValue(symbol="MGLShapeSourceOptionClusterRadius", optional=true)
     public static native Option ClusterRadius();
+    @GlobalValue(symbol="MGLShapeSourceOptionClusterProperties", optional=true)
+    public static native Option ClusterProperties();
     @GlobalValue(symbol="MGLShapeSourceOptionMaximumZoomLevelForClustering", optional=true)
     public static native Option MaximumZoomLevelForClustering();
     @GlobalValue(symbol="MGLShapeSourceOptionMinimumZoomLevel", optional=true)

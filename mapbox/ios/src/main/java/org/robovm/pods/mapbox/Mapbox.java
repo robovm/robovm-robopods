@@ -56,14 +56,6 @@ import org.robovm.apple.coreanimation.*;
     public static native @MachineSizedUInt long MGLClusterIdentifierInvalid();
     @GlobalValue(symbol="MGLAbstractClassException", optional=true)
     public static native String AbstractClassException();
-    @GlobalValue(symbol="MGLMissingLocationServicesUsageDescriptionException", optional=true)
-    public static native String MissingLocationServicesUsageDescriptionException();
-    @GlobalValue(symbol="MGLUserLocationAnnotationTypeException", optional=true)
-    public static native String UserLocationAnnotationTypeException();
-    @GlobalValue(symbol="MGLInvalidOfflinePackException", optional=true)
-    public static native String InvalidOfflinePackException();
-    @GlobalValue(symbol="MGLUnsupportedRegionTypeException", optional=true)
-    public static native String UnsupportedRegionTypeException();
     @GlobalValue(symbol="MGLInvalidStyleLayerException", optional=true)
     public static native String InvalidStyleLayerException();
     @GlobalValue(symbol="MGLInvalidStyleURLException", optional=true)
@@ -76,6 +68,14 @@ import org.robovm.apple.coreanimation.*;
     public static native String RedundantSourceException();
     @GlobalValue(symbol="MGLRedundantSourceIdentifierException", optional=true)
     public static native String RedundantSourceIdentifierException();
+    @GlobalValue(symbol="MGLMissingLocationServicesUsageDescriptionException", optional=true)
+    public static native String MissingLocationServicesUsageDescriptionException();
+    @GlobalValue(symbol="MGLUserLocationAnnotationTypeException", optional=true)
+    public static native String UserLocationAnnotationTypeException();
+    @GlobalValue(symbol="MGLInvalidOfflinePackException", optional=true)
+    public static native String InvalidOfflinePackException();
+    @GlobalValue(symbol="MGLUnsupportedRegionTypeException", optional=true)
+    public static native String UnsupportedRegionTypeException();
     @GlobalValue(symbol="MGLInvalidStyleSourceException", optional=true)
     public static native String InvalidStyleSourceException();
     @GlobalValue(symbol="MGLInvalidDatasourceException", optional=true)

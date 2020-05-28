@@ -2,8 +2,11 @@
 #import "MGLTypes.h"
 #import "MGLGeometry.h"
 #import "MGLMapCamera.h"
+#import "MGLStyle.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+@protocol MGLMapSnapshotterDelegate;
 
 /**
  An overlay that is placed within a `MGLMapSnapshot`.
@@ -19,6 +22,31 @@ MGL_EXPORT
  */
 @property (nonatomic, readonly) CGContextRef context;
 
+#if TARGET_OS_IPHONE
+/**
+ Converts the specified map coordinate to a point in the coordinate space of the
+ context.
+ */
+- (CGPoint)pointForCoordinate:(CLLocationCoordinate2D)coordinate;
+
+/**
+ Converts the specified context point to a map coordinate.
+ */
+- (CLLocationCoordinate2D)coordinateForPoint:(CGPoint)point;
+
+#else
+/**
+ Converts the specified map coordinate to a point in the coordinate space of the
+ context.
+ */
+- (NSPoint)pointForCoordinate:(CLLocationCoordinate2D)coordinate;
+
+/**
+ Converts the specified context point to a map coordinate.
+ */
+- (CLLocationCoordinate2D)coordinateForPoint:(NSPoint)point;
+#endif
+
 @end
 
 /**
@@ -33,7 +61,7 @@ typedef void (^MGLMapSnapshotOverlayHandler)(MGLMapSnapshotOverlay * snapshotOve
  The options to use when creating images with the `MGLMapSnapshotter`.
  */
 MGL_EXPORT
-@interface MGLMapSnapshotOptions : NSObject
+@interface MGLMapSnapshotOptions : NSObject <NSCopying>
 
 /**
  Creates a set of options with the minimum required information.
@@ -152,8 +180,9 @@ typedef void (^MGLMapSnapshotCompletionHandler)(MGLMapSnapshot* _Nullable snapsh
  An `MGLMapSnapshotter` generates static raster images of the map. Each snapshot
  image depicts a portion of a map defined by an `MGLMapSnapshotOptions` object
  you provide. The snapshotter generates an `MGLMapSnapshot` object
- asynchronously, passing it into a completion handler once tiles and other
- resources needed for the snapshot are finished loading.
+ asynchronously, calling `MGLMapSnapshotterDelegate` methods if defined, then
+ passing it into a completion handler once tiles and other resources needed for
+ the snapshot are finished loading.
  
  You can change the snapshotter’s options at any time and reuse the snapshotter
  for multiple distinct snapshots; however, the snapshotter can only generate one
@@ -195,7 +224,7 @@ typedef void (^MGLMapSnapshotCompletionHandler)(MGLMapSnapshot* _Nullable snapsh
  object's style, camera, and view bounds.
  */
 MGL_EXPORT
-@interface MGLMapSnapshotter : NSObject
+@interface MGLMapSnapshotter : NSObject <MGLStylable>
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -211,7 +240,8 @@ MGL_EXPORT
 /**
  Starts the snapshot creation and executes the specified block with the result.
  
- @param completionHandler The block to handle the result in.
+ @param completionHandler The block to call with a finished snapshot. The block
+    is executed on the main queue.
  */
 - (void)startWithCompletionHandler:(MGLMapSnapshotCompletionHandler)completionHandler;
 
@@ -219,17 +249,24 @@ MGL_EXPORT
  Starts the snapshot creation and executes the specified block with the result
  on the specified queue.
  
- @param queue The queue to handle the result on.
- @param completionHandler The block to handle the result in.
+ @param queue The queue on which to call the block specified in the
+    `completionHandler` parameter.
+ @param completionHandler The block to call with a finished snapshot. The block
+     is executed on the queue specified in the `queue` parameter.
  */
 - (void)startWithQueue:(dispatch_queue_t)queue completionHandler:(MGLMapSnapshotCompletionHandler)completionHandler;
 
 /**
  Starts the snapshot creation and executes the specified blocks with the result
- on the specified queue. Use this option if you want to add custom drawing on top of the
- resulting `MGLMapSnapShot`.
- @param overlayHandler The block to handle manipulation of the `MGLMapSnapshotter`'s `CGContext`.
- @param completionHandler The block to handle the result in.
+ on the specified queue. Use this option if you want to add custom drawing on
+ top of the resulting `MGLMapSnapshot`.
+ 
+ @param overlayHandler The block to call after the base map finishes drawing but
+    before certain built-in overlays draw. The block can use Core Graphics to
+    draw custom content directly over the base map. The block is executed on a
+    background queue.
+ @param completionHandler The block to call with a finished snapshot. The block
+     is executed on the main queue.
  */
 - (void)startWithOverlayHandler:(MGLMapSnapshotOverlayHandler)overlayHandler completionHandler:(MGLMapSnapshotCompletionHandler)completionHandler;
 
@@ -250,6 +287,78 @@ MGL_EXPORT
  Indicates whether a snapshot is currently being generated.
  */
 @property (nonatomic, readonly, getter=isLoading) BOOL loading;
+
+/**
+ The snapshotter’s delegate.
+ 
+ The delegate is responsible for responding to significant changes during the
+ snapshotting process, such as the style loading. Implement a delegate to
+ customize the style that is depicted by the snapshot.
+ 
+ You set the delegate after initializing the snapshotter but before receiving
+ the snapshot, typically before starting the snapshot. The snapshotter keeps a
+ weak reference to its delegate, so you must keep a strong reference to it to
+ ensure that your style customizations apply.
+ */
+@property (nonatomic, weak) id <MGLMapSnapshotterDelegate> delegate;
+
+/**
+ The style displayed in the resulting snapshot.
+ 
+ Unlike the `MGLMapSnapshotOptions.styleURL` property, this property is set to
+ an object that allows you to manipulate every aspect of the style locally.
+ 
+ This property is set to `nil` until the style finishes loading. If the style
+ has failed to load, this property is set to `nil`. Because the style loads
+ asynchronously, you should manipulate it in the
+ `-[MGLMapSnapshotterDelegate mapSnapshotter:didFinishLoadingStyle:]` method. It
+ is not possible to manipulate the style before it has finished loading.
+
+ @note The default styles provided by Mapbox contain sources and layers with
+    identifiers that will change over time. Applications that use APIs that
+    manipulate a style’s sources and layers must first set the style URL to an
+    explicitly versioned style using a convenience method like
+    `+[MGLStyle outdoorsStyleURLWithVersion:]` or a manually constructed
+    `NSURL`.
+ */
+@property (nonatomic, readonly, nullable) MGLStyle *style;
+
+@end
+
+/**
+ Optional methods about significant events when creating a snapshot using an
+ `MGLMapSnapshotter` object.
+ */
+@protocol MGLMapSnapshotterDelegate <NSObject>
+@optional
+
+/**
+ Tells the delegate that the snapshotter was unable to load data needed for
+ snapshotting the map.
+ 
+ This method may be called for a variety of reasons, including a network
+ connection failure or a failure to fetch the style from the server. You can use
+ the given error message to notify the user that map data is unavailable.
+ 
+ @param snapshotter The snapshotter that is unable to load the data.
+ @param error The reason the data could not be loaded.
+*/
+- (void)mapSnapshotterDidFail:(MGLMapSnapshotter *)snapshotter withError:(NSError *)error;
+
+/**
+ Tells the delegate that the snapshotter has just finished loading a style.
+ 
+ This method is called in response to
+ `-[MGLMapSnapshotter startWithQueue:completionHandler:]` as long as the
+ `MGLMapSnapshotter.delegate` property is set. Changes to sources or layers of
+ the style being snapshotted do not cause this method to be called.
+ 
+ @param snapshotter The snapshotter that has just loaded a style.
+ @param style The style that was loaded.
+ */
+- (void)mapSnapshotter:(MGLMapSnapshotter *)snapshotter didFinishLoadingStyle:(MGLStyle *)style;
+
+- (void)mapSnapshotter:(MGLMapSnapshotter *)snapshotter didFailLoadingImageNamed:(NSString *)name;
 
 @end
 

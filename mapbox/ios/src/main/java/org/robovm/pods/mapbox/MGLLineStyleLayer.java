@@ -70,6 +70,10 @@ import org.robovm.apple.coreanimation.*;
     public native NSExpression getLineRoundLimit();
     @Property(selector = "setLineRoundLimit:")
     public native void setLineRoundLimit(NSExpression v);
+    @Property(selector = "lineSortKey")
+    public native NSExpression getLineSortKey();
+    @Property(selector = "setLineSortKey:")
+    public native void setLineSortKey(NSExpression v);
     @Property(selector = "lineBlur")
     public native NSExpression getLineBlur();
     @Property(selector = "setLineBlur:")
