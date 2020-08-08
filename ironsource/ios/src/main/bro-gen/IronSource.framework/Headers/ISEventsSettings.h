@@ -15,9 +15,12 @@
 @property (nonatomic, strong, readonly) NSURL       *serverEventsURL;
 @property (nonatomic, assign, readonly) NSUInteger  backupThreshold;
 @property (nonatomic, assign, readonly) NSUInteger 	maxNumberOfEvents;
-@property (nonatomic, copy, readonly) NSString      *serverEventsType;
+@property (nonatomic, copy,   readonly) NSString    *serverEventsType;
 @property (nonatomic, strong, readonly) NSArray     *optOut;
-@property (nonatomic, assign)   NSUInteger          maxEventsPerBatch;
+@property (nonatomic, strong, readonly) NSArray     *optIn;
+@property (nonatomic, strong, readonly) NSArray     *triggerEvents;
+@property (nonatomic, strong, readonly) NSArray     *nonConnectivityEvents;
+@property (nonatomic, assign)           NSUInteger  maxEventsPerBatch;
 
 - (instancetype)initWithSendUltraEvents:(BOOL)sendEvents
                        sendEventsToggle:(BOOL)eventsToggle
@@ -26,6 +29,9 @@
                       maxNumberOfEvents:(NSUInteger)maxNumberOfEvents
                        serverEventsType:(NSString *)serverEventsType
                                  optOut:(NSArray *)optOut
+                                  optIn:(NSArray *)optIn
+                          triggerEvents:(NSArray *)triggerEvents
+                  nonConnectivityEvents:(NSArray *)nonConnectivityEvents
                       maxEventsPerBatch:(NSUInteger)maxEventsPerBatch;
 
 @end
