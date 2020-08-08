@@ -1,5 +1,0 @@
-<config>
-    <forceLinkClasses>
-        <pattern>org.robovm.pods.billing.**</pattern>
-    </forceLinkClasses>
-</config>

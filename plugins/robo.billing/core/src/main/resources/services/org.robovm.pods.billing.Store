@@ -1,8 +1,0 @@
-# Android
-org.robovm.pods.billing.AndroidStore
-
-# iOS
-org.robovm.pods.billing.IOSStore
-
-# Headless
-org.robovm.pods.billing.HeadlessStore

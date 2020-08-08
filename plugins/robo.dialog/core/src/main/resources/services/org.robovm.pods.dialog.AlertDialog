@@ -1,8 +1,0 @@
-# Android
-org.robovm.pods.dialog.AndroidAlertDialog
-
-# iOS
-org.robovm.pods.dialog.IOSAlertDialog
-
-# Headless
-org.robovm.pods.dialog.HeadlessAlertDialog
