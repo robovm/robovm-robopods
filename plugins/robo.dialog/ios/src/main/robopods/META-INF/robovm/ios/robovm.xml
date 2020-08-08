@@ -1,7 +1,0 @@
-<config>
-    <forceLinkClasses>
-        <pattern>org.robovm.pods.dialog.IOSAlertDialog</pattern>
-        <pattern>org.robovm.pods.dialog.IOSInputDialog</pattern>
-        <pattern>org.robovm.pods.dialog.IOSProgressDialog</pattern>
-    </forceLinkClasses>
-</config>

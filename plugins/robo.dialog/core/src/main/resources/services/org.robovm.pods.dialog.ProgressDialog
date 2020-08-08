@@ -1,8 +1,0 @@
-# Android
-org.robovm.pods.dialog.AndroidProgressDialog
-
-# iOS
-org.robovm.pods.dialog.IOSProgressDialog
-
-# Headless
-org.robovm.pods.dialog.HeadlessProgressDialog

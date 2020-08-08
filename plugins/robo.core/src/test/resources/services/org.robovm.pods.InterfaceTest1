@@ -1,8 +1,0 @@
-# Android
-org.robovm.pods.AndroidInterfaceTest1
-
-# iOS
-org.robovm.pods.IOSInterfaceTest1
-
-# Headless
-org.robovm.pods.HeadlessInterfaceTest1

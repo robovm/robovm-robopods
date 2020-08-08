@@ -4,11 +4,6 @@ RoboPods are high-quality RoboVM code libraries and bindings for the most popula
 like social media integration, ad networks or crash reporting. Just add a RoboPod dependency to your 
 project and you are ready-to-go!
 
-Do you want to add in-app-purchases, display dialogs, or just store some preferences in your app in a cross-platform way? 
-Look no further, RoboPods Plugins are here to help!
-The RoboPods Plugins are cross-platform libraries that abstract platform specific functionality to a common API.
-Add the dependencies to your project and start coding without thinking about platform-specific implementations!
-
 ## Usage
 
 A RoboPod comes in form of a simple JAR file published to Maven Central so you can easily 
