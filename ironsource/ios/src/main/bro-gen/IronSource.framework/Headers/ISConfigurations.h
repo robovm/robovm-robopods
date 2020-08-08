@@ -23,6 +23,7 @@
 @property (nonatomic, strong)   NSString            *version;
 @property (nonatomic, strong)   NSNumber            *adapterTimeOutInSeconds;
 @property (nonatomic, strong)   NSNumber            *maxNumOfAdaptersToLoadOnStart;
+@property (nonatomic, assign)   BOOL                advancedLoading;
 @property (nonatomic, strong)   NSString            *plugin;
 @property (nonatomic, strong)   NSString            *pluginVersion;
 @property (nonatomic, strong)   NSString            *pluginFrameworkVersion;

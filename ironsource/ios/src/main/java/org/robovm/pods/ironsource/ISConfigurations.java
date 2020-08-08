@@ -93,6 +93,10 @@ import org.robovm.apple.coregraphics.*;
     public native NSNumber getMaxNumOfAdaptersToLoadOnStart();
     @Property(selector = "setMaxNumOfAdaptersToLoadOnStart:")
     public native void setMaxNumOfAdaptersToLoadOnStart(NSNumber v);
+    @Property(selector = "advancedLoading")
+    public native boolean isAdvancedLoading();
+    @Property(selector = "setAdvancedLoading:")
+    public native void setAdvancedLoading(boolean v);
     @Property(selector = "plugin")
     public native String getPlugin();
     @Property(selector = "setPlugin:")

@@ -49,6 +49,15 @@ classes:
             '+initISDemandOnly:adUnits:':
                 #trim_after_first_colon: true
                 name: initISDemandOnly
+            '+loadISDemandOnlyRewardedVideoWithAdm:adm:':
+                #trim_after_first_colon: true
+                name: loadISDemandOnlyRewardedVideo
+            '+loadISDemandOnlyInterstitialWithAdm:adm:':
+                #trim_after_first_colon: true
+                name: loadISDemandOnlyInterstitial
+            '+setMetaDataWithKey:value:':
+                #trim_after_first_colon: true
+                name: setMetaData
             '+showRewardedVideoWithViewController:':
                 name: showRewardedVideo
             '+showRewardedVideoWithViewController:placement:':

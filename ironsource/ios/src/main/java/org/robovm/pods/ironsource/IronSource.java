@@ -80,6 +80,10 @@ import org.robovm.apple.coregraphics.*;
     public static native void setSegment(ISSegment segment);
     @Method(selector = "setSegmentDelegate:")
     public static native void setSegmentDelegate(ISSegmentDelegate delegate);
+    @Method(selector = "setMetaDataWithKey:value:")
+    public static native void setMetaData(String key, String value);
+    @Method(selector = "getISDemandOnlyBiddingData")
+    public static native String getISDemandOnlyBiddingData();
     @Method(selector = "setUserId:")
     public static native void setUserId(String userId);
     @Method(selector = "initWithAppKey:")
@@ -108,14 +112,14 @@ import org.robovm.apple.coregraphics.*;
     public static native void setISDemandOnlyRewardedVideoDelegate(ISDemandOnlyRewardedVideoDelegate delegate);
     @Method(selector = "loadISDemandOnlyRewardedVideo:")
     public static native void loadISDemandOnlyRewardedVideo(String instanceId);
+    @Method(selector = "loadISDemandOnlyRewardedVideoWithAdm:adm:")
+    public static native void loadISDemandOnlyRewardedVideo(String instanceId, String adm);
     @Method(selector = "showISDemandOnlyRewardedVideo:instanceId:")
     public static native void showISDemandOnlyRewardedVideo(UIViewController viewController, String instanceId);
     @Method(selector = "hasISDemandOnlyRewardedVideo:")
     public static native boolean hasISDemandOnlyRewardedVideo(String instanceId);
     @Method(selector = "setInterstitialDelegate:")
     public static native void setInterstitialDelegate(ISInterstitialDelegate delegate);
-    @Method(selector = "setRewardedInterstitialDelegate:")
-    public static native void setRewardedInterstitialDelegate(ISRewardedInterstitialDelegate delegate);
     @Method(selector = "loadInterstitial")
     public static native void loadInterstitial();
     @Method(selector = "showInterstitialWithViewController:")
@@ -130,6 +134,8 @@ import org.robovm.apple.coregraphics.*;
     public static native void setISDemandOnlyInterstitialDelegate(ISDemandOnlyInterstitialDelegate delegate);
     @Method(selector = "loadISDemandOnlyInterstitial:")
     public static native void loadISDemandOnlyInterstitial(String instanceId);
+    @Method(selector = "loadISDemandOnlyInterstitialWithAdm:adm:")
+    public static native void loadISDemandOnlyInterstitial(String instanceId, String adm);
     @Method(selector = "showISDemandOnlyInterstitial:instanceId:")
     public static native void showISDemandOnlyInterstitial(UIViewController viewController, String instanceId);
     @Method(selector = "hasISDemandOnlyInterstitial:")
