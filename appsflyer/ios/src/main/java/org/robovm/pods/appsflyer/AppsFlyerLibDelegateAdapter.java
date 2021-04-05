@@ -33,9 +33,9 @@ import org.robovm.apple.foundation.*;
 /*<javadoc>*/
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/AppsFlyerTrackerDelegateAdapter/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/AppsFlyerLibDelegateAdapter/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
-    /*<implements>*/implements AppsFlyerTrackerDelegate/*</implements>*/ {
+    /*<implements>*/implements AppsFlyerLibDelegate/*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/

@@ -34,17 +34,17 @@ import org.robovm.apple.foundation.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/AppsFlyerTracker/*</name>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/AppsFlyerLib/*</name>*/ 
     extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class AppsFlyerTrackerPtr extends Ptr<AppsFlyerTracker, AppsFlyerTrackerPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(AppsFlyerTracker.class); }/*</bind>*/
+    /*<ptr>*/public static class AppsFlyerLibPtr extends Ptr<AppsFlyerLib, AppsFlyerLibPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(AppsFlyerLib.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    public AppsFlyerTracker() {}
-    protected AppsFlyerTracker(Handle h, long handle) { super(h, handle); }
-    protected AppsFlyerTracker(SkipInit skipInit) { super(skipInit); }
+    public AppsFlyerLib() {}
+    protected AppsFlyerLib(Handle h, long handle) { super(h, handle); }
+    protected AppsFlyerLib(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "customerUserID")
@@ -63,14 +63,20 @@ import org.robovm.apple.foundation.*;
     public native String getAppleAppID();
     @Property(selector = "setAppleAppID:")
     public native void setAppleAppID(String v);
+    @Property(selector = "disableAdvertisingIdentifier")
+    public native boolean isDisableAdvertisingIdentifier();
+    @Property(selector = "setDisableAdvertisingIdentifier:")
+    public native void setDisableAdvertisingIdentifier(boolean v);
+    @Property(selector = "advertisingIdentifier")
+    public native String getAdvertisingIdentifier();
+    @Property(selector = "disableSKAdNetwork")
+    public native boolean isDisableSKAdNetwork();
+    @Property(selector = "setDisableSKAdNetwork:")
+    public native void setDisableSKAdNetwork(boolean v);
     @Property(selector = "currencyCode")
     public native String getCurrencyCode();
     @Property(selector = "setCurrencyCode:")
     public native void setCurrencyCode(String v);
-    @Property(selector = "disableAppleAdSupportTracking")
-    public native boolean isDisableAppleAdSupportTracking();
-    @Property(selector = "setDisableAppleAdSupportTracking:")
-    public native void setDisableAppleAdSupportTracking(boolean v);
     @Property(selector = "isDebug")
     public native boolean isDebug();
     @Property(selector = "setIsDebug:")
@@ -83,18 +89,18 @@ import org.robovm.apple.foundation.*;
     public native String getAppInviteOneLinkID();
     @Property(selector = "setAppInviteOneLink:")
     public native void setAppInviteOneLinkID(String v);
-    @Property(selector = "deviceTrackingDisabled")
-    public native boolean isDeviceTrackingDisabled();
-    @Property(selector = "setDeviceTrackingDisabled:")
-    public native void setDeviceTrackingDisabled(boolean v);
-    @Property(selector = "disableIAdTracking")
-    public native boolean isDisableIAdTracking();
-    @Property(selector = "setDisableIAdTracking:")
-    public native void setDisableIAdTracking(boolean v);
+    @Property(selector = "anonymizeUser")
+    public native boolean isAnonymizeUser();
+    @Property(selector = "setAnonymizeUser:")
+    public native void setAnonymizeUser(boolean v);
+    @Property(selector = "disableCollectASA")
+    public native boolean isDisableCollectASA();
+    @Property(selector = "setDisableCollectASA:")
+    public native void setDisableCollectASA(boolean v);
     @Property(selector = "delegate")
-    public native AppsFlyerTrackerDelegate getDelegate();
+    public native AppsFlyerLibDelegate getDelegate();
     @Property(selector = "setDelegate:", strongRef = true)
-    public native void setDelegate(AppsFlyerTrackerDelegate v);
+    public native void setDelegate(AppsFlyerLibDelegate v);
     @Property(selector = "useReceiptValidationSandbox")
     public native boolean isUseReceiptValidationSandbox();
     @Property(selector = "setUseReceiptValidationSandbox:")
@@ -103,8 +109,6 @@ import org.robovm.apple.foundation.*;
     public native boolean isUseUninstallSandbox();
     @Property(selector = "setUseUninstallSandbox:")
     public native void setUseUninstallSandbox(boolean v);
-    @Property(selector = "advertiserId")
-    public native String getAdvertiserId();
     @Property(selector = "resolveDeepLinkURLs")
     public native NSArray<NSString> getResolveDeepLinkURLs();
     @Property(selector = "setResolveDeepLinkURLs:")
@@ -129,36 +133,39 @@ import org.robovm.apple.foundation.*;
     public native @MachineSizedUInt long getMinTimeBetweenSessions();
     @Property(selector = "setMinTimeBetweenSessions:")
     public native void setMinTimeBetweenSessions(@MachineSizedUInt long v);
-    @Property(selector = "isStopTracking")
-    public native boolean isStopTracking();
-    @Property(selector = "setIsStopTracking:")
-    public native void setIsStopTracking(boolean v);
+    @Property(selector = "isStopped")
+    public native boolean isStopped();
+    @Property(selector = "setIsStopped:")
+    public native void setIsStopped(boolean v);
     @Property(selector = "facebookDeferredAppLink")
     public native NSURL getFacebookDeferredAppLink();
     @Property(selector = "setFacebookDeferredAppLink:")
     public native void setFacebookDeferredAppLink(NSURL v);
+    @Property(selector = "sharingFilter")
+    public native NSArray<NSString> getSharingFilter();
+    @Property(selector = "setSharingFilter:")
+    public native void setSharingFilter(NSArray<NSString> v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "waitForATTUserAuthorizationWithTimeoutInterval:")
+    public native void waitForATTUserAuthorization(double timeoutInterval);
     @Method(selector = "enableFacebookDeferredApplinksWithClass:")
     public native void enableFacebookDeferredApplinks(Class<?> facebookAppLinkUtilityClass);
     @Method(selector = "setUserEmails:withCryptType:")
     public native void setUserEmails(NSArray<NSString> userEmails, EmailCryptType type);
-    @Method(selector = "trackAppLaunch")
-    public native void trackAppLaunch();
-    @Method(selector = "trackAppLaunchWithCompletionHandler:")
-    public native void trackAppLaunch(@Block VoidBlock2<NSDictionary<NSString, ?>, NSError> completionHandler);
-    @Deprecated
-    @Method(selector = "trackEvent:withValue:")
-    public native void trackEvent(String eventName, String value);
-    @Method(selector = "trackEvent:withValues:")
-    public native void trackEvent(String eventName, NSDictionary<?, ?> values);
-    @Method(selector = "trackEventWithEventName:eventValues:completionHandler:")
-    public native void trackEvent(String eventName, NSDictionary<NSString, ?> eventValues, @Block VoidBlock2<NSDictionary<NSString, ?>, NSError> completionHandler);
-    @Method(selector = "validateAndTrackInAppPurchase:price:currency:transactionId:additionalParameters:success:failure:")
-    public native void validateAndTrackInAppPurchase(String productIdentifier, String price, String currency, String tranactionId, NSDictionary<?, ?> params, @Block VoidBlock1<NSDictionary<?, ?>> successBlock, @Block VoidBlock2<NSError, NSObject> failedBlock);
-    @Method(selector = "trackLocation:latitude:")
-    public native void trackLocation(double longitude, double latitude);
+    @Method(selector = "start")
+    public native void start();
+    @Method(selector = "startWithCompletionHandler:")
+    public native void start(@Block VoidBlock2<NSDictionary<NSString, ?>, NSError> completionHandler);
+    @Method(selector = "logEvent:withValues:")
+    public native void logEvent(String eventName, NSDictionary<?, ?> values);
+    @Method(selector = "logEventWithEventName:eventValues:completionHandler:")
+    public native void logEvent(String eventName, NSDictionary<NSString, ?> eventValues, @Block VoidBlock2<NSDictionary<NSString, ?>, NSError> completionHandler);
+    @Method(selector = "validateAndLogInAppPurchase:price:currency:transactionId:additionalParameters:success:failure:")
+    public native void validateAndLogInAppPurchase(String productIdentifier, String price, String currency, String tranactionId, NSDictionary<?, ?> params, @Block VoidBlock1<NSDictionary<?, ?>> successBlock, @Block VoidBlock2<NSError, NSObject> failedBlock);
+    @Method(selector = "logLocation:latitude:")
+    public native void logLocation(double longitude, double latitude);
     @Method(selector = "getAppsFlyerUID")
     public native String getAppsFlyerUID();
     @Method(selector = "handleOpenURL:sourceApplication:")
@@ -180,9 +187,15 @@ import org.robovm.apple.foundation.*;
     public native String getSDKVersion();
     @Method(selector = "remoteDebuggingCallWithData:")
     public native void remoteDebuggingCall(String data);
+    @Method(selector = "performOnAppAttributionWithURL:")
+    public native void performOnAppAttribution(NSURL URL);
     @Method(selector = "setHost:withHostPrefix:")
     public native void setHost(String host, String hostPrefix);
-    @Method(selector = "sharedTracker")
-    public static native AppsFlyerTracker sharedTracker();
+    @Method(selector = "setSharingFilterForAllPartners")
+    public native void setSharingFilterForAllPartners();
+    @Method(selector = "appendParametersToDeepLinkingURLWithString:parameters:")
+    public native void appendParametersToDeepLinkingURL(String containsString, NSDictionary<NSString, NSString> parameters);
+    @Method(selector = "shared")
+    public static native AppsFlyerLib shared();
     /*</methods>*/
 }

@@ -7,7 +7,7 @@ AppsFlyer is the world's leading mobile attribution & marketing analytics platfo
 
 | Platform            | Version |
 |---------------------|---------|
-| [iOS](ios/)         | 5.2.0   |
+| [iOS](ios/)         | 6.0.8   |
 |                     |         |
 
 ## Official website

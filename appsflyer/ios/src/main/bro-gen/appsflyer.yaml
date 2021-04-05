@@ -2,7 +2,7 @@ package: org.robovm.pods.appsflyer
 framework: AppsFlyerLib
 include: [foundation]
 clang_args: ['-x', 'objective-c']
-headers: [AppsFlyerTracker.h]
+headers: [AppsFlyerLib.h]
 
 enums:
     EmailCryptType: {}
@@ -11,44 +11,35 @@ enums:
 classes:
     AppsFlyerCrossPromotionHelper:
         methods:
-            '+trackCrossPromoteImpression:campaign:':
+            '+logCrossPromoteImpression:campaign:parameters:':
                 #trim_after_first_colon: true
-                name: trackCrossPromoteImpression
-            '+trackAndOpenStore:campaign:paramters:openStore:':
+                name: logCrossPromoteImpression
+            '+logAndOpenStore:campaign:parameters:openStore:':
                 #trim_after_first_colon: true
-                name: trackAndOpenStore
-    AppsFlyerLinkGenerator:
+                name: logAndOpenStore
+    AppsFlyerLib:
         methods:
-            '-addParameterValue:forKey:':
-                #trim_after_first_colon: true
-                name: addParameterValue
-    AppsFlyerShareInviteHelper:
-        methods:
-            '+generateInviteUrlWithLinkGenerator:completionHandler:':
-                #trim_after_first_colon: true
-                name: generateInviteUrl
-            '+trackInvite:parameters:':
-                #trim_after_first_colon: true
-                name: trackInvite
-    AppsFlyerTracker:
-        methods:
+            '-waitForATTUserAuthorizationWithTimeoutInterval:':
+                name: waitForATTUserAuthorization
+            '-enableFacebookDeferredApplinksWithClass:':
+                name: enableFacebookDeferredApplinks
             '-setUserEmails:withCryptType:':
                 #trim_after_first_colon: true
                 name: setUserEmails
-            '-trackEvent:withValue:':
+            '-startWithCompletionHandler:':
+                name: start
+            '-logEvent:withValues:':
                 #trim_after_first_colon: true
-                name: trackEvent
-            '-trackEvent:withValues:':
+                name: logEvent
+            '-logEventWithEventName:eventValues:completionHandler:':
                 #trim_after_first_colon: true
-                name: trackEvent
-            '-validateAndTrackInAppPurchase:price:currency:transactionId:additionalParameters:success:failure:':
+                name: logEvent
+            '-validateAndLogInAppPurchase:price:currency:transactionId:additionalParameters:success:failure:':
                 #trim_after_first_colon: true
-                name: validateAndTrackInAppPurchase
-            '-trackLocation:latitude:':
+                name: validateAndLogInAppPurchase
+            '-logLocation:latitude:':
                 #trim_after_first_colon: true
-                name: trackLocation
-            '-loadConversionDataWithDelegate:':
-                name: loadConversionData
+                name: logLocation
             '-handleOpenURL:sourceApplication:':
                 #trim_after_first_colon: true
                 name: handleOpenURL
@@ -63,17 +54,28 @@ classes:
                 name: continueUserActivity
             '-remoteDebuggingCallWithData:':
                 name: remoteDebuggingCall
+            '-performOnAppAttributionWithURL:':
+                name: performOnAppAttribution
             '-setHost:withHostPrefix:':
                 #trim_after_first_colon: true
                 name: setHost
-            '-enableFacebookDeferredApplinksWithClass:':
-                name: enableFacebookDeferredApplinks
-            '-trackAppLaunchWithCompletionHandler:':
-                name: trackAppLaunch
-            '-trackEventWithEventName:eventValues:completionHandler:':
+            '-appendParametersToDeepLinkingURLWithString:parameters:':
                 #trim_after_first_colon: true
-                name: trackEvent
+                name: appendParametersToDeepLinkingURL
+    AppsFlyerLinkGenerator:
+        methods:
+            '-addParameterValue:forKey:':
+                #trim_after_first_colon: true
+                name: addParameterValue
+    AppsFlyerShareInviteHelper:
+        methods:
+            '+generateInviteUrlWithLinkGenerator:completionHandler:':
+                #trim_after_first_colon: true
+                name: generateInviteUrl
+            '+logInvite:parameters:':
+                #trim_after_first_colon: true
+                name: logInvite
 
 
 protocols:
-    AppsFlyerTrackerDelegate: {}
+    AppsFlyerLibDelegate: {}
