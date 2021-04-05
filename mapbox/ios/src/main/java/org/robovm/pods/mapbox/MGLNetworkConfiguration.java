@@ -62,6 +62,10 @@ import org.robovm.apple.coreanimation.*;
     public native NSURLSessionConfiguration getSessionConfiguration();
     @Property(selector = "setSessionConfiguration:")
     public native void setSessionConfiguration(NSURLSessionConfiguration v);
+    @Property(selector = "connected")
+    public native boolean isConnected();
+    @Property(selector = "setConnected:")
+    public native void setConnected(boolean v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

@@ -67,6 +67,6 @@ import org.robovm.apple.coreanimation.*;
     @Method(selector = "initWithIdentifier:tileURLTemplates:options:")
     protected native @Pointer long init(String identifier, NSArray<NSString> tileURLTemplates, NSDictionary<NSString, ?> options);
     @Method(selector = "featuresInSourceLayersWithIdentifiers:predicate:")
-    public native NSArray<?> featuresInSourceLayers(NSSet<NSString> sourceLayerIdentifiers, NSPredicate predicate);
+    public native NSArray<?> features(NSSet<NSString> sourceLayerIdentifiers, NSPredicate predicate);
     /*</methods>*/
 }

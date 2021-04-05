@@ -39,30 +39,34 @@ import org.robovm.apple.coreanimation.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/MGLTileSource/*</name>*/ 
-    extends /*<extends>*/MGLSource/*</extends>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/MGLEvent/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class MGLTileSourcePtr extends Ptr<MGLTileSource, MGLTileSourcePtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(MGLTileSource.class); }/*</bind>*/
+    /*<ptr>*/public static class MGLEventPtr extends Ptr<MGLEvent, MGLEventPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(MGLEvent.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected MGLTileSource() {}
-    protected MGLTileSource(Handle h, long handle) { super(h, handle); }
-    protected MGLTileSource(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithIdentifier:")
-    public MGLTileSource(String identifier) { super(identifier); }
+    public MGLEvent() {}
+    protected MGLEvent(Handle h, long handle) { super(h, handle); }
+    protected MGLEvent(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "configurationURL")
-    public native NSURL getConfigurationURL();
-    @Property(selector = "attributionInfos")
-    public native NSArray<MGLAttributionInfo> getAttributionInfos();
+    @Property(selector = "type")
+    public native String getType();
+    @Property(selector = "begin")
+    public native double getBegin();
+    @Property(selector = "end")
+    public native double getEnd();
+    @Property(selector = "data")
+    public native NSObject getData();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @GlobalValue(symbol="MGLEventTypeResourceRequest", optional=true)
+    public static native String TypeResourceRequest();
     
+    @Method(selector = "isEqualToEvent:")
+    public native boolean isEqualToEvent(MGLEvent otherEvent);
     /*</methods>*/
-    public abstract static class Option extends NSObject {
-    }
 }

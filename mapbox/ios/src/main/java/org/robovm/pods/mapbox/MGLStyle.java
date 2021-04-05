@@ -78,6 +78,10 @@ import org.robovm.apple.coreanimation.*;
     public native boolean performsPlacementTransitions();
     @Property(selector = "setPerformsPlacementTransitions:")
     public native void setPerformsPlacementTransitions(boolean v);
+    @Property(selector = "accessiblePlaceSourceLayerIdentifiers")
+    public native NSSet<NSString> getAccessiblePlaceSourceLayerIdentifiers();
+    @Property(selector = "setAccessiblePlaceSourceLayerIdentifiers:")
+    public native void setAccessiblePlaceSourceLayerIdentifiers(NSSet<NSString> v);
     @Property(selector = "layers")
     public native NSArray<MGLStyleLayer> getLayers();
     @Property(selector = "setLayers:")

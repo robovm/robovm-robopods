@@ -51,9 +51,9 @@ import org.robovm.apple.coreanimation.*;
     protected MGLComputedShapeSource(Handle h, long handle) { super(h, handle); }
     protected MGLComputedShapeSource(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithIdentifier:options:")
-    public MGLComputedShapeSource(String identifier, NSDictionary<NSString, ?> options) { super((SkipInit) null); initObject(init(identifier, options)); }
+    public MGLComputedShapeSource(String identifier, MGLShapeSourceOption options) { super((SkipInit) null); initObject(init(identifier, options)); }
     @Method(selector = "initWithIdentifier:dataSource:options:")
-    public MGLComputedShapeSource(String identifier, MGLComputedShapeSourceDataSource dataSource, NSDictionary<NSString, ?> options) { super((SkipInit) null); initObject(init(identifier, dataSource, options)); }
+    public MGLComputedShapeSource(String identifier, MGLComputedShapeSourceDataSource dataSource, MGLShapeSourceOption options) { super((SkipInit) null); initObject(init(identifier, dataSource, options)); }
     @Method(selector = "initWithIdentifier:")
     public MGLComputedShapeSource(String identifier) { super(identifier); }
     /*</constructors>*/
@@ -68,9 +68,9 @@ import org.robovm.apple.coreanimation.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "initWithIdentifier:options:")
-    protected native @Pointer long init(String identifier, NSDictionary<NSString, ?> options);
+    protected native @Pointer long init(String identifier, MGLShapeSourceOption options);
     @Method(selector = "initWithIdentifier:dataSource:options:")
-    protected native @Pointer long init(String identifier, MGLComputedShapeSourceDataSource dataSource, NSDictionary<NSString, ?> options);
+    protected native @Pointer long init(String identifier, MGLComputedShapeSourceDataSource dataSource, MGLShapeSourceOption options);
     @Method(selector = "invalidateBounds:")
     public native void invalidateBounds(@ByVal MGLCoordinateBounds bounds);
     @Method(selector = "invalidateTileAtX:y:zoomLevel:")

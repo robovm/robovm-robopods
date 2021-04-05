@@ -52,12 +52,22 @@ import org.robovm.apple.coreanimation.*;
     /*<properties>*//*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @GlobalValue(symbol="MGLClusterIdentifierInvalid", optional=true)
-    public static native @MachineSizedUInt long MGLClusterIdentifierInvalid();
+    @GlobalValue(symbol="MGLFontNamesAttribute", optional=true)
+    public static native String MGLFontNamesAttribute();
+    @GlobalValue(symbol="MGLFontScaleAttribute", optional=true)
+    public static native String MGLFontScaleAttribute();
+    @GlobalValue(symbol="MGLFontColorAttribute", optional=true)
+    public static native String MGLFontColorAttribute();
     @GlobalValue(symbol="MGLAbstractClassException", optional=true)
     public static native String AbstractClassException();
     @GlobalValue(symbol="MGLInvalidStyleLayerException", optional=true)
     public static native String InvalidStyleLayerException();
+    @GlobalValue(symbol="MGLClusterIdentifierInvalid", optional=true)
+    public static native @MachineSizedUInt long MGLClusterIdentifierInvalid();
+    @GlobalValue(symbol="MGLInvalidStyleSourceException", optional=true)
+    public static native String InvalidStyleSourceException();
+    @GlobalValue(symbol="MGLInvalidDatasourceException", optional=true)
+    public static native String InvalidDatasourceException();
     @GlobalValue(symbol="MGLInvalidStyleURLException", optional=true)
     public static native String InvalidStyleURLException();
     @GlobalValue(symbol="MGLRedundantLayerException", optional=true)
@@ -76,21 +86,11 @@ import org.robovm.apple.coreanimation.*;
     public static native String InvalidOfflinePackException();
     @GlobalValue(symbol="MGLUnsupportedRegionTypeException", optional=true)
     public static native String UnsupportedRegionTypeException();
-    @GlobalValue(symbol="MGLInvalidStyleSourceException", optional=true)
-    public static native String InvalidStyleSourceException();
-    @GlobalValue(symbol="MGLInvalidDatasourceException", optional=true)
-    public static native String InvalidDatasourceException();
     @GlobalValue(symbol="MGLExpressionInterpolationModeLinear", optional=true)
     public static native String MGLExpressionInterpolationModeLinear();
     @GlobalValue(symbol="MGLExpressionInterpolationModeExponential", optional=true)
     public static native String MGLExpressionInterpolationModeExponential();
     @GlobalValue(symbol="MGLExpressionInterpolationModeCubicBezier", optional=true)
     public static native String MGLExpressionInterpolationModeCubicBezier();
-    @GlobalValue(symbol="MGLFontNamesAttribute", optional=true)
-    public static native String MGLFontNamesAttribute();
-    @GlobalValue(symbol="MGLFontScaleAttribute", optional=true)
-    public static native String MGLFontScaleAttribute();
-    @GlobalValue(symbol="MGLFontColorAttribute", optional=true)
-    public static native String MGLFontColorAttribute();
     /*</methods>*/
 }

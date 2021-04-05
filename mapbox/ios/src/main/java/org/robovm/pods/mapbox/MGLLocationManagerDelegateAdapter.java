@@ -61,5 +61,7 @@ import org.robovm.apple.coreanimation.*;
     public boolean locationManagerShouldDisplayHeadingCalibration(MGLLocationManager manager) { return false; }
     @NotImplemented("locationManager:didFailWithError:")
     public void didFailWithError(MGLLocationManager manager, NSError error) {}
+    @NotImplemented("locationManagerDidChangeAuthorization:")
+    public void locationManagerDidChangeAuthorization(MGLLocationManager manager) {}
     /*</methods>*/
 }

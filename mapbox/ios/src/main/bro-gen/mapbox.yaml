@@ -4,9 +4,24 @@ framework: Mapbox
 clang_args: ['-x', 'objective-c']
 headers:
     - Mapbox.h
+
 typedefs:
-    MGLTileSourceOption: NSString
-    MGLShapeSourceOption: NSString
+    
+typed_enums:
+    MGLStyleFunctionOption:
+        prefix: MGLStyleFunctionOption
+        dictionary: MGLStyleFunctionOption
+        type: NSString
+
+    MGLShapeSourceOption:
+        prefix: MGLShapeSourceOption
+        dictionary: MGLShapeSourceOption
+        type: NSString
+
+    MGLTileSourceOption:
+        prefix: MGLTileSourceOption
+        dictionary: MGLTileSourceOption
+        type: NSString
 
 enums:
     MGLPanScrollingMode: {}
@@ -55,6 +70,12 @@ enums:
     MGLMetricType: {}
 
 classes:
+    MGLEvent: {}
+    MGLObserver:
+        methods:
+            '-notifyWithEvent:':
+                name: notifyWithEvent
+    MGLUserLocationAnnotationViewStyle: {}
     MGLOfflinePack:
         methods:
             '-setContext:completionHandler:':
@@ -120,7 +141,7 @@ classes:
                         type: NSDictionary<NSNumber, MGLStyleValue<U>>
                     options:
                         name: options
-                        type: NSDictionary<MGLStyleFunction.Option, ?>
+                        type: NSDictionary<NSString, ?>
         properties:
             stops:
                 type: NSDictionary<NSNumber, MGLStyleValue<T>>
@@ -154,7 +175,7 @@ classes:
                         type: String
                     options:
                         name: options
-                        type: NSDictionary<MGLStyleFunction.Option, ?>
+                        type: NSDictionary<NSString, ?>
         properties:
             stops:
                 type: NSDictionary<NSNumber, MGLStyleValue<T>>
@@ -221,6 +242,8 @@ classes:
                 name: init
     MGLMapView:
         methods:
+            '-subscribeForObserver:event:':
+                name: subscribeForObserver
             '-setUserTrackingMode:animated:completionHandler:':
                 name: setUserTrackingMode
             '-setTargetCoordinate:animated:completionHandler:':
@@ -455,7 +478,7 @@ classes:
                         type: NSArray<NSString>
                     options:
                         name: options
-                        type: NSDictionary<MGLTileSource.Option, ?>
+                        type: NSDictionary<NSString, ?>
     MGLRasterStyleLayer:
         methods:
             '-initWithIdentifier:source:':
@@ -505,7 +528,7 @@ classes:
                         type: NSURL
                     options:
                         name: options
-                        type: NSDictionary<MGLShapeSource.Option, ?>
+                        type: NSDictionary<NSString, ?>
             '-initWithIdentifier:shape:options:':
                 name: init
                 parameters:
@@ -517,7 +540,7 @@ classes:
                         type: MGLShape
                     options:
                         name: options
-                        type: NSDictionary<MGLShapeSource.Option, ?>
+                        type: NSDictionary<NSString, ?>
             '-initWithIdentifier:features:options:':
                 exclude: true
                 name: initFeatures
@@ -530,7 +553,7 @@ classes:
                         type: NSArray<MGLFeature>
                     options:
                         name: options
-                        type: NSDictionary<MGLShapeSource.Option, ?>
+                        type: NSDictionary<NSString, ?>
             '-initWithIdentifier:shapes:options:':
                 name: initShapes
                 parameters:
@@ -542,7 +565,7 @@ classes:
                         type: NSArray<MGLShape>
                     options:
                         name: options
-                        type: NSDictionary<MGLShapeSource.Option, ?>
+                        type: NSDictionary<NSString, ?>
     MGLSource:
         methods:
             '-initWithIdentifier:':
@@ -562,7 +585,7 @@ classes:
                         type: NSDictionary<?, MGLStyleValue<U>>
                     options:
                         name: options
-                        type: NSDictionary<MGLStyleFunction.Option, ?>
+                        type: NSDictionary<NSString, ?>
         properties:
             stops:
                 type: NSDictionary<NSNumber, MGLStyleValue<T>>
@@ -681,7 +704,7 @@ classes:
                         type: NSDictionary<?, MGLStyleValue<U>>
                     options:
                         name: options
-                        type: NSDictionary<MGLStyleFunction.Option, ?>
+                        type: NSDictionary<NSString, ?>
             '+valueWithInterpolationMode:sourceStops:attributeName:options:':
                 name: value
                 return_type: <U extends NSObject> MGLStyleValue<U>
@@ -697,7 +720,7 @@ classes:
                         type: String
                     options:
                         name: options
-                        type: NSDictionary<MGLStyleFunction.Option, ?>
+                        type: NSDictionary<NSString, ?>
             '+valueWithInterpolationMode:compositeStops:attributeName:options:':
                 name: compositeValue
                 return_type: <U extends NSObject> MGLStyleValue<U>
@@ -713,7 +736,7 @@ classes:
                         type: String
                     options:
                         name: options
-                        type: NSDictionary<MGLStyleFunction.Option, ?>
+                        type: NSDictionary<NSString, ?>
 
     MGLSymbolStyleLayer:
         methods:
@@ -741,7 +764,7 @@ classes:
                         type: NSArray<NSString>
                     options:
                         name: options
-                        type: NSDictionary<MGLTileSource.Option, ?>
+                        type: NSDictionary<NSString, ?>
             '-featuresInSourceLayersWithIdentifiers:predicate:':
                 name: features
     MGLVectorStyleLayer: {}
@@ -765,23 +788,6 @@ classes:
             '-initWithIdentifier:source:':
                 name: init
     MGLRasterDEMSource: {}
-    MGLRasterTileSource:
-        methods:
-            '-initWithIdentifier:configurationURL:':
-                name: init
-            '-initWithIdentifier:configurationURL:tileSize:':
-                name: init
-            '-initWithIdentifier:tileURLTemplates:options:':
-                name: init
-
-    MGLVectorTileSource:
-        methods:
-            '-initWithIdentifier:configurationURL:':
-                name: init
-            '-initWithIdentifier:tileURLTemplates:options:':
-                name: init
-            '-featuresInSourceLayersWithIdentifiers:predicate:':
-                name: featuresInSourceLayers
 
     MGLMetricsManager:
         methods:
@@ -790,6 +796,12 @@ classes:
 
 
 protocols:
+    MGLObservable:
+        methods:
+            '-subscribeForObserver:events:':
+                name: subscribeForObserver
+            '-unsubscribeForObserver:events:':
+                name: unsubscribeForObserver
     MGLMapSnapshotterDelegate:
         methods:
             '-mapSnapshotterDidFail:withError:':
@@ -968,20 +980,6 @@ values:
         class: MGLOfflineStorage
         name: 'UserInfoKey#{g[0]}'
 
-    MGLStyleFunctionOption(.*):
-        class: MGLStyleFunction
-        type: Option
-        name: '#{g[0]}'
-
-    MGLTileSourceOption(.*):
-        class: MGLTileSource
-        type: Option
-        name: '#{g[0]}'
-
-    MGLShapeSourceOption(.*):
-        class: MGLShapeSource
-        type: Option
-        name: '#{g[0]}'
 
     MGLFontNamesAttribute:
         class: Mapbox
@@ -1015,6 +1013,12 @@ values:
         class: Mapbox
         type: String    
         name: '#{g[0]}Exception'
+
+    MGLEventTypeResourceRequest:
+        class: MGLEvent
+        type: String
+        name: 'TypeResourceRequest'
+
 
 
     # Make sure we don't miss any values if new ones are introduced in a later version

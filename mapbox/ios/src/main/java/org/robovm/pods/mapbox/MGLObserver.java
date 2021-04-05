@@ -39,30 +39,27 @@ import org.robovm.apple.coreanimation.*;
 
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/MGLTileSource/*</name>*/ 
-    extends /*<extends>*/MGLSource/*</extends>*/ 
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/MGLObserver/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class MGLTileSourcePtr extends Ptr<MGLTileSource, MGLTileSourcePtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(MGLTileSource.class); }/*</bind>*/
+    /*<ptr>*/public static class MGLObserverPtr extends Ptr<MGLObserver, MGLObserverPtr> {}/*</ptr>*/
+    /*<bind>*/static { ObjCRuntime.bind(MGLObserver.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
     /*<constructors>*/
-    protected MGLTileSource() {}
-    protected MGLTileSource(Handle h, long handle) { super(h, handle); }
-    protected MGLTileSource(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithIdentifier:")
-    public MGLTileSource(String identifier) { super(identifier); }
+    public MGLObserver() {}
+    protected MGLObserver(Handle h, long handle) { super(h, handle); }
+    protected MGLObserver(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "configurationURL")
-    public native NSURL getConfigurationURL();
-    @Property(selector = "attributionInfos")
-    public native NSArray<MGLAttributionInfo> getAttributionInfos();
+    @Property(selector = "identifier")
+    public native @MachineSizedUInt long getIdentifier();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    
+    @Method(selector = "notifyWithEvent:")
+    public native void notifyWithEvent(MGLEvent event);
+    @Method(selector = "isEqualToObserver:")
+    public native boolean isEqualToObserver(MGLObserver other);
     /*</methods>*/
-    public abstract static class Option extends NSObject {
-    }
 }

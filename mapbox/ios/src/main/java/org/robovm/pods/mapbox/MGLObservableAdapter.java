@@ -36,33 +36,28 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/MGLTileSource/*</name>*/ 
-    extends /*<extends>*/MGLSource/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/MGLObservableAdapter/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*/implements MGLObservable/*</implements>*/ {
 
-    /*<ptr>*/public static class MGLTileSourcePtr extends Ptr<MGLTileSource, MGLTileSourcePtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(MGLTileSource.class); }/*</bind>*/
+    /*<ptr>*/
+    /*</ptr>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*/
-    protected MGLTileSource() {}
-    protected MGLTileSource(Handle h, long handle) { super(h, handle); }
-    protected MGLTileSource(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithIdentifier:")
-    public MGLTileSource(String identifier) { super(identifier); }
-    /*</constructors>*/
+    /*<constructors>*//*</constructors>*/
     /*<properties>*/
-    @Property(selector = "configurationURL")
-    public native NSURL getConfigurationURL();
-    @Property(selector = "attributionInfos")
-    public native NSArray<MGLAttributionInfo> getAttributionInfos();
+    
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    
+    @NotImplemented("subscribeForObserver:events:")
+    public void subscribeForObserver(MGLObserver observer, NSSet<NSString> events) {}
+    @NotImplemented("unsubscribeForObserver:events:")
+    public void unsubscribeForObserver(MGLObserver observer, NSSet<NSString> events) {}
+    @NotImplemented("unsubscribeForObserver:")
+    public void unsubscribeForObserver(MGLObserver observer) {}
     /*</methods>*/
-    public abstract static class Option extends NSObject {
-    }
 }

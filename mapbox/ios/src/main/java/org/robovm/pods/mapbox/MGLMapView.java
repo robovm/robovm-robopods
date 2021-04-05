@@ -41,7 +41,7 @@ import org.robovm.apple.coreanimation.*;
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/MGLMapView/*</name>*/ 
     extends /*<extends>*/UIView/*</extends>*/ 
-    /*<implements>*/implements MGLStylable/*</implements>*/ {
+    /*<implements>*/implements MGLStylable, MGLObservable/*</implements>*/ {
 
     /*<ptr>*/public static class MGLMapViewPtr extends Ptr<MGLMapView, MGLMapViewPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(MGLMapView.class); }/*</bind>*/
@@ -120,6 +120,10 @@ import org.robovm.apple.coreanimation.*;
     public native @MachineSizedSInt long getPreferredFramesPerSecond();
     @Property(selector = "setPreferredFramesPerSecond:")
     public native void setPreferredFramesPerSecond(@MachineSizedSInt long v);
+    @Property(selector = "renderingInInactiveStateEnabled")
+    public native boolean isRenderingInInactiveStateEnabled();
+    @Property(selector = "setRenderingInInactiveStateEnabled:")
+    public native void setRenderingInInactiveStateEnabled(boolean v);
     @Property(selector = "prefetchesTiles")
     public native boolean isPrefetchesTiles();
     @Property(selector = "setPrefetchesTiles:")
@@ -184,6 +188,10 @@ import org.robovm.apple.coreanimation.*;
     public native boolean isPitchEnabled();
     @Property(selector = "setPitchEnabled:")
     public native void setPitchEnabled(boolean v);
+    @Property(selector = "anchorRotateOrZoomGesturesToCenterCoordinate")
+    public native boolean isAnchorRotateOrZoomGesturesToCenterCoordinate();
+    @Property(selector = "setAnchorRotateOrZoomGesturesToCenterCoordinate:")
+    public native void setAnchorRotateOrZoomGesturesToCenterCoordinate(boolean v);
     @Property(selector = "isHapticFeedbackEnabled")
     public native boolean isHapticFeedbackEnabled();
     @Property(selector = "setHapticFeedbackEnabled:")
@@ -456,6 +464,14 @@ import org.robovm.apple.coreanimation.*;
     public native NSArray<?> visibleFeatures(@ByVal CGRect rect, NSSet<NSString> styleLayerIdentifiers);
     @Method(selector = "visibleFeaturesInRect:inStyleLayersWithIdentifiers:predicate:")
     public native NSArray<?> visibleFeatures(@ByVal CGRect rect, NSSet<NSString> styleLayerIdentifiers, NSPredicate predicate);
+    @Method(selector = "subscribeForObserver:event:")
+    public native void subscribeForObserver(MGLObserver observer, String event);
+    @Method(selector = "subscribeForObserver:events:")
+    public native void subscribeForObserver(MGLObserver observer, NSSet<NSString> events);
+    @Method(selector = "unsubscribeForObserver:events:")
+    public native void unsubscribeForObserver(MGLObserver observer, NSSet<NSString> events);
+    @Method(selector = "unsubscribeForObserver:")
+    public native void unsubscribeForObserver(MGLObserver observer);
     /*</methods>*/
     public void setVisibleCoordinates(CLLocationCoordinate2D[] coordinates, @ByVal UIEdgeInsets insets, boolean animated) {
         CLLocationCoordinate2D value = Struct.allocate(CLLocationCoordinate2D.class, coordinates.length);

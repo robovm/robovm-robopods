@@ -95,6 +95,8 @@ import org.robovm.apple.coreanimation.*;
     public void mapViewWillStartLocatingUser(MGLMapView mapView) {}
     @NotImplemented("mapViewDidStopLocatingUser:")
     public void mapViewDidStopLocatingUser(MGLMapView mapView) {}
+    @NotImplemented("mapViewStyleForDefaultUserLocationAnnotationView:")
+    public MGLUserLocationAnnotationViewStyle mapViewStyleForDefaultUserLocationAnnotationView(MGLMapView mapView) { return null; }
     @NotImplemented("mapView:didUpdateUserLocation:")
     public void didUpdateUserLocation(MGLMapView mapView, MGLUserLocation userLocation) {}
     @NotImplemented("mapView:didFailToLocateUserWithError:")

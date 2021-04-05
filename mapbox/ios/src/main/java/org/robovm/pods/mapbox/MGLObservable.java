@@ -38,31 +38,26 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
-/*<visibility>*/public/*</visibility>*/ class /*<name>*/MGLTileSource/*</name>*/ 
-    extends /*<extends>*/MGLSource/*</extends>*/ 
-    /*<implements>*//*</implements>*/ {
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ interface /*<name>*/MGLObservable/*</name>*/ 
+    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
-    /*<ptr>*/public static class MGLTileSourcePtr extends Ptr<MGLTileSource, MGLTileSourcePtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(MGLTileSource.class); }/*</bind>*/
+    /*<ptr>*/
+    /*</ptr>*/
+    /*<bind>*/
+    /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*/
-    protected MGLTileSource() {}
-    protected MGLTileSource(Handle h, long handle) { super(h, handle); }
-    protected MGLTileSource(SkipInit skipInit) { super(skipInit); }
-    @Method(selector = "initWithIdentifier:")
-    public MGLTileSource(String identifier) { super(identifier); }
-    /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "configurationURL")
-    public native NSURL getConfigurationURL();
-    @Property(selector = "attributionInfos")
-    public native NSArray<MGLAttributionInfo> getAttributionInfos();
-    /*</properties>*/
-    /*<members>*//*</members>*/
-    /*<methods>*/
     
+    /*</properties>*/
+    /*<methods>*/
+    @Method(selector = "subscribeForObserver:events:")
+    void subscribeForObserver(MGLObserver observer, NSSet<NSString> events);
+    @Method(selector = "unsubscribeForObserver:events:")
+    void unsubscribeForObserver(MGLObserver observer, NSSet<NSString> events);
+    @Method(selector = "unsubscribeForObserver:")
+    void unsubscribeForObserver(MGLObserver observer);
     /*</methods>*/
-    public abstract static class Option extends NSObject {
-    }
+    /*<adapter>*/
+    /*</adapter>*/
 }
