@@ -30,6 +30,7 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -60,10 +61,6 @@ import org.robovm.apple.coregraphics.*;
     /*<methods>*/
     @Method(selector = "sdkVersion")
     public static native String sdkVersion();
-    @Method(selector = "setAge:")
-    public static native void setAge(@MachineSizedSInt long age);
-    @Method(selector = "setGender:")
-    public static native void setGender(ISGender gender);
     @Method(selector = "shouldTrackReachability:")
     public static native void shouldTrackReachability(boolean flag);
     @Method(selector = "setAdaptersDebug:")
@@ -82,6 +79,8 @@ import org.robovm.apple.coregraphics.*;
     public static native void setSegmentDelegate(ISSegmentDelegate delegate);
     @Method(selector = "setMetaDataWithKey:value:")
     public static native void setMetaData(String key, String value);
+    @Method(selector = "setMetaDataWithKey:values:")
+    public static native void setMetaData(String key, NSMutableArray<?> values);
     @Method(selector = "getISDemandOnlyBiddingData")
     public static native String getISDemandOnlyBiddingData();
     @Method(selector = "setUserId:")
@@ -164,5 +163,25 @@ import org.robovm.apple.coregraphics.*;
     public static native void setLogDelegate(ISLogDelegate delegate);
     @Method(selector = "setConsent:")
     public static native void setConsent(boolean consent);
+    /**
+     * @deprecated use addImpressionDataDelegate instead
+     */
+    @Deprecated
+    @Method(selector = "setImpressionDataDelegate:")
+    public static native void setImpressionDataDelegate(ISImpressionDataDelegate delegate);
+    @Method(selector = "addImpressionDataDelegate:")
+    public static native void addImpressionDataDelegate(ISImpressionDataDelegate delegate);
+    @Method(selector = "setAdRevenueDataWithDataSource:impressionData:")
+    public static native void setAdRevenueData(String dataSource, NSData impressionData);
+    @Method(selector = "removeImpressionDataDelegate:")
+    public static native void removeImpressionDataDelegate(ISImpressionDataDelegate delegate);
+    @Method(selector = "setConsentViewWithDelegate:")
+    public static native void setConsentView(ISConsentViewDelegate delegate);
+    @Method(selector = "loadConsentViewWithType:")
+    public static native void loadConsentView(String consentViewType);
+    @Method(selector = "showConsentViewWithViewController:andType:")
+    public static native void showConsentView(UIViewController viewController, String consentViewType);
+    @Method(selector = "getConversionValue")
+    public static native NSNumber getConversionValue();
     /*</methods>*/
 }

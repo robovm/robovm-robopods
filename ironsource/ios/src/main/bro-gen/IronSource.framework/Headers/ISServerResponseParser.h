@@ -13,6 +13,8 @@
 #import "ISLoggersSettings.h"
 #import "ISAuctionSettings.h"
 #import "ISTokenSettings.h"
+#import "ISCrashReporterSettings.h"
+#import "ISApplicationSettings.h"
 
 @interface ISServerResponseParser : NSObject
 
@@ -35,10 +37,13 @@
 @property (nonatomic, strong) ISLoggersSettings                   *loggers;
 @property (nonatomic, strong) ISAuctionSettings                   *auctionSettings;
 @property (nonatomic, strong) ISTokenSettings                     *tokenSettings;
+@property (nonatomic, strong) ISCrashReporterSettings             *crashReporterSettings;
+@property (nonatomic, strong) ISApplicationSettings               *applicationSettings;
 
 @property (nonatomic, strong) NSString                            *segmentName;
 @property (nonatomic, strong) NSString                            *segmentId;
 @property (nonatomic, strong) NSDictionary                        *customSegmentParams;
+@property (nonatomic, strong) NSDictionary                        *mediationTypes;
 
 @property (nonatomic,assign) BOOL                                 showIntegrationHelper;
 

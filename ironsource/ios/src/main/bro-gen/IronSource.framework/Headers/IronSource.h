@@ -10,7 +10,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "ISGender.h"
 #import "ISBannerDelegate.h"
 #import "ISRewardedVideoDelegate.h"
 #import "ISOfferwallDelegate.h"
@@ -26,6 +25,8 @@
 #import "ISDemandOnlyRewardedVideoDelegate.h"
 #import "ISDemandOnlyInterstitialDelegate.h"
 #import "ISBannerSize.h"
+#import "ISImpressionDataDelegate.h"
+#import "ISConsentViewDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -34,8 +35,14 @@ NS_ASSUME_NONNULL_BEGIN
 #define IS_OFFERWALL @"offerwall"
 #define IS_BANNER @"banner"
 
-static NSString * const MEDIATION_SDK_VERSION     = @"6.18.0.2";
-static NSString * GitHash = @"8d119e1d1";
+static NSString * const MEDIATION_SDK_VERSION     = @"7.1.4";
+static NSString * GitHash = @"a8f7e425c";
+
+/*
+    This constant is for sending an external impression data from mopub
+*/
+static NSString * const DataSource_MOPUB     = @"MoPub";
+
 
 @interface IronSource : NSObject
 
@@ -46,23 +53,6 @@ static NSString * GitHash = @"8d119e1d1";
  @return NSString representing the current IronSource SDK version.
  */
 + (NSString *)sdkVersion;
-
-
-/**
- @abstact Sets a numeric representation of the current user's age.
- @discussion This value will be passed to the supporting ad networks.
-
- @param age The user's age. Should be between 5 and 120.
- */
-+ (void)setAge:(NSInteger)age;
-
-/**
- @abstact Sets the gender of the current user.
- @discussion This value will be passed to the supporting ad networks.
-
- @param gender The user's gender.
- */
-+ (void)setGender:(ISGender)gender;
 
 /**
  @abstract Sets if IronSource SDK should track network changes.
@@ -144,6 +134,16 @@ static NSString * GitHash = @"8d119e1d1";
 
 */
 + (void)setMetaDataWithKey:(NSString *)key value:(NSString *)value;
+
+/**
+ @abstact Sets the meta data with a key and values.
+ @discussion This value will be passed to the supporting ad networks.
+ 
+ @param key The meta data key.
+ @param values The meta data values
+ 
+ */
++ (void)setMetaDataWithKey:(NSString *)key values:(NSMutableArray *) values;
 
 /**
 @abstact used for demand only API, return the bidding data token.
@@ -479,8 +479,81 @@ static NSString * GitHash = @"8d119e1d1";
 
 + (void)setConsent:(BOOL)consent;
 
+
+#pragma mark - Impression Data
+
+/**
+ @abstract Sets the delegate for impression data callbacks.
+
+ @param delegate The 'ISImpressionDataDelegate' for IronSource to send callbacks to.
+ */
+
++ (void)setImpressionDataDelegate:(id<ISImpressionDataDelegate>)delegate __attribute__((deprecated("use addImpressionDataDelegate instead")));
+
+/**
+ @abstract Adds the delegate for impression data callbacks.
+
+ @param delegate The 'ISImpressionDataDelegate' for IronSource to send callbacks to.
+ */
+
+
++ (void)addImpressionDataDelegate:(id<ISImpressionDataDelegate>)delegate;
+
+/**
+ @abstract Ad revenue data
+ 
+ @param dataSource the external source id from which the impression data is sent.
+ @param impressionData the impression data
+
+ */
++ (void)setAdRevenueDataWithDataSource:(NSString *)dataSource
+                        impressionData:(NSData *)impressionData;
+
+
+
+/**
+ @abstract Removes  the delegate from impression data callbacks.
+
+ @param delegate The 'ISImpressionDataDelegate' for IronSource to send callbacks to.
+ */
+
++ (void)removeImpressionDataDelegate:(id<ISImpressionDataDelegate>)delegate;
+
+
+#pragma mark - Consent View
+
+/**
+ @abstract Sets the delegate for consent view callbacks.
+ 
+ @param delegate The 'ISConsentViewDelegate' for IronSource to send callbacks to.
+ */
++ (void)setConsentViewWithDelegate:(id<ISConsentViewDelegate>)delegate;
+
+/**
+ @abstract Load consent view.
+ 
+ @param consentViewType The type of the view (pre/post).
+ */
++ (void)loadConsentViewWithType:(NSString *)consentViewType;
+
+/**
+ @abstract Show consent view after load.
+ 
+ @param consentViewType The type of the view (pre/post).
+ */
++ (void)showConsentViewWithViewController:(UIViewController *)viewController andType:(NSString *)consentViewType;
+
+
+#pragma mark - Conversion Value (CV)
+
+/**
+ @abstract get current conversion value
+*/
++ (NSNumber *)getConversionValue;
+
 @end
 
 NS_ASSUME_NONNULL_END
+
 
 #endif

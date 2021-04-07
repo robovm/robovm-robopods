@@ -30,6 +30,7 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -49,8 +50,8 @@ import org.robovm.apple.coregraphics.*;
     protected ISBannerSize(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithWidth:andHeight:")
     public ISBannerSize(@MachineSizedSInt long width, @MachineSizedSInt long height) { super((SkipInit) null); initObject(init(width, height)); }
-    @Method(selector = "initWithDescription:")
-    public ISBannerSize(String description) { super((SkipInit) null); initObject(init(description)); }
+    @Method(selector = "initWithDescription:width:height:")
+    public ISBannerSize(String description, @MachineSizedSInt long width, @MachineSizedSInt long height) { super((SkipInit) null); initObject(init(description, width, height)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "sizeDescription")
@@ -64,7 +65,9 @@ import org.robovm.apple.coregraphics.*;
     /*<methods>*/
     @Method(selector = "initWithWidth:andHeight:")
     protected native @Pointer long init(@MachineSizedSInt long width, @MachineSizedSInt long height);
-    @Method(selector = "initWithDescription:")
-    protected native @Pointer long init(String description);
+    @Method(selector = "initWithDescription:width:height:")
+    protected native @Pointer long init(String description, @MachineSizedSInt long width, @MachineSizedSInt long height);
+    @Method(selector = "isSmart")
+    public native boolean isSmart();
     /*</methods>*/
 }

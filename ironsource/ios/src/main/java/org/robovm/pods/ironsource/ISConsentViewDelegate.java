@@ -36,30 +36,32 @@ import org.robovm.apple.coreanimation.*;
 /*<javadoc>*/
 
 /*</javadoc>*/
-/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
-public enum /*<name>*/ISGender/*</name>*/ implements ValuedEnum {
-    /*<values>*/
-    UNKNOWN(0L),
-    MALE(1L),
-    FEMALE(2L);
-    /*</values>*/
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ interface /*<name>*/ISConsentViewDelegate/*</name>*/ 
+    /*<implements>*/extends NSObjectProtocol/*</implements>*/ {
 
+    /*<ptr>*/
+    /*</ptr>*/
     /*<bind>*/
     /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<methods>*//*</methods>*/
-
-    private final long n;
-
-    private /*<name>*/ISGender/*</name>*/(long n) { this.n = n; }
-    public long value() { return n; }
-    public static /*<name>*/ISGender/*</name>*/ valueOf(long n) {
-        for (/*<name>*/ISGender/*</name>*/ v : values()) {
-            if (v.n == n) {
-                return v;
-            }
-        }
-        throw new IllegalArgumentException("No constant with value " + n + " found in " 
-            + /*<name>*/ISGender/*</name>*/.class.getName());
-    }
+    /*<properties>*/
+    
+    /*</properties>*/
+    /*<methods>*/
+    @Method(selector = "consentViewDidLoadSuccess:")
+    void consentViewDidLoadSuccess(String consentViewType);
+    @Method(selector = "consentViewDidFailToLoadWithError:consentViewType:")
+    void consentViewDidFailToLoad(NSError error, String consentViewType);
+    @Method(selector = "consentViewDidShowSuccess:")
+    void consentViewDidShowSuccess(String consentViewType);
+    @Method(selector = "consentViewDidFailToShowWithError:consentViewType:")
+    void consentViewDidFailToShow(NSError error, String consentViewType);
+    @Method(selector = "consentViewDidAccept:")
+    void consentViewDidAccept(String consentViewType);
+    @Method(selector = "consentViewDidDismiss:")
+    void consentViewDidDismiss(String consentViewType);
+    /*</methods>*/
+    /*<adapter>*/
+    /*</adapter>*/
 }

@@ -30,6 +30,7 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -62,5 +63,7 @@ import org.robovm.apple.coregraphics.*;
     public void bannerDidDismissScreen() {}
     @NotImplemented("bannerWillLeaveApplication")
     public void bannerWillLeaveApplication() {}
+    @NotImplemented("bannerDidShow")
+    public void bannerDidShow() {}
     /*</methods>*/
 }

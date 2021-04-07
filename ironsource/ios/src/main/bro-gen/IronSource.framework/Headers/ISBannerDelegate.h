@@ -46,6 +46,12 @@
  */
 - (void)bannerWillLeaveApplication;
 
+/**
+ Called when a banner was shown
+ */
+- (void)bannerDidShow;
+
+
 @end
 
 #endif /* ISBannerDelegate_h */

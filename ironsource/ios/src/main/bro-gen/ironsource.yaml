@@ -1,5 +1,5 @@
 package: org.robovm.pods.ironsource
-include: [foundation, uikit, coregraphics]
+include: [foundation, uikit, coregraphics, coreanimation]
 framework: IronSource
 clang_args: ['-x', 'objective-c']
 headers:
@@ -21,11 +21,19 @@ classes:
             '-initWithWidth:andHeight:':
                 #trim_after_first_colon: true
                 name: init
-            '-initWithDescription:':
+            '-initWithDescription:width:height:':
+                #trim_after_first_colon: true
                 name: init
     ISBannerView: {}
     ISConfigurations: {}
     ISEventsReporting: {}
+    ISImpressionData:
+        methods:
+            '-initWithDictionary:':
+                name: init
+            '-replacePlacementMacro:value:':
+                #trim_after_first_colon: true
+                name: replacePlacementMacro
     ISIntegrationHelper: {}
     ISPlacementInfo:
         methods:
@@ -36,12 +44,17 @@ classes:
         methods:
             '-setCustomValue:forKey:':
                 #trim_after_first_colon: true
-                name: setCustomValueForKey
+                name: setCustomValue
     ISSupersonicAdsConfiguration: {}
     IronSource:
         methods:
-            '+initWithAppKey:':
+            '+setMetaDataWithKey:value:':
                 #trim_after_first_colon: true
+                name: setMetaData
+            '+setMetaDataWithKey:values:':
+                #trim_after_first_colon: true
+                name: setMetaData
+            '+initWithAppKey:':
                 name: init
             '+initWithAppKey:adUnits:':
                 #trim_after_first_colon: true
@@ -49,36 +62,26 @@ classes:
             '+initISDemandOnly:adUnits:':
                 #trim_after_first_colon: true
                 name: initISDemandOnly
-            '+loadISDemandOnlyRewardedVideoWithAdm:adm:':
-                #trim_after_first_colon: true
-                name: loadISDemandOnlyRewardedVideo
-            '+loadISDemandOnlyInterstitialWithAdm:adm:':
-                #trim_after_first_colon: true
-                name: loadISDemandOnlyInterstitial
-            '+setMetaDataWithKey:value:':
-                #trim_after_first_colon: true
-                name: setMetaData
             '+showRewardedVideoWithViewController:':
                 name: showRewardedVideo
             '+showRewardedVideoWithViewController:placement:':
                 #trim_after_first_colon: true
                 name: showRewardedVideo
+            '+loadISDemandOnlyRewardedVideoWithAdm:adm:':
+                #trim_after_first_colon: true
+                name: loadISDemandOnlyRewardedVideo
             '+showISDemandOnlyRewardedVideo:instanceId:':
                 #trim_after_first_colon: true
                 name: showISDemandOnlyRewardedVideo
-            '+showISDemandOnlyRewardedVideo:placement:instanceId:':
-                #trim_after_first_colon: true
-                name: showISDemandOnlyRewardedVideo
             '+showInterstitialWithViewController:':
-                #trim_after_first_colon: true
                 name: showInterstitial
             '+showInterstitialWithViewController:placement:':
                 #trim_after_first_colon: true
                 name: showInterstitial
-            '+showISDemandOnlyInterstitial:instanceId:':
+            '+loadISDemandOnlyInterstitialWithAdm:adm:':
                 #trim_after_first_colon: true
-                name: showISDemandOnlyInterstitial
-            '+showISDemandOnlyInterstitial:placement:instanceId:':
+                name: loadISDemandOnlyInterstitial
+            '+showISDemandOnlyInterstitial:instanceId:':
                 #trim_after_first_colon: true
                 name: showISDemandOnlyInterstitial
             '+showOfferwallWithViewController:':
@@ -92,7 +95,16 @@ classes:
             '+loadBannerWithViewController:size:placement:':
                 #trim_after_first_colon: true
                 name: loadBanner
-
+            '+setAdRevenueDataWithDataSource:impressionData:':
+                #trim_after_first_colon: true
+                name: setAdRevenueData
+            '+setConsentViewWithDelegate:':
+                name: setConsentView
+            '+loadConsentViewWithType:':
+                name: loadConsentView
+            '+showConsentViewWithViewController:andType:':
+                #trim_after_first_colon: true
+                name: showConsentView
 
 
 protocols:
@@ -100,6 +112,14 @@ protocols:
         methods:
             '-bannerDidFailToLoadWithError:':
                 name: bannerDidFailToLoad
+    ISConsentViewDelegate:
+        methods:
+            '-consentViewDidFailToLoadWithError:consentViewType:':
+                #trim_after_first_colon: true
+                name: consentViewDidFailToLoad
+            '-consentViewDidFailToShowWithError:consentViewType:':
+                #trim_after_first_colon: true
+                name: consentViewDidFailToShow
     ISDemandOnlyInterstitialDelegate:
         methods:
             '-interstitialDidFailToLoadWithError:instanceId:':
@@ -125,6 +145,7 @@ protocols:
             '-didClickRewardedVideo:instanceId:':
                 #trim_after_first_colon: true
                 name: didClickRewardedVideo
+    ISImpressionDataDelegate: {}
     ISInterstitialDelegate:
         methods:
             '-interstitialDidFailToLoadWithError:':

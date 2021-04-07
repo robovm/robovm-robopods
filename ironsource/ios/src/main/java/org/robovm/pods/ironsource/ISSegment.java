@@ -30,6 +30,7 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -83,6 +84,6 @@ import org.robovm.apple.coregraphics.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "setCustomValue:forKey:")
-    public native void setCustomValueForKey(String value, String key);
+    public native void setCustomValue(String value, String key);
     /*</methods>*/
 }

@@ -34,32 +34,34 @@ import org.robovm.apple.coreanimation.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
-/*<annotations>*/@Marshaler(ValuedEnum.AsMachineSizedSIntMarshaler.class)/*</annotations>*/
-public enum /*<name>*/ISGender/*</name>*/ implements ValuedEnum {
-    /*<values>*/
-    UNKNOWN(0L),
-    MALE(1L),
-    FEMALE(2L);
-    /*</values>*/
+/*<annotations>*//*</annotations>*/
+/*<visibility>*/public/*</visibility>*/ class /*<name>*/ISConsentViewDelegateAdapter/*</name>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*/implements ISConsentViewDelegate/*</implements>*/ {
 
+    /*<ptr>*/
+    /*</ptr>*/
     /*<bind>*/
     /*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<methods>*//*</methods>*/
-
-    private final long n;
-
-    private /*<name>*/ISGender/*</name>*/(long n) { this.n = n; }
-    public long value() { return n; }
-    public static /*<name>*/ISGender/*</name>*/ valueOf(long n) {
-        for (/*<name>*/ISGender/*</name>*/ v : values()) {
-            if (v.n == n) {
-                return v;
-            }
-        }
-        throw new IllegalArgumentException("No constant with value " + n + " found in " 
-            + /*<name>*/ISGender/*</name>*/.class.getName());
-    }
+    /*<constructors>*//*</constructors>*/
+    /*<properties>*/
+    
+    /*</properties>*/
+    /*<members>*//*</members>*/
+    /*<methods>*/
+    @NotImplemented("consentViewDidLoadSuccess:")
+    public void consentViewDidLoadSuccess(String consentViewType) {}
+    @NotImplemented("consentViewDidFailToLoadWithError:consentViewType:")
+    public void consentViewDidFailToLoad(NSError error, String consentViewType) {}
+    @NotImplemented("consentViewDidShowSuccess:")
+    public void consentViewDidShowSuccess(String consentViewType) {}
+    @NotImplemented("consentViewDidFailToShowWithError:consentViewType:")
+    public void consentViewDidFailToShow(NSError error, String consentViewType) {}
+    @NotImplemented("consentViewDidAccept:")
+    public void consentViewDidAccept(String consentViewType) {}
+    @NotImplemented("consentViewDidDismiss:")
+    public void consentViewDidDismiss(String consentViewType) {}
+    /*</methods>*/
 }
