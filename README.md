@@ -102,7 +102,6 @@ This is the list of currently available RoboPods. Click them to get more informa
 
 | Name                                                 | Description                                                                       |
 |------------------------------------------------------|-----------------------------------------------------------------------------------|
-| [RoboPods Plugins](plugins/)                         | The RoboPods Plugins are cross-platform libraries that abstract platform specific functionality to a common API. Whether you want to add in-app-purchases, display dialogs, or just store some preferences in your app; our Plugins got you covered! |
 | [Appodeal](appodeal/)                                | The mobile ad network Appodeal runs multiple premium networks under one integration. |
 | [AppsFlyer](appsflyer/)                                | AppsFlyer mobile attribution & marketing analytics platform. |
 | [Bolts](bolts/)                                      | This RoboPod is mainly used to make the Facebook and Parse RoboPods functional. Bolts is a collection of low-level libraries designed to make developing mobile apps easier. |
@@ -118,13 +117,12 @@ This is the list of currently available RoboPods. Click them to get more informa
 | [Mapbox](mapbox/)                                    | The Mapbox SDK provides vector-based mapping. |
 | [Parse](parse/)                                      | Focus on creating a great user experience and stop worrying about server maintenance and complex infrastructure. |
 | [Reachability](reachability/)                        | Monitor network reachability. |
-| [Yandex AppMetrica](appmterica/)                     | AppMetrica is a set of libraries for gathering statistics on mobile app usage. |
 
 ## AltPods
 
 You can find additional RoboPods on [Demyan Kimitsa AltPods repository](https://github.com/dkimitsa/robovm-robopods).
 
-This is the list of currently available AltPods.
+These are some available AltPods (check repository link for the full updated list).
 
 | Name                               | Description                                                                            |
 |------------------------------------|----------------------------------------------------------------------------------------|
