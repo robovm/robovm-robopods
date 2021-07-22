@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -34,7 +34,6 @@ import org.robovm.apple.storekit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/GADCustomEventBannerDelegateAdapter/*</name>*/ 
@@ -54,18 +53,20 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("customEventBanner:didReceiveAd:")
-    public void didReceiveAd(GADCustomEventBanner customEvent, UIView view) {}
+    public void customEventBannerDidReceiveAd(GADCustomEventBanner customEvent, UIView view) {}
     @NotImplemented("customEventBanner:didFailAd:")
-    public void didFail(GADCustomEventBanner customEvent, NSError error) {}
+    public void customEventBannerDidFailAd(GADCustomEventBanner customEvent, NSError error) {}
     @NotImplemented("customEventBannerWasClicked:")
-    public void wasClicked(GADCustomEventBanner customEvent) {}
+    public void customEventBannerWasClicked(GADCustomEventBanner customEvent) {}
     @NotImplemented("customEventBannerWillPresentModal:")
-    public void willPresentModal(GADCustomEventBanner customEvent) {}
+    public void customEventBannerWillPresentModal(GADCustomEventBanner customEvent) {}
     @NotImplemented("customEventBannerWillDismissModal:")
-    public void willDismissModal(GADCustomEventBanner customEvent) {}
+    public void customEventBannerWillDismissModal(GADCustomEventBanner customEvent) {}
     @NotImplemented("customEventBannerDidDismissModal:")
-    public void didDismissModal(GADCustomEventBanner customEvent) {}
+    public void customEventBannerDidDismissModal(GADCustomEventBanner customEvent) {}
     @NotImplemented("customEventBannerWillLeaveApplication:")
-    public void willLeaveApplication(GADCustomEventBanner customEvent) {}
+    public void customEventBannerWillLeaveApplication(GADCustomEventBanner customEvent) {}
+    @NotImplemented("customEventBanner:clickDidOccurInAd:")
+    public void customEventBannerClickDidOccurInAd(GADCustomEventBanner customEvent, UIView view) {}
     /*</methods>*/
 }

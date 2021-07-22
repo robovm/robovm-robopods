@@ -13,7 +13,7 @@ Add the following dependency to your `build.gradle`:
 ```
 dependencies {
    ... other dependencies ...
-   compile "org.robovm:robopods-facebook-ios-messenger:$robopodsVersion"
+   compile "com.mobidevelop.robovm:robopods-facebook-ios-messenger:$robopodsVersion"
 }
 ```
 
@@ -23,7 +23,7 @@ Add the following dependency to your `pom.xml`:
 
 ```
 <dependency>
-   <groupId>org.robovm</groupId>
+   <groupId>com.mobidevelop.robovm</groupId>
    <artifactId>robopods-facebook-ios-messenger</artifactId>
    <version>${robopods.version}</version>
 </dependency>

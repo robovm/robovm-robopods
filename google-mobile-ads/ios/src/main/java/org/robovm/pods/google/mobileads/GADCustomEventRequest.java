@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -50,12 +50,8 @@ import org.robovm.apple.storekit.*;
     protected GADCustomEventRequest(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
-    @Property(selector = "userGender")
-    public native GADGender getUserGender();
-    @Property(selector = "userBirthday")
-    public native NSDate getUserBirthday();
     @Property(selector = "userHasLocation")
-    public native boolean hasUserLocation();
+    public native boolean isUserHasLocation();
     @Property(selector = "userLatitude")
     public native @MachineSizedFloat double getUserLatitude();
     @Property(selector = "userLongitude")
@@ -65,11 +61,15 @@ import org.robovm.apple.storekit.*;
     @Property(selector = "userLocationDescription")
     public native String getUserLocationDescription();
     @Property(selector = "userKeywords")
-    public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getUserKeywords();
+    public native NSArray<?> getUserKeywords();
     @Property(selector = "additionalParameters")
     public native NSDictionary<?, ?> getAdditionalParameters();
     @Property(selector = "isTesting")
     public native boolean isTesting();
+    @Property(selector = "userGender")
+    public native GADGender getUserGender();
+    @Property(selector = "userBirthday")
+    public native NSDate getUserBirthday();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

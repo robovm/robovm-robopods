@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -56,14 +56,26 @@ import org.robovm.apple.storekit.*;
     public native void setDelegate(GADRewardBasedVideoAdDelegate v);
     @Property(selector = "isReady")
     public native boolean isReady();
+    @Property(selector = "adNetworkClassName")
+    public native String getAdNetworkClassName();
+    @Property(selector = "userIdentifier")
+    public native String getUserIdentifier();
+    @Property(selector = "setUserIdentifier:")
+    public native void setUserIdentifier(String v);
+    @Property(selector = "customRewardString")
+    public native String getCustomRewardString();
+    @Property(selector = "setCustomRewardString:")
+    public native void setCustomRewardString(String v);
+    @Property(selector = "adMetadata")
+    public native NSDictionary<NSString, ?> getAdMetadata();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "loadRequest:withAdUnitID:userID:")
-    public native void loadRequest(GADRequest request, String adUnitID, String userID);
+    @Method(selector = "loadRequest:withAdUnitID:")
+    public native void loadRequest(GADRequest request, String adUnitID);
     @Method(selector = "presentFromRootViewController:")
-    public native void present(UIViewController viewController);
+    public native void presentFromRootViewController(UIViewController viewController);
     @Method(selector = "sharedInstance")
-    public static native GADRewardBasedVideoAd getSharedInstance();
+    public static native GADRewardBasedVideoAd sharedInstance();
     /*</methods>*/
 }

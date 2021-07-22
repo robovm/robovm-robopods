@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -49,14 +49,18 @@ import org.robovm.apple.storekit.*;
     
     /*</properties>*/
     /*<methods>*/
+    @Method(selector = "nativeAdDidRecordImpression:")
+    void nativeAdDidRecordImpression(GADNativeAd nativeAd);
+    @Method(selector = "nativeAdDidRecordClick:")
+    void nativeAdDidRecordClick(GADNativeAd nativeAd);
     @Method(selector = "nativeAdWillPresentScreen:")
-    void willPresentScreen(GADNativeAd nativeAd);
+    void nativeAdWillPresentScreen(GADNativeAd nativeAd);
     @Method(selector = "nativeAdWillDismissScreen:")
-    void willDismissScreen(GADNativeAd nativeAd);
+    void nativeAdWillDismissScreen(GADNativeAd nativeAd);
     @Method(selector = "nativeAdDidDismissScreen:")
-    void didDismissScreen(GADNativeAd nativeAd);
+    void nativeAdDidDismissScreen(GADNativeAd nativeAd);
     @Method(selector = "nativeAdWillLeaveApplication:")
-    void willLeaveApplication(GADNativeAd nativeAd);
+    void nativeAdWillLeaveApplication(GADNativeAd nativeAd);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

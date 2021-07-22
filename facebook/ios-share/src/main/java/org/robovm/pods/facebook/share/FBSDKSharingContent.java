@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -29,6 +29,8 @@ import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.photos.*;
 import org.robovm.pods.facebook.core.*;
 /*</imports>*/
 
@@ -37,7 +39,7 @@ import org.robovm.pods.facebook.core.*;
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ interface /*<name>*/FBSDKSharingContent/*</name>*/ 
-    /*<implements>*/extends FBSDKCopying/*</implements>*/ {
+    /*<implements>*/extends FBSDKSharingValidation, NSSecureCoding/*</implements>*/ {
 
     /*<ptr>*/
     /*</ptr>*/
@@ -49,6 +51,10 @@ import org.robovm.pods.facebook.core.*;
     NSURL getContentURL();
     @Property(selector = "setContentURL:")
     void setContentURL(NSURL v);
+    @Property(selector = "hashtag")
+    FBSDKHashtag getHashtag();
+    @Property(selector = "setHashtag:")
+    void setHashtag(FBSDKHashtag v);
     @Property(selector = "peopleIDs")
     @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getPeopleIDs();
     @Property(selector = "setPeopleIDs:")
@@ -61,9 +67,18 @@ import org.robovm.pods.facebook.core.*;
     String getRef();
     @Property(selector = "setRef:")
     void setRef(String v);
+    @Property(selector = "pageID")
+    String getPageID();
+    @Property(selector = "setPageID:")
+    void setPageID(String v);
+    @Property(selector = "shareUUID")
+    String getShareUUID();
     /*</properties>*/
     /*<methods>*/
-    
+    @Method(selector = "addParameters:bridgeOptions:")
+    NSDictionary<NSString, ?> addParameters(NSDictionary<NSString, ?> existingParameters, FBSDKShareBridgeOptions bridgeOptions);
+    @Method(selector = "addToParameters:bridgeOptions:")
+    void addToParameters(NSMutableDictionary<NSString, ?> parameters, FBSDKShareBridgeOptions bridgeOptions);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

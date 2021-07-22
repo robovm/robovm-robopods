@@ -1,0 +1,23 @@
+package: org.robovm.pods.firebase.core
+framework: FirebaseCore
+include: [foundation]
+clang_args: ['-x', 'objective-c']
+headers: [FIRApp.h, FIROptions.h]
+
+classes:
+    FIRApp:
+        methods:
+            '+configure.*':
+                name: 'configure'
+            '+appNamed.+':
+                name: 'app'
+            '.*':
+                trim_after_first_colon: true
+    FIROptions:
+        methods:
+            '-initWithContentsOfFile:':
+                name: init
+            '-initWithGoogleAppID:GCMSenderID:':
+                #trim_after_first_colon: true
+                name: init
+

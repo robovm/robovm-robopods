@@ -1,9 +1,0 @@
-<config>    
-    <frameworks>                
-        <framework>CoreGraphics</framework>
-        <framework>StoreKit</framework>
-    </frameworks>    
-    <exportedSymbols>
-        <symbol>CBLocation*</symbol>
-    </exportedSymbols>
-</config>

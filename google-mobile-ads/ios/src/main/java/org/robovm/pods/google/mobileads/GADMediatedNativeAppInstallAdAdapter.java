@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -34,7 +34,6 @@ import org.robovm.apple.storekit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/GADMediatedNativeAppInstallAdAdapter/*</name>*/ 
@@ -53,20 +52,26 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("headline")
-    public String getHeadline() { return null; }
+    public String headline() { return null; }
     @NotImplemented("images")
-    public NSArray<GADNativeAdImage> getImages() { return null; }
+    public NSArray<GADNativeAdImage> images() { return null; }
     @NotImplemented("body")
-    public String getBody() { return null; }
+    public String body() { return null; }
     @NotImplemented("icon")
-    public GADNativeAdImage getIcon() { return null; }
+    public GADNativeAdImage icon() { return null; }
     @NotImplemented("callToAction")
-    public String getCallToAction() { return null; }
+    public String callToAction() { return null; }
     @NotImplemented("starRating")
-    public NSDecimalNumber getStarRating() { return null; }
+    public NSDecimalNumber starRating() { return null; }
     @NotImplemented("store")
-    public String getStore() { return null; }
+    public String store() { return null; }
     @NotImplemented("price")
-    public String getPrice() { return null; }
+    public String price() { return null; }
+    @NotImplemented("adChoicesView")
+    public UIView adChoicesView() { return null; }
+    @NotImplemented("mediaView")
+    public UIView mediaView() { return null; }
+    @NotImplemented("hasVideoContent")
+    public boolean hasVideoContent() { return false; }
     /*</methods>*/
 }

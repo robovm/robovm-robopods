@@ -10,3 +10,4 @@ target/
 bin/
 gen-external-apklibs
 robovm-build
+.DS_Store

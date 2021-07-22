@@ -1,0 +1,46 @@
+<config>
+    <libs>
+        <lib>sqlite3</lib>
+        <lib>xml2.2</lib>
+        <lib>z</lib>
+        <lib>c++</lib>
+    </libs>    
+    <frameworks>        
+        <framework>Appodeal</framework>
+
+        <framework>AdSupport</framework>
+        <framework>AudioToolbox</framework>
+        <framework>AVFoundation</framework>
+        <framework>CFNetwork</framework>
+        <framework>CoreBluetooth</framework>
+        <framework>CoreFoundation</framework>
+        <framework>CoreGraphics</framework>
+        <framework>CoreImage</framework>
+        <framework>CoreLocation</framework>
+        <framework>CoreMedia</framework>
+        <framework>CoreMotion</framework>
+        <framework>CoreTelephony</framework>
+        <framework>CoreText</framework>
+        <framework>EventKitUI</framework>
+        <framework>EventKit</framework>
+        <framework>GLKit</framework>
+        <framework>ImageIO</framework>
+        <framework>JavaScriptCore</framework>
+        <framework>MediaPlayer</framework>
+        <framework>MessageUI</framework>
+        <framework>MobileCoreServices</framework>
+        <framework>QuartzCore</framework>
+        <framework>SafariServices</framework>
+        <framework>Security</framework>
+        <framework>Social</framework>
+        <framework>StoreKit</framework>
+        <framework>SystemConfiguration</framework>
+        <framework>Twitter</framework>
+        <framework>UIKit</framework>
+        <framework>WatchConnectivity</framework>
+        <framework>WebKit</framework>
+    </frameworks>
+    <forceLinkClasses>
+        <pattern>org.robovm.pods.appodeal.Appodeal</pattern>
+    </forceLinkClasses>
+</config>

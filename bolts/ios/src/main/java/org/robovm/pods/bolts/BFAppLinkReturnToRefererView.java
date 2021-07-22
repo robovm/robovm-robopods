@@ -30,6 +30,7 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.dispatch.*;
+import org.robovm.apple.coregraphics.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -47,6 +48,10 @@ import org.robovm.apple.dispatch.*;
     public BFAppLinkReturnToRefererView() {}
     protected BFAppLinkReturnToRefererView(Handle h, long handle) { super(h, handle); }
     protected BFAppLinkReturnToRefererView(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithFrame:")
+    public BFAppLinkReturnToRefererView(@ByVal CGRect frame) { super(frame); }
+    @Method(selector = "initWithCoder:")
+    public BFAppLinkReturnToRefererView(NSCoder decoder) { super(decoder); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "delegate")

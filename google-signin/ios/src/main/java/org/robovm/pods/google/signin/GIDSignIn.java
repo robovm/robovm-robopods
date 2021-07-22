@@ -71,18 +71,14 @@ import org.robovm.apple.coregraphics.*;
     public native boolean shouldFetchBasicProfile();
     @Property(selector = "setShouldFetchBasicProfile:")
     public native void setShouldFetchBasicProfile(boolean v);
-    @Property(selector = "allowsSignInWithBrowser")
-    public native boolean allowsSignInWithBrowser();
-    @Property(selector = "setAllowsSignInWithBrowser:")
-    public native void setAllowsSignInWithBrowser(boolean v);
-    @Property(selector = "allowsSignInWithWebView")
-    public native boolean allowsSignInWithWebView();
-    @Property(selector = "setAllowsSignInWithWebView:")
-    public native void setAllowsSignInWithWebView(boolean v);
     @Property(selector = "language")
     public native String getLanguage();
     @Property(selector = "setLanguage:")
     public native void setLanguage(String v);
+    @Property(selector = "loginHint")
+    public native String getLoginHint();
+    @Property(selector = "setLoginHint:")
+    public native void setLoginHint(String v);
     @Property(selector = "serverClientID")
     public native String getServerClientID();
     @Property(selector = "setServerClientID:")
@@ -110,8 +106,6 @@ import org.robovm.apple.coregraphics.*;
     public native void signOut();
     @Method(selector = "disconnect")
     public native void disconnect();
-    @Method(selector = "checkGoogleSignInAppInstalled:")
-    public native void checkGoogleSignInAppInstalled(@Block VoidBooleanBlock callback);
     @Method(selector = "sharedInstance")
     public static native GIDSignIn getSharedInstance();
     /*</methods>*/

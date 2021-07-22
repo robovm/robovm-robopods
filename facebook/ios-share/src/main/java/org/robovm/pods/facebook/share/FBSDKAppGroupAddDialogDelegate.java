@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -29,6 +29,8 @@ import org.robovm.rt.bro.annotation.*;
 import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.photos.*;
 import org.robovm.pods.facebook.core.*;
 /*</imports>*/
 
@@ -51,9 +53,9 @@ import org.robovm.pods.facebook.core.*;
     @Method(selector = "appGroupAddDialog:didCompleteWithResults:")
     void didComplete(FBSDKAppGroupAddDialog appGroupAddDialog, NSDictionary<?, ?> results);
     @Method(selector = "appGroupAddDialog:didFailWithError:")
-    void didFail(FBSDKAppGroupAddDialog appGroupAddDialog, NSError error);
+    void didFai(FBSDKAppGroupAddDialog appGroupAddDialog, NSError error);
     @Method(selector = "appGroupAddDialogDidCancel:")
-    void didCancel(FBSDKAppGroupAddDialog appGroupAddDialog);
+    void appGroupAddDialogDidCancel(FBSDKAppGroupAddDialog appGroupAddDialog);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

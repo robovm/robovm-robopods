@@ -1,0 +1,194 @@
+package: org.robovm.pods.ironsource
+include: [foundation, uikit, coregraphics, coreanimation]
+framework: IronSource
+clang_args: ['-x', 'objective-c']
+headers:
+    - IronSource.h
+typedefs: {}
+
+
+enums:
+    ISGender: {prefix: IRONSOURCE_USER_}
+    LogLevelValues: {prefix: IS_LOG_}
+    LogTagValue: {prefix: TAG_}
+    DebugLevel: {}
+
+
+
+classes:
+    ISBannerSize:
+        methods:
+            '-initWithWidth:andHeight:':
+                #trim_after_first_colon: true
+                name: init
+            '-initWithDescription:width:height:':
+                #trim_after_first_colon: true
+                name: init
+    ISBannerView: {}
+    ISConfigurations: {}
+    ISEventsReporting: {}
+    ISImpressionData:
+        methods:
+            '-initWithDictionary:':
+                name: init
+            '-replacePlacementMacro:value:':
+                #trim_after_first_colon: true
+                name: replacePlacementMacro
+    ISIntegrationHelper: {}
+    ISPlacementInfo:
+        methods:
+            '-initWithPlacement:reward:rewardAmount:':
+                #trim_after_first_colon: true
+                name: init
+    ISSegment:
+        methods:
+            '-setCustomValue:forKey:':
+                #trim_after_first_colon: true
+                name: setCustomValue
+    ISSupersonicAdsConfiguration: {}
+    IronSource:
+        methods:
+            '+setMetaDataWithKey:value:':
+                #trim_after_first_colon: true
+                name: setMetaData
+            '+setMetaDataWithKey:values:':
+                #trim_after_first_colon: true
+                name: setMetaData
+            '+initWithAppKey:':
+                name: init
+            '+initWithAppKey:adUnits:':
+                #trim_after_first_colon: true
+                name: init
+            '+initISDemandOnly:adUnits:':
+                #trim_after_first_colon: true
+                name: initISDemandOnly
+            '+showRewardedVideoWithViewController:':
+                name: showRewardedVideo
+            '+showRewardedVideoWithViewController:placement:':
+                #trim_after_first_colon: true
+                name: showRewardedVideo
+            '+loadISDemandOnlyRewardedVideoWithAdm:adm:':
+                #trim_after_first_colon: true
+                name: loadISDemandOnlyRewardedVideo
+            '+showISDemandOnlyRewardedVideo:instanceId:':
+                #trim_after_first_colon: true
+                name: showISDemandOnlyRewardedVideo
+            '+showInterstitialWithViewController:':
+                name: showInterstitial
+            '+showInterstitialWithViewController:placement:':
+                #trim_after_first_colon: true
+                name: showInterstitial
+            '+loadISDemandOnlyInterstitialWithAdm:adm:':
+                #trim_after_first_colon: true
+                name: loadISDemandOnlyInterstitial
+            '+showISDemandOnlyInterstitial:instanceId:':
+                #trim_after_first_colon: true
+                name: showISDemandOnlyInterstitial
+            '+showOfferwallWithViewController:':
+                name: showOfferwall
+            '+showOfferwallWithViewController:placement:':
+                #trim_after_first_colon: true
+                name: showOfferwall
+            '+loadBannerWithViewController:size:':
+                #trim_after_first_colon: true
+                name: loadBanner
+            '+loadBannerWithViewController:size:placement:':
+                #trim_after_first_colon: true
+                name: loadBanner
+            '+setAdRevenueDataWithDataSource:impressionData:':
+                #trim_after_first_colon: true
+                name: setAdRevenueData
+            '+setConsentViewWithDelegate:':
+                name: setConsentView
+            '+loadConsentViewWithType:':
+                name: loadConsentView
+            '+showConsentViewWithViewController:andType:':
+                #trim_after_first_colon: true
+                name: showConsentView
+
+
+protocols:
+    ISBannerDelegate:
+        methods:
+            '-bannerDidFailToLoadWithError:':
+                name: bannerDidFailToLoad
+    ISConsentViewDelegate:
+        methods:
+            '-consentViewDidFailToLoadWithError:consentViewType:':
+                #trim_after_first_colon: true
+                name: consentViewDidFailToLoad
+            '-consentViewDidFailToShowWithError:consentViewType:':
+                #trim_after_first_colon: true
+                name: consentViewDidFailToShow
+    ISDemandOnlyInterstitialDelegate:
+        methods:
+            '-interstitialDidFailToLoadWithError:instanceId:':
+                #trim_after_first_colon: true
+                name: interstitialDidFailToLoad
+            '-interstitialDidFailToShowWithError:instanceId:':
+                #trim_after_first_colon: true
+                name: interstitialDidFailToShow
+    ISDemandOnlyRewardedVideoDelegate:
+        methods:
+            '-rewardedVideoHasChangedAvailability:instanceId:':
+                #trim_after_first_colon: true
+                name: rewardedVideoHasChangedAvailability
+            '-didReceiveRewardForPlacement:instanceId:':
+                #trim_after_first_colon: true
+                name: didReceiveRewardForPlacement
+            '-rewardedVideoDidFailToLoadWithError:instanceId:':
+                #trim_after_first_colon: true
+                name: rewardedVideoDidFailToLoad
+            '-rewardedVideoDidFailToShowWithError:instanceId:':
+                #trim_after_first_colon: true
+                name: rewardedVideoDidFailToShow
+            '-didClickRewardedVideo:instanceId:':
+                #trim_after_first_colon: true
+                name: didClickRewardedVideo
+    ISImpressionDataDelegate: {}
+    ISInterstitialDelegate:
+        methods:
+            '-interstitialDidFailToLoadWithError:':
+                name: interstitialDidFailToLoad
+            '-interstitialDidFailToShowWithError:':
+                name: interstitialDidFailToShow
+    ISLogDelegate:
+        methods:
+            '-sendLog:level:tag:':
+                #trim_after_first_colon: true
+                name: sendLog
+    ISOfferwallDelegate:
+        methods:
+            '-offerwallDidFailToShowWithError:':
+                name: offerwallDidFailToShow
+            '-didFailToReceiveOfferwallCreditsWithError:':
+                name: didFailToReceiveOfferwallCredits
+    ISRewardedInterstitialDelegate: {}
+    ISRewardedVideoDelegate:
+        methods:
+            '-rewardedVideoDidFailToShowWithError:':
+                name: rewardedVideoDidFailToShow
+    ISSegmentDelegate: {}
+
+
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (IS.*):
+        class: FIXME
+        name: 'Function__#{g[0]}'
+
+values:
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    k?(IS.*):
+        class: FIXME
+        name: 'Value__#{g[0]}'
+
+constants:
+    (IS_.*):
+        class: IronSource
+        name: '#{g[0]}'
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (IS.*):
+        class: FIXME
+        name: 'Constants__#{g[0]}'

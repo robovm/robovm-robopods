@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -50,21 +50,27 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<methods>*/
     @Method(selector = "headline")
-    String getHeadline();
+    String headline();
     @Method(selector = "images")
-    NSArray<GADNativeAdImage> getImages();
+    NSArray<GADNativeAdImage> images();
     @Method(selector = "body")
-    String getBody();
+    String body();
     @Method(selector = "icon")
-    GADNativeAdImage getIcon();
+    GADNativeAdImage icon();
     @Method(selector = "callToAction")
-    String getCallToAction();
+    String callToAction();
     @Method(selector = "starRating")
-    NSDecimalNumber getStarRating();
+    NSDecimalNumber starRating();
     @Method(selector = "store")
-    String getStore();
+    String store();
     @Method(selector = "price")
-    String getPrice();
+    String price();
+    @Method(selector = "adChoicesView")
+    UIView adChoicesView();
+    @Method(selector = "mediaView")
+    UIView mediaView();
+    @Method(selector = "hasVideoContent")
+    boolean hasVideoContent();
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

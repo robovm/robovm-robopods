@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -49,20 +49,24 @@ import org.robovm.apple.storekit.*;
     
     /*</properties>*/
     /*<methods>*/
-    @Method(selector = "rewardBasedVideoAdDidReceiveAd:")
-    void didReceiveAd(GADRewardBasedVideoAd rewardBasedVideoAd);
-    @Method(selector = "rewardBasedVideoAdDidOpen:")
-    void didOpen(GADRewardBasedVideoAd rewardBasedVideoAd);
-    @Method(selector = "rewardBasedVideoAdDidStartPlaying:")
-    void didStartPlaying(GADRewardBasedVideoAd rewardBasedVideoAd);
-    @Method(selector = "rewardBasedVideoAdDidClose:")
-    void didClose(GADRewardBasedVideoAd rewardBasedVideoAd);
-    @Method(selector = "rewardBasedVideoAdWillLeaveApplication:")
-    void willLeaveApplication(GADRewardBasedVideoAd rewardBasedVideoAd);
     @Method(selector = "rewardBasedVideoAd:didRewardUserWithReward:")
     void didRewardUser(GADRewardBasedVideoAd rewardBasedVideoAd, GADAdReward reward);
     @Method(selector = "rewardBasedVideoAd:didFailToLoadWithError:")
     void didFailToLoad(GADRewardBasedVideoAd rewardBasedVideoAd, NSError error);
+    @Method(selector = "rewardBasedVideoAdDidReceiveAd:")
+    void rewardBasedVideoAdDidReceiveAd(GADRewardBasedVideoAd rewardBasedVideoAd);
+    @Method(selector = "rewardBasedVideoAdDidOpen:")
+    void rewardBasedVideoAdDidOpen(GADRewardBasedVideoAd rewardBasedVideoAd);
+    @Method(selector = "rewardBasedVideoAdDidStartPlaying:")
+    void rewardBasedVideoAdDidStartPlaying(GADRewardBasedVideoAd rewardBasedVideoAd);
+    @Method(selector = "rewardBasedVideoAdDidCompletePlaying:")
+    void rewardBasedVideoAdDidCompletePlaying(GADRewardBasedVideoAd rewardBasedVideoAd);
+    @Method(selector = "rewardBasedVideoAdDidClose:")
+    void rewardBasedVideoAdDidClose(GADRewardBasedVideoAd rewardBasedVideoAd);
+    @Method(selector = "rewardBasedVideoAdWillLeaveApplication:")
+    void rewardBasedVideoAdWillLeaveApplication(GADRewardBasedVideoAd rewardBasedVideoAd);
+    @Method(selector = "rewardBasedVideoAdMetadataDidChange:")
+    void rewardBasedVideoAdMetadataDidChange(GADRewardBasedVideoAd rewardBasedVideoAd);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

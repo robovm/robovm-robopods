@@ -9,42 +9,41 @@
         <version>7</version>
     </parent>
 
-    <groupId>org.robovm</groupId>
-    <version>1.14.1-SNAPSHOT</version>
+    <groupId>com.mobidevelop.robovm</groupId>
+    <version>2.2.4-SNAPSHOT</version>
     <artifactId>robopods-parent</artifactId>
     <name>RoboPods Parent</name>
     <packaging>pom</packaging>
-    <url>http://www.robovm.com</url>
+    <url>http://http://robovm.mobidevelop.com</url>
     <description>
         RoboPods provides bindings to popular 3rd party libraries.
     </description>
     <inceptionYear>2015</inceptionYear>
 
     <organization>
-        <name>RoboVM AB</name>
-        <url>http://www.robovm.com</url>
+        <name>MobiDevelop</name>
+        <url>http://http://robovm.mobidevelop.com</url>
     </organization>
 
     <developers>
     </developers>
 
     <scm>
-        <url>https://github.com/robovm/robovm-robopods</url>
-        <connection>scm:git:git://github.com/robovm/robovm-robopods.git</connection>
-        <developerConnection>scm:git:git@github.com:robovm/robovm-robopods.git</developerConnection>
+        <url>https://github.com/MobiDevelop/robovm-robopods</url>
+        <connection>scm:git:git://github.com/mobidevelop/robovm-robopods.git</connection>
+        <developerConnection>scm:git:git@github.com:mobidevelop/robovm-robopods.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/robovm/robovm-robopods/issues</url>
+        <url>https://github.com/mobidevelop/robovm-robopods/issues</url>
     </issueManagement>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <robovm.version>${project.version}</robovm.version>
+        <robovm.version>2.3.12</robovm.version>
         <robopods.version>${project.version}</robopods.version>
-        <android.version>4.1.1.4</android.version>
     </properties>
 
     <dependencyManagement>
@@ -52,24 +51,12 @@
         </dependencies>
     </dependencyManagement>
 
-    <profiles>
-        <profile>
-            <id>doclint-java8-disable</id>
-            <activation>
-                <jdk>[1.8,)</jdk>
-            </activation>
-            <properties>
-                <javadoc.opts>-Xdoclint:none</javadoc.opts>
-            </properties>
-        </profile>
-    </profiles>
-
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.1</version>
+                <version>2.5.3</version>
                 <configuration>
                     <remoteTagging>true</remoteTagging>
                 </configuration>
@@ -77,24 +64,23 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.5</version>
+                <version>1.6</version>
             </plugin>
+            <!-- compiler: produce Java8 code everywhere by default -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <version>3.8.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <release>8</release>
                     <debug>true</debug>
                     <optimize>true</optimize>
-                    <showDeprecations>true</showDeprecations>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.11</version>
+                <version>2.22.2</version>
                 <configuration>
                     <includes>
                         <include>**/*Test.java</include>
@@ -104,7 +90,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.4</version>
+                <version>2.6</version>
                 <inherited>true</inherited>
                 <configuration>
                     <archive>
@@ -121,12 +107,15 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
-                    <version>2.2.1</version>
+                    <version>3.1.0</version>
+                    <configuration>
+                        <excludeResources>true</excludeResources>
+                    </configuration>
                     <executions>
                         <execution>
                             <id>attach-sources</id>
                             <goals>
-                                <goal>jar</goal>
+                                <goal>jar-no-fork</goal>
                             </goals>
                         </execution>
                     </executions>
@@ -134,20 +123,17 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>2.9</version>
+                    <version>3.1.1</version>
                     <configuration>
-                        <additionalparam>${javadoc.opts}</additionalparam>
+                        <doclint>none</doclint>
+                        <release>8</release>
+                        <detectJavaApiLink>false</detectJavaApiLink>
                     </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>net.orfjackal.retrolambda</groupId>
-                    <artifactId>retrolambda-maven-plugin</artifactId>
-                    <version>2.0.6</version>
                     <executions>
                         <execution>
+                            <id>attach-javadocs</id>
                             <goals>
-                                <goal>process-main</goal>
-                                <goal>process-test</goal>
+                                <goal>jar</goal>
                             </goals>
                         </execution>
                     </executions>
@@ -174,20 +160,21 @@
     </pluginRepositories>
 
     <modules>
-        <module>plugins</module>
-
+        <module>appmetrica</module>
+        <module>appodeal</module>
+        <module>appsflyer</module>
         <module>bolts</module>
-        <module>chartboost</module>
-        <module>fabric</module>
         <module>facebook</module>
+        <module>firebase</module>
         <module>flurry</module>
         <module>google-apis</module>
         <module>google-analytics</module>
         <module>google-mobile-ads</module>
-        <module>google-play-games</module>
         <module>google-signin</module>
-        <module>heyzap</module>
+        <module>google-ad-consent</module>
+        <module>ironsource</module>
         <module>parse</module>
         <module>reachability</module>
+        <module>mapbox</module>
     </modules>
 </project>

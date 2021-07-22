@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,6 +30,8 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.coregraphics.*;
+import org.robovm.apple.coremedia.*;
+import org.robovm.apple.dispatch.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -37,8 +39,8 @@ import org.robovm.apple.coregraphics.*;
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/FBInterstitialAd/*</name>*/ 
-    extends /*<extends>*/UIViewController/*</extends>*/ 
-    /*<implements>*/implements FBAdViewDelegate/*</implements>*/ {
+    extends /*<extends>*/NSObject/*</extends>*/ 
+    /*<implements>*//*</implements>*/ {
 
     /*<ptr>*/public static class FBInterstitialAdPtr extends Ptr<FBInterstitialAd, FBInterstitialAdPtr> {}/*</ptr>*/
     /*<bind>*/static { ObjCRuntime.bind(FBInterstitialAd.class); }/*</bind>*/
@@ -57,6 +59,10 @@ import org.robovm.apple.coregraphics.*;
     public native FBInterstitialAdDelegate getDelegate();
     @Property(selector = "setDelegate:", strongRef = true)
     public native void setDelegate(FBInterstitialAdDelegate v);
+    @Property(selector = "extraHint")
+    public native FBAdExtraHint getExtraHint();
+    @Property(selector = "setExtraHint:")
+    public native void setExtraHint(FBAdExtraHint v);
     @Property(selector = "isAdValid")
     public native boolean isAdValid();
     /*</properties>*/
@@ -66,19 +72,9 @@ import org.robovm.apple.coregraphics.*;
     protected native @Pointer long init(String placementID);
     @Method(selector = "loadAd")
     public native void loadAd();
+    @Method(selector = "loadAdWithBidPayload:")
+    public native void loadAd(String bidPayload);
     @Method(selector = "showAdFromRootViewController:")
     public native boolean showAd(UIViewController rootViewController);
-    @Method(selector = "adViewDidClick:")
-    public native void didClick(FBAdView adView);
-    @Method(selector = "adViewDidFinishHandlingClick:")
-    public native void didFinishHandlingClick(FBAdView adView);
-    @Method(selector = "adViewDidLoad:")
-    public native void didLoad(FBAdView adView);
-    @Method(selector = "adView:didFailWithError:")
-    public native void didFail(FBAdView adView, NSError error);
-    @Method(selector = "adViewWillLogImpression:")
-    public native void willLogImpression(FBAdView adView);
-    @Method(selector = "viewControllerForPresentingModalView")
-    public native UIViewController getViewControllerForPresentingModalView();
     /*</methods>*/
 }

@@ -1,5 +1,0 @@
-<config>
-    <forceLinkClasses>
-        <pattern>org.robovm.pods.settings.IOSSettings</pattern>
-    </forceLinkClasses>
-</config>

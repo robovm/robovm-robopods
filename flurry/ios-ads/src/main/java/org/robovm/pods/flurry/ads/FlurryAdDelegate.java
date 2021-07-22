@@ -101,8 +101,6 @@ import org.robovm.apple.corelocation.*;
     String getAppSpotJumptapLeaderboardAdSpotID();
     @Method(selector = "appSpotJumptapMediumRectangleAdSpotID")
     String getAppSpotJumptapMediumRectangleAdSpotID();
-    @Method(selector = "appSpotRootViewController")
-    NSObject getAppSpotRootViewController();
     @Method(selector = "appSpotAccelerometerEnabled")
     boolean isAppSpotAccelerometerEnabled();
     /*</methods>*/

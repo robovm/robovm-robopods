@@ -1,0 +1,45 @@
+package: org.robovm.pods.firebase.messaging
+framework: FirebaseMessaging
+include: [foundation]
+clang_args: ['-x', 'objective-c']
+headers: [FirebaseMessaging.h]
+
+enums:
+    FIRMessagingAPNSTokenType: {}
+    FIRMessagingMessageStatus: {}
+    FIRMessagingError: {}
+
+classes:
+    FIRMessaging:
+        methods:
+            '-connectWithCompletion:':
+                name: connect
+            '-setAPNSToken:type:':
+                #trim_after_first_colon: true
+                name: setAPNSToken
+            '-retrieveFCMTokenForSenderID:completion:':
+                #trim_after_first_colon: true
+                name: retrieveFCMTokenForSenderID
+            '-deleteFCMTokenForSenderID:completion:':
+                #trim_after_first_colon: true
+                name: deleteFCMTokenForSenderID
+            '-subscribeToTopic:completion:':
+                #trim_after_first_colon: true
+                name: subscribeToTopic
+            '-unsubscribeFromTopic:completion:':
+                #trim_after_first_colon: true
+                name: unsubscribeFromTopic
+            '-sendMessage:to:withMessageID:timeToLive:':
+                #trim_after_first_colon: true
+                name: sendMessage$to$withMessageID
+    FIRMessagingRemoteMessage: {}
+    FIRMessagingMessageInfo: {}
+
+protocols:
+    FIRMessagingDelegate:
+        methods:
+            '-messaging:didReceiveRegistrationToken:':
+                name: didReceiveRegistrationToken
+            '-messaging:didReceiveMessage:':
+                name: didReceiveMessage
+

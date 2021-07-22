@@ -1,8 +1,0 @@
-# Android
-org.robovm.pods.dialog.AndroidInputDialog
-
-# iOS
-org.robovm.pods.dialog.IOSInputDialog
-
-# Headless
-org.robovm.pods.dialog.HeadlessInputDialog

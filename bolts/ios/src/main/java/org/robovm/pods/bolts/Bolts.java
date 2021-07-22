@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,30 +30,27 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.dispatch.*;
+import org.robovm.apple.coregraphics.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
-/*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
+/*<annotations>*/@Library(Library.INTERNAL)/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/Bolts/*</name>*/ 
-    extends /*<extends>*/NSObject/*</extends>*/ 
+    extends /*<extends>*/CocoaUtility/*</extends>*/ 
     /*<implements>*//*</implements>*/ {
 
-    /*<ptr>*/public static class BoltsPtr extends Ptr<Bolts, BoltsPtr> {}/*</ptr>*/
-    /*<bind>*/static { ObjCRuntime.bind(Bolts.class); }/*</bind>*/
+    /*<ptr>*/
+    /*</ptr>*/
+    /*<bind>*/static { Bro.bind(Bolts.class); }/*</bind>*/
     /*<constants>*//*</constants>*/
-    /*<constructors>*/
-    public Bolts() {}
-    protected Bolts(Handle h, long handle) { super(h, handle); }
-    protected Bolts(SkipInit skipInit) { super(skipInit); }
-    /*</constructors>*/
-    /*<properties>*/
-    
-    /*</properties>*/
+    /*<constructors>*//*</constructors>*/
+    /*<properties>*//*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "version")
-    public static native String getVersion();
+    @GlobalValue(symbol="kBFMultipleErrorsError", optional=true)
+    public static native @MachineSizedSInt long Value__kBFMultipleErrorsError();
+    @GlobalValue(symbol="BFTaskMultipleErrorsUserInfoKey", optional=true)
+    public static native String Value__BFTaskMultipleErrorsUserInfoKey();
     /*</methods>*/
 }

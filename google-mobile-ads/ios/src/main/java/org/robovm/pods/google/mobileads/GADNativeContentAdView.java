@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -48,6 +48,10 @@ import org.robovm.apple.storekit.*;
     public GADNativeContentAdView() {}
     protected GADNativeContentAdView(Handle h, long handle) { super(h, handle); }
     protected GADNativeContentAdView(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithFrame:")
+    public GADNativeContentAdView(@ByVal CGRect frame) { super(frame); }
+    @Method(selector = "initWithCoder:")
+    public GADNativeContentAdView(NSCoder decoder) { super(decoder); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "nativeContentAd")
@@ -78,6 +82,14 @@ import org.robovm.apple.storekit.*;
     public native UIView getAdvertiserView();
     @Property(selector = "setAdvertiserView:", strongRef = true)
     public native void setAdvertiserView(UIView v);
+    @Property(selector = "mediaView")
+    public native GADMediaView getMediaView();
+    @Property(selector = "setMediaView:", strongRef = true)
+    public native void setMediaView(GADMediaView v);
+    @Property(selector = "adChoicesView")
+    public native GADAdChoicesView getAdChoicesView();
+    @Property(selector = "setAdChoicesView:", strongRef = true)
+    public native void setAdChoicesView(GADAdChoicesView v);
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

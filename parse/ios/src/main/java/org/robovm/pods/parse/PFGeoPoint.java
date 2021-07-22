@@ -52,8 +52,7 @@ import org.robovm.pods.bolts.*;
     protected PFGeoPoint(SkipInit skipInit) { super(skipInit); }
     public PFGeoPoint(CLLocation location) { super((Handle) null, create(location)); retain(getHandle()); }
     public PFGeoPoint(double latitude, double longitude) { super((Handle) null, create(latitude, longitude)); retain(getHandle()); }
-    @Method(selector = "initWithCoder:")
-    public PFGeoPoint(NSCoder aDecoder) { super((SkipInit) null); initObject(init(aDecoder)); }
+    public PFGeoPoint(NSCoder decoder) { super((SkipInit) null); initObject(init(decoder)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "latitude")
@@ -82,6 +81,6 @@ import org.robovm.pods.bolts.*;
     @Method(selector = "encodeWithCoder:")
     public native void encode(NSCoder coder);
     @Method(selector = "initWithCoder:")
-    protected native @Pointer long init(NSCoder aDecoder);
+    protected native @Pointer long init(NSCoder decoder);
     /*</methods>*/
 }

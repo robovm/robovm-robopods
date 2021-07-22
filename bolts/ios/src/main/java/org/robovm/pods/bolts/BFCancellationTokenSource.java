@@ -30,6 +30,7 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.dispatch.*;
+import org.robovm.apple.coregraphics.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -52,7 +53,7 @@ import org.robovm.apple.dispatch.*;
     @Property(selector = "token")
     public native BFCancellationToken getToken();
     @Property(selector = "isCancellationRequested")
-    public native boolean cancellationRequested();
+    public native boolean isCancellationRequested();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/

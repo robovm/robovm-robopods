@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -34,7 +34,6 @@ import org.robovm.apple.storekit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/GADCustomEventInterstitialDelegateAdapter/*</name>*/ 
@@ -53,18 +52,20 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("customEventInterstitialDidReceiveAd:")
-    public void didReceiveAd(GADCustomEventInterstitial customEvent) {}
+    public void customEventInterstitialDidReceiveAd(GADCustomEventInterstitial customEvent) {}
     @NotImplemented("customEventInterstitial:didFailAd:")
-    public void didFail(GADCustomEventInterstitial customEvent, NSError error) {}
+    public void customEventInterstitialDidFailAd(GADCustomEventInterstitial customEvent, NSError error) {}
     @NotImplemented("customEventInterstitialWasClicked:")
-    public void wasClicked(GADCustomEventInterstitial customEvent) {}
+    public void customEventInterstitialWasClicked(GADCustomEventInterstitial customEvent) {}
     @NotImplemented("customEventInterstitialWillPresent:")
-    public void willPresent(GADCustomEventInterstitial customEvent) {}
+    public void customEventInterstitialWillPresent(GADCustomEventInterstitial customEvent) {}
     @NotImplemented("customEventInterstitialWillDismiss:")
-    public void willDismiss(GADCustomEventInterstitial customEvent) {}
+    public void customEventInterstitialWillDismiss(GADCustomEventInterstitial customEvent) {}
     @NotImplemented("customEventInterstitialDidDismiss:")
-    public void didDismiss(GADCustomEventInterstitial customEvent) {}
+    public void customEventInterstitialDidDismiss(GADCustomEventInterstitial customEvent) {}
     @NotImplemented("customEventInterstitialWillLeaveApplication:")
-    public void willLeaveApplication(GADCustomEventInterstitial customEvent) {}
+    public void customEventInterstitialWillLeaveApplication(GADCustomEventInterstitial customEvent) {}
+    @NotImplemented("customEventInterstitial:didReceiveAd:")
+    public void customEventInterstitialDidReceiveAd(GADCustomEventInterstitial customEvent, NSObject ad) {}
     /*</methods>*/
 }

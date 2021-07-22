@@ -1,8 +1,0 @@
-# Android
-org.robovm.pods.settings.AndroidSettings
-
-# iOS
-org.robovm.pods.settings.IOSSettings
-
-# Headless
-org.robovm.pods.settings.HeadlessSettings

@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -49,18 +49,22 @@ import org.robovm.apple.storekit.*;
     protected GADAdLoader(Handle h, long handle) { super(h, handle); }
     protected GADAdLoader(SkipInit skipInit) { super(skipInit); }
     @Method(selector = "initWithAdUnitID:rootViewController:adTypes:options:")
-    public GADAdLoader(String adUnitID, UIViewController rootViewController, @org.robovm.rt.bro.annotation.Marshaler(GADAdLoaderAdType.AsListMarshaler.class) List<GADAdLoaderAdType> adTypes, NSArray<GADAdLoaderOptions> options) { super((SkipInit) null); initObject(init(adUnitID, rootViewController, adTypes, options)); }
+    public GADAdLoader(String adUnitID, UIViewController rootViewController, NSArray<NSString> adTypes, NSArray<GADAdLoaderOptions> options) { super((SkipInit) null); initObject(init(adUnitID, rootViewController, adTypes, options)); }
     /*</constructors>*/
     /*<properties>*/
     @Property(selector = "delegate")
     public native GADAdLoaderDelegate getDelegate();
     @Property(selector = "setDelegate:", strongRef = true)
     public native void setDelegate(GADAdLoaderDelegate v);
+    @Property(selector = "adUnitID")
+    public native String getAdUnitID();
+    @Property(selector = "isLoading")
+    public native boolean isLoading();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
     @Method(selector = "initWithAdUnitID:rootViewController:adTypes:options:")
-    protected native @Pointer long init(String adUnitID, UIViewController rootViewController, @org.robovm.rt.bro.annotation.Marshaler(GADAdLoaderAdType.AsListMarshaler.class) List<GADAdLoaderAdType> adTypes, NSArray<GADAdLoaderOptions> options);
+    protected native @Pointer long init(String adUnitID, UIViewController rootViewController, NSArray<NSString> adTypes, NSArray<GADAdLoaderOptions> options);
     @Method(selector = "loadRequest:")
     public native void loadRequest(GADRequest request);
     /*</methods>*/

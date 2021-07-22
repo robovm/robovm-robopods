@@ -13,7 +13,7 @@ Add the following dependency to your `build.gradle`:
 ```
 dependencies {
    ... other dependencies ...
-   compile "org.robovm:robopods-facebook-ios:$robopodsVersion"
+   compile "com.mobidevelop.robovm:robopods-facebook-ios:$robopodsVersion"
 }
 ```
 
@@ -23,7 +23,7 @@ Add the following dependency to your `pom.xml`:
 
 ```
 <dependency>
-   <groupId>org.robovm</groupId>
+   <groupId>com.mobidevelop.robovm</groupId>
    <artifactId>robopods-facebook-ios</artifactId>
    <version>${robopods.version}</version>
 </dependency>
@@ -36,6 +36,7 @@ This RoboPod includes all Facebook frameworks except for AudienceNetwork.
 __CoreKit:__ [Link](../ios-core)
 __LoginKit:__ [Link](../ios-login)
 __MessengerShareKit:__ [Link](../ios-messenger)
+__Notifications:__ [Link](../ios-notifications)
 __ShareKit:__ [Link](../ios-share)
 __AudienceNetwork:__ [Link](../ios-audience)
 

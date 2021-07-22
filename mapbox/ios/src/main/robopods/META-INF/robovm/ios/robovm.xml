@@ -1,0 +1,7 @@
+<config>    
+    <frameworks>
+        <framework>CoreGraphics</framework>
+        <framework>CoreLocation</framework>
+        <framework>GLKit</framework>
+    </frameworks>
+</config>

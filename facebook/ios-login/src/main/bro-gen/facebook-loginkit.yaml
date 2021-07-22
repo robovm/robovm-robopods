@@ -1,15 +1,8 @@
 package: org.robovm.pods.facebook.login
 framework: FBSDKLoginKit
-include: 
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/accounts.yaml
-    - facebook-corekit.yaml
+include: [foundation, uikit, coregraphics, accounts, ../../../../ios-core/src/main/bro-gen/facebook-corekit.yaml]
 clang_args: ['-x', 'objective-c']
-header_root: /../robopods/META-INF/robovm/ios/libs
-headers:
-    - FBSDKLoginKit.framework/Headers/FBSDKLoginKit.h
+headers: [FBSDKLoginKit.h]
 typedefs:
     FBSDKLoginManagerRequestTokenHandler: '@Block VoidBlock2<FBSDKLoginManagerLoginResult, NSError>'
     'void (^)(ACAccountCredentialRenewResult, NSError *)': '@Block VoidBlock2<ACAccountCredentialRenewResult, NSError>'
@@ -21,12 +14,15 @@ enums:
     FBSDKLoginBehavior: {}
     FBSDKTooltipViewArrowDirection: {}
     FBSDKTooltipColorStyle: {}
-        
-classes:
-    FBSDKLoginError:
-        extends: NSError
+    FBSDKLoginError: {nserror: true}
+    # deprecated
+    FBSDKDeviceLoginError: {exclude: true}
+    # deprecated
+    FBSDKDeviceLoginErrorSubcode: {exclude: true}
 
+classes:
     FBSDKLoginButton: # DONE
+        extends: FBSDKButton
         properties:
             'publishPermissions':
                 type: List<String>
@@ -54,6 +50,8 @@ classes:
                         marshaler: NSArray.AsStringListMarshaler
             '+renewSystemCredentials:':
                 trim_after_first_colon: true
+            '-reauthorizeDataAccess:handler:':
+                name: reauthorizeDataAccess
     FBSDKLoginManagerLoginResult: # DONE
         properties:
             'grantedPermissions':
@@ -84,6 +82,12 @@ classes:
                 trim_after_first_colon: true
             '-presentInView:withArrowPosition:direction:':
                 trim_after_first_colon: true
+    FBSDKDeviceLoginCodeInfo: {}
+    FBSDKDeviceLoginManager:
+        methods:
+            '-initWithPermissions:enableSmartLogin:':
+                name: initWithPermissions
+    FBSDKDeviceLoginManagerResult: {}
 
 protocols:
     FBSDKLoginButtonDelegate: # DONE
@@ -102,6 +106,12 @@ protocols:
                 name: willAppear
             '-loginTooltipViewWillNotAppear:':
                 name: willNotAppear
+    FBSDKDeviceLoginManagerDelegate:
+        methods:
+            '-deviceLoginManager:startedWithCodeInfo:':
+                name: startedWithCodeInfo
+            '-deviceLoginManager:completedWithResult:error:':
+                name: completedWithResult
 
 functions:
     # Make sure we don't miss any functions if new ones are introduced in a later version

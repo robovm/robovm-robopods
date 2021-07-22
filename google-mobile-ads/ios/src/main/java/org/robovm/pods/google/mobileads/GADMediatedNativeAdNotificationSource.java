@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -54,13 +54,23 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @Method(selector = "mediatedNativeAdDidRecordImpression:")
+    public static native void mediatedNativeAdDidRecordImpression(GADMediatedNativeAd mediatedNativeAd);
+    @Method(selector = "mediatedNativeAdDidRecordClick:")
+    public static native void mediatedNativeAdDidRecordClick(GADMediatedNativeAd mediatedNativeAd);
     @Method(selector = "mediatedNativeAdWillPresentScreen:")
-    public static native void willPresentScreen(GADMediatedNativeAd mediatedNativeAd);
+    public static native void mediatedNativeAdWillPresentScreen(GADMediatedNativeAd mediatedNativeAd);
     @Method(selector = "mediatedNativeAdWillDismissScreen:")
-    public static native void willDismissScreen(GADMediatedNativeAd mediatedNativeAd);
+    public static native void mediatedNativeAdWillDismissScreen(GADMediatedNativeAd mediatedNativeAd);
     @Method(selector = "mediatedNativeAdDidDismissScreen:")
-    public static native void didDismissScreen(GADMediatedNativeAd mediatedNativeAd);
+    public static native void mediatedNativeAdDidDismissScreen(GADMediatedNativeAd mediatedNativeAd);
     @Method(selector = "mediatedNativeAdWillLeaveApplication:")
-    public static native void willLeaveApplication(GADMediatedNativeAd mediatedNativeAd);
+    public static native void mediatedNativeAdWillLeaveApplication(GADMediatedNativeAd mediatedNativeAd);
+    @Method(selector = "mediatedNativeAdDidPlayVideo:")
+    public static native void mediatedNativeAdDidPlayVideo(GADMediatedNativeAd mediatedNativeAd);
+    @Method(selector = "mediatedNativeAdDidPauseVideo:")
+    public static native void mediatedNativeAdDidPauseVideo(GADMediatedNativeAd mediatedNativeAd);
+    @Method(selector = "mediatedNativeAdDidEndVideoPlayback:")
+    public static native void mediatedNativeAdDidEndVideoPlayback(GADMediatedNativeAd mediatedNativeAd);
     /*</methods>*/
 }

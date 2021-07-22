@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -48,23 +48,15 @@ import org.robovm.apple.storekit.*;
     public DFPBannerView() {}
     protected DFPBannerView(Handle h, long handle) { super(h, handle); }
     protected DFPBannerView(SkipInit skipInit) { super(skipInit); }
+    @Method(selector = "initWithAdSize:origin:")
+    public DFPBannerView(@ByVal GADAdSize adSize, @ByVal CGPoint origin) { super(adSize, origin); }
+    @Method(selector = "initWithAdSize:")
+    public DFPBannerView(@ByVal GADAdSize adSize) { super(adSize); }
+    @Method(selector = "initWithFrame:")
+    public DFPBannerView(@ByVal CGRect frame) { super(frame); }
+    @Method(selector = "initWithCoder:")
+    public DFPBannerView(NSCoder decoder) { super(decoder); }
     /*</constructors>*/
-
-    public List<GADAdSize> getValidAdSizes() {
-        List<GADAdSize> result = new ArrayList<>();
-        NSArray<NSValue> adSizes = getValidAdSizes0();
-        for (NSValue adSize : adSizes) {
-            result.add(GADAdSize.fromValue(adSize));
-        }
-        return result;
-    }
-    public void setValidAdSizes(List<GADAdSize> v) {
-        NSArray<NSValue> adSizes = new NSMutableArray<>();
-        for (GADAdSize adSize : v) {
-            adSizes.add(GADAdSize.toValue(adSize));
-        }
-        setValidAdSizes0(adSizes);
-    }
     /*<properties>*/
     @Property(selector = "adUnitID")
     public native String getAdUnitID();
@@ -79,21 +71,23 @@ import org.robovm.apple.storekit.*;
     @Property(selector = "setAdSizeDelegate:", strongRef = true)
     public native void setAdSizeDelegate(GADAdSizeDelegate v);
     @Property(selector = "validAdSizes")
-    private native NSArray<NSValue> getValidAdSizes0();
+    public native NSArray<NSValue> getValidAdSizes();
     @Property(selector = "setValidAdSizes:")
-    private native void setValidAdSizes0(NSArray<NSValue> v);
+    public native void setValidAdSizes(NSArray<NSValue> v);
     @Property(selector = "correlator")
     public native GADCorrelator getCorrelator();
     @Property(selector = "setCorrelator:")
     public native void setCorrelator(GADCorrelator v);
     @Property(selector = "enableManualImpressions")
-    public native boolean areManualImpressionsEnabled();
+    public native boolean isEnableManualImpressions();
     @Property(selector = "setEnableManualImpressions:")
-    public native void setManualImpressionsEnabled(boolean v);
+    public native void setEnableManualImpressions(boolean v);
     @Property(selector = "customRenderedBannerViewDelegate")
     public native DFPCustomRenderedBannerViewDelegate getCustomRenderedBannerViewDelegate();
     @Property(selector = "setCustomRenderedBannerViewDelegate:", strongRef = true)
     public native void setCustomRenderedBannerViewDelegate(DFPCustomRenderedBannerViewDelegate v);
+    @Property(selector = "videoController")
+    public native GADVideoController getVideoController();
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
@@ -101,5 +95,7 @@ import org.robovm.apple.storekit.*;
     public native void recordImpression();
     @Method(selector = "resize:")
     public native void resize(@ByVal GADAdSize size);
+    @Method(selector = "setAdOptions:")
+    public native void setAdOptions(NSArray<GADAdLoaderOptions> adOptions);
     /*</methods>*/
 }

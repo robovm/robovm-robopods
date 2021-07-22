@@ -10,4 +10,7 @@
         <framework>StoreKit</framework>
         <framework>SystemConfiguration</framework>
     </frameworks>
+    <libs>
+        <lib>libs/libFlurry.a</lib>
+    </libs>
 </config>

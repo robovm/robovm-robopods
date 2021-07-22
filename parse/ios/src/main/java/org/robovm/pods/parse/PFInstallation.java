@@ -36,7 +36,7 @@ import org.robovm.pods.bolts.*;
 /*</imports>*/
 
 /*<javadoc>*/
-@Availability({ @PlatformVersion(platform = Platform.iOS) })
+
 /*</javadoc>*/
 /*<annotations>*/@Library(Library.INTERNAL) @NativeClass/*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/PFInstallation/*</name>*/ 
@@ -77,6 +77,8 @@ import org.robovm.pods.bolts.*;
     public native void setDeviceToken(NSData deviceTokenData);
     @Method(selector = "currentInstallation")
     public static native PFInstallation getCurrentInstallation();
+    @Method(selector = "getCurrentInstallationInBackground")
+    public static native BFTask<PFInstallation> getCurrentInstallationInBackground();
     @Method(selector = "query")
     public static native PFQuery<PFInstallation> getQuery();
     /*</methods>*/

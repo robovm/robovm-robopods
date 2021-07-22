@@ -1,0 +1,81 @@
+package: org.robovm.pods.facebook.notifications
+framework: FBNotifications
+include: [foundation, uikit]
+clang_args: ['-x', 'objective-c']
+headers: [FBNotifications.h]
+typedefs:
+    FBNCardContentPreparationCompletion: '@Block VoidBlock2<UIRemoteNotification, NSError>'
+    FBNCardPresentationCompletion: '@Block VoidBlock2<FBNCardViewController, NSError>'
+    FBNLocalNotificationCreationCompletion: '@Block VoidBlock2<UILocalNotification, NSError>'
+    
+enums:
+    FBNotificationsErrorCode: {prefix: FBNotificationsError}
+        
+classes:
+    FBNotificationsError:
+        extends: NSError
+        annotations: ['@StronglyLinked']
+
+    FBNCardViewController: {} # DONE
+    FBNotificationsManager: # DONE
+        methods:
+            '-preparePushCardContentForRemoteNotificationPayload:completion:':
+                name: preparePushCardContent
+                parameters:
+                    payload:
+                        type: UIRemoteNotification
+            '-presentPushCardForRemoteNotificationPayload:fromViewController:completion:':
+                name: presentPushCard
+                parameters:
+                    payload:
+                        type: UIRemoteNotification
+            '-canPresentPushCardFromRemoteNotificationPayload:':
+                name: canPresentPushCard
+                parameters:
+                    payload:
+                        type: UIRemoteNotification
+            '-createLocalNotificationFromRemoteNotificationPayload:completion:':
+                name: createLocalNotificationFromRemoteNotification
+                parameters:
+                    payload:
+                        type: UIRemoteNotification
+            '-presentPushCardForLocalNotification:fromViewController:completion:':
+                name: presentPushCard
+            '-canPresentPushCardFromLocalNotification:':
+                name: canPresentPushCard
+            '+sharedManager':
+                property: true
+
+protocols:
+    FBNCardViewControllerDelegate: # DONE
+        methods:
+            '-pushCardViewController:willDismissWithOpenURL:':
+                name: willDismiss
+            '-pushCardViewControllerWillDismiss:':
+                name: willDismiss
+
+functions:
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (k?FB.*):
+        class: FacebookNotifications
+        name: 'Function__#{g[0]}'
+
+values:
+    FBNotificationsErrorDomain:
+        class: FBNotificationsError
+        name: getClassDomain
+        readonly: true
+    
+    FBNotificationsCardFormatVersionString:
+        exclude: true
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    (k?FB.*):
+        class: FacebookNotifications
+        name: 'Value__#{g[0]}'
+
+constants:
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    (k?FB.*):
+        class: FacebookNotifications
+        name: 'Constant__#{g[0]}'

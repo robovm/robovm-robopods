@@ -1,31 +1,31 @@
 package: org.robovm.pods.facebook.audience
 framework: FBAudienceNetwork
-include: 
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/coregraphics.yaml
+include: [foundation, uikit, coregraphics, coremedia, dispatch]
 clang_args: ['-x', 'objective-c']
-header_root: /../robopods/META-INF/robovm/ios/libs
-headers:
-    - FBAudienceNetwork.framework/Headers/FBAudienceNetwork.h
+headers: [FBAudienceNetwork.h]
 typedefs:
-    'void (^)(UIImage *)': '@Block VoidBlock1<UIImage>'
-    'UIView * (^)(FBNativeAd *, NSUInteger)': '@Block("(,@MachineSizedUInt)") Block2<FBNativeAd, Long, UIView>'
-    
+    'void (^)(UIImage * _Nullable)': '@Block VoidBlock1<UIImage>'
+    'UIView * _Nonnull (^)(FBNativeAd * _Nonnull, NSUInteger)': '@Block("(,@MachineSizedUInt)") Block2<FBNativeAd, Long, UIView>'
+    OS_dispatch_queue: DispatchQueue
+
 enums:
     FBAdLogLevel: {}
     FBNativeAdsCachePolicy: {}
     FBNativeAdViewType: {}
-    
-classes:
-    FBAudienceNetworkError: # DONE
-        extends: NSError
+    FBNativeAdViewTag: {}
+    FBMediaViewRenderingMethod: {}
+    FBAdTestAdType: {}
+    FBAdFormatType: {}
+    FBNativeBannerAdViewType: {}
 
+classes:
     FBAdChoicesView: # DONE
         methods:
             '-init.*':
                 name: init
             '-updateFrameFromSuperview:':
+                trim_after_first_colon: true
+            '-updateFrameFromSuperview:insets:':
                 trim_after_first_colon: true
     FBAdSettings: # DONE
         methods:
@@ -37,6 +37,8 @@ classes:
                     devicesHash:
                         type: List<String>
                         marshaler: NSArray.AsStringListMarshaler
+            '+urlPrefix':
+                property: true
     FBAdCustomSize: # DONE
         methods:
             '+customSize:':
@@ -47,12 +49,16 @@ classes:
         methods:
             '-initWithPlacementID:adSize:rootViewController:':
                 name: init
+            '-loadAdWithBidPayload:':
+                name: loadAd
     FBInterstitialAd: # DONE
         methods:
             '-initWithPlacementID:':
                 name: init
             '-showAdFromRootViewController:':
                 name: showAd
+            '-loadAdWithBidPayload:':
+                name: loadAd
     FBMediaView: # DONE
         methods:
             '-initWithNativeAd:':
@@ -68,17 +74,40 @@ classes:
                 parameters:
                     clickableViews:
                         type: NSArray<UIView>
-    FBAdStarRating: {} # DONE
+            '-registerViewForInteraction:mediaView:iconView:viewController:':
+                name: registerView
+            '-registerViewForInteraction:mediaView:iconView:viewController:clickableViews:':
+                name: registerView
+            '-registerViewForInteraction:mediaView:iconImageView:viewController:':
+                name: registerView
+            '-registerViewForInteraction:mediaView:iconImageView:viewController:clickableViews:':
+                name: registerView
     FBAdImage: # DONE
         methods:
             '-initWithURL:width:height:':
                 name: init
             '-loadImageAsyncWithBlock:':
                 name: loadImageAsync
-    FBAdStarRatingView: # DONE
+    FBNativeAdCollectionViewAdProvider: # DONE
         methods:
-            '-initWithFrame:withStarRating:':
+            '-initWithManager:':
                 name: init
+            '-collectionView:nativeAdForRowAtIndexPath:':
+                name: getNativeAdForRow
+            '-isAdCellAtIndexPath:forStride:':
+                name: isAdCell
+            '-adjustNonAdCellIndexPath:forStride:':
+                name: adjustNonAdCell
+            '-adjustCount:forStride:':
+                name: adjustCount
+    FBNativeAdCollectionViewCellProvider: # DONE
+        methods:
+            '-init.*':
+                name: init
+            '-collectionView:cellForItemAtIndexPath:':
+                name: getCellForItem
+            '-collectionView:heightForRowAtIndexPath:':
+                name: getHeightForRow
     FBNativeAdScrollView: # DONE
         methods:
             '-init.*':
@@ -87,8 +116,6 @@ classes:
         methods:
             '-initWithPlacementID:forNumAdsRequested:':
                 name: init
-            '-nextNativeAd':
-                property: true
     FBNativeAdTableViewAdProvider: # DONE
         methods:
             '-initWithManager:':
@@ -124,6 +151,66 @@ classes:
                 name: init
             '+defaultAttributesForType:':
                 name: getDefaultAttributes
+    FBAdExtraHint:
+        skip_def_constructor: true
+        methods:
+            '-initWithKeywords:':
+                constructor: true
+                name: init
+    FBAdIconView: {}
+    FBAdOptionsView: {}
+    FBInstreamAdView:
+        skip_def_constructor: true
+        methods:
+            '-initWithPlacementID:':
+                name: init
+                constructor: true
+            '-loadAdWithBidPayload:':
+                name: loadAd
+    FBMediaViewVideoRenderer:
+        methods:
+            '-addPeriodicTimeObserverForInterval:queue:usingBlock:':
+                name: addPeriodicTimeObserver
+            '-videoDidFailWithError:':
+                name: didFail
+    FBNativeAdBase:
+        methods:
+            '-loadAdWithMediaCachePolicy:':
+                name: loadAd
+            '-loadAdWithBidPayload:':
+                name: loadAd
+            '-loadAdWithBidPayload:mediaCachePolicy:':
+                name: loadAd
+    FBNativeAdBaseView: {}
+    FBNativeBannerAd:
+        methods:
+            '-initWithPlacementID:':
+                name: init
+                constructor: true
+            '-registerViewForInteraction:iconView:viewController:':
+                name: registerView
+            '-registerViewForInteraction:iconView:viewController:clickableViews:':
+                name: registerView
+    FBNativeBannerAdView:
+        methods:
+            '+nativeBannerAdViewWithNativeBannerAd:withType:':
+                name: createNativeBannerAdView
+            '+nativeBannerAdViewWithNativeBannerAd:withType:withAttributes:':
+                name: createNativeBannerAdView
+    FBRewardedVideoAd:
+        methods:
+            '-initWithPlacementID:':
+                name: init
+                constructor: true
+            '-initWithPlacementID:withUserID:withCurrency:':
+                name: init
+                constructor: true
+            '-loadAdWithBidPayload:':
+                name: loadAd
+            '-setRewardDataWithUserID:withCurrency:':
+                name: setRewardData
+            '-showAdFromRootViewController:animated:':
+                name: showAd
 
 protocols:
     FBAdViewDelegate: # DONE
@@ -138,8 +225,6 @@ protocols:
                 name: didFail
             '-adViewWillLogImpression:':
                 name: willLogImpression
-            '-viewControllerForPresentingModalView':
-                property: true
     FBInterstitialAdDelegate: # DONE
         methods:
             '-interstitialAdDidClick:':
@@ -158,6 +243,8 @@ protocols:
         methods:
             '-mediaViewDidLoad:':
                 name: didLoad
+            '-mediaView:videoVolumeDidChange:':
+                name: volumeDidChange
     FBNativeAdDelegate: # DONE
         methods:
             '-nativeAdDidLoad:':
@@ -174,6 +261,22 @@ protocols:
         methods:
             '-nativeAdsFailedToLoadWithError:':
                 name: nativeAdsFailedToLoad
+    FBAdLoggingDelegate:
+        methods:
+            '-logAtLevel:withFileName:withLineNumber:withThreadId:withBody:':
+                name: log
+    FBInstreamAdViewDelegate:
+        methods:
+            '-adView:didFailWithError:':
+                name: didFail
+    FBNativeBannerAdDelegate:
+        methods:
+            '-nativeBannerAd:didFailWithError:':
+                name: didFail
+    FBRewardedVideoAdDelegate:
+        methods:
+            '-rewardedVideoAd:didFailWithError:':
+                name: didFail
 
 functions:
     # Make sure we don't miss any functions if new ones are introduced in a later version

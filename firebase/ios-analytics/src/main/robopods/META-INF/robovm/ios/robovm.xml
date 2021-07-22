@@ -1,0 +1,15 @@
+<config>
+    <libs>
+        <lib>sqlite3</lib>
+        <lib>z</lib>
+    </libs>
+    <frameworks>
+        <framework>Security</framework>
+        <framework>StoreKit</framework>
+        <framework>SystemConfiguration</framework>
+        <framework>UIKit</framework>
+    </frameworks>
+    <exportedSymbols>
+        <symbol>FIR*</symbol>
+    </exportedSymbols>
+</config>

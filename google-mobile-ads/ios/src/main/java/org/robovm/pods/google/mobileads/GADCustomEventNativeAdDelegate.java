@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -50,9 +50,11 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<methods>*/
     @Method(selector = "customEventNativeAd:didReceiveMediatedNativeAd:")
-    void didReceiveMediatedNativeAd(GADCustomEventNativeAd customEventNativeAd, GADMediatedNativeAd mediatedNativeAd);
+    void customEventNativeAdDidReceiveMediatedNativeAd(GADCustomEventNativeAd customEventNativeAd, GADMediatedNativeAd mediatedNativeAd);
     @Method(selector = "customEventNativeAd:didFailToLoadWithError:")
-    void didFailToLoad(GADCustomEventNativeAd customEventNativeAd, NSError error);
+    void customEventNativeAdDidFailToLoad(GADCustomEventNativeAd customEventNativeAd, NSError error);
+    @Method(selector = "customEventNativeAd:didReceiveMediatedUnifiedNativeAd:")
+    void customEventNativeAdDidReceiveMediatedUnifiedNativeAd(GADCustomEventNativeAd customEventNativeAd, GADMediatedUnifiedNativeAd mediatedUnifiedNativeAd);
     /*</methods>*/
     /*<adapter>*/
     /*</adapter>*/

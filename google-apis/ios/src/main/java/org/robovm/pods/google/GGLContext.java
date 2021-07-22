@@ -44,6 +44,7 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GGLContext() {}
+    protected GGLContext(Handle h, long handle) { super(h, handle); }
     protected GGLContext(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/

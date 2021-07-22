@@ -31,7 +31,7 @@ Add the following dependency to your `build.gradle`:
 ```
 dependencies {
    ... other dependencies ...
-   compile "org.robovm:robopods-flurry-ios-analytics:$robopodsVersion"
+   compile "com.mobidevelop.robovm:robopods-flurry-ios-analytics:$robopodsVersion"
 }
 ```
 
@@ -41,7 +41,7 @@ Add the following dependency to your `pom.xml`:
 
 ```
 <dependency>
-   <groupId>org.robovm</groupId>
+   <groupId>com.mobidevelop.robovm</groupId>
    <artifactId>robopods-flurry-ios-analytics</artifactId>
    <version>${robopods.version}</version>
 </dependency>
@@ -91,6 +91,9 @@ Flurry.enableCrashReporting();
 
 Flurry.startSession("API_KEY");
 ```
+
+You also need to configure Robovm to report uncaught exceptions as crashes. Call org.robovm.apple.foundation.NSException#registerDefaultJavaUncaughtExceptionHandler in com.badlogic.gdx.backends.iosrobovm.IOSApplication.Delegate#didFinishLaunching.
+
 
 __Note:__ You can only have one (1!) crash reporting service in your app! If you use multiple crash reporters no crashes will be reported!
 

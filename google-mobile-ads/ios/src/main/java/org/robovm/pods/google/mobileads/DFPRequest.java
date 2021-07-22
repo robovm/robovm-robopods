@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -55,9 +55,9 @@ import org.robovm.apple.storekit.*;
     @Property(selector = "setPublisherProvidedID:")
     public native void setPublisherProvidedID(String v);
     @Property(selector = "categoryExclusions")
-    public native @org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> getCategoryExclusions();
+    public native NSArray<?> getCategoryExclusions();
     @Property(selector = "setCategoryExclusions:")
-    public native void setCategoryExclusions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> v);
+    public native void setCategoryExclusions(NSArray<?> v);
     @Property(selector = "customTargeting")
     public native NSDictionary<?, ?> getCustomTargeting();
     @Property(selector = "setCustomTargeting:")
@@ -68,6 +68,7 @@ import org.robovm.apple.storekit.*;
     @GlobalValue(symbol="kDFPSimulatorID", optional=true)
     public static native String getSimulatorID();
     
-    
+    @Method(selector = "updateCorrelator")
+    public static native void updateCorrelator();
     /*</methods>*/
 }

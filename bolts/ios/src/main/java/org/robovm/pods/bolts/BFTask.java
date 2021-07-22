@@ -30,6 +30,7 @@ import org.robovm.rt.bro.ptr.*;
 import org.robovm.apple.foundation.*;
 import org.robovm.apple.uikit.*;
 import org.robovm.apple.dispatch.*;
+import org.robovm.apple.coregraphics.*;
 /*</imports>*/
 
 /*<javadoc>*/
@@ -56,8 +57,6 @@ import org.robovm.apple.dispatch.*;
     protected native NSObject getResult0();
     @Property(selector = "error")
     public native NSError getError();
-    @Property(selector = "exception")
-    public native NSException getException();
     @Property(selector = "isCancelled")
     public native boolean isCancelled();
     @Property(selector = "isFaulted")
@@ -120,14 +119,14 @@ import org.robovm.apple.dispatch.*;
     protected static native <T> BFTask<T> createForResult(NSObject result);
     @Method(selector = "taskWithError:")
     protected static native <T> BFTask<T> createForError(NSError error);
-    @Method(selector = "taskWithException:")
-    protected static native <T> BFTask<T> createForException(NSException exception);
     @Method(selector = "cancelledTask")
     public static native <T> BFTask<T> createCancelled();
     @Method(selector = "taskForCompletionOfAllTasks:")
     public static native <T> BFTask<Void> createForCompletionOfAllTasks(NSArray<BFTask<T>> tasks);
     @Method(selector = "taskForCompletionOfAllTasksWithResults:")
     public static native <T extends NSObject> BFTask<NSArray<T>> createForCompletionOfAllTasksWithResults(NSArray<BFTask<T>> tasks);
+    @Method(selector = "taskForCompletionOfAnyTask:")
+    public static native <T> BFTask<Void> createForCompletionOfAnyTasks(NSArray<BFTask<T>> tasks);
     @Method(selector = "taskWithDelay:")
     public static native BFTask<Void> createWithDelay(int millis);
     @Method(selector = "taskWithDelay:cancellationToken:")

@@ -52,8 +52,6 @@ import org.robovm.apple.uikit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
-    @Method(selector = "messengerPlatformCapabilities")
-    public static native FBSDKMessengerPlatformCapability getMessengerPlatformCapabilities();
     @Method(selector = "openMessenger")
     public static native void openMessenger();
     @Method(selector = "shareImage:withOptions:")

@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -51,6 +51,10 @@ import org.robovm.pods.facebook.core.*;
     protected FBSDKLoginManager(SkipInit skipInit) { super(skipInit); }
     /*</constructors>*/
     /*<properties>*/
+    @Property(selector = "authType")
+    public native String getAuthType();
+    @Property(selector = "setAuthType:")
+    public native void setAuthType(String v);
     @Property(selector = "defaultAudience")
     public native FBSDKDefaultAudience getDefaultAudience();
     @Property(selector = "setDefaultAudience:")
@@ -72,6 +76,8 @@ import org.robovm.pods.facebook.core.*;
     public native void logInWithReadPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> permissions, UIViewController fromViewController, @Block VoidBlock2<FBSDKLoginManagerLoginResult, NSError> handler);
     @Method(selector = "logInWithPublishPermissions:fromViewController:handler:")
     public native void logInWithPublishPermissions(@org.robovm.rt.bro.annotation.Marshaler(NSArray.AsStringListMarshaler.class) List<String> permissions, UIViewController fromViewController, @Block VoidBlock2<FBSDKLoginManagerLoginResult, NSError> handler);
+    @Method(selector = "reauthorizeDataAccess:handler:")
+    public native void reauthorizeDataAccess(UIViewController fromViewController, @Block VoidBlock2<FBSDKLoginManagerLoginResult, NSError> handler);
     @Method(selector = "logOut")
     public native void logOut();
     @Method(selector = "renewSystemCredentials:")

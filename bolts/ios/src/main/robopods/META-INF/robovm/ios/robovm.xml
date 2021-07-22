@@ -1,8 +1,7 @@
 <config>    
     <frameworks>
         <framework>Bolts</framework>
+        
+        <framework>CoreGraphics</framework>
     </frameworks>
-    <frameworkPaths>
-        <path>libs</path>
-    </frameworkPaths>
 </config>

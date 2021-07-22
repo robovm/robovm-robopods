@@ -1,0 +1,1091 @@
+package: org.robovm.pods.mapbox
+include: [foundation, uikit, dispatch, corelocation, coregraphics, coreanimation]
+framework: Mapbox
+clang_args: ['-x', 'objective-c']
+headers:
+    - Mapbox.h
+
+typedefs:
+    
+typed_enums:
+    MGLStyleFunctionOption:
+        prefix: MGLStyleFunctionOption
+        dictionary: MGLStyleFunctionOption
+        type: NSString
+
+    MGLShapeSourceOption:
+        prefix: MGLShapeSourceOption
+        dictionary: MGLShapeSourceOption
+        type: NSString
+
+    MGLTileSourceOption:
+        prefix: MGLTileSourceOption
+        dictionary: MGLTileSourceOption
+        type: NSString
+
+enums:
+    MGLPanScrollingMode: {}
+    MGLTextWritingMode: {}
+    MGLErrorCode: {nsError: true, prefix: kMGLError}
+    MGLAnnotationViewDragState: {}
+    MGLMapDebugMaskOptions: {prefix: MGLMapDebug}
+    MGLInterpolationMode: {}
+    MGLLightAnchor: {}
+    MGLAnnotationVerticalAlignment: {}
+    MGLUserTrackingMode: {}
+    MGLCameraChangeReason: {}
+    MGLOfflinePackState: {}
+    MGLResourceKind: {}
+    MGLFillExtrusionTranslationAnchor: {}
+    MGLFillTranslationAnchor: {}
+    MGLLineCap: {}
+    MGLLineJoin: {}
+    MGLLineTranslationAnchor: {}
+    MGLIconAnchor: {}
+    MGLIconPitchAlignment: {}
+    MGLIconRotationAlignment: {}
+    MGLIconTextFit: {}
+    MGLSymbolPlacement: {}
+    MGLTextAnchor: {}
+    MGLTextJustification: {}
+    MGLTextPitchAlignment: {}
+    MGLTextRotationAlignment: {}
+    MGLTextTransform: {}
+    MGLIconTranslationAnchor: {}
+    MGLTextTranslationAnchor: {}
+    MGLCirclePitchAlignment: {}
+    MGLCircleScaleAlignment: {}
+    MGLCircleTranslationAnchor: {}
+    MGLTileCoordinateSystem: {}
+    MGLAttributionInfoStyle: {}
+    MGLMapPoint: {}
+    MGLMatrix4: {}
+    MGLHillshadeIlluminationAnchor: {}
+    MGLDEMEncoding: {}
+    MGLSymbolZOrder: {}
+    MGLRasterResamplingMode: {}
+    MGLLoggingLevel: {}
+    MGLOrnamentVisibility: {}
+    MGLOrnamentPosition: {}
+    MGLMetricType: {}
+
+classes:
+    MGLEvent: {}
+    MGLObserver:
+        methods:
+            '-notifyWithEvent:':
+                name: notifyWithEvent
+    MGLUserLocationAnnotationViewStyle: {}
+    MGLOfflinePack:
+        methods:
+            '-setContext:completionHandler:':
+                name: setContext
+
+    MGLShapeOfflineRegion:
+        methods:
+            '-initWithStyleURL:shape:fromZoomLevel:toZoomLevel:':
+                name: init
+    MGLMapSnapshotOverlay: {}
+    MGLEmptyFeature: {}
+    MGLLoggingConfiguration: {}
+    MGLNetworkConfiguration: {}
+    MGLPointFeatureCluster: {}
+    MGLMapPoint: {} #struct
+    MGLMatrix4: {}  #struct
+    MGLCoordinateBounds: {}
+    MGLCoordinateQuad: {}
+    MGLCoordinateSpan: {}
+    MGLOfflinePackProgress: {}
+    MGLSphericalPosition: {}
+    MGLStyleLayerDrawingContext: {}
+    MGLTransition: {}
+    MGLAccountManager: {}
+    MGLAnnotationImage:
+        methods:
+            '+annotationImageWithImage:reuseIdentifier:':
+                name: annotationImage
+    MGLAnnotationView:
+        methods:
+            '-initWithAnnotation:reuseIdentifier:':
+                name: init
+            '-initWithReuseIdentifier:':
+                name: init
+            '-setSelected:animated:':
+                name: setSelected
+            '-setDragState:animated:':
+                name: setDragState
+    MGLAttributionInfo:
+        methods:
+            '-initWithTitle:URL:':
+                name: init
+            '-feedbackURLAtCenterCoordinate:zoomLevel:':
+                name: feedbackURLAtCenterCoordinate
+            '-titleWithStyle:':
+                name: title
+
+    MGLBackgroundStyleLayer:
+        methods:
+            '-initWithIdentifier:':
+                name: init
+    MGLCameraStyleFunction:
+        methods:
+            '+functionWithInterpolationMode:stops:options:':
+                name: function
+                return_type: <U extends NSObject> MGLCameraStyleFunction
+                parameters:
+                    interpolationMode:
+                        name: interpolationMode
+                        type: MGLInterpolationMode
+                    stops:
+                        name: stops
+                        type: NSDictionary<NSNumber, MGLStyleValue<U>>
+                    options:
+                        name: options
+                        type: NSDictionary<NSString, ?>
+        properties:
+            stops:
+                type: NSDictionary<NSNumber, MGLStyleValue<T>>
+    MGLCircleStyleLayer:
+        methods:
+            '-initWithIdentifier:source:':
+                name: init
+    MGLClockDirectionFormatter:
+        methods:
+            '-getObjectValue:forString:errorDescription:':
+                name: getObjectValue
+    MGLCompassDirectionFormatter:
+        methods:
+            '-getObjectValue:forString:errorDescription:':
+                name: getObjectValue
+    MGLCompassButton: {}
+    MGLCompositeStyleFunction:
+        methods:
+            '+functionWithInterpolationMode:stops:attributeName:options:':
+                name: function
+                return_type: <U extends NSObject> MGLCompositeStyleFunction<U>
+                parameters:
+                    interpolationMode:
+                        name: interpolationMode
+                        type: MGLInterpolationMode
+                    stops:
+                        name: stops
+                        type: NSDictionary<?, MGLStyleValue<U>>
+                    attributeName:
+                        name: attributeName
+                        type: String
+                    options:
+                        name: options
+                        type: NSDictionary<NSString, ?>
+        properties:
+            stops:
+                type: NSDictionary<NSNumber, MGLStyleValue<T>>
+
+    MGLConstantStyleValue:
+        methods:
+            '+valueWithRawValue:':
+                name: value
+                return_type: <U extends NSObject> MGLConstantStyleValue<U>
+                parameters:
+                    rawValue:
+                        name: rawValue
+                        type: U
+
+    MGLCoordinateFormatter:
+        methods:
+            '-getObjectValue:forString:errorDescription:':
+                name: getObjectValue
+    MGLDistanceFormatter: {}
+    MGLFillExtrusionStyleLayer:
+        methods:
+            '-initWithIdentifier:source:':
+                name: init
+    MGLFillStyleLayer:
+        methods:
+            '-initWithIdentifier:source:':
+                name: init
+    MGLForegroundStyleLayer: {}
+    MGLImageSource:
+        methods:
+            '-initWithIdentifier:coordinateQuad:URL:':
+                name: init
+            '-initWithIdentifier:coordinateQuad:image:':
+                name: init
+    MGLLight: {}
+    MGLLineStyleLayer:
+        methods:
+            '-initWithIdentifier:source:':
+                name: init
+    MGLMapCamera:
+        methods:
+            '+cameraLookingAtCenterCoordinate:fromEyeCoordinate:eyeAltitude:':
+                name: cameraLookingAtCenterCoordinate
+            '+cameraLookingAtCenterCoordinate:fromDistance:pitch:heading:':
+                name: cameraLookingAtCenterCoordinateFromDistance
+            '+cameraLookingAtCenterCoordinate:acrossDistance:pitch:heading:':
+                name: cameraLookingAtCenterCoordinatAcrossDistance
+            '+cameraLookingAtCenterCoordinate:altitude:pitch:heading:':
+                name: cameraLookingAtCenterCoordinate
+    MGLMapSnapshot: {}
+    MGLMapSnapshotOptions:
+        methods:
+            '-initWithStyleURL:camera:size:':
+                name: init
+    MGLMapSnapshotter:
+        methods:
+            '-startWithOverlayHandler:completionHandler:':
+                name: start
+            '-startWithQueue:completionHandler:':
+                name: start
+            '-startWithCompletionHandler:':
+                name: start
+            '-initWithOptions:':
+                name: init
+    MGLMapView:
+        methods:
+            '-subscribeForObserver:event:':
+                name: subscribeForObserver
+            '-setUserTrackingMode:animated:completionHandler:':
+                name: setUserTrackingMode
+            '-setTargetCoordinate:animated:completionHandler:':
+                name: setTargetCoordinate
+            '-setVisibleCoordinateBounds:edgePadding:animated:completionHandler:':
+                name: setVisibleCoordinateBounds
+            '-showAnnotations:edgePadding:animated:completionHandler:':
+                name: showAnnotations
+            '-setContentInset:animated:completionHandler:':
+                name: setContentInset
+            '-selectAnnotation:animated:completionHandler:':
+                name: selectAnnotation
+            '-selectAnnotation:moveIntoView:animateSelection:completionHandler:':
+                name: selectAnnotation
+            '-updateUserLocationAnnotationViewAnimatedWithDuration:':
+                name: updateUserLocationAnnotationViewAnimated
+            '-camera:fittingCoordinateBounds:edgePadding:':
+                name: camera
+            '-camera:fittingShape:edgePadding:':
+                name: camera
+            '-selectAnnotation:moveIntoView:animateSelection:':
+                name: selectAnnotation
+            '-initWithFrame:':
+                name: init
+            '-initWithFrame:styleURL:':
+                name: init
+            '-dequeueReusableAnnotationViewWithIdentifier:':
+                name: dequeueReusableAnnotationView
+            '-dequeueReusableAnnotationImageWithIdentifier:':
+                name: dequeueReusableAnnotationImage
+            '-setUserTrackingMode:animated:':
+                name: setUserTrackingMode
+            '-setUserLocationVerticalAlignment:animated:':
+                name: setUserLocationVerticalAlignment
+            '-setTargetCoordinate:animated:':
+                name: setTargetCoordinate
+            '-setCenterCoordinate:animated:':
+                name: setCenterCoordinate
+            '-setCenterCoordinate:zoomLevel:animated:':
+                name: setCenterCoordinate
+            '-setCenterCoordinate:zoomLevel:direction:animated:':
+                name: setCenterCoordinate
+            '-setCenterCoordinate:zoomLevel:direction:animated:completionHandler:':
+                name: setCenterCoordinate
+            '-setZoomLevel:animated:':
+                name: setZoomLevel
+            '-setDirection:animated:':
+                name: setDirection
+            '-setVisibleCoordinateBounds:animated:':
+                name: setVisibleCoordinateBounds
+            '-setVisibleCoordinateBounds:edgePadding:animated:':
+                name: setVisibleCoordinateBounds
+            '-setVisibleCoordinates:count:edgePadding:animated:':
+                name: nativeSetVisibleCoordinates
+                visibility: protected
+            '-setVisibleCoordinates:count:edgePadding:direction:duration:animationTimingFunction:completionHandler:':
+                name: nativeSetVisibleCoordinates
+                visibility: protected
+            '-showAnnotations:animated:':
+                name: showAnnotations
+            '-showAnnotations:edgePadding:animated:':
+                name: showAnnotations
+            '-setCamera:animated:':
+                name: setCamera
+            '-setCamera:withDuration:animationTimingFunction:':
+                name: setCamera
+            '-setCamera:withDuration:animationTimingFunction:completionHandler:':
+                name: setCamera
+            '-setCamera:withDuration:animationTimingFunction:edgePadding:completionHandler:':
+                name: setCamera
+            '-flyToCamera:completionHandler:':
+                name: flyToCamera
+            '-flyToCamera:withDuration:completionHandler:':
+                name: flyToCamera
+            '-flyToCamera:withDuration:peakAltitude:completionHandler:':
+                name: flyToCamera
+            '-cameraThatFitsCoordinateBounds:edgePadding:':
+                name: cameraThatFitsCoordinateBounds
+            '-cameraThatFitsShape:direction:edgePadding:':
+                name: cameraThatFitsShape
+            '-setContentInset:animated:':
+                name: setContentInset
+            '-convertPoint:toCoordinateFromView:':
+                name: convertPoint
+            '-convertCoordinate:toPointToView:':
+                name: convertCoordinate
+            '-convertRect:toCoordinateBoundsFromView:':
+                name: convertRect
+            '-convertCoordinateBounds:toRectToView:':
+                name: convertCoordinateBounds
+            '-selectAnnotation:animated:':
+                name: selectAnnotation
+            '-deselectAnnotation:animated:':
+                name: deselectAnnotation
+            '-visibleFeaturesAtPoint:inStyleLayersWithIdentifiers:':
+                name: visibleFeatures
+            '-visibleFeaturesAtPoint:inStyleLayersWithIdentifiers:predicate:':
+                name: visibleFeatures
+            '-visibleFeaturesInRect:inStyleLayersWithIdentifiers:':
+                name: visibleFeatures
+            '-visibleFeaturesInRect:inStyleLayersWithIdentifiers:predicate:':
+                name: visibleFeatures
+
+    MGLAttributedExpression:
+        methods:
+            '-initWithExpression:':
+                name: init
+            '-initWithExpression:attributes:':
+                name: init
+            '+attributedExpression:fontNames:fontScale:':
+                name: attributedExpression
+            '+attributedExpression:attributes:':
+                name: attributedExpression
+    MGLMultiPoint:
+        properties:
+            'coordinates':
+                name: nativeCoordinates
+                visibility: protected
+        methods:
+            '-getCoordinates:range:':
+                name: nativeGetCoordinates
+                visibility: protected
+            '-setCoordinates:count:':
+                name: nativeSetCoordinates
+                visibility: protected
+            '-insertCoordinates:count:atIndex:':
+                name: nativeInsertCoordinates
+                visibility: protected
+            '-appendCoordinates:count:':
+                name: nativeAppendCoordinates
+                visibility: protected
+            '-replaceCoordinatesInRange:withCoordinates:':
+                name: nativeReplaceCoordinates
+                visibility: protected
+            '-replaceCoordinatesInRange:withCoordinates:count:':
+                name: nativeReplaceCoordinates
+                visibility: protected
+            '-removeCoordinatesInRange:':
+                name: nativeRemoveCoordinates
+                visibility: protected
+
+    MGLMultiPolygon:
+        methods:
+            '+multiPolygonWithPolygons:':
+                name: multiPolygon
+
+    MGLMultiPolygonFeature: {}
+    MGLMultiPolyline:
+        methods:
+            '+multiPolylineWithPolylines:':
+                name: multiPolyline
+
+    MGLMultiPolylineFeature: {}
+    MGLOfflineStorage:
+        methods:
+            '-preloadData:forURL:modificationDate:expirationDate:eTag:mustRevalidate:completionHandler:':
+                name: preloadData
+            '-invalidatePack:withCompletionHandler:':
+                name: invalidatePack
+            '-setMaximumAmbientCacheSize:withCompletionHandler:':
+                name: setMaximumAmbientCacheSize
+            '-invalidateAmbientCacheWithCompletionHandler:':
+                name: invalidateAmbientCacheWithCompletionHandler
+            '-clearAmbientCacheWithCompletionHandler:':
+                name: clearAmbientCacheWithCompletionHandler
+            '-resetDatabaseWithCompletionHandler:':
+                name: resetDatabaseWithCompletionHandler
+            '-addPackForRegion:withContext:completionHandler:':
+                name: addPack
+            '-removePack:withCompletionHandler:':
+                name: removePack
+            '-addContentsOfFile:withCompletionHandler:':
+                name: addContents
+            '-addContentsOfURL:withCompletionHandler:':
+                name: addContents
+            '-preloadData:forURL:modificationDate:expirationDate:eTag:mustRevalidate:':
+                name: preloadData
+            '-putResourceWithUrl:data:modified:expires:etag:mustRevalidate:':
+                name: putResource
+    MGLOpenGLStyleLayer:
+        methods:
+            '-drawInMapView:withContext:':
+                name: drawInMapView
+            '-initWithIdentifier:':
+                name: init
+        properties:
+            context:
+                read_only: true
+                type: NSObject
+    MGLPointAnnotation: {}
+    MGLPointCollection:
+        methods:
+            '-getCoordinates:range:':
+                name: getCoordinates
+            '+pointCollectionWithCoordinates:count:':
+                name: nativePointCollection
+                visibility: protected
+
+    MGLPointCollectionFeature: {}
+    MGLPointFeature: {}
+    MGLPolygon:
+        methods:
+            '+polygonWithCoordinates:count:':
+                name: nativePolygon
+                visibility: protected
+            '+polygonWithCoordinates:count:interiorPolygons:':
+                name: nativePolygon
+                visibility: protected
+
+    MGLPolygonFeature: {}
+    MGLPolyline:
+        methods:
+            '+polylineWithCoordinates:count:':
+                name: nativePolyline
+                visibility: protected
+
+    MGLPolylineFeature: {}
+    MGLRasterTileSource:
+        methods:
+            '-initWithIdentifier:configurationURL:':
+                name: init
+            '-initWithIdentifier:configurationURL:tileSize:':
+                name: init
+            '-initWithIdentifier:tileURLTemplates:options:':
+                name: init
+                parameters:
+                    identifier:
+                        name: identifier
+                        type: String
+                    tileURLTemplates:
+                        name: tileURLTemplates
+                        type: NSArray<NSString>
+                    options:
+                        name: options
+                        type: NSDictionary<NSString, ?>
+    MGLRasterStyleLayer:
+        methods:
+            '-initWithIdentifier:source:':
+                name: init
+    MGLShape:
+        methods:
+            '+shapeWithData:encoding:error:':
+                name: shape
+    MGLShapeCollection:
+        methods:
+            '+shapeCollectionWithShapes:':
+                name: shapeCollection
+                parameters:
+                    shapes:
+                        name: shapes
+                        type: NSArray<MGLShape>
+        properties:
+            shapes:
+                read_only: true
+                type: NSArray<MGLShape>
+
+    MGLShapeCollectionFeature:
+        methods:
+            '+shapeCollectionWithShapes:':
+                name: shapeCollection
+                parameters:
+                    shapes:
+                        name: shapes
+                        type: NSArray<MGLShape>
+        properties:
+            shapes:
+                read_only: true
+                type: NSArray<MGLShape>
+
+    MGLShapeSource:
+        methods:
+            '-leavesOfCluster:offset:limit:':
+                name: leaves
+            '-initWithIdentifier:URL:options:':
+                name: init
+                parameters:
+                    identifier:
+                        name: identifier
+                        type: String
+                    url:
+                        name: url
+                        type: NSURL
+                    options:
+                        name: options
+                        type: NSDictionary<NSString, ?>
+            '-initWithIdentifier:shape:options:':
+                name: init
+                parameters:
+                    identifier:
+                        name: identifier
+                        type: String
+                    shape:
+                        name: shape
+                        type: MGLShape
+                    options:
+                        name: options
+                        type: NSDictionary<NSString, ?>
+            '-initWithIdentifier:features:options:':
+                exclude: true
+                name: initFeatures
+                parameters:
+                    identifier:
+                        name: identifier
+                        type: String
+                    features:
+                        name: features
+                        type: NSArray<MGLFeature>
+                    options:
+                        name: options
+                        type: NSDictionary<NSString, ?>
+            '-initWithIdentifier:shapes:options:':
+                name: initShapes
+                parameters:
+                    identifier:
+                        name: identifier
+                        type: String
+                    shapes:
+                        name: shapes
+                        type: NSArray<MGLShape>
+                    options:
+                        name: options
+                        type: NSDictionary<NSString, ?>
+    MGLSource:
+        methods:
+            '-initWithIdentifier:':
+                name: init
+
+    MGLSourceStyleFunction:
+        methods:
+            '+functionWithInterpolationMode:stops:attributeName:options:':
+                name: function
+                return_type: <U extends NSObject> MGLSourceStyleFunction
+                parameters:
+                    interpolationMode:
+                        name: interpolationMode
+                        type: MGLInterpolationMode
+                    stops:
+                        name: stops
+                        type: NSDictionary<?, MGLStyleValue<U>>
+                    options:
+                        name: options
+                        type: NSDictionary<NSString, ?>
+        properties:
+            stops:
+                type: NSDictionary<NSNumber, MGLStyleValue<T>>
+
+    MGLStyle:
+        methods:
+            '-removeSource:error:':
+                name: remove
+            '-insertLayer:atIndex:':
+                name: insertLayer
+            '-insertLayer:belowLayer:':
+                name: insertLayerBelow
+            '-insertLayer:aboveLayer:':
+                name: insertLayerAbove
+            '-setImage:forName:':
+                name: setImage
+            '-removeImageForName:':
+                name: removeImage
+
+            '-imageForName:':
+                name: image
+
+            '-layerWithIdentifier:':
+                name: layer
+            '-sourceWithIdentifier:':
+                name: source
+
+            '+streetsStyleURLWithVersion:':
+                name: streetsStyleURL
+            '+outdoorsStyleURLWithVersion:':
+                name: outdoorsStyleURL
+            '+lightStyleURLWithVersion:':
+                name: lightStyleURL
+            '+darkStyleURLWithVersion:':
+                name: darkStyleURL
+            '+satelliteStyleURLWithVersion:':
+                name: satelliteStyleURL
+            '+satelliteStreetsStyleURLWithVersion:':
+                name: satelliteStreetsStyleURL
+            '+trafficDayStyleURLWithVersion:':
+                name: trafficDayStyleURL
+            '+trafficNightStyleURLWithVersion:':
+                name: trafficNightStyleURL
+
+
+    MGLStyleFunction:
+        methods:
+            '-initWithInterpolationBase:stops:':
+                name: init
+             #   return_type: MGLStyleFunction<T>
+                parameters:
+                    interpolationBase:
+                        name: interpolationBase
+                        type: '@MachineSizedFloat double'
+                    stops:
+                        name: stops
+                        type: NSDictionary<NSNumber, MGLStyleValue<T>>
+            '+functionWithInterpolationBase:stops:':
+                name: function
+                return_type: <U extends NSObject> MGLStyleFunction<U>
+                parameters:
+                    interpolationBase:
+                        name: interpolationBase
+                        type: '@MachineSizedFloat double'
+                    stops:
+                        name: stops
+                        type: NSDictionary<NSNumber, MGLStyleValue<U>>
+            '+functionWithStops:':
+                name: function
+                return_type: <U extends NSObject> MGLStyleFunction<U>
+                parameters:
+                    stops:
+                        name: stops
+                        type: NSDictionary<NSNumber, MGLStyleValue<U>>
+        properties:
+            stops:
+                type: NSDictionary<NSNumber, MGLStyleValue<T>>
+
+    MGLStyleLayer: {}
+    MGLStyleValue:
+        methods:
+            '+valueWithRawValue:':
+                name: value
+                return_type: <U extends NSObject> MGLStyleValue<U>
+                parameters:
+                    rawValue:
+                        name: rawValue
+                        type: U
+                    
+            '+valueWithStops:':
+                name: value
+                return_type: <U extends NSObject> MGLStyleValue<U>
+                parameters:
+                    stops:
+                        name: stops
+                        type: NSDictionary<NSNumber, MGLStyleValue<U>>
+            '+valueWithInterpolationBase:stops:':
+                name: value
+                return_type: <U extends NSObject> MGLStyleValue<U>
+                parameters:
+                    interpolationBase:
+                        name: interpolationBase
+                        type: '@MachineSizedFloat double'
+                    stops:
+                        name: stops
+                        type: NSDictionary<NSNumber, MGLStyleValue<U>>
+            '+valueWithInterpolationMode:cameraStops:options:':
+                name: value
+                return_type: <U extends NSObject> MGLStyleValue<U>
+                parameters:
+                    interpolationMode:
+                        name: interpolationMode
+                        type: MGLInterpolationMode
+                    cameraStops:
+                        name: cameraStops
+                        type: NSDictionary<?, MGLStyleValue<U>>
+                    options:
+                        name: options
+                        type: NSDictionary<NSString, ?>
+            '+valueWithInterpolationMode:sourceStops:attributeName:options:':
+                name: value
+                return_type: <U extends NSObject> MGLStyleValue<U>
+                parameters:
+                    interpolationMode:
+                        name: interpolationMode
+                        type: MGLInterpolationMode
+                    sourceStops:
+                        name: sourceStops
+                        type: NSDictionary<?, MGLStyleValue<U>>
+                    attributeName:
+                        name: attributeName
+                        type: String
+                    options:
+                        name: options
+                        type: NSDictionary<NSString, ?>
+            '+valueWithInterpolationMode:compositeStops:attributeName:options:':
+                name: compositeValue
+                return_type: <U extends NSObject> MGLStyleValue<U>
+                parameters:
+                    interpolationMode:
+                        name: interpolationMode
+                        type: MGLInterpolationMode
+                    compositeStops:
+                        name: cameraStops
+                        type: NSDictionary<?, MGLStyleValue<U>>
+                    attributeName:
+                        name: attributeName
+                        type: String
+                    options:
+                        name: options
+                        type: NSDictionary<NSString, ?>
+
+    MGLSymbolStyleLayer:
+        methods:
+            '-initWithIdentifier:source:':
+                name: init
+    MGLTilePyramidOfflineRegion:
+        methods:
+            '-initWithStyleURL:bounds:fromZoomLevel:toZoomLevel:':
+                name: init
+    MGLTileSource: {}
+    MGLUserLocation: {}
+    MGLUserLocationAnnotationView: {}
+    MGLVectorTileSource:
+        methods:
+            '-initWithIdentifier:configurationURL:':
+                name: init
+            '-initWithIdentifier:tileURLTemplates:options:':
+                name: init
+                parameters:
+                    identifier:
+                        name: identifier
+                        type: String
+                    tileURLTemplates:
+                        name: tileURLTemplates
+                        type: NSArray<NSString>
+                    options:
+                        name: options
+                        type: NSDictionary<NSString, ?>
+            '-featuresInSourceLayersWithIdentifiers:predicate:':
+                name: features
+    MGLVectorStyleLayer: {}
+
+    MGLComputedShapeSource:
+        methods:
+            '-initWithIdentifier:options:':
+                name: init
+            '-initWithIdentifier:dataSource:options:':
+                name: init
+            '-invalidateTileAtX:y:zoomLevel:':
+                name: invalidateTile
+            '-setFeatures:inTileAtX:y:zoomLevel:':
+                name: setFeatures
+    MGLHeatmapStyleLayer:
+        methods:
+            '-initWithIdentifier:source:':
+                name: init
+    MGLHillshadeStyleLayer:
+        methods:
+            '-initWithIdentifier:source:':
+                name: init
+    MGLRasterDEMSource: {}
+
+    MGLMetricsManager:
+        methods:
+            '-pushMetric:withAttributes:':
+                name: pushMetric
+
+
+protocols:
+    MGLObservable:
+        methods:
+            '-subscribeForObserver:events:':
+                name: subscribeForObserver
+            '-unsubscribeForObserver:events:':
+                name: unsubscribeForObserver
+    MGLMapSnapshotterDelegate:
+        methods:
+            '-mapSnapshotterDidFail:withError:':
+                name: didFail
+            '-mapSnapshotter:didFinishLoadingStyle:':
+                name: didFinishLoadingStyle
+            '-mapSnapshotter:didFailLoadingImageNamed:':
+                name: didFailLoadingImageNamed
+    MGLNetworkConfigurationDelegate: {}
+    MGLStylable: {}
+
+    MGLMetricsManagerDelegate:
+        methods:
+            '-metricsManager:shouldHandleMetric:':
+                name: shouldHandleMetric
+            '-metricsManager:didCollectMetric:withAttributes:':
+                name: didCollectMetric
+    MGLCluster: {}
+    MGLLocationManager: {}
+    MGLLocationManagerDelegate:
+        methods:
+            '-locationManager:didUpdateLocations:':
+                name: didUpdateLocations
+            '-locationManager:didUpdateHeading:':
+                name: didUpdateHeading
+            '-locationManager:didFailWithError:':
+                name: didFailWithError
+    MGLOverlay: {}
+    MGLAnnotation: {}
+    MGLCalloutView:
+        methods:
+            '-presentCalloutFromRect:inView:constrainedToView:animated:':
+                name: presentCallout
+    MGLCalloutViewDelegate: {}
+    MGLFeature: {}
+    MGLMapViewDelegate:
+        methods:
+            '-mapView:didFailToLoadImage:':
+                name: didFailToLoadImage
+            '-mapView:shouldRemoveStyleImage:':
+                name: shouldRemoveStyleImage
+            '-mapView:shapeAnnotationIsEnabled:':
+                name: shapeAnnotationIsEnabled
+            '-mapView:shouldChangeFromCamera:toCamera:':
+                name: shouldChange
+            '-mapView:shouldChangeFromCamera:toCamera:reason:':
+                name: shouldChange
+            '-mapView:regionWillChangeAnimated:':
+                name: regionWillChangeAnimated
+            '-mapView:regionWillChangeWithReason:animated:':
+                name: regionWillChange
+            '-mapView:regionIsChangingWithReason:':
+                name: regionIsChanging
+            '-mapView:regionDidChangeAnimated:':
+                name: regionDidChange
+            '-mapView:regionDidChangeWithReason:animated:':
+                name: regionDidChange
+            '-mapViewDidFailLoadingMap:withError:':
+                name: didFailLoadingMap
+            '-mapViewDidFinishRenderingMap:fullyRendered:':
+                name: didFinishRenderingMap
+            '-mapViewDidFinishRenderingFrame:fullyRendered:':
+                name: didFinishRenderingFrame
+            '-mapView:didFinishLoadingStyle:':
+                name: didFinishLoadingStyle
+            '-mapView:didUpdateUserLocation:':
+                name: didUpdateUserLocation
+            '-mapView:didFailToLocateUserWithError:':
+                name: didFailToLocateUser
+            '-mapView:didChangeUserTrackingMode:animated:':
+                name: didChangeUserTrackingMode
+            '-mapView:imageForAnnotation:':
+                name: imageForAnnotation
+            '-mapView:alphaForShapeAnnotation:':
+                name: alphaForShapeAnnotation
+            '-mapView:strokeColorForShapeAnnotation:':
+                name: strokeColorForShapeAnnotation
+            '-mapView:fillColorForPolygonAnnotation:':
+                name: fillColorForPolygonAnnotation
+            '-mapView:lineWidthForPolylineAnnotation:':
+                name: lineWidthForPolylineAnnotation
+            '-mapView:viewForAnnotation:':
+                name: viewForAnnotation
+            '-mapView:didAddAnnotationViews:':
+                name: didAddAnnotationViews
+            '-mapView:didSelectAnnotation:':
+                name: didSelectAnnotation
+            '-mapView:didDeselectAnnotation:':
+                name: didDeselectAnnotation
+            '-mapView:didSelectAnnotationView:':
+                name: didSelectAnnotationView
+            '-mapView:didDeselectAnnotationView:':
+                name: didDeselectAnnotationView
+            '-mapView:annotationCanShowCallout:':
+                name: annotationCanShowCallout
+            '-mapView:calloutViewForAnnotation:':
+                name: calloutViewForAnnotation
+            '-mapView:leftCalloutAccessoryViewForAnnotation:':
+                name: leftCalloutAccessoryViewForAnnotation
+            '-mapView:rightCalloutAccessoryViewForAnnotation:':
+                name: rightCalloutAccessoryViewForAnnotation
+            '-mapView:annotation:calloutAccessoryControlTapped:':
+                name: annotation
+            '-mapView:tapOnCalloutForAnnotation:':
+                name: tapOnCalloutForAnnotation
+    MGLOfflineRegion: {}
+    MGLOfflineStorageDelegate:
+        methods:
+            '-offlineStorage:URLForResourceOfKind:withURL:':
+                name: URLForResourceOfKind
+
+    MGLComputedShapeSourceDataSource:
+        methods:
+            '-featuresInTileAtX:y:zoomLevel:':
+                name: featuresInTileAt
+            '-featuresInCoordinateBounds:zoomLevel:':
+                name: featuresInCoordinateBounds
+    MGLCalloutView:
+        methods:
+            '-presentCalloutFromRect:inView:constrainedToRect:animated:':
+                name: presentCalloutFrom
+
+
+functions:
+    MGLAltitudeForZoomLevel:
+        class: MGLGeometry
+        name: 'AltitudeForZoomLevel'
+
+    MGLZoomLevelForAltitude:
+        class: MGLGeometry
+        name: 'ZoomLevelForAltitude'
+    
+    MGLMapPointForCoordinate:
+        class: MGLMapPoint
+        name: 'forCoordinate'
+
+    
+    MGLStringFromMetricType:
+        class: MGLMetricsManager
+        name: 'stringFromMetricType'
+
+    # Make sure we don't miss any functions if new ones are introduced in a later version
+    (MGL.*):
+        class: FIXME
+        name: 'Function__#{g[0]}'
+
+values:
+    kMGLErrorDomain:
+        class: MGLErrorCode
+        name: getClassDomain
+
+    MGLCoordinateSpanZero:
+        class: MGLGeometry
+        name: getSpanZero
+
+    MGLErrorDomain:
+        class: MGLErrorCode
+        name: getDomain
+
+    MGLMapViewDecelerationRate(.*):
+        class: MGLMapView
+        name: 'DecelerationRate#{g[0]}'
+
+    MGLMapViewPreferredFrames(.*):
+        class: MGLMapView
+        name: 'PreferredFrames#{g[0]}'
+
+    MGLOfflinePack(.*)Notification:
+        class: MGLOfflinePack
+        name: '#{g[0]}'
+
+    MGLOfflinePack(.*)UserInfoKey:
+        exclude: true
+
+    MGLOfflinePackUserInfoKey(.*):
+        class: MGLOfflineStorage
+        name: 'UserInfoKey#{g[0]}'
+
+
+    MGLFontNamesAttribute:
+        class: Mapbox
+        name: 'MGLFontNamesAttribute'
+
+    MGLFontScaleAttribute:
+        class: Mapbox
+        name: 'MGLFontScaleAttribute'
+
+    MGLFontColorAttribute:
+        class: Mapbox
+        name: 'MGLFontColorAttribute'
+
+    MGLExpressionInterpolationModeLinear:
+        class: Mapbox
+        name: 'MGLExpressionInterpolationModeLinear'
+
+    MGLExpressionInterpolationModeExponential:
+        class: Mapbox
+        name: 'MGLExpressionInterpolationModeExponential'
+
+    MGLExpressionInterpolationModeCubicBezier:
+        class: Mapbox
+        name: 'MGLExpressionInterpolationModeCubicBezier'
+
+    MGLCluster(.*):
+        class: Mapbox
+        name: 'MGLCluster#{g[0]}'
+
+    MGL(.*)Exception:
+        class: Mapbox
+        type: String    
+        name: '#{g[0]}Exception'
+
+    MGLEventTypeResourceRequest:
+        class: MGLEvent
+        type: String
+        name: 'TypeResourceRequest'
+
+
+
+    # Make sure we don't miss any values if new ones are introduced in a later version
+    k?(MGL.*):
+        class: FIXME
+        name: 'Value__#{g[0]}'
+
+constants:
+    MGL_LOGGING_ENABLE_DEBUG:
+        class: Mapbox
+        name: 'LOGGING_ENABLE_DEBUG'
+
+    kCFNotFound:
+        exclude: true
+
+    NSHashTableStrongMemory:
+        exclude: true
+
+    NSHashTableCopyIn:
+        exclude: true
+
+    NSHashTableObjectPointerPersonality:
+        exclude: true
+
+    NSHashTableWeakMemory:
+        exclude: true
+
+    NSMapTableStrongMemory:
+        exclude: true
+
+    NSMapTableCopyIn:
+        exclude: true
+
+    NSMapTableObjectPointerPersonality:
+        exclude: true
+
+    NSMapTableWeakMemory:
+        exclude: true
+
+    UUID_NULL:
+        exclude: true
+
+    UILayoutPriorityRequired:
+        exclude: true
+
+    UILayoutPriorityDefaultHigh:
+        exclude: true
+
+    UILayoutPriorityDefaultLow:
+        exclude: true
+
+    UILayoutPriorityFittingSizeLevel:
+        exclude: true
+
+    UIStackViewSpacingUseDefault:
+        exclude: true
+
+    UIStackViewSpacingUseSystem:
+        exclude: true
+
+    MGLStyleDefaultVersion:
+        exclude: true
+
+
+    # Make sure we don't miss any constants if new ones are introduced in a later version
+    k?(MGL.*):
+        class: FIXME
+        name: 'Constant__#{g[0]}'
+
+

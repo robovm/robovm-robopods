@@ -1,0 +1,81 @@
+package: org.robovm.pods.appsflyer
+framework: AppsFlyerLib
+include: [foundation]
+clang_args: ['-x', 'objective-c']
+headers: [AppsFlyerLib.h]
+
+enums:
+    EmailCryptType: {}
+
+
+classes:
+    AppsFlyerCrossPromotionHelper:
+        methods:
+            '+logCrossPromoteImpression:campaign:parameters:':
+                #trim_after_first_colon: true
+                name: logCrossPromoteImpression
+            '+logAndOpenStore:campaign:parameters:openStore:':
+                #trim_after_first_colon: true
+                name: logAndOpenStore
+    AppsFlyerLib:
+        methods:
+            '-waitForATTUserAuthorizationWithTimeoutInterval:':
+                name: waitForATTUserAuthorization
+            '-enableFacebookDeferredApplinksWithClass:':
+                name: enableFacebookDeferredApplinks
+            '-setUserEmails:withCryptType:':
+                #trim_after_first_colon: true
+                name: setUserEmails
+            '-startWithCompletionHandler:':
+                name: start
+            '-logEvent:withValues:':
+                #trim_after_first_colon: true
+                name: logEvent
+            '-logEventWithEventName:eventValues:completionHandler:':
+                #trim_after_first_colon: true
+                name: logEvent
+            '-validateAndLogInAppPurchase:price:currency:transactionId:additionalParameters:success:failure:':
+                #trim_after_first_colon: true
+                name: validateAndLogInAppPurchase
+            '-logLocation:latitude:':
+                #trim_after_first_colon: true
+                name: logLocation
+            '-handleOpenURL:sourceApplication:':
+                #trim_after_first_colon: true
+                name: handleOpenURL
+            '-handleOpenURL:sourceApplication:withAnnotation:':
+                #trim_after_first_colon: true
+                name: handleOpenURL
+            '-handleOpenUrl:options:':
+                #trim_after_first_colon: true
+                name: handleOpenUrl
+            '-continueUserActivity:restorationHandler:':
+                #trim_after_first_colon: true
+                name: continueUserActivity
+            '-remoteDebuggingCallWithData:':
+                name: remoteDebuggingCall
+            '-performOnAppAttributionWithURL:':
+                name: performOnAppAttribution
+            '-setHost:withHostPrefix:':
+                #trim_after_first_colon: true
+                name: setHost
+            '-appendParametersToDeepLinkingURLWithString:parameters:':
+                #trim_after_first_colon: true
+                name: appendParametersToDeepLinkingURL
+    AppsFlyerLinkGenerator:
+        methods:
+            '-addParameterValue:forKey:':
+                #trim_after_first_colon: true
+                name: addParameterValue
+    AppsFlyerShareInviteHelper:
+        methods:
+            '+generateInviteUrlWithLinkGenerator:completionHandler:':
+                #trim_after_first_colon: true
+                name: generateInviteUrl
+            '+logInvite:parameters:':
+                #trim_after_first_colon: true
+                name: logInvite
+
+
+protocols:
+    AppsFlyerLibDelegate: {}

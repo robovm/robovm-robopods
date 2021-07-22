@@ -1,0 +1,26 @@
+package: org.robovm.pods.firebase.instanceid
+framework: FirebaseInstanceID
+include: [foundation]
+clang_args: ['-x', 'objective-c']
+headers: [FIRInstanceID.h]
+
+enums:
+    FIRInstanceIDError: {}
+    FIRInstanceIDAPNSTokenType: {}
+
+classes:
+    FIRInstanceID:
+        methods:
+            '-instanceIDWithHandler:':
+                name: instanceID
+            '-getIDWithHandler:':
+                name: getID
+            '-deleteIDWithHandler:':
+                name: deleteID
+            '-tokenWithAuthorizedEntity:scope:options:handler:':
+                #trim_after_first_colon: true
+                name: token
+            '-deleteTokenWithAuthorizedEntity:scope:handler:':
+                #trim_after_first_colon: true
+                name: deleteToken
+    FIRInstanceIDResult: {}

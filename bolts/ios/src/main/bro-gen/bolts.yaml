@@ -1,19 +1,15 @@
 package: org.robovm.pods.bolts
 framework: Bolts
-include: 
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/foundation.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/uikit.yaml
-    - ../../../../../../robovm/cocoatouch/src/main/bro-gen/dispatch.yaml
+include: [foundation, uikit, dispatch, coregraphics]
 clang_args: ['-x', 'objective-c']
-header_root: /../robopods/META-INF/robovm/ios/libs
-headers:
-    - Bolts.framework/Headers/Bolts.h
+headers: [Bolts.h]
 typedefs:
     BFContinuationBlock: '@Block BFContinuation<NSObject, NSObject>'
 private_typedefs:
-    'void (^)(void (^)())': '@Block("(@Block)") VoidBlock1<Runnable>'
-    'id (^)()': '@Block Block0<NSObject>'
+    'void (^)(void (^ _Nonnull)())': '@Block("(@Block)") VoidBlock1<Runnable>'
+    'id  _Nonnull (^)()': '@Block Block0<NSObject>'
     BFGenericType: NSObject
+    ResultType: NSObject
     
 enums:
     BFAppLinkNavigationType: {}
@@ -48,6 +44,10 @@ classes:
             '-navigate:':
                 trim_after_first_colon: true
                 throws: NSErrorException
+            '-navigationType':
+                property: true
+            '+callbackAppLinkDataForAppWithName:url:':
+                name: getCallbackAppLinkData
             '+navigationWithAppLink:extras:appLinkData:':
                 name: create
                 constructor: true
@@ -56,6 +56,8 @@ classes:
                         type: 'NSDictionary<NSString, NSObject>'
                     appLinkData:
                         type: 'NSDictionary<NSString, NSObject>'
+            '+navigationTypeForLink:':
+                name: getNavigationTypeForLink
             '+resolveAppLinkInBackground:.*':
                 trim_after_first_colon: true
             '+navigateToAppLink:error:':
@@ -140,6 +142,12 @@ classes:
                 parameters:
                     tasks:
                         type: NSArray<BFTask<T>>
+            '+taskForCompletionOfAnyTask:':
+                name: createForCompletionOfAnyTasks
+                return_type: '<T> BFTask<Void>'
+                parameters:
+                    tasks:
+                        type: NSArray<BFTask<T>>
             '+taskForCompletionOfAllTasksWithResults:':
                 name: createForCompletionOfAllTasksWithResults
                 return_type: '<T extends NSObject> BFTask<NSArray<T>>'
@@ -151,6 +159,9 @@ classes:
                 return_type: '<T> BFTask<T>'
                 visibility: protected # generic block
     BFTaskCompletionSource: # DONE
+        properties:
+            'task':
+                type: BFTask<?>
         methods:
             '-trySet.*':
                 trim_after_first_colon: true
@@ -206,9 +217,9 @@ values:
     BFTaskErrorDomain:
         class: BFTaskError
         name: getClassDomain
-    BFTaskMultipleExceptionsException:
+    BFTaskMultipleExceptions.*:
         exclude: true
-    kBFMultipleErrorsError:
+    BFMultipleErrors.*:
         exclude: true
 
     # BFAppLink

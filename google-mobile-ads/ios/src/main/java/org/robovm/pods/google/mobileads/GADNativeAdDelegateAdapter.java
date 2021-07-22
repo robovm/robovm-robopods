@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -34,7 +34,6 @@ import org.robovm.apple.storekit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/GADNativeAdDelegateAdapter/*</name>*/ 
@@ -52,13 +51,17 @@ import org.robovm.apple.storekit.*;
     /*</properties>*/
     /*<members>*//*</members>*/
     /*<methods>*/
+    @NotImplemented("nativeAdDidRecordImpression:")
+    public void nativeAdDidRecordImpression(GADNativeAd nativeAd) {}
+    @NotImplemented("nativeAdDidRecordClick:")
+    public void nativeAdDidRecordClick(GADNativeAd nativeAd) {}
     @NotImplemented("nativeAdWillPresentScreen:")
-    public void willPresentScreen(GADNativeAd nativeAd) {}
+    public void nativeAdWillPresentScreen(GADNativeAd nativeAd) {}
     @NotImplemented("nativeAdWillDismissScreen:")
-    public void willDismissScreen(GADNativeAd nativeAd) {}
+    public void nativeAdWillDismissScreen(GADNativeAd nativeAd) {}
     @NotImplemented("nativeAdDidDismissScreen:")
-    public void didDismissScreen(GADNativeAd nativeAd) {}
+    public void nativeAdDidDismissScreen(GADNativeAd nativeAd) {}
     @NotImplemented("nativeAdWillLeaveApplication:")
-    public void willLeaveApplication(GADNativeAd nativeAd) {}
+    public void nativeAdWillLeaveApplication(GADNativeAd nativeAd) {}
     /*</methods>*/
 }

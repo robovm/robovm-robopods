@@ -44,6 +44,7 @@ import org.robovm.apple.uikit.*;
     /*<constants>*//*</constants>*/
     /*<constructors>*/
     public GGLConfiguration() {}
+    protected GGLConfiguration(Handle h, long handle) { super(h, handle); }
     protected GGLConfiguration(SkipInit skipInit) { super(skipInit); }
     public GGLConfiguration(String apiKey, String clientID, NSArray<?> identityProviders, String trackingID, String widgetURL, String bannerAdUnitID, String interstitialAdUnitID, String gcmSenderID, String androidClientID) { super((SkipInit) null); initObject(init(apiKey, clientID, identityProviders, trackingID, widgetURL, bannerAdUnitID, interstitialAdUnitID, gcmSenderID, androidClientID)); }
     /*</constructors>*/

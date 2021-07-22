@@ -4,6 +4,9 @@
         <framework>SystemConfiguration</framework>
     </frameworks>
     <libs>
+        <lib>libs/libGGLAnalytics.a</lib>
+        <lib>libs/libGoogleAnalyticsServices.a</lib>
+    
         <lib>z</lib>
         <lib>sqlite3</lib>
     </libs>

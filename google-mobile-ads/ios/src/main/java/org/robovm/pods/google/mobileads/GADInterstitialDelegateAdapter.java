@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2013-2015 RoboVM AB
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -34,11 +34,10 @@ import org.robovm.apple.storekit.*;
 /*</imports>*/
 
 /*<javadoc>*/
-
 /*</javadoc>*/
 /*<annotations>*//*</annotations>*/
 /*<visibility>*/public/*</visibility>*/ class /*<name>*/GADInterstitialDelegateAdapter/*</name>*/ 
-    extends /*<extends>*/GADAdDelegateAdapter/*</extends>*/ 
+    extends /*<extends>*/NSObject/*</extends>*/ 
     /*<implements>*/implements GADInterstitialDelegate/*</implements>*/ {
 
     /*<ptr>*/
@@ -53,16 +52,18 @@ import org.robovm.apple.storekit.*;
     /*<members>*//*</members>*/
     /*<methods>*/
     @NotImplemented("interstitialDidReceiveAd:")
-    public void didReceiveAd(GADInterstitial ad) {}
+    public void interstitialDidReceiveAd(GADInterstitial ad) {}
     @NotImplemented("interstitial:didFailToReceiveAdWithError:")
-    public void didFailToReceiveAd(GADInterstitial ad, GADRequestError error) {}
+    public void interstitialDidFailToReceiveAd(GADInterstitial ad, GADRequestError error) {}
     @NotImplemented("interstitialWillPresentScreen:")
-    public void willPresentScreen(GADInterstitial ad) {}
+    public void interstitialWillPresentScreen(GADInterstitial ad) {}
+    @NotImplemented("interstitialDidFailToPresentScreen:")
+    public void interstitialDidFailToPresentScreen(GADInterstitial ad) {}
     @NotImplemented("interstitialWillDismissScreen:")
-    public void willDismissScreen(GADInterstitial ad) {}
+    public void interstitialWillDismissScreen(GADInterstitial ad) {}
     @NotImplemented("interstitialDidDismissScreen:")
-    public void didDismissScreen(GADInterstitial ad) {}
+    public void interstitialDidDismissScreen(GADInterstitial ad) {}
     @NotImplemented("interstitialWillLeaveApplication:")
-    public void willLeaveApplication(GADInterstitial ad) {}
+    public void interstitialWillLeaveApplication(GADInterstitial ad) {}
     /*</methods>*/
 }
